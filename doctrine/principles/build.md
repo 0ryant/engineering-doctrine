@@ -2,6 +2,8 @@
 
 These are the durable rules for how repositories should build, package, release, deploy, execute, and verify. Tooling can change. These principles should change only when we learn something structural.
 
+Async **event and message** contracts are covered in [event-contracts.md](event-contracts.md).
+
 ---
 
 ## 1. Build Surfaces Must Be Explicit

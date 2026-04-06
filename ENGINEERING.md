@@ -20,6 +20,8 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Keep example and fixture files alongside every schema. They serve as documentation and test inputs.
 - Validate contracts in CI as a mandatory quality gate. A schema that cannot be validated against its examples is broken code.
 - Contract violations are build failures, not warnings.
+- **Asynchronous and event-shaped boundaries** — use **[CloudEvents](https://github.com/cloudevents/spec)** as the standard **envelope** for events (queues, topics, webhooks, buses), plus a **versioned payload** schema for `data`. Event types (`type`) and producers (`source`) are stable identifiers; event `id` supports deduplication under at-least-once delivery.
+- Full rules: `doctrine/principles/event-contracts.md`. Current CloudEvents defaults: `doctrine/tooling/cloudevents.md`.
 
 ---
 
@@ -204,7 +206,19 @@ See `doctrine/principles/build.md` and `doctrine/patterns/build-surface-model.md
 
 ---
 
-## 13. Git Workflow
+## 13. Collaboration And Trunk-Based Workflow
+
+- **Trunk as default** — one integration branch (`main`) is the source of truth; integrate frequently via short-lived topic branches and reviewed merges.
+- **Protected branch** — no direct pushes to the default branch; required status checks and review before merge; merge only when checks pass.
+- **Small pull requests** — one concern per change where practical; large or risky work gets a design note or RFC first.
+- **Feature flags** — incomplete capabilities ship behind flags with safe defaults; flags have owners and removal plans.
+- **Promotion** — promote immutable artefacts through environments; same build ID or image tag from test to prod where the platform allows.
+- **Operational rigour** — named service ownership, runbooks for deploy and rollback, observability for new risk, blameless postmortems with tracked actions, SLOs and error budgets where user-facing reliability matters.
+- **Footguns to avoid** — long-lived integration branches, force-push to shared branches, merging red, Friday merges without rollback, CI that cannot run locally, manual production drift.
+
+Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patterns/trunk-workflow.md`. Checklist: `doctrine/checklists/collaboration-readiness.md`. Platform defaults (GitHub/GitLab): `doctrine/tooling/collaboration.md`.
+
+### Git Hooks And Local Hygiene
 
 - Keep `.githooks/` in the repo root. Do not rely on developers configuring hooks manually.
 - `git config core.hooksPath .githooks` belongs in the setup script.
@@ -258,7 +272,7 @@ See `doctrine/principles/build.md` and `doctrine/patterns/build-surface-model.md
 - Pipeline files live under `.pipelines/` with a `variables/` subdirectory where needed.
 - IaC lives under `terraform/` or `infra/`.
 - `packaging/` is for tracked package-manager manifests. `dist/` is generated output only.
-- Contracts live under `contracts/` with schemas and examples side by side.
+- Contracts live under `contracts/` with schemas and examples side by side. Event payload contracts and examples sit with synchronous API contracts; use a clear subdirectory or naming convention for event types (for example `contracts/events/`).
 - Use strict modes and fail-fast defaults in shell scripts.
 
 ---
@@ -270,6 +284,7 @@ Copy this list to the project README under `## Setup` and tick items off:
 ```text
 [ ] Schema or contract files defined and example docs created
 [ ] Contract validation script written and passing
+[ ] Event producers/consumers: CloudEvents envelope, versioned payload schema, examples, validation (if the repo uses async events)
 [ ] .env.example with all required variables documented
 [ ] Local task runner or one documented command mirrors the quality gate
 [ ] .gitignore covers secrets, build outputs, Terraform state, OS files, and IDE files
@@ -293,4 +308,6 @@ Copy this list to the project README under `## Setup` and tick items off:
 [ ] Terraform provider pinned and backend configured if the repo owns infrastructure
 [ ] README includes what it does, architecture, setup, and interface reference
 [ ] Repo-level AI or editor guidance added if the organisation standardises it
+[ ] Default branch protected; required checks and review match trunk policy
+[ ] Collaboration and trunk readiness reviewed using doctrine/checklists/collaboration-readiness.md where teams adopt full doctrine
 ```

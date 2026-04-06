@@ -16,6 +16,12 @@ Principles should move slowly. Tooling should change as the estate changes.
 ## Start Here
 
 - [principles/build.md](principles/build.md) for enduring build rules
+- [principles/event-contracts.md](principles/event-contracts.md) for event and message contracts (CloudEvents envelope + versioned payloads)
+- [principles/collaboration.md](principles/collaboration.md) for trunk-based workflow, team collaboration, DevOps and SRE rigour
 - [tooling/build.md](tooling/build.md) for current default stack guidance
+- [tooling/cloudevents.md](tooling/cloudevents.md) for CloudEvents spec baseline, bindings, and validation defaults
+- [tooling/collaboration.md](tooling/collaboration.md) for GitHub/GitLab branch protection, merge queue / merge trains, and review defaults
 - [patterns/build-surface-model.md](patterns/build-surface-model.md) for how the layers fit
+- [patterns/trunk-workflow.md](patterns/trunk-workflow.md) for how trunk-based delivery connects to build surfaces
 - [checklists/build-readiness.md](checklists/build-readiness.md) for rollout and review
+- [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md) for branch protection, review, and operations readiness

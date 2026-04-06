@@ -10,6 +10,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] The quality gate runs on PRs and protected branches
 [ ] Supported platforms are validated in CI when the repo claims multi-platform support
 [ ] Contract or schema validation exists where the repo defines contracts
+[ ] Published or consumed async events use CloudEvents envelope and versioned payload schemas where applicable
 [ ] Secret scanning exists before merge
 [ ] Dependency and IaC scanning exist where relevant
 [ ] Checked-out sibling or shared inputs are included in validation or scan scope when they influence delivery
