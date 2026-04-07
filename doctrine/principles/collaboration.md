@@ -74,9 +74,9 @@ Related build and release rules live in [build.md](build.md) and [../patterns/tr
 ## 8. SRE Rigour: Reliability And Operations
 
 - **Service ownership** — each service or deployable unit has a named owner team; ownership includes on-call or escalation path where applicable.
-- **SLOs where users care** — define availability and latency objectives for user-facing paths; measure them; error budgets inform release and change policy.
+- **SLOs where users care** — define availability and latency objectives for user-facing paths; measure them; error budgets inform release and change policy. Expanded doctrine: [reliability-slo-incidents.md](reliability-slo-incidents.md).
 - **Runbooks** — operational procedures for deploy, rollback, common failures, and dashboards; stored in-repo or linked from repo README.
-- **Observability** — structured logs, metrics, and traces sufficient to debug production incidents without reproducing locally; new features include observability in the definition of done.
+- **Observability** — structured logs, metrics, and traces sufficient to debug production incidents without reproducing locally; new features include observability in the definition of done. Expanded doctrine: [observability.md](observability.md), tooling: [../tooling/observability.md](../tooling/observability.md).
 - **Incidents** — blameless postmortems for meaningful incidents; action items tracked to completion.
 - **Change risk** — risky changes use canaries, gradual rollout, or maintenance windows per service policy; emergency changes still get a retrospective.
 

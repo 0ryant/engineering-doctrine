@@ -1,6 +1,6 @@
 # Collaboration Tooling
 
-This is the current default platform guidance for implementing [../principles/collaboration.md](../principles/collaboration.md) on common Git hosts. These choices are defaults, not laws. Replace them when the organisation standardises on a different host or policy engine, but preserve the outcomes: protected integration branch, mandatory checks before merge, reviewed changes, and optional merge serialization at scale.
+**Example** mappings for implementing [../principles/collaboration.md](../principles/collaboration.md) on common Git hosts. Outcomes are durable (protected `main`, required checks, review); **how** your host enforces them is estate-specific—see [../principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md).
 
 ---
 

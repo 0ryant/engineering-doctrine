@@ -1,14 +1,14 @@
 # CloudEvents Tooling
 
-This is the current default for implementing [../principles/event-contracts.md](../principles/event-contracts.md): **CloudEvents** as the standard event envelope for asynchronous integration.
+Illustrative baseline for implementing [../principles/event-contracts.md](../principles/event-contracts.md). The **principle** is a versioned envelope + payload contract; the **spec revision** and bindings you standardise on are tooling—see [../principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md).
 
-These choices are defaults. Replace them when a platform mandates a different wire format, but **preserve** explicit payload schemas and versioned event types.
+If a platform mandates a different wire format, document the exception—but **preserve** explicit payload schemas and stable event types at boundaries.
 
 ---
 
 ## Specification Baseline
 
-| Item | Current default | Notes |
+| Item | Example baseline | Notes |
 | --- | --- | --- |
 | **Spec** | [CloudEvents](https://github.com/cloudevents/spec) **1.0** | Track patch releases; breaking spec upgrades require org-wide migration planning. |
 | **Structured mode (JSON)** | Default for HTTP and many brokers | Single JSON object with `specversion`, `id`, `source`, `type`, optional `time`, `data`, `dataschema`, `subject`. |
@@ -39,7 +39,8 @@ Also set when applicable:
 | Transport | Default approach |
 | --- | --- |
 | **HTTP** (webhooks, gateways) | `Content-Type: application/cloudevents+json` for structured; or binary mode with `ce-*` headers per HTTP binding |
-| **Kafka / NATS / AMQP / etc.** | Use the **official CloudEvents binding** for that protocol where available; otherwise structured JSON in the message value with documented header mapping |
+| **Kafka / AMQP / etc.** | Use the **official CloudEvents binding** for that protocol where available; otherwise structured JSON in the message value with documented header mapping |
+| **NATS (Core / JetStream)** | See [nats-jetstream.md](nats-jetstream.md) for an illustrative JetStream-oriented mapping; still use explicit envelope + payload rules from the principle |
 | **Cloud vendor event grids** | Map vendor envelopes **to** CloudEvents at the boundary if the native format differs; keep conversion in one thin adapter layer |
 
 ---

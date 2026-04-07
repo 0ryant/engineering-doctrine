@@ -56,4 +56,6 @@ When many contributors land on `main`, use a **merge queue** so:
 
 ## Checklist Touchpoints
 
-Use [checklists/collaboration-readiness.md](../checklists/collaboration-readiness.md) when rolling out or auditing this model.
+- [checklists/collaboration-readiness.md](../checklists/collaboration-readiness.md) — trunk and branch policy  
+- [checklists/release-readiness.md](../checklists/release-readiness.md) — versioned releases and hotfix discipline  
+- [patterns/message-channel-operations.md](message-channel-operations.md) — if delivery includes async consumers

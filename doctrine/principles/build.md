@@ -1,8 +1,10 @@
 # Build Principles
 
-These are the durable rules for how repositories should build, package, release, deploy, execute, and verify. Tooling can change. These principles should change only when we learn something structural.
+These are the durable rules for how repositories should build, package, release, deploy, execute, and verify. Tooling can change. These principles should change only when we learn something structural. How this differs from `tooling/` examples: [timeless-principles-and-tooling.md](timeless-principles-and-tooling.md).
 
 Async **event and message** contracts are covered in [event-contracts.md](event-contracts.md).
+
+**Data stores, migrations, backups** — [data-and-migrations.md](data-and-migrations.md).
 
 ---
 
@@ -42,6 +44,7 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 - Version, package names, installer metadata, package-manager manifests, and release note inputs are source, not output.
 - Keep release metadata in tracked directories such as `packaging/`, not in ignored output folders such as `dist/`.
 - Build outputs may be regenerated. Release metadata must remain reviewable and diffable.
+- Semantic version increments follow [semantic-versioning.md](semantic-versioning.md) per publishable unit.
 
 ## 7. Release Artefacts Include Operational Usefulness
 

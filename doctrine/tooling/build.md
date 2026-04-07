@@ -1,14 +1,14 @@
 # Build Tooling
 
-This is the current default tooling guidance that implements the build principles for a Terraform-first, automation-friendly engineering estate.
+**Illustrative** defaults that **one** automation-friendly estate might use to implement [../principles/build.md](../principles/build.md). They are **replaceable**: swap task runners, script languages, CI vendors, and IaC tools while keeping the same **surfaces** (quality gate, artefact, deploy, verify).
 
-These choices are defaults, not laws. Replace them when the repo context changes, but preserve the surface contracts described in [../principles/build.md](../principles/build.md).
+For **why** principles stay separate from tools, see [../principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md).
 
 ---
 
-## Current Default Stack
+## Example Stack (Do Not Treat As Universal)
 
-| Surface | Current default | Why it works well | Swappable alternatives |
+| Surface | Example default | Why teams use it | Swappable alternatives |
 | --- | --- | --- | --- |
 | Local task entrypoint | `justfile` | Simple, readable, maps well to CI verbs | `make`, `task`, `nox`, `tox`, `npm scripts` |
 | Script implementation | Python `python -m scripts ...` | Cross-platform glue, easy to test, easy to reuse from CI | Go, C#, Bash, PowerShell, Rust utilities |
@@ -24,7 +24,7 @@ These choices are defaults, not laws. Replace them when the repo context changes
 
 ---
 
-## Current Recommendations
+## Example Recommendations
 
 ### Local Build Surface
 
@@ -91,7 +91,7 @@ These choices are defaults, not laws. Replace them when the repo context changes
 
 ---
 
-## Why These Defaults Hold Up Well
+## Why This Shape Tends To Work
 
 - A task-runner layer gives local and CI parity without forcing developers to remember raw script paths.
 - Repo-owned scripts keep logic reviewable, testable, and reusable across pipelines.

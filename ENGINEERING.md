@@ -11,6 +11,8 @@ Build and delivery guidance is split deliberately:
 
 When tooling changes, update the tooling docs first. Change the principles only when the operating model itself has changed.
 
+**Principles vs tooling:** Portable **intent** lives in `doctrine/principles/`; replaceable **examples and estate notes** live in `doctrine/tooling/` (including `tooling/estates/`). See `doctrine/principles/timeless-principles-and-tooling.md`.
+
 ---
 
 ## 1. Contracts First
@@ -21,7 +23,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Validate contracts in CI as a mandatory quality gate. A schema that cannot be validated against its examples is broken code.
 - Contract violations are build failures, not warnings.
 - **Asynchronous and event-shaped boundaries** — use **[CloudEvents](https://github.com/cloudevents/spec)** as the standard **envelope** for events (queues, topics, webhooks, buses), plus a **versioned payload** schema for `data`. Event types (`type`) and producers (`source`) are stable identifiers; event `id` supports deduplication under at-least-once delivery.
-- Full rules: `doctrine/principles/event-contracts.md`. Current CloudEvents defaults: `doctrine/tooling/cloudevents.md`.
+- Full rules: `doctrine/principles/event-contracts.md`. Current CloudEvents defaults: `doctrine/tooling/cloudevents.md`. Workflow state and transition → event mapping: `doctrine/principles/state-machines-and-workflows.md`. Optional NATS/JetStream illustration: `doctrine/tooling/nats-jetstream.md`.
 
 ---
 
@@ -72,6 +74,8 @@ When tooling changes, update the tooling docs first. Change the principles only 
 ## 6. Right Tool For The Job
 
 Choose the language, runtime, and tooling that best fit the problem. Avoid dogmatic single-language codebases. Prefer tools that match the team's strengths and the project's operational constraints.
+
+The table below is **illustrative** for templates and brownfield guidance—not mandatory estate law. Standardise **organisation-wide** stacks in `doctrine/tooling/estates/` when you need one agreed answer.
 
 | Category | Tool | When to reach for it |
 | --- | --- | --- |
@@ -166,11 +170,11 @@ Apply this consistently. Each layer has exactly one responsibility and communica
 
 ## 11. Container Strategy
 
-- Prefer Podman where licensing or workstation constraints make it the better default.
-- Every service should have:
-  - `Dockerfile.build` for the production image
-  - `Dockerfile.dev` for local development
-  - `docker-compose.yml` or `compose.yaml` when local orchestration is part of the workflow
+- **Workstation container engine** (Podman, Docker, Colima, etc.) is an **estate** decision—record the team default in `doctrine/tooling/estates/` when it matters; the principle is **reproducible** definitions and **least surprise**, not a single vendor SKU. Prefer Podman **where licensing or workstation constraints** make it the better default **for that estate**.
+- **Production runtime** — prefer **vendor-managed application platforms** when they meet requirements and reduce **self-managed control-plane sprawl**. Use **Kubernetes** when **cluster-level** capabilities are required; record the decision in your **platform catalogue** or ADRs. See `doctrine/principles/container-runtime-choice.md`. When you **do** run Kubernetes, apply `doctrine/principles/kubernetes-platform-security.md`. **Concrete product mappings** (for example Azure vs AWS vs GCP) belong in `doctrine/tooling/estates/` supplements, not in portable principles.
+- **Interoperability specs** — **CloudEvents** and **OpenTelemetry** name **portable shapes** at boundaries; they do **not** mandate any **full** vendor or foundation stack. See `doctrine/principles/interoperability-and-standards.md` and `doctrine/principles/timeless-principles-and-tooling.md`.
+- Every service should have **tracked** container build definitions: **production** and **development** images (exact filenames are template-level—`Dockerfile`, `Dockerfile.dev`, `Containerfile`, or generator equivalents are all valid if documented).
+- Use **Compose** or equivalent when local multi-container orchestration is part of the workflow.
 - Use non-root users in final images unless there is a documented exception.
 - Use named volumes for dependency and build caches when local containers need them.
 
@@ -180,7 +184,9 @@ Apply this consistently. Each layer has exactly one responsibility and communica
 
 Every project must define the build and delivery surfaces it actually owns. Not every repo needs every surface, but every surface that exists must be explicit, documented, and reviewable.
 
-| Surface | Default file | Responsibility |
+The **example paths** below (`.pipelines/...`) are **one** template layout—your CI host may use different filenames; keep the **meaning** of each surface.
+
+| Surface | Example path | Responsibility |
 | --- | --- | --- |
 | **Quality gate** | `.pipelines/quality.yaml` | fmt, lint, type-check, test, contract validation, secret scan |
 | **Build & Publish** | `.pipelines/build-and-publish.yaml` | compile, package, and publish versioned artefacts |
@@ -200,7 +206,7 @@ Rules:
 - CI orchestrates. Repo scripts implement.
 - Local task runners should mirror the quality gate and primary build actions closely enough for pre-push reproduction.
 - Promote the same built artefact through staging, smoke, and production where the platform allows it.
-- Pipeline variable files live in `.pipelines/variables/` alongside the pipeline that uses them.
+- Materialise CI variables and secret references using your estate’s pattern (directory layout is not prescribed here).
 
 See `doctrine/principles/build.md` and `doctrine/patterns/build-surface-model.md` for the operating model behind this structure.
 
@@ -234,6 +240,7 @@ Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patter
 - Release metadata is source code. Track installer and package-manager manifests under `packaging/` or an equivalent reviewed directory.
 - Ignored output folders such as `dist/`, `target/`, or staging directories are for generated artefacts only.
 - Version is sourced from one manifest and derived everywhere else.
+- **Semantic versioning** applies per **publishable unit** (package, service, CLI, versioned API, image, app, or other independently upgraded artefact). Use the smallest honest **major / minor / patch** bump; bump only units that changed. Full policy: `doctrine/principles/semantic-versioning.md`.
 - Publish steps consume previously built artefacts. They do not invent metadata inline or silently rebuild during publish.
 - Promotion flows should reuse immutable build outputs or explicit image tags across environments where the platform allows it.
 - Expensive platform builds or side-effecting publish steps should be explicit, parameterised entrypoints rather than implicit on every merge.
@@ -269,11 +276,73 @@ Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patter
 - Choose an org-wide repo naming convention and apply it consistently.
 - Use `doctrine/` at template roots when the repo is intended to teach repeatable engineering patterns.
 - Script directories should be grouped by responsibility such as `scripts/quality/`, `scripts/setup/`, `scripts/build/`, and `scripts/infra/`.
-- Pipeline files live under `.pipelines/` with a `variables/` subdirectory where needed.
+- Pipeline definitions live in your estate’s chosen location (for example `.pipelines/`, `.github/workflows/`, or `.gitlab-ci.yml`).
 - IaC lives under `terraform/` or `infra/`.
 - `packaging/` is for tracked package-manager manifests. `dist/` is generated output only.
 - Contracts live under `contracts/` with schemas and examples side by side. Event payload contracts and examples sit with synchronous API contracts; use a clear subdirectory or naming convention for event types (for example `contracts/events/`).
 - Use strict modes and fail-fast defaults in shell scripts.
+
+---
+
+## 18. Platform Operations, Observability, And Extended Principles
+
+The following **principle** documents extend build/trunk doctrine with **SRE, data, API security, and governance** expectations. Each file includes **rationale** (why we chose this) and **references** to authoritative sources. **Vendor-specific** examples live under `doctrine/tooling/estates/`—see `doctrine/principles/timeless-principles-and-tooling.md`.
+
+**Timeless vs tooling** — `doctrine/principles/timeless-principles-and-tooling.md`.
+
+**Data and persistence** — `doctrine/principles/data-and-migrations.md` (expand/contract migrations, backups, RPO/RTO).
+
+**Observability** — `doctrine/principles/observability.md`; illustrative tooling: `doctrine/tooling/observability.md`.
+
+**Testing strategy** — `doctrine/principles/testing-strategy.md` (pyramid, contract tests, flakiness).
+
+**State machines and workflows (event-backed)** — `doctrine/principles/state-machines-and-workflows.md` (transitions, idempotency, event-type mapping).
+
+**API boundaries and API security** — `doctrine/principles/api-boundaries-and-security.md` (limits, authz, OWASP API alignment).
+
+**Threat modeling (STRIDE lite)** — `doctrine/principles/threat-modeling-stride-lite.md` (trust boundaries; complements API and platform security).
+
+**Privacy and data governance** — `doctrine/principles/privacy-and-data-governance.md`.
+
+**Reliability: SLOs, error budgets, incidents** — `doctrine/principles/reliability-slo-incidents.md`.
+
+**Delivery measurement (DORA / Four Keys)** — `doctrine/principles/measurement-and-dora.md` (outcomes vs practices).
+
+**Performance, load, and cost** — `doctrine/principles/performance-and-cost.md`.
+
+**Documentation and knowledge** — `doctrine/principles/documentation-knowledge.md` (ADRs, runbooks).
+
+**Dependencies and supply chain** — `doctrine/principles/dependencies-supply-chain.md`; illustrative automation options: `doctrine/tooling/dependency-automation.md`.
+
+**User-facing quality** — `doctrine/principles/user-facing-quality.md` (accessibility, internationalisation).
+
+**CI platform mapping** — `doctrine/tooling/ci-platform-mapping.md` (abstract surfaces vs example CI products).
+
+**Canonical reference index** — `doctrine/REFERENCES.md`.
+
+**Checklist** — `doctrine/checklists/platform-readiness.md`.
+
+**Interoperability and standards posture** — `doctrine/principles/interoperability-and-standards.md`.
+
+**Container runtime choice (managed vs Kubernetes)** — `doctrine/principles/container-runtime-choice.md`.
+
+**Kubernetes security (only when running K8s)** — `doctrine/principles/kubernetes-platform-security.md`.
+
+**Estate-specific tooling supplements** — `doctrine/tooling/estates/` (optional mappings; example Azure: `estates/azure-container-runtimes.md`; empty stubs: `estates/aws-container-runtimes.md`, `estates/gcp-container-runtimes.md`).
+
+**How to read this doctrine** — `doctrine/patterns/how-to-read-this-doctrine.md`.
+
+**Message channels (DLQ, replay)** — `doctrine/patterns/message-channel-operations.md`. Illustrative NATS JetStream notes: `doctrine/tooling/nats-jetstream.md`.
+
+**Release checklist** — `doctrine/checklists/release-readiness.md`.
+
+**Doctrine maintenance** — `doctrine/checklists/doctrine-change-checklist.md`, audit log `doctrine/evolution/moscow-review.md`.
+
+**Doctrine file index** — `doctrine/SITEMAP.md` (regenerate: `scripts/generate-doctrine-sitemap.sh`).
+
+**Team adoption / migration** — `doctrine/patterns/adoption-playbook.md`; one-page pitch template: `doctrine/tooling/estates/minimum-viable-doctrine.template.md`.
+
+**External review synthesis** — `doctrine/evolution/honest-review-synthesis.md`.
 
 ---
 
@@ -291,23 +360,26 @@ Copy this list to the project README under `## Setup` and tick items off:
 [ ] Setup script is idempotent and documented
 [ ] .githooks/pre-commit and pre-push written
 [ ] git config core.hooksPath .githooks added to setup script
-[ ] .pipelines/quality.yaml triggers on PRs and protected branches
+[ ] Quality gate pipeline triggers on PRs and protected branches (path per estate; `.pipelines/quality.yaml` is one example)
 [ ] Multi-platform validation exists when the repo claims support beyond one platform
 [ ] Build and publish surface exists if the repo ships versioned artefacts
 [ ] Deploy surface exists for each deployable unit the repo owns
 [ ] Scheduled execution or smoke surfaces exist when the repo owns recurring automation or runtime checks
 [ ] Shared checked-out inputs are included in validation or scan context when they influence delivery
-[ ] .pipelines/deploy-infrastructure.yaml with plan, apply, and destroy when the repo owns infrastructure
+[ ] Infrastructure deploy workflow exists with plan, apply, and destroy when the repo owns infrastructure
 [ ] packaging/ manifests tracked if the repo ships through package managers
 [ ] Publish parameters or separate release entrypoints are documented for side-effecting release actions
 [ ] Promotion reuses the same built artefact or explicit image tag where the platform allows it
+[ ] SemVer policy understood per publishable unit (see doctrine/principles/semantic-versioning.md) or exception documented
 [ ] Generated docs, completions, or man pages included in release artefacts where applicable
 [ ] Execution and smoke surfaces publish evidence artefacts where they produce operational outcomes
-[ ] Dockerfile.build and Dockerfile.dev exist if the repo ships containers
+[ ] Production and development container build definitions exist and are documented if the repo ships containers
 [ ] compose.yaml or docker-compose.yml works for local container workflows where needed
 [ ] Terraform provider pinned and backend configured if the repo owns infrastructure
 [ ] README includes what it does, architecture, setup, and interface reference
 [ ] Repo-level AI or editor guidance added if the organisation standardises it
 [ ] Default branch protected; required checks and review match trunk policy
 [ ] Collaboration and trunk readiness reviewed using doctrine/checklists/collaboration-readiness.md where teams adopt full doctrine
+[ ] Platform / SRE extended readiness reviewed using doctrine/checklists/platform-readiness.md where teams adopt full doctrine
+[ ] Versioned releases use doctrine/checklists/release-readiness.md where applicable
 ```

@@ -37,6 +37,7 @@ Synchronous HTTP APIs remain OpenAPI-first; **events use an explicit envelope co
 - Document **ordering** guarantees (per partition key, per entity, or none).
 - Document **delivery** semantics (at-most-once, at-least-once, effectively-once patterns) and **consumer idempotency** requirements.
 - **Sensitive fields** — never put secrets in event payloads; reference correlation IDs and fetch authoritative data when needed.
+- **Workflow state** — when behaviour is modelled as states and transitions, document the model and map **committed** transitions to stable event `type`s and payloads; see [state-machines-and-workflows.md](state-machines-and-workflows.md).
 
 ---
 
@@ -46,6 +47,12 @@ Current CloudEvents version, bindings, and validation expectations live in [../t
 
 ---
 
-## 6. When This Principle Changes
+## 6. Operational Handling (Queues And Buses)
+
+Contract and schema correctness are not enough: define **dead-letter / poison** handling, **replay** rules, and **backlog observability** for production message paths. Pattern: [../patterns/message-channel-operations.md](../patterns/message-channel-operations.md).
+
+---
+
+## 7. When This Principle Changes
 
 Change this document only when the operating model for cross-service events changes — for example, if the organisation standardises on a different envelope **and** migrates all producers and consumers with a recorded cutover.

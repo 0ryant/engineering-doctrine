@@ -11,6 +11,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] Supported platforms are validated in CI when the repo claims multi-platform support
 [ ] Contract or schema validation exists where the repo defines contracts
 [ ] Published or consumed async events use CloudEvents envelope and versioned payload schemas where applicable
+[ ] Message DLQ/replay/observability addressed where the repo owns async consumers (see patterns/message-channel-operations.md)
 [ ] Secret scanning exists before merge
 [ ] Dependency and IaC scanning exist where relevant
 [ ] Checked-out sibling or shared inputs are included in validation or scan scope when they influence delivery
@@ -20,6 +21,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] Scheduled execution or smoke surfaces are separate from deploy when the repo owns recurring automation or runtime checks
 [ ] Path filters or scoped triggers prevent unrelated deploys
 [ ] Version is sourced from one manifest
+[ ] Semantic version bumps follow doctrine/principles/semantic-versioning.md (or a documented exception) per publishable unit
 [ ] Packaging metadata is tracked under packaging/ if package-manager manifests exist
 [ ] Ignored folders are used only for generated output
 [ ] Side-effecting publish actions are gated behind explicit release entrypoints or parameters

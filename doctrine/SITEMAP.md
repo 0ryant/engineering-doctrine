@@ -1,0 +1,61 @@
+# Doctrine sitemap (generated)
+
+**Do not edit the file list by hand.** Regenerate after adding, renaming, or removing Markdown under `doctrine/`:
+
+```bash
+./scripts/generate-doctrine-sitemap.sh
+```
+
+Generated: 2026-04-07 08:28 UTC
+
+## All Markdown files
+
+- [README.md](README.md)
+- [REFERENCES.md](REFERENCES.md)
+- [SITEMAP.md](SITEMAP.md)
+- [checklists/build-readiness.md](checklists/build-readiness.md)
+- [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md)
+- [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md)
+- [checklists/platform-readiness.md](checklists/platform-readiness.md)
+- [checklists/release-readiness.md](checklists/release-readiness.md)
+- [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md)
+- [evolution/moscow-review.md](evolution/moscow-review.md)
+- [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
+- [patterns/build-surface-model.md](patterns/build-surface-model.md)
+- [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
+- [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
+- [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
+- [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md)
+- [principles/build.md](principles/build.md)
+- [principles/collaboration.md](principles/collaboration.md)
+- [principles/container-runtime-choice.md](principles/container-runtime-choice.md)
+- [principles/data-and-migrations.md](principles/data-and-migrations.md)
+- [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md)
+- [principles/documentation-knowledge.md](principles/documentation-knowledge.md)
+- [principles/event-contracts.md](principles/event-contracts.md)
+- [principles/interoperability-and-standards.md](principles/interoperability-and-standards.md)
+- [principles/kubernetes-platform-security.md](principles/kubernetes-platform-security.md)
+- [principles/measurement-and-dora.md](principles/measurement-and-dora.md)
+- [principles/observability.md](principles/observability.md)
+- [principles/performance-and-cost.md](principles/performance-and-cost.md)
+- [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md)
+- [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md)
+- [principles/semantic-versioning.md](principles/semantic-versioning.md)
+- [principles/state-machines-and-workflows.md](principles/state-machines-and-workflows.md)
+- [principles/testing-strategy.md](principles/testing-strategy.md)
+- [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md)
+- [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md)
+- [principles/user-facing-quality.md](principles/user-facing-quality.md)
+- [tooling/build.md](tooling/build.md)
+- [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md)
+- [tooling/cloudevents.md](tooling/cloudevents.md)
+- [tooling/collaboration.md](tooling/collaboration.md)
+- [tooling/dependency-automation.md](tooling/dependency-automation.md)
+- [tooling/estates/README.md](tooling/estates/README.md)
+- [tooling/estates/TEMPLATE.md](tooling/estates/TEMPLATE.md)
+- [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md)
+- [tooling/estates/azure-container-runtimes.md](tooling/estates/azure-container-runtimes.md)
+- [tooling/estates/gcp-container-runtimes.md](tooling/estates/gcp-container-runtimes.md)
+- [tooling/estates/minimum-viable-doctrine.template.md](tooling/estates/minimum-viable-doctrine.template.md)
+- [tooling/nats-jetstream.md](tooling/nats-jetstream.md)
+- [tooling/observability.md](tooling/observability.md)

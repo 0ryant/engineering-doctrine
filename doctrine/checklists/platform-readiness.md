@@ -1,0 +1,26 @@
+# Platform, SRE, And Extended Readiness Checklist
+
+Use when adopting or auditing **data**, **observability**, **reliability**, **API security**, and **supply-chain** doctrine beyond core build/trunk.
+
+```text
+[ ] SLOs defined for user-facing paths; error budget policy agreed (reliability-slo-incidents.md)
+[ ] OpenTelemetry or documented exception; logs correlate with traces (observability.md + tooling/observability.md)
+[ ] Production runtime chosen per container-runtime-choice.md; concrete products recorded in estate catalogue or tooling/estates/
+[ ] If Kubernetes in use: kubernetes-platform-security.md baseline applied
+[ ] Database migrations follow expand/contract or documented maintenance window (data-and-migrations.md)
+[ ] Backup RPO/RTO documented; restore tested on cadence (data-and-migrations.md)
+[ ] API limits: pagination, payload size, rate limits on auth routes (api-boundaries-and-security.md)
+[ ] OWASP API Top 10 risks reviewed for public APIs (api-boundaries-and-security.md)
+[ ] STRIDE-lite threat-modeling pass for internet-facing or high-impact surfaces (threat-modeling-stride-lite.md); residual risks tracked
+[ ] PII inventory and retention periods documented (privacy-and-data-governance.md)
+[ ] Dependency automation enabled (Renovate or Dependabot per dependency-automation.md)
+[ ] SBOM policy matches what you ship (dependencies-supply-chain.md)
+[ ] CI abstract surfaces mapped to real host (ci-platform-mapping.md)
+[ ] Test pyramid healthy; flaky tests have owners (testing-strategy.md)
+[ ] Published or consumed async events use CloudEvents envelope and versioned payload schemas where applicable (event-contracts.md)
+[ ] Event-backed workflows document states/transitions and map commits to stable event types where applicable (state-machines-and-workflows.md)
+[ ] Message channels have DLQ/poison, replay posture, and backlog metrics per patterns/message-channel-operations.md (if the system uses queues/topics)
+[ ] Delivery performance trended using stable definitions (measurement-and-dora.md) where org tracks Four Keys or equivalents
+[ ] ADRs or decision log for major architectural forks (documentation-knowledge.md)
+[ ] Customer-facing web: WCAG target documented (user-facing-quality.md)
+```
