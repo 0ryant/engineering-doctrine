@@ -331,6 +331,10 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **Performance, load, and cost** — `doctrine/principles/performance-and-cost.md`.
 
+**FinOps and cloud cost governance** — `doctrine/principles/cost-and-finops.md` (tagging strategy, unit economics, anomaly SLAs, AI inference budgets).
+
+**Platform engineering and team topologies** — `doctrine/principles/platform-engineering.md` (team types, interaction modes, golden paths, cognitive load metrics, TVP).
+
 **Documentation and knowledge** — `doctrine/principles/documentation-knowledge.md` (ADRs, runbooks).
 
 **Dependencies and supply chain** — `doctrine/principles/dependencies-supply-chain.md`; illustrative automation options: `doctrine/tooling/dependency-automation.md`.
@@ -352,6 +356,8 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 **Estate-specific tooling supplements** — `doctrine/tooling/estates/` (optional mappings; example Azure: `estates/azure-container-runtimes.md`; empty stubs: `estates/aws-container-runtimes.md`, `estates/gcp-container-runtimes.md`).
 
 **How to read this doctrine** — `doctrine/patterns/how-to-read-this-doctrine.md`.
+
+**Feature flag lifecycle and progressive delivery** — `doctrine/patterns/feature-flag-lifecycle.md` (flag taxonomy, lifecycle FSM, data-gated rollout, flag debt, OpenFeature).
 
 **Message channels (DLQ, replay)** — `doctrine/patterns/message-channel-operations.md`. Illustrative brokers: `doctrine/tooling/nats-jetstream.md`, `doctrine/tooling/kafka-and-cloudevents.md`.
 

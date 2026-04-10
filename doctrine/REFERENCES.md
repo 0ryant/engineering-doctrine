@@ -14,6 +14,8 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | W3C Trace Context | https://www.w3.org/TR/trace-context/ |
 | HTTP Problem Details | https://www.rfc-editor.org/rfc/rfc9457.html |
 | SPDX (SBOM) | https://spdx.dev/ |
+| CycloneDX (SBOM + VEX) | https://cyclonedx.org/ |
+| OpenFeature (feature flags) | https://openfeature.dev/ |
 | WCAG 2.2 | https://www.w3.org/TR/WCAG22/ |
 | CloudEvents — NATS protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/nats-protocol-binding.md |
 | CloudEvents — Kafka protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/kafka-protocol-binding.md |
@@ -61,11 +63,46 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | NIST SSDF (secure SDLC) | https://csrc.nist.gov/Projects/SSDF |
 | NIST SP 800-218 (SSDF publication) | https://csrc.nist.gov/publications/detail/sp/800-218/final |
 | SLSA (supply-chain levels) | https://slsa.dev/ |
+| SLSA Getting Started | https://slsa.dev/get-started |
+| Sigstore — keyless signing | https://www.sigstore.dev/ |
+| EU Cyber Resilience Act (SBOM / vuln disclosure) | https://www.european-parliament.europa.eu/doceo/document/TA-9-2024-0130_EN.pdf |
 | OWASP ASVS (application verification) | https://owasp.org/www-project-application-security-verification-standard/ |
+
+- Google SRE Workbook, **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/
 
 ---
 
-## Testing
+## FinOps And Cloud Cost
+
+| Topic | Reference |
+| --- | --- |
+| FinOps Foundation framework | https://www.finops.org/framework/ |
+| FOCUS spec (cloud billing normalisation) | https://focus.finops.org/ |
+| OpenCost (open-source Kubernetes cost monitoring) | https://www.opencost.io/ |
+| Green Software Foundation — Software Carbon Intensity (SCI) | https://greensoftware.foundation/ |
+
+---
+
+## Platform Engineering And Team Topologies
+
+| Topic | Reference |
+| --- | --- |
+| Team Topologies (Skelton & Pais, 2019) | https://teamtopologies.com/book |
+| CNCF Platforms Whitepaper | https://tag-app-delivery.cncf.io/whitepapers/platforms/ |
+| Platform engineering community | https://platformengineering.org/ |
+| Backstage — open-source developer portal | https://backstage.io/ |
+| Gartner — Platform Engineering | https://www.gartner.com/en/articles/what-is-platform-engineering |
+
+---
+
+## Feature Flags And Progressive Delivery
+
+| Topic | Reference |
+| --- | --- |
+| Martin Fowler — Feature Toggles | https://martinfowler.com/articles/feature-toggles.html |
+| OpenFeature — vendor-neutral flag standard | https://openfeature.dev/ |
+| Trunk-based development — feature flags | https://trunkbaseddevelopment.com/feature-flags/ |
+| LaunchDarkly — Feature Flag Best Practices | https://launchdarkly.com/blog/feature-flag-best-practices/ |
 
 | Topic | Reference |
 | --- | --- |
@@ -204,6 +241,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) | Webhook ingress hardening |
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
+| [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) | Feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt |
 
 ### Extended principles
 
@@ -219,6 +257,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md) | PII, retention |
 | [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents |
 | [principles/performance-and-cost.md](principles/performance-and-cost.md) | Load, FinOps |
+| [principles/cost-and-finops.md](principles/cost-and-finops.md) | FinOps operating model, unit economics, anomaly detection, AI inference cost |
+| [principles/platform-engineering.md](principles/platform-engineering.md) | Team topologies, TVP, golden paths, cognitive load |
 | [principles/documentation-knowledge.md](principles/documentation-knowledge.md) | ADRs, runbooks |
 | [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md) | SBOM, licences |
 | [principles/user-facing-quality.md](principles/user-facing-quality.md) | A11y, i18n |
