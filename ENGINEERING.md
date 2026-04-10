@@ -80,7 +80,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Fail closed, not open. Default deny.
 - Prefer managed identity or OIDC over static credentials wherever supported.
 - Secure development lifecycle (design review, vuln response, training): `doctrine/principles/secure-development-lifecycle.md`.
-- AI-assisted engineering, RAG, fine-tuning, and agentic automation (governance, truth in repo, tiers): `doctrine/principles/ai-ml-systems.md`; illustrative tooling categories: `doctrine/tooling/ai-assisted-development.md`.
+- AI-assisted engineering, RAG, fine-tuning, and agentic automation (governance, truth in repo, tiers): `doctrine/principles/ai-ml-systems.md`; illustrative tooling categories: `doctrine/tooling/ai-assisted-development.md`; retrieval baseline: `doctrine/patterns/rag-retrieval-baseline.md`; agent harness loop design (ReAct, verifiability gate, ISC, dual-path injection defence, context engineering, verbal RL): `doctrine/patterns/agentic-loop-design.md`.
 
 ---
 
@@ -322,7 +322,7 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **API boundaries and API security** — `doctrine/principles/api-boundaries-and-security.md` (limits, authz, OWASP API alignment).
 
-**AI and ML-assisted systems** — `doctrine/principles/ai-ml-systems.md` (governance, tiers A–D, merge path, OWASP LLM); illustrative tooling: `doctrine/tooling/ai-assisted-development.md`.
+**AI and ML-assisted systems** — `doctrine/principles/ai-ml-systems.md` (governance, tiers A–D, merge path, OWASP LLM); illustrative tooling: `doctrine/tooling/ai-assisted-development.md`; **agentic loop design** (nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL): `doctrine/patterns/agentic-loop-design.md`.
 
 **Threat modeling (STRIDE lite)** — `doctrine/principles/threat-modeling-stride-lite.md` (trust boundaries; complements API and platform security).
 
