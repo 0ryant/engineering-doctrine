@@ -161,6 +161,9 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
+| [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) | AI/ML ops, governance, RAG, Azure AI Landing Zone — external sources + doctrine map |
+| [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) | Internal AI knowledge layer, handoffs, councils, agentic workflows — enterprise governance + doctrine map (no build specs) |
+| [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) | Enterprise RAG, ANN/indexing, hybrid search, MCP/agents — synthesis + doctrine gap map |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
 | [README.md](README.md) | Doctrine folder entry |
 | [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) | TL;DR spine + MVP synthesis |
@@ -196,13 +199,17 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/message-channel-operations.md](patterns/message-channel-operations.md) | DLQ, replay, backlog |
 | [patterns/adoption-playbook.md](patterns/adoption-playbook.md) | Team migration toward doctrine |
 | [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) | Fictional order FSM + JetStream sketch |
+| [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) | Fictional saga + compensation sketch |
+| [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) | Chaos experiments and game days |
 | [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) | Webhook ingress hardening |
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
+| [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
 
 ### Extended principles
 
 | File | Focus |
 | --- | --- |
+| [principles/ai-ml-systems.md](principles/ai-ml-systems.md) | GenAI, RAG, agents; governance tiers; merge path |
 | [principles/data-and-migrations.md](principles/data-and-migrations.md) | Schema evolution, backups |
 | [principles/observability.md](principles/observability.md) | Logs, metrics, traces |
 | [principles/testing-strategy.md](principles/testing-strategy.md) | Pyramid, contracts, flakiness |
@@ -222,6 +229,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | File | Focus |
 | --- | --- |
 | [tooling/build.md](tooling/build.md) | Example stack |
+| [tooling/ai-assisted-development.md](tooling/ai-assisted-development.md) | Categories of AI dev tools (illustrative) |
+| [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md) | RAG pipeline layers: ingest, lexical, vector, rerank (illustrative) |
 | [tooling/cloudevents.md](tooling/cloudevents.md) | CloudEvents baseline |
 | [tooling/nats-jetstream.md](tooling/nats-jetstream.md) | Illustrative NATS / JetStream |
 | [tooling/kafka-and-cloudevents.md](tooling/kafka-and-cloudevents.md) | Illustrative Kafka + CloudEvents |

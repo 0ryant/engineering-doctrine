@@ -18,6 +18,7 @@ How this repository stays **useful for years** while stacks change: separate **w
 
 - **Tooling** documents capture **one possible** way to satisfy principles with concrete products and filenames (`.pipelines/`, `justfile`, a particular bot).
 - **Estate supplements** live under `doctrine/tooling/estates/`—**optional** notes for a given organisation, region, or cloud (for example one team’s Azure mappings). They are **not** global law.
+- **GenAI, RAG, agents, and vector/embedding pipelines** are **first-class** delivery concerns: portable **intent** in [ai-ml-systems.md](ai-ml-systems.md); **illustrative** product categories in [../tooling/ai-assisted-development.md](../tooling/ai-assisted-development.md) and [../tooling/vector-retrieval-and-embedding-illustration.md](../tooling/vector-retrieval-and-embedding-illustration.md).
 - Teams **swap** tooling while keeping the same **surface contracts** (quality gate, build artefact, deploy unit, verification) described in [build.md](build.md) and `ENGINEERING.md`.
 
 **Why:** The split matches how senior engineers work: **interfaces and invariants** are negotiated; **implementations** are upgraded on a different cadence.
@@ -58,7 +59,7 @@ NIST’s **Secure Software Development Framework (SSDF)** groups practices into 
 | --- | --- | --- |
 | **PO** — Prepare the organisation | Security training, roles, supply-chain risk planning | [collaboration.md](collaboration.md) (ownership, review), [secure-development-lifecycle.md](secure-development-lifecycle.md), [dependencies-supply-chain.md](dependencies-supply-chain.md) |
 | **PS** — Protect the software | Tamper-resistant environments, secrets management | [configuration-and-secrets.md](configuration-and-secrets.md), [build.md](build.md), [kubernetes-platform-security.md](kubernetes-platform-security.md) |
-| **PW** — Produce well-secured software | Design review, secure coding, provenance, testing | [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md), [testing-strategy.md](testing-strategy.md), [api-boundaries-and-security.md](api-boundaries-and-security.md), [build.md](build.md) §14 (SLSA) |
+| **PW** — Produce well-secured software | Design review, secure coding, provenance, testing | [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md), [testing-strategy.md](testing-strategy.md), [api-boundaries-and-security.md](api-boundaries-and-security.md), [ai-ml-systems.md](ai-ml-systems.md) (GenAI / agents in the SDLC), [build.md](build.md) §14 (SLSA) |
 | **RV** — Respond to vulnerabilities | Identify, triage, disclose, learn | [secure-development-lifecycle.md](secure-development-lifecycle.md), [dependencies-supply-chain.md](dependencies-supply-chain.md) §5, [reliability-slo-incidents.md](reliability-slo-incidents.md) (post-incident learning) |
 
 **Why:** SP 800-218 gives **auditors** and **security** partners a familiar vocabulary; mapping reduces duplicate questionnaires.

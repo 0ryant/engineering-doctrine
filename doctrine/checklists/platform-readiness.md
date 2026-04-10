@@ -11,6 +11,7 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 [ ] Backup RPO/RTO documented; restore tested on cadence (data-and-migrations.md)
 [ ] API limits: pagination, payload size, rate limits on auth routes (api-boundaries-and-security.md)
 [ ] OWASP API Top 10 risks reviewed for public APIs (api-boundaries-and-security.md)
+[ ] If using **GenAI**, **RAG**, **fine-tuning**, or **agentic** automation: **tier** (A–D) and SoR rules in [principles/ai-ml-systems.md](../principles/ai-ml-systems.md) (§§6–7 eval, retrieval, MCP-class tools; §8 anti-patterns); RAG eval + isolation per [patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md); pipeline ownership per [tooling/vector-retrieval-and-embedding-illustration.md](../tooling/vector-retrieval-and-embedding-illustration.md) where applicable; [glossary.md](../glossary.md) **GenAIOps** for ops vocabulary
 [ ] STRIDE-lite threat-modeling pass for internet-facing or high-impact surfaces (threat-modeling-stride-lite.md); residual risks tracked
 [ ] PII inventory and retention periods documented (privacy-and-data-governance.md)
 [ ] Dependency automation enabled (Renovate or Dependabot per dependency-automation.md)
@@ -21,7 +22,7 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 [ ] Event-backed workflows document states/transitions and map commits to stable event types where applicable (state-machines-and-workflows.md)
 [ ] Message channels have DLQ/poison, replay posture, and backlog metrics per patterns/message-channel-operations.md (if the system uses queues/topics)
 [ ] Delivery performance trended using stable definitions (measurement-and-dora.md) where org tracks Four Keys or equivalents
-[ ] Chaos engineering or game days exercised for high-blast-radius systems on a cadence (principles/reliability-slo-incidents.md §5)
+[ ] Chaos engineering or game days exercised for high-blast-radius systems on a cadence (principles/reliability-slo-incidents.md §5; pattern: patterns/chaos-engineering-and-game-days.md)
 [ ] DR / failover drills and multi-region assumptions validated where data-and-migrations.md §4 applies
 [ ] Webhook ingress hardened where third-party HTTP callbacks are accepted (patterns/webhook-ingress-security.md)
 [ ] ADRs or decision log for major architectural forks (documentation-knowledge.md)

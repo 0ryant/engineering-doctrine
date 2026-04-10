@@ -10,6 +10,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] The quality gate runs on PRs and protected branches
 [ ] Supported platforms are validated in CI when the repo claims multi-platform support
 [ ] Contract or schema validation exists where the repo defines contracts
+[ ] **GenAI, RAG, embeddings, or agents** in this repo: **tier** (A–D) and SoR rules in [principles/ai-ml-systems.md](../principles/ai-ml-systems.md); **ingestion/index** lifecycle, **eval**, and **tenant** isolation per [patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md) and [tooling/vector-retrieval-and-embedding-illustration.md](../tooling/vector-retrieval-and-embedding-illustration.md) where applicable (skip if out of scope)
 [ ] Published or consumed async events use CloudEvents envelope and versioned payload schemas where applicable
 [ ] Message DLQ/replay/observability addressed where the repo owns async consumers (see patterns/message-channel-operations.md)
 [ ] Secret scanning exists before merge

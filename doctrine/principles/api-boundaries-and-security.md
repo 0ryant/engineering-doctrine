@@ -4,6 +4,27 @@ Durable rules for **externally exposed** HTTP and RPC surfaces: predictable beha
 
 ---
 
+## OWASP API Security Top 10 (2023) — Cross-Reference
+
+Portable controls in this file map to the **OWASP API Security Top 10 (2023)**. Use this table in **reviews** and **threat modeling** so no category is silently ignored.
+
+| ID | Risk (title) | Primary controls in this document |
+| --- | --- | --- |
+| **API1** | Broken object level authorisation (BOLA / IDOR) | §2 authenticate + **object-level** checks on **every** ID |
+| **API2** | Broken authentication | §2–3; strong session/token handling; rate limits on auth paths |
+| **API3** | Broken object property level authorisation (mass assignment / BOPLA) | §2 expose **allowlists** for writable fields; never bind client JSON straight to domain models without filtering |
+| **API4** | Unrestricted resource consumption | §1 size/time limits; §3 rate limits; §5 GraphQL cost/depth |
+| **API5** | Broken function level authorisation | §2 enforce **role/claim** per **route and method**, not only “logged in” |
+| **API6** | Unrestricted access to sensitive business flows | §3 **stricter** limits and **step-up** for transfers, admin, bulk export |
+| **API7** | Server side request forgery (SSRF) | §8 URL validation, allowlists, network controls for **outbound** fetches |
+| **API8** | Security misconfiguration | §1 error model; §6 headers; disable **debug**, default **secure** stack, patch defaults |
+| **API9** | Improper inventory management | **OpenAPI** (or equivalent) as **live** inventory; deprecate old versions per [semantic-versioning.md](semantic-versioning.md) §6–9 |
+| **API10** | Unsafe consumption of APIs | §9 treat **outbound** calls like **untrusted** ingress; timeouts, schema validation, no blind relay |
+
+Official overview: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+
+---
+
 ## 1. Operational HTTP Hygiene
 
 - **Pagination** with **maximum page size**; reject unbounded list endpoints.
@@ -74,6 +95,30 @@ If GraphQL (or similar) is exposed, treat **query planning** as part of the **se
 
 ---
 
+## 8. SSRF And Server-Initiated HTTP
+
+**API7** — Any endpoint or job that **fetches** a URL supplied by users or **untrusted** integrations is an **SSRF** surface.
+
+- **Allowlist** hosts/schemes where possible; **block** cloud metadata addresses (`169.254.169.254`, `fd00:ec2::`) and **RFC1918** / **link-local** targets from **public** callers unless explicitly required and **network-segmented**.
+- **Do not** follow redirects blindly; cap **response** size and **timeouts**; log **denied** attempts.
+- Prefer **dedicated** egress proxies or **service mesh** egress policy for **outbound** calls from backends.
+
+**Why:** SSRF turns a small **feature** (“preview this URL”) into **internal** network access.
+
+---
+
+## 9. Inventory, Misconfiguration, And Outbound API Consumption
+
+**API8 / API9 / API10** — **Configuration** drift, **unknown** endpoints, and **trusting** third-party APIs **without** validation.
+
+- **Inventory:** publish **OpenAPI** (or equivalent) for **every** public major version; **sunset** old paths on a **calendar**; avoid **undocumented** admin routes on the same host as **public** API.
+- **Misconfiguration:** default **deny**, **disable** verbose errors in prod, **security** headers at edge (see §6), **dependency** and **container** baselines per [dependencies-supply-chain.md](dependencies-supply-chain.md) and [kubernetes-platform-security.md](kubernetes-platform-security.md) where applicable.
+- **Outbound consumption:** validate **responses** against **expected** schema where feasible; **timeouts** and **circuit breakers**; for **webhooks you call**, same discipline as [../patterns/webhook-ingress-security.md](../patterns/webhook-ingress-security.md) in reverse—**you** are the client.
+
+**Why:** APIs are a **system**—unknown routes and **implicit** trust of remote JSON cause **incident** classes that BOLA checks alone will not catch.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -83,12 +128,16 @@ If GraphQL (or similar) is exposed, treat **query planning** as part of the **se
 | Object-level auth | Prevents **IDOR**-class bugs that auth tokens alone cannot fix. |
 | CSP + CORS explicit | Reduces **XSS** and **origin** confusion on browser clients. |
 | GraphQL numeric guardrails | **Depth/cost** limits make abuse **testable**; introspection policy is explicit. |
+| OWASP Top 10 table | Makes **review** and **audit** questions answerable from one map. |
+| SSRF §8 | **URL fetch** features are **always** in scope for security review. |
+| Inventory + outbound §9 | **API9/API10** are **operational** discipline, not only code bugs. |
 
 ---
 
 ## Related
 
 - Architecture-level threat pass (trust boundaries): [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md)
+- **LLM / RAG / agents** — portable governance and tiered obligations: [ai-ml-systems.md](ai-ml-systems.md). **Retrieval** (tenant isolation, indirect injection via documents, cached context) and **tool** calls (SSRF-class fetches) still map to **this** file’s HTTP/RPC boundaries. Baseline: [../patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md); OWASP **LLM** list: https://genai.owasp.org/llm-top-10/
 
 ---
 
@@ -97,6 +146,14 @@ If GraphQL (or similar) is exposed, treat **query planning** as part of the **se
 - OWASP **API Security Top 10 (2023)** overview: https://owasp.org/API-Security/editions/2023/en/0x11-t10/  
 - OWASP **API2:2023 Broken Authentication**: https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/  
 - OWASP **API4:2023 Unrestricted Resource Consumption**: https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/  
+- OWASP **API1:2023 Broken Object Level Authorization**: https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/  
+- OWASP **API3:2023 Broken Object Property Level Authorization**: https://owasp.org/API-Security/editions/2023/en/0xa3-broken-object-property-level-authorization/  
+- OWASP **API5:2023 Broken Function Level Authorization**: https://owasp.org/API-Security/editions/2023/en/0xa5-broken-function-level-authorization/  
+- OWASP **API6:2023 Unrestricted Access to Sensitive Business Flows**: https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/  
+- OWASP **API7:2023 Server Side Request Forgery**: https://owasp.org/API-Security/editions/2023/en/0xa7-server-side-request-forgery/  
+- OWASP **API8:2023 Security Misconfiguration**: https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/  
+- OWASP **API9:2023 Improper Inventory Management**: https://owasp.org/API-Security/editions/2023/en/0xa9-improper-inventory-management/  
+- OWASP **API10:2023 Unsafe Consumption of APIs**: https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/  
 - IETF **RFC 9457** — Problem Details for HTTP APIs: https://www.rfc-editor.org/rfc/rfc9457.html  
 - OWASP **Cheat Sheet Series** — **Content Security Policy**: https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html  
 - OWASP **Cheat Sheet Series** — **REST Security** (CORS and related): https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html  

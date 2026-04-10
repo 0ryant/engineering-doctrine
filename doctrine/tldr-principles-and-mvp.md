@@ -6,7 +6,7 @@
 
 ## What This Library Is
 
-Portable **engineering intent** split from **replaceable tooling**: principles state what must stay true across estates; `tooling/` shows one way to implement today. The repo root **[`ENGINEERING.md`](../ENGINEERING.md)** is the headline index; when detail conflicts, the matching file under **`principles/`** wins. Meta: **[timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md)**.
+Portable **engineering intent** split from **replaceable tooling**: principles state what must stay true across estates; `tooling/` shows one way to implement today. The repo root **[`ENGINEERING.md`](../ENGINEERING.md)** is the headline index; when detail conflicts, the matching file under **`principles/`** wins. Meta: **[timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md)**. **GenAI, RAG, agents, and retrieval** are **first-class**—not an exception path—see **[`ai-ml-systems.md`](principles/ai-ml-systems.md)**.
 
 ---
 
@@ -16,12 +16,13 @@ Portable **engineering intent** split from **replaceable tooling**: principles s
 | --- | --- | --- |
 | 1 | **Contracts first** — schemas (and examples) before callers; versioned; validate in CI. | [`ENGINEERING.md` §1](../ENGINEERING.md), [`event-contracts.md`](principles/event-contracts.md) for async |
 | 2 | **Explicit build surfaces** — quality gate, build/publish, deploy, verify; local mirrors CI; **promote** the same artefact. | [`build.md`](principles/build.md), [`patterns/build-surface-model.md`](patterns/build-surface-model.md) |
-| 3 | **Trunk and small change** — short-lived branches, reviewed merge, green `main`; flags for incomplete work. | [`collaboration.md`](principles/collaboration.md), [`patterns/trunk-workflow.md`](patterns/trunk-workflow.md) |
+| 3 | **Trunk and small change** — short-lived branches, reviewed merge, green `main`; flags for incomplete work. **Small PR default:** ~**400 lines** or ~**20 files**, one concern ([`collaboration.md`](principles/collaboration.md) §3, [`trunk-workflow.md`](patterns/trunk-workflow.md)). | [`collaboration.md`](principles/collaboration.md), [`patterns/trunk-workflow.md`](patterns/trunk-workflow.md) |
 | 4 | **Idempotency and safe retries** — mutating work tolerates duplicate delivery (HTTP, messages, jobs). | [`ENGINEERING.md` §4](../ENGINEERING.md), [`patterns/idempotency-across-boundaries.md`](patterns/idempotency-across-boundaries.md) |
 | 5 | **Security in the loop** — no secrets in git, scan dependencies, least privilege for CI/deploy, SDL-style design and response. | [`ENGINEERING.md` §5](../ENGINEERING.md), [`secure-development-lifecycle.md`](principles/secure-development-lifecycle.md), [`dependencies-supply-chain.md`](principles/dependencies-supply-chain.md) |
 | 6 | **Single sources of truth** — one version line per publishable unit, one place for config/secrets **references** (not values). | [`semantic-versioning.md`](principles/semantic-versioning.md), [`single-source-of-truth.md`](principles/single-source-of-truth.md), [`configuration-and-secrets.md`](principles/configuration-and-secrets.md) |
 | 7 | **Operability** — structured logs + trace correlation; runbooks; SLOs where users care; blameless learning. | [`observability.md`](principles/observability.md), [`reliability-slo-incidents.md`](principles/reliability-slo-incidents.md), [`documentation-knowledge.md`](principles/documentation-knowledge.md) |
 | 8 | **Modular boundaries** — I/O at edges; ports/adapters or thin boundaries; interoperability specs without mandating a full vendor stack. | [`modularity-and-ports-adapters.md`](principles/modularity-and-ports-adapters.md), [`interoperability-and-standards.md`](principles/interoperability-and-standards.md) |
+| 9 | **AI-assisted change** — repo stays **SoR**; tiers A–D for API-only → RAG → training → agents; **same** CI/review bar for agent-opened PRs; **index/embedding** lifecycle and **MCP**-class tools are **integration** surfaces. | [`ai-ml-systems.md`](principles/ai-ml-systems.md) §§6–8, [`tooling/ai-assisted-development.md`](tooling/ai-assisted-development.md), [`tooling/vector-retrieval-and-embedding-illustration.md`](tooling/vector-retrieval-and-embedding-illustration.md), [`patterns/rag-retrieval-baseline.md`](patterns/rag-retrieval-baseline.md) |
 
 **Not** listed above does **not** mean “optional forever”—it means **second wave** for most teams (API hardening, threat modeling, privacy, K8s baseline, performance budgets, DORA metrics, etc.). Entry: [`ENGINEERING.md` §18](../ENGINEERING.md).
 
@@ -47,7 +48,7 @@ Portable **engineering intent** split from **replaceable tooling**: principles s
 
 ## After MVP (Typical Wave 2)
 
-Supply-chain automation, platform/readiness checklists, STRIDE-lite on internet-facing surfaces, data/migration discipline, release checklist for versioned artefacts—see [`checklists/platform-readiness.md`](checklists/platform-readiness.md) and [`checklists/release-readiness.md`](checklists/release-readiness.md).
+Supply-chain automation; **AI/RAG/agents** when in scope ([`ai-ml-systems.md`](principles/ai-ml-systems.md), [`checklists/platform-readiness.md`](checklists/platform-readiness.md)); platform/readiness checklists, STRIDE-lite on internet-facing surfaces, data/migration discipline, release checklist for versioned artefacts—see [`checklists/platform-readiness.md`](checklists/platform-readiness.md) and [`checklists/release-readiness.md`](checklists/release-readiness.md).
 
 ---
 

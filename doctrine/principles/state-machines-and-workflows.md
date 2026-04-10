@@ -2,7 +2,7 @@
 
 Portable rules for systems whose behaviour is described by **states**, **transitions**, and **asynchronous** notifications. Complements [event-contracts.md](event-contracts.md) (what crosses the wire) and [patterns/message-channel-operations.md](../patterns/message-channel-operations.md) (delivery and failure). Transport and broker choices remain **tooling**—for example [../tooling/nats-jetstream.md](../tooling/nats-jetstream.md), Kafka, or a vendor bus.
 
-End-to-end **illustration** (order lifecycle + JetStream): [../patterns/example-order-jetstream-workflow.md](../patterns/example-order-jetstream-workflow.md).
+End-to-end **illustration** (order lifecycle + JetStream): [../patterns/example-order-jetstream-workflow.md](../patterns/example-order-jetstream-workflow.md). **Saga** illustration (payment + inventory, broker-agnostic): [../patterns/example-saga-payment-workflow.md](../patterns/example-saga-payment-workflow.md).
 
 ---
 

@@ -24,8 +24,13 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [evolution/moscow-review.md](evolution/moscow-review.md) — latest **thin-area / audit / MoSCoW** snapshot
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — condensed **external review** signal
 - [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) — **gap analysis** by section vs industry frameworks
+- [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) — **AI/ML ops & governance** research (Azure AILZ, RAG, NIST/OWASP) + map to doctrine sections
+- [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — **internal AI / agent factory** vision: governance-first, handoffs, councils, agentic workflows + doctrine map (**no** build runbooks)
+- [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) — **enterprise RAG**, vectors, indexing, hybrid search, **MCP**/agents — research + gap map
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md) — how teams migrate toward this doctrine
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — worked **fiction**: state machine + CloudEvents + JetStream
+- [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) — worked **fiction**: saga, compensation, timeouts
+- [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) — chaos experiments and game day pattern
 
 ### Core principles
 
@@ -45,6 +50,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [principles/modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md) — ports and adapters / hexagonal boundaries
 - [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) — workload identity, SPIFFE pointer
 - [principles/secure-development-lifecycle.md](principles/secure-development-lifecycle.md) — SDL, vuln response, training (NIST SSDF alignment)
+- [principles/ai-ml-systems.md](principles/ai-ml-systems.md) — **First-class** GenAI / RAG / agents: governance, tiers A–D, retrieval lifecycle, truth in repo
 
 ### Patterns
 
@@ -54,8 +60,11 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — example order FSM + JetStream (fiction)
+- [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) — saga payment + inventory (fiction)
+- [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) — chaos / game days
 - [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) — signed webhooks, replay windows, idempotency
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) — HTTP, messages, infra idempotency
+- [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) — RAG retrieval (hybrid, eval, privacy)
 
 ### Checklists
 
@@ -75,6 +84,8 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [tooling/observability.md](tooling/observability.md) — example OTel and collector patterns
 - [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md) — abstract CI surfaces vs example products
 - [tooling/dependency-automation.md](tooling/dependency-automation.md) — example dependency bots
+- [tooling/ai-assisted-development.md](tooling/ai-assisted-development.md) — illustrative **categories** of AI-assisted dev tooling (estate picks products)
+- [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md) — illustrative **ingest → lexical → vector → rerank** stack layers
 
 ### Estate supplements (optional)
 
@@ -87,6 +98,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 
 ### Platform, SRE, and governance principles
 
+- [principles/ai-ml-systems.md](principles/ai-ml-systems.md) — GenAI, RAG, agents (**first-class** delivery + governance)
 - [principles/data-and-migrations.md](principles/data-and-migrations.md)
 - [principles/observability.md](principles/observability.md)
 - [principles/testing-strategy.md](principles/testing-strategy.md)

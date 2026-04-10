@@ -35,6 +35,10 @@ Not every repo runs every stage; **missing stages must be explicit**, not accide
 | **CI (post-merge)** | Build, publish, deploy per path filters and ownership |
 | **Runtime verification** | Smoke or synthetic checks after deploy; SLO monitoring ongoing |
 
+## Pull Request Size (Numeric Defaults)
+
+**Small** is defined in [collaboration.md](../principles/collaboration.md) §3: default **under ~400 lines** changed (insertions + deletions) **or** **under ~20 files** per PR (whichever binds first), **one** reviewable concern, with documented exceptions for generated or emergency work. Trunk workflow **assumes** each merge is **reviewable in one sitting** (small diff, one sentence summary—see collaboration §3).
+
 ## Feature Work Without Blocking Trunk
 
 1. **Vertical slices** — mergeable increments that keep the product working.

@@ -1,6 +1,10 @@
 # Kafka And CloudEvents (Illustrative Tooling)
 
-**Illustrative** notes for teams using **Apache Kafka** (or compatible log brokers) with **CloudEvents**. Does not change [event-contracts.md](../principles/event-contracts.md) or [message-channel-operations.md](../patterns/message-channel-operations.md).
+**Illustrative** mapping for teams using **Apache Kafka** (or compatible log brokers) with **CloudEvents**. This does **not** change portable rules in [../principles/event-contracts.md](../principles/event-contracts.md) or [../patterns/message-channel-operations.md](../patterns/message-channel-operations.md)—it shows **how** one stack implements them.
+
+Companion: [cloudevents.md](cloudevents.md) (envelope baseline), [../patterns/message-channel-operations.md](../patterns/message-channel-operations.md) (DLQ, replay, observability).
+
+Worked **fiction** — **order** workflow on JetStream (different broker, same principles): [../patterns/example-order-jetstream-workflow.md](../patterns/example-order-jetstream-workflow.md). **Saga** across services (broker-agnostic): [../patterns/example-saga-payment-workflow.md](../patterns/example-saga-payment-workflow.md).
 
 ---
 
@@ -10,6 +14,22 @@
 - **Ordering** per **partition** key (often entity id).
 
 Prefer managed **PaaS** Kafka or estate-approved operators; tuning is **tooling**, not universal law.
+
+Prefer **NATS JetStream** when the org already standardised on it—see [nats-jetstream.md](nats-jetstream.md); keep the same **CloudEvents + workflow** principles.
+
+---
+
+## Core Concepts (Short)
+
+| Concept | Role |
+| --- | --- |
+| **Topic** | Named log of records; **partitions** provide parallelism and ordering scope. |
+| **Partition** | Ordered, append-only **slice** of a topic; **key** selects partition for per-key ordering. |
+| **Consumer group** | Co-operative consumers sharing partition assignment; **one** consumer reads each partition at a time. |
+| **Offset** | Position in a partition; **committed** offsets define **at-least-once** progress. |
+| **Broker** | Kafka server; cluster **replication** and **ISR** semantics are **estate** configuration. |
+
+Confirm options against current [Kafka documentation](https://kafka.apache.org/documentation/) (APIs and defaults evolve).
 
 ---
 
@@ -32,8 +52,17 @@ Prefer managed **PaaS** Kafka or estate-approved operators; tuning is **tooling*
 
 ---
 
+## Naming Hygiene
+
+- **Topic** names are **operational** contracts—prefix by **domain** and **environment** (`prod.orders.events` vs `dev.orders.events`) to avoid cross-talk.
+- **Consumer group** ids must be **stable** per logical app; changing a group id **resets** consumption position unless you **seek** explicitly—document **migration** when renaming.
+- **Schema** subjects (if using Schema Registry) should align with **event `type`** or payload versioning—see [../principles/event-contracts.md](../principles/event-contracts.md).
+
+---
+
 ## References
 
 - Apache Kafka **documentation**: https://kafka.apache.org/documentation/  
 - CloudEvents — **Kafka protocol binding**: https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/kafka-protocol-binding.md  
-- Confluent — **Kafka consumer lag** (operational concept): search current Confluent or Kafka docs for *consumer lag monitoring*  
+- CloudEvents spec (overview): https://github.com/cloudevents/spec  
+- Canonical index: [../REFERENCES.md](../REFERENCES.md) — *Messaging, events, and NATS* (Kafka binding listed under standards)  

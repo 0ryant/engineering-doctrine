@@ -11,6 +11,8 @@ Build and delivery guidance is split deliberately:
 
 When tooling changes, update the tooling docs first. Change the principles only when the operating model itself has changed.
 
+**AI and ML-assisted systems** are **first-class**: `doctrine/principles/ai-ml-systems.md` (tiers A–D, retrieval lifecycle, agents, MCP-class tools) applies whenever you ship GenAI, RAG, custom training, or agentic automation—alongside `doctrine/patterns/rag-retrieval-baseline.md` and `doctrine/tooling/vector-retrieval-and-embedding-illustration.md` where retrieval is in scope.
+
 **Principles vs tooling:** Portable **intent** lives in `doctrine/principles/`; replaceable **examples and estate notes** live in `doctrine/tooling/` (including `tooling/estates/`). See `doctrine/principles/timeless-principles-and-tooling.md`.
 
 **TL;DR + minimum viable doctrine (MVP) synthesis:** `doctrine/tldr-principles-and-mvp.md`.
@@ -59,6 +61,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Infrastructure changes use plan, review, then apply. Never mutate live infrastructure without a diff step.
 - Use atomic writes for every file modification: write to a temp file, then rename.
 - Cross-boundary idempotency (HTTP, messages, infra): `doctrine/patterns/idempotency-across-boundaries.md`.
+- RAG retrieval baseline (hybrid search, eval, privacy): `doctrine/patterns/rag-retrieval-baseline.md`.
 
 ---
 
@@ -75,6 +78,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Fail closed, not open. Default deny.
 - Prefer managed identity or OIDC over static credentials wherever supported.
 - Secure development lifecycle (design review, vuln response, training): `doctrine/principles/secure-development-lifecycle.md`.
+- AI-assisted engineering, RAG, fine-tuning, and agentic automation (governance, truth in repo, tiers): `doctrine/principles/ai-ml-systems.md`; illustrative tooling categories: `doctrine/tooling/ai-assisted-development.md`.
 
 ---
 
@@ -303,7 +307,7 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **Timeless vs tooling** — `doctrine/principles/timeless-principles-and-tooling.md` (includes an **illustrative NIST SSDF PO/PS/PW/RV** cross-walk in §6).
 
-**Umbrella-aligned depth (also in §§3–17 above)** — `doctrine/principles/single-source-of-truth.md`, `configuration-and-secrets.md`, `audit-logging.md`, `errors-and-failure-modes.md`, `naming-and-repo-layout.md`, `modularity-and-ports-adapters.md`, `zero-trust-and-workload-identity.md`, `secure-development-lifecycle.md`.
+**Umbrella-aligned depth (also in §§3–17 above)** — `doctrine/principles/single-source-of-truth.md`, `configuration-and-secrets.md`, `audit-logging.md`, `errors-and-failure-modes.md`, `naming-and-repo-layout.md`, `modularity-and-ports-adapters.md`, `zero-trust-and-workload-identity.md`, `secure-development-lifecycle.md`, `ai-ml-systems.md`.
 
 **Data and persistence** — `doctrine/principles/data-and-migrations.md` (expand/contract migrations, backups, RPO/RTO).
 
@@ -314,6 +318,8 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 **State machines and workflows (event-backed)** — `doctrine/principles/state-machines-and-workflows.md` (transitions, idempotency, event-type mapping).
 
 **API boundaries and API security** — `doctrine/principles/api-boundaries-and-security.md` (limits, authz, OWASP API alignment).
+
+**AI and ML-assisted systems** — `doctrine/principles/ai-ml-systems.md` (governance, tiers A–D, merge path, OWASP LLM); illustrative tooling: `doctrine/tooling/ai-assisted-development.md`.
 
 **Threat modeling (STRIDE lite)** — `doctrine/principles/threat-modeling-stride-lite.md` (trust boundaries; complements API and platform security).
 
@@ -352,6 +358,16 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 **Webhook ingress** — `doctrine/patterns/webhook-ingress-security.md`.
 
 **Idempotency across boundaries** — `doctrine/patterns/idempotency-across-boundaries.md`.
+
+**RAG retrieval baseline** — `doctrine/patterns/rag-retrieval-baseline.md` (hybrid retrieval, eval, privacy/security).
+
+**Vector / embedding pipeline (illustrative tooling)** — `doctrine/tooling/vector-retrieval-and-embedding-illustration.md`.
+
+**Enterprise RAG, indexing, agents (research)** — `doctrine/evolution/research-enterprise-rag-agents-indexing-2026-04.md`.
+
+**Chaos engineering and game days** — `doctrine/patterns/chaos-engineering-and-game-days.md` (extends `doctrine/principles/reliability-slo-incidents.md`).
+
+**Worked fiction — saga (payment + inventory)** — `doctrine/patterns/example-saga-payment-workflow.md` (with `example-order-jetstream-workflow.md` for JetStream).
 
 **Release checklist** — `doctrine/checklists/release-readiness.md`.
 
