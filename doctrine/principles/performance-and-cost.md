@@ -32,6 +32,16 @@ Durable rules for **non-functional requirements**: latency budgets, **load valid
 
 ---
 
+## 4. Sustainability And Carbon Awareness
+
+- **Measure** energy and emissions **where** your cloud or hosting provider exposes **carbon** or **grid** signals; tag workloads for **attribution** the same way as cost.
+- **Optimise** **meaningfully**—**empty** clusters, **over-provisioned** dev estates, and **always-on** sandboxes often dominate **embodied** waste before micro-optimising code paths.
+- **Software Carbon Intensity (SCI)** and related **Green Software Foundation** guidance provide a **normalised** framing when customers ask for **sustainability** evidence—adopt **metrics** that match your **reporting** obligations.
+
+**Why:** Enterprise RFPs and **CSRD**-class reporting increasingly ask for **digital** sustainability posture; FinOps and **carbon** budgets are converging for large estates.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -39,6 +49,7 @@ Durable rules for **non-functional requirements**: latency budgets, **load valid
 | Budgets on critical paths only | Avoids bureaucracy on low-impact surfaces while protecting **user trust**. |
 | Load test major changes | Cheaper than **firefighting** at launch. |
 | Tagging + anomaly alerts | Makes cost **actionable**; untagged spend is not attributable. |
+| Carbon as NFR where required | Avoids **greenwashing**—tie claims to **provider** data and **bounded** SCI-style metrics when reporting. |
 
 ---
 
@@ -47,3 +58,4 @@ Durable rules for **non-functional requirements**: latency budgets, **load valid
 - OWASP **API4:2023** — Unrestricted Resource Consumption (includes provider spend): https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/  
 - FinOps Foundation — **FinOps Definition** and principles: https://www.finops.org/introduction/what-is-finops/  
 - Google SRE Book — **Handling Overload** (conceptual framing for capacity and graceful degradation): https://sre.google/sre-book/handling-overload/  
+- Green Software Foundation — **Software Carbon Intensity (SCI)** specification: https://sci.greensoftware.foundation/  

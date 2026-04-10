@@ -38,6 +38,8 @@ Synchronous HTTP APIs remain OpenAPI-first; **events use an explicit envelope co
 - Document **delivery** semantics (at-most-once, at-least-once, effectively-once patterns) and **consumer idempotency** requirements.
 - **Sensitive fields** — never put secrets in event payloads; reference correlation IDs and fetch authoritative data when needed.
 - **Workflow state** — when behaviour is modelled as states and transitions, document the model and map **committed** transitions to stable event `type`s and payloads; see [state-machines-and-workflows.md](state-machines-and-workflows.md).
+- **Scheduled and batch events** — when a job emits many events or fires on a schedule, document **batch boundaries**, **partial failure** semantics, and **idempotency** across replays (the same logical “run” may be retried).
+- **HTTP ingress (webhooks)** — treat inbound HTTP callbacks as **untrusted** until verified: signature or mTLS, **timestamp/replay** window, **idempotency** for mutating handlers. Pattern: [../patterns/webhook-ingress-security.md](../patterns/webhook-ingress-security.md).
 
 ---
 
@@ -56,3 +58,12 @@ Contract and schema correctness are not enough: define **dead-letter / poison** 
 ## 7. When This Principle Changes
 
 Change this document only when the operating model for cross-service events changes — for example, if the organisation standardises on a different envelope **and** migrates all producers and consumers with a recorded cutover.
+
+---
+
+## References
+
+- CloudEvents specification: https://github.com/cloudevents/spec  
+- CloudEvents **HTTP Protocol Binding** (webhooks, gateways): https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/http-protocol-binding.md  
+- OWASP **API Security** project (webhooks align with API-style risks such as authz and resource consumption): https://owasp.org/www-project-api-security/  
+- Stripe — **Sign webhooks** (illustrative industry practice for HMAC verification): https://docs.stripe.com/webhooks/signatures  

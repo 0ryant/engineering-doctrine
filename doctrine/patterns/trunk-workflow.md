@@ -54,6 +54,12 @@ When many contributors land on `main`, use a **merge queue** so:
 - Version bumps and changelog entries may happen on `main` continuously or at release tags; either way, **one source of truth** for version (see `ENGINEERING.md` distribution principles).
 - **Hotfixes** branch from the tagged release, fix, tag patch, merge back to `main` so drift does not accumulate.
 
+## Long-Term Support (LTS) Branches (Exceptional)
+
+When **regulators**, **contracts**, or **embedded** customers require **years** of patch-only support for a **frozen** major line, maintain a **named** `release/X.y` or `support/vN` branch with **documented** EOL. **Security** and **legal** review own the **exception**—trunk remains default for active development.
+
+**Why:** Trunk-first doctrine still allows **rare** parallel lines when the **business** model demands it; hide the policy and you get **de facto** permanent forks.
+
 ## Checklist Touchpoints
 
 - [checklists/collaboration-readiness.md](../checklists/collaboration-readiness.md) — trunk and branch policy  

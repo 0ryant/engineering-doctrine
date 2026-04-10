@@ -35,6 +35,16 @@ Durable rules for **software with a UI** (web, desktop, mobile): **accessibility
 
 ---
 
+## 3. Mobile, Voice-First, And Document Surfaces
+
+- **Mobile** — respect **platform** accessibility settings (Dynamic Type, TalkBack/VoiceOver); touch targets and **gesture** alternatives should meet **WCAG**-aligned guidance for the **web** or **native** stack you ship.
+- **Voice UIs** — design **confirmations** and **disambiguation** for spoken commands; log **structured** intent for debugging **without** storing raw audio unless contractually allowed.
+- **PDF** and **static** exports — if customers **consume** compliance or billing PDFs, apply **tagged PDF** / **logical reading order** practices (see **PDF/UA** references) and test with **screen readers** where required.
+
+**Why:** Procurement and **public-sector** RFPs increasingly mention **mobile** and **document** accessibility—not only marketing sites.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -43,6 +53,7 @@ Durable rules for **software with a UI** (web, desktop, mobile): **accessibility
 | §0 scope | Prevents **performative** a11y rules on headless-only repos while flagging **OS/desktop** risk early. |
 | CI a11y gates where possible | Catches **regressions** early; does not replace human review. |
 | i18n as architecture | Prevents **string debt** and layout bugs in global launches. |
+| Mobile/PDF explicit | Common **gap** between “web AA” claims and **actual** customer artefacts. |
 
 ---
 
@@ -51,3 +62,4 @@ Durable rules for **software with a UI** (web, desktop, mobile): **accessibility
 - W3C **WCAG 2.2** (Web Content Accessibility Guidelines): https://www.w3.org/TR/WCAG22/  
 - W3C **Internationalization** resources: https://www.w3.org/International/  
 - MDN — **Internationalization API** overview (browser): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl  
+- PDF Association — **PDF/UA** (accessible PDF overview): https://www.pdfa.org/resource/pdfua-basics/  

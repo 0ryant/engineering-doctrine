@@ -14,6 +14,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] Message DLQ/replay/observability addressed where the repo owns async consumers (see patterns/message-channel-operations.md)
 [ ] Secret scanning exists before merge
 [ ] Dependency and IaC scanning exist where relevant
+[ ] Build provenance / SLSA-style attestations exist where regulators or customers require tamper-evident delivery (principles/build.md §14, principles/dependencies-supply-chain.md)
 [ ] Checked-out sibling or shared inputs are included in validation or scan scope when they influence delivery
 [ ] Build caches are optional and keyed from real inputs
 [ ] A build and publish surface exists if the repo ships versioned artefacts

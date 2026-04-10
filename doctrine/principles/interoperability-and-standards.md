@@ -31,6 +31,16 @@ This doctrine may cite **open specifications** (for example **CloudEvents**, **O
 
 ---
 
+## 4. gRPC And Protobuf As First-Class Alternatives
+
+- Where **strong typing**, **streaming**, or **efficient** on-the-wire representation matter, **gRPC** over **HTTP/2** with **Protocol Buffers** is a valid **contract-first** choice alongside REST + JSON + OpenAPI.
+- Treat `.proto` files and **package** / **version** conventions as **source of truth**; generate stubs in CI with pinned **protoc** / plugins for reproducibility.
+- **Interoperability** with browsers or third parties that cannot speak gRPC may require a **gateway** (for example gRPC-Web, JSON transcoding)—document that boundary explicitly.
+
+**Why:** Many internal service meshes standardise on gRPC; portable doctrine should not **assume** JSON-only HTTP.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -38,6 +48,7 @@ This doctrine may cite **open specifications** (for example **CloudEvents**, **O
 | Cite specs, not stacks | Teams may use **zero** projects from a foundation’s landscape and still use **OTel + CloudEvents**. |
 | Estate-specific names in `tooling/estates/` | Keeps principles **readable** outside one cloud. |
 | Minimum standard surface | Avoids standards creep. |
+| gRPC / Protobuf optional parity | **JSON + OpenAPI** and **gRPC + proto** are both valid **contracts-first** stacks; pick per boundary and record gateways where needed. |
 
 ---
 
@@ -45,3 +56,5 @@ This doctrine may cite **open specifications** (for example **CloudEvents**, **O
 
 - CNCF landscape (informational only): https://landscape.cncf.io/  
 - CNCF home: https://www.cncf.io/  
+- **gRPC** — A high-performance, open-source universal RPC framework: https://grpc.io/  
+- **Protocol Buffers** — Language-neutral, platform-neutral extensible mechanisms for serialising structured data: https://protobuf.dev/  

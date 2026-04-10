@@ -44,6 +44,16 @@ Deployment details (Kubernetes collectors vs **managed** platform ingestion) liv
 
 ---
 
+## 5. SLIs, Profiling, And Optional Deep Runtime Signals
+
+- **SLIs** — define **quantitative** indicators for each **SLO** (for example **availability** as successful requests / total, **latency** as measured at the **user** or **edge**); keep SLI definitions **stable** so error budgets stay meaningful—see [reliability-slo-incidents.md](reliability-slo-incidents.md).
+- **Profiling** — use **CPU** / **heap** profilers and **continuous profiling** products **when** latency or cost regressions are unexplained by metrics alone; run representative **load** before drawing conclusions.
+- **eBPF** — optional **kernel-level** visibility for **Linux** estates; treat as **advanced** tooling with clear **ownership** and **safety** review (overhead, PII in probes).
+
+**Why:** Metrics show **that** something is wrong; profiles show **where** hot code paths hide; SLIs tie both to **commitments** users care about.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -52,6 +62,7 @@ Deployment details (Kubernetes collectors vs **managed** platform ingestion) liv
 | Log–trace correlation by default | Cuts MTTR; supported by OTel SDKs and semantic conventions. |
 | Strict metric cardinality discipline | Protects **cost** and **query performance** at scale. |
 | Symptom-based paging | Aligns with SRE practice: humans fix what **users** experience. |
+| SLI doc stays with SLO doc | Avoids **duplicate** definitions that drift between teams. |
 
 ---
 
@@ -63,3 +74,4 @@ Deployment details (Kubernetes collectors vs **managed** platform ingestion) liv
 - W3C **Trace Context**: https://www.w3.org/TR/trace-context/  
 - OpenTelemetry **log correlation** (example, .NET): https://opentelemetry.io/docs/languages/dotnet/logs/correlation/  
 - Google SRE Workbook, **Implementing SLOs** and **Alerting on SLOs**: https://sre.google/workbook/implementing-slos/  
+- Google **Cloud Profiler** concepts (illustrative continuous profiling): https://cloud.google.com/profiler/docs/concepts-profiling  

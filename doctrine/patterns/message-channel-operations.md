@@ -29,6 +29,16 @@ Companion to [principles/event-contracts.md](../principles/event-contracts.md). 
 
 **Why:** Replay without idempotency causes **duplicate** real-world effects; reviewers must see that contract.
 
+### Ordering And “Exactly-Once” By Broker Class (Sketch)
+
+| Broker / pattern | Typical ordering | “Exactly-once” reality |
+| --- | --- | --- |
+| **Single partition / shard** (Kafka topic partition, JetStream ordered consumer, SQS FIFO per group) | **Strong** per key when keyed correctly | Still **at-least-once** at the wire—**idempotent** consumers required |
+| **Competing consumers** on a shared queue | **No** global order | Duplicate delivery common under redelivery |
+| **Pub/sub fan-out** | Order **not** meaningful across subscribers | Side effects must be **deduped** per subscriber |
+
+**Why:** Vendors market **effectively-once** processing; engineering doctrine should assume **at-least-once** delivery unless **you** prove end-to-end single-commit semantics.
+
 ---
 
 ## Idempotency And Dedup
@@ -48,7 +58,7 @@ Companion to [principles/event-contracts.md](../principles/event-contracts.md). 
 
 - **Schema / envelope** — `event-contracts.md`, `tooling/cloudevents.md`.
 - **Behaviour and transitions** — `principles/state-machines-and-workflows.md`.
-- **Illustrative durable broker (NATS JetStream)** — `tooling/nats-jetstream.md`.
+- **Illustrative durable broker (NATS JetStream)** — `tooling/nats-jetstream.md`; **Kafka + CloudEvents** sketch — `tooling/kafka-and-cloudevents.md`; **worked fiction** — `patterns/example-order-jetstream-workflow.md`.
 - **SLOs** — if processing latency matters to users, define an SLO on **lag** or **time-to-handle**, not only API latency.
 
 ---

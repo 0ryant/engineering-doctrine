@@ -15,6 +15,22 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | HTTP Problem Details | https://www.rfc-editor.org/rfc/rfc9457.html |
 | SPDX (SBOM) | https://spdx.dev/ |
 | WCAG 2.2 | https://www.w3.org/TR/WCAG22/ |
+| CloudEvents — NATS protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/nats-protocol-binding.md |
+| CloudEvents — Kafka protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/kafka-protocol-binding.md |
+
+---
+
+## Messaging, Events, And NATS (Depth)
+
+Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md`, `patterns/example-order-jetstream-workflow.md`, `tooling/nats-jetstream.md`, and `principles/state-machines-and-workflows.md`—not mandatory product choices.
+
+| Topic | Reference |
+| --- | --- |
+| NATS documentation | https://docs.nats.io/ |
+| JetStream concepts | https://docs.nats.io/nats-concepts/jetstream |
+| JetStream consumers (ack, MaxDeliver, backoff, NAK) | https://docs.nats.io/nats-concepts/jetstream/consumers |
+| Enterprise Integration Patterns (messaging catalogue) | https://www.enterpriseintegrationpatterns.com/patterns/messaging/ |
+| Martin Fowler — Event Sourcing (projections, history, concurrency) | https://martinfowler.com/eaaDev/EventSourcing.html |
 
 ---
 
@@ -22,6 +38,7 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 
 | Topic | Reference |
 | --- | --- |
+| CIS Benchmarks (hardening guides index) | https://www.cisecurity.org/cis-benchmarks |
 | OWASP API Security Top 10 (2023) | https://owasp.org/API-Security/editions/2023/en/0x11-t10/ |
 | OWASP API2 Broken Authentication | https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/ |
 | OWASP API4 Unrestricted Resource Consumption | https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/ |
@@ -39,6 +56,12 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | Error Budget Policy (workbook) | https://sre.google/workbook/error-budget-policy/ |
 | Handling Overload (SRE book) | https://sre.google/sre-book/handling-overload/ |
 | DORA — software delivery performance | https://dora.dev/ |
+| ACM Queue — SPACE of Developer Productivity | https://queue.acm.org/detail.cfm?id=3454124 |
+| Principles of Chaos Engineering | https://principlesofchaos.org/ |
+| NIST SSDF (secure SDLC) | https://csrc.nist.gov/Projects/SSDF |
+| NIST SP 800-218 (SSDF publication) | https://csrc.nist.gov/publications/detail/sp/800-218/final |
+| SLSA (supply-chain levels) | https://slsa.dev/ |
+| OWASP ASVS (application verification) | https://owasp.org/www-project-application-security-verification-standard/ |
 
 ---
 
@@ -49,6 +72,8 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | Software Engineering at Google, Ch. 11 (Testing) | https://abseil.io/resources/swe-book/html/ch11.html |
 | Fixing a Test Hourglass | https://testing.googleblog.com/2020/11/fixing-a-test-hourglass.html |
 | Just Say No to More E2E Tests | https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html |
+| Mutation testing (concept) | https://mutationtesting.org/ |
+| Hypothesis (property-based testing) | https://hypothesis.readthedocs.io/ |
 
 ---
 
@@ -103,6 +128,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | Azure Pipelines | https://learn.microsoft.com/en-us/azure/devops/pipelines/ |
 | Renovate bot comparison | https://docs.renovatebot.com/bot-comparison/ |
 | GitHub Dependabot | https://docs.github.com/en/code-security/dependabot |
+| OSV — Open Source Vulnerabilities | https://osv.dev/ |
 
 ---
 
@@ -134,8 +160,11 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
+| [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
 | [README.md](README.md) | Doctrine folder entry |
+| [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) | TL;DR spine + MVP synthesis |
+| [glossary.md](glossary.md) | Terms and acronyms (in-repo usage) |
 
 ### Core principles
 
@@ -148,6 +177,14 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [principles/interoperability-and-standards.md](principles/interoperability-and-standards.md) | Specs vs stacks |
 | [principles/container-runtime-choice.md](principles/container-runtime-choice.md) | Managed vs K8s |
 | [principles/kubernetes-platform-security.md](principles/kubernetes-platform-security.md) | Cluster baseline |
+| [principles/single-source-of-truth.md](principles/single-source-of-truth.md) | DRY vs wrong abstraction |
+| [principles/configuration-and-secrets.md](principles/configuration-and-secrets.md) | Config vs secrets |
+| [principles/audit-logging.md](principles/audit-logging.md) | Audit fields and retention |
+| [principles/errors-and-failure-modes.md](principles/errors-and-failure-modes.md) | Errors at boundaries |
+| [principles/naming-and-repo-layout.md](principles/naming-and-repo-layout.md) | Repo layout |
+| [principles/modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md) | Hexagonal / ports |
+| [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) | Zero trust, workload ID |
+| [principles/secure-development-lifecycle.md](principles/secure-development-lifecycle.md) | SDL / SSDF alignment |
 
 ### Patterns
 
@@ -158,6 +195,9 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/trunk-workflow.md](patterns/trunk-workflow.md) | Trunk + delivery |
 | [patterns/message-channel-operations.md](patterns/message-channel-operations.md) | DLQ, replay, backlog |
 | [patterns/adoption-playbook.md](patterns/adoption-playbook.md) | Team migration toward doctrine |
+| [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) | Fictional order FSM + JetStream sketch |
+| [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) | Webhook ingress hardening |
+| [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
 
 ### Extended principles
 
@@ -184,6 +224,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [tooling/build.md](tooling/build.md) | Example stack |
 | [tooling/cloudevents.md](tooling/cloudevents.md) | CloudEvents baseline |
 | [tooling/nats-jetstream.md](tooling/nats-jetstream.md) | Illustrative NATS / JetStream |
+| [tooling/kafka-and-cloudevents.md](tooling/kafka-and-cloudevents.md) | Illustrative Kafka + CloudEvents |
 | [tooling/collaboration.md](tooling/collaboration.md) | Git host examples |
 | [tooling/observability.md](tooling/observability.md) | OTel examples |
 | [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md) | CI mapping |

@@ -50,6 +50,21 @@ How this repository stays **useful for years** while stacks change: separate **w
 
 ---
 
+## 6. Illustrative Map To NIST SSDF Practices (SP 800-218)
+
+NIST’s **Secure Software Development Framework (SSDF)** groups practices into **Prepare (PO)**, **Protect (PS)**, **Produce (PW)**, and **Respond (RV)**. This repo is **not** a control framework mapping, but adopters often ask “where does SSDF live here?” The table below is a **non-exhaustive** cross-walk:
+
+| SSDF group | Example practices | Doctrine touchpoints |
+| --- | --- | --- |
+| **PO** — Prepare the organisation | Security training, roles, supply-chain risk planning | [collaboration.md](collaboration.md) (ownership, review), [secure-development-lifecycle.md](secure-development-lifecycle.md), [dependencies-supply-chain.md](dependencies-supply-chain.md) |
+| **PS** — Protect the software | Tamper-resistant environments, secrets management | [configuration-and-secrets.md](configuration-and-secrets.md), [build.md](build.md), [kubernetes-platform-security.md](kubernetes-platform-security.md) |
+| **PW** — Produce well-secured software | Design review, secure coding, provenance, testing | [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md), [testing-strategy.md](testing-strategy.md), [api-boundaries-and-security.md](api-boundaries-and-security.md), [build.md](build.md) §14 (SLSA) |
+| **RV** — Respond to vulnerabilities | Identify, triage, disclose, learn | [secure-development-lifecycle.md](secure-development-lifecycle.md), [dependencies-supply-chain.md](dependencies-supply-chain.md) §5, [reliability-slo-incidents.md](reliability-slo-incidents.md) (post-incident learning) |
+
+**Why:** SP 800-218 gives **auditors** and **security** partners a familiar vocabulary; mapping reduces duplicate questionnaires.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -57,6 +72,7 @@ How this repository stays **useful for years** while stacks change: separate **w
 | Principles avoid product mandates | Maximises **reuse** across clouds and acquisitions. |
 | Explicit tooling tier | Lets templates be **opinionated** without pretending those opinions are physics. |
 | Estate folder | Isolates **organisation-local** guidance from portable doctrine. |
+| SSDF cross-walk table | Helps **regulated** readers without turning the repo into a **SOC2** checklist. |
 
 ---
 
@@ -64,3 +80,4 @@ How this repository stays **useful for years** while stacks change: separate **w
 
 - (Conceptual) *Dan McKinley — Choose Boring Technology* — stability vs novelty in engineering choices: https://mcfunley.com/choose-boring-technology  
 - DORA — linking **practices** to **delivery outcomes**: https://dora.dev/ (see also [measurement-and-dora.md](measurement-and-dora.md))  
+- NIST **SP 800-218** — Secure Software Development Framework (SSDF): https://csrc.nist.gov/publications/detail/sp/800-218/final  

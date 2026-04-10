@@ -40,6 +40,16 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 
 ---
 
+## 5. Mutation, Property-Based, And Accessibility Testing
+
+- **Mutation testing** — optional gate for **high-risk** modules; surviving mutants highlight **weak** assertions (see *An Introduction to Mutation Testing* and tooling such as **Stryker**, **cargo-mutants**).
+- **Property-based** tests — useful for parsers, codecs, state machines, and invariants that **example-based** tests miss; libraries such as **Hypothesis**, **QuickCheck**, **proptest** (ecosystem-specific).
+- **Accessibility** — automated **a11y** linting in CI for web UIs where applicable; does not replace manual assistive-tech checks per [user-facing-quality.md](user-facing-quality.md).
+
+**Why:** Google and industry experience show **coverage percentage** without **assertion quality** is misleading; WCAG-oriented automation catches **regressions** early.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -48,6 +58,7 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 | Avoid E2E as the default hammer | E2E is **high cost per assertion** and often **nondeterministic**. |
 | Contract tests at boundaries | Matches **contracts-first** engineering and reduces distributed surprises. |
 | Zero tolerance for unowned flakiness | Protects **merge discipline** and signal quality. |
+| Mutation/property optional | Raises **assertion quality** on parsers, codecs, and money paths where **coverage** alone lies. |
 
 ---
 
@@ -56,3 +67,5 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 - *Software Engineering at Google*, Chapter 11 — **Testing** (scope, pyramid, antipatterns): https://abseil.io/resources/swe-book/html/ch11.html  
 - Google Testing Blog, **Fixing a Test Hourglass**: https://testing.googleblog.com/2020/11/fixing-a-test-hourglass.html  
 - Google Testing Blog, **Just Say No to More End-to-End Tests** (Mike Wacker): https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html  
+- *An Introduction to Mutation Testing* (concept): https://mutationtesting.org/  
+- Hypothesis (property-based testing, Python): https://hypothesis.readthedocs.io/  

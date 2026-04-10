@@ -19,6 +19,8 @@ Use when adopting or auditing trunk-based workflow, branch protection, and deliv
 [ ] PR template or norm covers what / why / how to verify
 [ ] Small-PR culture reinforced; large changes need prior design note or RFC
 [ ] CODEOWNERS or equivalent for critical paths
+[ ] CODEOWNERS paths map to team aliases (not only individuals) where the org uses group ownership
+[ ] Review latency tracked for critical services (time-to-first-review, time-to-merge) where delivery SLAs apply (principles/measurement-and-dora.md)
 [ ] Review checks operability: migrations, flags, rollout, observability
 ```
 

@@ -24,6 +24,7 @@ Related build and release rules live in [build.md](build.md) and [../patterns/tr
 - **Linear history optional but valuable** — squash or rebase merges reduce noise; pick one team convention and stick to it.
 - **Merge when green** — do not merge on red; do not “merge anyway” without a recorded exception process.
 - **Merge queue or batching** — at scale, use a merge queue or batched merges so `main` stays green under concurrent work; the queue is part of the integration system, not a substitute for small changes.
+- **Review latency** — track time-to-first-review and time-to-merge for critical services; chronic delay is a **delivery** risk (see [measurement-and-dora.md](measurement-and-dora.md)).
 
 ---
 
@@ -79,6 +80,7 @@ Related build and release rules live in [build.md](build.md) and [../patterns/tr
 - **Observability** — structured logs, metrics, and traces sufficient to debug production incidents without reproducing locally; new features include observability in the definition of done. Expanded doctrine: [observability.md](observability.md), tooling: [../tooling/observability.md](../tooling/observability.md).
 - **Incidents** — blameless postmortems for meaningful incidents; action items tracked to completion.
 - **Change risk** — risky changes use canaries, gradual rollout, or maintenance windows per service policy; emergency changes still get a retrospective.
+- **On-call handoff** — open incidents, risky in-flight changes, and **alert noise** state are handed off explicitly; avoid “silent” pager takeover. See Google SRE — **Being On-Call**: https://sre.google/sre-book/being-on-call/
 
 ---
 
@@ -109,7 +111,7 @@ Related build and release rules live in [build.md](build.md) and [../patterns/tr
 
 ## 11. Scaling The Model
 
-- **CODEOWNERS or equivalent** — critical paths require the right reviewers automatically.
+- **CODEOWNERS or equivalent** — critical paths require the right reviewers automatically; paths map to **teams** or **aliases**, not only individuals (GitHub / GitLab docs for CODEOWNERS).
 - **RFCs for cross-cutting change** — migrations, platform shifts, or contract breaks get design review before large code dumps.
 - **Release train optional** — regular release cadence helps teams coordinate; trunk still integrates continuously.
 

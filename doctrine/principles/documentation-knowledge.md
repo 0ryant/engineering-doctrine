@@ -31,12 +31,32 @@ Durable rules for **decisions**, **operations**, and **onboarding** so intent su
 
 ---
 
+## 4. RFC Lifecycle Versus ADRs
+
+- Use **RFCs** (or design docs) for **pre-decision** exploration: options, trade-offs, and **review** before commitment—especially when multiple teams must align.
+- Promote outcomes to **ADRs** once a decision is **made**; link the RFC in the ADR’s **context** section.
+- **Stale** RFCs should be **closed** or **superseded** so search results do not contradict shipped reality.
+
+**Why:** ADRs record **what** was chosen; RFCs record **how** you got there—mixing both in one format confuses readers.
+
+---
+
+## 5. Onboarding Curricula And Discoverability
+
+- Maintain a **short** onboarding path (day-one tasks, repo map, “how we ship”) separate from **encyclopaedic** doctrine.
+- Prefer a **single** internal **portal** or **search** index that lists **golden paths**, service catalog links, and **runbooks**—even if the underlying content lives in Git.
+
+**Why:** *Software Engineering at Google* emphasises **discoverable** engineering knowledge; new hires fail on **navigation**, not lack of Markdown files.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
 | --- | --- |
 | ADRs over oral tradition | Scales with org size; supports **audit** of why systems look the way they do. |
 | Runnable or reviewed runbooks | Closes the gap between **docs** and **reality**. |
+| RFC before ADR for big bets | Separates **exploration** noise from **decision** record. |
 
 ---
 
@@ -44,3 +64,4 @@ Durable rules for **decisions**, **operations**, and **onboarding** so intent su
 
 - **ADR GitHub organisation** — templates and community resources: https://adr.github.io/  
 - Michael Nygard, **Documenting Architecture Decisions** (original article, archived mirrors linked from ADR community): widely cited as the start of ADR practice; see `adr.github.io` for maintained templates.  
+- *Software Engineering at Google*, Chapter 3 — **Knowledge Sharing**: https://abseil.io/resources/swe-book/html/ch03.html  

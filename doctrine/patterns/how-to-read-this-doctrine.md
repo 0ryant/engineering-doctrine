@@ -20,10 +20,11 @@ Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timel
 
 | Audience | Path |
 | --- | --- |
+| **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` |
 | **New org adopting wholesale** | `timeless-principles-and-tooling` → `build` → `collaboration` → `ENGINEERING.md` |
 | **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → `platform-readiness` checklist |
 | **Security / API** | `api-boundaries-and-security` → `threat-modeling-stride-lite` → `ENGINEERING.md` §18 (extended principles) → `dependencies-supply-chain` |
-| **Async / events** | `event-contracts` → `state-machines-and-workflows` → `message-channel-operations` → `tooling/cloudevents.md` (optional `tooling/nats-jetstream`) |
+| **Async / events** | `event-contracts` → `state-machines-and-workflows` → `message-channel-operations` → `tooling/cloudevents.md` (optional `tooling/nats-jetstream`, example `example-order-jetstream-workflow`) |
 
 ---
 
@@ -40,3 +41,13 @@ Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timel
 - **Releases:** `checklists/release-readiness.md`.
 - **Editing this library:** `checklists/doctrine-change-checklist.md`.
 - **Adopting with a team:** `patterns/adoption-playbook.md`, `tooling/estates/minimum-viable-doctrine.template.md`, `principles/measurement-and-dora.md`.
+
+---
+
+## Forking, Subtrees, And Submodules (Adoption Mechanics)
+
+- **Fork or copy** — simplest: treat this repo as **upstream** and merge periodically; good when you want **full** autonomy.
+- **Git subtree** — vendor `doctrine/` (or the whole repo) into a **subdirectory** of another monorepo; preserves history and allows **selective** pulls from upstream.
+- **Git submodule** — pins a **specific commit** of this library; reviewers see **exactly** which doctrine revision ships—at the cost of **submodule** ergonomics every developer must tolerate.
+
+Pick one **mechanism** per org and document it in the **consumer** repo’s README so upgrades are **intentional**, not accidental drift.

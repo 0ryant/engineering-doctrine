@@ -13,4 +13,5 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] Checklists updated if new obligation for adopting teams
 [ ] evolution/moscow-review.md or decision note updated for large shifts (optional but encouraged)
 [ ] evolution/honest-review-synthesis.md updated when absorbing a substantive external review of the library
+[ ] For material doctrine releases: note version or date in evolution/moscow-review.md or a short decision log entry (CHANGELOG optional if the repo maintains one)
 ```

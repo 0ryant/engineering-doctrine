@@ -17,11 +17,15 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 
 ### Meta (how to read this repo)
 
+- **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** — **TL;DR** spine + **minimum viable doctrine** (read this if the tree feels too large)
+- **[glossary.md](glossary.md)** — terms and acronyms used across doctrine (orientation only)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) — navigation and conflict resolution
 - [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) — principles vs tooling vs estate supplements
 - [evolution/moscow-review.md](evolution/moscow-review.md) — latest **thin-area / audit / MoSCoW** snapshot
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — condensed **external review** signal
+- [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) — **gap analysis** by section vs industry frameworks
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md) — how teams migrate toward this doctrine
+- [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — worked **fiction**: state machine + CloudEvents + JetStream
 
 ### Core principles
 
@@ -33,6 +37,14 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [principles/interoperability-and-standards.md](principles/interoperability-and-standards.md) — portable specs vs full stacks
 - [principles/container-runtime-choice.md](principles/container-runtime-choice.md) — managed platforms vs Kubernetes
 - [principles/kubernetes-platform-security.md](principles/kubernetes-platform-security.md) — when clusters are in scope
+- [principles/single-source-of-truth.md](principles/single-source-of-truth.md) — DRY vs wrong abstraction
+- [principles/configuration-and-secrets.md](principles/configuration-and-secrets.md) — config vs secrets, rotation
+- [principles/audit-logging.md](principles/audit-logging.md) — audit fields, immutability, retention
+- [principles/errors-and-failure-modes.md](principles/errors-and-failure-modes.md) — HTTP, CLI, retries
+- [principles/naming-and-repo-layout.md](principles/naming-and-repo-layout.md) — repo layout, monorepo vs polyrepo
+- [principles/modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md) — ports and adapters / hexagonal boundaries
+- [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) — workload identity, SPIFFE pointer
+- [principles/secure-development-lifecycle.md](principles/secure-development-lifecycle.md) — SDL, vuln response, training (NIST SSDF alignment)
 
 ### Patterns
 
@@ -41,6 +53,9 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
+- [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — example order FSM + JetStream (fiction)
+- [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) — signed webhooks, replay windows, idempotency
+- [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) — HTTP, messages, infra idempotency
 
 ### Checklists
 
@@ -55,6 +70,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [tooling/build.md](tooling/build.md) — example task runners, scripts, pipeline layout
 - [tooling/cloudevents.md](tooling/cloudevents.md) — CloudEvents baseline (spec evolves—verify vendor support)
 - [tooling/nats-jetstream.md](tooling/nats-jetstream.md) — illustrative NATS / JetStream + CloudEvents
+- [tooling/kafka-and-cloudevents.md](tooling/kafka-and-cloudevents.md) — illustrative Kafka + CloudEvents sketch
 - [tooling/collaboration.md](tooling/collaboration.md) — example Git host branch rules
 - [tooling/observability.md](tooling/observability.md) — example OTel and collector patterns
 - [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md) — abstract CI surfaces vs example products

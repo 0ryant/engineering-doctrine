@@ -24,6 +24,8 @@ Official comparison from Renovate (aims to be objective): https://docs.renovateb
 
 3. **Security signal** — keep **Dependabot alerts** enabled on GitHub even when Renovate opens upgrade PRs; many teams use **alerts** as early signal and **Renovate** for structured upgrades (community-reported pattern).
 
+4. **Licence policy** — add **SCA** tools that surface **copyleft** or **deny-listed** licences (for example **FOSSA**, **Snyk** licence checks, **GitHub** dependency review) where legal expects **automated** gates on the merge path.
+
 **Why:** Renovate’s docs emphasise **grouping**, **dashboard**, and **multi-platform** support; Dependabot emphasises **zero config** and **tight GitHub integration**. The split avoids “200 PRs/week” meltdown on large JS monorepos while preserving GitHub’s **alerting**.
 
 ---
@@ -53,3 +55,4 @@ Official comparison from Renovate (aims to be objective): https://docs.renovateb
 - GitHub — **Dependabot documentation**: https://docs.github.com/en/code-security/dependabot  
 - GitHub — **Grouped security updates** (Dependabot ecosystem): see GitHub changelog / docs for grouped updates evolution.  
 - OSV (Open Source Vulnerabilities): https://osv.dev/  
+- GitHub **Dependency review** (licence and vulnerability summary on PRs): https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review  
