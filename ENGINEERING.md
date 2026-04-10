@@ -13,6 +13,10 @@ When tooling changes, update the tooling docs first. Change the principles only 
 
 **Principles vs tooling:** Portable **intent** lives in `doctrine/principles/`; replaceable **examples and estate notes** live in `doctrine/tooling/` (including `tooling/estates/`). See `doctrine/principles/timeless-principles-and-tooling.md`.
 
+**TL;DR + minimum viable doctrine (MVP) synthesis:** `doctrine/tldr-principles-and-mvp.md`.
+
+**Glossary (terms and acronyms):** `doctrine/glossary.md`.
+
 ---
 
 ## 1. Contracts First
@@ -23,7 +27,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Validate contracts in CI as a mandatory quality gate. A schema that cannot be validated against its examples is broken code.
 - Contract violations are build failures, not warnings.
 - **Asynchronous and event-shaped boundaries** — use **[CloudEvents](https://github.com/cloudevents/spec)** as the standard **envelope** for events (queues, topics, webhooks, buses), plus a **versioned payload** schema for `data`. Event types (`type`) and producers (`source`) are stable identifiers; event `id` supports deduplication under at-least-once delivery.
-- Full rules: `doctrine/principles/event-contracts.md`. Current CloudEvents defaults: `doctrine/tooling/cloudevents.md`. Workflow state and transition → event mapping: `doctrine/principles/state-machines-and-workflows.md`. Optional NATS/JetStream illustration: `doctrine/tooling/nats-jetstream.md`.
+- Full rules: `doctrine/principles/event-contracts.md`. Current CloudEvents defaults: `doctrine/tooling/cloudevents.md`. Workflow state and transition → event mapping: `doctrine/principles/state-machines-and-workflows.md`. Optional NATS/JetStream illustration: `doctrine/tooling/nats-jetstream.md`. Worked fiction (order FSM + subjects): `doctrine/patterns/example-order-jetstream-workflow.md`.
 
 ---
 
@@ -44,6 +48,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Centralise shared dependency versions in one place such as a Cargo workspace, `pyproject.toml`, or workspace root manifest.
 - Never duplicate a version string. Source it once and derive it everywhere else.
 - One schema file, one secret store, one version string. If you find yourself copy-pasting a constant, it belongs in a shared module.
+- Nuance (duplication vs wrong abstraction, generated code): `doctrine/principles/single-source-of-truth.md`.
 
 ---
 
@@ -53,6 +58,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Prefer `set` and `upsert` orientation. `create` operations check for existence first and return a distinct, catchable error if the resource already exists.
 - Infrastructure changes use plan, review, then apply. Never mutate live infrastructure without a diff step.
 - Use atomic writes for every file modification: write to a temp file, then rename.
+- Cross-boundary idempotency (HTTP, messages, infra): `doctrine/patterns/idempotency-across-boundaries.md`.
 
 ---
 
@@ -68,6 +74,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Secret scanning in CI is required, not optional.
 - Fail closed, not open. Default deny.
 - Prefer managed identity or OIDC over static credentials wherever supported.
+- Secure development lifecycle (design review, vuln response, training): `doctrine/principles/secure-development-lifecycle.md`.
 
 ---
 
@@ -116,6 +123,7 @@ The table below is **illustrative** for templates and brownfield guidance—not 
 - Extension points are explicit typed contracts such as interfaces, traits, or abstract base classes.
 - New features add new modules. They do not mutate stable existing ones unless fixing a bug.
 - Prefer feature flags or conditional compilation over repository forks.
+- Ports-and-adapters / hexagonal nuance: `doctrine/principles/modularity-and-ports-adapters.md`.
 
 ---
 
@@ -126,6 +134,7 @@ The table below is **illustrative** for templates and brownfield guidance—not 
 - Vault and secret access should re-validate through a challenge or equivalent proof on every open.
 - Least privilege applies to every service identity.
 - Applications do not store master credentials locally in plaintext under any circumstances.
+- Deeper pattern (workload identity, SPIFFE, service-to-service): `doctrine/principles/zero-trust-and-workload-identity.md`.
 
 ---
 
@@ -155,6 +164,7 @@ Apply this consistently. Each layer has exactly one responsibility and communica
 
 - Every state-changing operation writes a structured audit entry.
 - Audit records are append-only.
+- Field-level guidance, immutability, retention: `doctrine/principles/audit-logging.md`.
 - Minimum fields per entry:
   - `id` - UUID v4
   - `timestamp` - ISO-8601 UTC
@@ -257,6 +267,7 @@ Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patter
 - Error messages are actionable: they explain what went wrong and what the operator should do next.
 - Never swallow errors silently. Log with context at the callsite before propagating upward.
 - The boundary layer such as a CLI, API, or UI translates internal errors into user-facing messages and exit codes.
+- HTTP Problem Details, CLI exit codes, retries: `doctrine/principles/errors-and-failure-modes.md`.
 
 ---
 
@@ -268,12 +279,14 @@ Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patter
 - CI should inject secrets from variable groups, secure stores, or vault-backed variables.
 - Production should use a managed secret store and workload identity where the platform supports it.
 - Password prompts in CLIs use masked input. Passwords are never echoed or logged.
+- Config vs secrets, rotation, dynamic config: `doctrine/principles/configuration-and-secrets.md`.
 
 ---
 
 ## 17. Naming And Project Structure Conventions
 
 - Choose an org-wide repo naming convention and apply it consistently.
+- Layout, monorepo vs polyrepo, CODEOWNERS: `doctrine/principles/naming-and-repo-layout.md`.
 - Use `doctrine/` at template roots when the repo is intended to teach repeatable engineering patterns.
 - Script directories should be grouped by responsibility such as `scripts/quality/`, `scripts/setup/`, `scripts/build/`, and `scripts/infra/`.
 - Pipeline definitions live in your estate’s chosen location (for example `.pipelines/`, `.github/workflows/`, or `.gitlab-ci.yml`).
@@ -288,7 +301,9 @@ Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patter
 
 The following **principle** documents extend build/trunk doctrine with **SRE, data, API security, and governance** expectations. Each file includes **rationale** (why we chose this) and **references** to authoritative sources. **Vendor-specific** examples live under `doctrine/tooling/estates/`—see `doctrine/principles/timeless-principles-and-tooling.md`.
 
-**Timeless vs tooling** — `doctrine/principles/timeless-principles-and-tooling.md`.
+**Timeless vs tooling** — `doctrine/principles/timeless-principles-and-tooling.md` (includes an **illustrative NIST SSDF PO/PS/PW/RV** cross-walk in §6).
+
+**Umbrella-aligned depth (also in §§3–17 above)** — `doctrine/principles/single-source-of-truth.md`, `configuration-and-secrets.md`, `audit-logging.md`, `errors-and-failure-modes.md`, `naming-and-repo-layout.md`, `modularity-and-ports-adapters.md`, `zero-trust-and-workload-identity.md`, `secure-development-lifecycle.md`.
 
 **Data and persistence** — `doctrine/principles/data-and-migrations.md` (expand/contract migrations, backups, RPO/RTO).
 
@@ -306,7 +321,7 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **Reliability: SLOs, error budgets, incidents** — `doctrine/principles/reliability-slo-incidents.md`.
 
-**Delivery measurement (DORA / Four Keys)** — `doctrine/principles/measurement-and-dora.md` (outcomes vs practices).
+**Delivery measurement (DORA / Four Keys)** — `doctrine/principles/measurement-and-dora.md` (outcomes vs practices; **SPACE** developer-experience framing in §4).
 
 **Performance, load, and cost** — `doctrine/principles/performance-and-cost.md`.
 
@@ -332,7 +347,11 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **How to read this doctrine** — `doctrine/patterns/how-to-read-this-doctrine.md`.
 
-**Message channels (DLQ, replay)** — `doctrine/patterns/message-channel-operations.md`. Illustrative NATS JetStream notes: `doctrine/tooling/nats-jetstream.md`.
+**Message channels (DLQ, replay)** — `doctrine/patterns/message-channel-operations.md`. Illustrative brokers: `doctrine/tooling/nats-jetstream.md`, `doctrine/tooling/kafka-and-cloudevents.md`.
+
+**Webhook ingress** — `doctrine/patterns/webhook-ingress-security.md`.
+
+**Idempotency across boundaries** — `doctrine/patterns/idempotency-across-boundaries.md`.
 
 **Release checklist** — `doctrine/checklists/release-readiness.md`.
 

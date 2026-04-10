@@ -2,6 +2,8 @@
 
 Portable rules for systems whose behaviour is described by **states**, **transitions**, and **asynchronous** notifications. Complements [event-contracts.md](event-contracts.md) (what crosses the wire) and [patterns/message-channel-operations.md](../patterns/message-channel-operations.md) (delivery and failure). Transport and broker choices remain **tooling**—for example [../tooling/nats-jetstream.md](../tooling/nats-jetstream.md), Kafka, or a vendor bus.
 
+End-to-end **illustration** (order lifecycle + JetStream): [../patterns/example-order-jetstream-workflow.md](../patterns/example-order-jetstream-workflow.md).
+
 ---
 
 ## 1. Make The Model Explicit
@@ -41,7 +43,17 @@ Portable rules for systems whose behaviour is described by **states**, **transit
 
 ---
 
-## 5. Scope
+## 5. Sagas, Compensation, Timeouts, And Human Steps
+
+- **Saga** (or **process manager**) — for **long-running** flows spanning services, name **compensating** actions (or **forward** recovery) for each step; document **partial completion** behaviour when a downstream step fails.
+- **Timeouts** — every **wait** state needs a **maximum** dwell time and a **defined** transition (retry, escalate, cancel); avoid **indefinite** “pending” without operators.
+- **Human-in-the-loop** — approvals and manual fixes are **first-class** transitions with **audit** evidence and **idempotent** application when the same approval is **re-posted**.
+
+**Why:** *Enterprise Integration Patterns* and **saga** literature exist because **distributed** transactions are not **ACID** across brokers—explicit **compensation** beats silent inconsistency.
+
+---
+
+## 6. Scope
 
 | In scope | Out of scope (tooling or product docs) |
 | --- | --- |
@@ -56,10 +68,14 @@ Portable rules for systems whose behaviour is described by **states**, **transit
 | --- | --- |
 | Principle, not a pattern only | Behavioural contracts are **as durable** as payload schemas; they belong beside **event-contracts**. |
 | Transport-agnostic | JetStream, Kafka, and SaaS buses all need the same **transition + dedup** discipline. |
+| Sagas explicit | **Long-running** flows need **compensation** / timeout semantics—not pretend two-phase commit across HTTP. |
 
 ---
 
 ## References
 
-- Enterprise Integration Patterns — **Message**, **Idempotent Receiver**: https://www.enterpriseintegrationpatterns.com/patterns/messaging/  
+- Enterprise Integration Patterns — **Message**, **Idempotent Receiver**, **Dead Letter Channel**: https://www.enterpriseintegrationpatterns.com/patterns/messaging/  
 - CloudEvents (envelope at boundaries): https://github.com/cloudevents/spec  
+- Martin Fowler — **Event Sourcing** (state from history, optimistic concurrency, rebuild): https://martinfowler.com/eaaDev/EventSourcing.html  
+- Martin Fowler — **Saga** pattern: https://martinfowler.com/bliki/Saga.html  
+- Canonical index: [../REFERENCES.md](../REFERENCES.md) — *Messaging, events, and NATS*  

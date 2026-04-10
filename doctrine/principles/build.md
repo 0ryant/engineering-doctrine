@@ -89,3 +89,17 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 - Task runners, script languages, CI systems, packaging tools, deployment tasks, and smoke frameworks may change over time.
 - The contract of each build surface should remain stable even if the implementation is replaced.
 - When tooling changes, update the tooling guidance first. Only change the principles if the operating model itself has changed.
+
+## 14. Hermetic Builds And Provenance (SLSA)
+
+- **Hermetic** builds minimise **undeclared** inputs: lockfiles, pinned toolchains, and **reproducible** steps so the same commit yields the same artefact (modulo documented nondeterminism).
+- **Provenance attestations** (for example **SLSA** supply-chain levels) document **who** built **what** from **which** sources; adopt when regulators or customers expect **tamper-evident** delivery.
+
+**Why:** Executive Order **14028** and sector norms pushed **SBOM** and **provenance**; **SLSA** frames progressive hardening: https://slsa.dev/
+
+---
+
+## References (build-specific)
+
+- **SLSA** — Supply-chain Levels for Software Artifacts: https://slsa.dev/  
+- *Software Engineering at Google* — **Build systems and dependency management**: https://abseil.io/resources/swe-book  

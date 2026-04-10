@@ -39,7 +39,7 @@ Also set when applicable:
 | Transport | Default approach |
 | --- | --- |
 | **HTTP** (webhooks, gateways) | `Content-Type: application/cloudevents+json` for structured; or binary mode with `ce-*` headers per HTTP binding |
-| **Kafka / AMQP / etc.** | Use the **official CloudEvents binding** for that protocol where available; otherwise structured JSON in the message value with documented header mapping |
+| **Kafka / AMQP / etc.** | Use the **official CloudEvents binding** for that protocol where available; otherwise structured JSON in the message value with documented header mapping — see also [kafka-and-cloudevents.md](kafka-and-cloudevents.md) for a **Kafka**-oriented sketch |
 | **NATS (Core / JetStream)** | See [nats-jetstream.md](nats-jetstream.md) for an illustrative JetStream-oriented mapping; still use explicit envelope + payload rules from the principle |
 | **Cloud vendor event grids** | Map vendor envelopes **to** CloudEvents at the boundary if the native format differs; keep conversion in one thin adapter layer |
 

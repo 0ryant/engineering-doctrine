@@ -42,12 +42,22 @@ Use the map in **retrospectives**: a rising CFR often traces to **skipped gates*
 
 ---
 
+## 4. SPACE: Developer Experience Beyond Throughput
+
+- **SPACE** (Satisfaction and well-being, Performance, Activity, Communication and collaboration, Efficiency and flow) frames **developer experience** using **multiple** dimensions—not only **lines of code** or **story points**.
+- Use SPACE-style surveys and **qualitative** interviews alongside DORA metrics to catch **burnout**, **tooling friction**, and **review** bottlenecks that Four Keys can **miss**.
+
+**Why:** Microsoft Research’s SPACE work shows **single-metric** productivity measures **game** behaviour and hide systemic problems.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
 | --- | --- |
 | Separate from SLO doc | SLOs are **per-service** promises; DORA metrics are **delivery system** health—both needed. |
 | Reference research, don’t replicate | Definitions and benchmarks are maintained by **DORA** and secondary literature—link out. |
+| SPACE complements DORA | **Throughput** without **well-being** signals misleads leadership during crunch. |
 
 ---
 
@@ -55,4 +65,5 @@ Use the map in **retrospectives**: a rising CFR often traces to **skipped gates*
 
 - **DORA** (Google Cloud DevOps Research): https://dora.dev/  
 - *Accelerate* (Forsgren, Humble, Kim) — research foundation for Four Keys  
+- ACM Queue — **The SPACE of Developer Productivity** (Forsgren et al.): https://queue.acm.org/detail.cfm?id=3454124  
 - [reliability-slo-incidents.md](reliability-slo-incidents.md) — SLOs, error budgets, incidents  

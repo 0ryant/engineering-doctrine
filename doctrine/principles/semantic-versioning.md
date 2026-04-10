@@ -64,6 +64,10 @@ Typical triggers:
 
 Use **pre-release** labels (`1.0.0-alpha.1`, `1.0.0-rc.2`) when consumers need ordering and risk signalling before a stable tag. Use **build metadata** (`+`) only for non-semantics (build IDs); it must not affect precedence per SemVer.
 
+**Channels:** If you publish **multiple** trains (for example `beta`, `rc`, `stable`), document **who** may consume each channel, **promotion** rules between channels, and whether **pinning** to pre-releases is supported for production.
+
+**HTTP API versioning (URL vs header):** There is **no** universal IETF rule—pick **one** approach per product and document it. Common patterns include **path** prefix (`/v1/...`), **`Accept`** header versioning (`Accept: application/vnd.example.v1+json`), or a **custom** header; **RFC 9110** defines `Accept` semantics. Breaking changes should align with **major** bumps for that API surface (or explicit sunset per §8).
+
 ---
 
 ## 6. Relationship To Contracts
@@ -102,3 +106,11 @@ Version bumps align with **contract** changes tracked in schemas, OpenAPI, CLI c
 | **Major** | Breaking changes, or `1.0.0` when the product’s compatibility story stabilises |
 
 When in doubt, **classify by consumer impact**, not by internal refactor size.
+
+---
+
+## References
+
+- **Semantic Versioning 2.0.0**: https://semver.org/  
+- **RFC 9110** — HTTP Semantics (`Accept` header): https://www.rfc-editor.org/rfc/rfc9110.html  
+- Azure Architecture Center — **RESTful web API design** (versioning discussion): https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#versioning-a-restful-web-api  

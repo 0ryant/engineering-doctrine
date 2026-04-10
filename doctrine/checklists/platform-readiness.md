@@ -21,6 +21,9 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 [ ] Event-backed workflows document states/transitions and map commits to stable event types where applicable (state-machines-and-workflows.md)
 [ ] Message channels have DLQ/poison, replay posture, and backlog metrics per patterns/message-channel-operations.md (if the system uses queues/topics)
 [ ] Delivery performance trended using stable definitions (measurement-and-dora.md) where org tracks Four Keys or equivalents
+[ ] Chaos engineering or game days exercised for high-blast-radius systems on a cadence (principles/reliability-slo-incidents.md §5)
+[ ] DR / failover drills and multi-region assumptions validated where data-and-migrations.md §4 applies
+[ ] Webhook ingress hardened where third-party HTTP callbacks are accepted (patterns/webhook-ingress-security.md)
 [ ] ADRs or decision log for major architectural forks (documentation-knowledge.md)
 [ ] Customer-facing web: WCAG target documented (user-facing-quality.md)
 ```

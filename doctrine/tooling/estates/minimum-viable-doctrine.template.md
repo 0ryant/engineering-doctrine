@@ -2,6 +2,8 @@
 
 **Copy** to a new file (for example `acme-platform.md`) in this directory. Use as the **one page** you hand to a team or sponsor before they dive into the full `doctrine/` tree.
 
+Global **TL;DR** of the whole library (not team-specific): [../../tldr-principles-and-mvp.md](../../tldr-principles-and-mvp.md).
+
 Goal: **5–7** principles tied to **their** pain, each with a **link** to the canonical principle or pattern—not a restatement of the whole library.
 
 ---
@@ -39,6 +41,7 @@ Goal: **5–7** principles tied to **their** pain, each with a **link** to the c
 ## Full Library
 
 - Doctrine root: [../../README.md](../../README.md)  
+- Glossary: [../../glossary.md](../../glossary.md)  
 - Adoption sequence: [../../patterns/adoption-playbook.md](../../patterns/adoption-playbook.md)  
 - Measurement: [../../principles/measurement-and-dora.md](../../principles/measurement-and-dora.md)  
 

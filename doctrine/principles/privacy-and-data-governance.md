@@ -40,6 +40,16 @@ Durable rules for **personal data**, **retention**, and **separation of concerns
 
 ---
 
+## 5. Impact Assessments, Consent UX, And AI-Related Processing
+
+- **DPIA / PIA** — when processing is likely to result in **high risk** to individuals (large-scale sensitive categories, systematic monitoring, automated decision-making with legal effects, **new** technologies), run a **Data Protection Impact Assessment** (or **Privacy Impact Assessment**) **before** go-live and **update** when processing changes materially.
+- **Consent UX** — where **consent** is the lawful basis, make it **granular**, **withdrawable**, and **documented**; avoid **dark patterns** that obscure real choice.
+- **AI / model training** — when **personal data** feeds **training**, evaluation, or **prompt** context, treat it as a **high-risk** processing change: minimisation, **retention** limits, and **vendor** DPAs. Map engineering tasks to **NIST SSDF** and the **SP 800-218A** community profile where your org adopts them (see [secure-development-lifecycle.md](secure-development-lifecycle.md)).
+
+**Why:** ICO and EU supervisory guidance emphasise **accountability** and **proportionality**; AI systems amplify **re-identification** and **leakage** risks if training data is unconstrained.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -47,6 +57,7 @@ Durable rules for **personal data**, **retention**, and **separation of concerns
 | Minimise by default | Reduces **blast radius** of breaches and simplifies **DSAR** / erasure. |
 | Explicit retention | Makes cost and compliance **measurable**; avoids silent infinite growth. |
 | Split audit vs analytics | **Least privilege** and clearer incident handling. |
+| DPIA when high risk | **Accountability** expectation under GDPR-like regimes; avoids **surprise** supervisory questions. |
 
 ---
 
@@ -55,3 +66,5 @@ Durable rules for **personal data**, **retention**, and **separation of concerns
 - ICO (UK) overview of **data minimisation** (principle): https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/principles/data-minimisation/  
 - GDPR **Article 5** principles (lawful basis, minimisation, storage limitation): official EUR-Lex text for EU law.  
 - NIST **Privacy Framework** (organisational privacy risk): https://www.nist.gov/privacy-framework  
+- ICO (UK) — **Data protection impact assessments (DPIAs)**: https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-lawful-basis/accountability-and-governance/data-protection-impact-assessments-dpias/  
+- NIST **SP 800-218A** — SSDF community profile for **AI** systems (see SSDF project / news on csrc.nist.gov): https://csrc.nist.gov/Projects/ssdf  

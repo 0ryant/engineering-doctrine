@@ -70,6 +70,13 @@ Common lesson: the ingress service and the queued operational work may live in o
 
 Common lesson: recurring assurance work is a first-class operational product.
 
+### Monorepo Versus Polyrepo
+
+- **Monorepo** — many **publishable units** in one Git root: prefer **path-scoped** quality gates, **per-unit** deploy surfaces, and **independent** SemVer lines per package/service (see `principles/semantic-versioning.md`, `principles/naming-and-repo-layout.md`). Shared `scripts/` reduce drift; **build graph** complexity rises without tooling.
+- **Polyrepo** — one (or few) units per repo: **simpler** local builds; cross-repo contract changes need **explicit** versioning and **consumer** update cadence.
+
+Neither shape is doctrine-mandated; **surface clarity** and **ownership** matter more than the number of Git roots.
+
 ### Multi-Platform CLI Or Desktop Utility
 
 - Quality gate

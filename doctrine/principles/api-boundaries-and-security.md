@@ -48,6 +48,25 @@ Durable rules for **externally exposed** HTTP and RPC surfaces: predictable beha
 
 ---
 
+## 6. Browser-Facing Controls (CSP, CORS)
+
+- **Content Security Policy (CSP)** — restrict **script**, **connect**, and **frame** sources for web apps that render **user** or **third-party** content; iterate toward **strict** policies without breaking legitimate integrations.
+- **CORS** — treat `Access-Control-Allow-Origin: *` paired with **credentials** as a **code smell**; prefer **explicit** origins for **authenticated** APIs.
+- **Cookies** — `SameSite`, `Secure`, and **HttpOnly** defaults for **session** security; align with OWASP **Session Management** cheat sheet.
+
+**Why:** OWASP **ASVS** and cheat sheets frame CSP/CORS as **defence in depth** against XSS and **cross-origin** data theft—not substitutes for **server-side** authz.
+
+---
+
+## 7. Service-To-Service mTLS
+
+- For **internal** east-west traffic, prefer **mutual TLS** or **workload identity** (SPIFFE/SPIRE, mesh, or platform feature) so **caller** identity is **cryptographic**, not only network placement.
+- **Public** HTTP APIs typically remain **TLS + OAuth/OIDC**; mTLS is usually **internal** mesh or **B2B** integration.
+
+**Why:** NIST **Zero Trust** (SP 800-207) expects **continuous** verification; mTLS is one **mature** pattern for service identity—see [zero-trust-and-workload-identity.md](zero-trust-and-workload-identity.md).
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -55,6 +74,7 @@ Durable rules for **externally exposed** HTTP and RPC surfaces: predictable beha
 | Align with OWASP API Top 10 | Industry **checklist** for API-specific flaws; maps to concrete code review items. |
 | Limits everywhere by default | **Fail closed** on size, time, and rate — matches security baseline in `ENGINEERING.md`. |
 | Object-level auth | Prevents **IDOR**-class bugs that auth tokens alone cannot fix. |
+| CSP + CORS explicit | Reduces **XSS** and **origin** confusion on browser clients. |
 
 ---
 
@@ -70,3 +90,7 @@ Durable rules for **externally exposed** HTTP and RPC surfaces: predictable beha
 - OWASP **API2:2023 Broken Authentication**: https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/  
 - OWASP **API4:2023 Unrestricted Resource Consumption**: https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/  
 - IETF **RFC 9457** — Problem Details for HTTP APIs: https://www.rfc-editor.org/rfc/rfc9457.html  
+- OWASP **Cheat Sheet Series** — **Content Security Policy**: https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html  
+- OWASP **Cheat Sheet Series** — **REST Security** (CORS and related): https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html  
+- OWASP **GraphQL Cheat Sheet**: https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html  
+- OWASP **ASVS** (application verification, browser controls): https://owasp.org/www-project-application-security-verification-standard/  

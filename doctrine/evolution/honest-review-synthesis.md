@@ -31,6 +31,12 @@ Forkable, modular doctrine starter kits are **rare** relative to company handboo
 
 ---
 
+## Ongoing Gap Research
+
+- Section-by-section industry comparison: [deep-research-section-gaps.md](deep-research-section-gaps.md)
+
+---
+
 ## Artefacts Added From This Review Cycle
 
 | Item | Location |

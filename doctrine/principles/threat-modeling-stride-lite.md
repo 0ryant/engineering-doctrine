@@ -51,6 +51,16 @@ This file supplies the **structured pass** across boundaries; the others supply 
 
 ---
 
+## 5. Attack Trees, Data-Flow Diagrams, And Supply-Chain Threats
+
+- **Attack trees** — for **high-stakes** systems, decompose **attacker goals** (for example “forge webhook”, “exfiltrate tenant data”) into **steps** and map **detections** / **controls** per branch; STRIDE still applies at each edge.
+- **Data-flow diagrams (DFD)** — optional tooling (**OWASP Threat Dragon**, **Microsoft Threat Modeling Tool**, draw.io) helps teams **see** forgotten trust boundaries; a **whiteboard** DFD beats no diagram.
+- **Supply-chain** threats — include **CI/CD**, **package registries**, **build** provenance, and **third-party** SaaS in the model—not only runtime services; cross-check [dependencies-supply-chain.md](dependencies-supply-chain.md) and [build.md](build.md).
+
+**Why:** STRIDE on a **single** API is insufficient when the **weakest** path is “malicious dependency” or “compromised pipeline.”
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -58,10 +68,12 @@ This file supplies the **structured pass** across boundaries; the others supply 
 | STRIDE over bespoke taxonomies | Widely taught, **compact**, and maps cleanly to common web/API/K8s failures. |
 | “Lite” | Full tooling (data-flow diagrams in dedicated TM suites) is optional; **table + diagram sketch** is enough for many teams. |
 | Principle, not estate | Threat thinking is **portable**; product-specific defensive patterns stay in tooling/estates. |
+| Supply chain in scope | **CI** and **dependencies** are trust boundaries, not afterthoughts. |
 
 ---
 
 ## References
 
 - STRIDE categories (Microsoft threat-modeling overview): https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats  
-- OWASP API Security Top 10 (control cross-check): https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+- OWASP API Security Top 10 (control cross-check): https://owasp.org/API-Security/editions/2023/en/0x11-t10/  
+- OWASP **Threat Dragon** (diagram-driven threat modeling): https://owasp.org/www-project-threat-dragon/  

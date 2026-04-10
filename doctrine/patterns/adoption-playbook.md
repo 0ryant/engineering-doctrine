@@ -43,7 +43,15 @@ Later phases often include supply-chain automation, broader platform readiness, 
 
 ---
 
-## 4. Migration Recipes (Short)
+## 4. Executive Narrative, ROI, And CI Migration
+
+- **Executives** care about **risk reduction** (incidents avoided, audit readiness), **lead time**, and **cost of delay**—tie doctrine pilots to [measurement-and-dora.md](../principles/measurement-and-dora.md) trends, not checkbox counts.
+- **ROI framing** — estimate **hours** saved from fewer rollbacks, faster onboarding, and **automated** dependency hygiene; keep ranges **honest** (order-of-magnitude beats false precision).
+- **Vendor migration** (for example Jenkins → GitHub Actions, TeamCity → GitLab) — treat as **surface-preserving** move: **re-host** the same **script entrypoints** from [build.md](../principles/build.md); avoid re-embedding logic in YAML during the switch.
+
+---
+
+## 5. Migration Recipes (Short)
 
 **Feature branches + long review queues** — shorten branch lifetime caps; enforce **small** PRs; optional pairing to clear backlog. Document **why** trunk reduces merge pain (collaboration principle).
 
@@ -55,7 +63,7 @@ Later phases often include supply-chain automation, broader platform readiness, 
 
 ---
 
-## 5. Team Size Heuristics
+## 6. Team Size Heuristics
 
 | Scale | Emphasis |
 | --- | --- |
@@ -65,7 +73,7 @@ Later phases often include supply-chain automation, broader platform readiness, 
 
 ---
 
-## 6. Measure Progress
+## 7. Measure Progress
 
 Use **outcome** metrics, not checkbox counts—see [measurement-and-dora.md](../principles/measurement-and-dora.md). Improvement in deployment frequency and stability **validates** the playbook; doctrine text alone does not.
 

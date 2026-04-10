@@ -34,6 +34,16 @@ Durable rules for **persisted state**: relational and document stores, object st
 
 ---
 
+## 4. Disaster Recovery, Multi-Region, And Failover Drills
+
+- **RTO / RPO** for **regional** loss (not only single-host restore) are **explicit** where the product promises continuity; document **warm** vs **cold** standby and **failover** triggers.
+- **Failover drills** or **game days** exercise DNS, replication lag cutoffs, and **write** path behaviour—tabletop alone is insufficient for tier-1 data paths.
+- **Backups** in §2 remain necessary but **not sufficient** for multi-region; replication **conflicts** and **split-brain** policies need written answers.
+
+**Why:** AWS, Google, and Azure well-architected guidance all treat **DR** as distinct from backup; regulators and enterprise customers increasingly ask for **demonstrated** failover, not slide decks.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -42,6 +52,7 @@ Durable rules for **persisted state**: relational and document stores, object st
 | Forward-only in prod | Keeps pipeline **simple** and history **auditable**; “reverse” is often a new migration. |
 | Batch backfills | Reduces lock contention and replica lag vs single massive updates. |
 | Explicit RPO/RTO | Aligns engineering with **business** risk; avoids generic “we have backups.” |
+| DR beyond single restore | **Regional** failure modes need **rehearsed** paths, not only backup jobs. |
 
 ---
 
@@ -51,3 +62,5 @@ Durable rules for **persisted state**: relational and document stores, object st
 - Pramod Sadalage & Scott Ambler, *Refactoring Databases* (evolutionary database design patterns) — canonical book treatment of incremental schema change.  
 - PostgreSQL and other vendors document **lock behaviour** and **concurrent** index/DDL options; always verify against your engine version.  
 - James Ross Jr., “Database Migrations in Production: Zero-Downtime Strategies” (overview of safe vs unsafe DDL and expand/contract): https://www.jamesrossjr.com/blog/database-migrations-guide  
+- Google Cloud — **Disaster recovery planning** (conceptual DR vs backup): https://cloud.google.com/architecture/dr-scenarios-planning-guide  
+- AWS — **Disaster Recovery** whitepapers and well-architected reliability pillar (use current AWS docs for your estate)  

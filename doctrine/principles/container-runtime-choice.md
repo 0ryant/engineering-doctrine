@@ -36,6 +36,15 @@ Durable rules for **where** containerised workloads run. The goal is **operation
 
 ---
 
+## 5. Edge, Windows, And Device Runtimes
+
+- **Edge / IoT** — constrained devices may use **lightweight** runtimes (for example **containerd**-class, **micro-VMs**, or **static** binaries) instead of full clusters; record **update**, **observability**, and **SBOM** expectations per fleet.
+- **Windows containers** — viable for **.NET** and Windows-only dependencies; image **size** and **patch** cadence differ from Linux—capture the **estate** choice in `tooling/estates/` when Windows Server / Azure Windows paths are in play.
+
+**Why:** The same **managed vs self-operated** trade applies at the **edge**; pretending every workload is Linux-on-Kubernetes creates **hidden** platform teams.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -43,6 +52,7 @@ Durable rules for **where** containerised workloads run. The goal is **operation
 | Managed-first **when fit** | Reduces **undifferentiated** ops and blast radius; not every team should be a mini-platform org. |
 | K8s when semantics require | Avoids **fighting** a managed layer with requirements it cannot satisfy. |
 | Catalogue in estate docs | Keeps principles **agnostic** while giving each org a **single** place for named products. |
+| Edge/Windows explicit | Avoids **silent** exclusion of non-Linux estates from doctrine. |
 
 ---
 
@@ -51,3 +61,4 @@ Durable rules for **where** containerised workloads run. The goal is **operation
 - **Kubernetes** — project overview (what “full cluster” implies): https://kubernetes.io/docs/concepts/overview/  
 - **KEDA** — event-driven autoscaling (often used **with** Kubernetes; some managed products embed similar patterns): https://keda.sh/  
 - Vendor **managed container** and **Kubernetes** offerings — use **your** cloud’s documentation for comparative tables; do not copy product picks into portable principles.  
+- Microsoft Learn — **Windows containers** overview (when evaluating Windows hosts): https://learn.microsoft.com/en-us/virtualization/windowscontainers/about/  

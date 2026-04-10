@@ -40,6 +40,24 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 
 ---
 
+## 5. Chaos Engineering And Game Days
+
+- **Inject** controlled faults (latency, error rates, dependency loss) in **non-prod** first, then **limited** prod experiments with **blast radius** caps and **abort** criteria.
+- **Game days** cross-functionally validate runbooks, dashboards, and **on-call** muscle memory—not only automated chaos.
+
+**Why:** *Chaos Engineering* (Netflix **Chaos Monkey** lineage) and Google SRE **disaster** testing culture both argue that **rehearsed** failure teaches more than optimistic architecture diagrams. See **Principles of Chaos Engineering**: https://principlesofchaos.org/
+
+---
+
+## 6. Toil And Operational Load
+
+- Track **toil** — repetitive, manual, interrupt-driven work that does not improve the system—and **budget** reduction alongside feature work.
+- **Post-incident** action items feed **DORA** change-failure and restore-time learning—see [measurement-and-dora.md](measurement-and-dora.md).
+
+**Why:** Google SRE book — **Eliminating Toil**: https://sre.google/sre-book/eliminating-toil/
+
+---
+
 ## Related
 
 - Organisation-level **delivery** metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)
@@ -62,3 +80,4 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 - Google SRE Workbook — **Error Budget Policy**: https://sre.google/workbook/error-budget-policy/  
 - Google SRE Workbook — **Implementing SLOs**: https://sre.google/workbook/implementing-slos/  
 - *Site Reliability Engineering* (O’Reilly, Google) — **Monitoring Distributed Systems** and **Eliminating Toil** (foundational context): https://sre.google/sre-book/table-of-contents/  
+- **Principles of Chaos Engineering** (community): https://principlesofchaos.org/  
