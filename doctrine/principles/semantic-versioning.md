@@ -66,17 +66,40 @@ Use **pre-release** labels (`1.0.0-alpha.1`, `1.0.0-rc.2`) when consumers need o
 
 **Channels:** If you publish **multiple** trains (for example `beta`, `rc`, `stable`), document **who** may consume each channel, **promotion** rules between channels, and whether **pinning** to pre-releases is supported for production.
 
-**HTTP API versioning (URL vs header):** There is **no** universal IETF rule—pick **one** approach per product and document it. Common patterns include **path** prefix (`/v1/...`), **`Accept`** header versioning (`Accept: application/vnd.example.v1+json`), or a **custom** header; **RFC 9110** defines `Accept` semantics. Breaking changes should align with **major** bumps for that API surface (or explicit sunset per §8).
+---
+
+## 6. HTTP API Versioning (Separate From Package SemVer)
+
+Public **HTTP APIs** often need a **product** version story that is **independent** of a **library** or **container** SemVer for the same repo (for example mobile app **3.2** vs API **v2**). Treat **API lifecycle** as its own **publishable surface** with explicit deprecation—this section complements §§2–4 for **packages**, not replace them.
+
+### 6.1 Pick One Primary Mechanism (Per API Product)
+
+| Mechanism | When it tends to fit | Trade-off |
+| --- | --- | --- |
+| **Path prefix** (`/v1/resource`) | Simple routing, visible in logs and browser | Routers and caches must carry version; long-lived URLs break if you version only in path without redirects |
+| **`Accept` header** (`application/vnd.example.v1+json`) | Cleaner **single** URL; aligns with **RFC 9110** content negotiation | Harder for humans to copy-paste; clients must set header consistently |
+| **Custom header** (`API-Version: 2024-01-01`) | Calendar or **contract-date** style APIs | Non-standard; document everywhere (SDKs, gateways) |
+
+**Rule:** pick **one** primary mechanism for **external** consumers; mixing without a **gateway** that normalises creates **two truths**.
+
+### 6.2 Breaking Change And Deprecation
+
+- **Breaking** HTTP changes (remove field, change semantics, tighten validation) require a **documented** migration: new path, new `Accept` type, or new header value—aligned with **§9** deprecation windows (often **6–12+ months** for public APIs with unknown integrators; shorter only with **contractual** notice or **private** APIs).
+- **OpenAPI** (or equivalent) is the **source of truth** for what “the API” means at each version; bump **API** version when **documented** compatibility promises change.
+
+### 6.3 Relation To SemVer For Artefacts
+
+A **service** may ship **container 2.3.1** while **API v1** is unchanged, or bump **API v2** while **patching** the binary—record **both** in release notes when they diverge.
 
 ---
 
-## 6. Relationship To Contracts
+## 7. Relationship To Contracts
 
 Version bumps align with **contract** changes tracked in schemas, OpenAPI, CLI compatibility docs, and migration guides. A breaking schema or API change for external consumers generally implies a **major** bump for that unit unless the breaking surface is explicitly out of scope (private API only—and that boundary must be documented).
 
 ---
 
-## 7. Release Hygiene
+## 8. Release Hygiene
 
 - **Single source of truth** for the version string in that unit’s manifest; derive everywhere else (see `ENGINEERING.md` distribution principles).
 - **Lockfiles and reproducible builds** updated when dependencies change as part of the release process.
@@ -85,7 +108,7 @@ Version bumps align with **contract** changes tracked in schemas, OpenAPI, CLI c
 
 ---
 
-## 8. Deprecation And Sunset
+## 9. Deprecation And Sunset
 
 - **Public** surfaces (API, CLI, event types, configuration keys) need a **documented** deprecation before removal: what is deprecated, **what** replaces it, and **until when** the old path remains available.
 - **Notice period** should match blast radius: short for low-adoption internals (with explicit “private” boundary); longer for widespread integrations.
@@ -106,6 +129,17 @@ Version bumps align with **contract** changes tracked in schemas, OpenAPI, CLI c
 | **Major** | Breaking changes, or `1.0.0` when the product’s compatibility story stabilises |
 
 When in doubt, **classify by consumer impact**, not by internal refactor size.
+
+---
+
+## Rationale And Decisions
+
+| Decision | Rationale |
+| --- | --- |
+| SemVer per publishable unit | Consumers **upgrade** on **risk** they understand—mixed version lines confuse pins. |
+| Separate HTTP API section | Teams search for **URL vs header** under **API** policy, not only **package** bumps. |
+| One primary version mechanism | Avoids **accidental** dual contracts at the edge. |
+| Deprecation before removal | Matches **trust** and regulatory expectations for external integrators. |
 
 ---
 

@@ -9,7 +9,7 @@ Durable rules for **persisted state**: relational and document stores, object st
 - **Forward-only migrations in production** — apply changes that **older running app versions** can still run against until they are fully replaced. Rolling deploys mean **N and N+1** coexist; the database must be valid for both during the overlap.
 - **Expand → migrate → contract** (also called **parallel change**): add new structure first; move writers/readers; backfill; then remove old paths. This is the standard answer to “zero-downtime” schema change without heroic single-step cutovers.
 - **Dangerous operations** (blocking locks, wide table rewrites, adding `NOT NULL` without a staged plan) are split into **multiple releases** with explicit checkpoints.
-- **Backfills** run in **batches** with bounded row counts and pauses so replication and OLTP traffic stay healthy.
+- **Backfills** run in **batches** with bounded row counts and pauses so replication and OLTP traffic stay healthy. **Typical starting defaults** (tune per engine and load): **1,000–50,000 rows** per batch for row-oriented OLTP, **50–500 ms** pause between batches, and **hard stop** (or halve batch size) if **replica lag** or **lock wait** exceeds team-defined thresholds—document your limits in the migration note.
 
 **Why:** Most migration incidents are **ordering and compatibility** failures, not SQL syntax. The expand/contract sequence matches how **continuous delivery** actually works. Industry practice is widely documented under parallel change and zero-downtime migration guides.
 
@@ -27,7 +27,7 @@ Durable rules for **persisted state**: relational and document stores, object st
 
 ## 3. Operational Safety
 
-- **Snapshots or PITR** before high-risk migrations where the platform supports it; document **rollback** as either a new forward migration or app rollback, not a fantasy “down migration” that drops data.
+- **Snapshots or PITR** (*point-in-time recovery*—see [glossary](../glossary.md)) before high-risk migrations where the platform supports it; document **rollback** as either a new forward migration or app rollback, not a fantasy “down migration” that drops data.
 - **Replica lag** and **lock duration** are part of the migration review for large tables.
 
 **Why:** Rollback stories that assume symmetric `up`/`down` SQL often **lose data** or break invariants; honest plans are easier to review.
@@ -36,7 +36,7 @@ Durable rules for **persisted state**: relational and document stores, object st
 
 ## 4. Disaster Recovery, Multi-Region, And Failover Drills
 
-- **RTO / RPO** for **regional** loss (not only single-host restore) are **explicit** where the product promises continuity; document **warm** vs **cold** standby and **failover** triggers.
+- **RTO / RPO** for **regional** loss (not only single-host restore) are **explicit** where the product promises continuity; document **warm** vs **cold** standby (see [glossary](../glossary.md)) and **failover** triggers.
 - **Failover drills** or **game days** exercise DNS, replication lag cutoffs, and **write** path behaviour—tabletop alone is insufficient for tier-1 data paths.
 - **Backups** in §2 remain necessary but **not sufficient** for multi-region; replication **conflicts** and **split-brain** policies need written answers.
 
@@ -51,6 +51,7 @@ Durable rules for **persisted state**: relational and document stores, object st
 | Prefer expand/contract over big-bang DDL | Matches **rolling deploys** and reduces blast radius; one step = one reviewable risk. |
 | Forward-only in prod | Keeps pipeline **simple** and history **auditable**; “reverse” is often a new migration. |
 | Batch backfills | Reduces lock contention and replica lag vs single massive updates. |
+| Default batch / pause ranges | Gives operators a **first** knob to tune instead of inventing sizes from zero. |
 | Explicit RPO/RTO | Aligns engineering with **business** risk; avoids generic “we have backups.” |
 | DR beyond single restore | **Regional** failure modes need **rehearsed** paths, not only backup jobs. |
 

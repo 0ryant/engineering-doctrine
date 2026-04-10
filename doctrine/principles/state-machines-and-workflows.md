@@ -45,11 +45,28 @@ End-to-end **illustration** (order lifecycle + JetStream): [../patterns/example-
 
 ## 5. Sagas, Compensation, Timeouts, And Human Steps
 
-- **Saga** (or **process manager**) — for **long-running** flows spanning services, name **compensating** actions (or **forward** recovery) for each step; document **partial completion** behaviour when a downstream step fails.
-- **Timeouts** — every **wait** state needs a **maximum** dwell time and a **defined** transition (retry, escalate, cancel); avoid **indefinite** “pending” without operators.
-- **Human-in-the-loop** — approvals and manual fixes are **first-class** transitions with **audit** evidence and **idempotent** application when the same approval is **re-posted**.
+Requirements are **tiered** so teams can adopt **timeouts** before full **saga** documentation, etc.
 
-**Why:** *Enterprise Integration Patterns* and **saga** literature exist because **distributed** transactions are not **ACID** across brokers—explicit **compensation** beats silent inconsistency.
+### 5.1 Saga And Compensation (Multi-Service Flows)
+
+- **Must** for **any** workflow that spans **multiple** transactional boundaries with **partial failure**: document **forward** recovery and/or **compensating** actions per step, and behaviour when a downstream step **fails** after earlier steps **committed**.
+- **N/A** for **single-service** transactions with ordinary **ACID** semantics—do not force saga notation where there is no **distributed** commit problem.
+
+**Why:** *Enterprise Integration Patterns* and **saga** literature exist because **distributed** systems lack one global **ACID** transaction.
+
+### 5.2 Timeouts And Wait States
+
+- **Must:** every **wait** state has a **maximum** dwell time and a **defined** next state (retry with cap, **escalate** to human, **cancel**, or **dead-letter**).
+- **Should:** publish **metrics** on dwell time so stuck workflows surface before users open tickets.
+
+**Why:** Indefinite **pending** is a **reliability** and **support** sink.
+
+### 5.3 Human-In-The-Loop
+
+- **Must** when humans **approve** or **remediate**: transitions are **audited** (who/when/what); **re-posted** approvals remain **idempotent** (same decision token does not **double** effect).
+- **Should:** tool-assisted **queues** for work items rather than ad-hoc email-only flows.
+
+**Why:** Manual steps without **audit** and **idempotency** fail under **replay** and compliance review.
 
 ---
 
@@ -69,6 +86,8 @@ End-to-end **illustration** (order lifecycle + JetStream): [../patterns/example-
 | Principle, not a pattern only | Behavioural contracts are **as durable** as payload schemas; they belong beside **event-contracts**. |
 | Transport-agnostic | JetStream, Kafka, and SaaS buses all need the same **transition + dedup** discipline. |
 | Sagas explicit | **Long-running** flows need **compensation** / timeout semantics—not pretend two-phase commit across HTTP. |
+| Timeouts mandatory | **Wait** states without caps become **silent** incidents. |
+| Human steps audited | **Replay**-safe approvals satisfy **compliance** and idempotency. |
 
 ---
 

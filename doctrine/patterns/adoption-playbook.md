@@ -79,6 +79,20 @@ Use **outcome** metrics, not checkbox counts—see [measurement-and-dora.md](../
 
 ---
 
+## 8. Troubleshooting Common Blockers
+
+| Blocker | Pragmatic path |
+| --- | --- |
+| **“We can’t do trunk—no feature-flag product yet”** | Use **config** or **remote kill** switches (even env-based) for **dangerous** paths; ship **dark** (no UI entry) behind **auth**; shorten branch lifetime anyway—flags are **not** prerequisite for **small** batches. |
+| **“Quality gate too slow locally”** | Split **pre-push** (fast) vs **pre-merge** (full); **cache** deps; run **full** gate on CI always—see [build.md](../principles/build.md). |
+| **“Can’t enforce contracts—no schema yet”** | Start with **one** JSON Schema + examples for **one** endpoint or event **type**; validate in **one** CI job—expand outward ([event-contracts.md](../principles/event-contracts.md)). |
+| **“Legacy monolith blocks everything”** | Draw a **strangler** boundary: new code + contracts on **new** modules; **characterisation** tests on touch points; MVP does not require **rewriting** the monolith. |
+| **“Security scans flood false positives”** | Tune **severity** thresholds, **suppress** with **ticket** and **expiry**, fix **true** positives first—do not disable scanning org-wide ([dependencies-supply-chain.md](../principles/dependencies-supply-chain.md)). |
+| **“Ops won’t give us staging parity”** | Document **gap** explicitly; add **smoke** + **canary** on prod with **fast** rollback; narrow **SLO** to what you can **measure**. |
+| **“Leadership wants a date, not doctrine”** | Tie MVP to **DORA**-visible outcomes (fewer rollbacks, faster patches); use [tldr-principles-and-mvp.md](../tldr-principles-and-mvp.md) for **one** screen of **why**. |
+
+---
+
 ## References
 
 - DORA / *Accelerate* — organisational performance correlates with technical practices: https://dora.dev/  

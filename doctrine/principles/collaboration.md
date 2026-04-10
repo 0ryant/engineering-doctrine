@@ -31,7 +31,8 @@ Related build and release rules live in [build.md](build.md) and [../patterns/tr
 ## 3. Pull Requests: Small, Reviewable, Complete
 
 - **Prefer small PRs** — easier to review, easier to revert, easier to bisect. Large changes need a design note or RFC first.
-- **One concern per PR** — mixing refactors with behaviour changes makes review and rollback harder; split when practical.
+- **Team default size (concrete):** aim for **under ~400 lines** changed (insertions + deletions) **or** **under ~20 files** touched per PR—whichever bound bites first. Exceeding either should be **rare** and justified (mechanical rename, generated code, emergency fix). **Generated** or **vendor** blobs: use **file-count** and **human-written** diff limits instead of raw line count—document the rule per repo.
+- **One concern per PR** — reviewers can summarise the change in **one sentence** (one user-visible story, one contract change, or one pure refactor with **no** behaviour change and tests proving equivalence). Mixing refactors with behaviour changes makes review and rollback harder; split when practical.
 - **Description answers** what, why, and how to verify. Link tickets or decision records when they exist.
 - **Draft until ready** — do not request review on WIP unless explicitly seeking early direction.
 - **Review for correctness, contracts, and operability** — schemas, migrations, feature flags, and rollout risk are first-class review topics.
@@ -116,3 +117,23 @@ Related build and release rules live in [build.md](build.md) and [../patterns/tr
 - **Release train optional** — regular release cadence helps teams coordinate; trunk still integrates continuously.
 
 When these principles conflict with a deadline, **narrow scope** or **add safety** (flags, canaries, rollback). Do not permanently lower the bar without recording the debt and plan to recover.
+
+---
+
+## Rationale And Decisions
+
+| Decision | Rationale |
+| --- | --- |
+| Trunk as default | Minimises **integration** risk and keeps `main` deployable. |
+| Concrete PR bounds | “Small” is subjective; **numeric defaults** reduce argument and review fatigue. |
+| One-sentence concern | Makes **bisect** and **rollback** predictable. |
+| Merge queue at scale | Fixes **last-green** races without hiding flaky tests. |
+| Async decisions in repo | Chat scrollback is not a **system of record**. |
+
+---
+
+## References
+
+- Google SRE Book — **Being On-Call**: https://sre.google/sre-book/being-on-call/  
+- [measurement-and-dora.md](measurement-and-dora.md) — delivery metrics and review latency  
+- [build.md](build.md), [patterns/trunk-workflow.md](../patterns/trunk-workflow.md), [tooling/collaboration.md](../tooling/collaboration.md)  

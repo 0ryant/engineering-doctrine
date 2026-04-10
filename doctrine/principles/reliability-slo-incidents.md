@@ -6,7 +6,7 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 
 ## 1. Service Level Objectives (SLOs)
 
-- Define **a small number** of SLOs tied to **user-visible** journeys (availability, latency, success rate of critical operations).
+- Define **a focused set** of SLOs tied to **user-visible** journeys (availability, latency, success rate of critical operations). **Typical default:** **3–5** SLOs **per service** (or per **clearly bounded** user-facing product); fewer is better than many. Add **only** when a journey is **independently** owned, **measured**, and **actionable**—not one metric per dashboard tile.
 - SLOs are **agreed** between engineering, product, and stakeholders; they are not secretly chosen for easy green dashboards.
 
 **Why:** Google’s SRE books position SLOs as the **translation layer** between user happiness and measurable metrics. Too many SLOs dilute focus; unrealistic SLOs burn teams without improving trust.
@@ -69,7 +69,7 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 | Decision | Rationale |
 | --- | --- |
 | Tie policy to budget state | Makes reliability **actionable**—not just dashboards. |
-| Few user-centric SLOs | Focuses investment on **what users feel**. |
+| ~3–5 SLOs per service (typical) | Enough to cover **critical** journeys without **diluting** focus or error-budget debate. |
 | Documented exceptions | Security and existential risk cannot wait for budget recovery—**process** replaces panic. |
 | Blameless culture | Improves **signal quality** in postmortems; fear hides defects. |
 

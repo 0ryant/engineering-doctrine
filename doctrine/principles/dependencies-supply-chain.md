@@ -16,9 +16,16 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 ## 2. Update Cadence And Automation
 
 - **Automate** update PRs with human review; do not rely on **ad-hoc** `npm update` before releases only.
-- **Security patches** merge on an **SLA** appropriate to severity.
+- **Security patches** merge on an **SLA** appropriate to severity. **Example organisational defaults** (adjust per sector and policy—publish yours in an estate or security doc):
 
-**Why:** Outdated dependencies are a **known** attack surface; automation reduces toil and inconsistency across repos.
+| Severity (typical CVSS-aligned) | Target time to **patched release** or **approved compensating control** |
+| --- | --- |
+| **Critical** (e.g. network RCE, trivial auth bypass, wormable) | **24 hours** |
+| **High** | **7 calendar days** |
+| **Medium** | **30 calendar days** or next **scheduled** maintenance window (whichever is sooner) |
+| **Low** | Next **regular** dependency cadence (e.g. weekly/biweekly bot merge) |
+
+**Why:** Outdated dependencies are a **known** attack surface; automation reduces toil and inconsistency across repos. **Named SLAs** prevent “we’ll get to it” drift without pretending every CVE is equal.
 
 ---
 
@@ -57,6 +64,7 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 | SBOM where shipping | Makes incidents and audits **factual** (“what was in build X?”). |
 | Explicit licence policy | Prevents **surprise** copyleft or attribution gaps in releases. |
 | Provenance when required | **Attestations** answer “was this binary built from **this** source?” faster than manual forensics. |
+| Published patch SLAs | Makes **RV** (respond) work **measurable**; aligns with SSDF-style expectations. |
 
 ---
 

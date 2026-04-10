@@ -6,7 +6,7 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-04-10 01:52 UTC
+Generated: 2026-04-10 02:11 UTC
 
 ## All Markdown files
 
