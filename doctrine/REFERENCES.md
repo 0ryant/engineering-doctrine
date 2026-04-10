@@ -225,6 +225,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [../ENGINEERING.md](../ENGINEERING.md) | Headline principles index (repo root) |
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
+| [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md) | Domain-by-domain scorecard vs 11 mainstream frameworks (Google SRE, DORA, AWS WAF, NIST, etc.) |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
 | [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) | AI/ML ops, governance, RAG, Azure AI Landing Zone — external sources + doctrine map |
