@@ -61,6 +61,18 @@ Change this document only when the operating model for cross-service events chan
 
 ---
 
+## Rationale And Decisions
+
+| Decision | Rationale |
+| --- | --- |
+| CloudEvents envelope | One **interop** shape across HTTP, Kafka, NATS, grids—reduces bespoke headers. |
+| Versioned `type` + payload schema | Reviewers can trace **contract** ↔ consumer without spelunking code. |
+| Fail closed on violations | Silent schema drift becomes **production** incidents. |
+| Webhooks as untrusted ingress | Same **authz** and **abuse** discipline as public APIs—see webhook pattern. |
+| Ops in patterns | DLQ/replay are **operational** contracts, not only payload shape. |
+
+---
+
 ## References
 
 - CloudEvents specification: https://github.com/cloudevents/spec  

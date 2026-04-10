@@ -15,7 +15,7 @@ Durable rules for **non-functional requirements**: latency budgets, **load valid
 
 ## 2. Load And Capacity
 
-- **Load tests** run before major launches or **order-of-magnitude** traffic changes; scenarios reflect **realistic** mixes (not only peak RPS).
+- **Load tests** run before major launches or **order-of-magnitude** traffic changes; scenarios reflect **realistic** mixes (not only peak RPS). **Define “realistic” concretely:** (1) **Weight** scenarios by **recent production** traffic (for example last **30–90 days**)—top endpoints or jobs by **volume**, **error rate**, and **latency** contribution; (2) include **at least one** **stress** case at **expected peak × multiplier** (for example launch **2×** forecast) to find **non-linear** limits; (3) document **assumptions** when production data is unavailable (greenfield)—use product analytics or **synthetic** personas and revisit after first real traffic.
 - **Capacity** plans connect traffic forecasts to **autoscaling** limits, quotas, and **database** headroom.
 
 **Why:** Synthetic tests miss reality, but **no** load testing misses obvious bottlenecks before they hit production.
@@ -48,6 +48,7 @@ Durable rules for **non-functional requirements**: latency budgets, **load valid
 | --- | --- |
 | Budgets on critical paths only | Avoids bureaucracy on low-impact surfaces while protecting **user trust**. |
 | Load test major changes | Cheaper than **firefighting** at launch. |
+| Telemetry-weighted scenarios | Stops load tests from optimising **imaginary** traffic shapes. |
 | Tagging + anomaly alerts | Makes cost **actionable**; untagged spend is not attributable. |
 | Carbon as NFR where required | Avoids **greenwashing**—tie claims to **provider** data and **bounded** SCI-style metrics when reporting. |
 

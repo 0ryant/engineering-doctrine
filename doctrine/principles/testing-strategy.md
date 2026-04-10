@@ -4,13 +4,21 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 
 ---
 
-## 1. Test Pyramid (Rough Guide)
+## 1. Test Pyramid (Default Shape)
 
 - **Many narrow, fast tests** — unit or small-scope tests that exercise logic with minimal I/O.
 - **Some medium tests** — integration across a **few** real components (e.g. service + DB + fake external APIs).
 - **Few full-system end-to-end tests** — slow, brittle, expensive; reserve for **critical journeys** and regressions that smaller tests cannot catch.
 
-**Why:** Google’s *Software Engineering at Google* (Chapter 11) documents rough targets (~80% / 15% / 5%) and explains why **E2E-heavy** suites become slow and flaky. The **hourglass** anti-pattern (many unit + many E2E, few integration tests) hides integration bugs until late.
+**Default portfolio targets** (for typical service repos with an HTTP or RPC API—**adjust** with a short ADR or team guide if you differ):
+
+| Layer | Default share of tests (by **count**, rough) | Purpose |
+| --- | --- | --- |
+| **Fast** (unit / small) | **~70–85%** | Logic, edge cases, fast feedback |
+| **Medium** (integration / contract) | **~10–25%** | Real wiring, schemas, DB semantics |
+| **E2E** | **~1–5%** | Critical user or **money** paths only |
+
+**Why:** *Software Engineering at Google* (Chapter 11) documents similar **order-of-magnitude** splits and explains why **E2E-heavy** suites become slow and flaky. The **hourglass** anti-pattern (many unit + many E2E, few integration tests) hides integration bugs until late. These numbers are a **starting bias**, not a religion—**violate** them deliberately, not by accident.
 
 ---
 
@@ -59,6 +67,7 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 | Contract tests at boundaries | Matches **contracts-first** engineering and reduces distributed surprises. |
 | Zero tolerance for unowned flakiness | Protects **merge discipline** and signal quality. |
 | Mutation/property optional | Raises **assertion quality** on parsers, codecs, and money paths where **coverage** alone lies. |
+| Default pyramid percentages | Gives teams a **concrete** starting point; deviations require **explicit** rationale. |
 
 ---
 

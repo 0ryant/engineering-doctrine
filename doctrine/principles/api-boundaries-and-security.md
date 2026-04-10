@@ -42,9 +42,16 @@ Durable rules for **externally exposed** HTTP and RPC surfaces: predictable beha
 
 ## 5. GraphQL And Complex Queries
 
-- If GraphQL (or similar) is exposed, enforce **depth/complexity limits**, **timeouts**, and **query cost** controls.
+If GraphQL (or similar) is exposed, treat **query planning** as part of the **security** and **capacity** boundary—not only a feature.
 
-**Why:** OWASP API4 discusses **query complexity** and batching attacks.
+- **Depth limit** — cap **maximum field nesting** (typical starting range **5–10** levels; **lower** for public internet). Reject deeper queries with a **stable** error code.
+- **Complexity / cost score** — assign **weights** to fields (especially lists, unions, and expensive resolvers); reject queries above a **server-wide** budget per request (tune from baseline: e.g. **1000–5000** arbitrary cost units for **read** APIs—**measure** and adjust). Prefer **per-client** or **per-user** budgets for **multi-tenant** APIs.
+- **Pagination** — list fields return **cursor** or **offset** pages with **max page size**; **no** unbounded `users { ... }` without limits.
+- **Batching / DataLoader** — use deliberate **N+1** controls; **timeouts** on the whole request (e.g. **2–30 s** at the gateway depending on product) and **per-field** timeouts where the runtime supports them.
+- **Introspection** — **disable** or **restrict** in production for **public** APIs unless you accept **schema** disclosure risk.
+- **Authz** — resolvers enforce **object-level** checks; **global** middleware is not enough (BOLA applies **per** node).
+
+**Why:** OWASP **API4** and the **GraphQL cheat sheet** describe **complexity** and **batching** abuse; without numeric guardrails, one query can **DoS** the service.
 
 ---
 
@@ -75,6 +82,7 @@ Durable rules for **externally exposed** HTTP and RPC surfaces: predictable beha
 | Limits everywhere by default | **Fail closed** on size, time, and rate — matches security baseline in `ENGINEERING.md`. |
 | Object-level auth | Prevents **IDOR**-class bugs that auth tokens alone cannot fix. |
 | CSP + CORS explicit | Reduces **XSS** and **origin** confusion on browser clients. |
+| GraphQL numeric guardrails | **Depth/cost** limits make abuse **testable**; introspection policy is explicit. |
 
 ---
 

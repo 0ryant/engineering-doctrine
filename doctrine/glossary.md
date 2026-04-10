@@ -132,6 +132,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **PII** — *Personally identifiable information*; minimise, segregate from analytics, define retention. See [privacy-and-data-governance.md](principles/privacy-and-data-governance.md).
 
+**PITR** — *Point-in-time recovery*: restore a database (or object store with equivalent semantics) to a **specific timestamp** using **continuous** backups / WAL / logs—not only a **snapshot** from last night. See [data-and-migrations.md](principles/data-and-migrations.md).
+
 **Principle** — In this repo: **durable intent** under `principles/`—**not** tied to one vendor SKU. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
 **Problem Details** — `application/problem+json` (RFC 9457) for **machine-readable** HTTP errors. See [errors-and-failure-modes.md](principles/errors-and-failure-modes.md), [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
@@ -207,6 +209,10 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ---
 
 ## W
+
+**Warm standby** — DR site (or region) where **infrastructure** and often **replicated data** are **ready** for a **short** failover (lower **RTO** than cold; **higher** ongoing cost). See [data-and-migrations.md](principles/data-and-migrations.md) §4.
+
+**Cold standby** — DR capacity **exists** but is **not** continuously running serving traffic—**longer RTO**, **lower** ongoing cost until failover work completes. See [data-and-migrations.md](principles/data-and-migrations.md) §4.
 
 **Webhook** — HTTP **callback** from a provider; verify signatures, bound replay windows, **idempotent** handlers. See [webhook-ingress-security.md](patterns/webhook-ingress-security.md).
 

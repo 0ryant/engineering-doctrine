@@ -46,11 +46,26 @@ Deployment details (Kubernetes collectors vs **managed** platform ingestion) liv
 
 ## 5. SLIs, Profiling, And Optional Deep Runtime Signals
 
-- **SLIs** — define **quantitative** indicators for each **SLO** (for example **availability** as successful requests / total, **latency** as measured at the **user** or **edge**); keep SLI definitions **stable** so error budgets stay meaningful—see [reliability-slo-incidents.md](reliability-slo-incidents.md).
-- **Profiling** — use **CPU** / **heap** profilers and **continuous profiling** products **when** latency or cost regressions are unexplained by metrics alone; run representative **load** before drawing conclusions.
-- **eBPF** — optional **kernel-level** visibility for **Linux** estates; treat as **advanced** tooling with clear **ownership** and **safety** review (overhead, PII in probes).
+Tiers separate **mandatory** SLO plumbing from **optional** deep diagnostics.
 
-**Why:** Metrics show **that** something is wrong; profiles show **where** hot code paths hide; SLIs tie both to **commitments** users care about.
+### 5.1 SLIs (Required When SLOs Exist)
+
+- **Must** when the service has **SLOs**: each SLO has **one or more** **SLIs** with a **written** definition (numerator, denominator, window, and **where** measured—edge vs service). Keep definitions **stable** across quarters unless the SLO itself changes—see [reliability-slo-incidents.md](reliability-slo-incidents.md).
+
+**Why:** Error budgets are meaningless if the **SLI formula** drifts silently.
+
+### 5.2 Profiling (When Metrics Are Insufficient)
+
+- **Should** when latency or CPU **regressions** are unexplained after checking **SLOs**, **deploys**, and **dependency** changes: run **CPU** / **heap** profiles under **representative** load (see [performance-and-cost.md](performance-and-cost.md)).
+- **Optional** as a **continuous** product in mature estates—not a day-one gate for every service.
+
+**Why:** Profiles locate **hot paths** metrics aggregate away.
+
+### 5.3 eBPF And Kernel-Level Probes (Advanced)
+
+- **Optional** for **Linux** estates with **platform** support: use only with **documented** owners, **overhead** limits, and **PII** review on captured data.
+
+**Why:** Power without **governance** risks **privacy** and **stability** incidents.
 
 ---
 
@@ -63,6 +78,7 @@ Deployment details (Kubernetes collectors vs **managed** platform ingestion) liv
 | Strict metric cardinality discipline | Protects **cost** and **query performance** at scale. |
 | Symptom-based paging | Aligns with SRE practice: humans fix what **users** experience. |
 | SLI doc stays with SLO doc | Avoids **duplicate** definitions that drift between teams. |
+| Tiered §5 | **SLIs** are mandatory with SLOs; profiling/eBPF stay **optional** power tools. |
 
 ---
 

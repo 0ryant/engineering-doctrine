@@ -92,10 +92,23 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 
 ## 14. Hermetic Builds And Provenance (SLSA)
 
-- **Hermetic** builds minimise **undeclared** inputs: lockfiles, pinned toolchains, and **reproducible** steps so the same commit yields the same artefact (modulo documented nondeterminism).
+- **Hermetic** builds minimise **undeclared** inputs: lockfiles, pinned toolchains, and **reproducible** steps so the same commit yields the same artefact (modulo documented nondeterminism). Term: [glossary.md](../glossary.md) (*Hermetic build*).
 - **Provenance attestations** (for example **SLSA** supply-chain levels) document **who** built **what** from **which** sources; adopt when regulators or customers expect **tamper-evident** delivery.
 
 **Why:** Executive Order **14028** and sector norms pushed **SBOM** and **provenance**; **SLSA** frames progressive hardening: https://slsa.dev/
+
+---
+
+## Rationale And Decisions
+
+| Decision | Rationale |
+| --- | --- |
+| Explicit surfaces | Hidden pipelines **surprise** reviewers and auditors. |
+| CI orchestrates, scripts implement | Keeps **logic** versioned and **testable**; YAML stays thin. |
+| Local mirrors CI | **Reproducible** failures; faster feedback before push. |
+| Promote same artefact | Avoids “staging passed, prod is a different build” incidents. |
+| Security gates on delivery graph | Scans must match **what ships**, including sibling checkouts. |
+| Hermetic + provenance when required | Meets **supply-chain** and customer evidence expectations—see [glossary.md](../glossary.md) (*Hermetic build*). |
 
 ---
 

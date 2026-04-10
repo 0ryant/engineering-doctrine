@@ -41,7 +41,7 @@ Portable **engineering intent** split from **replaceable tooling**: principles s
 
 **Team one-pager:** copy [`tooling/estates/minimum-viable-doctrine.template.md`](tooling/estates/minimum-viable-doctrine.template.md) to your estate folder and fill **5–7** rows with **your** pain and links—do not paste the whole tree.
 
-**Phased adoption narrative:** [`patterns/adoption-playbook.md`](patterns/adoption-playbook.md). **Outcome metrics (optional early, valuable soon):** [`principles/measurement-and-dora.md`](principles/measurement-and-dora.md).
+**Phased adoption narrative:** [`patterns/adoption-playbook.md`](patterns/adoption-playbook.md) (including **§8 troubleshooting** for common blockers). **Outcome metrics (optional early, valuable soon):** [`principles/measurement-and-dora.md`](principles/measurement-and-dora.md).
 
 ---
 

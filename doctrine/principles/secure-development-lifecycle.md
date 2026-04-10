@@ -2,6 +2,17 @@
 
 Durable rules for **building** software with fewer defects and **responding** when defects ship. Bridges umbrella **Shift Security Left** to **organisational** practice. Maps conceptually to NIST **SSDF** practice groups **Prepare (PO)**, **Protect (PS)**, **Produce (PW)**, and **Respond (RV)**—see [NIST SP 800-218](https://csrc.nist.gov/publications/detail/sp/800-218/final).
 
+### SSDF Practice Groups (Inline Summary)
+
+| Group | NIST intent (compressed) | Where this library goes deeper |
+| --- | --- | --- |
+| **PO — Prepare** | People, process, org risk, supply-chain **awareness** | §4 training; [dependencies-supply-chain.md](dependencies-supply-chain.md); [timeless-principles-and-tooling.md](timeless-principles-and-tooling.md) §6 |
+| **PS — Protect** | Harden **environments**, tools, and pipelines against tampering | [build.md](build.md), [configuration-and-secrets.md](configuration-and-secrets.md), CI least privilege |
+| **PW — Produce** | Secure **design**, code review, reuse, third-party use | §§1–2; [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md); [testing-strategy.md](testing-strategy.md) |
+| **RV — Respond** | **Identify**, **analyze**, **disclose** vulnerabilities in **released** software | §3; [dependencies-supply-chain.md](dependencies-supply-chain.md) §5; coordinated disclosure refs |
+
+Full control text remains **NIST’s** publication—this table is a **navigation aid**, not a substitute for SP 800-218.
+
 ---
 
 ## 1. Design And Review
@@ -24,7 +35,7 @@ Durable rules for **building** software with fewer defects and **responding** wh
 
 ## 3. Vulnerability Response (RV)
 
-- **Ingest** advisories (ecosystem, SCA, researcher reports) with **severity** and **SLA** to patch or mitigate.
+- **Ingest** advisories (ecosystem, SCA, researcher reports) with **severity** and **SLA** to patch or mitigate—**example** merge targets live in [dependencies-supply-chain.md](dependencies-supply-chain.md) §2; align estate policy to one table.
 - **Coordinated disclosure** — protect users: prepare **fixes** or **mitigations** before public detail when possible; credit researchers per policy.
 - **Customer** and **operator** comms for exploitable issues in shipped software—template comms in runbooks.
 
@@ -46,6 +57,7 @@ Durable rules for **building** software with fewer defects and **responding** wh
 | --- | --- |
 | SSDF vocabulary | Gives **acquirers** and **GRC** a mapping without pasting full control catalogues. |
 | RV explicit | Distinguishes **engineering** quality from **incident** and **disclosure** process. |
+| Inline SSDF table | Readers need a **map** before reading NIST PDF cover-to-cover. |
 
 ---
 
