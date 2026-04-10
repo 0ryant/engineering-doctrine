@@ -61,6 +61,12 @@ Full control text remains **NIST’s** publication—this table is a **navigatio
 
 ---
 
+## Related
+
+- Generative AI, RAG, fine-tuning, and **agentic** change paths in the SDLC: [ai-ml-systems.md](ai-ml-systems.md) (with **SP 800-218A** context for model-development practices).
+
+---
+
 ## References
 
 - NIST **SP 800-218**, *Secure Software Development Framework* (SSDF) v1.1: https://csrc.nist.gov/publications/detail/sp/800-218/final  

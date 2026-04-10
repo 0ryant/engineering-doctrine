@@ -107,7 +107,7 @@ Sections **1, 13, 14, 18** have strong mirrors in `doctrine/principles/` and pat
 | --- | --- | --- |
 | **NIST SSDF** | PO/PS/PW/RV full SDLC | You cover **many** PW/PS tasks via build, deps, secrets; **light** on formal PO (training, roles) and **RV** (coordinated disclosure, customer comms) |
 | **Internal Developer Platform** | Golden paths, service catalog, self-service infra | **Not present**—would be `tooling/estates/` or separate “platform doctrine” |
-| **AI / ML systems** | Model cards, eval gates, data lineage, SP 800-218A | **Absent** except privacy brush |
+| **AI / ML systems** | Model cards, eval gates, data lineage, SP 800-218A | **Portable coverage** — [principles/ai-ml-systems.md](../principles/ai-ml-systems.md), [patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md), vector tooling illustration, `evolution/research-*.md`; **estate** ADRs for model cards and hyperscaler IaC remain org-specific |
 | **Compliance regimes** | SOC2, ISO 27001 control mapping | **Absent** (by design for portability) |
 | **Chaos engineering** | Gremlin / custom fault injection | **Absent** in reliability principle |
 | **Sustainability / Green Software** | SCI, carbon aware | **Absent** in performance-and-cost |
@@ -137,7 +137,7 @@ Sections **1, 13, 14, 18** have strong mirrors in `doctrine/principles/` and pat
 ### Won’t (unless scope changes)
 
 - Full **SOC2** control mapping.
-- **ML/AI** development doctrine (use NIST 800-218A as external profile).
+- **Vendor-specific** ML platform runbooks, **model-card** templates, and **hyperscaler** landing-zone IaC as **portable** files in this library (use [principles/ai-ml-systems.md](../principles/ai-ml-systems.md) + **NIST SP 800-218A** + **estate** supplements).
 - **Enterprise portal** / IDP product doctrine.
 
 ---
@@ -166,3 +166,17 @@ Most **Should** / **Could** items from §8 and the per-file gaps in §§2–5 ha
 **Still Won’t (unless scope changes):** full SOC2/ISO control mapping, enterprise IDP product doctrine, filled AWS/GCP estate stubs—unchanged from §8 **Won’t**.
 
 **Optional next pass:** refresh `honest-review-synthesis.md` after a human read of the expanded tree; validate external URLs on a schedule (especially OWASP community pages).
+
+---
+
+## 11. Residual 9.5+ Items (Status)
+
+| Gap | Status |
+| --- | --- |
+| Second worked example (saga or HTTP API lifecycle) | **Done** — `patterns/example-saga-payment-workflow.md` (HTTP API lifecycle remains a **Could** if teams want OpenAPI-only fiction later). |
+| Kafka tooling parity with NATS | **Done** — expanded `tooling/kafka-and-cloudevents.md` (companion links, core concepts table, naming hygiene, references). |
+| OWASP API Top 10 explicit enumeration | **Done** — table + §§8–9 in `principles/api-boundaries-and-security.md` with official links. |
+| Chaos / game day dedicated pattern | **Done** — `patterns/chaos-engineering-and-game-days.md`; linked from reliability principle and platform checklist. |
+| Numeric “small PR” surfacing | **Done** — `collaboration.md` §3 (already), plus `trunk-workflow.md` and `tldr-principles-and-mvp.md` explicit pointers. |
+| Reading time estimates on paths | **Done** — `patterns/how-to-read-this-doctrine.md` (table + worked-example timings). |
+| **AI/ML systems in portable doctrine** (historical gap: “full ML dev doctrine”) | **Done** — [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) (§§6–7 eval, retrieval, MCP), [../tooling/ai-assisted-development.md](../tooling/ai-assisted-development.md), [../tooling/vector-retrieval-and-embedding-illustration.md](../tooling/vector-retrieval-and-embedding-illustration.md); **research**: [research-ai-ml-ops-landscape-2026-04.md](research-ai-ml-ops-landscape-2026-04.md), [research-internal-ai-knowledge-factory-governance-2026-04.md](research-internal-ai-knowledge-factory-governance-2026-04.md), [research-enterprise-rag-agents-indexing-2026-04.md](research-enterprise-rag-agents-indexing-2026-04.md); [glossary.md](../glossary.md) (**GenAIOps**, retrieval terms). **Not duplicated here:** model **cards**, hyperscaler **landing zone** IaC (estate ADRs); optional `patterns/agent-assisted-change-governance.md`; training-data rules in [privacy-and-data-governance.md](../principles/privacy-and-data-governance.md) §5.3. External SDLC profile: **NIST SP 800-218A** where adopted. |

@@ -60,7 +60,8 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 
 ## Related
 
-- Organisation-level **delivery** metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)
+- Organisation-level **delivery** metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)  
+- **Chaos experiments and game days** (pattern) — [../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md)
 
 ---
 

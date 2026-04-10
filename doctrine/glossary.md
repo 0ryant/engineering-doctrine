@@ -12,6 +12,14 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
+**Agentic workflow** — An LLM **plans** and invokes **tools** (HTTP, CLI, browser, etc.) in **iterative** steps; treat like a new **client** at trust boundaries (SSRF, cost, audit). See [ai-ml-systems.md](principles/ai-ml-systems.md) §§2–4, §7, [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §7.
+
+**AI RMF (NIST)** — *Artificial Intelligence Risk Management Framework* (NIST AI 100-1): **Govern, Map, Measure, Manage**—**Govern** is cross-cutting. **Generative AI** companion: **NIST AI 600-1**. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2.
+
+**AILZ / Azure AI Landing Zone** — Microsoft’s **reference application landing zone** for AI workloads on Azure (e.g. **Foundry** and/or **APIM** as AI gateway); **preview**-style, **estate**-level mapping—not portable law. See [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) §2.
+
+**ANN** — *Approximate nearest neighbour*: index structures (e.g. **HNSW**, **IVF** families) that trade **recall** vs **latency** vs **memory** for embedding search. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §3.
+
 **Artefact / artifact** — Versioned output of a build (binary, image, package, chart). This library often uses **artefact** (British spelling); tools and US docs may say **artifact**. See [build.md](principles/build.md).
 
 **At-least-once delivery** — A message or request may arrive **more than once**; handlers must be **idempotent** or **dedupe** explicitly. See [event-contracts.md](principles/event-contracts.md), [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md).
@@ -26,6 +34,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **BOLA / BOPLA** — *Broken object (and property) level authorisation*: access control bugs where callers reach others’ objects or fields. Top theme in OWASP API Top 10. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
+**BM25** — *Best Matching 25*: classic **lexical** relevance ranking (sparse retrieval); pairs with **dense** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
+
 **Build surface** — Named entrypoint in the delivery model (quality gate, build/publish, deploy, verify, etc.). See [build.md](principles/build.md), [build-surface-model.md](patterns/build-surface-model.md).
 
 ---
@@ -36,13 +46,21 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Chaos engineering** — **Controlled** fault injection and game days to validate resilience **before** production surprises. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
+**Chunking** — Splitting documents into **retrieval-sized** segments (often hundreds of tokens) with metadata (source, heading, tenant); quality dominates RAG outcomes. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §2, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
+
 **CloudEvents** — Vendor-neutral **envelope** for events (`id`, `source`, `type`, `time`, …) over HTTP, Kafka, NATS, etc.; **payload** still needs its own schema. See [event-contracts.md](principles/event-contracts.md), [tooling/cloudevents.md](tooling/cloudevents.md).
 
 **CODEOWNERS** — Git host file mapping **paths** to **required reviewers** (teams or individuals). See [collaboration.md](principles/collaboration.md), [naming-and-repo-layout.md](principles/naming-and-repo-layout.md).
 
 **Contract** — Explicit, versioned **shape** and rules at a boundary (schema, OpenAPI, proto, migration contract). Violations are **build or runtime failures** per policy—not informal JSON. See [ENGINEERING.md](../ENGINEERING.md) §1.
 
+**Context window** — Maximum **tokens** a model can take as input per call; large windows do **not** remove need for **RAG** on big or **governed** corpora. See [performance-and-cost.md](principles/performance-and-cost.md) §3, [ai-ml-systems.md](principles/ai-ml-systems.md).
+
+**Council (multi-agent)** — Several LLM **roles** (or agents) **critique** one proposal before a human decision—useful for **diversity of critique**, weak against **agreement bias** and **false confidence**; **not** a substitute for **CI** or review. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §6.
+
 **CORS / CSP** — *Cross-Origin Resource Sharing* and *Content Security Policy*: browser-facing controls for APIs and pages. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
+
+**Cross-encoder (reranking)** — Model that scores **query–passage** pairs for **precision** after cheap candidate retrieval; common **second stage** in RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
 ---
 
@@ -66,6 +84,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Exactly-once (illusion)** — True end-to-end **exactly-once side effects** are rare; most systems are **at-least-once** plus **idempotent** design. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
+**Embedding** — Numeric **vector** representing text (or other content) for **similarity** search; used in **dense** retrieval alongside **lexical** search in typical RAG. Changing **model** or **dimensions** forces **re-embed** and index **migration** ([ai-ml-systems.md](principles/ai-ml-systems.md) §7). See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md).
+
 ---
 
 ## F
@@ -78,15 +98,27 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## G
 
+**GenAI** — *Generative artificial intelligence*: models that **synthesize** content (text, code, media). Portable rules: [ai-ml-systems.md](principles/ai-ml-systems.md); security framing: **OWASP LLM Top 10**, **NIST AI 600-1**, **NIST SP 800-218A**. Research: [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md).
+
+**GenAIOps** — Operating **GenAI** systems in production: **eval** and regression on outputs/retrieval, **index** freshness and **embedding** migrations, **cost** and quota governance, **provider** resilience, and **observability** (trace to chunk/tool ids)—same **SRE** habits as other critical dependencies. See [ai-ml-systems.md](principles/ai-ml-systems.md) §§6–7, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §4, [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
+
 **Golden path** — Org’s **blessed** default way to build/run a service (often part of an internal platform—not fully specified in portable doctrine).
+
+**Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
 ---
 
 ## H
 
+**Handoff (structured)** — Passing **goal**, **constraints**, **verified state**, and **next actions** between people and/or **agents**—same shape as a strong **PR** description, not a raw chat log. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §5, [collaboration.md](principles/collaboration.md) §3.
+
+**HNSW** — *Hierarchical Navigable Small World*: popular **ANN** graph index for embedding search; tune for recall/latency as corpus grows. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §3.
+
 **Hermetic build** — Build with **declared** inputs only (pinned toolchains, lockfiles) so outputs are **reproducible** and auditable. See [build.md](principles/build.md) §14.
 
 **Hexagonal / ports and adapters** — Core domain isolated from I/O via **interfaces**; adapters implement DB, HTTP, queues. See [modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md).
+
+**Hybrid search** — **Parallel** (or fused) **lexical** (e.g. BM25) and **dense** (embedding) retrieval, then **fusion** (e.g. **RRF**) and often **reranking**. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
 ---
 
@@ -96,15 +128,25 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **IDOR** — *Insecure direct object reference*—often overlaps **BOLA**. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
+**Ingestion pipeline (RAG)** — Jobs that **extract**, **chunk**, **embed**, and **write** lexical/vector indexes—**separate** from online **query** path; needs **freshness** SLAs and **idempotent** rebuilds. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
+
+**IVF** — *Inverted file* (clustering-based) **ANN** structure; common at **large** scale; may need **training** on representative vectors and **re-tuning** when the corpus distribution shifts. See [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §3.
+
 ---
 
 ## L
+
+**LLM** — *Large language model*: often backs **chat** or **agent** UIs; treat **output** and **retrieved context** as **untrusted** at system boundaries until validated. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) Related, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
+
+**Lexical search** — Keyword / **inverted-index** retrieval (e.g. **BM25**); complements **semantic** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
 **LTS (long-term support) branch** — Exceptional **parallel** line for extended patch support; document EOL. See [trunk-workflow.md](patterns/trunk-workflow.md).
 
 ---
 
 ## M
+
+**MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover **tools** and **resources** (often JSON-RPC); treat servers as **production** integrations (authz, audit, supply chain). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
 
 **Merge queue** — Serialises merges to `main` by testing the **merged** result; reduces “green branch, red main.” See [collaboration.md](principles/collaboration.md), [trunk-workflow.md](patterns/trunk-workflow.md).
 
@@ -113,6 +155,12 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **mTLS** — *Mutual TLS*: both parties present certificates; common for **service-to-service** identity. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
 
 **Mutation testing** — Changes code under test to see if tests **fail**; surviving mutants imply weak assertions. See [testing-strategy.md](principles/testing-strategy.md).
+
+---
+
+## N
+
+**NIST AI 600-1** — *AI Risk Management Framework: Generative Artificial Intelligence Profile* (July 2024): GenAI-specific risks and suggested actions aligned with **AI RMF** functions. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2, [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) references.
 
 ---
 
@@ -142,6 +190,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Publishable unit** — Thing consumers pin versions on (package, image, API product, CLI); gets its **own** SemVer line. See [semantic-versioning.md](principles/semantic-versioning.md).
 
+**Prompt injection** — Crafted input causes the model to **ignore** policy, **exfiltrate** data, or **mis-route** tools; **indirect** injection uses **retrieved** text (RAG) or hidden content. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
+
 ---
 
 ## Q
@@ -152,11 +202,17 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## R
 
+**RAG** — *Retrieval-augmented generation*: **retrieve** relevant chunks from a corpus, then **generate** an answer (often via an LLM). Baseline: [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); principle: [ai-ml-systems.md](principles/ai-ml-systems.md); stack layers: [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md). Research: [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md); internal factory: [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md).
+
+**Reranking** — Second-stage **ordering** of retrieval candidates (often **cross-encoder** or managed API) to improve **precision** before LLM context assembly. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
+
 **Replay** — Re-deliver or re-process messages from history or DLQ **deliberately**; needs **idempotency** and scope. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
 **RFC (design)** — *Request for comments*: **pre-decision** exploration; outcomes land in ADRs when decided. See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
 **RPO / RTO** — *Recovery point* / *time* **objectives**: how much data loss and downtime are acceptable in DR. See [data-and-migrations.md](principles/data-and-migrations.md).
+
+**RRF** — *Reciprocal rank fusion*: merge **ranked** lists (e.g. lexical + dense retrieval) using rank positions, often with constant **k = 60**—common default in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
 **Runbook** — Step-by-step **operator** procedure (deploy, rollback, common failures). See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
@@ -174,6 +230,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **SemVer** — *Semantic versioning* `MAJOR.MINOR.PATCH` per **publishable unit**. See [semantic-versioning.md](principles/semantic-versioning.md).
 
+**Separation of duties (SoD)** — Different roles for **authoring**, **approving**, and **operating** high-risk change (including **who runs agents** vs **who merges** to protected branches); **estate** policy detail complements portable collaboration rules. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §1, [collaboration.md](principles/collaboration.md).
+
 **Shift left** — Move security, quality, and validation **earlier** in the lifecycle (design, CI), not only pre-release. See [ENGINEERING.md](../ENGINEERING.md) §5.
 
 **SLA** — *Service level **agreement***: **contractual** promise to a customer (often stricter or broader than internal SLOs).
@@ -183,6 +241,10 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **SLO** — *Service level **objective***: internal target for reliability/latency derived from user needs; pairs with **error budget**. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
 **SLSA** — *Supply-chain levels for software artifacts*: framework for **build integrity** and **provenance**. See [build.md](principles/build.md) §14, [dependencies-supply-chain.md](principles/dependencies-supply-chain.md).
+
+**Software factory (agent-assisted)** — In this repo’s research usage: **scaled** automation of engineering work **with** agents while **git + CI + human merge** stay the **system of record**—not autonomous **direct** production mutation. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §8.
+
+**SP 800-218A** — NIST **SSDF community profile** for **generative AI** and dual-use **foundation model development** (training/integration—not a full substitute for **runtime** ops guidance). See [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [privacy-and-data-governance.md](principles/privacy-and-data-governance.md) §5.3.
 
 **SPACE** — Framework for **developer experience** (satisfaction, performance, activity, collaboration, flow)—complements DORA. See [measurement-and-dora.md](principles/measurement-and-dora.md).
 
@@ -205,6 +267,12 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Tooling** — In this repo: **illustrative** stacks under `tooling/` and `tooling/estates/`—swappable if **surface contracts** stay stable. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
 **Trunk-based development** — Integrate frequently to a **single** default branch (`main`); short-lived topic branches. See [collaboration.md](principles/collaboration.md).
+
+---
+
+## V
+
+**Vector store** — Index or database for **embeddings** (similarity search); in multi-tenant RAG, isolation failures are **information disclosure** incidents. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
 
 ---
 

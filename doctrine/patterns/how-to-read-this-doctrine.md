@@ -18,13 +18,17 @@ Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timel
 
 ## Suggested Reading Order
 
-| Audience | Path |
-| --- | --- |
-| **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` |
-| **New org adopting wholesale** | `timeless-principles-and-tooling` → `build` → `collaboration` → `ENGINEERING.md` |
-| **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → `platform-readiness` checklist |
-| **Security / API** | `api-boundaries-and-security` → `threat-modeling-stride-lite` → `ENGINEERING.md` §18 (extended principles) → `dependencies-supply-chain` |
-| **Async / events** | `event-contracts` → `state-machines-and-workflows` → `message-channel-operations` → `tooling/cloudevents.md` (optional `tooling/nats-jetstream`, example `example-order-jetstream-workflow`) |
+Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) when you need **under ~15 minutes**.
+
+| Audience | Path | Approx. reading |
+| --- | --- | --- |
+| **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` | **15–35 min** (TL;DR **~8 min**, glossary skim **~12 min**) |
+| **New org adopting wholesale** | `timeless-principles-and-tooling` → `build` → `collaboration` → `ENGINEERING.md` | **~60–120 min** for those four; full §18 extended set **adds 2–4 h** |
+| **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → `platform-readiness` checklist | **~45–90 min** + checklist **~20 min** |
+| **Security / API** | `api-boundaries-and-security` → `threat-modeling-stride-lite` → `ENGINEERING.md` §18 (extended principles) → `dependencies-supply-chain` | **~50–100 min** for core; **+1–2 h** if reading every extended principle |
+| **GenAI / RAG / retrieval (product)** | [`ai-ml-systems.md`](../principles/ai-ml-systems.md) (esp. §§6–7) → [rag-retrieval-baseline.md](rag-retrieval-baseline.md) → [`tooling/vector-retrieval-and-embedding-illustration.md`](../tooling/vector-retrieval-and-embedding-illustration.md) → `privacy-and-data-governance` §5 → `api-boundaries-and-security` → (optional) [research-enterprise-rag-agents-indexing-2026-04.md](../evolution/research-enterprise-rag-agents-indexing-2026-04.md), [research-ai-ml-ops-landscape-2026-04.md](../evolution/research-ai-ml-ops-landscape-2026-04.md) skim | **~50–90 min** |
+| **Internal AI / dev agents (enterprise)** | [`ai-ml-systems.md`](../principles/ai-ml-systems.md) §§4, 7 → [research-internal-ai-knowledge-factory-governance-2026-04.md](../evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) → `collaboration` §3, `documentation-knowledge`, `audit-logging` → [`tooling/ai-assisted-development.md`](../tooling/ai-assisted-development.md) → (optional) [research-enterprise-rag-agents-indexing-2026-04.md](../evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4 (MCP) | **~50–95 min** |
+| **Async / events** | `event-contracts` → `state-machines-and-workflows` → `message-channel-operations` → `tooling/cloudevents.md` (optional `tooling/nats-jetstream` / `kafka-and-cloudevents`, examples below) | **~40–80 min** + **~15–25 min** per worked **fiction** example |
 
 ---
 
@@ -51,3 +55,12 @@ Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timel
 - **Git submodule** — pins a **specific commit** of this library; reviewers see **exactly** which doctrine revision ships—at the cost of **submodule** ergonomics every developer must tolerate.
 
 Pick one **mechanism** per org and document it in the **consumer** repo’s README so upgrades are **intentional**, not accidental drift.
+
+---
+
+## Worked Examples (Fiction)
+
+| File | Topic | ~Time |
+| --- | --- | --- |
+| [example-order-jetstream-workflow.md](example-order-jetstream-workflow.md) | FSM + CloudEvents + JetStream subjects | **~15 min** |
+| [example-saga-payment-workflow.md](example-saga-payment-workflow.md) | Saga, compensation, timeouts, events | **~12 min** |

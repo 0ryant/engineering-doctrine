@@ -6,7 +6,7 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-04-10 02:11 UTC
+Generated: 2026-04-10 03:41 UTC
 
 ## All Markdown files
 
@@ -21,15 +21,22 @@ Generated: 2026-04-10 02:11 UTC
 - [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md)
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md)
 - [evolution/moscow-review.md](evolution/moscow-review.md)
+- [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
+- [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
+- [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
+- [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md)
+- [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md)
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
+- [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
 - [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md)
+- [principles/ai-ml-systems.md](principles/ai-ml-systems.md)
 - [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md)
 - [principles/audit-logging.md](principles/audit-logging.md)
 - [principles/build.md](principles/build.md)
@@ -60,6 +67,7 @@ Generated: 2026-04-10 02:11 UTC
 - [principles/user-facing-quality.md](principles/user-facing-quality.md)
 - [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md)
 - [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)
+- [tooling/ai-assisted-development.md](tooling/ai-assisted-development.md)
 - [tooling/build.md](tooling/build.md)
 - [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md)
 - [tooling/cloudevents.md](tooling/cloudevents.md)
@@ -74,3 +82,4 @@ Generated: 2026-04-10 02:11 UTC
 - [tooling/kafka-and-cloudevents.md](tooling/kafka-and-cloudevents.md)
 - [tooling/nats-jetstream.md](tooling/nats-jetstream.md)
 - [tooling/observability.md](tooling/observability.md)
+- [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md)

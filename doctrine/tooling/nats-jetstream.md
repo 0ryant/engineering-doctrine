@@ -4,7 +4,7 @@
 
 Companion: [cloudevents.md](cloudevents.md) (envelope baseline), [../patterns/message-channel-operations.md](../patterns/message-channel-operations.md) (DLQ, replay, observability).
 
-Worked **fiction** tying FSM → `type` → subjects/consumers: [../patterns/example-order-jetstream-workflow.md](../patterns/example-order-jetstream-workflow.md).
+Worked **fiction** tying FSM → `type` → subjects/consumers: [../patterns/example-order-jetstream-workflow.md](../patterns/example-order-jetstream-workflow.md). **Saga** (broker-agnostic): [../patterns/example-saga-payment-workflow.md](../patterns/example-saga-payment-workflow.md).
 
 ---
 
