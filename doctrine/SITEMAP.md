@@ -21,6 +21,7 @@ Generated: 2026-04-10 03:41 UTC
 - [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md)
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md)
 - [evolution/moscow-review.md](evolution/moscow-review.md)
+- [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
