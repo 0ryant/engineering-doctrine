@@ -253,6 +253,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) | **Library change** workflow: research, ADR, cross-links, sitemap, glossary, refs |
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
+| [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md) | Domain-by-domain scorecard vs 11 mainstream frameworks (Google SRE, DORA, AWS WAF, NIST, etc.) |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
 | [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) | Public doctrine benchmark, scorecard, and residual gap analysis |
