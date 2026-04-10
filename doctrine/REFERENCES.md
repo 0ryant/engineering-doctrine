@@ -129,6 +129,35 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | Trunk-based development — feature flags | https://trunkbaseddevelopment.com/feature-flags/ |
 | LaunchDarkly — Feature Flag Best Practices | https://launchdarkly.com/blog/feature-flag-best-practices/ |
 
+---
+
+## AI, Agents, And GenAI
+
+Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `patterns/agentic-loop-design.md`, and the `tooling/` AI supplement.
+
+| Topic | Reference |
+| --- | --- |
+| NIST AI Risk Management Framework (AI RMF 1.0) | https://www.nist.gov/itl/ai-risk-management-framework |
+| NIST AI 100-1 (AI RMF PDF) | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf |
+| NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
+| NIST SP 800-218A (GenAI / foundation models, SSDF profile) | https://csrc.nist.gov/pubs/sp/800/218/a/final |
+| OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
+| Model Context Protocol documentation hub | https://modelcontextprotocol.io |
+| Anthropic — Building Effective Agents (Dec 2024) | https://www.anthropic.com/engineering/building-effective-agents |
+| Anthropic — Multi-Agent Research System (Jun 2025) | https://www.anthropic.com/engineering/built-multi-agent-research-system |
+| ReAct — Yao et al., ICLR 2023 (reason + act loop) | https://arxiv.org/abs/2210.03629 |
+| Reflexion — Shinn et al., NeurIPS 2023 (verbal RL / critique-retry) | https://arxiv.org/abs/2303.11366 |
+| CaMeL — Debenedetti et al., Google DeepMind 2025 (taint tracking, injection defence) | https://arxiv.org/abs/2503.18813 |
+| Willison — Dual LLM Pattern (architectural injection defence, Apr 2023) | https://simonwillison.net/2023/Apr/25/dual-llm-pattern/ |
+| Willison — The Lethal Trifecta (external content + private data + write tools, 2025) | https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ |
+| Karpathy — Verifiability (automation gate, Nov 2025) | https://karpathy.bearblog.dev/verifiability/ |
+| Karpathy — 2025 Year in Review (autonomy slider, context engineering) | https://karpathy.bearblog.dev/year-in-review-2025/ |
+| Karpathy — Animals vs. Ghosts (limits of current LLMs, Oct 2025) | https://karpathy.bearblog.dev/animals-vs-ghosts/ |
+| Miessler — PAI Algorithm v4.0 (ISC, 7-phase loop, scaffolding thesis) | https://github.com/danielmiessler/Personal_AI_Infrastructure |
+| LangChain — Context Engineering (Chase, Jun 2025) | https://blog.langchain.com/the-rise-of-context-engineering/ |
+| 12 Factor Agents (Horthy — "own your context window") | https://github.com/humanlayer/12-factor-agents |
+| LangGraph (cyclic graphs / state machines for agentic loops) | https://github.com/langchain-ai/langgraph |
+
 | Topic | Reference |
 | --- | --- |
 | Software Engineering at Google, Ch. 11 (Testing) | https://abseil.io/resources/swe-book/html/ch11.html |
@@ -290,6 +319,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
 | [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) | Feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt |
+| [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) | Agent harness patterns: nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL |
 
 ### Extended principles
 
