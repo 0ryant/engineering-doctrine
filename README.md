@@ -1,5 +1,7 @@
 # Engineering Doctrine
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Reusable engineering doctrine that separates stable principles from replaceable tooling.
 
 This repository is intended to be a reference library for teams building applications, automation, CLIs, APIs, and infrastructure. The goal is to keep the operating model durable while allowing implementation details to evolve over time.
