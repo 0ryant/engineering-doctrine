@@ -27,8 +27,9 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 - **Severity** levels drive response (who joins, comms cadence, executive escalation).
 - **Blameless postmortems** for material incidents with **tracked action items** and owners.
 - **Customer-facing status** and comms for user-visible outages per organisational policy.
+- For **adoptable** **depth** on **incident command**, **roles**, **comms cadence**, **incident state docs**, **escalation**, **on-call handoff**, **sustainable** **interrupt load**, and **post-incident** **action** **tracking**, use [../patterns/incident-lifecycle-and-on-call-operations.md](../patterns/incident-lifecycle-and-on-call-operations.md) (portable pattern; not every team needs every **role** on day one).
 
-**Why:** Severity avoids both **under-response** (quiet fires) and **over-page-everything**. Postmortems without actions repeat failures.
+**Why:** Severity avoids both **under-response** (quiet fires) and **over-page-everything**. Postmortems without actions repeat failures. A **separate** pattern keeps the **principle** file stable while the **ritual** can **scale** with the org.
 
 ---
 
@@ -60,8 +61,9 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 
 ## Related
 
-- Organisation-level **delivery** metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)  
+- Organisation-level **delivery** metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)
 - **Chaos experiments and game days** (pattern) — [../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md)
+- **Incident lifecycle, on-call, escalation, comms, handoff, and post-incident** **actions** (pattern) — [../patterns/incident-lifecycle-and-on-call-operations.md](../patterns/incident-lifecycle-and-on-call-operations.md)
 
 ---
 

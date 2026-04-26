@@ -2,6 +2,8 @@
 
 This folder captures durable engineering doctrine for scaffolds and templates.
 
+**This repository (license, how to contribute, security):** see root [README.md](../README.md#license), [CONTRIBUTING.md](../CONTRIBUTING.md), and [GOVERNANCE.md](../GOVERNANCE.md).
+
 It is split intentionally:
 
 - **`principles/`** — **Timeless intent**: platform-agnostic outcomes, constraints, and trade-offs. Change rarely; cite **rationale** and **references** when you do.
@@ -20,17 +22,33 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** — **TL;DR** spine + **minimum viable doctrine** (read this if the tree feels too large)
 - **[glossary.md](glossary.md)** — terms and acronyms used across doctrine (orientation only)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) — navigation and conflict resolution
+- [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — how this library labels releases and downstream compatibility impact
 - [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) — principles vs tooling vs estate supplements
 - [evolution/moscow-review.md](evolution/moscow-review.md) — latest **thin-area / audit / MoSCoW** snapshot
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — condensed **external review** signal
 - [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) — **gap analysis** by section vs industry frameworks
+- [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) — **public-doctrine benchmark** and portability-focused scorecard
+- [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md) — **anti-patterns and failure modes** benchmark, taxonomy, and gap map
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) — **AI/ML ops & governance** research (Azure AILZ, RAG, NIST/OWASP) + map to doctrine sections
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — **internal AI / agent factory** vision: governance-first, handoffs, councils, agentic workflows + doctrine map (**no** build runbooks)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) — **enterprise RAG**, vectors, indexing, hybrid search, **MCP**/agents — research + gap map
+
+### Governance & Assurance
+
+This is a **navigation section**, not a new doctrine layer. Files stay under `principles/`, `patterns/`, `tooling/`, and `checklists/`.
+
+- [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) — **merge path & pipeline integrity** (binding gates, evidence, SBOM/provenance expectations; NIST / CISA / SLSA–cited)
+- [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) — **engineering controls governance programme** (ownership, waivers, metrics, audit consumption; CSF 2.0–aligned)
+- [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) — illustrative **control suite** for merge paths and pipelines
+- [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
+
+### Adoption And Worked Examples
+
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md) — how teams migrate toward this doctrine
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — worked **fiction**: state machine + CloudEvents + JetStream
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) — worked **fiction**: saga, compensation, timeouts
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) — chaos experiments and game day pattern
+- [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) — **incident command**, on-call, escalation, comms, handoff, post-incident actions
 
 ### Core principles
 
@@ -51,10 +69,12 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) — workload identity, SPIFFE pointer
 - [principles/secure-development-lifecycle.md](principles/secure-development-lifecycle.md) — SDL, vuln response, training (NIST SSDF alignment)
 - [principles/ai-ml-systems.md](principles/ai-ml-systems.md) — **First-class** GenAI / RAG / agents: governance, tiers A–D, retrieval lifecycle, truth in repo
+- [principles/developer-experience.md](principles/developer-experience.md) — **Developer experience**: time-to-first-change, local loop, docs findability, cognitive load, review flow
 
 ### Patterns
 
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
+- [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — doctrine release labels, change classes, and consumer pinning guidance
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
@@ -62,9 +82,11 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — example order FSM + JetStream (fiction)
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) — saga payment + inventory (fiction)
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) — chaos / game days
+- [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) — incident lifecycle, IC, on-call, escalation, comms, handoff, post-incident actions
 - [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) — signed webhooks, replay windows, idempotency
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) — HTTP, messages, infra idempotency
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) — RAG retrieval (hybrid, eval, privacy)
+- [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md) — platform-as-product, golden paths, self-service, service catalog
 
 ### Checklists
 
@@ -72,6 +94,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md)
 - [checklists/platform-readiness.md](checklists/platform-readiness.md)
 - [checklists/release-readiness.md](checklists/release-readiness.md)
+- [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
 - [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md)
 
 ### Illustrative tooling (replace with your estate’s choices)
@@ -105,8 +128,9 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md)
 - [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) — STRIDE-lite trust-boundary review
 - [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md)
-- [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md)
+- [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) — SLOs, error budgets, incidents; **tactical** response: [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)
 - [principles/measurement-and-dora.md](principles/measurement-and-dora.md) — DORA / Four Keys vs doctrine
+- [principles/developer-experience.md](principles/developer-experience.md) — SPACE, local loop, docs findability, cognitive load
 - [principles/performance-and-cost.md](principles/performance-and-cost.md)
 - [principles/documentation-knowledge.md](principles/documentation-knowledge.md)
 - [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md)

@@ -44,7 +44,8 @@ Durable rules for **decisions**, **operations**, and **onboarding** so intent su
 ## 5. Onboarding Curricula And Discoverability
 
 - Maintain a **short** onboarding path (day-one tasks, repo map, “how we ship”) separate from **encyclopaedic** doctrine.
-- Prefer a **single** internal **portal** or **search** index that lists **golden paths**, service catalog links, and **runbooks**—even if the underlying content lives in Git.
+- Prefer a **single** internal **portal** or **search** index that lists **golden paths**, service catalog links, and **runbooks**—even if the underlying content lives in Git. Portable pattern for platform posture: [patterns/platform-as-product-and-golden-paths.md](../patterns/platform-as-product-and-golden-paths.md).
+- Treat docs findability and time-to-first-change as **developer-experience** signals; see [developer-experience.md](developer-experience.md) and [developer-experience-scorecard.md](../checklists/developer-experience-scorecard.md).
 
 **Why:** *Software Engineering at Google* emphasises **discoverable** engineering knowledge; new hires fail on **navigation**, not lack of Markdown files.
 

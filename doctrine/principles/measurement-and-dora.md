@@ -46,6 +46,7 @@ Use the map in **retrospectives**: a rising CFR often traces to **skipped gates*
 
 - **SPACE** (Satisfaction and well-being, Performance, Activity, Communication and collaboration, Efficiency and flow) frames **developer experience** using **multiple** dimensions—not only **lines of code** or **story points**.
 - Use SPACE-style surveys and **qualitative** interviews alongside DORA metrics to catch **burnout**, **tooling friction**, and **review** bottlenecks that Four Keys can **miss**.
+- Developer-experience operating rules live in [developer-experience.md](developer-experience.md); a lightweight review tool lives in [developer-experience-scorecard.md](../checklists/developer-experience-scorecard.md).
 
 **Why:** Microsoft Research’s SPACE work shows **single-metric** productivity measures **game** behaviour and hide systemic problems.
 

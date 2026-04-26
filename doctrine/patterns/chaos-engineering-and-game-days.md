@@ -48,6 +48,12 @@ Record **results** in a **short** log (wiki, ADR appendix, or ticket)—link to 
 
 ---
 
+## 5. Relation To Incident Response
+
+- Exercises should **rehearse** the **same** **roles** and **comms** habits as **production** **incidents** (see [incident-lifecycle-and-on-call-operations.md](incident-lifecycle-and-on-call-operations.md)) so on-call and IC **are not** **learning** **protocol** for the first time under **customer** **impact**.
+
+---
+
 ## References
 
 - **Principles of Chaos Engineering**: https://principlesofchaos.org/  

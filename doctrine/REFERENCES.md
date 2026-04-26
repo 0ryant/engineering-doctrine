@@ -47,6 +47,16 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 
 ---
 
+## Platform Engineering (Reference Framing)
+
+Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** external maturity framing—not a mandate to adopt any CNCF project.
+
+| Topic | Reference |
+| --- | --- |
+| CNCF TAG App Delivery — Platform Engineering Maturity Model (whitepaper) | https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/ |
+
+---
+
 ## Site Reliability Engineering
 
 | Topic | Reference |
@@ -56,7 +66,9 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | Error Budget Policy (workbook) | https://sre.google/workbook/error-budget-policy/ |
 | Handling Overload (SRE book) | https://sre.google/sre-book/handling-overload/ |
 | DORA — software delivery performance | https://dora.dev/ |
+| DORA — 2024 State of DevOps report (DevEx, documentation, platform engineering) | https://dora.dev/research/2024/dora-report |
 | ACM Queue — SPACE of Developer Productivity | https://queue.acm.org/detail.cfm?id=3454124 |
+| Communications of the ACM — SPACE of Developer Productivity | https://cacm.acm.org/practice/the-space-of-developer-productivity/ |
 | Principles of Chaos Engineering | https://principlesofchaos.org/ |
 | NIST SSDF (secure SDLC) | https://csrc.nist.gov/Projects/SSDF |
 | NIST SP 800-218 (SSDF publication) | https://csrc.nist.gov/publications/detail/sp/800-218/final |
@@ -161,6 +173,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
+| [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) | Public doctrine benchmark, scorecard, and residual gap analysis |
+| [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md) | Public anti-patterns / failure modes benchmark, taxonomy, and gap analysis |
 | [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) | AI/ML ops, governance, RAG, Azure AI Landing Zone — external sources + doctrine map |
 | [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) | Internal AI knowledge layer, handoffs, councils, agentic workflows — enterprise governance + doctrine map (no build specs) |
 | [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) | Enterprise RAG, ANN/indexing, hybrid search, MCP/agents — synthesis + doctrine gap map |
@@ -168,6 +182,15 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [README.md](README.md) | Doctrine folder entry |
 | [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) | TL;DR spine + MVP synthesis |
 | [glossary.md](glossary.md) | Terms and acronyms (in-repo usage) |
+
+### Governance & Assurance
+
+| File | Focus |
+| --- | --- |
+| [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) | Merge path as controlled channel; pipeline definitions in scope; binding gates; evidence/SBOM/provenance; **externally cited** |
+| [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level **governance programme** for engineering controls (CSF Govern / GV.SC, ownership, waivers, audit packs) |
+| [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) | Illustrative **control suite** mapping (scanner categories, OIDC, pipeline static analysis) |
+| [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) | Org readiness checklist for merge-path / supply-chain **governance programme** |
 
 ### Core principles
 
@@ -194,16 +217,20 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | File | Focus |
 | --- | --- |
 | [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) | Navigation |
+| [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) | Doctrine release labels, change classes, and downstream compatibility impact |
 | [patterns/build-surface-model.md](patterns/build-surface-model.md) | Layer model |
 | [patterns/trunk-workflow.md](patterns/trunk-workflow.md) | Trunk + delivery |
 | [patterns/message-channel-operations.md](patterns/message-channel-operations.md) | DLQ, replay, backlog |
 | [patterns/adoption-playbook.md](patterns/adoption-playbook.md) | Team migration toward doctrine |
+| [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md) | Platform-as-product, golden paths, self-service guardrails, service catalog (portable) |
 | [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) | Fictional order FSM + JetStream sketch |
 | [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) | Fictional saga + compensation sketch |
 | [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) | Chaos experiments and game days |
+| [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) | Incident lifecycle, IC, comms, state doc, escalation, handoff, on-call sustainability, post-incident actions |
 | [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) | Webhook ingress hardening |
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
+| [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
 
 ### Extended principles
 
@@ -217,10 +244,12 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md) | HTTP limits, OWASP API |
 | [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) | STRIDE-lite trust-boundary review |
 | [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md) | PII, retention |
-| [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents |
+| [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents; [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) for full incident lifecycle / on-call |
 | [principles/performance-and-cost.md](principles/performance-and-cost.md) | Load, FinOps |
 | [principles/documentation-knowledge.md](principles/documentation-knowledge.md) | ADRs, runbooks |
 | [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md) | SBOM, licences |
+| [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) | Merge path, pipeline definitions, binding gates, evidence (NIST / CSF / CISA / SLSA–cited) |
+| [principles/developer-experience.md](principles/developer-experience.md) | DevEx, time-to-first-change, local loop, docs findability, cognitive load, review flow |
 | [principles/user-facing-quality.md](principles/user-facing-quality.md) | A11y, i18n |
 | [principles/measurement-and-dora.md](principles/measurement-and-dora.md) | Delivery metrics, Four Keys |
 
@@ -237,6 +266,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [tooling/collaboration.md](tooling/collaboration.md) | Git host examples |
 | [tooling/observability.md](tooling/observability.md) | OTel examples |
 | [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md) | CI mapping |
+| [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) | Merge-path control categories, OIDC, pipeline static analysis (illustrative) |
 | [tooling/dependency-automation.md](tooling/dependency-automation.md) | Bots |
 
 ### Checklists
@@ -248,6 +278,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [checklists/platform-readiness.md](checklists/platform-readiness.md) | SRE / platform |
 | [checklists/release-readiness.md](checklists/release-readiness.md) | Versioned release |
 | [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md) | Editing doctrine |
+| [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) | Org governance programme for engineering controls |
+| [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md) | DevEx scorecard for local loop, docs findability, review flow, cognitive load |
 
 ### Estates
 

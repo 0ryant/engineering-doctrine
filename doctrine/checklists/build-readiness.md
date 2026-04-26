@@ -5,6 +5,7 @@ Use this checklist when creating or reviewing a repo.
 ```text
 [ ] The repo's build surfaces are named and documented
 [ ] There is one documented local command for the quality gate
+[ ] Fast local loop documented separately from slower full gates where both exist (developer-experience.md)
 [ ] Non-trivial build logic lives in repo scripts, not repeated inline YAML
 [ ] Setup or bootstrap commands are idempotent
 [ ] The quality gate runs on PRs and protected branches

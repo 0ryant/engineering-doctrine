@@ -4,8 +4,10 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 
 ```text
 [ ] SLOs defined for user-facing paths; error budget policy agreed (reliability-slo-incidents.md)
+[ ] Incident response and on-call: severity matrix, incident state doc, comms/escalation **habits**, and post-incident action tracking aligned with patterns/incident-lifecycle-and-on-call-operations.md (scale **roles** to org size; avoid silent “no IC” in multi-team incidents)
 [ ] OpenTelemetry or documented exception; logs correlate with traces (observability.md + tooling/observability.md)
 [ ] Production runtime chosen per container-runtime-choice.md; concrete products recorded in estate catalogue or tooling/estates/
+[ ] Multi-team / platform slice: golden paths, self-service guardrails, and service-catalog metadata aligned with patterns/platform-as-product-and-golden-paths.md (ownership, interfaces, runbooks/SLO pointers)
 [ ] If Kubernetes in use: kubernetes-platform-security.md baseline applied
 [ ] Database migrations follow expand/contract or documented maintenance window (data-and-migrations.md)
 [ ] Backup RPO/RTO documented; restore tested on cadence (data-and-migrations.md)

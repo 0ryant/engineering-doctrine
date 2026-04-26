@@ -39,7 +39,7 @@ Order is **dependency-aware**, not dogmatic. Skip steps already healthy.
 | **4** | **Observability baseline** — correlated logs/traces for main paths; basic SLO thinking where user-facing | Makes incidents diagnosable; [observability.md](../principles/observability.md) |
 | **5** | **Reliability habits** — incident severity, blameless reviews, error budget **policy** if SLOs exist | Ties delivery to risk; [reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) |
 
-Later phases often include supply-chain automation, broader platform readiness, threat modelling for exposed surfaces, and fuller checklists ([platform-readiness.md](../checklists/platform-readiness.md)).
+Later phases often include supply-chain automation, broader platform readiness, **golden paths and service-catalog discipline** for multi-team estates ([platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md)), threat modelling for exposed surfaces, and fuller checklists ([platform-readiness.md](../checklists/platform-readiness.md)).
 
 ---
 
