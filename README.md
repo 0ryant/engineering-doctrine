@@ -19,6 +19,7 @@ For contribution workflow, **security reporting**, **maintainer and review** exp
 - [CONTRIBUTING.md](CONTRIBUTING.md) — how to propose changes, PR hygiene, and where content belongs
 - [SECURITY.md](SECURITY.md) — what to report privately vs in issues
 - [GOVERNANCE.md](GOVERNANCE.md) — maintainers, review policy, and release cadence
+- [CHANGELOG.md](CHANGELOG.md) — version history aligned with **SemVer-shaped tags** (see [doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md](doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md))
 
 ## Structure
 

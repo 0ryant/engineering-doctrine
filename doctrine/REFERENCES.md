@@ -169,6 +169,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | File | Focus |
 | --- | --- |
 | [../ENGINEERING.md](../ENGINEERING.md) | Headline principles index (repo root) |
+| [../CHANGELOG.md](../CHANGELOG.md) | Version history for **SemVer-shaped** doctrine tags |
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
