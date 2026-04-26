@@ -11,7 +11,9 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] doctrine/SITEMAP.md regenerated: ./scripts/generate-doctrine-sitemap.sh
 [ ] doctrine/README.md Start Here or section lists updated when files are added/removed
 [ ] Checklists updated if new obligation for adopting teams
+[ ] Change class labelled for consumer impact: editorial / navigation / additive guidance / normative tightening / normative replacement / estate-only / deprecation
+[ ] Migration notes added for normative tightening, replacement, deprecation, or removal
 [ ] evolution/moscow-review.md or decision note updated for large shifts (optional but encouraged)
 [ ] evolution/honest-review-synthesis.md updated when absorbing a substantive external review of the library
-[ ] For material doctrine releases: note version or date in evolution/moscow-review.md or a short decision log entry (CHANGELOG optional if the repo maintains one)
+[ ] For material doctrine releases: note version or date in evolution/moscow-review.md or a short decision log entry (CHANGELOG optional if the repo maintains one); classify release kind using patterns/doctrine-versioning-and-consumer-compatibility.md
 ```

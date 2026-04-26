@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Local Cursor / IDE (keep personal agents, rules, and experiments out of the tree)
+.cursor/

@@ -19,6 +19,8 @@ When tooling changes, update the tooling docs first. Change the principles only 
 
 **Glossary (terms and acronyms):** `doctrine/glossary.md`.
 
+**Contributing, license, and security (this repository’s meta policy):** root `README.md` (License and project governance), `CONTRIBUTING.md`, `SECURITY.md`, and `GOVERNANCE.md`.
+
 ---
 
 ## 1. Contracts First
@@ -329,11 +331,17 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **Delivery measurement (DORA / Four Keys)** — `doctrine/principles/measurement-and-dora.md` (outcomes vs practices; **SPACE** developer-experience framing in §4).
 
+**Developer experience** — `doctrine/principles/developer-experience.md` (time-to-first-change, local loop, docs findability, cognitive load, review flow); scorecard: `doctrine/checklists/developer-experience-scorecard.md`.
+
 **Performance, load, and cost** — `doctrine/principles/performance-and-cost.md`.
 
 **Documentation and knowledge** — `doctrine/principles/documentation-knowledge.md` (ADRs, runbooks).
 
 **Dependencies and supply chain** — `doctrine/principles/dependencies-supply-chain.md`; illustrative automation options: `doctrine/tooling/dependency-automation.md`.
+
+**Merge path, pipeline integrity, and evidence** — `doctrine/principles/merge-path-evidence-and-pipeline-integrity.md` (controlled merge channel; pipeline definitions as security artefacts; binding gates; SBOM and provenance when stakeholders require them).
+
+**Governance programme for engineering controls** — `doctrine/patterns/engineering-controls-governance-program.md` (ownership, exceptions, metrics, audit consumption); readiness checklist `doctrine/checklists/governance-program-readiness.md`; illustrative control categories `doctrine/tooling/merge-path-and-pipeline-control-suite.md`.
 
 **User-facing quality** — `doctrine/principles/user-facing-quality.md` (accessibility, internationalisation).
 
@@ -342,6 +350,8 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 **Canonical reference index** — `doctrine/REFERENCES.md`.
 
 **Checklist** — `doctrine/checklists/platform-readiness.md`.
+
+**Platform as product, golden paths, service catalog** — `doctrine/patterns/platform-as-product-and-golden-paths.md` (self-service guardrails, catalog metadata, exceptions—portable; no mandated portal product).
 
 **Interoperability and standards posture** — `doctrine/principles/interoperability-and-standards.md`.
 

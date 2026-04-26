@@ -20,7 +20,7 @@ Use when adopting or auditing trunk-based workflow, branch protection, and deliv
 [ ] Small-PR culture reinforced; large changes need prior design note or RFC
 [ ] CODEOWNERS or equivalent for critical paths
 [ ] CODEOWNERS paths map to team aliases (not only individuals) where the org uses group ownership
-[ ] Review latency tracked for critical services (time-to-first-review, time-to-merge) where delivery SLAs apply (principles/measurement-and-dora.md)
+[ ] Review latency tracked for critical services (time-to-first-review, time-to-merge) where delivery SLAs apply (principles/measurement-and-dora.md, checklists/developer-experience-scorecard.md)
 [ ] Review checks operability: migrations, flags, rollout, observability
 [ ] **Agent- or automation-opened** PRs (where allowed): **same** required checks and review norms as human authors—no bypass of protected-branch gates ([principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4)
 ```

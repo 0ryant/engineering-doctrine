@@ -102,7 +102,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **GenAIOps** — Operating **GenAI** systems in production: **eval** and regression on outputs/retrieval, **index** freshness and **embedding** migrations, **cost** and quota governance, **provider** resilience, and **observability** (trace to chunk/tool ids)—same **SRE** habits as other critical dependencies. See [ai-ml-systems.md](principles/ai-ml-systems.md) §§6–7, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §4, [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
-**Golden path** — Org’s **blessed** default way to build/run a service (often part of an internal platform—not fully specified in portable doctrine).
+**Golden path** — Org’s **blessed** default way to build/run a service (scaffold → gates → promote → operate). See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 
 **Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
@@ -125,6 +125,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ## I
 
 **Idempotency** — Repeating an operation with the **same intent** does not **compound** harm (safe retries, dedupe keys). See [ENGINEERING.md](../ENGINEERING.md) §4, [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md).
+
+**Incident command / incident lifecycle** — Coordinated **response** to a production-impacting event: **incident commander**, **comms** cadence, **state doc** (single source of truth), **escalation**, **handoff**, **sustainable** on-call, **post-incident** **actions**. See [incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md), [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
 **IDOR** — *Insecure direct object reference*—often overlaps **BOLA**. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
@@ -182,6 +184,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **PITR** — *Point-in-time recovery*: restore a database (or object store with equivalent semantics) to a **specific timestamp** using **continuous** backups / WAL / logs—not only a **snapshot** from last night. See [data-and-migrations.md](principles/data-and-migrations.md).
 
+**Platform as product** — Internal **platform** work treated as a **product**: clear offerings, customer (team) feedback, prioritised **adoption** and **toil** reduction—not only infra tickets. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
+
 **Principle** — In this repo: **durable intent** under `principles/`—**not** tied to one vendor SKU. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
 **Problem Details** — `application/problem+json` (RFC 9457) for **machine-readable** HTTP errors. See [errors-and-failure-modes.md](principles/errors-and-failure-modes.md), [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
@@ -231,6 +235,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **SemVer** — *Semantic versioning* `MAJOR.MINOR.PATCH` per **publishable unit**. See [semantic-versioning.md](principles/semantic-versioning.md).
 
 **Separation of duties (SoD)** — Different roles for **authoring**, **approving**, and **operating** high-risk change (including **who runs agents** vs **who merges** to protected branches); **estate** policy detail complements portable collaboration rules. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §1, [collaboration.md](principles/collaboration.md).
+
+**Service catalog** — **Index of systems** the org runs: identity, **ownership**, interfaces (APIs/events), runtime, dependencies, ops links (SLOs, runbooks)—**tool-agnostic**; may be a portal, Git index, or dedicated product. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 
 **Shift left** — Move security, quality, and validation **earlier** in the lifecycle (design, CI), not only pre-release. See [ENGINEERING.md](../ENGINEERING.md) §5.
 

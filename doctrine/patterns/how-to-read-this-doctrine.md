@@ -24,8 +24,9 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 | --- | --- | --- |
 | **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` | **15–35 min** (TL;DR **~8 min**, glossary skim **~12 min**) |
 | **New org adopting wholesale** | `timeless-principles-and-tooling` → `build` → `collaboration` → `ENGINEERING.md` | **~60–120 min** for those four; full §18 extended set **adds 2–4 h** |
-| **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → `platform-readiness` checklist | **~45–90 min** + checklist **~20 min** |
-| **Security / API** | `api-boundaries-and-security` → `threat-modeling-stride-lite` → `ENGINEERING.md` §18 (extended principles) → `dependencies-supply-chain` | **~50–100 min** for core; **+1–2 h** if reading every extended principle |
+| **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → [platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md) → `platform-readiness` checklist | **~55–100 min** + checklist **~20 min** |
+| **Developer experience / platform enablement** | [`developer-experience.md`](../principles/developer-experience.md) → [`developer-experience-scorecard.md`](../checklists/developer-experience-scorecard.md) → `measurement-and-dora` §4 → `documentation-knowledge` → `build` §3 | **~35–70 min** |
+| **Security / API** | `api-boundaries-and-security` → `threat-modeling-stride-lite` → [`merge-path-evidence-and-pipeline-integrity.md`](../principles/merge-path-evidence-and-pipeline-integrity.md) → `ENGINEERING.md` §18 (extended principles) → `dependencies-supply-chain` | **~55–110 min** for core; **+1–2 h** if reading every extended principle |
 | **GenAI / RAG / retrieval (product)** | [`ai-ml-systems.md`](../principles/ai-ml-systems.md) (esp. §§6–7) → [rag-retrieval-baseline.md](rag-retrieval-baseline.md) → [`tooling/vector-retrieval-and-embedding-illustration.md`](../tooling/vector-retrieval-and-embedding-illustration.md) → `privacy-and-data-governance` §5 → `api-boundaries-and-security` → (optional) [research-enterprise-rag-agents-indexing-2026-04.md](../evolution/research-enterprise-rag-agents-indexing-2026-04.md), [research-ai-ml-ops-landscape-2026-04.md](../evolution/research-ai-ml-ops-landscape-2026-04.md) skim | **~50–90 min** |
 | **Internal AI / dev agents (enterprise)** | [`ai-ml-systems.md`](../principles/ai-ml-systems.md) §§4, 7 → [research-internal-ai-knowledge-factory-governance-2026-04.md](../evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) → `collaboration` §3, `documentation-knowledge`, `audit-logging` → [`tooling/ai-assisted-development.md`](../tooling/ai-assisted-development.md) → (optional) [research-enterprise-rag-agents-indexing-2026-04.md](../evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4 (MCP) | **~50–95 min** |
 | **Async / events** | `event-contracts` → `state-machines-and-workflows` → `message-channel-operations` → `tooling/cloudevents.md` (optional `tooling/nats-jetstream` / `kafka-and-cloudevents`, examples below) | **~40–80 min** + **~15–25 min** per worked **fiction** example |
@@ -36,14 +37,15 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 
 - If **`ENGINEERING.md`** and a **principle file** disagree on detail, treat the **principle** as authoritative and propose an **ENGINEERING** edit.
 - If **two principle files** seem to overlap (for example security vs API), apply the **stricter** consumer-facing requirement and open a PR to cross-link both.
+- For **merge-path invariants** (binding gates, pipeline definitions in scope, evidence expectations), [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2 is authoritative over general build-surface wording where they differ until texts are harmonised.
 
 ---
 
 ## Checklists
 
-- Repo rollout: `checklists/build-readiness.md`, `collaboration-readiness.md`, `platform-readiness.md`.
+- Repo rollout: `checklists/build-readiness.md`, `collaboration-readiness.md`, `platform-readiness.md`, `developer-experience-scorecard.md`.
 - **Releases:** `checklists/release-readiness.md`.
-- **Editing this library:** `checklists/doctrine-change-checklist.md`.
+- **Editing this library:** `checklists/doctrine-change-checklist.md`; release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md).
 - **Adopting with a team:** `patterns/adoption-playbook.md`, `tooling/estates/minimum-viable-doctrine.template.md`, `principles/measurement-and-dora.md`.
 
 ---
@@ -55,6 +57,8 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 - **Git submodule** — pins a **specific commit** of this library; reviewers see **exactly** which doctrine revision ships—at the cost of **submodule** ergonomics every developer must tolerate.
 
 Pick one **mechanism** per org and document it in the **consumer** repo’s README so upgrades are **intentional**, not accidental drift.
+
+Pin a **tag**, **commit**, subtree merge, or submodule revision for policy-sensitive adoption. Before importing upstream changes, read [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md) to classify the update as **editorial**, **additive**, **normative**, **estate-only**, or **breaking** for the consumer.
 
 ---
 

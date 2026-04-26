@@ -34,6 +34,8 @@ Forkable, modular doctrine starter kits are **rare** relative to company handboo
 ## Ongoing Gap Research
 
 - Section-by-section industry comparison: [deep-research-section-gaps.md](deep-research-section-gaps.md)
+- Public doctrine benchmark and portability-focused scorecard: [public-doctrine-benchmark-gap-analysis-2026-04.md](public-doctrine-benchmark-gap-analysis-2026-04.md)
+- Anti-patterns and failure modes benchmark: [anti-patterns-and-failure-modes-gap-analysis-2026-04.md](anti-patterns-and-failure-modes-gap-analysis-2026-04.md)
 
 ---
 

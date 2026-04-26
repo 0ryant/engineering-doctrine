@@ -6,7 +6,7 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-04-10 03:41 UTC
+Generated: 2026-04-26 23:27 UTC
 
 ## All Markdown files
 
@@ -15,12 +15,16 @@ Generated: 2026-04-10 03:41 UTC
 - [SITEMAP.md](SITEMAP.md)
 - [checklists/build-readiness.md](checklists/build-readiness.md)
 - [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md)
+- [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
 - [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md)
+- [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md)
 - [checklists/platform-readiness.md](checklists/platform-readiness.md)
 - [checklists/release-readiness.md](checklists/release-readiness.md)
+- [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md)
 - [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md)
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md)
 - [evolution/moscow-review.md](evolution/moscow-review.md)
+- [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
@@ -28,11 +32,15 @@ Generated: 2026-04-10 03:41 UTC
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md)
+- [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md)
+- [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md)
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md)
+- [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
+- [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md)
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
 - [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md)
@@ -45,12 +53,14 @@ Generated: 2026-04-10 03:41 UTC
 - [principles/container-runtime-choice.md](principles/container-runtime-choice.md)
 - [principles/data-and-migrations.md](principles/data-and-migrations.md)
 - [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md)
+- [principles/developer-experience.md](principles/developer-experience.md)
 - [principles/documentation-knowledge.md](principles/documentation-knowledge.md)
 - [principles/errors-and-failure-modes.md](principles/errors-and-failure-modes.md)
 - [principles/event-contracts.md](principles/event-contracts.md)
 - [principles/interoperability-and-standards.md](principles/interoperability-and-standards.md)
 - [principles/kubernetes-platform-security.md](principles/kubernetes-platform-security.md)
 - [principles/measurement-and-dora.md](principles/measurement-and-dora.md)
+- [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md)
 - [principles/modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md)
 - [principles/naming-and-repo-layout.md](principles/naming-and-repo-layout.md)
 - [principles/observability.md](principles/observability.md)
@@ -80,6 +90,7 @@ Generated: 2026-04-10 03:41 UTC
 - [tooling/estates/gcp-container-runtimes.md](tooling/estates/gcp-container-runtimes.md)
 - [tooling/estates/minimum-viable-doctrine.template.md](tooling/estates/minimum-viable-doctrine.template.md)
 - [tooling/kafka-and-cloudevents.md](tooling/kafka-and-cloudevents.md)
+- [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md)
 - [tooling/nats-jetstream.md](tooling/nats-jetstream.md)
 - [tooling/observability.md](tooling/observability.md)
 - [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md)

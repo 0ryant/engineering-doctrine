@@ -106,7 +106,7 @@ Sections **1, 13, 14, 18** have strong mirrors in `doctrine/principles/` and pat
 | Domain | Typical external expectation | Your doctrine posture |
 | --- | --- | --- |
 | **NIST SSDF** | PO/PS/PW/RV full SDLC | You cover **many** PW/PS tasks via build, deps, secrets; **light** on formal PO (training, roles) and **RV** (coordinated disclosure, customer comms) |
-| **Internal Developer Platform** | Golden paths, service catalog, self-service infra | **Not present**—would be `tooling/estates/` or separate “platform doctrine” |
+| **Internal Developer Platform** | Golden paths, service catalog, self-service infra | **Portable pattern** — [patterns/platform-as-product-and-golden-paths.md](../patterns/platform-as-product-and-golden-paths.md); concrete portal/catalog **products** stay in `tooling/estates/` or org ADRs |
 | **AI / ML systems** | Model cards, eval gates, data lineage, SP 800-218A | **Portable coverage** — [principles/ai-ml-systems.md](../principles/ai-ml-systems.md), [patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md), vector tooling illustration, `evolution/research-*.md`; **estate** ADRs for model cards and hyperscaler IaC remain org-specific |
 | **Compliance regimes** | SOC2, ISO 27001 control mapping | **Absent** (by design for portability) |
 | **Chaos engineering** | Gremlin / custom fault injection | **Absent** in reliability principle |
