@@ -34,7 +34,7 @@ There is no separate "core team" document unless the project adds one; use the *
 - **No fixed calendar** is promised before `1.0.0` (or while the project uses `0.y.z` semantics). Tags are created when a **batch of changes** is worth signalling to consumers, or when there is a **normative** or **deprecation** change that benefits from a version pin.
 - **SemVer-shaped tags** and change meaning follow [doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md](doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md): patch vs minor vs major (and `0.x` caveats) apply to the **doctrine** contract, not to npm/cargo crates unless this repo later ships them.
 - **Dated** files under [doctrine/evolution/](doctrine/evolution/) stay as research and audit context; they are not a substitute for tagged releases when you need a compatibility signal.
-- If the project starts publishing **release notes** in GitHub Releases, each material release should list **change classes** and **consumer impact** (minimum in that pattern doc, §4).
+- The in-repo [CHANGELOG.md](CHANGELOG.md) records notable tagged releases. If **GitHub Releases** are also used, point each release at the same summary and list **change classes** and **consumer impact** (minimum in that pattern doc, §4).
 
 ## Roadmap
 
