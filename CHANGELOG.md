@@ -4,6 +4,10 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Added
+
+- [doctrine/patterns/code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md) — author and reviewer **duties**, **blocker** vs **non-blocker** policy, **review latency** example targets, **high-risk** change classes, **agent-authored** / LLM diffs, **escalation** when review disagrees; [ADR 0008](docs/adr/0008-add-code-review-and-change-approval-pattern.md).
+
 ## [0.1.0] - 2026-04-27
 
 First public SemVer-tagged release ([`v0.1.0`](https://github.com/0ryant/engineering-doctrine/releases/tag/v0.1.0)). **Change classes** (summary): *navigation* + *additive guidance* with some *normative* additions in new files; *compatibility* treated as **0.x minor** (review before pin upgrade).

@@ -225,6 +225,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/trunk-workflow.md](patterns/trunk-workflow.md) | Trunk + delivery |
 | [patterns/message-channel-operations.md](patterns/message-channel-operations.md) | DLQ, replay, backlog |
 | [patterns/adoption-playbook.md](patterns/adoption-playbook.md) | Team migration toward doctrine |
+| [patterns/code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) | PR/MR **duties**, blockers vs nits, review latency, high-risk classes, **LLM**/**agent**-authored diffs, escalation when review disagrees |
 | [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md) | Platform-as-product, golden paths, self-service guardrails, service catalog (portable) |
 | [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) | Fictional order FSM + JetStream sketch |
 | [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) | Fictional saga + compensation sketch |
