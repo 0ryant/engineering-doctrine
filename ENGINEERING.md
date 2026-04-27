@@ -235,10 +235,11 @@ See `doctrine/principles/build.md` and `doctrine/patterns/build-surface-model.md
 - **Small pull requests** — one concern per change where practical; large or risky work gets a design note or RFC first.
 - **Feature flags** — incomplete capabilities ship behind flags with safe defaults; flags have owners and removal plans.
 - **Promotion** — promote immutable artefacts through environments; same build ID or image tag from test to prod where the platform allows.
+- **GitOps and declarative operations** — when infrastructure and platform config are managed as *declarative* desired state in version control and reconciled (or push-equivalently) with *visible drift*—not manual snowflakes. Pattern: `doctrine/patterns/gitops-and-declarative-operations.md`.
 - **Operational rigour** — named service ownership, runbooks for deploy and rollback, observability for new risk, blameless postmortems with tracked actions, SLOs and error budgets where user-facing reliability matters.
 - **Footguns to avoid** — long-lived integration branches, force-push to shared branches, merging red, Friday merges without rollback, CI that cannot run locally, manual production drift.
 
-Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patterns/trunk-workflow.md`; code review and merge path: `doctrine/patterns/code-review-and-change-approval.md`. Checklist: `doctrine/checklists/collaboration-readiness.md`. Platform defaults (GitHub/GitLab): `doctrine/tooling/collaboration.md`.
+Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patterns/trunk-workflow.md`; code review and merge path: `doctrine/patterns/code-review-and-change-approval.md`; GitOps (declarative / reconciled desired state): `doctrine/patterns/gitops-and-declarative-operations.md`. Checklist: `doctrine/checklists/collaboration-readiness.md`. Platform defaults (GitHub/GitLab): `doctrine/tooling/collaboration.md`.
 
 ### Git Hooks And Local Hygiene
 
