@@ -1,6 +1,7 @@
 # Public Doctrine Benchmark Gap Analysis
 
 **Date:** 2026-04-26.  
+**Companion (2026-04-27):** [public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) — taxonomy of public *kinds* of doctrine, **refreshed** scorecard, and **which source to lead with when** (decision guide).  
 **Question:** How does this portable engineering-doctrine library compare with public engineering handbooks, GitHub-hosted playbooks, and public standards? What is still missing or too quiet?
 
 ---

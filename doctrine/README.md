@@ -29,6 +29,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — condensed **external review** signal
 - [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) — **gap analysis** by section vs industry frameworks
 - [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) — **public-doctrine benchmark** and portability-focused scorecard
+- [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) — **taxonomy** of public doctrines, **honest** refreshed scorecard, **which to choose when**
 - [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md) — **anti-patterns and failure modes** benchmark, taxonomy, and gap map
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) — **AI/ML ops & governance** research (Azure AILZ, RAG, NIST/OWASP) + map to doctrine sections
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — **internal AI / agent factory** vision: governance-first, handoffs, councils, agentic workflows + doctrine map (**no** build runbooks)

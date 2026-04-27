@@ -182,6 +182,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
 | [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) | Public doctrine benchmark, scorecard, and residual gap analysis |
+| [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) | Taxonomy of public *kinds* of doctrine, honest scorecard refresh, **which to choose when** |
 | [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md) | Public anti-patterns / failure modes benchmark, taxonomy, and gap analysis |
 | [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) | AI/ML ops, governance, RAG, Azure AI Landing Zone — external sources + doctrine map |
 | [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) | Internal AI knowledge layer, handoffs, councils, agentic workflows — enterprise governance + doctrine map (no build specs) |

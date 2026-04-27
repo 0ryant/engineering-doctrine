@@ -4,6 +4,10 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Added
+
+- [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](doctrine/evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) — **Taxonomy** (A–J) of public doctrine types, **honest** refreshed scorecard vs April benchmark, **which external source to lead with when** table, when *this* library is wrong primary; cross-linked from [evolution](doctrine/README.md#meta-how-to-read-this-repo).
+
 ### Changed
 
 - [doctrine/patterns/gitops-and-declarative-operations.md](doctrine/patterns/gitops-and-declarative-operations.md) — lead with **OpenGitOps** v1.0.0, **OWASP** CI/CD top risks, **NIST** SSDF and **12factor** config pointers; in-repo links moved to a **secondary** “alignment” section; [REFERENCES.md](doctrine/REFERENCES.md) and [glossary](doctrine/glossary.md) **GitOps** entry updated for external **bibliography**.
