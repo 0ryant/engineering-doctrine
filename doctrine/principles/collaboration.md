@@ -137,4 +137,5 @@ When these principles conflict with a deadline, **narrow scope** or **add safety
 - Google SRE Book — **Being On-Call**: https://sre.google/sre-book/being-on-call/  
 - [measurement-and-dora.md](measurement-and-dora.md) — delivery metrics and review latency  
 - [../patterns/code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) — author and reviewer **duties**, blockers vs nits, latency examples, high-risk classes, **agent-authored** PRs, **escalation** when review disagrees  
+- [../patterns/gitops-and-declarative-operations.md](../patterns/gitops-and-declarative-operations.md) — *GitOps* (OpenGitOps, OWASP CI/CD) as **declarative** **reconciled** desired state, not **manual** **prod** **drift**; aligns with **reviewed** **automation** here  
 - [build.md](build.md), [patterns/trunk-workflow.md](../patterns/trunk-workflow.md), [tooling/collaboration.md](../tooling/collaboration.md)  

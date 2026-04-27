@@ -4,9 +4,14 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Changed
+
+- [doctrine/patterns/gitops-and-declarative-operations.md](doctrine/patterns/gitops-and-declarative-operations.md) — lead with **OpenGitOps** v1.0.0, **OWASP** CI/CD top risks, **NIST** SSDF and **12factor** config pointers; in-repo links moved to a **secondary** “alignment” section; [REFERENCES.md](doctrine/REFERENCES.md) and [glossary](doctrine/glossary.md) **GitOps** entry updated for external **bibliography**.
+
 ### Added
 
 - [doctrine/patterns/code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md) — author and reviewer **duties**, **blocker** vs **non-blocker** policy, **review latency** example targets, **high-risk** change classes, **agent-authored** / LLM diffs, **escalation** when review disagrees; [ADR 0008](docs/adr/0008-add-code-review-and-change-approval-pattern.md).
+- [doctrine/patterns/gitops-and-declarative-operations.md](doctrine/patterns/gitops-and-declarative-operations.md) — **GitOps** invariants (declarative state, **reconciliation**, **drift**, **secrets**); [ADR 0009](docs/adr/0009-add-gitops-and-declarative-operations-pattern.md).
 
 ## [0.1.0] - 2026-04-27
 
