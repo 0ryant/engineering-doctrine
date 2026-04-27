@@ -26,6 +26,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0006](0006-add-governance-and-assurance-navigation-and-adopt-adrs.md) | Accepted | 2026-04-26 | Add Governance & Assurance navigation and adopt ADRs |
 | [0007](0007-add-developer-experience-as-a-first-class-principle.md) | Accepted | 2026-04-27 | Add Developer Experience as a first-class principle |
 | [0008](0008-add-code-review-and-change-approval-pattern.md) | Accepted | 2026-04-27 | Add code review and change approval pattern (DevOps-native) |
+| [0009](0009-add-gitops-and-declarative-operations-pattern.md) | Accepted | 2026-04-27 | Add GitOps and declarative operations pattern |
 
 ## Candidate Considered But Not Recorded
 

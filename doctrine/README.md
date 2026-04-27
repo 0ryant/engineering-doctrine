@@ -77,6 +77,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — doctrine release labels, change classes, and consumer pinning guidance
 - [patterns/code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) — code review and merge approval (duties, blockers, latency, high-risk, **agent**-authored diffs, escalation)
+- [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md) — **GitOps** (declarative desired state, **reconciliation**, **drift**, **secrets** boundaries); touches build, **SSOT**, **merge** path, collaboration
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)

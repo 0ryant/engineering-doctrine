@@ -45,7 +45,7 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 
 - Repo rollout: `checklists/build-readiness.md`, `collaboration-readiness.md`, `platform-readiness.md`, `developer-experience-scorecard.md`.
 - **Releases:** `checklists/release-readiness.md`.
-- **Editing this library:** [doctrine-library-change-harness.md](doctrine-library-change-harness.md) (research, ADR, navigation); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md).
+- **Editing this library:** [doctrine-library-change-harness.md](doctrine-library-change-harness.md) (research, ADR, navigation); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); [gitops-and-declarative-operations.md](gitops-and-declarative-operations.md) (declarative **ops** and **IaC** invariants); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md).
 - **Adopting with a team:** `patterns/adoption-playbook.md`, `tooling/estates/minimum-viable-doctrine.template.md`, `principles/measurement-and-dora.md`.
 
 ---
