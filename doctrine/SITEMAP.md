@@ -6,7 +6,7 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-04-26 23:55 UTC
+Generated: 2026-04-27 00:01 UTC
 
 ## All Markdown files
 
@@ -32,6 +32,7 @@ Generated: 2026-04-26 23:55 UTC
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md)
+- [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md)
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md)
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md)

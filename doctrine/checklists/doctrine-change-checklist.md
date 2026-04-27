@@ -3,6 +3,9 @@
 Use when **adding or substantially editing** files under `doctrine/` or the umbrella `ENGINEERING.md`.
 
 ```text
+[ ] For substantive additions: follow patterns/doctrine-library-change-harness.md (research → ADR → layers → navigation)
+[ ] ADR: new docs/adr/NNNN-*.md + docs/adr/README.md index row, or explicit reference to existing ADR; skip only for pure editorial (note in PR)
+[ ] Research: external citations and/or doctrine/evolution/ note linked from the change or ADR when non-trivial
 [ ] Change belongs in principles (timeless) vs tooling (illustrative) vs estates (vendor-specific) — see principles/timeless-principles-and-tooling.md
 [ ] If principle changed: rationale and references updated; not just opinion
 [ ] If umbrella ENGINEERING.md changed: principle file exists or is intentionally summary-only; no new prescriptive vendor picks in principles

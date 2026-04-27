@@ -1,0 +1,20 @@
+---
+description: >-
+  Required workflow for additions to engineering-doctrine — research, ADR, layer
+  cross-links, sitemap/glossary/references/README, checklist, preflight script.
+globs: doctrine/**/*.md
+alwaysApply: false
+---
+
+# Engineering doctrine library edits
+
+When editing **this** repository’s `doctrine/` tree, `docs/adr/`, or umbrella `ENGINEERING.md`:
+
+1. **Follow** `doctrine/patterns/doctrine-library-change-harness.md` (research → ADR → layered content → navigation).
+2. **ADR:** create or reference `docs/adr/`; update `docs/adr/README.md` index for new ADRs. Skip only for pure editorial fixes.
+3. **Layering:** principles vs patterns vs tooling per `doctrine/principles/timeless-principles-and-tooling.md`; cross-link so there are no orphan pages.
+4. **Regenerate** `doctrine/SITEMAP.md`: `./scripts/generate-doctrine-sitemap.sh` (or `./scripts/doctrine-change-preflight.sh`).
+5. **Update** as needed: `doctrine/glossary.md`, `doctrine/REFERENCES.md`, `doctrine/README.md`, `tldr-principles-and-mvp.md`, `ENGINEERING.md`, checklists, `CHANGELOG.md` (material releases).
+6. **Complete** `doctrine/checklists/doctrine-change-checklist.md` and state **change class** + **consumer impact** in the PR.
+
+Use the **copy-paste agent prompt** in §7 of the harness file for full step-by-step tasks.

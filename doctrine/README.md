@@ -21,6 +21,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 
 - **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** — **TL;DR** spine + **minimum viable doctrine** (read this if the tree feels too large)
 - **[glossary.md](glossary.md)** — terms and acronyms used across doctrine (orientation only)
+- [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) — **maintainer workflow** for library edits (research, ADR, layers, sitemap, glossary, references)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) — navigation and conflict resolution
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — how this library labels releases and downstream compatibility impact
 - [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) — principles vs tooling vs estate supplements

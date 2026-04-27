@@ -170,6 +170,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | --- | --- |
 | [../ENGINEERING.md](../ENGINEERING.md) | Headline principles index (repo root) |
 | [../CHANGELOG.md](../CHANGELOG.md) | Version history for **SemVer-shaped** doctrine tags |
+| [../AGENTS.md](../AGENTS.md) | Short agent instructions; points at **harness** for library edits |
+| [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) | **Library change** workflow: research, ADR, cross-links, sitemap, glossary, refs |
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
