@@ -17,6 +17,11 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | WCAG 2.2 | https://www.w3.org/TR/WCAG22/ |
 | CloudEvents — NATS protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/nats-protocol-binding.md |
 | CloudEvents — Kafka protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/kafka-protocol-binding.md |
+| OpenGitOps (principles, community) | https://opengitops.dev/ |
+| OpenGitOps — GitOps Principles v1.0.0 (source) | https://raw.githubusercontent.com/open-gitops/documents/v1.0.0/PRINCIPLES.md |
+| OWASP — Top 10 CI/CD Security Risks | https://owasp.org/www-project-top-10-ci-cd-security-risks/ |
+| NIST — SSDF (SP 800-218) | https://csrc.nist.gov/publications/detail/sp/800-218/final |
+| Twelve-Factor App — Config | https://12factor.net/config |
 
 ---
 
@@ -226,6 +231,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/message-channel-operations.md](patterns/message-channel-operations.md) | DLQ, replay, backlog |
 | [patterns/adoption-playbook.md](patterns/adoption-playbook.md) | Team migration toward doctrine |
 | [patterns/code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) | PR/MR **duties**, blockers vs nits, review latency, high-risk classes, **LLM**/**agent**-authored diffs, escalation when review disagrees |
+| [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md) | **GitOps** (cites **OpenGitOps** v1.0, **OWASP** CI/CD top 10, **NIST** SSDF pointer, **12factor**); portable invariants; then **in-repo** **alignment** to build / **SSOT** / **merge** path |
 | [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md) | Platform-as-product, golden paths, self-service guardrails, service catalog (portable) |
 | [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) | Fictional order FSM + JetStream sketch |
 | [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) | Fictional saga + compensation sketch |

@@ -6,7 +6,7 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-04-27 00:24 UTC
+Generated: 2026-04-27 00:32 UTC
 
 ## All Markdown files
 
@@ -38,6 +38,7 @@ Generated: 2026-04-27 00:24 UTC
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md)
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md)
+- [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md)
 - [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)

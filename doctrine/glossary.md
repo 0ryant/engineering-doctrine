@@ -106,6 +106,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Golden path** — Org’s **blessed** default way to build/run a service (scaffold → gates → promote → operate). See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 
+**GitOps** — In this library: **anchored** to **OpenGitOps** v1.0.0 [PRINCIPLES.md](https://raw.githubusercontent.com/open-gitops/documents/v1.0.0/PRINCIPLES.md) (declarative, versioned, pull, reconcile) plus [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/) and [NIST SSDF](https://csrc.nist.gov/publications/detail/sp/800-218/final) *pointers* in [gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md), then mapped to in-repo build/collab/merge-path doctrine. Community hub: [OpenGitOps](https://opengitops.dev/).
+
 **Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
 ---
