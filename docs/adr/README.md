@@ -25,6 +25,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0005](0005-treat-ai-ml-rag-and-agentic-workflows-as-first-class-governed-systems.md) | Accepted (retrospective) | 2026-04-10 | Treat AI/ML, RAG, and agentic workflows as governed systems |
 | [0006](0006-add-governance-and-assurance-navigation-and-adopt-adrs.md) | Accepted | 2026-04-26 | Add Governance & Assurance navigation and adopt ADRs |
 | [0007](0007-add-developer-experience-as-a-first-class-principle.md) | Accepted | 2026-04-27 | Add Developer Experience as a first-class principle |
+| [0008](0008-add-code-review-and-change-approval-pattern.md) | Accepted | 2026-04-27 | Add code review and change approval pattern (DevOps-native) |
 
 ## Candidate Considered But Not Recorded
 

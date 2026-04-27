@@ -238,7 +238,7 @@ See `doctrine/principles/build.md` and `doctrine/patterns/build-surface-model.md
 - **Operational rigour** — named service ownership, runbooks for deploy and rollback, observability for new risk, blameless postmortems with tracked actions, SLOs and error budgets where user-facing reliability matters.
 - **Footguns to avoid** — long-lived integration branches, force-push to shared branches, merging red, Friday merges without rollback, CI that cannot run locally, manual production drift.
 
-Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patterns/trunk-workflow.md`. Checklist: `doctrine/checklists/collaboration-readiness.md`. Platform defaults (GitHub/GitLab): `doctrine/tooling/collaboration.md`.
+Full doctrine: `doctrine/principles/collaboration.md`. Pattern: `doctrine/patterns/trunk-workflow.md`; code review and merge path: `doctrine/patterns/code-review-and-change-approval.md`. Checklist: `doctrine/checklists/collaboration-readiness.md`. Platform defaults (GitHub/GitLab): `doctrine/tooling/collaboration.md`.
 
 ### Git Hooks And Local Hygiene
 

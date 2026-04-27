@@ -32,6 +32,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Blameless postmortem** — Incident review focused on **system** and **process** fixes, not individual fault; actions tracked to completion. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md), [collaboration.md](principles/collaboration.md).
 
+**Blocker (review comment)** — Feedback that must be resolved (or a time-bounded waiver recorded) before merge: correctness, security, contract, or regulatory gap—not mere preference unless policy says otherwise. See [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §3.
+
 **BOLA / BOPLA** — *Broken object (and property) level authorisation*: access control bugs where callers reach others’ objects or fields. Top theme in OWASP API Top 10. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
 **BM25** — *Best Matching 25*: classic **lexical** relevance ranking (sparse retrieval); pairs with **dense** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
@@ -163,6 +165,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ## N
 
 **NIST AI 600-1** — *AI Risk Management Framework: Generative Artificial Intelligence Profile* (July 2024): GenAI-specific risks and suggested actions aligned with **AI RMF** functions. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2, [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) references.
+
+**Nit (non-blocking review)** — Style, naming, or **optional** improvement that **need not** block merge; often lands as a follow-up **issue**. See [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §3.
 
 ---
 
