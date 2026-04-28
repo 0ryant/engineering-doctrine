@@ -286,6 +286,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Vector store** — Index or database for **embeddings** (similarity search); in multi-tenant RAG, isolation failures are **information disclosure** incidents. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
 
+**VulnOps** — *Vulnerability operations*: **continuous** discovery, triage, remediation, and feedback into engineering backlogs—treated as a **standing** capability (people + automation), not only periodic audits or a security-owned spreadsheet. Industry briefings use the term in an AI-accelerated **offense** context; this library’s research note and [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) cite it as **input** until normative doctrine is extended. See [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md), [secure-development-lifecycle.md](principles/secure-development-lifecycle.md).
+
 ---
 
 ## W

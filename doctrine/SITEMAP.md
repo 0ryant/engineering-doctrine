@@ -6,7 +6,7 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-04-27 00:40 UTC
+Generated: 2026-04-28 02:09 UTC
 
 ## All Markdown files
 
@@ -24,6 +24,7 @@ Generated: 2026-04-27 00:40 UTC
 - [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md)
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md)
 - [evolution/moscow-review.md](evolution/moscow-review.md)
+- [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md)
 - [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md)
 - [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)

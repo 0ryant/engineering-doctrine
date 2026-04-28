@@ -85,6 +85,7 @@ Regulated sectors or customer contracts may add approvals **outside** the PR—r
 | **Same automated gates as any other PR** | Tests, scans, and policies apply; no blanket waiver because “AI wrote it.” |
 | **No rubber stamps on large generated volume** | Spurious green CI on weak tests is worse when generation is fast; reviewers sample and request targeted proof (property-based, contract, or scenario tests). |
 | **Separation of duties (where your estate requires it)** | The same person should not be the only check when an agent touches production credentials, protected paths, or control bypass—match enterprise SoD policy. |
+| **Security-critical path: human must understand the diff** | For authn/authz, secrets/crypto, tenancy, schema safety, **CI/CD** privilege, or internet-exposed boundaries, the **approving human** must be able to **defend behaviour under incident pressure**; targeted **abuse-case** or adversarial evidence is expected when generation touched those paths ([testing-strategy.md](../principles/testing-strategy.md) §5, [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2). |
 
 **VCS “agents”** (Renovate, release bots) follow [collaboration.md](../principles/collaboration.md) and [tooling/collaboration.md](../tooling/collaboration.md) (bot accounts, auto-merge where allowed). This section is about **LLM- and agent-generated content in the diff**, not about dependency bots alone.
 

@@ -16,7 +16,7 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 ## 2. Update Cadence And Automation
 
 - **Automate** update PRs with human review; do not rely on **ad-hoc** `npm update` before releases only.
-- **Security patches** merge on an **SLA** appropriate to severity. **Example organisational defaults** (adjust per sector and policy—publish yours in an estate or security doc):
+- **Security patches** merge on an **SLA** appropriate to severity. **Example estate defaults** (adjust per sector, **CISA KEV** / regulatory duty, internet exposure, and compensating controls—publish **yours** in an estate or security doc; numbers below are **illustrative**, not universal law):
 
 | Severity (typical CVSS-aligned) | Target time to **patched release** or **approved compensating control** |
 | --- | --- |
@@ -25,16 +25,21 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 | **Medium** | **30 calendar days** or next **scheduled** maintenance window (whichever is sooner) |
 | **Low** | Next **regular** dependency cadence (e.g. weekly/biweekly bot merge) |
 
+- **Known-exploited and triage order** — when a component matches [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) (or your estate’s equivalent **weaponisation** feed), treat it as **highest** urgency regardless of “ordinary” severity tables; use [FIRST EPSS](https://www.first.org/epss/user-guide) and asset context to **rank** non-KEV backlog, not to **ignore** KEV.
+
 **Why:** Outdated dependencies are a **known** attack surface; automation reduces toil and inconsistency across repos. **Named SLAs** prevent “we’ll get to it” drift without pretending every CVE is equal.
 
 ---
 
 ## 3. SBOM And Scanning
 
-- Produce **SBOMs** for shipped artefacts where the organisation or regulators expect them.
+- Produce **SBOMs** for shipped artefacts where the organisation or regulators expect them. **Generation alone is insufficient** for operations: each **immutable** artefact digest/version should retain an **SBOM** that can be **re-scanned** against **current** advisory feeds ([SPDX](https://spdx.dev/), [CycloneDX](https://cyclonedx.org/)—see [REFERENCES.md](REFERENCES.md)).
+- **Continuous feed-backed re-evaluation** — on **promotion** or **deploy** to an environment, and when **material** feed updates land, re-check the **same** SBOM identity (**purl** / version / hash where available) against vulnerability intelligence; merge-time green does **not** authorise deploy after **new** disclosures unless policy explicitly allows a time-bounded exception ([merge-path-evidence-and-pipeline-integrity.md](merge-path-evidence-and-pipeline-integrity.md)).
+- **Triage before promotion** — a releasable artefact with newly disclosed vulnerable components is **remediated**, **blocked**, or released only under an **explicit** risk acceptance with **owner**, **expiry**, and **compensating control** recorded next to the artefact evidence.
+- **VEX / exploitability** — when a CVE appears in the SBOM but the shipped configuration is **not exploitable**, record disposition with **scope** (artefact version, environment) using a **VEX** document or equivalent **signed** attestation (for example CycloneDX [VEX](https://cyclonedx.org/capabilities/vex/)) so promotion evidence stays honest—**not** to replace scanning or future re-evaluation when code or reachability changes.
 - **SCA** (dependency scanning) and **secret scanning** run on the merge path (already aligned with build principles).
 
-**Why:** Executive Order 14028 (US) and sector norms increasingly expect **SBOM** evidence for critical software; even without regulation, SCA is table stakes.
+**Why:** Executive Order 14028 (US) and sector norms increasingly expect **SBOM** evidence for critical software; even without regulation, SCA is table stakes. **AI-accelerated disclosure** widens the gap between “we built once with a green scan” and “what is exposed **now**.”
 
 ---
 
@@ -65,6 +70,7 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 | Explicit licence policy | Prevents **surprise** copyleft or attribution gaps in releases. |
 | Provenance when required | **Attestations** answer “was this binary built from **this** source?” faster than manual forensics. |
 | Published patch SLAs | Makes **RV** (respond) work **measurable**; aligns with SSDF-style expectations. |
+| SBOM + promotion loop | **AI-accelerated disclosure** means merge-time green is insufficient without **re-scan** at promote/deploy. |
 
 ---
 
