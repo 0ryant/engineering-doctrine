@@ -171,22 +171,36 @@ Average time-to-exploit: 32 days (2022) → <24 hours (2024). Adversaries are op
 
 The following gaps are specific to AI-speed offense; they are not failures of existing frameworks on their own terms, but places where AI-era conditions expose the implicit assumptions behind those frameworks.
 
-**Gap 1: No SLO Prescriptions in the Dominant Frameworks**
+Update 2026-04-28: all six gaps below are now closed in corpus text. This section remains as the research record of what was missing before the follow-up synthesis pass. The authoritative closure map lives in [ADR 0010](../../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md).
+
+~~**Gap 1: No SLO Prescriptions in the Dominant Frameworks**~~
+Closed in corpus 2026-04-28: [secure-development-lifecycle.md](../principles/secure-development-lifecycle.md) §3, [dependencies-supply-chain.md](../principles/dependencies-supply-chain.md) §2, and [measurement-and-dora.md](../principles/measurement-and-dora.md) §2.1 now define remediation SLAs, exploit-signal triage, and measurable vulnerability-response SLIs.
+
 NIST SSDF, OWASP ASVS, and SAFECode all treat remediation timelines as "risk-based, organization-defined." This was adequate when average TTE was measured in weeks. At <24-hour TTE for known CVEs, "organization-defined" produces the 5-month MTTR average. Doctrine should prescribe default SLO tiers (e.g., critical exploited: ≤72h; critical disclosed: ≤7d; high: ≤15d) as starting positions, with explicit guidance on how to assess whether organizational context justifies deviation — not leave timelines unspecified.
 
-**Gap 2: Adversarial CI is Treated as Optional and Human-Driven**
+~~**Gap 2: Adversarial CI is Treated as Optional and Human-Driven**~~
+Closed in corpus 2026-04-28: [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2 invariants 8-9 and §3, [testing-strategy.md](../principles/testing-strategy.md) §5, and [merge-path-and-pipeline-control-suite.md](../tooling/merge-path-and-pipeline-control-suite.md) §1 now make adversarial analysis a merge-path concern with server-enforced evidence expectations for security-relevant scope.
+
 Existing SDLC guidance treats penetration testing and red teaming as periodic, human-led activities. None of the major frameworks (SSDF, ASVS, SAFECode) specify continuous adversarial testing as a pipeline gate. As AI-powered adversarial tools (Aikido Infinite, Adversa AI, Snyk Evo) become viable CI/CD integrations, doctrine should specify when adversarial CI is required (minimally: all changes to auth, access control, cryptography, and external-facing API surface) and what constitutes an acceptable adversarial testing gate.
 
-**Gap 3: SBOM Guidance Stops at Generation; Continuous Scanning is Implied but Not Operationalized**
+~~**Gap 3: SBOM Guidance Stops at Generation; Continuous Scanning is Implied but Not Operationalized**~~
+Closed in corpus 2026-04-28: [dependencies-supply-chain.md](../principles/dependencies-supply-chain.md) §3 and [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2 invariant 9 now define per-artifact SBOM retention, feed-backed re-evaluation at promotion, VEX-style dispositions, and blocking expectations for newly disclosed vulnerability state.
+
 EO 14028 and SSDF call for SBOMs. SLSA provides provenance. But existing guidance under-specifies the operational loop: SBOM generated at build time, scanned against updated vulnerability feeds on every deploy, with automated blocking and SLO-tracked triage for new findings against existing artifacts in production. The Glasswing scenario — where a 27-year-old vulnerability is suddenly discovered and weaponizable — means SBOM freshness and continuous feed integration are operational requirements, not one-time deliverables.
 
-**Gap 4: Blast-Radius Architecture is a Design Principle Without Engineering Acceptance Criteria**
+~~**Gap 4: Blast-Radius Architecture is a Design Principle Without Engineering Acceptance Criteria**~~
+Closed in corpus 2026-04-28: [threat-modeling-stride-lite.md](../principles/threat-modeling-stride-lite.md) §4 now defines portable blast-radius acceptance prompts, evidence expectations, and a review bar that makes containment claims falsifiable.
+
 OWASP SbD and ASVS both call for least privilege and defense in depth. Neither provides acceptance criteria or architectural test cases. Doctrine should specify what blast-radius analysis looks like in a design review: explicit enumeration of what a compromised component can reach (data stores, credential material, adjacent services, egress paths), with a required mitigation narrative for any path that reaches critical assets. Without acceptance criteria, blast-radius "analysis" is a checkbox.
 
-**Gap 5: AI-Generated Code Has No Specific Secure SDLC Treatment**
+~~**Gap 5: AI-Generated Code Has No Specific Secure SDLC Treatment**~~
+Closed in corpus 2026-04-28: [ai-ml-systems.md](../principles/ai-ml-systems.md) §4 and [code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §6 now require human understanding and approval for AI-generated changes on security-critical paths, alongside the usual merge-path evidence.
+
 No current major framework addresses AI-assisted code generation as a distinct SDLC input with specific security review requirements. The implicit assumption that code review processes are symmetric — human-written code reviewed by humans, AI-assisted code reviewed the same way — ignores that AI-generated code may inherit training-data vulnerability patterns at scale, and that an AI-only review gate for AI-generated code shares failure modes. Doctrine should specify that security-critical paths (auth, access control, data boundary enforcement) require human review even when AI-generated.
 
-**Gap 6: Incident-to-Architecture Feedback Loop is Absent from Most Frameworks**
+~~**Gap 6: Incident-to-Architecture Feedback Loop is Absent from Most Frameworks**~~
+Closed in corpus 2026-04-28: [incident-lifecycle-and-on-call-operations.md](../patterns/incident-lifecycle-and-on-call-operations.md) §9 and [secure-development-lifecycle.md](../principles/secure-development-lifecycle.md) §3 now require architecture-class root-cause handling and tracked backlog items when system shape amplifies incident impact.
+
 SSDF RV.3 specifies root cause analysis and process updates. But existing frameworks do not specify the architectural feedback loop: when a security incident reveals that architectural properties (insufficient segmentation, over-privileged service accounts, wide blast radius) amplified impact, that finding should trigger architectural review and backlog items — not just a patch. This gap means organizations close individual vulnerabilities without closing the architectural conditions that made exploitation impactful.
 
 ---
