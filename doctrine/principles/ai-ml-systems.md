@@ -45,6 +45,7 @@ Teams **declare** the **highest** tier they operate in per system and **upgrade*
 - **Agents propose** — branches, diffs, PRs, or **draft** docs—not **silent** mutation of production or **protected** branches without the **same** gates as human contributors.
 - **CI proves** — **required checks** for that repo **still apply**; non-deterministic outputs do **not** waive **contracts**, **lint**, or **security** gates ([build.md](build.md), [testing-strategy.md](testing-strategy.md)).
 - **Humans approve** — **high-risk** areas (auth, tenancy, crypto, schema, **person**-affected automation) keep **explicit** review per [collaboration.md](collaboration.md) and [secure-development-lifecycle.md](secure-development-lifecycle.md) §1.
+- **Security-critical paths are proposal-only until human sign-off** — changes touching **authn/authz**, **secrets or crypto**, **tenant isolation**, **CI/deploy privileges**, or **internet-exposed** trust boundaries remain **human-gated** for merge approval even when an LLM or agent authored the diff; green CI alone does not substitute where tests could be **weak** or **misaligned** with abuse cases. Disclosure and evidence expectations: [code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §6.
 
 **Why:** Preserves **trunk**, **small PRs**, and **bisectability** while scaling throughput.
 

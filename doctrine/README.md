@@ -34,6 +34,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) — **AI/ML ops & governance** research (Azure AILZ, RAG, NIST/OWASP) + map to doctrine sections
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — **internal AI / agent factory** vision: governance-first, handoffs, councils, agentic workflows + doctrine map (**no** build runbooks)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) — **enterprise RAG**, vectors, indexing, hybrid search, **MCP**/agents — research + gap map
+- [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) — **AI vulnerability storm / Mythos-era** engineering research (CSA briefing, SSDF/SLSA/OWASP anchors) + [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) (G1–G6 **synthesized** into principles/patterns—see ADR closure table)
 
 ### Governance & Assurance
 

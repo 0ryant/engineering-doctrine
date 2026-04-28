@@ -316,7 +316,7 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **Observability** — `doctrine/principles/observability.md`; illustrative tooling: `doctrine/tooling/observability.md`.
 
-**Testing strategy** — `doctrine/principles/testing-strategy.md` (pyramid, contract tests, flakiness).
+**Testing strategy** — `doctrine/principles/testing-strategy.md` (pyramid, contract tests, flakiness, adversarial / abuse-case testing on the merge path).
 
 **State machines and workflows (event-backed)** — `doctrine/principles/state-machines-and-workflows.md` (transitions, idempotency, event-type mapping).
 
@@ -375,6 +375,8 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 **Vector / embedding pipeline (illustrative tooling)** — `doctrine/tooling/vector-retrieval-and-embedding-illustration.md`.
 
 **Enterprise RAG, indexing, agents (research)** — `doctrine/evolution/research-enterprise-rag-agents-indexing-2026-04.md`.
+
+**Mythos-era / AI vulnerability storm (research + corpus closure)** — `doctrine/evolution/mythos-era-engineering-principles-research-2026-04-28.md`; ADR `docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md` (G1–G6 **closed** in principles/patterns—see ADR table).
 
 **Chaos engineering and game days** — `doctrine/patterns/chaos-engineering-and-game-days.md` (extends `doctrine/principles/reliability-slo-incidents.md`).
 
