@@ -49,6 +49,14 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | OWASP API4 Unrestricted Resource Consumption | https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/ |
 | OWASP Dependency-Check (SCA concept) | https://owasp.org/www-project-dependency-check/ |
 | STRIDE threat categories (overview) | https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats |
+| OWASP — Secure by Design Framework | https://owasp.org/www-project-secure-by-design-framework/ |
+| CSA Lab — “AI Vulnerability Storm” / Mythos-ready security program (strategy briefing) | https://labs.cloudsecurityalliance.org/research/ai-vulnerability-storm-mythos-ready-security-program/ |
+| CSA — Mythos CISO briefing hub | https://labs.cloudsecurityalliance.org/mythos-ciso/ |
+| Anthropic — Project Glasswing (industry defensive coordination initiative) | https://www.anthropic.com/project/glasswing |
+| Anthropic — Frontier Red Team, Claude Mythos Preview | https://red.anthropic.com/2026/mythos-preview/ |
+| CISA & NSA — Defending CI/CD environments | https://www.cisa.gov/news-events/alerts/2023/06/28/cisa-and-nsa-release-joint-guidance-defending-continuous-integrationcontinuous-delivery-cicd |
+| NIST — Strategies for the integration of software supply chain security in DevSecOps CI/CD pipelines | https://www.nist.gov/publications/strategies-integration-software-supply-chain-security-devsecops-cicd-pipelines |
+| ISO/IEC 27002:2022 — information security controls (incl. technical vulnerability management) | https://www.iso.org/standard/75652.html |
 
 ---
 
@@ -187,6 +195,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) | AI/ML ops, governance, RAG, Azure AI Landing Zone — external sources + doctrine map |
 | [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) | Internal AI knowledge layer, handoffs, councils, agentic workflows — enterprise governance + doctrine map (no build specs) |
 | [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) | Enterprise RAG, ANN/indexing, hybrid search, MCP/agents — synthesis + doctrine gap map |
+| [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) | AI-accelerated vuln discovery, VulnOps, principle clusters — **research**; [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) maps **G1–G6** to closed corpus sections |
+| [../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | ADR: research adoption + **G1–G6** closure traceability |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
 | [README.md](README.md) | Doctrine folder entry |
 | [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) | TL;DR spine + MVP synthesis |
@@ -250,7 +260,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [principles/ai-ml-systems.md](principles/ai-ml-systems.md) | GenAI, RAG, agents; governance tiers; merge path |
 | [principles/data-and-migrations.md](principles/data-and-migrations.md) | Schema evolution, backups |
 | [principles/observability.md](principles/observability.md) | Logs, metrics, traces |
-| [principles/testing-strategy.md](principles/testing-strategy.md) | Pyramid, contracts, flakiness |
+| [principles/testing-strategy.md](principles/testing-strategy.md) | Pyramid, contracts, flakiness, adversarial CI / abuse-case testing (§5) |
 | [principles/state-machines-and-workflows.md](principles/state-machines-and-workflows.md) | FSM, transitions, event-type mapping |
 | [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md) | HTTP limits, OWASP API |
 | [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) | STRIDE-lite trust-boundary review |

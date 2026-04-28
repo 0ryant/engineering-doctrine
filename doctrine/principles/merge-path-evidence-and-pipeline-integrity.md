@@ -33,6 +33,10 @@ This principle **adds** merge-path and pipeline-specific invariants. It does **n
 
 7. **Time-bounded exceptions** — Risk acceptances for failing gates carry **owners**, **expiry**, and **compensating controls**. Silent indefinite waivers are treated as **control failure**.
 
+8. **Adversarial analysis on the merge path for security-relevant scope** — Beyond periodic penetration tests, **automated abuse-case** or adversarial analysis runs as a **binding gate** (not advisory-only logs) when policy requires it for changes touching **authn/authz**, **secrets or crypto**, **data-boundary enforcement**, **internet-exposed** API surface, **dependency policy**, or **pipeline definitions with privilege**. **Risk-tier** which paths require a blocking gate vs scheduled depth is **estate-defined**; the portable rule is that **claimed** protection is **server-enforced** and leaves **retrievable evidence** (revision, scope, tool/rule identity, disposition, waiver linkage). See [testing-strategy.md](testing-strategy.md) §5 and OWASP [Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/).
+
+9. **Promotion re-evaluates vulnerability state** — Deploy or promote authority must treat **current** dependency/advisory feeds against the **exact artefact** SBOM (or equivalent inventory) bound to the digest/version being promoted. A previously green merge path does **not** authorise promotion after **new** disclosures unless an explicit, **scoped** exception or **VEX**-style exploitability record is attached to the evidence bundle ([dependencies-supply-chain.md](dependencies-supply-chain.md) §3).
+
 ---
 
 ## 3. Rationale (Why These Invariants)
@@ -46,6 +50,8 @@ This principle **adds** merge-path and pipeline-specific invariants. It does **n
 | 5 | Unpinned graphs make SBOMs and incident response **non-repeatable**. |
 | 6 | Regulators and large buyers increasingly expect **machine-readable** transparency; US federal guidance on SBOM elements has **moved forward** independently of any single vendor stack. |
 | 7 | Governance without expiry becomes **organisational debt** and violates enterprise risk management norms (see CSF **Govern** and supply-chain categories). |
+| 8 | **AI-accelerated discovery** and pipeline abuse both reward **continuous** defensive signal on the same path where code gains authority—not annual audits alone. |
+| 9 | Otherwise organisations **ship** compromised graphs because “main was green last Tuesday.” |
 
 ---
 

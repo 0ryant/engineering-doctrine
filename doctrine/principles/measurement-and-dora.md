@@ -34,6 +34,21 @@ Use the map in **retrospectives**: a rising CFR often traces to **skipped gates*
 
 ---
 
+## 2.1 Vulnerability response and remediation signals (adjacent to Four Keys)
+
+**Four Keys** measure **delivery** health; **vulnerability operations** need parallel **SLIs** so “we ship often” does not mask “we never patch.” Track definitions in an internal doc and keep them stable quarter-to-quarter. Examples (rename to match your telemetry):
+
+| SLI | Plain meaning |
+| --- | --- |
+| **Within remediation target** | Share (or count) of open findings resolved before the estate’s SLA clock—see [dependencies-supply-chain.md](dependencies-supply-chain.md) §2 |
+| **Time to triage** | Elapsed from **first signal** (scanner, feed, report) to **prioritised** owner and disposition |
+| **Known-exploited backlog** | Count and age of issues matching **weaponisation** feeds (e.g. [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)) still open |
+| **Security debt beyond policy** | Findings older than the published SLA without an approved exception |
+
+**Why:** NIST SSDF **RV** and sector practice expect **measurable** response; **DORA** throughput without these signals **games** behaviour—pair with [dependencies-supply-chain.md](dependencies-supply-chain.md) §2 and [secure-development-lifecycle.md](secure-development-lifecycle.md) §3.
+
+---
+
 ## 3. What This Document Does Not Replace
 
 - **Product metrics** (activation, revenue) — still required for product health.

@@ -16,6 +16,7 @@
 | **Pipeline static analysis** | Dangerous workflow patterns, excessive permissions, injection | Workflow linters, dedicated CI security analysers, custom Open Policy Agent (OPA) on YAML |
 | **Provenance / SBOM emission** | Attest builds; publish SBOM with releases | SBOM generators (SPDX, CycloneDX), SLSA-style generators, Sigstore cosign signing |
 | **Post-merge assurance** | Runtime verification separate from merge | Smoke jobs, synthetic probes (see execution surfaces in your build model) |
+| **Adversarial / abuse-case analysis** | Negative-security testing on security-relevant diffs; optional deeper scheduled scans | SAST with chaining, policy-driven fuzz/DAST, LLM-assisted review bots—**estate** picks products; principle: [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2 invariants 8–9, [testing-strategy.md](../principles/testing-strategy.md) §5 |
 
 ---
 

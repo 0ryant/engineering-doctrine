@@ -48,7 +48,18 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 
 ---
 
-## 5. Mutation, Property-Based, And Accessibility Testing
+## 5. Adversarial CI And Negative-Security Testing
+
+- Treat **abuse-case** and adversarial analysis as **complements** to the pyramid: they hunt **classes** of failures (authz bypass, unsafe data flow, secret exposure, **SSRF**, dependency confusion hints) that happy-path tests miss.
+- **Pre-merge** — for **security-relevant** diffs (see [merge-path-evidence-and-pipeline-integrity.md](merge-path-evidence-and-pipeline-integrity.md) §2 invariant 8), run **scoped** adversarial or SAST-with-chaining checks on **changed** surfaces; failures are **defects** to fix or **policy** violations, not noise to silence.
+- **Scheduled / broader** runs — full-repo or deeper passes catch **new** rule packs and **latent** issues; align cadence with estate risk.
+- **Risk tiers (portable shape)** — **Tier 0** (privileged paths, pipeline definitions): blocking gate on every relevant change. **Tier 1** (internet-exposed or sensitive data): blocking on scoped changes. **Tier 2** (ordinary logic): recommended; may be non-blocking telemetry by policy. **Tier 3** (docs-only): typically out of scope.
+
+**Why:** OWASP CI/CD risk work and SSDF **PS/PW** expect **flow control** and **well-secured** output; periodic pentests alone lose the race when disclosure-to-exploit timelines compress.
+
+---
+
+## 6. Mutation, Property-Based, And Accessibility Testing
 
 - **Mutation testing** — optional gate for **high-risk** modules; surviving mutants highlight **weak** assertions (see *An Introduction to Mutation Testing* and tooling such as **Stryker**, **cargo-mutants**).
 - **Property-based** tests — useful for parsers, codecs, state machines, and invariants that **example-based** tests miss; libraries such as **Hypothesis**, **QuickCheck**, **proptest** (ecosystem-specific).
@@ -58,7 +69,7 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 
 ---
 
-## Rationale And Decisions
+## 7. Rationale And Decisions
 
 | Decision | Rationale |
 | --- | --- |
@@ -68,6 +79,7 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 | Zero tolerance for unowned flakiness | Protects **merge discipline** and signal quality. |
 | Mutation/property optional | Raises **assertion quality** on parsers, codecs, and money paths where **coverage** alone lies. |
 | Default pyramid percentages | Gives teams a **concrete** starting point; deviations require **explicit** rationale. |
+| Adversarial CI named | Closes the gap between **functional** tests and **abuse** reality without mandating a vendor tool. |
 
 ---
 
@@ -78,3 +90,4 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 - Google Testing Blog, **Just Say No to More End-to-End Tests** (Mike Wacker): https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html  
 - *An Introduction to Mutation Testing* (concept): https://mutationtesting.org/  
 - Hypothesis (property-based testing, Python): https://hypothesis.readthedocs.io/  
+- OWASP **Top 10 CI/CD Security Risks** (pipeline abuse, flow control): https://owasp.org/www-project-top-10-ci-cd-security-risks/  

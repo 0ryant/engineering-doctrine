@@ -135,9 +135,10 @@ The **incident state doc** (wiki page, **shared doc**, ticket, or **runbook** se
 - **Blameless** review for **material** incidents (per estate policy, often all **P0/P1** and **any** with **data** or **security** impact).
 - **Attendees** include IC, **SMEs**, **comms** if public, and **owner** of **affected** **product**; **scales** with severity.
 - **Output:** **timeline**, **root cause** (or **factors** if **not** a single line), **what went well / poorly**, **action items** with **one owner** each and **date**; **link** to **tickets** or **work tracking**.
+- **Architecture backlog when blast radius lied** — if the review finds that **architecture** (not only a bug) **amplified** impact, **must** open at least one **tracked** architecture or platform item—not only a hotfix ticket. **Triggers (examples):** successful **lateral movement** across an internal boundary meant to contain; **credential or secret scope** allowed exfiltration across a **trust zone**; **shared control plane** or **multi-tenant** substrate turned one defect into cross-customer impact; missing **segmentation**, **egress control**, or **kill-switch** design materially worsened outcome; **same failure class** recurs after a “patch-only” fix. **Ownership:** **product** teams for service-local trust mistakes; **platform** for shared guardrails, identity defaults, paved-road isolation; **joint** when both must change—still assign **one** accountable owner per item.
 - **Track** **actions** to **completion**; **reopen** the **conversation** if the **same** **failure class** recurs. **DORA** **change-failure** and **restoration** metrics improve when **this** **closes**.
 
-**Why:** The principle file already **requires** **tracked** **actions**; this pattern **ties** them to **roles** and **cadence** so the **ritual** **sticks**.
+**Why:** The principle file already **requires** **tracked** **actions**; this pattern **ties** them to **roles** and **cadence** so the **ritual** **sticks**. NIST SSDF **RV.3** expects learning that reduces **recurrence**, including **system shape**.
 
 ---
 
@@ -168,6 +169,7 @@ The **incident state doc** (wiki page, **shared doc**, ticket, or **runbook** se
 - [observability.md](../principles/observability.md) — **signals** that **feed** **severity** and **impact**
 - [platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md) — **escalation** to **platform**
 - [measurement-and-dora.md](../principles/measurement-and-dora.md) — **restore** **time** and **learning** **loops**
+- [secure-development-lifecycle.md](../principles/secure-development-lifecycle.md) — **RV** root-cause classes (patch vs process vs **architecture**)
 
 ---
 
