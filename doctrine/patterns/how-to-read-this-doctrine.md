@@ -7,10 +7,11 @@ Use this page when onboarding to the repository or deciding **what to adopt** in
 ## Layers (Outermost To Innermost)
 
 1. **`ENGINEERING.md`** (repo root) — **Umbrella** summary: the full list of headline principles and pointers. It can lag slightly; if in doubt, the **`doctrine/principles/`** file wins for detail.
-2. **`doctrine/principles/`** — **Timeless** rules: platform-agnostic, with **rationale** and **references** per topic. Prefer citing these when embedding doctrine in another repo.
-3. **`doctrine/patterns/`** — **Compositional** guidance: how build surfaces, trunk workflow, message operations, and similar ideas fit together. Not every pattern applies to every repo.
-4. **`doctrine/tooling/`** — **Illustrative** stacks (task runners, CI mapping, bots). Swap freely; keep **surface meanings** from `principles/build.md`.
-5. **`doctrine/tooling/estates/`** — **Optional** vendor/cloud notes (example: Azure). Never copy estate content into portable principles without generalising.
+2. **`doctrine/SEMANTIC_INDEX.md`** — **Route map**: task intent to the source files an agent or reader should ingest. It is navigation, not authority over the linked files.
+3. **`doctrine/principles/`** — **Timeless** rules: platform-agnostic, with **rationale** and **references** per topic. Prefer citing these when embedding doctrine in another repo.
+4. **`doctrine/patterns/`** — **Compositional** guidance: how build surfaces, trunk workflow, message operations, and similar ideas fit together. Not every pattern applies to every repo.
+5. **`doctrine/tooling/`** — **Illustrative** stacks (task runners, CI mapping, bots). Swap freely; keep **surface meanings** from `principles/build.md`.
+6. **`doctrine/tooling/estates/`** — **Optional** vendor/cloud notes (example: Azure). Never copy estate content into portable principles without generalising.
 
 Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md)** explains why the split exists.
 
@@ -23,6 +24,7 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 | Audience | Path | Approx. reading |
 | --- | --- | --- |
 | **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` | **15–35 min** (TL;DR **~8 min**, glossary skim **~12 min**) |
+| **Agent / AI contributor** | [`SEMANTIC_INDEX.md`](../SEMANTIC_INDEX.md) → route matching the task → [`doctrine-library-change-harness.md`](doctrine-library-change-harness.md) if editing doctrine/ADR/umbrella files | **10-25 min** before focused work; more for the routed source docs |
 | **New org adopting wholesale** | `timeless-principles-and-tooling` → `build` → `collaboration` → `ENGINEERING.md` | **~60–120 min** for those four; full §18 extended set **adds 2–4 h** |
 | **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → [platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md) → `platform-readiness` checklist | **~55–100 min** + checklist **~20 min** |
 | **Developer experience / platform enablement** | [`developer-experience.md`](../principles/developer-experience.md) → [`developer-experience-scorecard.md`](../checklists/developer-experience-scorecard.md) → `measurement-and-dora` §4 → `documentation-knowledge` → `build` §3 | **~35–70 min** |
