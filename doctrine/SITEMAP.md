@@ -6,12 +6,13 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-04-28 02:09 UTC
+Generated: 2026-05-08 23:57 UTC
 
 ## All Markdown files
 
 - [README.md](README.md)
 - [REFERENCES.md](REFERENCES.md)
+- [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
 - [SITEMAP.md](SITEMAP.md)
 - [checklists/build-readiness.md](checklists/build-readiness.md)
 - [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md)

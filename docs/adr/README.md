@@ -28,6 +28,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0008](0008-add-code-review-and-change-approval-pattern.md) | Accepted | 2026-04-27 | Add code review and change approval pattern (DevOps-native) |
 | [0009](0009-add-gitops-and-declarative-operations-pattern.md) | Accepted | 2026-04-27 | Add GitOps and declarative operations pattern |
 | [0010](0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | Accepted | 2026-04-28 | Record Mythos-era / AI vulnerability storm research; **G1–G6 closed** in corpus (2026-04-28 synthesis) |
+| [0011](0011-add-semantic-index-for-agent-ingestion-and-topic-routing.md) | Accepted | 2026-05-09 | Add semantic index for agent ingestion and topic routing |
 
 ## Candidate Considered But Not Recorded
 
