@@ -3,3 +3,10 @@
 
 # Local Cursor / IDE (keep personal agents, rules, and experiments out of the tree)
 .cursor/
+
+# Claude Code agent state (per-session local settings)
+.claude/
+
+# context-supply-service pack output (regenerable; not authoritative — ADR 0005)
+.context-supply-service/
+agent-authority-framework-project-harness-target.json
