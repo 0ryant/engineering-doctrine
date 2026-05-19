@@ -21,6 +21,7 @@ For contribution workflow, **security reporting**, **maintainer and review** exp
 - [GOVERNANCE.md](GOVERNANCE.md) — maintainers, review policy, and release cadence
 - [CHANGELOG.md](CHANGELOG.md) — version history aligned with **SemVer-shaped tags** (see [doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md](doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md))
 - [AGENTS.md](AGENTS.md) — instructions for **AI / agent** contributors editing this library; links the **harness** for substantive changes
+- [doctrine/SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md) — semantic route map for humans and agents; links task intent to the source doctrine files to ingest
 
 ## Structure
 
@@ -30,6 +31,7 @@ For contribution workflow, **security reporting**, **maintainer and review** exp
 - `doctrine/patterns/` shows how build and delivery surfaces fit together (including trunk workflow).
 - `doctrine/checklists/` turns the doctrine into reviewable execution (build, collaboration, platform/SRE, release, and doctrine edits).
 - `doctrine/evolution/` holds audit notes (for example MoSCoW reviews).
+- `doctrine/SEMANTIC_INDEX.md` maps task intent to the highest-value doctrine files for humans and agents.
 - `doctrine/REFERENCES.md` indexes authoritative external sources; each principle file documents rationale and citations.
 - `docs/adr/` records decisions about this doctrine library itself. Retrospective ADRs must include both the original decision date and the date they were recorded.
 - `scripts/generate-doctrine-sitemap.sh` regenerates `doctrine/SITEMAP.md` (all Markdown paths under `doctrine/`).
