@@ -3,3 +3,10 @@
 
 # Local Cursor / IDE (keep personal agents, rules, and experiments out of the tree)
 .cursor/
+
+# Claude Code agent state (per-session local settings)
+.claude/
+
+# Cordance pack output (regenerable; not authoritative — ADR 0005)
+.cordance/
+pai-axiom-project-harness-target.json
