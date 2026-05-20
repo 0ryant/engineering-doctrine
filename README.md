@@ -1,6 +1,6 @@
 # Engineering Doctrine
 
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![License: AGPL-3.0-or-later](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 
 Reusable engineering doctrine that separates stable principles from replaceable tooling.
 
@@ -8,9 +8,11 @@ This repository is intended to be a reference library for teams building applica
 
 ## License
 
-The default license for this repository is **Apache-2.0** (see [LICENSE](LICENSE)). You may use, copy, and adapt the text for your own handbooks, templates, and internal policy **subject to the license** (attribution, NOTICE if you redistribute derivative works, etc.). This is not legal advice; confirm with your counsel for regulated environments.
+This repository is licensed under **AGPL-3.0-or-later** (see [LICENSE](LICENSE)). You may use, copy, adapt, and redistribute the text and code **subject to the license** — including the AGPL network-use / source-disclosure obligations if you make a modified version available to users over a network. This is not legal advice; confirm with your counsel for regulated or commercial deployments.
 
-**Why Apache-2.0:** It is a permissive, widely understood license for mixed documentation and code (including the scripts in this repo) and is familiar to many enterprises.
+**Why AGPL-3.0-or-later:** Engineering Doctrine is the OSS wedge of a larger ecosystem (see council D6 / `release-surfaces/public-vs-gated.md`). AGPL keeps the doctrine genuinely open and copyleft-protected: improvements made by downstream redistributors stay accessible to the community, while permissive embed in proprietary stacks requires a separate commercial arrangement.
+
+**Pre-v0.2.0 caveat:** Versions of this repository tagged before `v0.2.0` were released under their original license (Apache-2.0; preserved as [LICENSE.old](LICENSE.old)). The AGPL-3.0-or-later relicense applies from `v0.2.0` forward. Pre-relicense versions remain available under their original terms.
 
 ## Project governance (public trust)
 
