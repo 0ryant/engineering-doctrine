@@ -46,3 +46,19 @@ For contribution workflow, **security reporting**, **maintainer and review** exp
 6. For decisions about this library, use `docs/adr/` so structural changes are visible without relying on git history alone.
 
 Principles should move slowly. Tooling should change when the stack, platform, or team context changes.
+
+## Want the discipline layer?
+
+This OSS distribution is the reference library — the doctrine every other
+agent-authority-framework tool cites. The gated tier (`agent-authority-framework-disciplined`) bundles the
+**anti-confabulation primer** (empirically lifts model-balanced-class canonical
+score from 78 → 85, a +7 pt capability uplift at $0.58/cell), the
+run-contracts, the verifier-packs, and the model-routing policy on top of
+the seven gated sibling tools.
+
+The primer is the moat. The doctrine is the foundation; the discipline
+layer is what turns a doctrine-aware agent into a *measured* one.
+
+See `ecosystem-catalog/commercial/oss-vs-gated.md` in the ecosystem
+catalog for the full tier comparison. (Commercial page URL pending operator
+finalisation.)
