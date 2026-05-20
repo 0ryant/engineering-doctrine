@@ -1,9 +1,12 @@
 # 0012. Model Routing Policy
 
-Status: Proposed
+Status: Accepted
 Decision date: 2026-05-20
 Recorded date: 2026-05-20
+Accepted date: 2026-05-20
 Retrospective: No
+
+> Promoted `proposed → accepted` 2026-05-20 per operator decision packet (Decision B). Council vote 4/4 PROMOTE; empirical anchor is the 9-cell Stage 2 scoreboard + 4 governance tools at N≥100 hard-enforcement + Haiku-PRIMED narrow-scope decision. Promotion does NOT ship runtime enforcement — composer v0.2 wires the policy. See `value-sheet/18-cross-product-test/v3/operator-decisions-2026-05-20.md`.
 
 > Note on numbering. The v3 position update at
 > [`value-sheet/18-cross-product-test/v3/v3-position-update.md`](https://github.com/0ryant/value-sheet)
