@@ -93,6 +93,13 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) — HTTP, messages, infra idempotency
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) — RAG retrieval (hybrid, eval, privacy)
 - [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md) — platform-as-product, golden paths, self-service, service catalog
+- [patterns/run-contracts.md](patterns/run-contracts.md) — agent **run contracts** (v1 envelope binding trigger, model, context, capabilities, authority, hooks, verifiers, outputs)
+- [patterns/verifier-packs.md](patterns/verifier-packs.md) — **verifier packs** (mandatory mirror of every skill; 11 canonical kinds plus `custom`)
+- [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) — **anti-confabulation priming** for build-class agents; canonical ~200-token block lifts model-balanced 4.6 canonical 78→85 (delta tightening 12 pts) at ~200-token cost
+
+### Skills
+
+- [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md) — auto-bundled into build-class run contracts; ships the verbatim priming block (SHA-256 `c138dd96…`) and the `priming_active` verifier-pack reference
 
 ### Checklists
 
