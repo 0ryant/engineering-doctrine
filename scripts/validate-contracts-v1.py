@@ -41,10 +41,10 @@ def pr_evidence_build_review() -> dict:
     return {
         "name": "evidence-pack-build-review",
         "schema_version": "1.0.0",
-        "description": "On every PR to agent-authority-framework/evidence-pack: build the evidence pack, then have an LLM review it.",
+        "description": "On every PR to example-org/evidence-pack: build the evidence pack, then have an LLM review it.",
         "trigger": {
             "type": "repo_event",
-            "repo": "agent-authority-framework/evidence-pack",
+            "repo": "example-org/evidence-pack",
             "events": ["pull_request_opened", "pull_request_synchronize"],
         },
         "model_policy": {
