@@ -1,0 +1,185 @@
+# Experimental haiku-narrow-scope router policy (3-tier)
+#
+# This file demonstrates how a deployment that genuinely WANTS the narrow_
+# scope tier active in production wires the policy. It is structurally
+# identical to default-production but ships with broader cell_classes on
+# the narrow_scope tier (still bounded by mandatory external review) and a
+# more permissive per-session kill so that experimental sweeps do not trip
+# the operator-kill threshold prematurely.
+#
+# As of 2026-05-20 the canonical evidence for haiku_4_x is canonical 73
+# at ~$0.21 with Delta self-canonical +10 (matched-pair primer addendum).
+# The +10 means the tier cannot grade its own work; this is mitigated
+# structurally by external_review_required: true with sample rate 1.0.
+#
+# DO NOT promote this policy without:
+#   1. Fresh external-scored canonical run at canonical >= 50 on a fresh
+#      adversarial cohort the cell has not seen.
+#   2. Operator sign-off on the +10 self-canonical risk.
+#   3. Re-validation against this schema after any rule shape change.
+
+$schema: https://engineering-doctrine/contracts/router-policy.v1.schema.json
+policy_version: 1.0.0
+schema_version: 1.0.0
+description: >-
+  Experimental 3-tier policy that exercises the narrow_scope tier on
+  scaffolded subtasks bracketed by a Sonnet-primed planner. Same premium
+  and default tiers as v3 production default; narrow_scope is broadened to
+  include refactor_class scaffolded subtasks with mandatory non-self
+  scoring.
+
+tiers:
+  premium:
+    model: claude-opus-4-7
+    model_family: opus_4_x
+    primer: anti-confab-200tok@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: pr-evidence-mcp-verifier-pack@1.0.0
+    cell_classes:
+      - security_critical
+      - supervisor_change
+      - doctrine_promotion
+    max_cost_usd_per_cell: 10.00   # placeholder -- operator to finalize
+    external_review_required: false
+
+  default:
+    model: claude-sonnet-4-6
+    model_family: sonnet_4_x
+    primer: anti-confab-200tok@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: pr-evidence-mcp-verifier-pack@1.0.0
+    cell_classes:
+      - greenfield_backbone
+      - refactor_class
+      - audit_class
+      - build_class
+      - artifact_production
+      - research_class
+    max_cost_usd_per_cell: 2.00    # placeholder -- operator to finalize
+    external_review_required: false
+
+  narrow_scope:
+    model: claude-haiku-4-5-20251001
+    model_family: haiku_4_x
+    primer: anti-confab-200tok@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: pr-evidence-mcp-verifier-pack@1.0.0
+    cell_classes:
+      - scaffolded_typed_authority
+    max_cost_usd_per_cell: 0.50    # placeholder -- operator to finalize
+    external_review_required: true
+    external_review_sample_rate: 1.0
+    description: >-
+      Experimental haiku-narrow-scope cell. Only entered for scaffolded_
+      typed_authority subtasks where a higher tier has produced the wire
+      format and tests. Mandatory external review at sample rate 1.0 until
+      a separate independently-measured rate is on the record.
+
+escalation_rules:
+  - rule_id: claim-audit-falsified-escalate
+    when:
+      claim_audit_verdict: FALSIFIED
+      attempts_so_far: 1
+    action:
+      escalate_to_tier: premium
+      add_primer: anti-confab-200tok@1.0.0
+      max_cost_usd: 5.00     # placeholder -- operator to finalize
+    evidence_ref: value-sheet/18-cross-product-test/v3/results/plan-b-v2-claim-audit-against-stage2/composite.md
+
+  - rule_id: scaffolded-typed-authority-narrow-scope
+    when:
+      cell_class:
+        - scaffolded_typed_authority
+    action:
+      require_tier: narrow_scope
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-haiku-primed.md
+    description: >-
+      Route scaffolded_typed_authority subtasks directly to the narrow_
+      scope tier (rather than defaulting them to Sonnet). The mandatory
+      external review enforced at tier level still applies.
+
+  - rule_id: security-critical-premium-only
+    when:
+      cell_class:
+        - security_critical
+        - supervisor_change
+        - doctrine_promotion
+    action:
+      require_tier: premium
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-opus.md
+
+refusal_rules:
+  - rule_id: haiku-no-greenfield
+    when:
+      model_family: haiku_4_x
+      cell_class: greenfield_backbone
+    action:
+      refuse_routing: true
+      reason: >-
+        Even in the experimental narrow-scope profile, greenfield_backbone
+        remains refused on haiku_4_x. The v3 narrow-scope tier is for
+        scaffolded subtasks only; anything that designs its own wire format
+        stays out. Re-promotion to greenfield requires canonical >= 75 across
+        an adversarial cohort the cell has not seen.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+
+  - rule_id: haiku-no-artifact-production-without-primer
+    when:
+      model_family: haiku_4_x
+      cell_class: artifact_production
+      primer: null
+    action:
+      refuse_routing: true
+      reason: >-
+        Tools-haiku without the canonical primer canonical 31 (v2 Stage 2
+        smoking gun). Even the experimental profile refuses unprimed haiku
+        on artifact_production.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+
+  - rule_id: haiku-narrow-scope-requires-external-review
+    when:
+      cell_class: scaffolded_typed_authority
+      model_family: haiku_4_x
+    action:
+      require_external_review: true
+      reason: >-
+        Delta +10 self-canonical applies in the experimental profile too.
+        Sampling rate stays at 1.0 until an independently-measured rate is
+        on the record.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-haiku-primed.md
+
+  - rule_id: interpreter-wrapper-block
+    when:
+      command_matches: "^(bash|sh|zsh|powershell|pwsh|cmd)\\s+-c"
+    action:
+      refuse_routing: true
+      reason: >-
+        CC-2 FALSIFIED. Applies to all profiles including experimental.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/per-tool-failure-mode-tests-results/composite.md
+
+  - rule_id: primer-required-on-build-class
+    when:
+      cell_class:
+        - build_class
+        - artifact_production
+        - refactor_class
+      primer: null
+    action:
+      refuse_routing: true
+      reason: >-
+        Build-class cells must run with the canonical primer for
+        measurement-grade honesty. Applies in all profiles.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+
+cost_ceilings:
+  per_cell:
+    premium_max_usd: 5.00      # placeholder -- operator to finalize
+    default_max_usd: 2.00      # placeholder -- operator to finalize
+    narrow_scope_max_usd: 0.50 # placeholder -- operator to finalize
+  per_session:
+    operator_warning_at_usd: 25.00   # placeholder -- operator to finalize
+    operator_kill_at_usd: 150.00     # placeholder -- operator to finalize
+
+audit:
+  jsonl_path: audit/router-experimental.jsonl
+  content_addressable: true
