@@ -1,0 +1,447 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-doctrine/contracts/router-policy.v1.schema.json",
+  "title": "Router policy (v1)",
+  "description": "Canonical v1 schema for a model-routing policy: the typed envelope a router consumes to choose a tier (model + primer + verifier_pack + cell-class fit + cost ceiling), escalate on adversarial-verifier verdicts, and refuse routing for empirically-known failure modes. Encodes the explicit 3-tier policy (premium / default / narrow_scope) mandated by ADR-0012 after the v3 9-cell scoreboard (v3-FINAL-SYNTHESIS.md §2.1) replaced the prior single-default-cell shape.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_version",
+    "tiers",
+    "escalation_rules",
+    "refusal_rules",
+    "cost_ceilings"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional explicit pointer to this schema URL. When present, MUST equal the schema $id."
+    },
+    "policy_version": {
+      "type": "string",
+      "description": "Semver of the policy document itself. v1 policies MUST declare a 1.x.y string.",
+      "pattern": "^1\\.[0-9]+\\.[0-9]+$"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Semver of THIS router-policy schema. v1 packs declare 1.x.y.",
+      "pattern": "^1\\.[0-9]+\\.[0-9]+$",
+      "default": "1.0.0"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence summary of the policy's intent.",
+      "maxLength": 512
+    },
+    "fingerprint": {
+      "type": "string",
+      "description": "sha256:<hex> content-hash of the canonicalised policy body. Generated; not author-supplied.",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "tiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The three production tiers — premium, default, narrow_scope — each binding a model+primer pair to a list of permitted cell classes, a per-cell cost ceiling, and an external-review requirement. All three keys are required: the schema enforces the council-D4 3-tier policy structurally so that consumers cannot silently drop a tier and call the result v1.",
+      "required": ["premium", "default", "narrow_scope"],
+      "properties": {
+        "premium": { "$ref": "#/$defs/tier" },
+        "default": { "$ref": "#/$defs/tier" },
+        "narrow_scope": { "$ref": "#/$defs/tier" }
+      }
+    },
+    "escalation_rules": {
+      "type": "array",
+      "description": "Ordered list of escalation rules. First matching rule wins; later rules are not consulted. An empty array is loud-not-silent: it explicitly declares NO escalation. Validators MAY warn on empty arrays at policy level.",
+      "items": { "$ref": "#/$defs/escalation_rule" },
+      "uniqueItems": true
+    },
+    "refusal_rules": {
+      "type": "array",
+      "description": "Ordered list of refusal rules. ANY matching refusal rule wins (denial is final). An empty array is loud-not-silent: it explicitly declares the router has NO empirically-grounded refusals; this is rejected at policy-level (minItems: 1) per ADR-0012.",
+      "items": { "$ref": "#/$defs/refusal_rule" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "cost_ceilings": { "$ref": "#/$defs/cost_ceilings" },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional audit-log declaration for router decisions. When present, the router MUST emit one JSONL event per routing decision (chosen tier, matched rules, cost estimate).",
+      "required": ["jsonl_path"],
+      "properties": {
+        "jsonl_path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative path inside the router host's filesystem root for the JSONL audit log."
+        },
+        "content_addressable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether artefact references in the audit log are content-hashed."
+        }
+      }
+    }
+  },
+  "$defs": {
+    "model_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical model identifier (e.g. claude-model-high-capability-4-7, claude-model-balanced-4-6, claude-narrow-scope model-4-5-20251001). Matches the model_policy.allowed_models convention from run-contract.v1.schema.json."
+    },
+    "model_family": {
+      "type": "string",
+      "enum": ["model_high_capability", "model_balanced", "model_narrow"],
+      "description": "Coarse family identifier used by refusal/escalation rules whose evidence is family-level, not model-level (e.g., the narrow-scope model confabulation refusal applies to all 4.x narrow-scope model models)."
+    },
+    "primer_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Pinned primer identifier including version, e.g., anti-confab-200tok@1.0.0. The router resolves the primer against the doctrine skills catalog."
+    },
+    "primer_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Lowercase-hex sha256 of the primer body (LF-normalised). Required so the resolved primer is content-pinned, not name-pinned. The canonical v3 primer hash is c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8 per council D5."
+    },
+    "verifier_pack_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Pinned verifier-pack identifier including version, e.g., evidence-pack-mcp-verifier-pack@1.0.0."
+    },
+    "tier_name": {
+      "type": "string",
+      "enum": ["premium", "default", "narrow_scope"],
+      "description": "Names of the three production tiers. The router resolves to exactly one tier per routing decision; refusal rules can deny cell-class-to-tier bindings but never invent new tier names."
+    },
+    "cell_class": {
+      "type": "string",
+      "enum": [
+        "artifact_production",
+        "build_class",
+        "refactor_class",
+        "audit_class",
+        "research_class",
+        "security_critical",
+        "supervisor_change",
+        "doctrine_promotion",
+        "greenfield_backbone",
+        "scaffolded_typed_authority"
+      ],
+      "description": "Classification of the run's intent. Drives tier selection (e.g., security_critical MUST resolve to the premium tier), escalation (e.g., FALSIFIED claim_audit escalates default -> premium), and refusal (e.g., greenfield_backbone on model_narrow is refused per v3 +10 self-canonical Δ)."
+    },
+    "cost_usd": {
+      "type": "number",
+      "minimum": 0,
+      "description": "US dollars, expressed as a JSON number. Validators MAY reject suspiciously large values at policy level (e.g., >1000 USD per cell)."
+    },
+    "evidence_ref": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative path or stable URL to the empirical evidence that backs this rule. Path conventions: evidence-workbook/18-cross-product-test/v{N}/results/... or doctrine/... — concrete files, NOT vibes."
+    },
+    "tier": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A tier binds a (model, primer) pair to a permitted cell-class set, a per-cell USD cap, and an external-review requirement. The three required tiers (premium / default / narrow_scope) encode the v3 9-cell scoreboard verdict structurally — a v1 policy that drops a tier is rejected before runtime.",
+      "required": [
+        "model",
+        "primer",
+        "primer_sha256",
+        "cell_classes",
+        "max_cost_usd_per_cell",
+        "external_review_required"
+      ],
+      "properties": {
+        "model": { "$ref": "#/$defs/model_id" },
+        "model_family": { "$ref": "#/$defs/model_family" },
+        "primer": { "$ref": "#/$defs/primer_id" },
+        "primer_sha256": { "$ref": "#/$defs/primer_sha256" },
+        "verifier_pack": { "$ref": "#/$defs/verifier_pack_id" },
+        "cell_classes": {
+          "type": "array",
+          "description": "The cell classes this tier is empirically licensed to run. Refusal rules may further deny specific (class, family) pairs even when a tier lists the class.",
+          "items": { "$ref": "#/$defs/cell_class" },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "max_cost_usd_per_cell": {
+          "$ref": "#/$defs/cost_usd",
+          "description": "Per-cell USD cap when the router is operating in this tier. Marked placeholder in shipped examples; operator finalises against actual vendor invoices."
+        },
+        "external_review_required": {
+          "type": "boolean",
+          "description": "When true, outputs from this tier MUST be scored by a non-self reviewer before promotion. Mandatory for tiers whose self-canonical Δ is positive (e.g., narrow_scope on model_narrow at Δ +10 cannot grade its own work)."
+        },
+        "external_review_sample_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Fraction of routed runs subjected to external review when external_review_required is true. 1.0 = every run; lower values are valid only when independently measured. Required for narrow_scope at council-D4 = 1.0."
+        },
+        "description": { "type": "string", "maxLength": 512 }
+      }
+    },
+    "claim_audit_verdict": {
+      "type": "string",
+      "enum": ["VALIDATED", "INCONCLUSIVE", "FALSIFIED"],
+      "description": "Mirror of review.claim_audit verdicts. FALSIFIED is the loud-not-silent triggering case for escalation."
+    },
+    "escalation_when": {
+      "type": "object",
+      "description": "Discriminator object for escalation conditions. EXACTLY ONE of the listed shapes is permitted, enforced via oneOf.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": ["claim_audit_verdict"],
+          "properties": {
+            "claim_audit_verdict": { "$ref": "#/$defs/claim_audit_verdict" },
+            "attempts_so_far": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 64,
+              "description": "Number of attempts already burned at the lower tier. Escalation typically fires at attempts_so_far == 1 (one retry budget at the default tier first); strict estates fire at 0."
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["cell_class"],
+          "properties": {
+            "cell_class": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/cell_class" },
+              "minItems": 1,
+              "uniqueItems": true,
+              "description": "Cell classes that auto-route to a specific tier regardless of attempt count (e.g., security_critical MUST premium)."
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["operator_flag"],
+          "properties": {
+            "operator_flag": {
+              "type": "string",
+              "enum": ["escalate", "force_premium", "force_external_review"],
+              "description": "Operator-supplied imperative; bypasses cost ceilings up to per-session limits."
+            }
+          }
+        }
+      ]
+    },
+    "escalation_action": {
+      "type": "object",
+      "description": "What the router does when an escalation rule matches. EXACTLY ONE of the two listed shapes is permitted: tier-escalate (the canonical 3-tier move) OR require-tier (auto-route a class to a specific tier without changing the current tier).",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": ["escalate_to_tier", "max_cost_usd"],
+          "properties": {
+            "escalate_to_tier": {
+              "$ref": "#/$defs/tier_name",
+              "description": "Tier to escalate INTO on match. Lifting default -> premium is the canonical FALSIFIED-retry move."
+            },
+            "add_primer": {
+              "$ref": "#/$defs/primer_id",
+              "description": "Optional override primer (otherwise inherit from target tier)."
+            },
+            "require_verifier_pack": { "$ref": "#/$defs/verifier_pack_id" },
+            "require_external_review": {
+              "type": "boolean",
+              "description": "Force non-self scoring before promotion even when the target tier itself does not mandate it."
+            },
+            "max_cost_usd": { "$ref": "#/$defs/cost_usd" },
+            "description": { "type": "string", "maxLength": 512 }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["require_tier"],
+          "properties": {
+            "require_tier": {
+              "$ref": "#/$defs/tier_name",
+              "description": "Force the resolver to use this exact tier from the first attempt (e.g., security_critical: require_tier: premium). Does not consume the escalation budget."
+            },
+            "description": { "type": "string", "maxLength": 512 }
+          }
+        }
+      ]
+    },
+    "escalation_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule_id", "when", "action", "evidence_ref"],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Kebab-case stable id; doubles as audit-log key. Renames require a v1.x bump and a deprecation note."
+        },
+        "when": { "$ref": "#/$defs/escalation_when" },
+        "action": { "$ref": "#/$defs/escalation_action" },
+        "evidence_ref": { "$ref": "#/$defs/evidence_ref" },
+        "description": { "type": "string", "maxLength": 512 }
+      }
+    },
+    "refusal_when": {
+      "type": "object",
+      "description": "Discriminator object for refusal conditions. EXACTLY ONE shape per refusal rule, enforced via oneOf. The shapes are deliberately narrow: each is backed by a concrete empirical cell.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": ["cell_class", "model_family"],
+          "properties": {
+            "cell_class": { "$ref": "#/$defs/cell_class" },
+            "model_family": { "$ref": "#/$defs/model_family" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["primer", "model_family"],
+          "properties": {
+            "primer": { "$ref": "#/$defs/primer_id" },
+            "model_family": { "$ref": "#/$defs/model_family" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["model_family", "cell_class", "primer"],
+          "properties": {
+            "model_family": { "$ref": "#/$defs/model_family" },
+            "cell_class": { "$ref": "#/$defs/cell_class" },
+            "primer": {
+              "oneOf": [
+                { "$ref": "#/$defs/primer_id" },
+                { "type": "null" }
+              ],
+              "description": "When null, fires for runs that arrived with NO primer attached; combined with model_family + cell_class this encodes the narrow-scope model-no-artifact-production-without-primer refusal."
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["cell_class", "primer"],
+          "properties": {
+            "cell_class": {
+              "oneOf": [
+                { "$ref": "#/$defs/cell_class" },
+                {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/cell_class" },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              ]
+            },
+            "primer": {
+              "type": "null",
+              "description": "Fires when the routed run carries no primer at all on a build-class cell."
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["command_matches"],
+          "properties": {
+            "command_matches": {
+              "type": "string",
+              "minLength": 1,
+              "description": "ECMA-262 (JavaScript) regular-expression source. Matched against the literal subprocess argv0 + args. Used for interpreter-as-wrapper class refusals (CC-2 host-policy-layer hook bypass)."
+            }
+          }
+        }
+      ]
+    },
+    "refusal_action": {
+      "type": "object",
+      "description": "A refusal action. EXACTLY ONE of the two shapes: a hard refusal (refuse_routing const true + reason) OR an external-review mandate (require_external_review const true + reason). Soft refusals are structurally illegal.",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": ["refuse_routing", "reason"],
+          "properties": {
+            "refuse_routing": {
+              "type": "boolean",
+              "const": true,
+              "description": "MUST be true. Refusal rules cannot be soft."
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "description": "Operator-readable explanation. SHOULD include the empirical canonical score or test id that justifies the refusal."
+            }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": ["require_external_review", "reason"],
+          "properties": {
+            "require_external_review": {
+              "type": "boolean",
+              "const": true,
+              "description": "MUST be true. The require-external-review action forces non-self scoring on the matched (class, family) routing without refusing the run outright; used for narrow_scope narrow-scope model at Δ +10."
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          }
+        }
+      ]
+    },
+    "refusal_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule_id", "when", "action", "evidence_ref"],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "when": { "$ref": "#/$defs/refusal_when" },
+        "action": { "$ref": "#/$defs/refusal_action" },
+        "evidence_ref": { "$ref": "#/$defs/evidence_ref" },
+        "description": { "type": "string", "maxLength": 512 }
+      }
+    },
+    "cost_ceilings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["per_cell", "per_session"],
+      "description": "Two-tier cost guard: per-cell stops a single overrun; per-session protects against amplification across cells.",
+      "properties": {
+        "per_cell": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Per-cell USD ceilings keyed by tier name. The router consults this AND tier.max_cost_usd_per_cell; the lower of the two binds. Missing tier keys fall back to tier.max_cost_usd_per_cell.",
+          "properties": {
+            "premium_max_usd": { "$ref": "#/$defs/cost_usd" },
+            "default_max_usd": { "$ref": "#/$defs/cost_usd" },
+            "narrow_scope_max_usd": { "$ref": "#/$defs/cost_usd" }
+          }
+        },
+        "per_session": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["operator_warning_at_usd", "operator_kill_at_usd"],
+          "properties": {
+            "operator_warning_at_usd": {
+              "$ref": "#/$defs/cost_usd",
+              "description": "Soft cap. Router emits a structured warning event and continues. Triggers operator-confirmation queue per ADR-0011 (semantic index) routing if configured."
+            },
+            "operator_kill_at_usd": {
+              "$ref": "#/$defs/cost_usd",
+              "description": "Hard cap. Router refuses all further routing in the session. There is intentionally no override flag at policy level — overrides require a new session and a new policy fingerprint."
+            }
+          }
+        }
+      }
+    }
+  }
+}
