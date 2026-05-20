@@ -41,10 +41,10 @@ def pr_evidence_build_review() -> dict:
     return {
         "name": "pr-evidence-build-review",
         "schema_version": "1.0.0",
-        "description": "On every PR to pai-axiom/pr-evidence: build the evidence pack, then have an LLM review it.",
+        "description": "On every PR to example-org/pr-evidence: build the evidence pack, then have an LLM review it.",
         "trigger": {
             "type": "repo_event",
-            "repo": "pai-axiom/pr-evidence",
+            "repo": "example-org/pr-evidence",
             "events": ["pull_request_opened", "pull_request_synchronize"],
         },
         "model_policy": {
