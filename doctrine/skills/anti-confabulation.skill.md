@@ -102,13 +102,21 @@ flagged ones.
 **Canonical fingerprint:**
 `sha256:c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8`
 
-The hash is computed over the verbatim 1444 bytes of the block above (LF line
-endings, no BOM, 231 words). Operators verifying their consumer pipeline can
-reproduce the hash with:
+The hash is computed over the verbatim 1444 bytes of the block above with
+**LF line endings only** (no CRLF, no BOM, 231 words). Implementations on
+Windows-checkout repositories MUST normalise CRLF to LF before hashing (the
+canonical Git object-store representation of this file is LF-only; see the
+project's `core.autocrlf=true` convention). Operators verifying their consumer
+pipeline can reproduce the hash with:
 
 ```bash
-# Extract the priming block region between the triple-backtick fences above
-# and pipe through sha256sum. The expected output is the canonical hash.
+# Extract the priming block region between the triple-backtick fences above,
+# normalise to LF, and pipe through sha256sum. The expected output is the
+# canonical hash.
+git cat-file -p HEAD:doctrine/skills/anti-confabulation.skill.md \
+  | awk '/^```$/{c++; if (c==1) {p=1; next} else if (c==2) {p=0}} p' \
+  | sha256sum
+# Expected: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
 ```
 
 Any change to the block produces a new hash and requires a new ADR documenting
