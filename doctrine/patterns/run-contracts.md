@@ -122,11 +122,11 @@ The operator's verbatim shape for a PR-triggered build + review contract. This Y
 run_contract:
   name: evidence-pack-build-review
   schema_version: 1.0.0
-  description: On every PR to agent-authority-framework/evidence-pack build the evidence pack then have an LLM review it.
+  description: On every PR to example-org/evidence-pack build the evidence pack then have an LLM review it.
 
   trigger:
     type: repo_event
-    repo: agent-authority-framework/evidence-pack
+    repo: example-org/evidence-pack
     events: [pull_request_opened, pull_request_synchronize]
 
   model_policy:
@@ -188,7 +188,7 @@ run_contract:
       content_addressable: true
 ```
 
-Read as one sentence: *on a PR against `agent-authority-framework/evidence-pack`, run as model-high-capability-or-model-balanced (never narrow-scope model), with two paired skills and five listed tools, inside the `/work/evidence-pack` root, network denied, three subprocess binaries allowed, four hook chains installed, three packs run after, three artefacts MUST exist at exit*. No ambient affordance escapes the envelope.
+Read as one sentence: *on a PR against `example-org/evidence-pack`, run as model-high-capability-or-model-balanced (never narrow-scope model), with two paired skills and five listed tools, inside the `/work/evidence-pack` root, network denied, three subprocess binaries allowed, four hook chains installed, three packs run after, three artefacts MUST exist at exit*. No ambient affordance escapes the envelope. The contract is harness-agnostic — any agent harness that targets the run-contract v1 schema is a valid consumer.
 
 ---
 
