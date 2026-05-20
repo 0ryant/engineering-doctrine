@@ -177,6 +177,14 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 
 ## Internal Doctrine Map
 
+### Machine-readable contracts
+
+| File | Focus |
+| --- | --- |
+| [../contracts/run-contract.v1.schema.json](../contracts/run-contract.v1.schema.json) | Run-contract v1 JSON Schema 2020-12; consumed by `patterns/run-contracts.md` |
+| [../contracts/verifier-pack.v1.schema.json](../contracts/verifier-pack.v1.schema.json) | Verifier-pack v1 JSON Schema 2020-12; consumed by `patterns/verifier-packs.md` |
+| [../scripts/validate-contracts-v1.py](../scripts/validate-contracts-v1.py) | Reference Python validator (uses `jsonschema`) for both v1 schemas |
+
 ### Umbrella and meta
 
 | File | Focus |
@@ -253,6 +261,10 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
+| [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the first-class typed envelope of agent execution; lifecycle, schema surface, validation tooling; §3.5 auto-bundled skills |
+| [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
+| [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Anti-confabulation priming pattern for build-class agents; canonical ~200-token block lifts Sonnet 4.6 canonical 78→85; hash-anchored doctrine artefact |
+| [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md) | Skill pack containing the verbatim canonical priming block (SHA-256 `c138dd96…`); auto-bundled into build-class run contracts |
 
 ### Extended principles
 
