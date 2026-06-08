@@ -4,15 +4,26 @@ Validation harness for the v1 contract schemas.
 
 Loads each schema, builds in-memory sample instances (matching the worked
 examples in doctrine/patterns/run-contracts.md, verifier-packs.md, and the
-ADR-0012 model-routing policy), and prints validation results. Used by CI
-and during authoring to confirm the canonical examples remain self-
-validating. Also loads the on-disk YAML examples under contracts/examples/
-when PyYAML is available, so the shipped examples are positively asserted.
+ADR-0012 model-routing policy), and prints validation results. Run by CI
+(.github/workflows/contracts.yml) and during authoring to confirm the
+canonical examples remain self-validating. Also loads the on-disk YAML
+examples under contracts/examples/ when PyYAML is available, so the shipped
+examples are positively asserted, and runs cross-rule consistency checks
+(tier reachability) and the interpreter-wrapper-block heuristic regex
+behaviour battery.
+
+Dependencies are pinned in requirements.txt at the repo root:
+    pip install -r requirements.txt
+
+Scope note: this harness validates contract SHAPE and intra-policy
+consistency. It does NOT check on-disk sibling existence (skill <-> verifier
+-pack); that gate, if any, lives in external catalog tooling.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -410,10 +421,16 @@ def default_production_router_policy() -> dict:
             },
             {
                 "rule_id": "interpreter-wrapper-block",
-                "when": {"command_matches": "^(bash|sh|zsh|powershell|pwsh|cmd)\\s+-c"},
+                "when": {
+                    "command_matches": (
+                        r"(?:^|[\s/])(?:env\s+|nohup\s+|xargs\s+)?"
+                        r"(?:bash|sh|zsh|ash|dash|powershell|pwsh|cmd)(?:\.exe)?"
+                        r"\s+(?:-[a-z]*c[a-z]*\b|--?c[a-z]*\b)"
+                    )
+                },
                 "action": {
                     "refuse_routing": True,
-                    "reason": "CC-2 FALSIFIED at corpus scale; defense-in-depth at router layer.",
+                    "reason": "CC-2 FALSIFIED at corpus scale; best-effort defense-in-depth lint at router layer (corcept is authoritative).",
                 },
                 "evidence_ref": "value-sheet/18-cross-product-test/v2/results/per-tool-failure-mode-tests-results/composite.md",
             },
@@ -443,6 +460,56 @@ def default_production_router_policy() -> dict:
         },
         "audit": {"jsonl_path": "audit/router.jsonl", "content_addressable": True},
     }
+
+
+def _as_list(v) -> list:
+    return v if isinstance(v, list) else [v]
+
+
+def refusal_kills_tier_inputs(policy: dict) -> list[str]:
+    """Cross-rule consistency check (catches the enterprise-strict bug class).
+
+    A tier always routes runs that carry the tier's model_family, the tier's
+    (non-null) primer, and one of the tier's cell_classes. If a refusal rule
+    matches such a route, the tier is structurally unreachable -- a
+    contradiction the per-rule JSON-schema validation cannot detect because
+    each rule is individually valid.
+
+    Returns a list of human-readable violation strings (empty == consistent).
+    Only refusal rules with a `refuse_routing` action can make a tier dead;
+    `require_external_review` is a gate, not a denial, so it is excluded.
+    Refusal shapes keyed on `primer: null` (unprimed routes) and on
+    `command_matches` (runtime argv, not a tier input) never apply to a
+    primed tier route and are likewise skipped.
+    """
+    violations: list[str] = []
+    refusals = [
+        r for r in policy.get("refusal_rules", [])
+        if r.get("action", {}).get("refuse_routing") is True
+    ]
+    for tier_name, tier in policy.get("tiers", {}).items():
+        family = tier.get("model_family")
+        primer = tier.get("primer")
+        for cell_class in tier.get("cell_classes", []):
+            for rule in refusals:
+                when = rule.get("when", {})
+                if "command_matches" in when:
+                    continue
+                if "primer" in when and when["primer"] is None:
+                    continue  # only fires on unprimed routes; tiers are primed
+                # Evaluate the remaining (model_family / cell_class / primer) keys.
+                if "model_family" in when and when["model_family"] != family:
+                    continue
+                if "cell_class" in when and cell_class not in _as_list(when["cell_class"]):
+                    continue
+                if "primer" in when and when["primer"] != primer:
+                    continue
+                violations.append(
+                    f"tier '{tier_name}' (family={family}, primer={primer}, "
+                    f"cell_class={cell_class}) is denied by refusal rule "
+                    f"'{rule.get('rule_id')}' -- tier is unreachable"
+                )
+    return violations
 
 
 def main() -> int:
@@ -517,6 +584,15 @@ def main() -> int:
                     print(f"  - {list(e.absolute_path)}: {e.message}")
             else:
                 print(f"{label}: VALID")
+            # Cross-rule consistency: no tier may be denied by a refusal rule.
+            tier_violations = refusal_kills_tier_inputs(doc)
+            if tier_violations:
+                failures += 1
+                print(f"{label}: {len(tier_violations)} tier-reachability violation(s)")
+                for v in tier_violations[:5]:
+                    print(f"  - {v}")
+            else:
+                print(f"{label}: tier-reachability OK")
     else:
         print("(skipping on-disk YAML examples; PyYAML not installed)")
 
@@ -684,6 +760,89 @@ def main() -> int:
         print("router-negative-bad-tier-name: FAILED to reject invalid tier_name")
     else:
         print(f"router-negative-bad-tier-name: rejected as expected ({len(errs)} error)")
+
+    # --- cross-rule tier-reachability consistency ---
+    # Positive: the in-memory canonical policy keeps every tier reachable.
+    pos_violations = refusal_kills_tier_inputs(default_production_router_policy())
+    if pos_violations:
+        failures += 1
+        print(f"router-tier-reachability: FAILED ({pos_violations})")
+    else:
+        print("router-tier-reachability: OK (all tiers reachable)")
+
+    # Negative: re-introduce the enterprise-strict bug (a family+primer refusal
+    # that matches the narrow_scope tier inputs) and confirm the check fires.
+    rp_dead = default_production_router_policy()
+    rp_dead = {
+        **rp_dead,
+        "refusal_rules": rp_dead["refusal_rules"] + [
+            {
+                "rule_id": "haiku-primer-unbundled",
+                "when": {
+                    "model_family": "haiku_4_x",
+                    "primer": "anti-confab-200tok@1.0.0",
+                },
+                "action": {"refuse_routing": True, "reason": "kills narrow_scope"},
+                "evidence_ref": "doctrine/skills/anti-confabulation.skill.md",
+            }
+        ],
+    }
+    if not refusal_kills_tier_inputs(rp_dead):
+        failures += 1
+        print("router-negative-dead-tier: FAILED to detect unreachable tier")
+    else:
+        print("router-negative-dead-tier: detected as expected")
+
+    # --- interpreter-wrapper-block heuristic regex behaviour ---
+    #
+    # This control is documented as a BEST-EFFORT heuristic lint (corcept is
+    # the authoritative interpreter-bypass guard), but it must still catch the
+    # common non-naive spellings of `<shell> -c` rather than only the bare
+    # `bash -c` literal. The pattern is matched case-insensitively by the
+    # consumer (router-policy schema, command_matches description).
+    policy = default_production_router_policy()
+    iwb = next(
+        r for r in policy["refusal_rules"]
+        if r["rule_id"] == "interpreter-wrapper-block"
+    )
+    iwb_re = re.compile(iwb["when"]["command_matches"], re.IGNORECASE)
+    must_match = [
+        "bash -c",
+        "/bin/bash -c",
+        "./bash -c",
+        "env bash -c",
+        "xargs sh -c",
+        "nohup bash -c",
+        "BASH -c",
+        "bash -lc",
+        "bash -ic",
+        "bash --command",
+        " bash -c",
+        "powershell -Command",
+        "pwsh.exe -Command",
+    ]
+    must_not_match = [
+        "cargo build",
+        "git status",
+        "/usr/bin/cargo test",
+        "echo bashful",
+        "bash script.sh",
+        "sh -n file",
+    ]
+    missed = [c for c in must_match if not iwb_re.search(c)]
+    falsepos = [c for c in must_not_match if iwb_re.search(c)]
+    if missed or falsepos:
+        failures += 1
+        print(
+            "interpreter-wrapper-block-regex: FAILED "
+            f"(bypassed: {missed}; false-positive: {falsepos})"
+        )
+    else:
+        print(
+            "interpreter-wrapper-block-regex: OK "
+            f"({len(must_match)} bypass spellings caught, "
+            f"{len(must_not_match)} benign commands ignored)"
+        )
 
     return 0 if failures == 0 else 1
 

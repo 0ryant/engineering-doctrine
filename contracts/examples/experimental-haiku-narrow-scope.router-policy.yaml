@@ -149,12 +149,18 @@ refusal_rules:
     evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-haiku-primed.md
 
   - rule_id: interpreter-wrapper-block
+    # BEST-EFFORT HEURISTIC, not a structural block. The authoritative
+    # interpreter-bypass guard is the corcept enforcement layer. Pattern
+    # tolerates a path/launcher prefix, is matched case-insensitively, and
+    # accepts combined short flags and the --command long flag.
     when:
-      command_matches: "^(bash|sh|zsh|powershell|pwsh|cmd)\\s+-c"
+      command_matches: "(?:^|[\\s/])(?:env\\s+|nohup\\s+|xargs\\s+)?(?:bash|sh|zsh|ash|dash|powershell|pwsh|cmd)(?:\\.exe)?\\s+(?:-[a-z]*c[a-z]*\\b|--?c[a-z]*\\b)"
     action:
       refuse_routing: true
       reason: >-
-        CC-2 FALSIFIED. Applies to all profiles including experimental.
+        CC-2 FALSIFIED. Best-effort defense-in-depth at the router layer
+        (heuristic lint, not a structural guarantee; corcept is authoritative).
+        Applies to all profiles including experimental.
     evidence_ref: value-sheet/18-cross-product-test/v2/results/per-tool-failure-mode-tests-results/composite.md
 
   - rule_id: primer-required-on-build-class

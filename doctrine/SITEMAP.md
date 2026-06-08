@@ -3,10 +3,11 @@
 **Do not edit the file list by hand.** Regenerate after adding, renaming, or removing Markdown under `doctrine/`:
 
 ```bash
-./scripts/generate-doctrine-sitemap.sh
+./scripts/generate-doctrine-sitemap.sh   # POSIX
+python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-06-07 20:14 UTC
+Generated: 2026-06-08 20:18 UTC
 
 ## All Markdown files
 
