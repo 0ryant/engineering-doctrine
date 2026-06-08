@@ -1,0 +1,7 @@
+# Runtime dependencies for scripts/validate-contracts-v1.py
+#
+# jsonschema's Draft 2020-12 behaviour (oneOf / $defs resolution, which the
+# contract schemas rely on heavily) is version-sensitive, so the lower bound
+# is pinned to a release with stable 2020-12 support.
+jsonschema>=4.18,<5
+PyYAML>=6.0,<7

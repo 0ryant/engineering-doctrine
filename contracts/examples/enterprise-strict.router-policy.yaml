@@ -157,28 +157,37 @@ refusal_rules:
         Delta +10 self-canonical risk does not vanish under stricter policy.
     evidence_ref: evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-narrow-scope model-primed.md
 
-  - rule_id: narrow-scope model-no-anti-confab-primer-unbundled
-    when:
-      primer: anti-confab-200tok@1.0.0
-      model_family: model_narrow
-    action:
-      refuse_routing: true
-      reason: >-
-        Enterprise policy: the historical anti-confab primer x narrow-scope model bundling
-        is denied at the family level (v2 catalog: model_compatibility.model-narrow_
-        4_x == inverted_avoid was the original v2 catalog entry before the
-        v3 narrow_scope tier landed). Enterprise retains the harder line.
-    evidence_ref: doctrine/skills/anti-confabulation.skill.md
+  # NOTE: a `narrow-scope model-no-anti-confab-primer-unbundled` rule was previously here.
+  # It refused EVERY route with {model_family: model_narrow, primer:
+  # anti-confab-200tok@1.0.0}, which is exactly the (family + primer) combo the
+  # narrow_scope tier MANDATES (see tiers.narrow_scope above). Because a
+  # refusal is final and any matching refusal wins, that rule made the
+  # narrow_scope tier structurally unreachable -- directly contradicting the
+  # tier description and narrow-scope model-narrow-scope-still-requires-external-review,
+  # which advertise narrow_scope as permitted for scaffolded subtasks under
+  # mandatory external review. The schema cannot catch this (each rule is
+  # individually valid), so the contradiction was silent. It is removed here:
+  # the per-class refusals above (greenfield / build_class / artifact_production)
+  # already deny narrow-scope model for every non-scaffolded class, so this rule was both
+  # redundant with those AND fatal to the one class narrow_scope exists for.
 
   - rule_id: interpreter-wrapper-block
+    # BEST-EFFORT HEURISTIC, not a structural block. A router-layer regex
+    # cannot canonically resolve argv0; the authoritative interpreter-bypass
+    # guard is the host-policy-layer enforcement layer. This pattern tolerates a
+    # path/launcher prefix, is matched case-insensitively, and accepts
+    # combined short flags and the --command long flag.
     when:
-      command_matches: "^(bash|sh|zsh|powershell|pwsh|cmd)\\s+-c"
+      command_matches: "(?:^|[\\s/])(?:env\\s+|nohup\\s+|xargs\\s+)?(?:bash|sh|zsh|ash|dash|powershell|pwsh|cmd)(?:\\.exe)?\\s+(?:-[a-z]*c[a-z]*\\b|--?c[a-z]*\\b)"
     action:
       refuse_routing: true
       reason: >-
         CC-2 FALSIFIED: interpreter-wrapper class bypasses host-policy-layer hook
-        guards. Enterprise mode treats this as a hard block at the router
-        layer with no per-team override even after host-policy-layer's fix lands.
+        guards. Enterprise mode keeps this router-layer lint as a hard refusal
+        with no per-team override, but it is best-effort defense-in-depth, NOT
+        a structural guarantee: the authoritative guard remains the host-policy-layer
+        enforcement layer even after host-policy-layer's fix lands. The pattern catches
+        path-prefixed, launcher-wrapped, and combined-/long-flag spellings.
     evidence_ref: evidence-workbook/18-cross-product-test/v2/results/per-tool-failure-mode-tests-results/composite.md
 
   - rule_id: primer-required-on-build-class

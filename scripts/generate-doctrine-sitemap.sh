@@ -20,7 +20,8 @@ trap 'rm -f "$tmp"' EXIT
   printf '%s\n' "**Do not edit the file list by hand.** Regenerate after adding, renaming, or removing Markdown under \`doctrine/\`:"
   printf '%s\n' ""
   printf '%s\n' '```bash'
-  printf '%s\n' "./scripts/generate-doctrine-sitemap.sh"
+  printf '%s\n' "./scripts/generate-doctrine-sitemap.sh   # POSIX"
+  printf '%s\n' "python scripts/generate_doctrine_sitemap.py   # any platform"
   printf '%s\n' '```'
   printf '%s\n' ""
   printf '%s\n' "Generated: $(date -u +"%Y-%m-%d %H:%M UTC")"

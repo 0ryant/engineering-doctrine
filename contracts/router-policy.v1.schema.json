@@ -345,7 +345,7 @@
             "command_matches": {
               "type": "string",
               "minLength": 1,
-              "description": "ECMA-262 (JavaScript) regular-expression source. Matched against the literal subprocess argv0 + args. Used for interpreter-as-wrapper class refusals (CC-2 host-policy-layer hook bypass)."
+              "description": "ECMA-262 (JavaScript) regular-expression source, applied case-insensitively, matched against the literal subprocess argv0 + args. BEST-EFFORT HEURISTIC LINT ONLY for the interpreter-as-wrapper class (CC-2): a router-layer regex cannot canonically resolve argv0 to a real interpreter, so it can always be evaded by an unusual spelling. The AUTHORITATIVE interpreter-bypass guard is the host-policy-layer enforcement layer (which resolves the basename of argv0 and parses the argv array); this field is defense-in-depth, NOT a structural block. Author patterns to match the resolved interpreter basename (allow a leading path/launcher prefix and combined short flags), e.g. `(^|[\\s/])(bash|sh|zsh|ash|dash|powershell|pwsh|cmd)(\\.exe)?\\s+(-\\S*c|--command)\\b`."
             }
           }
         }
