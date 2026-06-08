@@ -6,7 +6,7 @@
 ./scripts/generate-doctrine-sitemap.sh
 ```
 
-Generated: 2026-05-19 22:49 UTC
+Generated: 2026-06-07 20:14 UTC
 
 ## All Markdown files
 
@@ -86,6 +86,7 @@ Generated: 2026-05-19 22:49 UTC
 - [principles/user-facing-quality.md](principles/user-facing-quality.md)
 - [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md)
 - [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md)
+- [test-protocols/test-5-honesty-rubric-v2.md](test-protocols/test-5-honesty-rubric-v2.md)
 - [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)
 - [tooling/ai-assisted-development.md](tooling/ai-assisted-development.md)
 - [tooling/build.md](tooling/build.md)
