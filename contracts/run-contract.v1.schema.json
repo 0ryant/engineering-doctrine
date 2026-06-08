@@ -253,7 +253,7 @@
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true,
-          "description": "Skill ids made available. Per ADR-0004, every cited skill MUST have a sibling verifier-pack; validators check existence."
+          "description": "Skill ids made available. Per ADR-0004, every cited skill is REQUIRED BY CONVENTION to have a sibling verifier-pack. NOTE: this JSON Schema and scripts/validate-contracts-v1.py validate shape only -- on-disk sibling existence is NOT checked here; that gate, if present, lives in external catalog tooling."
         },
         "memory": {
           "type": "object",
