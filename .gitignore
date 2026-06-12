@@ -1,6 +1,10 @@
 # macOS
 .DS_Store
 
+# Python bytecode cache (e.g. scripts/__pycache__ from running the harnesses)
+__pycache__/
+*.pyc
+
 # Local Cursor / IDE (keep personal agents, rules, and experiments out of the tree)
 .cursor/
 
