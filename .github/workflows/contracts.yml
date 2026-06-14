@@ -20,6 +20,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify primer content-pin (self-proving, stdlib-only, no deps)
+        # Recompute sha256 over the in-repo anti-confabulation priming block and
+        # assert it equals the hard-coded PRIMER_SHA256 (and every on-disk copy
+        # + the validator constant). Runs before dependency install so a content
+        # drift fails fast and cheaply.
+        run: python scripts/verify-primer-pin.py
       - name: Install dependencies
         run: python -m pip install --upgrade pip && pip install -r requirements.txt
       - name: Validate contracts

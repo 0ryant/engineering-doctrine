@@ -119,6 +119,12 @@ git cat-file -p HEAD:doctrine/skills/anti-confabulation.skill.md \
 # Expected: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
 ```
 
+This pin is **machine-enforced**: `scripts/verify-primer-pin.py` recomputes the
+hash over this exact block (CRLF-normalised to LF) on every push and PR and
+fails CI if it, the front-matter `priming_block_sha256`, the prose fingerprint
+above, or the `PRIMER_SHA256` constant in `scripts/validate-contracts-v1.py`
+drift apart. The integrity claim is therefore self-proving, not asserted.
+
 Any change to the block produces a new hash and requires a new ADR documenting
 why the prior block was insufficient (per
 [doctrine/patterns/anti-confabulation-priming.md §5.6](../patterns/anti-confabulation-priming.md#56-versioning)).
