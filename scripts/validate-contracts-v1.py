@@ -29,6 +29,14 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+# Self-proving content-pin for the anti-confabulation priming block. Importing
+# verify_primer_pin keeps PRIMER_SHA256 below honest: the pin recomputes the
+# hash from the in-repo block and asserts every on-disk copy agrees.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import importlib
+
+_primer_pin = importlib.import_module("validate-content-integrity")
+
 try:
     import yaml  # type: ignore
     _HAVE_YAML = True
@@ -42,6 +50,12 @@ RP_SCHEMA = ROOT / "contracts" / "router-policy.v1.schema.json"
 EXAMPLES_DIR = ROOT / "contracts" / "examples"
 
 PRIMER_SHA256 = "c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8"
+# Guard: this literal MUST equal the pin's source-of-truth. validate-content-integrity
+# also re-asserts this from the other direction (reading this file), so a drift
+# fails CI whichever script runs first.
+assert PRIMER_SHA256 == _primer_pin.PRIMER_SHA256, (
+    "PRIMER_SHA256 here has drifted from scripts/validate-content-integrity.py"
+)
 
 
 def load(p: Path) -> dict:
@@ -524,6 +538,19 @@ def main() -> int:
     pv = Draft202012Validator(rp_schema)
 
     failures = 0
+
+    # Content-pin: prove PRIMER_SHA256 actually matches the in-repo priming
+    # block (recomputed) before any tier asserts it. This turns the central
+    # integrity claim from asserted text into a checked invariant.
+    pin_failures = _primer_pin.verify()
+    if pin_failures:
+        failures += 1
+        print(f"content-integrity: {len(pin_failures)} drift(s)")
+        for f in pin_failures:
+            print(f"  - {f}")
+    else:
+        print(f"content-integrity: VALID (sha256={PRIMER_SHA256})")
+
     cases = [
         ("evidence-pack-build-review", rv, pr_evidence_build_review()),
         ("nightly-evidence-pack-audit", rv, nightly_audit()),
