@@ -21,7 +21,7 @@ If you are unsure, open an issue or a **draft PR** and ask. Mis-layered text is 
 2. **New or moved guidance** (new pattern, new checklist, reshaped principle) — open an **issue first** (or a draft PR with a short “intent” in the description) so maintainers can confirm fit and layer. Point to a **change class** (editorial, additive, normative tightening, etc.) as in [doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md](doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md).
 3. **Structural or governance decisions** about this repo (naming, ADR policy, big navigation changes) — add or update an ADR under [docs/adr/](docs/adr/) per [docs/adr/README.md](docs/adr/README.md), then link it from the PR.
 
-**Material additions to the library** (new normative area, new principle/pattern, policy-shaping change): follow [doctrine/patterns/doctrine-library-change-harness.md](doctrine/patterns/doctrine-library-change-harness.md) — **research**, **ADR** (create or reference), **cross-linked layers**, and **sitemap / glossary / REFERENCES** (and related entry points). Use `./scripts/doctrine-change-preflight.sh` before opening the PR. **Claude skill (optional):** [docs/skill/DoctrineLibraryChange/](docs/skill/DoctrineLibraryChange/) — copy to `~/.claude/skills/DoctrineLibraryChange`. Optional Cursor rule: copy [docs/cursor/doctrine-library-change.mdc](docs/cursor/doctrine-library-change.mdc) to `.cursor/rules/` (see [docs/cursor/README.md](docs/cursor/README.md)).
+**Material additions to the library** (new normative area, new principle/pattern, policy-shaping change): follow [doctrine/patterns/doctrine-library-change-harness.md](doctrine/patterns/doctrine-library-change-harness.md) — **research**, **ADR** (create or reference), **cross-linked layers**, and **sitemap / glossary / REFERENCES** (and related entry points). Use `./scripts/doctrine-change-preflight.sh` before opening the PR (POSIX shell / WSL / Git-Bash). On Windows without a POSIX shell, run the cross-platform generator instead: `python scripts/generate_doctrine_sitemap.py`. **Claude skill (optional):** [docs/skill/DoctrineLibraryChange/](docs/skill/DoctrineLibraryChange/) — copy to `~/.claude/skills/DoctrineLibraryChange`. Optional Cursor rule: copy [docs/cursor/doctrine-library-change.mdc](docs/cursor/doctrine-library-change.mdc) to `.cursor/rules/` (see [docs/cursor/README.md](docs/cursor/README.md)).
 
 **Consumers** who do not have write access: fork the repository, make your branch, open a pull request to the default branch, and describe **consumer impact** (who must react: everyone, only event-driven teams, only AI/RAG, etc.).
 
@@ -29,8 +29,9 @@ If you are unsure, open an issue or a **draft PR** and ask. Mis-layered text is 
 
 - **Smallest diff** that achieves the goal; no drive-by renames or unrelated formatting sweeps.
 - **Label the change class** in the PR description (at least for substantive edits to `doctrine/` or `ENGINEERING.md`).
-- **Regenerate** [doctrine/SITEMAP.md](doctrine/SITEMAP.md) when you add, remove, or rename Markdown under `doctrine/`: run `./scripts/generate-doctrine-sitemap.sh` from the repo root.
+- **Regenerate** [doctrine/SITEMAP.md](doctrine/SITEMAP.md) when you add, remove, or rename Markdown under `doctrine/`: run `./scripts/generate-doctrine-sitemap.sh` (POSIX) **or** `python scripts/generate_doctrine_sitemap.py` (any platform, including Windows) from the repo root. Both produce identical output.
 - **Cross-links**: avoid orphan pages; update [doctrine/README.md](doctrine/README.md) or [doctrine/REFERENCES.md](doctrine/REFERENCES.md) when you add a first-class document.
+- **Validate contracts** if you touch anything under `contracts/`: install pinned deps with `pip install -r requirements.txt`, then run `python scripts/validate-contracts-v1.py`. CI runs this on every push/PR ([.github/workflows/contracts.yml](.github/workflows/contracts.yml)).
 
 ## Review
 

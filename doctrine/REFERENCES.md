@@ -243,6 +243,18 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 
 ## Internal Doctrine Map
 
+### Machine-readable contracts
+
+| File | Focus |
+| --- | --- |
+| [../contracts/run-contract.v1.schema.json](../contracts/run-contract.v1.schema.json) | Run-contract v1 JSON Schema 2020-12; consumed by `patterns/run-contracts.md` |
+| [../contracts/verifier-pack.v1.schema.json](../contracts/verifier-pack.v1.schema.json) | Verifier-pack v1 JSON Schema 2020-12; consumed by `patterns/verifier-packs.md` |
+| [../contracts/router-policy.v1.schema.json](../contracts/router-policy.v1.schema.json) | Router-policy v1 JSON Schema 2020-12; consumed by ADR-0012; structural 3-tier shape (`tiers: { premium, default, narrow_scope }`) + escalation + refusal rules + two-tier cost ceilings |
+| [../contracts/examples/default-production.router-policy.yaml](../contracts/examples/default-production.router-policy.yaml) | v3 production-default router policy (3-tier: premium/default/narrow_scope; FALSIFIED-escalates default → premium; narrow-scope model narrow-scope with mandatory external review) |
+| [../contracts/examples/enterprise-strict.router-policy.yaml](../contracts/examples/enterprise-strict.router-policy.yaml) | Strict-estate variant: immediate premium escalation on first FALSIFIED, narrow-scope model denied beyond scaffolded subtasks, lower per-session kill |
+| [../contracts/examples/experimental-narrow-scope model-narrow-scope.router-policy.yaml](../contracts/examples/experimental-narrow-scope model-narrow-scope.router-policy.yaml) | Narrow_scope narrow-scope model tier exercised in production with mandatory external review (sample rate 1.0); permitted only for scaffolded_typed_authority cells |
+| [../scripts/validate-contracts-v1.py](../scripts/validate-contracts-v1.py) | Reference Python validator (uses `jsonschema`) for all three v1 schemas; positive in-memory + on-disk YAML cases + 12 router-policy negative cases |
+
 ### Umbrella and meta
 
 | File | Focus |
@@ -250,6 +262,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [../ENGINEERING.md](../ENGINEERING.md) | Headline principles index (repo root) |
 | [../CHANGELOG.md](../CHANGELOG.md) | Version history for **SemVer-shaped** doctrine tags |
 | [../AGENTS.md](../AGENTS.md) | Short agent instructions; points at **harness** for library edits |
+| [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md) | Semantic route map for humans and agents: ingestion set, task routes, evidence paths |
 | [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) | **Library change** workflow: research, ADR, cross-links, sitemap, glossary, refs |
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
@@ -263,6 +276,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) | Internal AI knowledge layer, handoffs, councils, agentic workflows — enterprise governance + doctrine map (no build specs) |
 | [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) | Enterprise RAG, ANN/indexing, hybrid search, MCP/agents — synthesis + doctrine gap map |
 | [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) | AI-accelerated vuln discovery, VulnOps, principle clusters — **research**; [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) maps **G1–G6** to closed corpus sections |
+| [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | ADR (Proposed): model routing policy v1 contract; structural 3-tier shape (premium/default/narrow_scope) + escalation + non-empty evidence-backed refusal rules + two-tier cost ceilings; encodes the v3 9-cell scoreboard, the council-D4 3-tier resolution, and the CC-2 interpreter-wrapper refusal |
 | [../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | ADR: research adoption + **G1–G6** closure traceability |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
 | [README.md](README.md) | Doctrine folder entry |
@@ -321,6 +335,10 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
 | [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) | Feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt |
 | [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) | Agent harness patterns: nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL |
+| [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the first-class typed envelope of agent execution; lifecycle, schema surface, validation tooling; §3.5 auto-bundled skills |
+| [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
+| [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Anti-confabulation priming pattern for build-class agents; canonical ~200-token block lifts model-balanced 4.6 canonical 78→85; hash-anchored doctrine artefact |
+| [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md) | Skill pack containing the verbatim canonical priming block (SHA-256 `c138dd96…`); auto-bundled into build-class run contracts |
 
 ### Extended principles
 
