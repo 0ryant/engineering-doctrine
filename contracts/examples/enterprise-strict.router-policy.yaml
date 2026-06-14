@@ -1,0 +1,218 @@
+# Enterprise-strict router policy (3-tier)
+#
+# Same empirical anchor as default-production, but escalates earlier (no
+# retry at the default tier on FALSIFIED), strips the narrow_scope tier
+# down to permit haiku ONLY for refactor_class scaffolded subtasks (or
+# refuses it entirely depending on operator preference), and lowers the
+# per-session kill cap. Suited for regulated estates where the cost of a
+# wrong artifact dominates the cost of a premium tier escalation.
+
+$schema: https://engineering-doctrine/contracts/router-policy.v1.schema.json
+policy_version: 1.0.0
+schema_version: 1.0.0
+description: >-
+  Strict enterprise variant. FALSIFIED escalates to premium on the FIRST
+  verdict (no retry at default); narrow_scope is preserved as a structural
+  tier but its cell_classes list is empty in spirit (refusal rules deny
+  every haiku route); per-session kill is lowered to USD 40.
+
+tiers:
+  premium:
+    model: claude-opus-4-7
+    model_family: opus_4_x
+    primer: anti-confab-200tok@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: pr-evidence-mcp-verifier-pack@1.0.0
+    cell_classes:
+      - security_critical
+      - supervisor_change
+      - doctrine_promotion
+      - audit_class
+    max_cost_usd_per_cell: 12.00   # placeholder -- operator to finalize
+    external_review_required: false
+    description: >-
+      Enterprise mode adds audit_class to the always-premium list. Compliance
+      reviewers consume those outputs.
+
+  default:
+    model: claude-sonnet-4-6
+    model_family: sonnet_4_x
+    primer: anti-confab-200tok@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: pr-evidence-mcp-verifier-pack@1.0.0
+    cell_classes:
+      - greenfield_backbone
+      - refactor_class
+      - build_class
+      - artifact_production
+      - research_class
+    max_cost_usd_per_cell: 1.20    # placeholder -- operator to finalize
+    external_review_required: false
+    description: >-
+      Enterprise default cell unchanged in family (Sonnet-primed) but the
+      per-cell ceiling is tighter. Lower budget bands signal earlier when
+      a cell is going sideways.
+
+  narrow_scope:
+    model: claude-haiku-4-5-20251001
+    model_family: haiku_4_x
+    primer: anti-confab-200tok@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: pr-evidence-mcp-verifier-pack@1.0.0
+    cell_classes:
+      - scaffolded_typed_authority
+    max_cost_usd_per_cell: 0.30    # placeholder -- operator to finalize
+    external_review_required: true
+    external_review_sample_rate: 1.0
+    description: >-
+      Enterprise mode retains the narrow_scope tier structurally (so the
+      schema and policy fingerprint match the canonical 3-tier shape) but
+      the refusal_rules below deny haiku for ALL non-scaffolded classes,
+      and the per-cell cap is tightened to USD 0.30.
+
+escalation_rules:
+  - rule_id: claim-audit-falsified-escalate-immediate
+    when:
+      claim_audit_verdict: FALSIFIED
+      attempts_so_far: 0
+    action:
+      escalate_to_tier: premium
+      add_primer: anti-confab-200tok@1.0.0
+      require_verifier_pack: pr-evidence-mcp-verifier-pack@1.0.0
+      max_cost_usd: 8.00     # placeholder -- operator to finalize
+    evidence_ref: value-sheet/18-cross-product-test/v3/results/plan-b-v2-claim-audit-against-stage2/composite.md
+    description: >-
+      Enterprise mode escalates immediately on the first FALSIFIED. The
+      default tier does not get a retry budget; the verifier pack is
+      re-required at premium tier to prevent any promote-on-rerun silent
+      path.
+
+  - rule_id: security-critical-premium-only
+    when:
+      cell_class:
+        - security_critical
+        - supervisor_change
+        - doctrine_promotion
+        - audit_class
+    action:
+      require_tier: premium
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-opus.md
+    description: >-
+      audit_class is added to the auto-premium list in enterprise mode.
+
+  - rule_id: operator-force-premium
+    when:
+      operator_flag: force_premium
+    action:
+      escalate_to_tier: premium
+      add_primer: anti-confab-200tok@1.0.0
+      max_cost_usd: 10.00    # placeholder -- operator to finalize
+    evidence_ref: doctrine/patterns/anti-confabulation-priming.md
+
+refusal_rules:
+  - rule_id: haiku-no-greenfield
+    when:
+      model_family: haiku_4_x
+      cell_class: greenfield_backbone
+    action:
+      refuse_routing: true
+      reason: >-
+        Enterprise policy: haiku_4_x is refused for greenfield_backbone in
+        all profiles. The v2 canonical-31 cell shipped a silent stub on the
+        binary's collect subcommand and self-scored 96/100. Delta +10 on
+        Haiku-PRIMED narrow-scope means the cell cannot detect over-claims.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+
+  - rule_id: haiku-no-build-class-either
+    when:
+      cell_class: build_class
+      model_family: haiku_4_x
+    action:
+      refuse_routing: true
+      reason: >-
+        Enterprise policy: build_class is refused on haiku_4_x. Treats build_
+        class as a superset (any cell that writes code).
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+
+  - rule_id: haiku-no-artifact-production
+    when:
+      cell_class: artifact_production
+      model_family: haiku_4_x
+    action:
+      refuse_routing: true
+      reason: >-
+        Enterprise policy: artifact_production is refused on haiku_4_x.
+        Same evidence as haiku-no-greenfield and haiku-no-build-class-either.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+
+  - rule_id: haiku-narrow-scope-still-requires-external-review
+    when:
+      cell_class: scaffolded_typed_authority
+      model_family: haiku_4_x
+    action:
+      require_external_review: true
+      reason: >-
+        Even in enterprise mode the narrow_scope tier remains permitted for
+        scaffolded subtasks IF the operator has explicitly enabled it. The
+        Delta +10 self-canonical risk does not vanish under stricter policy.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-haiku-primed.md
+
+  # NOTE: a `haiku-no-anti-confab-primer-unbundled` rule was previously here.
+  # It refused EVERY route with {model_family: haiku_4_x, primer:
+  # anti-confab-200tok@1.0.0}, which is exactly the (family + primer) combo the
+  # narrow_scope tier MANDATES (see tiers.narrow_scope above). Because a
+  # refusal is final and any matching refusal wins, that rule made the
+  # narrow_scope tier structurally unreachable -- directly contradicting the
+  # tier description and haiku-narrow-scope-still-requires-external-review,
+  # which advertise narrow_scope as permitted for scaffolded subtasks under
+  # mandatory external review. The schema cannot catch this (each rule is
+  # individually valid), so the contradiction was silent. It is removed here:
+  # the per-class refusals above (greenfield / build_class / artifact_production)
+  # already deny haiku for every non-scaffolded class, so this rule was both
+  # redundant with those AND fatal to the one class narrow_scope exists for.
+
+  - rule_id: interpreter-wrapper-block
+    # BEST-EFFORT HEURISTIC, not a structural block. A router-layer regex
+    # cannot canonically resolve argv0; the authoritative interpreter-bypass
+    # guard is the corcept enforcement layer. This pattern tolerates a
+    # path/launcher prefix, is matched case-insensitively, and accepts
+    # combined short flags and the --command long flag.
+    when:
+      command_matches: "(?:^|[\\s/])(?:env\\s+|nohup\\s+|xargs\\s+)?(?:bash|sh|zsh|ash|dash|powershell|pwsh|cmd)(?:\\.exe)?\\s+(?:-[a-z]*c[a-z]*\\b|--?c[a-z]*\\b)"
+    action:
+      refuse_routing: true
+      reason: >-
+        CC-2 FALSIFIED: interpreter-wrapper class bypasses corcept hook
+        guards. Enterprise mode keeps this router-layer lint as a hard refusal
+        with no per-team override, but it is best-effort defense-in-depth, NOT
+        a structural guarantee: the authoritative guard remains the corcept
+        enforcement layer even after corcept's fix lands. The pattern catches
+        path-prefixed, launcher-wrapped, and combined-/long-flag spellings.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/per-tool-failure-mode-tests-results/composite.md
+
+  - rule_id: primer-required-on-build-class
+    when:
+      cell_class:
+        - build_class
+        - artifact_production
+        - refactor_class
+      primer: null
+    action:
+      refuse_routing: true
+      reason: >-
+        Build-class cells must run with the canonical primer. Enterprise
+        rules out unprimed build cells from any tier.
+    evidence_ref: value-sheet/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+
+cost_ceilings:
+  per_cell:
+    premium_max_usd: 8.00      # placeholder -- operator to finalize
+    default_max_usd: 1.20      # placeholder -- operator to finalize
+    narrow_scope_max_usd: 0.30 # placeholder -- operator to finalize
+  per_session:
+    operator_warning_at_usd: 10.00   # placeholder -- operator to finalize
+    operator_kill_at_usd: 40.00      # placeholder -- operator to finalize
+
+audit:
+  jsonl_path: audit/router-enterprise.jsonl
+  content_addressable: true

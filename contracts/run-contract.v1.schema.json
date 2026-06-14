@@ -1,0 +1,462 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-doctrine/contracts/run-contract.v1.schema.json",
+  "title": "Run contract (v1)",
+  "description": "Canonical v1 schema for an agent run contract: the single typed envelope that binds trigger, model policy, context, capabilities, authority, hooks, verifiers and outputs into a unit of execution. Every agent run MUST be a run-contract instance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "schema_version",
+    "trigger",
+    "model_policy",
+    "context",
+    "capabilities",
+    "authority",
+    "hooks",
+    "verifiers",
+    "outputs"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Kebab-case identifier; doubles as audit-log scope.",
+      "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Semver of this run-contract schema. v1 contracts MUST declare a 1.x.y string.",
+      "pattern": "^1\\.[0-9]+\\.[0-9]+$",
+      "default": "1.0.0"
+    },
+    "fingerprint": {
+      "type": "string",
+      "description": "sha256:<hex> content-hash of the canonicalised contract body. Generated; not author-supplied.",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence human-readable summary of what this contract authorises.",
+      "maxLength": 512
+    },
+    "trigger": {
+      "$ref": "#/$defs/trigger"
+    },
+    "model_policy": {
+      "$ref": "#/$defs/model_policy"
+    },
+    "context": {
+      "$ref": "#/$defs/context"
+    },
+    "capabilities": {
+      "$ref": "#/$defs/capabilities"
+    },
+    "authority": {
+      "$ref": "#/$defs/authority"
+    },
+    "hooks": {
+      "$ref": "#/$defs/hooks"
+    },
+    "verifiers": {
+      "type": "array",
+      "description": "Closed set of verifier-pack ids (ADR-0004) to run post-execution. An empty array is loud-not-silent: it explicitly declares NO post-run verification. Validators MAY still reject empty arrays at policy level.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "outputs": {
+      "$ref": "#/$defs/outputs"
+    }
+  },
+  "$defs": {
+    "trigger": {
+      "type": "object",
+      "description": "What causes this contract to be instantiated. Every triggered run compiles down to a single typed shape. Each oneOf branch fixes its own required and additionalProperties, so the outer object intentionally does not.",
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "cron" },
+            "schedule": {
+              "type": "string",
+              "description": "Cron expression in the executor's local convention (5-field or 6-field with seconds).",
+              "minLength": 1
+            },
+            "timezone": {
+              "type": "string",
+              "description": "IANA timezone for the schedule (defaults to UTC if absent)."
+            },
+            "jitter_seconds": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Random jitter window added to the scheduled fire time."
+            }
+          },
+          "required": ["type", "schedule"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "webhook" },
+            "endpoint": {
+              "type": "string",
+              "description": "URL path the webhook handler listens on."
+            },
+            "signature_scheme": {
+              "type": "string",
+              "enum": ["hmac_sha256", "ed25519", "none"],
+              "description": "Signature scheme the sender must use. `none` is loud-not-silent — it makes the absence explicit."
+            },
+            "shared_secret_ref": {
+              "type": "string",
+              "description": "Reference (NOT the secret itself) to the verification material, e.g. `secret://provider/payments/hmac`."
+            }
+          },
+          "required": ["type", "endpoint", "signature_scheme"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "repo_event" },
+            "repo": {
+              "type": "string",
+              "description": "<owner>/<name> of the source repository."
+            },
+            "events": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "pull_request_opened",
+                  "pull_request_synchronize",
+                  "pull_request_ready_for_review",
+                  "pull_request_closed",
+                  "push",
+                  "issue_opened",
+                  "issue_commented",
+                  "release_published",
+                  "tag_pushed"
+                ]
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "branch_filter": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Optional list of branch globs that gate execution."
+            }
+          },
+          "required": ["type", "repo", "events"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "file_event" },
+            "paths": {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 1,
+              "description": "Glob patterns inside the filesystem root that trigger the contract."
+            },
+            "events": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["created", "modified", "deleted", "renamed"]
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "debounce_ms": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": ["type", "paths", "events"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "email" },
+            "mailbox": {
+              "type": "string",
+              "description": "Mailbox identifier (NOT a credential)."
+            },
+            "from_allow_list": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "From addresses or domain globs permitted to trigger."
+            },
+            "subject_filter": {
+              "type": "string",
+              "description": "Optional regex against the subject line."
+            }
+          },
+          "required": ["type", "mailbox"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "manual" },
+            "operator_id": {
+              "type": "string",
+              "description": "Operator identifier required to authorise the run."
+            },
+            "approval_required": {
+              "type": "boolean",
+              "default": true,
+              "description": "Whether a separate approval step gates the run beyond the operator id."
+            }
+          },
+          "required": ["type"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "model_policy": {
+      "type": "object",
+      "description": "Closed model allow-list plus explicit deny-list. The deny-list is load-bearing: Stage 2 evidence found Haiku-class confabulation on SKILLS access.",
+      "additionalProperties": false,
+      "required": ["allowed_models"],
+      "properties": {
+        "allowed_models": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Models permitted to execute this contract. Empty arrays are rejected."
+        },
+        "disallow_models": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true,
+          "description": "Models that MUST be denied even if generally available. Explicit redundancy for safety."
+        },
+        "fallback": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What to do when no allowed_model is available. Either a model id to substitute, or the literal string `fail` (loud-not-silent default). Validators MAY warn if neither a known model id nor `fail`."
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "Skills surfaced to the agent and memory access policy.",
+      "additionalProperties": false,
+      "required": ["skills", "memory"],
+      "properties": {
+        "skills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true,
+          "description": "Skill ids made available. Per ADR-0004, every cited skill is REQUIRED BY CONVENTION to have a sibling verifier-pack. NOTE: this JSON Schema and scripts/validate-contracts-v1.py validate shape only -- on-disk sibling existence is NOT checked here; that gate, if present, lives in external catalog tooling."
+        },
+        "memory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["verified_only", "candidate_ok", "off"],
+              "description": "verified_only = only operator-signed memories; candidate_ok = pending memories surface; off = no memory."
+            },
+            "max_items": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Cap on retrieved memory items per query."
+            },
+            "ceiling": {
+              "type": "string",
+              "enum": ["LocalUnsigned", "SelfSigned", "RemoteSigned"],
+              "description": "Cortex truth-ceiling lattice level. RemoteSigned is the strongest."
+            }
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "description": "Closed tool set. Anything outside is denied at the corcept boundary.",
+      "additionalProperties": false,
+      "required": ["tools"],
+      "properties": {
+        "tools": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true,
+          "description": "MCP tool ids. Empty array is legal but means the agent has no tools — verifiers will check outputs anyway."
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "description": "Bounded authority surface for the run. Filesystem, env, network and subprocess are the four axes; each defaults to typed denial.",
+      "additionalProperties": false,
+      "required": ["filesystem", "env", "network", "subprocess"],
+      "properties": {
+        "filesystem": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["root"],
+          "properties": {
+            "root": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Absolute path: all filesystem operations are confined here."
+            },
+            "writable": {
+              "oneOf": [
+                { "type": "boolean" },
+                {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "uniqueItems": true
+                }
+              ],
+              "description": "Either a boolean (whole root) or a list of relative paths permitted for writes. Defaults to false (read-only) if absent."
+            },
+            "readable": {
+              "type": "array",
+              "items": { "type": "string" },
+              "uniqueItems": true,
+              "description": "Optional explicit read-allow list. If omitted, the entire root is readable."
+            }
+          }
+        },
+        "env": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["inherit", "allow"],
+          "properties": {
+            "inherit": {
+              "type": "boolean",
+              "description": "Whether to inherit parent env. Default false (typed denial)."
+            },
+            "allow": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true,
+              "description": "Explicit env var allow-list. Names only — values come from the resolved environment."
+            },
+            "deny": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true,
+              "description": "Explicit env var deny-list / glob patterns."
+            }
+          }
+        },
+        "network": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["deny", "allow_list"],
+              "description": "deny = no outbound network; allow_list = only listed hosts. There is intentionally no `allow_all` mode."
+            },
+            "allow_list": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true,
+              "description": "Required when mode == allow_list. host:port patterns."
+            }
+          },
+          "allOf": [
+            {
+              "if": { "properties": { "mode": { "const": "allow_list" } }, "required": ["mode"] },
+              "then": { "required": ["allow_list"] }
+            }
+          ]
+        },
+        "subprocess": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowed"],
+          "properties": {
+            "allowed": {
+              "oneOf": [
+                { "type": "boolean" },
+                {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 },
+                  "uniqueItems": true
+                }
+              ],
+              "description": "Either a boolean (all/none) or a closed list of binary paths (absolute) the run may exec."
+            }
+          }
+        }
+      }
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Lifecycle hook map. Each key is a hook name from the canonical 13-hook list; each value is an ordered array of hook-action ids.",
+      "additionalProperties": false,
+      "properties": {
+        "before_run": { "$ref": "#/$defs/hook_action_list" },
+        "after_run": { "$ref": "#/$defs/hook_action_list" },
+        "before_tool_use": { "$ref": "#/$defs/hook_action_list" },
+        "after_tool_use": { "$ref": "#/$defs/hook_action_list" },
+        "before_subprocess_spawn": { "$ref": "#/$defs/hook_action_list" },
+        "after_subprocess_exit": { "$ref": "#/$defs/hook_action_list" },
+        "before_file_write": { "$ref": "#/$defs/hook_action_list" },
+        "after_file_write": { "$ref": "#/$defs/hook_action_list" },
+        "before_network_access": { "$ref": "#/$defs/hook_action_list" },
+        "before_final_answer": { "$ref": "#/$defs/hook_action_list" },
+        "on_claim_emitted": { "$ref": "#/$defs/hook_action_list" },
+        "on_stop": { "$ref": "#/$defs/hook_action_list" },
+        "on_error": { "$ref": "#/$defs/hook_action_list" }
+      }
+    },
+    "hook_action_list": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "outputs": {
+      "type": "object",
+      "description": "Declared artefacts the verifiers will check. The `required` list is the close on the Stage 2 silent-stub class: an output declared as required that does not exist post-run fails the contract loudly.",
+      "additionalProperties": false,
+      "required": ["required"],
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Path patterns that MUST exist after the run. Empty is rejected at validation; even research-only runs declare an audit log path."
+        },
+        "optional": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true,
+          "description": "Path patterns that MAY exist; absence is not a failure."
+        },
+        "audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "jsonl_path": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Relative path inside the filesystem root for the JSONL audit log."
+            },
+            "content_addressable": {
+              "type": "boolean",
+              "default": true,
+              "description": "Whether artefact references in the audit log are content-hashed."
+            }
+          },
+          "required": ["jsonl_path"]
+        }
+      }
+    }
+  }
+}
