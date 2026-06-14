@@ -1,5 +1,20 @@
 # macOS
 .DS_Store
 
+# Python bytecode cache (e.g. scripts/__pycache__ from running the harnesses)
+__pycache__/
+*.pyc
+
 # Local Cursor / IDE (keep personal agents, rules, and experiments out of the tree)
 .cursor/
+
+# Claude Code agent state (per-session local settings)
+.claude/
+
+# context-supply-service pack output (regenerable; not authoritative — ADR 0005)
+.context-supply-service/
+# Local developer convention only — this filename is the operator's developer
+# harness target file. It is not a product feature and not required by any
+# doctrine consumer. Keeping it ignored prevents accidental commits during
+# local context-supply-service pack experiments.
+agent-authority-framework-project-harness-target.json

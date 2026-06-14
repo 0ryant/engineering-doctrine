@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-doctrine/contracts/verifier-pack.v1.schema.json",
+  "title": "Verifier pack (v1)",
+  "description": "Canonical v1 schema for a verifier pack: the mandatory mirror of a skill. Every skill referenced by a run contract MUST ship a sibling verifier pack. A pack is a closed list of binary-observable assertions that fail loudly when the skill's declared behaviour is not produced.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "skill",
+    "version",
+    "verifiers"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Pack identifier; convention is `<skill>-verifier-pack`.",
+      "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "skill": {
+      "type": "string",
+      "description": "Skill id this pack mirrors. Convention: MUST resolve to a skill manifest in the cohort. NOTE: this JSON Schema validates shape only; sibling-existence (skill <-> pack) is NOT checked by scripts/validate-contracts-v1.py and is enforced, if at all, by external catalog tooling. Do not assume on-disk sibling resolution from schema validation alone.",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "description": "Semver of the pack itself; bumped independently of the skill version.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Semver of THIS verifier-pack schema. v1 packs declare 1.x.y.",
+      "pattern": "^1\\.[0-9]+\\.[0-9]+$",
+      "default": "1.0.0"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-sentence summary of what the pack verifies.",
+      "maxLength": 512
+    },
+    "fingerprint": {
+      "type": "string",
+      "description": "sha256:<hex> content-hash of the canonicalised pack body. Generated; not author-supplied.",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "setup": {
+      "type": "array",
+      "description": "Commands run once before any verifier executes.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "teardown": {
+      "type": "array",
+      "description": "Cleanup commands run after all verifiers complete (always run, even on failure).",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "verifiers": {
+      "type": "array",
+      "description": "Ordered list of verifier assertions. Each is a binary-observable check that either passes, fail_louds, mark_untrusted, or returns inconclusive.",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/verifier" }
+    }
+  },
+  "$defs": {
+    "verifier_kind": {
+      "type": "string",
+      "enum": [
+        "cli_writes_declared_output",
+        "verify_succeeds_on_valid_input",
+        "tamper_verify_fails",
+        "missing_input_fails",
+        "env_canary_not_in_subprocess",
+        "symlink_escape_rejected",
+        "output_cap_enforced",
+        "jsonl_audit_event_emitted",
+        "lockfile_generated",
+        "host_registrations_generated",
+        "priming_active",
+        "custom"
+      ],
+      "description": "Canonical kinds. Stable across pack versions. `priming_active` (added in 1.1.0) asserts the cell's rendered system prompt contains the canonical anti-confabulation priming block, hash-matched by SHA-256 over the priming-block region; see doctrine/patterns/anti-confabulation-priming.md. `custom` is the escape hatch and MUST carry a description that explains why a standard kind would not fit."
+    },
+    "failure_mode": {
+      "type": "string",
+      "enum": ["fail_loud", "mark_untrusted", "inconclusive"],
+      "description": "fail_loud = run REJECTED; mark_untrusted = outputs flagged provisional; inconclusive = pack-execution itself errored (loudest possible)."
+    },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "description",
+        "command",
+        "failure_mode"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Optional snake_case id for cross-reference inside the pack.",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "kind": { "$ref": "#/$defs/verifier_kind" },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable statement of what is being asserted."
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Shell-or-program invocation that runs the verifier. May reference environment variables like ${OUTPUT_DIR}; resolution rules are executor-defined."
+        },
+        "expected_exit": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0, "maximum": 255 },
+            { "type": "null" }
+          ],
+          "description": "Expected exit code. Null = exit code is not asserted (stdout/stderr/artefacts will be)."
+        },
+        "expected_stdout_contains": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ],
+          "description": "Required substring in stdout. Null = stdout is not asserted."
+        },
+        "expected_stderr_contains": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ],
+          "description": "Required substring in stderr. Null = stderr is not asserted."
+        },
+        "expected_artefacts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true,
+          "description": "Relative paths that MUST exist after the verifier runs. Empty array means the verifier produces no artefacts (and that absence is intentional, not implied)."
+        },
+        "failure_mode": { "$ref": "#/$defs/failure_mode" },
+        "severity": {
+          "type": "string",
+          "enum": ["fatal", "error", "warning"],
+          "description": "Pre-fail-mode triage. fatal = run rejected on failure; error = degraded; warning = log only. Pairs with failure_mode."
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Per-verifier wall-clock cap. If exceeded the result is `inconclusive` (loudest)."
+        },
+        "preconditions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true,
+          "description": "Verifier ids that must pass before this one runs. A precondition failure causes a `skip` — and skips are themselves audited."
+        }
+      }
+    }
+  }
+}

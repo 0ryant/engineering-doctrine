@@ -3,15 +3,17 @@
 **Do not edit the file list by hand.** Regenerate after adding, renaming, or removing Markdown under `doctrine/`:
 
 ```bash
-./scripts/generate-doctrine-sitemap.sh
+./scripts/generate-doctrine-sitemap.sh   # POSIX
+python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-04-28 02:09 UTC
+Generated: 2026-06-08 20:18 UTC
 
 ## All Markdown files
 
 - [README.md](README.md)
 - [REFERENCES.md](REFERENCES.md)
+- [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
 - [SITEMAP.md](SITEMAP.md)
 - [checklists/build-readiness.md](checklists/build-readiness.md)
 - [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md)
@@ -34,6 +36,7 @@ Generated: 2026-04-28 02:09 UTC
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
+- [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md)
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md)
 - [patterns/code-review-and-change-approval.md](patterns/code-review-and-change-approval.md)
@@ -50,7 +53,9 @@ Generated: 2026-04-28 02:09 UTC
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
 - [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md)
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md)
+- [patterns/run-contracts.md](patterns/run-contracts.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
+- [patterns/verifier-packs.md](patterns/verifier-packs.md)
 - [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md)
 - [principles/ai-ml-systems.md](principles/ai-ml-systems.md)
 - [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md)
@@ -86,6 +91,8 @@ Generated: 2026-04-28 02:09 UTC
 - [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md)
 - [principles/user-facing-quality.md](principles/user-facing-quality.md)
 - [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md)
+- [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md)
+- [test-protocols/test-5-honesty-rubric-v2.md](test-protocols/test-5-honesty-rubric-v2.md)
 - [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)
 - [tooling/ai-assisted-development.md](tooling/ai-assisted-development.md)
 - [tooling/build.md](tooling/build.md)

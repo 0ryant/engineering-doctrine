@@ -2,6 +2,7 @@
 
 This repository is the **canonical engineering-doctrine library** (Markdown principles, patterns, tooling, checklists). When a task **adds or substantially changes** `doctrine/`, `docs/adr/`, or the umbrella `ENGINEERING.md`, follow the **library change harness**:
 
+- **Semantic index / ingestion map:** [doctrine/SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md). Before substantive analysis or edits, read its **Critical Agent Context** and the matching **Task Route** so the right principle / pattern / tooling / checklist / ADR files are in context.
 - **Full procedure:** [doctrine/patterns/doctrine-library-change-harness.md](doctrine/patterns/doctrine-library-change-harness.md)
 - **Checklist:** [doctrine/checklists/doctrine-change-checklist.md](doctrine/checklists/doctrine-change-checklist.md)
 - **Preflight:** `./scripts/doctrine-change-preflight.sh` from the repo root
