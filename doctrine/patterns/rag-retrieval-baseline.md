@@ -27,8 +27,7 @@
 ## 3. Security And Privacy
 
 - **Tenant isolation** on the **vector store and search index** — same rigor as row-level security for a multi-tenant DB; cross-tenant retrieval is an **information disclosure** incident.
-- **Indirect prompt injection** — untrusted documents are **untrusted input**; retrieved text can instruct the model to exfiltrate or misbehave. Mitigations: **instruction** hardening, **output** policy, **tool** least privilege, **human** review for high-risk actions—not “RAG alone.”
-- **PII** in the corpus or in **logged** queries/responses: [privacy-and-data-governance.md](../principles/privacy-and-data-governance.md) §5; minimise what is embedded and what is logged.
+- **Indirect prompt injection** — untrusted documents are **untrusted input**; retrieved text can instruct the model to exfiltrate or misbehave. Mitigations: **instruction** hardening, **output** policy, **tool** least privilege, **human** review for high-risk actions—not “RAG alone.”- **Dual-path injection defence (agentic RAG)**: when a RAG pipeline feeds an agent that also has access to **private data** and **write/communication tools** simultaneously — the **lethal trifecta** — instruction hardening alone is insufficient. Apply an architectural defence: the **planning LLM** sees only the user request; a separate **quarantined processor** handles raw external/retrieved content and outputs typed structured values only (no free-text forwarding); a **controller layer** enforces capability policies in deterministic code. This is the mechanism independently described by the Willison Dual LLM pattern (2023) and formalised with taint tracking in the CaMeL paper (Google DeepMind, 2025). Full pattern: [agentic-loop-design.md](agentic-loop-design.md) §9.- **PII** in the corpus or in **logged** queries/responses: [privacy-and-data-governance.md](../principles/privacy-and-data-governance.md) §5; minimise what is embedded and what is logged.
 - **Caching** retrieval results: treat cache keys and TTL like any **sensitive** cache—stale or cross-user leakage is a **Tampering / Information disclosure** risk (see [api-boundaries-and-security.md](../principles/api-boundaries-and-security.md) cache discussion where applicable).
 
 ---
@@ -60,3 +59,6 @@
 - OWASP — **Top 10 for LLM Applications** (GenAI): https://genai.owasp.org/llm-top-10/  
 - OWASP — project home: https://owasp.org/www-project-top-10-for-large-language-model-applications  
 - NIST — **SP 800-218A** (secure practices for GenAI / foundation model **development**; use with SP 800-218): https://csrc.nist.gov/pubs/sp/800/218/a/final  
+- Willison — **Dual LLM Pattern** (architectural injection defence, Apr 2023): https://simonwillison.net/2023/Apr/25/dual-llm-pattern/  
+- Willison — **The Lethal Trifecta** (external content + private data + write tools, 2025): https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/  
+- CaMeL — Debenedetti et al. (taint tracking, Google DeepMind / ETH Zurich, 2025): https://arxiv.org/abs/2503.18813  
