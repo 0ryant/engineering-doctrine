@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-06-08 20:18 UTC
+Generated: 2026-07-16 18:21 UTC
 
 ## All Markdown files
 
@@ -15,6 +15,7 @@ Generated: 2026-06-08 20:18 UTC
 - [REFERENCES.md](REFERENCES.md)
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
 - [SITEMAP.md](SITEMAP.md)
+- [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md)
 - [checklists/build-readiness.md](checklists/build-readiness.md)
 - [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md)
 - [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
@@ -29,13 +30,15 @@ Generated: 2026-06-08 20:18 UTC
 - [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md)
 - [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md)
 - [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md)
-- [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
+- [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
+- [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
+- [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md)
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md)
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md)
@@ -45,8 +48,8 @@ Generated: 2026-06-08 20:18 UTC
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md)
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md)
-- [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md)
 - [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md)
+- [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md)
 - [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)
