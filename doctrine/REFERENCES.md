@@ -14,6 +14,8 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | W3C Trace Context | https://www.w3.org/TR/trace-context/ |
 | HTTP Problem Details | https://www.rfc-editor.org/rfc/rfc9457.html |
 | SPDX (SBOM) | https://spdx.dev/ |
+| CycloneDX (SBOM + VEX) | https://cyclonedx.org/ |
+| OpenFeature (feature flags) | https://openfeature.dev/ |
 | WCAG 2.2 | https://www.w3.org/TR/WCAG22/ |
 | CloudEvents — NATS protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/nats-protocol-binding.md |
 | CloudEvents — Kafka protocol binding | https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/kafka-protocol-binding.md |
@@ -86,11 +88,75 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | NIST SSDF (secure SDLC) | https://csrc.nist.gov/Projects/SSDF |
 | NIST SP 800-218 (SSDF publication) | https://csrc.nist.gov/publications/detail/sp/800-218/final |
 | SLSA (supply-chain levels) | https://slsa.dev/ |
+| SLSA Getting Started | https://slsa.dev/get-started |
+| Sigstore — keyless signing | https://www.sigstore.dev/ |
+| EU Cyber Resilience Act (SBOM / vuln disclosure) | https://www.european-parliament.europa.eu/doceo/document/TA-9-2024-0130_EN.pdf |
 | OWASP ASVS (application verification) | https://owasp.org/www-project-application-security-verification-standard/ |
+
+- Google SRE Workbook, **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/
 
 ---
 
-## Testing
+## FinOps And Cloud Cost
+
+| Topic | Reference |
+| --- | --- |
+| FinOps Foundation framework | https://www.finops.org/framework/ |
+| FOCUS spec (cloud billing normalisation) | https://focus.finops.org/ |
+| OpenCost (open-source Kubernetes cost monitoring) | https://www.opencost.io/ |
+| Green Software Foundation — Software Carbon Intensity (SCI) | https://greensoftware.foundation/ |
+
+---
+
+## Platform Engineering And Team Topologies
+
+| Topic | Reference |
+| --- | --- |
+| Team Topologies (Skelton & Pais, 2019) | https://teamtopologies.com/book |
+| CNCF Platforms Whitepaper | https://tag-app-delivery.cncf.io/whitepapers/platforms/ |
+| Platform engineering community | https://platformengineering.org/ |
+| Backstage — open-source developer portal | https://backstage.io/ |
+| Gartner — Platform Engineering | https://www.gartner.com/en/articles/what-is-platform-engineering |
+
+---
+
+## Feature Flags And Progressive Delivery
+
+| Topic | Reference |
+| --- | --- |
+| Martin Fowler — Feature Toggles | https://martinfowler.com/articles/feature-toggles.html |
+| OpenFeature — vendor-neutral flag standard | https://openfeature.dev/ |
+| Trunk-based development — feature flags | https://trunkbaseddevelopment.com/feature-flags/ |
+| LaunchDarkly — Feature Flag Best Practices | https://launchdarkly.com/blog/feature-flag-best-practices/ |
+
+---
+
+## AI, Agents, And GenAI
+
+Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `patterns/agentic-loop-design.md`, and the `tooling/` AI supplement.
+
+| Topic | Reference |
+| --- | --- |
+| NIST AI Risk Management Framework (AI RMF 1.0) | https://www.nist.gov/itl/ai-risk-management-framework |
+| NIST AI 100-1 (AI RMF PDF) | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf |
+| NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
+| NIST SP 800-218A (GenAI / foundation models, SSDF profile) | https://csrc.nist.gov/pubs/sp/800/218/a/final |
+| OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
+| Model Context Protocol documentation hub | https://modelcontextprotocol.io |
+| Anthropic — Building Effective Agents (Dec 2024) | https://www.anthropic.com/engineering/building-effective-agents |
+| Anthropic — Multi-Agent Research System (Jun 2025) | https://www.anthropic.com/engineering/built-multi-agent-research-system |
+| ReAct — Yao et al., ICLR 2023 (reason + act loop) | https://arxiv.org/abs/2210.03629 |
+| Reflexion — Shinn et al., NeurIPS 2023 (verbal RL / critique-retry) | https://arxiv.org/abs/2303.11366 |
+| CaMeL — Debenedetti et al., Google DeepMind 2025 (taint tracking, injection defence) | https://arxiv.org/abs/2503.18813 |
+| Willison — Dual LLM Pattern (architectural injection defence, Apr 2023) | https://simonwillison.net/2023/Apr/25/dual-llm-pattern/ |
+| Willison — The Lethal Trifecta (external content + private data + write tools, 2025) | https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ |
+| Karpathy — Verifiability (automation gate, Nov 2025) | https://karpathy.bearblog.dev/verifiability/ |
+| Karpathy — 2025 Year in Review (autonomy slider, context engineering) | https://karpathy.bearblog.dev/year-in-review-2025/ |
+| Karpathy — Animals vs. Ghosts (limits of current LLMs, Oct 2025) | https://karpathy.bearblog.dev/animals-vs-ghosts/ |
+| Miessler — PAI Algorithm v4.0 (ISC, 7-phase loop, scaffolding thesis) | https://github.com/danielmiessler/Personal_AI_Infrastructure |
+| LangChain — Context Engineering (Chase, Jun 2025) | https://blog.langchain.com/the-rise-of-context-engineering/ |
+| 12 Factor Agents (Horthy — "own your context window") | https://github.com/humanlayer/12-factor-agents |
+| LangGraph (cyclic graphs / state machines for agentic loops) | https://github.com/langchain-ai/langgraph |
 
 | Topic | Reference |
 | --- | --- |
@@ -228,6 +294,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) | **Library change** workflow: research, ADR, cross-links, sitemap, glossary, refs |
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
+| [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md) | Domain-by-domain scorecard vs 11 mainstream frameworks (Google SRE, DORA, AWS WAF, NIST, etc.) |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
 | [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) | Public doctrine benchmark, scorecard, and residual gap analysis |
@@ -296,6 +363,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
 | [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) | AI adoption operating model: inventory + materiality, ownership + effective challenge, harm-surface test matrix, provider continuity, role-based literacy (NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act–cited) |
+| [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) | Feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt |
+| [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) | Agent harness patterns: nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL |
 | [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the first-class typed envelope of agent execution; lifecycle, schema surface, validation tooling; §3.5 auto-bundled skills |
 | [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
 | [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Anti-confabulation priming pattern for build-class agents; canonical ~200-token block lifts Sonnet 4.6 canonical 78→85; hash-anchored doctrine artefact |
@@ -315,6 +384,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md) | PII, retention |
 | [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents; [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) for full incident lifecycle / on-call |
 | [principles/performance-and-cost.md](principles/performance-and-cost.md) | Load, FinOps |
+| [principles/cost-and-finops.md](principles/cost-and-finops.md) | FinOps operating model, unit economics, anomaly detection, AI inference cost |
+| [principles/platform-engineering.md](principles/platform-engineering.md) | Team topologies, TVP, golden paths, cognitive load |
 | [principles/documentation-knowledge.md](principles/documentation-knowledge.md) | ADRs, runbooks |
 | [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md) | SBOM, licences |
 | [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) | Merge path, pipeline definitions, binding gates, evidence (NIST / CSF / CISA / SLSA–cited) |
