@@ -26,6 +26,8 @@ Evidence:
 
 ## Gap → Closure Table
 
+**Verification 2026-07-16 (closed):** an independent adversarial audit at commit `632228c` attempted to refute each row and returned **CLOSED on all eight** — cited sections exist at the cited numbers with normative, reviewable content; the pre-change dangling pointer was re-confirmed against `632228c^` (zero fallback/failover/provider/exit hits in `reliability-slo-incidents.md`); every relative link in all touched files resolves; all 22 checklist obligations trace to pattern/principle statements; no contradiction with the capability-tier table. Audit findings fixed in the follow-up commit: REFERENCES.md internal-map row for the research note; "every AI system" vs "above minimal materiality" reconciled as aspiration vs **enforcement bar** (`ai-ml-systems.md` §3); §2.1 max-of-two shorthand scoped to the pattern's §§2–5 controls; synthetic-media re-test note added under the pattern §3 matrix so `threat-modeling-stride-lite.md` §3.1's citation lands.
+
 | ID | Gap (2026-07-16 audit) | Closed in (section) |
 | --- | --- | --- |
 | A1 | AI system inventory, materiality tiering, business-service mapping, shadow AI | [ai-adoption-controls.md](../../doctrine/patterns/ai-adoption-controls.md) §1; [ai-ml-systems.md](../../doctrine/principles/ai-ml-systems.md) §2.1, §3, §8 |

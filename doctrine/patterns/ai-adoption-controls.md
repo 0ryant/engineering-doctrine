@@ -62,6 +62,8 @@ Test what the system can **break**, not what is easy to measure. Minimum classes
 | **Data-leakage probing** | GenAI over non-public data | Actively probe for system-prompt leakage (**LLM07**), training/context-data disclosure (**LLM02**), and cross-tenant retrieval ([rag-retrieval-baseline.md](rag-retrieval-baseline.md) §3) — as **tests with evidence**, not only design-time ACLs. |
 | **Decision logging** | Person-affected automation | Verify the §2 audit trail actually reconstructs a contested decision end-to-end — test the log, not the logging intention. |
 
+Where the system (or a control it replaces) performs **identity verification or fraud detection**, re-test it against **synthetic-media** attack scenarios (deepfake voice/video, GenAI phishing, synthetic identities) on a cadence, not once — threat framing: [../principles/threat-modeling-stride-lite.md](../principles/threat-modeling-stride-lite.md) §3.1.
+
 **Why:** the corpus already tested what GenAI **retrieves and merges** (injection, RAG eval) but not what models **decide** (fairness), how they **age** (drift), or how they **fail their own policy** (jailbreak). NIST AI 600-1 names pre- and post-deployment red-teaming for the GenAI classes; EU AI Act Art 15 expects accuracy "consistent throughout the lifecycle" — a lifecycle claim requires drift monitoring, not a launch benchmark.
 
 ---
