@@ -6,20 +6,28 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ### Added
 
+- [doctrine/patterns/ai-adoption-controls.md](doctrine/patterns/ai-adoption-controls.md) — **AI adoption controls**: system **inventory + materiality** tiers, named ownership with **independent challenge**, **harm-surface** testing, **third-party continuity**, workforce **literacy**; with [checklists/ai-adoption-readiness.md](doctrine/checklists/ai-adoption-readiness.md) (reviewable execution) and research basis [evolution/research-ai-adoption-control-gaps-2026-07.md](doctrine/evolution/research-ai-adoption-control-gaps-2026-07.md) (**A1–A8** gaps); [ADR 0023](docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md).
+- [doctrine/patterns/agentic-loop-design.md](doctrine/patterns/agentic-loop-design.md) — **agentic loop** design: ReAct, **verifiability gate**, ISC, **dual-path injection defence**, context engineering, verbal RL, **autonomy slider**.
+- [doctrine/patterns/feature-flag-lifecycle.md](doctrine/patterns/feature-flag-lifecycle.md) — **feature flag** lifecycle (creation → rollout → retirement).
+- [doctrine/principles/cost-and-finops.md](doctrine/principles/cost-and-finops.md) — **FinOps** / cost as an engineering concern.
+- [doctrine/principles/platform-engineering.md](doctrine/principles/platform-engineering.md) — **platform engineering** principle layer.
+- [evolution/scorecard-vs-mainstream-frameworks.md](doctrine/evolution/scorecard-vs-mainstream-frameworks.md) — competitive **scorecard vs 11 mainstream frameworks**.
+
 - [evolution/mythos-era-engineering-principles-research-2026-04-28.md](doctrine/evolution/mythos-era-engineering-principles-research-2026-04-28.md) — **AI vulnerability storm / Mythos-era** engineering research (principle clusters, external anchors); [ADR 0010](docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) tracks research adoption and **G1–G6** closure in corpus. Wired from [doctrine/README](doctrine/README.md), [REFERENCES](doctrine/REFERENCES.md), [glossary](doctrine/glossary.md), [secure-development-lifecycle](doctrine/principles/secure-development-lifecycle.md), [ENGINEERING](ENGINEERING.md).
 
 - [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](doctrine/evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) — **Taxonomy** (A–J) of public doctrine types, **honest** refreshed scorecard vs April benchmark, **which external source to lead with when** table, when *this* library is wrong primary; cross-linked from [evolution](doctrine/README.md#meta-how-to-read-this-repo).
 
+- [doctrine/patterns/code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md) — author and reviewer **duties**, **blocker** vs **non-blocker** policy, **review latency** example targets, **high-risk** change classes, **agent-authored** / LLM diffs, **escalation** when review disagrees; [ADR 0008](docs/adr/0008-add-code-review-and-change-approval-pattern.md).
+- [doctrine/patterns/gitops-and-declarative-operations.md](doctrine/patterns/gitops-and-declarative-operations.md) — **GitOps** invariants (declarative state, **reconciliation**, **drift**, **secrets**); [ADR 0009](docs/adr/0009-add-gitops-and-declarative-operations-pattern.md).
+
 ### Changed
+
+- **ADR 0023 anchors** — adoption-control cross-wiring into normative text: [ai-ml-systems.md](doctrine/principles/ai-ml-systems.md) (around-the-system layer, capability × materiality), [reliability-slo-incidents.md](doctrine/principles/reliability-slo-incidents.md) §7 (**dependency continuity** for external model providers), [threat-modeling-stride-lite.md](doctrine/principles/threat-modeling-stride-lite.md); navigation + vocabulary: [glossary](doctrine/glossary.md), [REFERENCES](doctrine/REFERENCES.md), [ENGINEERING](ENGINEERING.md), [doctrine/README](doctrine/README.md), [SEMANTIC_INDEX](doctrine/SEMANTIC_INDEX.md), [SITEMAP](doctrine/SITEMAP.md).
+- **Gap-fill expansions** — [observability.md](doctrine/principles/observability.md) (multi-window **burn-rate alerting**), [dependencies-supply-chain.md](doctrine/principles/dependencies-supply-chain.md) (**SLSA / Sigstore / SBOM**), [rag-retrieval-baseline.md](doctrine/patterns/rag-retrieval-baseline.md) (cross-links to agentic-loop-design).
 
 - **ADR 0010 gap closure (G1–G6)** — Six parallel research passes (NIST/CISA/OWASP/FIRST/ISO anchors) synthesized into normative text: [secure-development-lifecycle.md](doctrine/principles/secure-development-lifecycle.md), [dependencies-supply-chain.md](doctrine/principles/dependencies-supply-chain.md), [measurement-and-dora.md](doctrine/principles/measurement-and-dora.md), [merge-path-evidence-and-pipeline-integrity.md](doctrine/principles/merge-path-evidence-and-pipeline-integrity.md), [testing-strategy.md](doctrine/principles/testing-strategy.md), [threat-modeling-stride-lite.md](doctrine/principles/threat-modeling-stride-lite.md), [incident-lifecycle-and-on-call-operations.md](doctrine/patterns/incident-lifecycle-and-on-call-operations.md), [ai-ml-systems.md](doctrine/principles/ai-ml-systems.md), [code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md), [tooling/merge-path-and-pipeline-control-suite.md](doctrine/tooling/merge-path-and-pipeline-control-suite.md); [ADR 0010](docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) updated with closure table; [REFERENCES](doctrine/REFERENCES.md), [ENGINEERING](ENGINEERING.md).
 
 - [doctrine/patterns/gitops-and-declarative-operations.md](doctrine/patterns/gitops-and-declarative-operations.md) — lead with **OpenGitOps** v1.0.0, **OWASP** CI/CD top risks, **NIST** SSDF and **12factor** config pointers; in-repo links moved to a **secondary** “alignment” section; [REFERENCES.md](doctrine/REFERENCES.md) and [glossary](doctrine/glossary.md) **GitOps** entry updated for external **bibliography**.
-
-### Added
-
-- [doctrine/patterns/code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md) — author and reviewer **duties**, **blocker** vs **non-blocker** policy, **review latency** example targets, **high-risk** change classes, **agent-authored** / LLM diffs, **escalation** when review disagrees; [ADR 0008](docs/adr/0008-add-code-review-and-change-approval-pattern.md).
-- [doctrine/patterns/gitops-and-declarative-operations.md](doctrine/patterns/gitops-and-declarative-operations.md) — **GitOps** invariants (declarative state, **reconciliation**, **drift**, **secrets**); [ADR 0009](docs/adr/0009-add-gitops-and-declarative-operations-pattern.md).
 
 ## [0.1.0] - 2026-04-27
 
