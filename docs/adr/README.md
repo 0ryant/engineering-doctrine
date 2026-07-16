@@ -30,6 +30,10 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0010](0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | Accepted | 2026-04-28 | Record Mythos-era / AI vulnerability storm research; **G1–G6 closed** in corpus (2026-04-28 synthesis) |
 | [0011](0011-add-semantic-index-for-agent-ingestion-and-topic-routing.md) | Accepted | 2026-05-09 | Add semantic index for agent ingestion and topic routing |
 | [0012](0012-model-routing-policy.md) | Proposed | 2026-05-20 | Model routing policy v1 contract — 3-tier (premium/default/narrow_scope) + empirical refusal rules + escalation + cost ceilings |
+| [0019](0019-auto-cortex-promotion-with-per-session-opt-in.md) | Proposed | 2026-05-20 | Auto-Cortex promotion of new auto-memories (per-session opt-in) |
+| [0021](0021-audit-as-discipline-applies-to-runner-itself.md) | Proposed | 2026-05-20 | Audit-as-discipline applies to the runner itself |
+| [0022](0022-hash-function-convergence-blake3-ed25519-hmac.md) | Proposed | 2026-05-20 | Hash function convergence: BLAKE3 (content) + Ed25519 (signatures) + HMAC (MAC) |
+| [0023](0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) | Accepted | 2026-07-16 | Add AI adoption-control coverage: inventory & materiality, independent challenge, harm-surface testing, provider continuity, literacy |
 
 ## Candidate Considered But Not Recorded
 
