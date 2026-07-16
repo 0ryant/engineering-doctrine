@@ -59,9 +59,23 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 
 ---
 
+## 7. Critical Dependency Continuity
+
+When a **third-party service** (payment API, identity provider, **external model API**) sits inside a critical user journey, its loss is **your** incident:
+
+- **Runtime posture per dependency** — explicit **timeouts**, **circuit breaking**, and a **designed degraded mode** (queue-and-retry, cached/stale answers, reduced feature, or **degrade to human handling**) chosen **in advance**, not improvised mid-outage ([errors-and-failure-modes.md](errors-and-failure-modes.md)); dependency error budgets feed the same policy machinery as §2.
+- **Substitution readiness scales with criticality** — for dependencies whose loss breaches SLOs: a named **substitute** (alternate provider, alternate implementation, or manual process), the assets required to switch (data exports, config, **portable eval sets** for model APIs), and a **game day** that exercises the switch (§5) — an exit plan that has never run is a hypothesis.
+- **Concentration is assessed, not discovered** — know how many critical journeys share one provider **before** contracting the next one (vocabulary: DORA Art 29 "not easily substitutable"); record it where the estate tracks dependencies.
+- **Provider change is change** — deprecations, silent model upgrades, and SLA shifts trigger the same regression and review path as your own releases.
+
+**Why:** [ai-ml-systems.md](ai-ml-systems.md) §6 treats external model APIs as critical dependencies; this section holds the mechanics that promise relies on. AI-specific procurement/exit detail: [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §4.
+
+---
+
 ## Related
 
 - Organisation-level **delivery** metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)
+- **AI provider continuity** (due diligence, concentration, exit/substitution) — [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §4
 - **Chaos experiments and game days** (pattern) — [../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md)
 - **Incident lifecycle, on-call, escalation, comms, handoff, and post-incident** **actions** (pattern) — [../patterns/incident-lifecycle-and-on-call-operations.md](../patterns/incident-lifecycle-and-on-call-operations.md)
 
