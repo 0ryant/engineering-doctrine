@@ -29,12 +29,19 @@ Durable rules when products or **internal engineering** use **generative AI**, *
 
 Teams **declare** the **highest** tier they operate in per system and **upgrade** controls when capability crosses a boundary.
 
+### 2.1 Materiality Is A Second Axis
+
+Capability tiers say what a system **can do**; **materiality** says what its failure **costs** (person-affected decisions, money movement, regulatory reporting, irreversibility, blast radius). A Tier-**A** API call drafting customer-facing decisions is **high-materiality**; a Tier-**D** agent refactoring test fixtures is not. Declare **both** per system in the **AI inventory**, and scale controls by the **max** of the two — operating model: [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §1.
+
 ---
 
 ## 3. Organisational Governance (Map Before Scale)
 
 - Use a **governance-first** order: **policies**, **roles**, **allowed data classes**, and **third-party AI** subprocessors **before** wide indexing or agent **automation**. Public scaffolds: **NIST AI RMF** (**Govern, Map, Measure, Manage**) and, for **model development** practices, **NIST SSDF** + **SP 800-218A**—see [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](../evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) and [evolution/research-ai-ml-ops-landscape-2026-04.md](../evolution/research-ai-ml-ops-landscape-2026-04.md).
 - **Separation of duties** (who authors change, who runs agents, who approves merge to protected branches) is **estate** policy; portable collaboration rules remain in [collaboration.md](collaboration.md).
+- **Inventory before scale** — every AI system in production or on real data (including **embedded**, **vendor**, and **copilot**-class AI) appears in an **owned, materiality-tiered inventory** reconciled on material change (NIST AI RMF **GOVERN 1.6**); ungoverned "shadow" AI is closed with a cheap **sanctioned path**, not punitive detection. Register shape and cadence: [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §1.
+- **Ownership with independent challenge** — a named **first-line owner** is accountable for purpose, data inputs, acceptable use, and human-oversight mode; **high-materiality** systems get pre-launch review by someone with the **incentives, competence, and influence** to force change (*effective challenge*, SR 11-7 vocabulary): [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §2.
+- **Capability uplift is role-based** — approved/prohibited-use boundaries are published, and literacy scales with role (builders ≠ reviewers ≠ everyday users; EU AI Act **Art 4** posture): [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §5.
 
 **Why:** Tool rollout without **Map/Measure** defaults to **incident-driven** governance.
 
@@ -46,6 +53,7 @@ Teams **declare** the **highest** tier they operate in per system and **upgrade*
 - **CI proves** — **required checks** for that repo **still apply**; non-deterministic outputs do **not** waive **contracts**, **lint**, or **security** gates ([build.md](build.md), [testing-strategy.md](testing-strategy.md)).
 - **Humans approve** — **high-risk** areas (auth, tenancy, crypto, schema, **person**-affected automation) keep **explicit** review per [collaboration.md](collaboration.md) and [secure-development-lifecycle.md](secure-development-lifecycle.md) §1.
 - **Security-critical paths are proposal-only until human sign-off** — changes touching **authn/authz**, **secrets or crypto**, **tenant isolation**, **CI/deploy privileges**, or **internet-exposed** trust boundaries remain **human-gated** for merge approval even when an LLM or agent authored the diff; green CI alone does not substitute where tests could be **weak** or **misaligned** with abuse cases. Disclosure and evidence expectations: [code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §6.
+- **Live person-affected decisions keep a human fallback** — the gates above protect the **repo**; systems that **decide about people** at runtime also need: a designed **fallback path** when the system is unavailable, low-confidence, or contested (degrade to human handling, not silent failure); overseer authority and affordance to **disregard, override, or halt** output (EU AI Act **Art 14** vocabulary, incl. **automation bias** awareness); a **contest/complaint path** reaching a human who can reverse the decision; and per-decision logging sufficient to reconstruct and explain it ([audit-logging.md](audit-logging.md)). Detail: [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §2.
 
 **Why:** Preserves **trunk**, **small PRs**, and **bisectability** while scaling throughput.
 
@@ -62,7 +70,8 @@ Teams **declare** the **highest** tier they operate in per system and **upgrade*
 ## 6. Evaluation And Operations
 
 - **Production** RAG or user-visible model outputs have **regression** signals (retrieval quality, safety checks, or human rubric)—not **ship once** without measurement ([rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md) §4, [testing-strategy.md](testing-strategy.md)).
-- **Reliability** treats external **model APIs** like any **critical dependency**—timeouts, fallbacks, and **error budgets** ([reliability-slo-incidents.md](reliability-slo-incidents.md), [performance-and-cost.md](performance-and-cost.md)); **game days** may include provider impairment ([../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md)).
+- **Test the harm surface, not just retrieval** — person-affected outputs add **fairness/bias** evaluation (pre-launch and on retrain/model swap); all production models add **continuous drift** monitoring against the launch baseline (not only change-triggered eval); GenAI with policy constraints adds **jailbreak/guardrail-bypass** red-teaming; GenAI feeding downstream systems adds **output validation** (OWASP LLM05) and **data-leakage probing** (LLM02/LLM07). Test matrix and evidence expectations: [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §3.
+- **Reliability** treats external **model APIs** like any **critical dependency**—timeouts, fallbacks, and **error budgets** ([reliability-slo-incidents.md](reliability-slo-incidents.md) §7, [performance-and-cost.md](performance-and-cost.md)); **game days** may include provider impairment ([../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md)). **Provider continuity** — due diligence, concentration risk, tested **exit/substitution** plans — per [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §4.
 
 ---
 
@@ -86,6 +95,8 @@ Teams **declare** the **highest** tier they operate in per system and **upgrade*
 - **Autopilot merge** to `main` **skipping** required checks.
 - **Long-lived** **secrets** in **prompts** or **logged** context.
 - **Multi-agent “council”** outcomes treated as **approval** without **CI** or **human** sign-off for high-risk change.
+- **Shadow AI** — copilots, wrappers, or vendor AI features in production **outside the inventory** ([../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §1); or registration made so heavy that teams route around it.
+- **Fairness and drift as launch-only checks** — person-affected outputs never re-evaluated after retrain or silent vendor model upgrade.
 
 ---
 
@@ -104,6 +115,8 @@ Teams **declare** the **highest** tier they operate in per system and **upgrade*
 
 ## Related
 
+- Adoption operating model (inventory, challenge, harm-surface tests, provider continuity, uplift): [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) + [../checklists/ai-adoption-readiness.md](../checklists/ai-adoption-readiness.md)
+- Adoption-control gap research (2026-07): [../evolution/research-ai-adoption-control-gaps-2026-07.md](../evolution/research-ai-adoption-control-gaps-2026-07.md)
 - Retrieval implementation baseline: [../patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md)
 - Internal factory / handoffs / councils (research): [../evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](../evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
 - ML/RAG/Azure landscape (research): [../evolution/research-ai-ml-ops-landscape-2026-04.md](../evolution/research-ai-ml-ops-landscape-2026-04.md)
@@ -121,5 +134,8 @@ Teams **declare** the **highest** tier they operate in per system and **upgrade*
 - NIST **SP 800-218** (SSDF): https://csrc.nist.gov/publications/detail/sp/800-218/final  
 - NIST **SP 800-218A** (GenAI / foundation models, SSDF profile): https://csrc.nist.gov/pubs/sp/800/218/a/final  
 - OWASP **Top 10 for LLM Applications**: https://genai.owasp.org/llm-top-10/  
+- Federal Reserve **SR 11-7** — Model Risk Management (effective challenge): https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm  
+- PRA **SS1/23** — Model risk management principles for banks: https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss  
+- **EU AI Act** — Art 4 literacy / Art 14 human oversight / Art 15 lifecycle accuracy: https://artificialintelligenceact.eu/  
 - **Model Context Protocol** — documentation hub: https://modelcontextprotocol.io  
 - Anthropic — **Introducing MCP**: https://www.anthropic.com/research/model-context-protocol  

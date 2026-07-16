@@ -36,6 +36,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — **internal AI / agent factory** vision: governance-first, handoffs, councils, agentic workflows + doctrine map (**no** build runbooks)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) — **enterprise RAG**, vectors, indexing, hybrid search, **MCP**/agents — research + gap map
 - [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) — **AI vulnerability storm / Mythos-era** engineering research (CSA briefing, SSDF/SLSA/OWASP anchors) + [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) (G1–G6 **synthesized** into principles/patterns—see ADR closure table)
+- [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) — **AI adoption-control** gap audit (inventory/materiality, effective challenge, fairness/drift testing, provider continuity, literacy; NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act anchors) + [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) (A1–A8 closure table)
 
 ### Governance & Assurance
 
@@ -45,6 +46,8 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) — **engineering controls governance programme** (ownership, waivers, metrics, audit consumption; CSF 2.0–aligned)
 - [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) — illustrative **control suite** for merge paths and pipelines
 - [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
+- [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls** (inventory & materiality, ownership & effective challenge, harm-surface testing, provider continuity, capability uplift)
+- [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) — **AI adoption** readiness checklist (org/team-level)
 
 ### Adoption And Worked Examples
 
@@ -96,6 +99,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/run-contracts.md](patterns/run-contracts.md) — agent **run contracts** (v1 envelope binding trigger, model, context, capabilities, authority, hooks, verifiers, outputs)
 - [patterns/verifier-packs.md](patterns/verifier-packs.md) — **verifier packs** (mandatory mirror of every skill; 11 canonical kinds plus `custom`)
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) — **anti-confabulation priming** for build-class agents; canonical ~200-token block lifts model-balanced 4.6 canonical 78→85 (delta tightening 12 pts) at ~200-token cost
+- [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls**: inventory & materiality, ownership & independent challenge, harm-surface test matrix, third-party AI continuity, role-based capability uplift
 
 ### Skills
 
@@ -109,6 +113,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [checklists/release-readiness.md](checklists/release-readiness.md)
 - [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
 - [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md)
+- [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) — inventory/materiality, challenge, harm-surface tests, provider continuity, uplift
 
 ### Illustrative tooling (replace with your estate’s choices)
 

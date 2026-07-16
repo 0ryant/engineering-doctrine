@@ -167,6 +167,34 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 
 ---
 
+## AI Governance And Regulation
+
+Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `principles/threat-modeling-stride-lite.md` §3.1, and `checklists/ai-adoption-readiness.md`. Regulators are cited as **rationale and vocabulary**, not as obligations this doctrine imposes.
+
+| Topic | Reference |
+| --- | --- |
+| NIST AI RMF 1.0 (GOVERN 1.6 inventory; Map/Measure/Manage) | https://www.nist.gov/itl/ai-risk-management-framework |
+| NIST AI RMF Playbook — GOVERN | https://airc.nist.gov/airmf-resources/playbook/govern/ |
+| NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
+| Federal Reserve SR 11-7 — model risk management, effective challenge | https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm |
+| PRA SS1/23 — model risk management principles (inventory + tiering, independent validation) | https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss |
+| EU AI Act — Art 4 literacy, Art 12 logging, Art 14 human oversight, Art 15 lifecycle accuracy, Art 26 deployers | https://artificialintelligenceact.eu/ |
+| EU DORA — Art 28 register + exit strategies, Art 29 concentration risk | https://www.digital-operational-resilience-act.com/Article_28.html |
+| EBA outsourcing guidelines (EBA/GL/2019/02) | https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-outsourcing-arrangements |
+| FCA PS21/3 — operational resilience (important business services, impact tolerances) | https://www.fca.org.uk/publications/policy-statements/ps21-3-building-operational-resilience |
+| BoE/FCA — AI in UK financial services 2024 (adoption survey) | https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024 |
+| FSB — Financial stability implications of AI (2024) | https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/ |
+| IAIS — Application paper on supervision of AI (2025) | https://www.iais.org/uploads/2025/07/Application-Paper-on-the-supervision-of-artificial-intelligence.pdf |
+| ISO/IEC 42001:2023 — AI management systems | https://www.iso.org/standard/42001 |
+| ISO/IEC 23894:2023 — AI risk management guidance | https://www.iso.org/standard/77304.html |
+| MITRE ATLAS — adversary tactics against AI | https://atlas.mitre.org/ |
+| UK AISI Inspect — evaluation harness | https://inspect.aisi.org.uk/ |
+| NCSC — impact of AI on the cyber threat | https://www.ncsc.gov.uk/report/impact-of-ai-on-cyber-threat |
+| FinCEN FIN-2024-Alert004 — deepfake fraud targeting financial institutions | https://www.fincen.gov/system/files/shared/FinCEN-Alert-DeepFakes-Alert508FINAL.pdf |
+| Europol — deepfakes and law enforcement | https://www.europol.europa.eu/publications-events/publications/facing-reality-law-enforcement-and-challenge-of-deepfakes |
+
+---
+
 ## Architecture Decisions
 
 | Topic | Reference |
@@ -266,6 +294,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
+| [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) | AI adoption operating model: inventory + materiality, ownership + effective challenge, harm-surface test matrix, provider continuity, role-based literacy (NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act–cited) |
 | [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the first-class typed envelope of agent execution; lifecycle, schema surface, validation tooling; §3.5 auto-bundled skills |
 | [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
 | [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Anti-confabulation priming pattern for build-class agents; canonical ~200-token block lifts model-balanced 4.6 canonical 78→85; hash-anchored doctrine artefact |
@@ -319,6 +348,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md) | Editing doctrine |
 | [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) | Org governance programme for engineering controls |
 | [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md) | DevEx scorecard for local loop, docs findability, review flow, cognitive load |
+| [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) | AI adoption: inventory/materiality, challenge, harm-surface tests, provider continuity, uplift |
 
 ### Estates
 
