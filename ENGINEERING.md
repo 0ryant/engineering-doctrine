@@ -80,7 +80,7 @@ When tooling changes, update the tooling docs first. Change the principles only 
 - Fail closed, not open. Default deny.
 - Prefer managed identity or OIDC over static credentials wherever supported.
 - Secure development lifecycle (design review, vuln response, training): `doctrine/principles/secure-development-lifecycle.md`.
-- AI-assisted engineering, RAG, fine-tuning, and agentic automation (governance, truth in repo, tiers): `doctrine/principles/ai-ml-systems.md`; illustrative tooling categories: `doctrine/tooling/ai-assisted-development.md`.
+- AI-assisted engineering, RAG, fine-tuning, and agentic automation (governance, truth in repo, tiers): `doctrine/principles/ai-ml-systems.md`; illustrative tooling categories: `doctrine/tooling/ai-assisted-development.md`; retrieval baseline: `doctrine/patterns/rag-retrieval-baseline.md`; agent harness loop design (ReAct, verifiability gate, ISC, dual-path injection defence, context engineering, verbal RL): `doctrine/patterns/agentic-loop-design.md`.
 
 ---
 
@@ -322,7 +322,7 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **API boundaries and API security** — `doctrine/principles/api-boundaries-and-security.md` (limits, authz, OWASP API alignment).
 
-**AI and ML-assisted systems** — `doctrine/principles/ai-ml-systems.md` (governance, tiers A–D + materiality axis, merge path, OWASP LLM); adoption controls: `doctrine/patterns/ai-adoption-controls.md`; illustrative tooling: `doctrine/tooling/ai-assisted-development.md`.
+**AI and ML-assisted systems** — `doctrine/principles/ai-ml-systems.md` (governance, tiers A–D + materiality axis, merge path, OWASP LLM); adoption controls: `doctrine/patterns/ai-adoption-controls.md`; **agentic loop design** (nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL): `doctrine/patterns/agentic-loop-design.md`; illustrative tooling: `doctrine/tooling/ai-assisted-development.md`.
 
 **Threat modeling (STRIDE lite)** — `doctrine/principles/threat-modeling-stride-lite.md` (trust boundaries; complements API and platform security).
 
@@ -335,6 +335,10 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 **Developer experience** — `doctrine/principles/developer-experience.md` (time-to-first-change, local loop, docs findability, cognitive load, review flow); scorecard: `doctrine/checklists/developer-experience-scorecard.md`.
 
 **Performance, load, and cost** — `doctrine/principles/performance-and-cost.md`.
+
+**FinOps and cloud cost governance** — `doctrine/principles/cost-and-finops.md` (tagging strategy, unit economics, anomaly SLAs, AI inference budgets).
+
+**Platform engineering and team topologies** — `doctrine/principles/platform-engineering.md` (team types, interaction modes, golden paths, cognitive load metrics, TVP).
 
 **Documentation and knowledge** — `doctrine/principles/documentation-knowledge.md` (ADRs, runbooks).
 
@@ -363,6 +367,8 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 **Estate-specific tooling supplements** — `doctrine/tooling/estates/` (optional mappings; example Azure: `estates/azure-container-runtimes.md`; empty stubs: `estates/aws-container-runtimes.md`, `estates/gcp-container-runtimes.md`).
 
 **How to read this doctrine** — `doctrine/patterns/how-to-read-this-doctrine.md`.
+
+**Feature flag lifecycle and progressive delivery** — `doctrine/patterns/feature-flag-lifecycle.md` (flag taxonomy, lifecycle FSM, data-gated rollout, flag debt, OpenFeature).
 
 **Message channels (DLQ, replay)** — `doctrine/patterns/message-channel-operations.md`. Illustrative brokers: `doctrine/tooling/nats-jetstream.md`, `doctrine/tooling/kafka-and-cloudevents.md`.
 
