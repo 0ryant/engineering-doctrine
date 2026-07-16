@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-07-16 18:14 UTC
+Generated: 2026-07-16 18:21 UTC
 
 ## All Markdown files
 
@@ -34,8 +34,10 @@ Generated: 2026-07-16 18:14 UTC
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
+- [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
+- [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md)
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md)
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
@@ -46,6 +48,7 @@ Generated: 2026-07-16 18:14 UTC
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md)
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md)
+- [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md)
 - [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md)
@@ -64,6 +67,7 @@ Generated: 2026-07-16 18:14 UTC
 - [principles/collaboration.md](principles/collaboration.md)
 - [principles/configuration-and-secrets.md](principles/configuration-and-secrets.md)
 - [principles/container-runtime-choice.md](principles/container-runtime-choice.md)
+- [principles/cost-and-finops.md](principles/cost-and-finops.md)
 - [principles/data-and-migrations.md](principles/data-and-migrations.md)
 - [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md)
 - [principles/developer-experience.md](principles/developer-experience.md)
@@ -78,6 +82,7 @@ Generated: 2026-07-16 18:14 UTC
 - [principles/naming-and-repo-layout.md](principles/naming-and-repo-layout.md)
 - [principles/observability.md](principles/observability.md)
 - [principles/performance-and-cost.md](principles/performance-and-cost.md)
+- [principles/platform-engineering.md](principles/platform-engineering.md)
 - [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md)
 - [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md)
 - [principles/secure-development-lifecycle.md](principles/secure-development-lifecycle.md)
