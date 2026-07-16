@@ -16,6 +16,10 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **AI RMF (NIST)** — *Artificial Intelligence Risk Management Framework* (NIST AI 100-1): **Govern, Map, Measure, Manage**—**Govern** is cross-cutting. **Generative AI** companion: **NIST AI 600-1**. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2.
 
+**AI literacy** — **Role-based** capability to use, oversee, or challenge AI systems: builders ≠ reviewers ≠ approvers ≠ everyday users (EU AI Act **Art 4** vocabulary: "sufficient" literacy is contextual). See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §5.
+
+**AI system inventory** — Owned, **materiality**-tiered register of every AI system in production or on real data — including **embedded**, **vendor**, and **copilot**-class AI. Root control of AI adoption (NIST AI RMF **GOVERN 1.6**); each entry carries owner, capability tier, materiality, data classes, dependencies, oversight mode, test evidence. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1, [ai-ml-systems.md](principles/ai-ml-systems.md) §3.
+
 **AILZ / Azure AI Landing Zone** — Microsoft’s **reference application landing zone** for AI workloads on Azure (e.g. **Foundry** and/or **APIM** as AI gateway); **preview**-style, **estate**-level mapping—not portable law. See [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) §2.
 
 **ANN** — *Approximate nearest neighbour*: index structures (e.g. **HNSW**, **IVF** families) that trade **recall** vs **latency** vs **memory** for embedding search. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §3.
@@ -79,6 +83,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ---
 
 ## E
+
+**Effective challenge** — Independent review with **incentives** (not invested in delivery), **competence** (can identify limitations and assumptions), and **influence** (authority to force change) — the SR 11-7 test for whether "second opinion" review is real. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §2.
 
 **Error budget** — Allowed **unreliability** derived from an SLO; spending it signals **slow down or invest** in reliability. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
@@ -152,11 +158,15 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## M
 
+**Materiality (AI)** — Business-impact tier of an AI system (person-affected decisions, money movement, irreversibility, blast radius) — **orthogonal** to capability tiers A–D; controls scale with the **max** of the two. See [ai-ml-systems.md](principles/ai-ml-systems.md) §2.1, [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.1.
+
 **MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover **tools** and **resources** (often JSON-RPC); treat servers as **production** integrations (authz, audit, supply chain). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
 
 **Merge queue** — Serialises merges to `main` by testing the **merged** result; reduces “green branch, red main.” See [collaboration.md](principles/collaboration.md), [trunk-workflow.md](patterns/trunk-workflow.md).
 
 **Minimum viable doctrine (MVP)** — Smallest practice set that makes **further** adoption safe; team-specific one-pager in [minimum-viable-doctrine.template.md](tooling/estates/minimum-viable-doctrine.template.md). See [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md).
+
+**Model drift** — Degradation of a deployed model as **input distribution** or the world shifts from the launch baseline; requires **continuous** monitoring with alert thresholds and a retrain/rollback path — not only change-triggered eval. Distinct from **config/GitOps drift**. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §3.
 
 **mTLS** — *Mutual TLS*: both parties present certificates; common for **service-to-service** identity. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
 
@@ -243,6 +253,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Semantic index** — Curated route map from task intent to the doctrine files an agent or reader should ingest. It is navigation, not a replacement for source principles, patterns, tooling pages, checklists, ADRs, or evolution notes. See [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md).
 
 **Separation of duties (SoD)** — Different roles for **authoring**, **approving**, and **operating** high-risk change (including **who runs agents** vs **who merges** to protected branches); **estate** policy detail complements portable collaboration rules. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §1, [collaboration.md](principles/collaboration.md).
+
+**Shadow AI** — Copilots, wrappers, vendor AI features, or low-code automations in production **outside the AI inventory** — spreading faster than documentation, lifecycle control, and auditability. Closed with a **cheap sanctioned path** (no-blame registration + approved-tools list), not punitive detection. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.
 
 **Service catalog** — **Index of systems** the org runs: identity, **ownership**, interfaces (APIs/events), runtime, dependencies, ops links (SLOs, runbooks)—**tool-agnostic**; may be a portal, Git index, or dedicated product. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 

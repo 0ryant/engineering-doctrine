@@ -1,0 +1,68 @@
+# Research: AI Adoption Controls — Inventory, Challenge, Harm-Surface Testing, Provider Continuity, Literacy (July 2026)
+
+**Purpose:** Record a gap analysis of this corpus against a regulated-sector ("careful AI adoption") control model — enterprise AI **inventory and materiality**, first-line **ownership** with second-line **challenge**, testing matched to the **harm surface**, **third-party** AI continuity, and **capability uplift** — and the external authorities that ground the additions. Decision record: [ADR 0023](../../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md).
+
+**Companion:** [research-ai-ml-ops-landscape-2026-04.md](research-ai-ml-ops-landscape-2026-04.md), [research-internal-ai-knowledge-factory-governance-2026-04.md](research-internal-ai-knowledge-factory-governance-2026-04.md), [mythos-era-engineering-principles-research-2026-04-28.md](mythos-era-engineering-principles-research-2026-04-28.md).
+
+---
+
+## 1. Trigger And Provenance (Honesty Note)
+
+The trigger was an operator-supplied summary of a financial-services/insurance AI-risk paper arguing that the material risk is **adoption without enterprise-grade controls**, organised as a five-layer control model (inventory, ownership, testing, third-party controls, capability uplift). A search of actuarial, insurance-body, and consultancy publications did **not** confidently identify the source paper, so **nothing in this corpus is attributed to it**. Its headline statistic was verified independently: the Bank of England / FCA survey *Artificial intelligence in UK financial services — 2024* (21 Nov 2024) reports **75%** of firms already using AI and a further **10%** planning to within three years, with a **third of use cases being third-party implementations** (up from 17% in 2022).
+
+The five-layer framing survives contact with primary sources (NIST AI RMF, SS1/23, DORA, EU AI Act — §3 below); the doctrine additions cite those primary sources, not the paper.
+
+---
+
+## 2. Coverage Map — What The Corpus Already Had (2026-07-16 Audit)
+
+Three independent full-corpus surveys (grep-confirmed zero-match claims) produced this map:
+
+| Theme | Already covered | Partial | Absent (zero-match) |
+| --- | --- | --- | --- |
+| **Inventory & materiality** | Capability tiers A–D ([ai-ml-systems.md](../principles/ai-ml-systems.md) §2); repo/branch register ([engineering-controls-governance-program.md](../patterns/engineering-controls-governance-program.md) §2); "estate documents allowed MCP servers" (§7) | "Per system" tier declaration implies systems are tracked, but no register is required | AI system **inventory/register**; **materiality** (business-impact) tiering; mapping to **business services**; **shadow AI** failure mode ("copilot", "embedded model" had zero hits) |
+| **Ownership & challenge** | Separation of duties for change approval ([code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §"Separation of duties"); human gates for irreversible/agent actions (ai-ml-systems.md §4); control owners ([engineering-controls-governance-program.md](../patterns/engineering-controls-governance-program.md) §2); router external-review sampling ([ADR 0012](../../docs/adr/0012-model-routing-policy.md)) | "Independent challenge" exists only as merge-time review of change, not as a standing second-line function; ownership asserted but no named first-line owner role per AI system | **Three lines of defence**, **effective challenge**, **model risk management** vocabulary; **human fallback for live automated decisions** (vs approval in a change path); **contestability / explanation / complaint path** for affected people |
+| **Harm-surface testing** | Prompt injection incl. indirect ([rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md) §3); RAG golden-set eval (§4); OWASP LLM Top 10 pointer (ai-ml-systems.md §5); adversarial CI ([testing-strategy.md](../principles/testing-strategy.md) §5); tenant-isolation/data-leak *risk* | Red-teaming named twice but no required practice; output handling only as "output policy" clause; robustness only generic | **Fairness/bias testing** of model outputs (every "bias" hit was test-pyramid or council-sycophancy); **production drift monitoring** (every "drift" hit was GitOps config drift); **jailbreak** as a term; **output validation** and **leakage probing** as named test classes |
+| **Third-party AI continuity** | "Treat model APIs like any critical dependency — timeouts, fallbacks, error budgets" (ai-ml-systems.md §6); generic dependency-loss game days; run-contract `model_policy.fallback` (intra-catalog) | The §6 pointer is **dangling**: [reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) contained zero occurrences of fallback/failover/provider; lock-in flagged generically in [anti-patterns gap analysis](anti-patterns-and-failure-modes-gap-analysis-2026-04.md) | **Due diligence**, **audit rights**, **resilience SLAs**, **exit/substitution plans**, **concentration risk**, **continuity plan** for loss of an external model/API/provider; regulatory **DORA** (all existing "DORA" hits are DevOps Research & Assessment) |
+| **Fraud/cyber acceleration** | Exploit-economics collapse for **vulnerability** offense ([mythos-era note](mythos-era-engineering-principles-research-2026-04-28.md)); classical STRIDE spoofing | Attacker-cost framing never crosses from vuln-discovery to fraud/social-engineering | **Deepfake**, **phishing**, **voice cloning**, **synthetic identity**, **social engineering** (all zero-match) |
+| **Capability uplift** | Security training ([secure-development-lifecycle.md](../principles/secure-development-lifecycle.md) §4, role-flat); optional `docs/ai-usage.md` suggestion ([../tooling/ai-assisted-development.md](../tooling/ai-assisted-development.md)) | "Policies, roles, allowed data classes" sequencing (ai-ml-systems.md §3) gestures at boundaries | **AI literacy**, role-specific uplift, **acceptable/prohibited-use** policy as a required artifact (zero literal hits) |
+| **Operational resilience framing** | SLOs/error budgets; blast-radius analysis | — | **Impact tolerance**, **important business service**, severe-but-plausible scenario testing tied to business services |
+
+Notably, the corpus's own gap registers ([anti-patterns-and-failure-modes-gap-analysis-2026-04.md](anti-patterns-and-failure-modes-gap-analysis-2026-04.md), [deep-research-section-gaps.md](deep-research-section-gaps.md)) did **not** list fairness, drift monitoring, AI inventory, or three-lines challenge — these were unrecognized gaps, not known-and-deferred ones.
+
+---
+
+## 3. External Authorities (Verified 2026-07-16)
+
+| Topic | Authority | Key normative points |
+| --- | --- | --- |
+| Adoption baseline | BoE/FCA, *AI in UK financial services 2024* (21 Nov 2024) | 75% adoption + 10% within 3 years; ⅓ of use cases third-party; 84% report an accountable person; top perceived risks are data-related (privacy, quality, security, bias). |
+| Inventory | **NIST AI RMF 1.0**, GOVERN 1.6 (verified verbatim) | "Mechanisms are in place to **inventory AI systems** and are resourced according to organizational **risk priorities**." MAP requires per-system context, purpose, categorisation, and affected stakeholders. |
+| Inventory / classification | **EU AI Act** Art 6 (classification), Art 26 (deployer duties), Art 49(2) (registration) | Deployers must know which systems are high-risk to discharge duties — effectively forcing a classified inventory. |
+| Systemic view | **FSB**, *Financial Stability Implications of AI* (Nov 2024); **IAIS** Application Paper (Jul 2025) | Third-party dependency/vendor concentration, model risk, and data quality named as systemic AI vulnerabilities; supervision should be proportionate to **materiality**. |
+| Ownership & challenge | **Fed SR 11-7 / OCC 2011-12** (2011) | **Effective challenge** = "critical analysis by objective, informed parties who can identify model limitations and assumptions and produce appropriate changes"; rests on **incentives, competence, influence**. |
+| Ownership & challenge | **PRA SS1/23**, *Model risk management principles for banks* (in force 17 May 2024) | Five principles: firm-wide model **inventory with risk-based tiering**; accountable senior owner; development/use standards; **independent validation**; mitigants. PRA flags AI/ML models in scope. |
+| Third-party continuity | **DORA** (EU 2022/2554, applies 17 Jan 2025) Arts 28–29; **EBA/GL/2019/02** | **Register of information** for all ICT third-party arrangements; documented, **tested exit strategies** for critical functions; pre-contract **concentration-risk** assessment ("not easily substitutable"). |
+| Operational resilience | **FCA PS21/3 / PRA SS1/21** (fully in force 31 Mar 2025) | Identify **important business services**, set **impact tolerances**, prove via severe-but-plausible **scenario testing**. AI embedded in an important business service inherits these regardless of vendor. |
+| Literacy | **EU AI Act Art 4** (applies 2 Feb 2025) + EU Commission AI-literacy Q&A | Providers **and deployers** ensure "a sufficient level of AI literacy" of staff, contextual and **role-based**; training records suffice; generic disclaimers do not. |
+| GenAI testing | **NIST AI 600-1** (GenAI profile, Jul 2024) | 12 GenAI risks incl. direct/indirect prompt injection, data leakage; suggested actions include pre-/post-deployment **red-teaming** (no cadence specified — do not invent one). |
+| GenAI testing | **OWASP Top 10 for LLM Applications 2025** (ids verified) | LLM01 Prompt Injection, LLM02 Sensitive Information Disclosure, LLM03 Supply Chain, LLM04 Data and Model Poisoning, LLM05 Improper Output Handling, LLM06 Excessive Agency, LLM07 System Prompt Leakage, LLM08 Vector and Embedding Weaknesses, LLM09 Misinformation, LLM10 Unbounded Consumption. |
+| Red-team taxonomy | **MITRE ATLAS**; **UK AISI Inspect** | ATT&CK-style adversary tactics against AI systems; open-source evaluation harness. |
+| Lifecycle quality | **EU AI Act** Arts 12/14/15 | Art 12 lifetime event **logging** (precondition for drift detection); Art 14 **human oversight** incl. automation-bias awareness and authority to disregard/override/halt; Art 15 accuracy declared and **consistent throughout the lifecycle**. |
+| Management standards | **ISO/IEC 42001:2023**; **ISO/IEC 23894:2023** | Certifiable AI *management system* (org layer); AI *risk-management guidance* (ISO 31000-derived), respectively. |
+| Fraud acceleration | **NCSC**, *Impact of AI on the cyber threat* (2024; 2025 update) | AI capability uplift is **greatest in social engineering**; GenAI removes phishing tells; uplift increasing to 2027. |
+| Fraud acceleration | **FinCEN FIN-2024-Alert004** (13 Nov 2024); **Europol** (deepfake report; SOCTA/IOCTA 2025) | SAR spike for GenAI **deepfakes defeating identity verification/authentication/due-diligence**; voice-clone CEO fraud; mitigations incl. phishing-resistant MFA, live re-verification. |
+| Shadow AI | NCSC Shadow-IT guidance; NIST AI 600-1 governance actions | **No dedicated "shadow AI" standard exists** — treat shadow AI as an application of inventory + acceptable-use controls (no-blame, sanctioned-path posture), and do not cite a standard that isn't there. |
+
+---
+
+## 4. Conclusions → What Was Landed
+
+1. **One pattern**, [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md), carries the operating-model detail for all five layers (register shape, owner/challenge roles, harm-surface test matrix, provider-continuity artifacts, role-based literacy). Sector-neutral: regulators are cited as *rationale*, not as obligations on adopters.
+2. **Principle anchors** in [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md): a **materiality axis** orthogonal to capability tiers (§2), inventory + literacy in governance-first ordering (§3), runtime **human fallback and contestability** for person-affected decisions (§4), **named test classes** — fairness/bias, drift, jailbreak, output validation, leakage probing (§6), shadow-AI anti-pattern (§8).
+3. **Dangling pointer fixed**: [../principles/reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) gains a critical-dependency continuity section (timeouts/fallbacks/circuit-breaking, substitution and exit plans, concentration risk, provider-impairment game days) that §6 of the AI principle already promised.
+4. **Threat landscape note** in [../principles/threat-modeling-stride-lite.md](../principles/threat-modeling-stride-lite.md): GenAI collapses attacker cost for impersonation and social engineering — synthetic-media scenarios belong in Spoofing analysis wherever identity verification or human approval is a control.
+5. **One checklist**, [../checklists/ai-adoption-readiness.md](../checklists/ai-adoption-readiness.md), makes the five layers reviewable.
+6. **Not landed:** sector-specific compliance mappings (SS1/23 principle-by-principle, DORA article mapping) — estate/ADR material per [../principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md); a fairness-metric catalogue (contested, model- and domain-specific — the obligation to test is doctrine, the metric choice is estate); operational-resilience impact-tolerance methodology (imported as vocabulary + citation only).
+
+**Residual risk:** the five-layer synthesis is our own arrangement of primary sources, not a copied framework; if the original paper surfaces, re-check that no claim needs attribution. OWASP LLM ids and NIST GOVERN 1.6 text verified 2026-07-16; re-verify on next OWASP revision.
