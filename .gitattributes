@@ -1,0 +1,2 @@
+# Shell entrypoints must remain executable by POSIX Bash, including in Windows checkouts.
+*.sh text eol=lf

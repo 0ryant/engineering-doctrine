@@ -37,6 +37,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) — **enterprise RAG**, vectors, indexing, hybrid search, **MCP**/agents — research + gap map
 - [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) — **AI vulnerability storm / Mythos-era** engineering research (CSA briefing, SSDF/SLSA/OWASP anchors) + [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) (G1–G6 **synthesized** into principles/patterns—see ADR closure table)
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) — **AI adoption-control** gap audit (inventory/materiality, effective challenge, fairness/drift testing, provider continuity, literacy; NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act anchors) + [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) (A1–A8 closure table)
+- [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) — **AI-native SDLC** research and council-proposal audit: objective/measure lineage, secure lifecycle, provenance, authority, evidence, deterministic enactment, runtime reconciliation + [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md)
 
 ### Governance & Assurance
 
@@ -48,6 +49,8 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls** (inventory & materiality, ownership & effective challenge, harm-surface testing, provider continuity, capability uplift)
 - [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) — **AI adoption** readiness checklist (org/team-level)
+- [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native delivery lifecycle** (objective → outcomes chain; S0 observed need → S10 reconciled; transition records, layered evidence, authority separation)
+- [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — objective and outcome lineage, lifecycle readiness, authority, and runtime reconciliation
 
 ### Adoption And Worked Examples
 
@@ -100,6 +103,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/verifier-packs.md](patterns/verifier-packs.md) — **verifier packs** (mandatory mirror of every skill; 11 canonical kinds plus `custom`)
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) — **anti-confabulation priming** for build-class agents; canonical ~200-token block lifts model-balanced 4.6 canonical 78→85 (delta tightening 12 pts) at ~200-token cost
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls**: inventory & materiality, ownership & independent challenge, harm-surface test matrix, third-party AI continuity, role-based capability uplift
+- [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native SDLC**: objective and guardrailed outcome measures, intervention hypotheses, evidence-backed transitions, run-contract compilation, authority, enactment, runtime reconciliation
 
 ### Skills
 
@@ -114,6 +118,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
 - [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md)
 - [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) — inventory/materiality, challenge, harm-surface tests, provider continuity, uplift
+- [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — objective/outcome lineage, transition design, agent bounds, evidence, authority, enactment, runtime reconciliation
 
 ### Illustrative tooling (replace with your estate’s choices)
 
@@ -147,7 +152,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) — STRIDE-lite trust-boundary review
 - [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md)
 - [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) — SLOs, error budgets, incidents; **tactical** response: [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)
-- [principles/measurement-and-dora.md](principles/measurement-and-dora.md) — DORA / Four Keys vs doctrine
+- [principles/measurement-and-dora.md](principles/measurement-and-dora.md) — current DORA delivery metrics, metric pitfalls, and the boundary between delivery signals and company objectives
 - [principles/developer-experience.md](principles/developer-experience.md) — SPACE, local loop, docs findability, cognitive load
 - [principles/performance-and-cost.md](principles/performance-and-cost.md)
 - [principles/documentation-knowledge.md](principles/documentation-knowledge.md)

@@ -34,6 +34,8 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0021](0021-audit-as-discipline-applies-to-runner-itself.md) | Proposed | 2026-05-20 | Audit-as-discipline applies to the runner itself |
 | [0022](0022-hash-function-convergence-blake3-ed25519-hmac.md) | Proposed | 2026-05-20 | Hash function convergence: BLAKE3 (content) + Ed25519 (signatures) + HMAC (MAC) |
 | [0023](0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) | Accepted | 2026-07-16 | Add AI adoption-control coverage: inventory & materiality, independent challenge, harm-surface testing, provider continuity, literacy |
+| [0024](0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) | Accepted | 2026-07-17 | Adopt an objective-to-outcome, evidence-backed AI-native SDLC with explicit authority, layered verification, deterministic enactment, and runtime reconciliation |
+| [0025](0025-restore-apache-2.0-as-project-license.md) | Accepted | 2026-07-17 | Restore Apache-2.0 as the adoption-first project licence and supersede the AGPL default-branch experiment |
 
 ## Candidate Considered But Not Recorded
 
