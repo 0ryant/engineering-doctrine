@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-07-17 11:45 UTC
+Generated: 2026-07-17 12:55 UTC
 
 ## All Markdown files
 
@@ -36,6 +36,7 @@ Generated: 2026-07-17 11:45 UTC
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
+- [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md)
 - [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
@@ -59,6 +60,7 @@ Generated: 2026-07-17 11:45 UTC
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
 - [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md)
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md)
+- [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md)
 - [patterns/run-contracts.md](patterns/run-contracts.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
 - [patterns/verifier-packs.md](patterns/verifier-packs.md)

@@ -1,6 +1,6 @@
 # Privacy And Data Governance
 
-Durable rules for **personal data**, **retention**, and **separation of concerns** between product telemetry and security or compliance records.
+Durable rules for **personal data**, **contractually or regulatorily controlled data**, **retention**, and **separation of concerns** between product telemetry and security or compliance records.
 
 ---
 
@@ -68,6 +68,17 @@ These are **three** separable obligations; teams may comply with **one** without
 
 ---
 
+## 6. Contractual And Regulated Data Profiles
+
+- **Do not collapse classifications.** Personal data, CUI, export-controlled data, customer confidential data, secrets, and security evidence may overlap, but each retains its own authority, handling, dissemination, retention, deletion/decontrol, and incident rules.
+- **Record applicability and revision.** When an external baseline applies, register the governing agreement, exact publication revision/update, data categories/markings, bounded systems and suppliers, parameters, assessment method, and exceptions using [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md).
+- **Follow data into derived and support paths.** Backups, logs, analytics, search indexes, model prompts/context, generated outputs, support tickets, screenshots, and evidence stores remain in scope when they contain or protect the controlled data.
+- **Minimise control evidence.** Prefer stable identifiers, hashes, redacted samples, and protected references over copying regulated payloads into tickets, assessments, or audit packs.
+
+**Why:** A privacy programme does not automatically satisfy CUI or another contractual data regime. Explicit profiles prevent both under-protection and accidental expansion of high-control boundaries.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -77,6 +88,7 @@ These are **three** separable obligations; teams may comply with **one** without
 | Split audit vs analytics | **Least privilege** and clearer incident handling. |
 | DPIA when high risk | **Accountability** expectation under GDPR-like regimes; avoids **surprise** supervisory questions. |
 | Split §5 into three tracks | Teams can ship **consent UX** fixes without redoing full DPIA, etc.—**verifiable** partial compliance. |
+| Separate external profiles | Preserves the distinct authority, revision, boundary, and evidence rules of contractual or regulatory data classes. |
 
 ---
 

@@ -37,6 +37,8 @@ This principle **adds** merge-path and pipeline-specific invariants. It does **n
 
 9. **Promotion re-evaluates vulnerability state** — Deploy or promote authority must treat **current** dependency/advisory feeds against the **exact artefact** SBOM (or equivalent inventory) bound to the digest/version being promoted. A previously green merge path does **not** authorise promotion after **new** disclosures unless an explicit, **scoped** exception or **VEX**-style exploitability record is attached to the evidence bundle ([dependencies-supply-chain.md](dependencies-supply-chain.md) §3).
 
+10. **External profiles remain revision- and boundary-bound** — Where law, contract, customer agreement, or estate policy applies an external control baseline, merge/release evidence records the profile ID, exact revision/update, affected system/data boundary, required checks, assessment result, and exception authority. “Compliant” without those bindings is not admissible evidence; use [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md).
+
 ---
 
 ## 3. Rationale (Why These Invariants)
@@ -52,6 +54,7 @@ This principle **adds** merge-path and pipeline-specific invariants. It does **n
 | 7 | Governance without expiry becomes **organisational debt** and violates enterprise risk management norms (see CSF **Govern** and supply-chain categories). |
 | 8 | **AI-accelerated discovery** and pipeline abuse both reward **continuous** defensive signal on the same path where code gains authority—not annual audits alone. |
 | 9 | Otherwise organisations **ship** compromised graphs because “main was green last Tuesday.” |
+| 10 | External catalogues change, contracts can pin older revisions, and one assessment rarely covers every repo or environment; explicit bindings prevent stale or scope-free compliance claims. |
 
 ---
 
