@@ -39,6 +39,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) — **AI adoption-control** gap audit (inventory/materiality, effective challenge, fairness/drift testing, provider continuity, literacy; NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act anchors) + [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) (A1–A8 closure table)
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) — **AI-native SDLC** research: objective/measure lineage, secure lifecycle, provenance, authority, evidence, deterministic enactment, runtime reconciliation + [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md)
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) — **NIST SP 800-171 Rev. 2/Rev. 3 and wider-doctrine** analysis: applicability, revision migration, CUI boundary, assessment evidence, and compositional control profiles + [ADR 0026](../docs/adr/0026-adopt-revision-pinned-external-control-profiles.md)
+- [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md) — proposed `v0.3.0` decision register, implementation tasks, dependencies, acceptance criteria, and release gates
 
 ### Governance & Assurance
 

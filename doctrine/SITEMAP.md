@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-07-17 13:49 UTC
+Generated: 2026-07-17 15:15 UTC
 
 ## All Markdown files
 
@@ -38,6 +38,7 @@ Generated: 2026-07-17 13:49 UTC
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md)
 - [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
+- [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md)
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
