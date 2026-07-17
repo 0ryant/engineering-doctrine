@@ -1,6 +1,6 @@
 # Dependencies And Supply Chain
 
-Durable rules for **third-party code** in production: **pinning**, **updates**, **licensing**, and **evidence** (SBOM) aligned with security and compliance expectations.
+Durable rules for **third-party code** in production: **pinning**, **updates**, **licensing**, and **evidence** (SBOM) aligned with security and compliance expectations. When a supplier, build service, support path, external model, or other dependency enters a declared contractual/regulatory boundary, [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) records the exact authority, baseline revision, scope, assessment evidence, flow-down obligations, and exceptions.
 
 ---
 
