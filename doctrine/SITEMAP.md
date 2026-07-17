@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-07-17 18:40 UTC
+Generated: 2026-07-17 18:46 UTC
 
 ## All Markdown files
 
