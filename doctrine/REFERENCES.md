@@ -58,6 +58,12 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | Anthropic — Frontier Red Team, Claude Mythos Preview | https://red.anthropic.com/2026/mythos-preview/ |
 | CISA & NSA — Defending CI/CD environments | https://www.cisa.gov/news-events/alerts/2023/06/28/cisa-and-nsa-release-joint-guidance-defending-continuous-integrationcontinuous-delivery-cicd |
 | NIST — Strategies for the integration of software supply chain security in DevSecOps CI/CD pipelines | https://www.nist.gov/publications/strategies-integration-software-supply-chain-security-devsecops-cicd-pipelines |
+| NIST — SP 800-171 Rev. 3, Protecting CUI in Nonfederal Systems and Organizations (current publication) | https://csrc.nist.gov/pubs/sp/800/171/r3/final |
+| NIST — SP 800-171A Rev. 3, Assessing Security Requirements for CUI | https://csrc.nist.gov/pubs/sp/800/171/a/r3/final |
+| NIST — SP 800-171 Rev. 2, January 2021 update (withdrawn; use only where a governing obligation pins it) | https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final |
+| NIST — SP 800-172 Rev. 3, enhanced requirements for CUI associated with critical programmes and high-value assets | https://csrc.nist.gov/pubs/sp/800/172/r3/final |
+| NARA — Controlled Unclassified Information programme and Registry | https://www.archives.gov/cui |
+| U.S. Department of Defense — DFARS 252.204-7012 | https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting. |
 | ISO/IEC 27002:2022 — information security controls (incl. technical vulnerability management) | https://www.iso.org/standard/75652.html |
 
 ---
@@ -320,6 +326,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) | AI-accelerated vuln discovery, VulnOps, principle clusters — **research**; [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) maps **G1–G6** to closed corpus sections |
 | [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) | AI adoption-control gap audit (inventory/materiality, effective challenge, fairness/drift, provider continuity, literacy) — coverage map + verified authorities; [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) maps **A1–A8** to closed corpus sections |
 | [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) | Council-proposal audit and primary-source grounding for the AI-native SDLC, including objective/measure lineage; separates external support from the library's objective-to-outcome and eleven-state synthesis; [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) records adoption |
+| [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) | NIST SP 800-171 Rev. 2/Rev. 3 applicability and migration analysis; maps the CUI profile across the wider doctrine; [ADR 0026](../docs/adr/0026-adopt-revision-pinned-external-control-profiles.md) records adoption |
 | [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | ADR (Proposed): model routing policy v1 contract; structural 3-tier shape (premium/default/narrow_scope) + escalation + non-empty evidence-backed refusal rules + two-tier cost ceilings; encodes the v3 9-cell scoreboard, the council-D4 3-tier resolution, and the CC-2 interpreter-wrapper refusal |
 | [../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | ADR: research adoption + **G1–G6** closure traceability |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
@@ -333,6 +340,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | --- | --- |
 | [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) | Merge path as controlled channel; pipeline definitions in scope; binding gates; evidence/SBOM/provenance; **externally cited** |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level **governance programme** for engineering controls (CSF Govern / GV.SC, ownership, waivers, audit packs) |
+| [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) | Applicability-first, revision-pinned external control profile with NIST SP 800-171 as the worked CUI example |
 | [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) | Illustrative **control suite** mapping (scanner categories, OIDC, pipeline static analysis) |
 | [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) | Org readiness checklist for merge-path / supply-chain **governance programme** |
 
@@ -360,6 +368,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 
 | File | Focus |
 | --- | --- |
+| [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) | External baseline applicability, exact revision, boundary, assessment, evidence, exceptions, and revision migration |
 | [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) | Navigation |
 | [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) | Doctrine release labels, change classes, and downstream compatibility impact |
 | [patterns/build-surface-model.md](patterns/build-surface-model.md) | Layer model |

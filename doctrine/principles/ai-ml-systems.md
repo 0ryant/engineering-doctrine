@@ -66,6 +66,7 @@ Capability tiers say what a system **can do**; **materiality** says what its fai
 
 - Treat **OWASP Top 10 for LLM Applications** as the **application-layer** GenAI checklist alongside **OWASP API** controls: https://genai.owasp.org/llm-top-10/
 - **Personal data** in prompts, retrieval, or training: [privacy-and-data-governance.md](privacy-and-data-governance.md) §5; **DPIA** and **vendor** flows when required.
+- **CUI or other externally controlled data** in prompts, retrieval, training, evaluation, agent state, tools, logs, or generated outputs: establish the governing authority, exact revision, admitted provider/tool boundary, assessment evidence, and exceptions through [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md). A run contract may narrow authority but cannot admit an unapproved service or data path.
 - **Automation** that affects users or operators **logs** with **correlation ids**, **actor** (human vs service), and **model/tool** version where material ([audit-logging.md](audit-logging.md)).
 
 ---

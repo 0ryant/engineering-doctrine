@@ -66,6 +66,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Council (multi-agent)** — Several LLM **roles** (or agents) **critique** one proposal before a human decision—useful for **diversity of critique**, weak against **agreement bias** and **false confidence**; **not** a substitute for **CI** or review. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §6.
 
+**CUI** — *Controlled Unclassified Information*: information the U.S. Government creates or possesses, or that an entity creates or possesses for or on its behalf, that a law, regulation, or government-wide policy requires or permits an agency to handle using safeguarding or dissemination controls. Establish the governing authority, category/marking, exact baseline revision, and bounded system/data scope; do not infer CUI solely from content sensitivity. See [Revision-Pinned External Control Profiles](patterns/revision-pinned-control-profiles.md) and the [NARA CUI programme](https://www.archives.gov/cui).
+
 **CORS / CSP** — *Cross-Origin Resource Sharing* and *Content Security Policy*: browser-facing controls for APIs and pages. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
 **Cross-encoder (reranking)** — Model that scores **query–passage** pairs for **precision** after cheap candidate retrieval; common **second stage** in RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
@@ -189,6 +191,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Observability** — Logs, metrics, traces (and **correlation**) sufficient to debug **unknown-unknown** failures. See [observability.md](principles/observability.md).
 
 **Objective-to-outcome chain** — Traceable operating logic from stakeholder need to an owned objective or standing obligation, guardrailed outcome measures, an explicit intervention hypothesis, bounded tasks/run contracts, outputs, observed outcomes, and a continue/change/stop portfolio decision. It prevents task completion or artefact production from being reported as business value. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §2.1.
+
+**ODP** — *Organisation-defined parameter*: a value an organisation must choose where a control baseline deliberately leaves a parameter open. Record the value, scope, owner, source/approval, effective date, and evidence with the exact profile revision; never let an AI or implementation silently invent it. See [Revision-Pinned External Control Profiles](patterns/revision-pinned-control-profiles.md).
 
 **OIDC** — *OpenID Connect*: identity layer on OAuth 2.0; common for **human** and sometimes **workload** flows. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
 

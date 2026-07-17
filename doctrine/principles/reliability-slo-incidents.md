@@ -27,6 +27,7 @@ Durable rules for **service level objectives**, **error budgets**, and **inciden
 - **Severity** levels drive response (who joins, comms cadence, executive escalation).
 - **Blameless postmortems** for material incidents with **tracked action items** and owners.
 - **Customer-facing status** and comms for user-visible outages per organisational policy.
+- A suspected exposure, loss of control, supplier event, recovery action, or notification affecting a declared external profile links the incident to that profile's authority, exact revision, system/data boundary, assessment evidence, and exception/remediation records; see [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md).
 - For **adoptable** **depth** on **incident command**, **roles**, **comms cadence**, **incident state docs**, **escalation**, **on-call handoff**, **sustainable** **interrupt load**, and **post-incident** **action** **tracking**, use [../patterns/incident-lifecycle-and-on-call-operations.md](../patterns/incident-lifecycle-and-on-call-operations.md) (portable pattern; not every team needs every **role** on day one).
 
 **Why:** Severity avoids both **under-response** (quiet fires) and **over-page-everything**. Postmortems without actions repeat failures. A **separate** pattern keeps the **principle** file stable while the **ritual** can **scale** with the org.
