@@ -38,6 +38,15 @@ Forkable, modular doctrine starter kits are **rare** relative to company handboo
 - Taxonomy, **which to choose when**, and refreshed **honest** scorecard (2026-04-27): [public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md)
 - Anti-patterns and failure modes benchmark: [anti-patterns-and-failure-modes-gap-analysis-2026-04.md](anti-patterns-and-failure-modes-gap-analysis-2026-04.md)
 
+## Portability Boundary Review — 2026-07-17
+
+A public-readiness review found organisation-private implementation names,
+local programme evidence links, and repository-specific rollout statements in
+publishable doctrine surfaces. Those details weakened the declared
+principles/tooling/estate split. [ADR 0027](../../docs/adr/0027-keep-public-doctrine-implementation-neutral.md)
+therefore requires capability-class wording in the public library and keeps
+concrete private implementations in consumer-owned estate documentation.
+
 ---
 
 ## Artefacts Added From This Review Cycle

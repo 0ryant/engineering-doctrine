@@ -8,34 +8,25 @@ ADR-0012 model-routing policy), and prints validation results. Run by CI
 (.github/workflows/contracts.yml) and during authoring to confirm the
 canonical examples remain self-validating. Also loads the on-disk YAML
 examples under contracts/examples/ when PyYAML is available, so the shipped
-examples are positively asserted, and runs cross-rule consistency checks
-(tier reachability) and the interpreter-wrapper-block heuristic regex
-behaviour battery.
+examples are positively asserted and runs cross-rule consistency checks,
+including tier reachability.
 
 Dependencies are pinned in requirements.txt at the repo root:
     pip install -r requirements.txt
 
 Scope note: this harness validates contract SHAPE and intra-policy
 consistency. It does NOT check on-disk sibling existence (skill <-> verifier
--pack); that gate, if any, lives in external catalog tooling.
+pack); adopting estates enforce that relationship through their own catalog
+or policy tooling.
 """
 
 from __future__ import annotations
 
 import json
-import re
 import sys
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
-
-# Self-proving content-pin for the anti-confabulation priming block. Importing
-# verify_primer_pin keeps PRIMER_SHA256 below honest: the pin recomputes the
-# hash from the in-repo block and asserts every on-disk copy agrees.
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import importlib
-
-_primer_pin = importlib.import_module("validate-content-integrity")
 
 try:
     import yaml  # type: ignore
@@ -49,20 +40,16 @@ VP_SCHEMA = ROOT / "contracts" / "verifier-pack.v1.schema.json"
 RP_SCHEMA = ROOT / "contracts" / "router-policy.v1.schema.json"
 EXAMPLES_DIR = ROOT / "contracts" / "examples"
 
-PRIMER_SHA256 = "c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8"
-# Guard: this literal MUST equal the pin's source-of-truth. validate-content-integrity
-# also re-asserts this from the other direction (reading this file), so a drift
-# fails CI whichever script runs first.
-assert PRIMER_SHA256 == _primer_pin.PRIMER_SHA256, (
-    "PRIMER_SHA256 here has drifted from scripts/validate-content-integrity.py"
-)
+# Illustrative digest used only to exercise the router-policy schema. Adopting
+# estates bind this field to the prompt policy they have evaluated and approved.
+EXAMPLE_PRIMER_SHA256 = "c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8"
 
 
 def load(p: Path) -> dict:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
-def pr_evidence_build_review() -> dict:
+def evidence_pack_build_review() -> dict:
     return {
         "name": "evidence-pack-build-review",
         "schema_version": "1.0.0",
@@ -73,8 +60,8 @@ def pr_evidence_build_review() -> dict:
             "events": ["pull_request_opened", "pull_request_synchronize"],
         },
         "model_policy": {
-            "allowed_models": ["model-high-capability", "model-balanced"],
-            "disallow_models": ["narrow-scope model"],
+            "allowed_models": ["provider/model-default", "provider/model-premium"],
+            "disallow_models": ["provider/model-unqualified"],
             "fallback": "fail",
         },
         "context": {
@@ -133,7 +120,7 @@ def nightly_audit() -> dict:
     return {
         "name": "nightly-evidence-pack-audit",
         "schema_version": "1.0.0",
-        "description": "Nightly at 02:00 UTC: re-verify every recent evidence-pack pack still validates and emit a cohort-health summary.",
+        "description": "Nightly at 02:00 UTC: re-verify every recent evidence pack and emit an estate-health summary.",
         "trigger": {
             "type": "cron",
             "schedule": "0 2 * * *",
@@ -141,8 +128,8 @@ def nightly_audit() -> dict:
             "jitter_seconds": 600,
         },
         "model_policy": {
-            "allowed_models": ["model-balanced"],
-            "disallow_models": ["narrow-scope model"],
+            "allowed_models": ["provider/model-default"],
+            "disallow_models": ["provider/model-unqualified"],
             "fallback": "fail",
         },
         "context": {
@@ -163,7 +150,7 @@ def nightly_audit() -> dict:
         },
         "verifiers": [
             "evidence-pack-mcp-verifier-pack",
-            "cohort-health-summary-pack",
+            "estate-health-summary-pack",
         ],
         "outputs": {
             "required": ["out/summary.json", "audit/run.jsonl"],
@@ -172,7 +159,7 @@ def nightly_audit() -> dict:
     }
 
 
-def pr_evidence_verifier_pack() -> dict:
+def evidence_pack_verifier_pack() -> dict:
     return {
         "name": "evidence-pack-mcp-verifier-pack",
         "skill": "evidence-pack-mcp",
@@ -318,36 +305,36 @@ def pr_evidence_verifier_pack() -> dict:
 def default_production_router_policy() -> dict:
     """In-memory mirror of contracts/examples/default-production.router-policy.yaml.
 
-    Encodes the council-D4 3-tier policy structurally: premium / default /
-    narrow_scope, with the narrow_scope narrow-scope model tier behind mandatory external
-    review at sample rate 1.0.
+    Uses provider-neutral identifiers. Adopting estates replace these example
+    bindings and evidence references with evaluated local values.
     """
     return {
         "$schema": "https://engineering-doctrine/contracts/router-policy.v1.schema.json",
-        "policy_version": "1.0.0",
-        "schema_version": "1.0.0",
-        "description": "v3 production default -- 3-tier policy (premium/default/narrow_scope).",
+        "policy_version": "1.1.0",
+        "schema_version": "1.1.0",
+        "description": "Three capability tiers with evidence-bound escalation, refusal, review, and cost controls.",
         "tiers": {
             "premium": {
-                "model": "claude-model-high-capability-4-7",
-                "model_family": "model_high_capability",
-                "primer": "anti-confab-200tok@1.0.0",
-                "primer_sha256": PRIMER_SHA256,
-                "verifier_pack": "evidence-pack-mcp-verifier-pack@1.0.0",
+                "model": "provider/model-premium",
+                "model_family": "premium_family",
+                "primer": "estate/grounding-policy@1.0.0",
+                "primer_sha256": EXAMPLE_PRIMER_SHA256,
+                "verifier_pack": "estate/change-evidence@1.0.0",
                 "cell_classes": [
                     "security_critical",
                     "supervisor_change",
                     "doctrine_promotion",
                 ],
                 "max_cost_usd_per_cell": 10.00,
-                "external_review_required": False,
+                "external_review_required": True,
+                "external_review_sample_rate": 1.0,
             },
             "default": {
-                "model": "claude-model-balanced-4-6",
-                "model_family": "model_balanced",
-                "primer": "anti-confab-200tok@1.0.0",
-                "primer_sha256": PRIMER_SHA256,
-                "verifier_pack": "evidence-pack-mcp-verifier-pack@1.0.0",
+                "model": "provider/model-default",
+                "model_family": "default_family",
+                "primer": "estate/grounding-policy@1.0.0",
+                "primer_sha256": EXAMPLE_PRIMER_SHA256,
+                "verifier_pack": "estate/change-evidence@1.0.0",
                 "cell_classes": [
                     "greenfield_backbone",
                     "refactor_class",
@@ -360,11 +347,11 @@ def default_production_router_policy() -> dict:
                 "external_review_required": False,
             },
             "narrow_scope": {
-                "model": "claude-narrow-scope model-4-5-20251001",
-                "model_family": "model_narrow",
-                "primer": "anti-confab-200tok@1.0.0",
-                "primer_sha256": PRIMER_SHA256,
-                "verifier_pack": "evidence-pack-mcp-verifier-pack@1.0.0",
+                "model": "provider/model-economy",
+                "model_family": "economy_family",
+                "primer": "estate/grounding-policy@1.0.0",
+                "primer_sha256": EXAMPLE_PRIMER_SHA256,
+                "verifier_pack": "estate/change-evidence@1.0.0",
                 "cell_classes": ["scaffolded_typed_authority"],
                 "max_cost_usd_per_cell": 0.50,
                 "external_review_required": True,
@@ -373,17 +360,18 @@ def default_production_router_policy() -> dict:
         },
         "escalation_rules": [
             {
-                "rule_id": "claim-audit-falsified-escalate",
+                "rule_id": "falsified-evidence-escalates",
                 "when": {"claim_audit_verdict": "FALSIFIED", "attempts_so_far": 1},
                 "action": {
                     "escalate_to_tier": "premium",
-                    "add_primer": "anti-confab-200tok@1.0.0",
-                    "max_cost_usd": 5.00,
+                    "require_verifier_pack": "estate/change-evidence@1.0.0",
+                    "require_external_review": True,
+                    "max_cost_usd": 10.00,
                 },
-                "evidence_ref": "evidence-workbook/18-cross-product-test/v3/results/plan-b-v2-claim-audit-against-stage2/composite.md",
+                "evidence_ref": "estate-evidence/model-routing/baseline-evaluation.md",
             },
             {
-                "rule_id": "security-critical-premium-only",
+                "rule_id": "high-materiality-premium-only",
                 "when": {
                     "cell_class": [
                         "security_critical",
@@ -392,73 +380,33 @@ def default_production_router_policy() -> dict:
                     ]
                 },
                 "action": {"require_tier": "premium"},
-                "evidence_ref": "evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-model-high-capability.md",
+                "evidence_ref": "doctrine/patterns/code-review-and-change-approval.md",
             },
         ],
         "refusal_rules": [
             {
-                "rule_id": "narrow-scope model-no-artifact-production-without-primer",
-                "when": {
-                    "model_family": "model_narrow",
-                    "cell_class": "artifact_production",
-                    "primer": None,
-                },
-                "action": {
-                    "refuse_routing": True,
-                    "reason": "Empirical: tools-narrow-scope model+SKILLS canonical 31 (v2 Stage 2 smoking gun).",
-                },
-                "evidence_ref": "evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md",
-            },
-            {
-                "rule_id": "narrow-scope model-no-greenfield",
-                "when": {
-                    "model_family": "model_narrow",
-                    "cell_class": "greenfield_backbone",
-                },
-                "action": {
-                    "refuse_routing": True,
-                    "reason": "narrow-scope model-PRIMED canonical 73 < model-balanced 85; +10 self-canonical means cell cannot detect over-claims on greenfield.",
-                },
-                "evidence_ref": "evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-narrow-scope model-primed.md",
-            },
-            {
-                "rule_id": "narrow-scope model-narrow-scope-requires-external-review",
-                "when": {
-                    "cell_class": "scaffolded_typed_authority",
-                    "model_family": "model_narrow",
-                },
-                "action": {
-                    "require_external_review": True,
-                    "reason": "+10 self-canonical on narrow-scope model-PRIMED; production use requires external scoring.",
-                },
-                "evidence_ref": "evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-narrow-scope model-primed.md",
-            },
-            {
-                "rule_id": "interpreter-wrapper-block",
-                "when": {
-                    "command_matches": (
-                        r"(?:^|[\s/])(?:env\s+|nohup\s+|xargs\s+)?"
-                        r"(?:bash|sh|zsh|ash|dash|powershell|pwsh|cmd)(?:\.exe)?"
-                        r"\s+(?:-[a-z]*c[a-z]*\b|--?c[a-z]*\b)"
-                    )
-                },
-                "action": {
-                    "refuse_routing": True,
-                    "reason": "CC-2 FALSIFIED at corpus scale; best-effort defense-in-depth lint at router layer (host-policy-layer is authoritative).",
-                },
-                "evidence_ref": "evidence-workbook/18-cross-product-test/v2/results/per-tool-failure-mode-tests-results/composite.md",
-            },
-            {
-                "rule_id": "primer-required-on-build-class",
+                "rule_id": "grounding-policy-required-on-build-work",
                 "when": {
                     "cell_class": ["build_class", "artifact_production", "refactor_class"],
                     "primer": None,
                 },
                 "action": {
                     "refuse_routing": True,
-                    "reason": "Build-class cells must run with canonical primer for measurement-grade honesty (v2 evidence).",
+                    "reason": "The estate policy requires its evaluated grounding policy for code-changing work.",
                 },
-                "evidence_ref": "evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md",
+                "evidence_ref": "estate-evidence/model-routing/grounding-policy-evaluation.md",
+            },
+            {
+                "rule_id": "economy-tier-requires-independent-review",
+                "when": {
+                    "cell_class": "scaffolded_typed_authority",
+                    "model_family": "economy_family",
+                },
+                "action": {
+                    "require_external_review": True,
+                    "reason": "This tier is admitted only for bounded, scaffolded work with independent review.",
+                },
+                "evidence_ref": "estate-evidence/model-routing/economy-tier-evaluation.md",
             },
         ],
         "cost_ceilings": {
@@ -468,8 +416,8 @@ def default_production_router_policy() -> dict:
                 "narrow_scope_max_usd": 0.50,
             },
             "per_session": {
-                "operator_warning_at_usd": 20.00,
-                "operator_kill_at_usd": 100.00,
+                "operator_warning_at_usd": 10.00,
+                "operator_kill_at_usd": 25.00,
             },
         },
         "audit": {"jsonl_path": "audit/router.jsonl", "content_addressable": True},
@@ -539,22 +487,10 @@ def main() -> int:
 
     failures = 0
 
-    # Content-pin: prove PRIMER_SHA256 actually matches the in-repo priming
-    # block (recomputed) before any tier asserts it. This turns the central
-    # integrity claim from asserted text into a checked invariant.
-    pin_failures = _primer_pin.verify()
-    if pin_failures:
-        failures += 1
-        print(f"content-integrity: {len(pin_failures)} drift(s)")
-        for f in pin_failures:
-            print(f"  - {f}")
-    else:
-        print(f"content-integrity: VALID (sha256={PRIMER_SHA256})")
-
     cases = [
-        ("evidence-pack-build-review", rv, pr_evidence_build_review()),
+        ("evidence-pack-build-review", rv, evidence_pack_build_review()),
         ("nightly-evidence-pack-audit", rv, nightly_audit()),
-        ("evidence-pack-mcp-verifier-pack", vv, pr_evidence_verifier_pack()),
+        ("evidence-pack-mcp-verifier-pack", vv, evidence_pack_verifier_pack()),
         ("default-production-router-policy", pv, default_production_router_policy()),
     ]
     for label, validator, instance in cases:
@@ -568,7 +504,7 @@ def main() -> int:
             print(f"{label}: VALID")
 
     # Negative: unknown top-level field is rejected.
-    bad = dict(pr_evidence_build_review())
+    bad = dict(evidence_pack_build_review())
     bad["surprise_field"] = "should reject"
     errs = list(rv.iter_errors(bad))
     if not errs:
@@ -578,7 +514,7 @@ def main() -> int:
         print(f"negative-unknown-field: rejected as expected ({len(errs)} error)")
 
     # Negative: empty outputs.required is rejected.
-    bad2 = dict(pr_evidence_build_review())
+    bad2 = dict(evidence_pack_build_review())
     bad2["outputs"] = {**bad2["outputs"], "required": []}
     errs = list(rv.iter_errors(bad2))
     if not errs:
@@ -588,7 +524,7 @@ def main() -> int:
         print(f"negative-empty-required: rejected as expected ({len(errs)} error)")
 
     # Negative: network allow_list mode without allow_list array.
-    bad3 = dict(pr_evidence_build_review())
+    bad3 = dict(evidence_pack_build_review())
     bad3["authority"] = {**bad3["authority"], "network": {"mode": "allow_list"}}
     errs = list(rv.iter_errors(bad3))
     if not errs:
@@ -649,10 +585,10 @@ def main() -> int:
 
     # Negative: refusal_action.refuse_routing == false is rejected.
     rp_bad3 = default_production_router_policy()
-    soft_refusal = dict(rp_bad3["refusal_rules"][3])  # interpreter-wrapper-block uses refuse_routing
+    soft_refusal = dict(rp_bad3["refusal_rules"][0])
     soft_refusal["action"] = {"refuse_routing": False, "reason": "soft refusal -- illegal"}
     new_rules = list(rp_bad3["refusal_rules"])
-    new_rules[3] = soft_refusal
+    new_rules[0] = soft_refusal
     rp_bad3 = {**rp_bad3, "refusal_rules": new_rules}
     errs = list(pv.iter_errors(rp_bad3))
     if not errs:
@@ -666,7 +602,7 @@ def main() -> int:
     mixed_when = dict(rp_bad4["refusal_rules"][0])
     mixed_when["when"] = {
         "cell_class": "artifact_production",
-        "model_family": "model_narrow",
+        "model_family": "economy_family",
         "command_matches": "^bash",
     }
     new_rules = list(rp_bad4["refusal_rules"])
@@ -691,10 +627,10 @@ def main() -> int:
 
     # Negative: invalid cell_class enum value is rejected.
     rp_bad6 = default_production_router_policy()
-    bad_class = dict(rp_bad6["refusal_rules"][1])  # narrow-scope model-no-greenfield uses (model_family + cell_class)
+    bad_class = dict(rp_bad6["refusal_rules"][1])
     bad_class["when"] = {
         "cell_class": "completely_made_up_class",
-        "model_family": "model_narrow",
+        "model_family": "economy_family",
     }
     new_rules = list(rp_bad6["refusal_rules"])
     new_rules[1] = bad_class
@@ -717,7 +653,7 @@ def main() -> int:
     else:
         print(f"router-negative-missing-tier: rejected as expected ({len(errs)} error)")
 
-    # Negative: tier missing primer_sha256 is rejected (council D5 hash pin).
+    # Negative: tier missing primer_sha256 is rejected.
     rp_bad8 = default_production_router_policy()
     bad_tier = dict(rp_bad8["tiers"]["default"])
     bad_tier.pop("primer_sha256")
@@ -797,20 +733,20 @@ def main() -> int:
     else:
         print("router-tier-reachability: OK (all tiers reachable)")
 
-    # Negative: re-introduce the enterprise-strict bug (a family+primer refusal
-    # that matches the narrow_scope tier inputs) and confirm the check fires.
+    # Negative: add a family+prompt-policy refusal that matches the narrow_scope
+    # tier inputs and confirm the reachability check fires.
     rp_dead = default_production_router_policy()
     rp_dead = {
         **rp_dead,
         "refusal_rules": rp_dead["refusal_rules"] + [
             {
-                "rule_id": "narrow-scope model-primer-unbundled",
+                "rule_id": "economy-grounding-policy-refused",
                 "when": {
-                    "model_family": "model_narrow",
-                    "primer": "anti-confab-200tok@1.0.0",
+                    "model_family": "economy_family",
+                    "primer": "estate/grounding-policy@1.0.0",
                 },
                 "action": {"refuse_routing": True, "reason": "kills narrow_scope"},
-                "evidence_ref": "doctrine/skills/anti-confabulation.skill.md",
+                "evidence_ref": "estate-evidence/model-routing/negative-fixture.md",
             }
         ],
     }
@@ -819,57 +755,6 @@ def main() -> int:
         print("router-negative-dead-tier: FAILED to detect unreachable tier")
     else:
         print("router-negative-dead-tier: detected as expected")
-
-    # --- interpreter-wrapper-block heuristic regex behaviour ---
-    #
-    # This control is documented as a BEST-EFFORT heuristic lint (host-policy-layer is
-    # the authoritative interpreter-bypass guard), but it must still catch the
-    # common non-naive spellings of `<shell> -c` rather than only the bare
-    # `bash -c` literal. The pattern is matched case-insensitively by the
-    # consumer (router-policy schema, command_matches description).
-    policy = default_production_router_policy()
-    iwb = next(
-        r for r in policy["refusal_rules"]
-        if r["rule_id"] == "interpreter-wrapper-block"
-    )
-    iwb_re = re.compile(iwb["when"]["command_matches"], re.IGNORECASE)
-    must_match = [
-        "bash -c",
-        "/bin/bash -c",
-        "./bash -c",
-        "env bash -c",
-        "xargs sh -c",
-        "nohup bash -c",
-        "BASH -c",
-        "bash -lc",
-        "bash -ic",
-        "bash --command",
-        " bash -c",
-        "powershell -Command",
-        "pwsh.exe -Command",
-    ]
-    must_not_match = [
-        "cargo build",
-        "git status",
-        "/usr/bin/cargo test",
-        "echo bashful",
-        "bash script.sh",
-        "sh -n file",
-    ]
-    missed = [c for c in must_match if not iwb_re.search(c)]
-    falsepos = [c for c in must_not_match if iwb_re.search(c)]
-    if missed or falsepos:
-        failures += 1
-        print(
-            "interpreter-wrapper-block-regex: FAILED "
-            f"(bypassed: {missed}; false-positive: {falsepos})"
-        )
-    else:
-        print(
-            "interpreter-wrapper-block-regex: OK "
-            f"({len(must_match)} bypass spellings caught, "
-            f"{len(must_not_match)} benign commands ignored)"
-        )
 
     return 0 if failures == 0 else 1
 

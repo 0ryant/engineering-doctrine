@@ -1,11 +1,10 @@
-# Illustrative strict-estate variant. It escalates on the first falsified
-# result, routes audit work to premium, and admits the economy tier only for
-# scaffolded work under complete independent review.
+# Illustrative experimental variant. The economy tier is broadened only after
+# a representative evaluation and remains under complete independent review.
 
 $schema: https://engineering-doctrine/contracts/router-policy.v1.schema.json
 policy_version: 1.1.0
 schema_version: 1.1.0
-description: Strict three-tier policy for estates with low tolerance for unverifiable change.
+description: Experimental three-tier policy for evaluating bounded economy-tier work.
 
 tiers:
   premium:
@@ -14,8 +13,8 @@ tiers:
     primer: estate/grounding-policy@1.0.0
     primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
     verifier_pack: estate/change-evidence@1.0.0
-    cell_classes: [security_critical, supervisor_change, doctrine_promotion, audit_class]
-    max_cost_usd_per_cell: 8.00
+    cell_classes: [security_critical, supervisor_change, doctrine_promotion]
+    max_cost_usd_per_cell: 10.00
     external_review_required: true
     external_review_sample_rate: 1.0
 
@@ -25,10 +24,9 @@ tiers:
     primer: estate/grounding-policy@1.0.0
     primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
     verifier_pack: estate/change-evidence@1.0.0
-    cell_classes: [greenfield_backbone, refactor_class, build_class, artifact_production, research_class]
-    max_cost_usd_per_cell: 1.20
-    external_review_required: true
-    external_review_sample_rate: 1.0
+    cell_classes: [greenfield_backbone, audit_class, build_class, artifact_production, research_class]
+    max_cost_usd_per_cell: 2.00
+    external_review_required: false
 
   narrow_scope:
     model: provider/model-economy
@@ -36,26 +34,33 @@ tiers:
     primer: estate/grounding-policy@1.0.0
     primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
     verifier_pack: estate/change-evidence@1.0.0
-    cell_classes: [scaffolded_typed_authority]
-    max_cost_usd_per_cell: 0.30
+    cell_classes: [scaffolded_typed_authority, refactor_class]
+    max_cost_usd_per_cell: 0.50
     external_review_required: true
     external_review_sample_rate: 1.0
 
 escalation_rules:
-  - rule_id: falsified-evidence-escalates-immediately
+  - rule_id: falsified-evidence-escalates
     when:
       claim_audit_verdict: FALSIFIED
-      attempts_so_far: 0
+      attempts_so_far: 1
     action:
       escalate_to_tier: premium
       require_verifier_pack: estate/change-evidence@1.0.0
       require_external_review: true
-      max_cost_usd: 8.00
-    evidence_ref: estate-evidence/model-routing/strict-baseline-evaluation.md
+      max_cost_usd: 10.00
+    evidence_ref: estate-evidence/model-routing/experimental-evaluation.md
 
-  - rule_id: high-materiality-and-audit-premium-only
+  - rule_id: bounded-work-uses-narrow-scope
     when:
-      cell_class: [security_critical, supervisor_change, doctrine_promotion, audit_class]
+      cell_class: [scaffolded_typed_authority, refactor_class]
+    action:
+      require_tier: narrow_scope
+    evidence_ref: estate-evidence/model-routing/experimental-evaluation.md
+
+  - rule_id: high-materiality-premium-only
+    when:
+      cell_class: [security_critical, supervisor_change, doctrine_promotion]
     action:
       require_tier: premium
     evidence_ref: doctrine/patterns/code-review-and-change-approval.md
@@ -67,27 +72,27 @@ refusal_rules:
       primer: null
     action:
       refuse_routing: true
-      reason: Strict policy does not admit ungrounded code-changing work.
+      reason: Experimental expansion does not waive the estate grounding policy.
     evidence_ref: estate-evidence/model-routing/grounding-policy-evaluation.md
 
   - rule_id: economy-tier-requires-independent-review
     when:
-      cell_class: scaffolded_typed_authority
+      cell_class: refactor_class
       model_family: economy_family
     action:
       require_external_review: true
-      reason: Economy-tier work remains bounded and receives complete independent review.
-    evidence_ref: estate-evidence/model-routing/economy-tier-evaluation.md
+      reason: Expanded economy-tier work remains subject to complete independent review.
+    evidence_ref: estate-evidence/model-routing/experimental-evaluation.md
 
 cost_ceilings:
   per_cell:
-    premium_max_usd: 8.00
-    default_max_usd: 1.20
-    narrow_scope_max_usd: 0.30
+    premium_max_usd: 10.00
+    default_max_usd: 2.00
+    narrow_scope_max_usd: 0.50
   per_session:
-    operator_warning_at_usd: 8.00
-    operator_kill_at_usd: 20.00
+    operator_warning_at_usd: 25.00
+    operator_kill_at_usd: 75.00
 
 audit:
-  jsonl_path: audit/router-strict.jsonl
+  jsonl_path: audit/router-experimental.jsonl
   content_addressable: true

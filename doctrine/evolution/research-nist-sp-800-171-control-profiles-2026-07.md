@@ -66,4 +66,6 @@ The library therefore rejects the label “Rev. 2/3 compliant”. A defensible r
 - It does not interpret CMMC, agency-specific overlays, FedRAMP, export-control regimes, or CUI Specified safeguards.
 - It does not provide a legal conclusion, SSP, POA&M, assessment score, or certification.
 - NIST's crosswalks and change analysis reduce migration effort but do not prove implementation equivalence.
-- A real pilot is still required to calibrate evidence retention, boundary granularity, ODP ownership, and agent/provider admission.
+- Each adopting estate calibrates evidence retention, boundary granularity, ODP
+  ownership, and agent/provider admission through a representative pilot before
+  treating the profile as an operating baseline.

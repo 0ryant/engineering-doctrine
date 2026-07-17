@@ -12,7 +12,7 @@ Relates to: [run-contracts.md](run-contracts.md) (the envelope that names which 
 
 Two evidence classes drove v1. Both share a structural cause: **skills are affordance, not assertion**.
 
-1. **Skills amplify confabulation when unpaired.** A skill names what an agent should know; without a paired verifier — a test the agent cannot pass without producing the promised artefact — the skill gives weaker models confidence without discipline. In a controlled measurement, a Tools-narrow-scope model-with-SKILLS cell scored worse than the same cell **without** SKILLS. The skill was net-harmful because nothing falsified its claims.
+1. **Skills can amplify confabulation when unpaired.** A skill names what an agent should know; without a paired verifier — a test the agent cannot pass without producing the promised artefact — added instructions can increase confidence without adding evidence. Treat that as a risk hypothesis to test, not as a universal measured effect.
 2. **No tool catches silent-stub class failures by default.** A CLI prints *"Evidence written to: …"* and exits `0` without writing the file. Today's mainstream verdict catalogues cover missing-intent and security-sensitive-change, but not *"the declared output does not exist."*
 
 A pack closes both by binding the skill to a non-negotiable post-run check: `test -s ${path}` (or richer) over declared artefacts. Missing artefact, loud fail. The CLI cannot lie; the agent cannot launder a lie into the audit log.
@@ -57,7 +57,7 @@ Each kind is a *family* of binary-observable assertions, not a single command. P
 | `jsonl_audit_event_emitted` | Exactly one well-formed JSONL audit event lands per CLI invocation. |
 | `lockfile_generated` | Regenerating the wrapper produces a lockfile that matches the running tool fingerprint. |
 | `host_registrations_generated` | Host registration files (claude/cursor/codex) exist and validate. |
-| `priming_active` | The cell's rendered system prompt contains the canonical anti-confabulation priming block, hash-matched by SHA-256 over the priming-block region (closes build-class self-score-inflation; see [anti-confabulation-priming.md](anti-confabulation-priming.md)). |
+| `priming_active` | The rendered system prompt contains the estate-approved priming block, content-matched to the digest declared by the run contract; this proves configuration presence, not outcome correctness (see [anti-confabulation-priming.md](anti-confabulation-priming.md)). |
 | `custom` | Escape hatch — should be rare; high-friction by design. |
 
 `priming_active` was added in schema v1.1.0 (additive minor bump). Further kinds may be added in v1.x minors. Renaming or removing a kind is a v2 break.
@@ -83,7 +83,7 @@ A stub MUST NOT pass. A verifier that always returns 0 is a defect, caught at PR
 
 ## 5. Worked Example: `evidence-pack-mcp-verifier-pack`
 
-The operator's verbatim 10-assertion list for the `evidence-pack-mcp` skill, mapped to the v1 schema. The full YAML round-trips through [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py).
+This illustrative 10-assertion list for an evidence-pack skill is mapped to the v1 schema. The full YAML round-trips through [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py).
 
 ```yaml
 verifier_pack:
@@ -112,7 +112,7 @@ verifier_pack:
     # for the complete byte-for-byte instance that validates against v1.schema.json.
 ```
 
-The complete 10-assertion list (operator verbatim, each with a `kind` from the canonical 10):
+The complete illustrative list, each with a `kind` from the canonical 10:
 
 | # | id | kind | failure_mode | severity |
 | --- | --- | --- | --- | --- |
@@ -133,13 +133,12 @@ The complete 10-assertion list (operator verbatim, each with a `kind` from the c
 
 ## 6. Discovery And Sibling Convention
 
-Packs live alongside the skills they mirror. Catalog CI fails on any registered skill without a sibling pack.
+Packs live alongside the skills they mirror, or are addressable from the same estate catalog. Catalog CI fails on any registered skill without a resolvable pack.
 
 | Skill location | Verifier-pack location |
 | --- | --- |
-| `<repo>/.claude/skills/<skill>/SKILL.md` | `<repo>/.claude/skills/<skill>/verifier-pack.yml` |
-| `<repo>/skills/<skill>/SKILL.md` | `<repo>/skills/<skill>/verifier-pack.yml` |
-| Skill exposed via an MCP server's `tools/list` | Reachable via `verifier_pack/get` MCP method (forthcoming) |
+| `<skill-root>/<skill>/SKILL.md` | `<skill-root>/<skill>/verifier-pack.yml` |
+| Skill registered by an API or tool server | Pack address registered in the same catalog record |
 
 The convention is intentionally rigid: a skill that cannot point to its pack is inadmissible.
 
@@ -192,13 +191,11 @@ A buggy pack is load-bearing. Mitigations: pack PRs are reviewed like any change
 
 ---
 
-## 10. Cohort Cross-Links
+## 10. Implementation Contract
 
-- **`independent-review-engine/crates/independent-review-engine-mcp/src/claim_audit/`** (forthcoming) — canonical pack-execution engine; ships built-in implementations for the 10 standard kinds.
-- **`tool-contract-generator generate --emit-verifier-pack`** (forthcoming) — generates a starter pack from a skill manifest.
-- **Reference adopters:** **host-policy-layer** (hook-action observations surface as pack assertions at post-run scope); **provenance-verifier** forthcoming (every generated MCP tool ships with a starter pack — silent-stub scaffolds fail their own packs loudly); **context-translation-adapter** forthcoming.
+A conforming pack engine MUST implement the declared verifier-kind semantics, honour timeouts and preconditions, preserve the four verdicts, bind results to the run-contract fingerprint, and emit retrievable evidence for every assertion. A generator MAY create starter packs, but generated assertions still require review and a demonstrated negative case.
 
-Tools in the cohort that emit or consume packs MUST link back to this file as the v1 source of truth.
+Implementations that emit or consume packs SHOULD identify the schema version and link to this pattern. No particular language, runtime, generator, or catalog is the reference implementation.
 
 ---
 
@@ -206,10 +203,10 @@ Tools in the cohort that emit or consume packs MUST link back to this file as th
 
 The v1 pack format does **not** address:
 
-- **Cross-pack assertions.** A pack only asserts about its own skill. Cohort-level invariants ("every contract that emitted X also emitted Y") need a higher-level meta-pack — out of scope for v1.
+- **Cross-pack assertions.** A pack only asserts about its own skill. Estate-level invariants ("every contract that emitted X also emitted Y") need a higher-level meta-pack — out of scope for v1.
 - **Streaming verification.** Packs run post-run; they observe artefacts the run left behind, not in-flight events. Catching a bad write *before* it lands belongs to the run-contract `hooks` map.
 - **Quantitative scoring.** Each assertion is binary. Gradient scoring should be decomposed into N binary assertions or live in a separate eval framework.
-- **Cross-language assertion sharing.** The 10 kinds have informal semantics here; the Rust impl in `review.claim_audit` is the reference. Ports MUST defer to it for behavioural ties.
+- **Cross-language assertion sharing.** The schema and the declared kind semantics are authoritative. Implementations need shared conformance fixtures to resolve behavioural ambiguity; v1 does not yet publish a complete suite.
 - **Pack composition / inheritance.** A pack cannot extend another. v2 may introduce composition; v1 prefers explicitness over DRY.
 
 These gaps define the boundary of v1.

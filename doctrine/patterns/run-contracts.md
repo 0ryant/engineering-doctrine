@@ -1,6 +1,6 @@
 # Run Contracts
 
-A **run contract** is a typed envelope that binds **trigger**, **model policy**, **context**, **capabilities**, **authority**, **hooks**, **verifiers**, and **outputs** into a single declarative shape. It is the **first-class primitive of agent execution**: every run authored, scheduled, or triggered in a cohort compiles down to a run-contract instance. There is no agent execution outside the envelope.
+A **run contract** is a typed envelope that binds **trigger**, **model policy**, **context**, **capabilities**, **authority**, **hooks**, **verifiers**, and **outputs** into a single declarative shape. It is the **first-class primitive of agent execution**: every run authored, scheduled, or triggered in an adopting estate compiles down to a run-contract instance. There is no agent execution outside the envelope.
 
 The canonical machine-readable shape lives at [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json) (JSON Schema 2020-12). The companion verifier-pack pattern lives at [verifier-packs.md](verifier-packs.md). External licence: Apache-2.0, same as the rest of this library.
 
@@ -92,31 +92,30 @@ on_stop,
 on_error
 ```
 
-Each value is an ordered array of hook-action ids. Hook actions themselves are defined by the host runtime (host-policy-layer-class enforcement) and are out of scope for the contract schema — the contract names *what runs when*, not how the action is implemented.
+Each value is an ordered array of hook-action ids. Hook actions themselves are defined by the host runtime (host-runtime enforcement) and are out of scope for the contract schema — the contract names *what runs when*, not how the action is implemented.
 
 ### 3.4 Outputs
 
 `outputs.required` MUST be non-empty. An explicit `required: []` is rejected at validation. Even research-only runs declare at minimum an `audit/run.jsonl` path. This is the structural close on the silent-stub class: a verifier pack runs `test -s ${path}` against every `required` entry and fails loudly if the file is absent or empty.
 
-### 3.5 Auto-bundled skills
+### 3.5 Policy-injected skills
 
-A subset of skills is **auto-bundled** by the validator at contract instantiation. If `context.skills` contains any skill tagged `kind: "build-class"` in its manifest (e.g. `evidence-pack-build`, `evidence-pack-mcp`, `tool-contract-codegen`, `provenance-implementation`, `cargo-build-and-test`), the validator MUST also inject the [`anti-confabulation`](anti-confabulation-priming.md) skill into `context.skills` and the sibling `anti-confabulation-verifier-pack` into `verifiers`. Auto-bundling is **mandatory**, not opt-in.
+An adopting estate MAY configure its contract compiler to inject an approved skill or prompt policy for a declared class of work. Injection is an estate control, not a universal list maintained by this library. The expanded contract MUST record the injected component, its version or digest, the policy rule that selected it, and any companion verifier.
 
-The empirical mandate is direct: Stage 2 measurement found model-balanced 4.6's canonical score lifted from 78 to 85 (+7) and its calibration delta tightened from +11 to −1 (12-point tightening) when the cell received the canonical anti-confabulation priming block. Holding model and backbone fixed, the only changed variable was priming (`evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-model-balanced-primed.md:238-251`). The same intervention on model-high-capability 4.7 produced delta 0 (`canonical-scoring-model-high-capability.md:52`) and delta −2.5 (line 53). The intervention costs ~200 tokens per run and the lift is reproducible.
+Policy injection has four constraints:
 
-The auto-bundle rule has three properties:
+1. **Evaluated.** The estate has measured the intervention against representative tasks and material failure modes. Prompting is not proof and does not replace independent verification.
+2. **Deterministic selection.** The same declared inputs and policy version select the same components; the agent does not decide whether its own control applies.
+3. **Observable.** The materialised contract and run receipt show what was injected. Silent prompt or skill mutation is inadmissible.
+4. **Governed exceptions.** Bypass requires explicit, scoped authority and leaves the underlying verification obligation intact.
 
-1. **Validator-enforced, not author-enforced.** Operators authoring build-class contracts MUST NOT need to remember to add `anti-confabulation`. The validator auto-injects both the skill and its sibling pack. The author MAY add them explicitly; the validator MUST NOT reject explicit duplicates.
-2. **Doctrine-grade tag set.** The list of `kind: "build-class"` skills is doctrine-grade. Adding or removing a build-class tag from a skill manifest requires a doctrine PR. Operators who want priming on a non-build-class task can still add `anti-confabulation` explicitly to `context.skills`, but they cannot disable the auto-bundle by removing the explicit entry — the validator re-injects.
-3. **Verifier pack is mandatory.** The bundled skill ships a sibling [`anti-confabulation-verifier-pack`](anti-confabulation-priming.md#55-verifier-pack-pairing) containing one verifier of kind `priming_active` (the 11th canonical kind in [verifier-packs.md §3](verifier-packs.md#3-the-10-canonical-verifier-kinds)). The verifier `fail_loud`s if the rendered system prompt does not contain the canonical priming block byte-for-byte, hash-matched by SHA-256.
-
-The full pattern, including the verbatim priming block, the canonical SHA-256 (`c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8`), forces, consequences, and the honest gap list, lives at [anti-confabulation-priming.md](anti-confabulation-priming.md).
+See [anti-confabulation-priming.md](anti-confabulation-priming.md) for one optional intervention and the evidence needed before adopting it.
 
 ---
 
 ## 4. Worked Example: `evidence-pack-build-review`
 
-The operator's verbatim shape for a PR-triggered build + review contract. This YAML validates byte-for-byte against [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json):
+This illustrative shape describes a PR-triggered build and review contract. The YAML validates against [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json):
 
 ```yaml
 run_contract:
@@ -130,8 +129,8 @@ run_contract:
     events: [pull_request_opened, pull_request_synchronize]
 
   model_policy:
-    allowed_models: [model-high-capability, model-balanced]
-    disallow_models: [narrow-scope model]
+    allowed_models: [provider/model-default, provider/model-premium]
+    disallow_models: [provider/model-unqualified]
     fallback: fail
 
   context:
@@ -188,7 +187,7 @@ run_contract:
       content_addressable: true
 ```
 
-Read as one sentence: *on a PR against `example-org/evidence-pack`, run as model-high-capability-or-model-balanced (never narrow-scope model), with two paired skills and five listed tools, inside the `/work/evidence-pack` root, network denied, three subprocess binaries allowed, four hook chains installed, three packs run after, three artefacts MUST exist at exit*. No ambient affordance escapes the envelope. The contract is harness-agnostic — any agent harness that targets the run-contract v1 schema is a valid consumer.
+Read as one sentence: *on a PR against `example-org/evidence-pack`, use an approved default or premium model (never an unqualified model), with two paired skills and five listed tools, inside the `/work/evidence-pack` root, network denied, three subprocess binaries allowed, four hook chains installed, three packs run after, and three artefacts that MUST exist at exit*. No ambient affordance escapes the envelope. The contract is harness-agnostic — any agent harness that targets the run-contract v1 schema is a valid consumer.
 
 ---
 
@@ -200,7 +199,7 @@ The same shape, cron-triggered, narrower capability surface:
 run_contract:
   name: nightly-evidence-pack-audit
   schema_version: 1.0.0
-  description: Nightly at 02:00 UTC re-verify every recent evidence-pack pack and emit a cohort-health summary.
+  description: Nightly at 02:00 UTC re-verify every recent evidence pack and emit an estate-health summary.
 
   trigger:
     type: cron
@@ -209,8 +208,8 @@ run_contract:
     jitter_seconds: 600
 
   model_policy:
-    allowed_models: [model-balanced]
-    disallow_models: [narrow-scope model]
+    allowed_models: [provider/model-default]
+    disallow_models: [provider/model-unqualified]
     fallback: fail
 
   context:
@@ -242,7 +241,7 @@ run_contract:
 
   verifiers:
     - evidence-pack-mcp-verifier-pack
-    - cohort-health-summary-pack
+    - estate-health-summary-pack
 
   outputs:
     required: [out/summary.json, audit/run.jsonl]
@@ -285,15 +284,11 @@ A reference Python validator at [../../scripts/validate-contracts-v1.py](../../s
 
 ---
 
-## 8. Cohort Cross-Links
+## 8. Implementation Contract
 
-Run contracts are the canonical home for the abstraction per the 2026-05-19 single-source-of-truth decision. Cohort adoption surfaces:
+An implementation may use any language or orchestration platform. Conforming implementations MUST reject unknown fields, validate against the published schema, compute a stable fingerprint over the canonical body, enforce the declared authority independently of the model, resolve verifier-pack identifiers, and emit a receipt bound to the contract fingerprint.
 
-- **`tool-contract-generator/crates/tool-contract-generator-run-contract/`** (forthcoming) — Rust crate with `serde`-typed structs and `#[serde(deny_unknown_fields)]` on every struct; same fingerprint as the JSON Schema reference path.
-- **`independent-review-engine/crates/independent-review-engine-mcp/src/claim_audit/`** (forthcoming) — canonical post-run verifier engine; consumer of `verifiers: [review.claim_audit]`.
-- **Reference adopters:** `host-policy-layer.tool-contract-generator.toml` (host-side hook enforcement); `provenance-verifier` forthcoming (starter contract per generated MCP tool); `context-translation-adapter` forthcoming (pure-function translator inside a contract).
-
-Tools in the cohort that emit or consume contracts MUST link back to this file as the v1 source of truth.
+Implementations that emit or consume run contracts SHOULD identify the schema version and link to this pattern. A library, generator, runtime, or review engine is a consumer of the contract; none is doctrine authority or the sole reference implementation.
 
 ---
 
