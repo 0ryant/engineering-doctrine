@@ -1,6 +1,6 @@
 # Audit Logging
 
-Durable rules for **append-only**, **structured** records of **security- and compliance-relevant** actions. Complements umbrella **Audit Everything** in `ENGINEERING.md` and [privacy-and-data-governance.md](privacy-and-data-governance.md) (retention, PII, separation from product analytics).
+Durable rules for **append-only**, **structured** records of **security- and compliance-relevant** actions. Complements umbrella **Audit Everything** in `ENGINEERING.md`, [privacy-and-data-governance.md](privacy-and-data-governance.md) (retention, PII, controlled data, separation from product analytics), and [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) (authority, revision, boundary, assessment evidence, exceptions).
 
 ---
 
@@ -31,6 +31,7 @@ Per high-value operations, capture at least:
 
 - **Retention** per legal and product policy; **shorter** than cold storage backups where regulation requires minimisation.
 - **Access** to audit logs is **least privilege** and itself **logged** where platforms allow.
+- For a declared external control profile, retain the profile/revision, scoped system or component, evidence period, actor/assessor identity, assessment or control result, and exception reference without duplicating protected payloads unnecessarily.
 
 **Why:** [privacy-and-data-governance.md](privacy-and-data-governance.md) separates **audit** from **analytics**; retention must be **explicit**, not “forever by default.”
 

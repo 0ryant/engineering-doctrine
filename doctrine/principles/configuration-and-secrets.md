@@ -1,6 +1,6 @@
 # Configuration And Secrets
 
-Durable rules for **non-secret configuration**, **secrets**, **rotation**, and **dynamic settings** so environments stay **reproducible** and **least-privilege**. Complements [build.md](build.md) (surfaces), [dependencies-supply-chain.md](dependencies-supply-chain.md), and umbrella **Configuration And Secrets** in `ENGINEERING.md`.
+Durable rules for **non-secret configuration**, **secrets**, **rotation**, and **dynamic settings** so environments stay **reproducible** and **least-privilege**. Complements [build.md](build.md) (surfaces), [dependencies-supply-chain.md](dependencies-supply-chain.md), and umbrella **Configuration And Secrets** in `ENGINEERING.md`. External-profile parameters, approved values, implementation evidence, and exceptions remain bound to the exact authority and revision through [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md).
 
 ---
 
