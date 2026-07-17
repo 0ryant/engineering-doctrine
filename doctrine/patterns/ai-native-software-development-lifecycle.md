@@ -330,7 +330,7 @@ Segment by change class and materiality. A faster low-risk path must not hide wo
 - Recording prompts or purported model "reasoning" while failing to record observable actions, approvals, candidate digests, or deployment receipts.
 - Letting an SRE/operations agent detect, implement, approve, and deploy its own remediation as one closed authority loop.
 - Declaring success at deployment without runtime evaluation and reconciliation.
-- Building a universal workflow platform before one real pilot validates the transition record.
+- Building a universal workflow platform before a representative estate pilot validates the transition record.
 
 ## 12. Consumer Impact And Migration
 

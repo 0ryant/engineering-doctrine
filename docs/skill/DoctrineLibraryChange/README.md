@@ -7,4 +7,4 @@ mkdir -p ~/.claude/skills
 cp -R docs/skill/DoctrineLibraryChange ~/.claude/skills/DoctrineLibraryChange
 ```
 
-The canonical **procedure** is still [`doctrine/patterns/doctrine-library-change-harness.md`](../../doctrine/patterns/doctrine-library-change-harness.md); this file is the **Skill entrypoint** only.
+The canonical **procedure** is still [`doctrine/patterns/doctrine-library-change-harness.md`](../../../doctrine/patterns/doctrine-library-change-harness.md); this file is the **Skill entrypoint** only.

@@ -1,213 +1,91 @@
-# Default production router policy -- v3 baseline (3-tier)
-#
-# This is the as-shipped policy implied by v3-FINAL-SYNTHESIS.md (council D4
-# 4/4). Three production tiers with empirical anchoring:
-#
-#   premium      model-high-capability 4.7  + canonical primer  canonical 87 ~$3      Delta 0
-#   default      model-balanced 4.6 + canonical primer canonical 85 ~$0.58   Delta -1
-#   narrow_scope narrow-scope model 4.5 + canonical primer  canonical 73 ~$0.21   Delta +10
-#
-# narrow_scope is gated behind external_review_required: true with sample
-# rate 1.0 -- the +10 self-canonical Delta means the cell cannot grade its
-# own work.
-#
-# Per-CELL cost numbers below are illustrative; the operator finalises them
-# per vendor invoice. They are marked `# operator-tunable` where revision is
-# expected.
-#
-# The per-SESSION runaway-spend guard (cost_ceilings.per_session) is NOT a
-# placeholder: it ships as a deliberately CONSERVATIVE, committed fail-safe so
-# that an operator who deploys this file unmodified fails safe (kills early)
-# rather than running up to an arbitrary ceiling. operator_kill_at_usd has no
-# override flag by design; raise it consciously, do not leave it unbounded.
+# Illustrative provider-neutral production policy.
+# Replace model identifiers, evidence references, prompt-policy digests, and
+# cost ceilings with values established by the adopting estate's evaluations.
 
 $schema: https://engineering-doctrine/contracts/router-policy.v1.schema.json
-policy_version: 1.0.0
-schema_version: 1.0.0
-description: >-
-  v3 production default. 3-tier policy: premium (model-high-capability, security/supervisor/
-  doctrine-promotion), default (model-balanced, greenfield/refactor/audit/build),
-  narrow_scope (narrow-scope model, scaffolded_typed_authority with mandatory external
-  review). FALSIFIED claim_audit at default tier escalates once into premium;
-  narrow-scope model is refused outright for greenfield_backbone and for build-class cells
-  without a primer.
+policy_version: 1.1.0
+schema_version: 1.1.0
+description: Three capability tiers with evidence-bound escalation, refusal, review, and cost controls.
 
 tiers:
   premium:
-    model: claude-model-high-capability-4-7
-    model_family: model_high_capability
-    primer: anti-confab-200tok@1.0.0
+    model: provider/model-premium
+    model_family: premium_family
+    primer: estate/grounding-policy@1.0.0
     primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
-    verifier_pack: evidence-pack-mcp-verifier-pack@1.0.0
-    cell_classes:
-      - security_critical
-      - supervisor_change
-      - doctrine_promotion
-    max_cost_usd_per_cell: 10.00   # operator-tunable -- finalize per vendor invoice
-    external_review_required: false
-    description: >-
-      model-high-capability 4.7 + canonical primer. Canonical 87, Delta self-canonical 0.
-      Reserved for security-critical, supervisor, and doctrine-promotion
-      classes where cost-of-wrong-answer dominates cost-of-tier.
-
-  default:
-    model: claude-model-balanced-4-6
-    model_family: model_balanced
-    primer: anti-confab-200tok@1.0.0
-    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
-    verifier_pack: evidence-pack-mcp-verifier-pack@1.0.0
-    cell_classes:
-      - greenfield_backbone
-      - refactor_class
-      - audit_class
-      - build_class
-      - artifact_production
-      - research_class
-    max_cost_usd_per_cell: 2.00    # operator-tunable -- finalize per vendor invoice
-    external_review_required: false
-    description: >-
-      model-balanced 4.6 + canonical primer. Canonical 85 at ~$0.58/cell. Beats
-      native-model-high-capability by 7 points at 20% of cost; sits within 2 points of
-      model-high-capability-primed at ~19% of its cost. The production backbone.
-
-  narrow_scope:
-    model: claude-narrow-scope model-4-5-20251001
-    model_family: model_narrow
-    primer: anti-confab-200tok@1.0.0
-    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
-    verifier_pack: evidence-pack-mcp-verifier-pack@1.0.0
-    cell_classes:
-      - scaffolded_typed_authority
-    max_cost_usd_per_cell: 0.50    # operator-tunable -- finalize per vendor invoice
+    verifier_pack: estate/change-evidence@1.0.0
+    cell_classes: [security_critical, supervisor_change, doctrine_promotion]
+    max_cost_usd_per_cell: 10.00
     external_review_required: true
     external_review_sample_rate: 1.0
-    description: >-
-      narrow-scope model 4.5 + canonical primer. Canonical 73 at ~$0.21/cell, but Delta
-      self-canonical +10 (cell over-claims by 10 points). Permitted only on
-      scaffolded_typed_authority cells where a higher tier has produced the
-      wire format / tests; every run sampled at 100% for non-self scoring.
+
+  default:
+    model: provider/model-default
+    model_family: default_family
+    primer: estate/grounding-policy@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: estate/change-evidence@1.0.0
+    cell_classes: [greenfield_backbone, refactor_class, audit_class, build_class, artifact_production, research_class]
+    max_cost_usd_per_cell: 2.00
+    external_review_required: false
+
+  narrow_scope:
+    model: provider/model-economy
+    model_family: economy_family
+    primer: estate/grounding-policy@1.0.0
+    primer_sha256: c138dd966c82f7bd792684ab3fef0f50d75aa9342468db8b5d265f24f3fb35a8
+    verifier_pack: estate/change-evidence@1.0.0
+    cell_classes: [scaffolded_typed_authority]
+    max_cost_usd_per_cell: 0.50
+    external_review_required: true
+    external_review_sample_rate: 1.0
 
 escalation_rules:
-  - rule_id: claim-audit-falsified-escalate
+  - rule_id: falsified-evidence-escalates
     when:
       claim_audit_verdict: FALSIFIED
       attempts_so_far: 1
     action:
       escalate_to_tier: premium
-      add_primer: anti-confab-200tok@1.0.0
-      max_cost_usd: 5.00      # operator-tunable -- finalize per vendor invoice
-    evidence_ref: evidence-workbook/18-cross-product-test/v3/results/plan-b-v2-claim-audit-against-stage2/composite.md
-    description: >-
-      On the first FALSIFIED verdict after one retry at the default tier,
-      escalate to premium with the same primer. model-high-capability + primer hit canonical
-      87 -- the highest observed cell -- and absorbs the budget the failed
-      retry already spent at model-balanced tier.
+      require_verifier_pack: estate/change-evidence@1.0.0
+      require_external_review: true
+      max_cost_usd: 10.00
+    evidence_ref: estate-evidence/model-routing/baseline-evaluation.md
 
-  - rule_id: security-critical-premium-only
+  - rule_id: high-materiality-premium-only
     when:
-      cell_class:
-        - security_critical
-        - supervisor_change
-        - doctrine_promotion
+      cell_class: [security_critical, supervisor_change, doctrine_promotion]
     action:
       require_tier: premium
-    evidence_ref: evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-model-high-capability.md
-    description: >-
-      Three cell classes never run below premium tier on any attempt:
-      security_critical (anything touching authority axes), supervisor_change
-      (changing the host-policy-layer/execution-sandbox/secret-broker gate), doctrine_promotion (moving
-      candidate doctrine to canonical). Cost-of-wrong-answer dominates.
+    evidence_ref: doctrine/patterns/code-review-and-change-approval.md
 
 refusal_rules:
-  - rule_id: narrow-scope model-no-artifact-production-without-primer
+  - rule_id: grounding-policy-required-on-build-work
     when:
-      model_family: model_narrow
-      cell_class: artifact_production
+      cell_class: [build_class, artifact_production, refactor_class]
       primer: null
     action:
       refuse_routing: true
-      reason: >-
-        Empirical: tools-narrow-scope model+SKILLS canonical 31 (v2 Stage 2 smoking gun).
-        narrow-scope model self-scored 96/100 while the binary's collect subcommand was
-        a silent stub. With no primer attached the cell has zero
-        anti-confabulation discipline; refuse outright.
-    evidence_ref: evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+      reason: The estate policy requires its evaluated grounding policy for code-changing work.
+    evidence_ref: estate-evidence/model-routing/grounding-policy-evaluation.md
 
-  - rule_id: narrow-scope model-no-greenfield
-    when:
-      model_family: model_narrow
-      cell_class: greenfield_backbone
-    action:
-      refuse_routing: true
-      reason: >-
-        narrow-scope model-PRIMED canonical 73 < model-balanced 85; Delta self-canonical +10 means
-        the cell cannot detect over-claims on greenfield work. greenfield_
-        backbone is the load-bearing class where the v2 canonical-31 cell
-        produced the silent stub. Refused on model_narrow in all profiles.
-    evidence_ref: evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-narrow-scope model-primed.md
-
-  - rule_id: narrow-scope model-narrow-scope-requires-external-review
+  - rule_id: economy-tier-requires-independent-review
     when:
       cell_class: scaffolded_typed_authority
-      model_family: model_narrow
+      model_family: economy_family
     action:
       require_external_review: true
-      reason: >-
-        Delta +10 self-canonical on narrow-scope model-PRIMED narrow-scope tier. Production
-        use requires external (non-self) scoring on sampled runs (rate 1.0 at
-        v1; operator may lower once an independently-measured rate is on the
-        record).
-    evidence_ref: evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring-narrow-scope model-primed.md
-
-  - rule_id: interpreter-wrapper-block
-    # BEST-EFFORT HEURISTIC, not a structural block. A router-layer regex
-    # cannot canonically resolve argv0, so unusual spellings can still slip
-    # past; the AUTHORITATIVE interpreter-bypass guard is the host-policy-layer
-    # enforcement layer. This pattern tolerates a path/launcher prefix
-    # (/bin/bash, ./bash, env|nohup|xargs <shell>), is matched
-    # case-insensitively by the consumer, and accepts combined short flags
-    # (-lc/-ic) and the --command long flag, so it is no longer trivially
-    # bypassed by the common non-naive invocations.
-    when:
-      command_matches: "(?:^|[\\s/])(?:env\\s+|nohup\\s+|xargs\\s+)?(?:bash|sh|zsh|ash|dash|powershell|pwsh|cmd)(?:\\.exe)?\\s+(?:-[a-z]*c[a-z]*\\b|--?c[a-z]*\\b)"
-    action:
-      refuse_routing: true
-      reason: >-
-        CC-2 FALSIFIED at corpus scale (host-policy-layer benchmark interpreter-wrapper
-        class 20%); best-effort defense-in-depth at the router layer. This is
-        a heuristic lint, NOT a structural guarantee: the authoritative
-        interpreter-bypass guard is the host-policy-layer enforcement layer (which
-        resolves argv0 and parses the argv array). Catches the common
-        path-prefixed, launcher-wrapped, and combined-/long-flag spellings of
-        a `<shell> -c` invocation; treat any miss as a host-policy-layer-layer concern.
-    evidence_ref: evidence-workbook/18-cross-product-test/v2/results/per-tool-failure-mode-tests-results/composite.md
-
-  - rule_id: primer-required-on-build-class
-    when:
-      cell_class:
-        - build_class
-        - artifact_production
-        - refactor_class
-      primer: null
-    action:
-      refuse_routing: true
-      reason: >-
-        Build-class cells must run with the canonical primer for
-        measurement-grade honesty. v2 evidence: tools-model-balanced (no primer)
-        canonical 78 self-Delta -11; same cell with primer is canonical 85
-        self-Delta -1. The +12 to +14 honesty swing is load-bearing.
-    evidence_ref: evidence-workbook/18-cross-product-test/v2/results/test-1-backbone/canonical-scoring.md
+      reason: This tier is admitted only for bounded, scaffolded work with independent review.
+    evidence_ref: estate-evidence/model-routing/economy-tier-evaluation.md
 
 cost_ceilings:
   per_cell:
-    premium_max_usd: 10.00     # operator-tunable -- finalize per vendor invoice
-    default_max_usd: 2.00      # operator-tunable -- finalize per vendor invoice
-    narrow_scope_max_usd: 0.50 # operator-tunable -- finalize per vendor invoice
+    premium_max_usd: 10.00
+    default_max_usd: 2.00
+    narrow_scope_max_usd: 0.50
   per_session:
-    # Conservative committed fail-safe (NOT a placeholder). Deploying this file
-    # unmodified kills a runaway session early rather than at an arbitrary cap.
-    operator_warning_at_usd: 10.00   # conservative fail-safe default
-    operator_kill_at_usd: 25.00      # conservative fail-safe default (no override flag)
+    operator_warning_at_usd: 10.00
+    operator_kill_at_usd: 25.00
 
 audit:
   jsonl_path: audit/router.jsonl

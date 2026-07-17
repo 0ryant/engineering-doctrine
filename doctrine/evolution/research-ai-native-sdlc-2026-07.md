@@ -1,6 +1,6 @@
 # Research: A Doctrine-Grounded AI-Native Software Development Lifecycle (July 2026)
 
-**Purpose:** Evaluate the operator-supplied *AI-Native Software Authority Lifecycle — Council Session 1*, reconcile it with this library and current primary sources, and record why the adopted lifecycle is an evidence-backed state-transition system rather than a vendor workflow or an autonomous-agent release path.
+**Purpose:** Evaluate a proposed AI-native software authority lifecycle against this library and current primary sources, and record why the adopted lifecycle is an evidence-backed state-transition system rather than a vendor workflow or an autonomous-agent release path.
 
 **Decision record:** [ADR 0024](../../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md).
 **Normative landing:** [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md).
@@ -10,11 +10,9 @@
 
 ## 1. Trigger, Provenance, And Source Limits
 
-The trigger was the operator-supplied `ai-native-software-authority-lifecycle-council-session-1.docx` on 2026-07-17. The document calls itself a non-binding council draft. It contains a coherent original synthesis, vendor landscape notes, an eleven-state lifecycle, transition admissibility fields, authority roles, evidence classes, materiality tiers, adoption stages, measures, and open decisions for a later council.
+Initial working material proposed an eleven-state lifecycle, transition-admissibility fields, authority roles, evidence classes, materiality tiers, adoption stages, and measures. It was treated as a non-binding input: portable doctrine claims below are retained only where they can be grounded in retrievable external sources or are clearly labelled as this library's synthesis.
 
 The source is **proposal evidence**, not doctrine authority. No named council members, empirical pilot, public review record, or validated transition schema accompany it. Its vendor sources show product direction and practitioner hypotheses; they do not prove that the proposed lifecycle improves safety, quality, or flow.
-
-The source was structurally inspected before amendment: 234 paragraphs, 23 tables, one section, no comments, and no tracked insertions/deletions. All 13 rendered pages were reviewed. Two presentation defects were found (numbered lists restarting at 8 and 17), and one research statement was stale: the cited Anthropic report is publicly accessible as a PDF at the time of this review.
 
 ## 2. Existing Doctrine Baseline
 
@@ -54,7 +52,7 @@ NIST published an Initial Public Draft of SP 800-218 Revision 1 (SSDF 1.2) in De
 
 ## 4. Vendor And Practitioner Observations
 
-Vendor material is useful for landscape awareness and implementation ideas, not as normative authority or independent effectiveness evidence. The three sources were re-reviewed at the operator's request on 2026-07-17.
+Vendor material is useful for landscape awareness and implementation ideas, not as normative authority or independent effectiveness evidence. The linked public surfaces were re-reviewed on 2026-07-17.
 
 | Observation | Useful signal | Limit |
 | --- | --- | --- |
@@ -62,7 +60,7 @@ Vendor material is useful for landscape awareness and implementation ideas, not 
 | **Microsoft AI-led SDLC** demonstrates spec-first decomposition into tasks, a coding agent working on a branch/PR, agent-assisted review, an isolated preview environment, deterministic CI/CD promotion, and an SRE agent opening a new issue from runtime evidence. It also exposes agent actions and workflow runs for inspection. | This gives concrete handoffs for S1/S2 → S4, supports treating executable candidates as untrusted until isolated evaluation, reinforces deterministic enactment, and shows runtime observations feeding a new S0. Action receipts are useful evidence. | A weather-dashboard demonstration does not establish safety or scalability for material systems. Product-specific components, reported third-party review statistics, and visibility into purported model “thinking” are not portable proof; doctrine records observable actions and outcomes, not private chain-of-thought. [Microsoft](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896) |
 | **GitHub Spec Kit** evolves specification, plan, tasks, and implementation with flow-back when discovery changes upstream artefacts. | Specs are living, versioned records; material change must invalidate and rebind derived work. | A specification is not verification, approval, or runtime evidence. [GitHub](https://github.github.com/spec-kit/guides/evolving-specs.html) |
 | **Google OKR playbook** distinguishes objectives from measurable key results, rejects activity-only KRs and “launch X” without user/economic benefit, and requires credible evidence. | Supports outcome-oriented goals and cross-team commitments rather than task-count scorecards. | Reprinted practitioner guidance, not a standard; OKR vocabulary and scoring are optional. [What Matters, reprinted with Google permission](https://www.whatmatters.com/resources/google-okr-playbook) |
-| **Anthropic 2026 Agentic Coding Trends Report** predicts multi-agent coordination, days-long task horizons, exception-focused human oversight, agentic creation by non-engineers, increased output volume, and dual-use security pressure. Its own framing says high-stakes work still needs active supervision and validation. | Multi-agent lineage/workspace ownership, checkpoints and safe resume, human-attention measures, equal controls for domain-expert-created software, and security-first isolation are credible design pressures. | These are vendor-authored predictions, self-reported studies, and case studies—not a portable governance standard, audited comparative evidence, or proof of the numeric productivity claims. [Anthropic](https://resources.anthropic.com/2026-agentic-coding-trends-report) |
+| **Anthropic 2026 Agentic Coding Trends Report landing page** identifies shifting engineering roles, multi-agent coordination, human–AI collaboration, scaling agentic coding beyond engineering, and the continuing need for active human judgment. | Multi-agent lineage, explicit coordination, human-attention measures, and equal software controls regardless of the originator are credible design pressures. | The public page is vendor-authored and exposes headline topics, not the full report evidence without a gated submission. It is not a portable governance standard, audited comparison, or support for body-only numeric claims. [Anthropic](https://resources.anthropic.com/2026-agentic-coding-trends-report) |
 
 ### Vendor Decision Pass
 
@@ -79,7 +77,7 @@ Vendor material is useful for landscape awareness and implementation ideas, not 
 | Treat output volume and speed as evidence of success. | **Investigate, do not adopt** | Pilot measures now include accepted outcomes, human attention, abandoned artefacts, induced backlog, quality, and runtime results. Vendor numeric claims are not baselines. |
 | Adopt vendor product stacks, AWS ritual names, a one-prompt-to-production flow, or autonomous closed-loop remediation. | **Reject as doctrine** | These either belong in an estate ADR or violate the evidence and authority model. |
 
-## 5. Council Proposal: Findings And Amendments
+## 5. Proposal Findings And Amendments
 
 ### Findings Preserved
 
@@ -91,13 +89,13 @@ Vendor material is useful for landscape awareness and implementation ideas, not 
 
 ### Corrections And Tightening
 
-| Council question or claim | Doctrine-grounded resolution |
+| Proposal question or claim | Doctrine-grounded resolution |
 | --- | --- |
 | Should every action have a run contract, or only those above a threshold? | Every **agent execution** has a run contract. Deterministic CI/deployment jobs use their normal manifests, immutable inputs, identities, policy, and receipts; do not relabel all automation as agentic. |
 | Can verifier packs implement the verification layer? | They implement bounded execution assertions. They are composed with domain/semantic, security, supply-chain, human/policy, and runtime evidence; they cannot prove whole-system correctness. |
 | Can an agent authorise a transition after evaluating it? | No. Agents may recommend. Protected-branch/release policy and accountable approvers hold authority; the producer is not the sole challenger. |
 | Is a transition bundle a new central database? | Not necessarily. It is a reconstructable record whose fields may live in linked issue, repository, CI/CD, artefact, policy, and observability systems. |
-| Should the universal schema be standardised now? | No. First pilot one real change and its failure/inconclusive path; use the evidence to decide which fields merit a portable contract. |
+| Should the universal schema be standardised now? | No. An adopting estate first pilots a representative change and its failure/inconclusive path; evidence from that exercise determines which fields merit a portable contract. |
 | Are `PASS`, `FAIL`, `WAIVED`, and similar one global verdict catalogue? | No. Verifier-pack verdicts remain their adopted four-state model. A waiver is a separate policy decision that leaves the original evidence intact. |
 | May high-confidence agents receive more autonomy? | Confidence is not authority evidence. Increase autonomy from task observability, reversibility, discriminating verification, sampled review, rollback results, and incident history. |
 
@@ -127,7 +125,7 @@ This ordering is **our synthesis**. External sources justify lifecycle-wide risk
 
 ## 7. Evidence Classes And Authority Boundaries
 
-The council's verification ladder is retained but made compositional:
+The proposal's verification ladder is retained but made compositional:
 
 - E0 intent;
 - E1 run/task contract;
@@ -148,7 +146,7 @@ No layer inherits authority from another. In particular:
 
 ## 8. Brownfield Pilot And Metrics
 
-The first pilot should be a moderate-materiality, reversible, observable change with a real consumer outcome. It must:
+An adoption pilot should use a moderate-materiality, reversible, observable change with a real consumer outcome. It must:
 
 1. reconstruct S0–S10 using existing systems;
 2. compile a parent run and at least one delegated child run with separate contracts, workspaces, checkpoints, and verifier packs;
@@ -175,7 +173,7 @@ Success is not simply faster delivery. The pilot should show that accountability
 
 ### Pilot Tasking
 
-These tasks convert the vendor-source review into executable adoption work. Named people and estate-specific file paths are assigned when the pilot is approved.
+These tasks convert the vendor-source review into executable adoption work. Each adopting estate assigns accountable people and local systems of record.
 
 | Accountable role | Objective and owned surface | Acceptance and verification evidence | Stop condition |
 | --- | --- | --- | --- |
@@ -219,7 +217,7 @@ Residual risks:
 - exception-focused oversight could become rubber-stamping if escalation recall and sampled human review are weak;
 - wider non-engineering creation can produce shadow systems and maintenance debt faster than governance and platform capacity expand; and
 - objectives and KPIs can create false precision, gaming, priority cascades, or spurious causal claims when data quality, countermetrics, intervention assumptions, and opportunity cost are weak; and
-- no pilot evidence yet establishes an autonomy threshold or transition schema.
+- none of the cited sources establishes a universal autonomy threshold or validates one transition-record schema across estates.
 
 ## 11. References
 
@@ -237,4 +235,4 @@ Residual risks:
 - AWS, [AI-Driven Development Life Cycle](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/).
 - Microsoft, [An AI-led SDLC](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896).
 - GitHub, [Spec Kit: Evolving specifications](https://github.github.com/spec-kit/guides/evolving-specs.html).
-- Anthropic, [2026 Agentic Coding Trends Report](https://resources.anthropic.com/2026-agentic-coding-trends-report) (landing page linking the report reviewed here).
+- Anthropic, [2026 Agentic Coding Trends Report](https://resources.anthropic.com/2026-agentic-coding-trends-report) (public landing page; only claims visible there are relied upon).

@@ -21,7 +21,7 @@
     },
     "skill": {
       "type": "string",
-      "description": "Skill id this pack mirrors. Convention: MUST resolve to a skill manifest in the cohort. NOTE: this JSON Schema validates shape only; sibling-existence (skill <-> pack) is NOT checked by scripts/validate-contracts-v1.py and is enforced, if at all, by external catalog tooling. Do not assume on-disk sibling resolution from schema validation alone.",
+      "description": "Skill id this pack mirrors. Convention: MUST resolve to a skill manifest in the adopting estate. NOTE: this JSON Schema validates shape only; sibling existence (skill <-> pack) is NOT checked by scripts/validate-contracts-v1.py. Estates enforce that relationship through their catalog or policy tooling. Do not assume on-disk sibling resolution from schema validation alone.",
       "minLength": 1
     },
     "version": {
