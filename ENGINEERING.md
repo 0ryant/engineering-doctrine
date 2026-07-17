@@ -348,6 +348,8 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **Governance programme for engineering controls** — `doctrine/patterns/engineering-controls-governance-program.md` (ownership, exceptions, metrics, audit consumption); readiness checklist `doctrine/checklists/governance-program-readiness.md`; illustrative control categories `doctrine/tooling/merge-path-and-pipeline-control-suite.md`.
 
+**Revision-pinned external control profiles** — `doctrine/patterns/revision-pinned-control-profiles.md` (governing authority, exact baseline revision, bounded system/data scope, parameter and tailoring decisions, matched assessment method, evidence, exceptions, and migration). NIST SP 800-171 is the worked CUI profile and applies only where the relevant authority makes it applicable.
+
 **User-facing quality** — `doctrine/principles/user-facing-quality.md` (accessibility, internationalisation).
 
 **CI platform mapping** — `doctrine/tooling/ci-platform-mapping.md` (abstract surfaces vs example CI products).

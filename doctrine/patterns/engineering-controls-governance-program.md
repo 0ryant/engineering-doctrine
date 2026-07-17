@@ -24,6 +24,7 @@ Without a programme, teams accumulate **inconsistent** gates, **stale** waivers,
 | **Evidence routing** | Logs, SARIF, SBOMs, attestations land in **organisation-controlled** retention (SIEM, artefact registry, GRC)—not only ephemeral CI UI. |
 | **Metrics** | Leading indicators: % repos with enforced gates, mean time to remediate **critical** dependency findings, waiver age distribution, pipeline-definition review coverage. |
 | **Supplier alignment** | For acquired or contracted software, **GV.SC**-style requirements in agreements (NIST CSF 2.0 **GV.SC-05** articulates contract integration of cybersecurity supply-chain requirements). |
+| **External control profiles** | Register the source of applicability, exact baseline revision/update, system/data boundary, organisation-defined parameters or tailoring, assessment method, evidence owners, exceptions, and migration state. CUI example: [revision-pinned-control-profiles.md](revision-pinned-control-profiles.md). |
 
 ---
 
@@ -37,6 +38,7 @@ Adjust per sector and regulator. Example **enterprise** cadences:
 | Waiver / risk-acceptance review | **Monthly** sampling; **all** expiring items within 30 days of expiry |
 | Control calibration (golden tests) | **Semiannual** minimum; **after** major CI provider or scanner upgrade |
 | Policy text vs NIST / sector baseline diff | **Annual**; **ad hoc** on US OMB or EU regulatory shifts affecting your estate |
+| External-profile applicability, revision, parameter, and boundary review | **On contract/authority change**, material architecture or supplier change, publication update, incident, and at the estate's documented periodic cadence |
 
 ---
 
@@ -49,6 +51,7 @@ Prepare **audit packs** as **links + hashes**, not narrative only:
 - Sample of last **N** merges with associated evidence bundle references  
 - Exception register extract (active + expired in period)  
 - Evidence that **pipeline definitions** for high-privilege workflows underwent **peer review** (sampled PRs)
+- For external profiles: authority source, exact revision/update, parameter/tailoring decisions, scoped boundary, requirement-to-evidence map, assessment depth/coverage, open findings, and accepted migration state
 
 This mirrors **CSF 2.0** intent: governance outcomes are **demonstrable**, not asserted.
 
@@ -62,6 +65,7 @@ This mirrors **CSF 2.0** intent: governance outcomes are **demonstrable**, not a
 | Per-repo snowflake with **no** inventory | Cannot measure or improve; breaks **Identify** outcomes in CSF. |
 | Waivers only in chat | No **system of record**; fails enterprise risk management traceability. |
 | Evidence only in CI vendor UI beyond retention | Incident response and litigation hold cannot reconstruct history. |
+| “NIST compliant” with no authority, revision, boundary, or assessment method | Blends catalogues and cannot show which obligation or system the evidence covers. |
 
 ---
 

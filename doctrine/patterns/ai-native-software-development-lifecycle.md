@@ -78,74 +78,78 @@ External grounding for this chain is direct, not inherited from this repository:
 ## 2.2 Lifecycle At A Glance
 
 ```mermaid
-flowchart LR
-    subgraph valueLoop ["Accountable direction and value"]
-        direction TB
-        need[/Stakeholder need or obligation/]
-        s0["S0 Observed need"]
-        objective["Owned objective"]
-        measures["Outcome measures and guardrails"]
-        intervention["Intervention hypothesis"]
-        need --> s0 --> objective --> measures --> intervention
-    end
+%%{init: {"themeCSS": ".value p, .delivery p, .control p, .runtime p, .failure p { color: #1E1E1E !important; }"}}%%
+block-beta
+    columns 4
 
-    subgraph deliveryLoop ["Agent-assisted, evidence-backed delivery"]
-        direction TB
-        s1["S1 Intent registered"]
-        s2["S2 Claims specified"]
-        s3["S3 Transition designed"]
-        s4["S4 Work compiled"]
-        s5["S5 Candidate produced"]
-        s6{"S6 Claims supported?"}
-        repair["Repair or re-scope"]
-        s1 --> s2 --> s3 --> s4 --> s5 --> s6
-        s6 -->|"No or inconclusive"| repair
-        repair -.-> s2
-    end
+    valueHeader["1. Direction and value"] deliveryHeader["2. Agent-assisted delivery"] controlHeader["3. Deterministic control"] runtimeHeader["4. Runtime and portfolio"]
+    need(["Stakeholder need"]) deliveryTop(["Work admitted"]) controlTop(["Candidate admitted"]) runtimeTop(["Transition observed"])
+    s0["S0 Observed need"] s1["S1 Intent registered"] boundCandidate["Evidence-bound candidate"] s9{"S9 Acceptable?"}
+    objective["Owned objective"] s2["S2 Claims specified"] policy["Policy evaluation"] s10["S10 Reconciled"]
+    measures["Outcome measures"] s3["S3 Transition designed"] s7{"S7 Authorised?"} portfolio{"Portfolio decision?"}
+    guardrails["Guardrails"] s4["S4 Work compiled"] s8["S8 Enacted"] nextCycle["Next-cycle decision"]
+    intervention["Intervention hypothesis"] s5["S5 Candidate produced"] receipt["Deployment receipt"] contain["No: rollback or contain"]
+    workMandate["Bounded work mandate"] s6{"S6 Supported?"} denied["No: return for repair"] reenter["Re-enter or observe"]
+    workEvidence["Task and output lineage"] repair["No: repair or re-scope"] controlEvidence["Authority receipt"] runtimeEvidence["Outcome evidence"]
+    valueBottom(["Work ready"]) deliveryBottom(["Candidate ready"]) controlBottom(["Transition enacted"]) runtimeBottom(["Learning retained"])
 
-    subgraph controlBoundary ["Deterministic control boundary"]
-        direction TB
-        s7{"S7 Candidate authorised?"}
-        s8["S8 Transition enacted"]
-        denied(["Return for repair"])
-        s7 -->|"Yes"| s8
-        s7 -->|"No"| denied
-    end
+    valueHeader --> need
+    need --> s0
+    s0 --> objective
+    objective --> measures
+    measures --> guardrails
+    guardrails --> intervention
+    intervention --> workMandate
+    workMandate --> workEvidence
+    workEvidence --> valueBottom
+    deliveryHeader --> deliveryTop
+    deliveryTop --> s1
+    s1 --> s2
+    s2 --> s3
+    s3 --> s4
+    s4 --> s5
+    s5 --> s6
+    s6 --> deliveryBottom
+    s6 --> repair
+    repair --> s2
+    controlHeader --> controlTop
+    controlTop --> boundCandidate
+    boundCandidate --> policy
+    policy --> s7
+    s7 --> s8
+    s8 --> receipt
+    receipt --> controlEvidence
+    controlEvidence --> controlBottom
+    s7 --> denied
+    denied --> s2
+    runtimeHeader --> runtimeTop
+    runtimeTop --> s9
+    s9 --> s10
+    s10 --> portfolio
+    portfolio --> nextCycle
+    nextCycle --> runtimeEvidence
+    runtimeEvidence --> runtimeBottom
+    s9 --> contain
+    contain --> reenter
+    reenter --> runtimeEvidence
 
-    subgraph runtimeLoop ["Runtime and portfolio reconciliation"]
-        direction TB
-        s9{"S9 Outcomes acceptable?"}
-        contain["Rollback or contain"]
-        s10["S10 Reconciled"]
-        portfolio{"Continue, change, or stop?"}
-        reenter(["Re-enter falsified state"])
-        observeAgain(["Register new S0"])
-        nextCycle(["Update objective and repeat"])
-        reframe(["Reframe intent and repeat"])
-        close(["Close and learn"])
-        s9 -->|"Yes"| s10 --> portfolio
-        s9 -->|"No"| contain
-        contain --> reenter
-        contain --> observeAgain
-        portfolio -->|"Continue or scale"| nextCycle
-        portfolio -->|"Change"| reframe
-        portfolio -->|"Stop"| close
-    end
+    valueBottom --> deliveryTop
+    deliveryBottom --> controlTop
+    controlBottom --> runtimeTop
 
-    intervention --> s1
-    s6 -->|"Yes"| s7
-    s8 --> s9
-
-    style valueLoop fill:#FFE0C2,stroke:#FF9E42
-    style deliveryLoop fill:#C2E5FF,stroke:#3DADFF
-    style controlBoundary fill:#FFECBD,stroke:#FFC943
-    style runtimeLoop fill:#CDF4D3,stroke:#66D575
-    style repair fill:#FFCDC2,stroke:#FF7556
-    style denied fill:#FFCDC2,stroke:#FF7556
-    style contain fill:#FFCDC2,stroke:#FF7556
+    classDef value fill:#FFE0C2,stroke:#FF9E42,color:#1E1E1E
+    classDef delivery fill:#C2E5FF,stroke:#3DADFF,color:#1E1E1E
+    classDef control fill:#FFECBD,stroke:#FFC943,color:#1E1E1E
+    classDef runtime fill:#CDF4D3,stroke:#66D575,color:#1E1E1E
+    classDef failure fill:#FFCDC2,stroke:#FF7556,color:#1E1E1E
+    class valueHeader,need,s0,objective,measures,guardrails,intervention,workMandate,workEvidence,valueBottom value
+    class deliveryHeader,deliveryTop,s1,s2,s3,s4,s5,s6,deliveryBottom delivery
+    class controlHeader,controlTop,boundCandidate,policy,s7,s8,receipt,controlEvidence,controlBottom control
+    class runtimeHeader,runtimeTop,s9,s10,portfolio,nextCycle,reenter,runtimeEvidence,runtimeBottom runtime
+    class repair,denied,contain failure
 ```
 
-The diagram is a view over the lifecycle records, not a new workflow authority. Agent assistance is permitted throughout bounded analysis and production, but S7 authorisation and S8 enactment remain deterministic control surfaces. S9 and S10 distinguish technical deployment from evidenced outcome and portfolio closure. The compact “repeat” and “re-enter” endpoints refer to the loops defined in §3; they are not terminal success states.
+The diagram is a view over the lifecycle records, not a new workflow authority. Its four equal columns are separate vertical charts with handoffs from the bottom terminal of one chart to the top admission point of the next. Agent assistance is permitted throughout bounded analysis and production, but S7 authorisation and S8 enactment remain deterministic control surfaces. S9 and S10 distinguish technical deployment from evidenced outcome and portfolio closure. Compact evidence and decision cells do not introduce lifecycle states; S0–S10 remain canonical, and “re-enter” refers to the loops defined in §3.
 
 ## 3. Lifecycle States
 
@@ -349,6 +353,7 @@ Recommended migration: complete P0–P2 before expanding agent tool authority; c
 - [Run Contracts](run-contracts.md)
 - [Verifier Packs](verifier-packs.md)
 - [AI Adoption Controls](ai-adoption-controls.md)
+- [Revision-Pinned External Control Profiles](revision-pinned-control-profiles.md)
 - [AI-Native SDLC Readiness Checklist](../checklists/ai-native-sdlc-readiness.md)
 
 ## References
