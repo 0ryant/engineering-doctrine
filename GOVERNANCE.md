@@ -42,7 +42,7 @@ There is no separate "core team" document unless the project adds one; use the *
 
 ## License posture
 
-See [README.md](README.md#license). The SPDX identifier for the project default is in the root [LICENSE](LICENSE) file.
+See [README.md](README.md#license). The SPDX identifier for the project default is in the root [LICENSE](LICENSE) file. [ADR 0025](docs/adr/0025-restore-apache-2.0-as-project-license.md) records the adoption-first restoration of Apache-2.0 and the treatment of the earlier AGPL interval.
 
 ## Security and conduct
 

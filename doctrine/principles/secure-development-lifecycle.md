@@ -1,6 +1,6 @@
 # Secure Development Lifecycle And Vulnerability Response
 
-Durable rules for **building** software with fewer defects and **responding** when defects ship. Bridges umbrella **Shift Security Left** to **organisational** practice. Maps conceptually to NIST **SSDF** practice groups **Prepare (PO)**, **Protect (PS)**, **Produce (PW)**, and **Respond (RV)**—see [NIST SP 800-218](https://csrc.nist.gov/publications/detail/sp/800-218/final).
+Durable rules for **building** software with fewer defects and **responding** when defects ship. Bridges umbrella **Shift Security Left** to **organisational** practice. Maps conceptually to NIST **SSDF** practice groups **Prepare (PO)**, **Protect (PS)**, **Produce (PW)**, and **Respond (RV)**—see [NIST SP 800-218](https://csrc.nist.gov/publications/detail/sp/800-218/final). When AI participates in delivery, [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md) composes these practices into evidence-backed transition gates; it does not replace them.
 
 ### SSDF Practice Groups (Inline Summary)
 
@@ -65,6 +65,7 @@ Full control text remains **NIST’s** publication—this table is a **navigatio
 
 ## Related
 
+- AI-native, agent-assisted lifecycle control: [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md) and [readiness checklist](../checklists/ai-native-sdlc-readiness.md).
 - Generative AI, RAG, fine-tuning, and **agentic** change paths in the SDLC: [ai-ml-systems.md](ai-ml-systems.md) (with **SP 800-218A** context for model-development practices).
 - **AI-accelerated** vulnerability discovery and **VulnOps**-style response — background research: [evolution/mythos-era-engineering-principles-research-2026-04-28.md](../evolution/mythos-era-engineering-principles-research-2026-04-28.md); gap closure tracked in [ADR 0010](../../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md).
 
