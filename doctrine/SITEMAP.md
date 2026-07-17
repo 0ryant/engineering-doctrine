@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-07-16 18:21 UTC
+Generated: 2026-07-17 11:45 UTC
 
 ## All Markdown files
 
@@ -16,6 +16,7 @@ Generated: 2026-07-16 18:21 UTC
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
 - [SITEMAP.md](SITEMAP.md)
 - [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md)
+- [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md)
 - [checklists/build-readiness.md](checklists/build-readiness.md)
 - [checklists/collaboration-readiness.md](checklists/collaboration-readiness.md)
 - [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
@@ -32,6 +33,7 @@ Generated: 2026-07-16 18:21 UTC
 - [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md)
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
+- [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
 - [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
@@ -39,6 +41,7 @@ Generated: 2026-07-16 18:21 UTC
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md)
+- [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md)
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md)
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md)

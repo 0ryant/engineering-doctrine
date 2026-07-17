@@ -49,6 +49,8 @@ Capability tiers say what a system **can do**; **materiality** says what its fai
 
 ## 4. Engineering Change Path (Agents And Humans)
 
+- **Govern the whole change as evidence-backed transitions** — when AI participates across discovery, design, implementation, challenge, release, or operation, use [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md). It traces stakeholder need through objective, guardrailed outcome measures, intervention hypothesis, bounded work and outputs to observed outcomes, while keeping executable change, authority, verification evidence, and runtime state separate from S0 observed need through S10 reconciled. Tasks and generated artefacts never prove value by themselves.
+- **Every agent execution has a run contract** — compile scope, inputs, tools/data authority, required outputs, and verifier packs before the run ([run-contracts.md](../patterns/run-contracts.md), [verifier-packs.md](../patterns/verifier-packs.md)). A verifier pack proves its bounded assertions, not the semantic correctness, security, approval, or runtime outcome of the whole change.
 - **Agents propose** — branches, diffs, PRs, or **draft** docs—not **silent** mutation of production or **protected** branches without the **same** gates as human contributors.
 - **CI proves** — **required checks** for that repo **still apply**; non-deterministic outputs do **not** waive **contracts**, **lint**, or **security** gates ([build.md](build.md), [testing-strategy.md](testing-strategy.md)).
 - **Humans approve** — **high-risk** areas (auth, tenancy, crypto, schema, **person**-affected automation) keep **explicit** review per [collaboration.md](collaboration.md) and [secure-development-lifecycle.md](secure-development-lifecycle.md) §1.
@@ -122,6 +124,8 @@ Capability tiers say what a system **can do**; **materiality** says what its fai
 
 ## Related
 
+- AI-native delivery lifecycle and readiness review: [../patterns/ai-native-software-development-lifecycle.md](../patterns/ai-native-software-development-lifecycle.md) + [../checklists/ai-native-sdlc-readiness.md](../checklists/ai-native-sdlc-readiness.md)
+- Lifecycle research and decision: [../evolution/research-ai-native-sdlc-2026-07.md](../evolution/research-ai-native-sdlc-2026-07.md) + [ADR 0024](../../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md)
 - Adoption operating model (inventory, challenge, harm-surface tests, provider continuity, uplift): [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) + [../checklists/ai-adoption-readiness.md](../checklists/ai-adoption-readiness.md)
 - Adoption-control gap research (2026-07): [../evolution/research-ai-adoption-control-gaps-2026-07.md](../evolution/research-ai-adoption-control-gaps-2026-07.md)
 - Retrieval implementation baseline: [../patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md)
