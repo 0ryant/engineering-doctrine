@@ -13,6 +13,6 @@ __pycache__/
 
 # Local execution and coordination records are not portable doctrine.
 /.local/
-/agent-authority framework.md
+/AXIOM.md
 /gaps.md
 /*-project-harness-target.json
