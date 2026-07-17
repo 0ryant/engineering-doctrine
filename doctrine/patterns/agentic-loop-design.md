@@ -214,7 +214,7 @@ Use multiple agents when tasks parallelise, exceed a single context window, or r
 - **Rainbow deployments**: when deploying a new agent version, route traffic gradually while the old version may still be mid-run. Agents, unlike stateless APIs, cannot be cut over atomically.
 - **Effort budgets in prompts**: explicitly instruct the orchestrator how many sub-agents and calls are appropriate for different query complexities.
 
-**Why:** Anthropic's production research agent: multi-agent (Claude model-high-capability 4 orchestrator + model-balanced 4 workers) outperformed single-agent model-high-capability 4 by 90.2% on internal eval. Token cost: ~15× compared to chat, so multi-agent is not automatically preferable for cheap tasks.
+**Why:** Anthropic's production research agent: multi-agent (Claude Opus 4 orchestrator + Sonnet 4 workers) outperformed single-agent Opus 4 by 90.2% on internal eval. Token cost: ~15× compared to chat, so multi-agent is not automatically preferable for cheap tasks.
 
 ---
 
