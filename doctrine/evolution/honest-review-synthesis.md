@@ -70,6 +70,16 @@ The release decision is recorded in [the `v0.3.0` plan](v0.3.0-release-plan.md):
 
 Primary-source support and the boundary between external guidance and library synthesis are maintained in [research-doctrine-authority-applicability-2026-07.md](research-doctrine-authority-applicability-2026-07.md) and [research-ai-native-sdlc-2026-07.md](research-ai-native-sdlc-2026-07.md). ADRs 0028-0030 record the adopted decisions.
 
+## Post-v0.3.0 Retrospective Review — 2026-07-17
+
+A retrospective review found the release direction sound while identifying three editorial/navigation defects: mandate terminology drift, misplaced glossary entries, and one lifecycle route that omitted ADR 0030. Those corrections are proposed as a compatible `v0.3.1` patch.
+
+The review also identified genuine cognitive load in presenting gates, diagnostic states, record families, mandate classes, claim types, evidence classes, and closure modes together. These views describe different dimensions and are not safe to collapse by word count. The follow-up therefore tests progressive disclosure with representative scenarios before moving or removing canonical material.
+
+Two process observations were separated from their overstatements. `v0.3.0` used several distinct mechanical and source-validation surfaces, but it had no independent human/domain review and its model-based semantic challenge could share producer failure modes. Future material normative releases should declare that evidence limit and use proportionate semantic challenge rather than claiming independence by actor count. The history repair was not decision-record-free: [ADR 0027](../../docs/adr/0027-keep-public-doctrine-implementation-neutral.md) authorised it and recorded consumer impact. Nevertheless, moving a released version tag weakens consumer pinning and should not recur; prospective release immutability is grounded in SemVer and evaluated separately from emergency withdrawal.
+
+The full decision register, sources, tasks, measures, and stop conditions are in [post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md](post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md).
+
 ---
 
 ## Artefacts Added From This Review Cycle

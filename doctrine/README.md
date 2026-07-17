@@ -164,6 +164,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 Use these records to understand source grounding, decisions, audits, and known gaps. Follow their linked adopted principles, patterns, and ADRs for current operating doctrine.
 
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — disposition of substantive external review feedback
+- [evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md](evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md) — retrospective `v0.3.0` decision register, `v0.3.1` corrections, and executable `v0.4.0` tasks
 - [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md) — primary-source ledger for normative language, applicability, exceptions, and control lifecycle
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) — primary-source and vendor-observation ledger for the AI-native SDLC
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) — NIST SP 800-171 revision migration and wider-doctrine applicability analysis

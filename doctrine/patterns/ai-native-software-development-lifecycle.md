@@ -60,7 +60,7 @@ This is a training view over the canonical rules below, not a second authority s
 
 ## 4. Mandates And Optional Outcome Linkage
 
-Every change has an accountable mandate. Choose the justification class that matches why the work exists:
+Every change has an accountable mandate. Choose the mandate class that matches why the work exists:
 
 | Justification class | Minimum mandate | Additional overlay |
 | --- | --- | --- |
@@ -286,7 +286,7 @@ Insert the gates into existing records rather than replacing the delivery system
 | Stage | Outcome | Evidence |
 | --- | --- | --- |
 | **P0 Baseline** | Map the current change path, AI interactions, systems of record, protected targets, and gaps. | One representative change can be reconstructed from mandate to runtime receipt. |
-| **P1 Admit and claim** | Add justification class, owner, materiality, claims, and affected scope to issue/PR templates. | Routine and strategic changes select the right mandate without invented KPIs. |
+| **P1 Admit and claim** | Add mandate class, owner, materiality, claims, and affected scope to issue/PR templates. | Routine and strategic changes select the right mandate without invented KPIs. |
 | **P2 Bound governed work** | Activate run contracts and isolated workspaces only when governed-execution triggers apply. | Undeclared authority, delegation, or output fails visibly; incidental assistance remains lightweight. |
 | **P3 Bind challenge and authority** | Candidate identity, evidence, policy verdict, approvals, and waivers are linked but distinct. | Missing, stale, inconclusive, or unbound evidence blocks the controlled path. |
 | **P4 Observe and close** | Deployment receipts and runtime claims link back to the candidate; closure mode is explicit. | Release can be followed to technical/operational closure and optional outcome review. |

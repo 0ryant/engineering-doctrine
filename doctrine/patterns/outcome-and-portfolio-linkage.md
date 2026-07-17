@@ -30,7 +30,7 @@ Apply the full overlay when at least one condition is true:
 - a material decision depends on attribution, countermetrics, or a continue/change/stop review; or
 - law, contract, policy, funding governance, or another explicit authority requires the lineage.
 
-Do not activate it merely because AI assisted the change. For non-strategic work, the mandate records the applicable justification class:
+Do not activate it merely because AI assisted the change. For non-strategic work, the mandate records the applicable mandate class:
 
 - external or standing obligation;
 - vulnerability or incident response;
