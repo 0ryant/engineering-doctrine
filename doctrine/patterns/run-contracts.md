@@ -4,7 +4,7 @@ A **run contract** is a typed envelope that binds **trigger**, **model policy**,
 
 The canonical machine-readable shape lives at [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json) (JSON Schema 2020-12). The companion verifier-pack pattern lives at [verifier-packs.md](verifier-packs.md). External licence: Apache-2.0, same as the rest of this library.
 
-Relates to: [verifier-packs.md](verifier-packs.md) (the `verifiers` array consumes pack ids), [webhook-ingress-security.md](webhook-ingress-security.md) (webhook trigger hardening), [idempotency-across-boundaries.md](idempotency-across-boundaries.md) (retry semantics for non-cron triggers), [code-review-and-change-approval.md](code-review-and-change-approval.md) (manual triggers and high-risk approvals), [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) (governed AI systems), [../principles/audit-logging.md](../principles/audit-logging.md) (`outputs.audit.jsonl_path`), [../principles/single-source-of-truth.md](../principles/single-source-of-truth.md) (one envelope shape, one home).
+Relates to: [verifier-packs.md](verifier-packs.md) (the `verifiers` array consumes pack ids), [ai-native-software-development-lifecycle.md](ai-native-software-development-lifecycle.md) (multi-agent lineage, checkpoints, safe resume, and lifecycle authority outside the single-run envelope), [webhook-ingress-security.md](webhook-ingress-security.md) (webhook trigger hardening), [idempotency-across-boundaries.md](idempotency-across-boundaries.md) (retry semantics for non-cron triggers), [code-review-and-change-approval.md](code-review-and-change-approval.md) (manual triggers and high-risk approvals), [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) (governed AI systems), [../principles/audit-logging.md](../principles/audit-logging.md) (`outputs.audit.jsonl_path`), [../principles/single-source-of-truth.md](../principles/single-source-of-truth.md) (one envelope shape, one home).
 
 ---
 
@@ -259,7 +259,7 @@ The trigger swaps `repo_event` for `cron`; the rest of the envelope is structura
 
 The shape is deliberately small. The boundary matters as much as the interior.
 
-- **NOT a workflow DAG.** A contract describes one execution unit. Multi-step orchestration belongs to a workflow engine or saga coordinator; cross-contract dependency is out of scope for v1.
+- **NOT a workflow DAG.** A contract describes one execution unit. Multi-step orchestration belongs to a workflow engine or saga coordinator; cross-contract dependency is out of scope for v1. The coordinator still records the parent/child fingerprints, delegated scopes, dependencies, workspace ownership, checkpoints, handoffs, and integration outcome required by [ai-native-software-development-lifecycle.md](ai-native-software-development-lifecycle.md); each child has its own contract.
 - **NOT an inline scripting language.** `hooks` and `verifiers` reference **named ids**, not embedded shell. Embedding scripts inside the envelope would re-create the ambient-affordance problem at a different layer.
 - **NOT a model-controlled escape hatch.** An agent cannot rewrite its own contract mid-run. The model receives the envelope as input; it does not edit it.
 - **NOT a substitute for code review.** High-blast-radius contracts still route through [code-review-and-change-approval.md](code-review-and-change-approval.md).
@@ -301,7 +301,8 @@ Tools in the cohort that emit or consume contracts MUST link back to this file a
 
 The v1 envelope does **not** address:
 
-- **Workflow DAG composition.** Multi-step orchestration ("contract A's output is contract B's input") is out of scope. v2 may introduce a `dependencies: [<fingerprint>]` field or a separate workflow primitive that wraps contracts.
+- **Workflow DAG composition.** Multi-step orchestration ("contract A's output is contract B's input") is out of scope. Until a portable workflow primitive exists, an external coordinator owns the lineage and coordination record without mutating either contract. v2 may introduce a `dependencies: [<fingerprint>]` field or a separate workflow primitive that wraps contracts.
+- **Checkpoint and resume identity.** v1 has `on_stop` and durable required outputs but no lease, checkpoint, or resume token. A stopped/expired run must not silently continue in place: the host closes its audit record and revalidates authority/context before instantiating a new run linked to the predecessor. A future workflow or contract version may type this link.
 - **Cross-contract atomicity.** No transactional rollback across instances. If A succeeds and B fails, A's effects stand. Compensation belongs to a higher-level saga.
 - **Live mutation.** A running contract cannot edit itself. Authors edit the source, re-validate, and the *next* instance picks it up — intentional, but it pushes some workflows (e.g. probe-then-widen-network) into multi-contract designs.
 - **Streaming triggers.** Long-lived stream subscriptions (Kafka, NATS subjects, MQTT) are out of scope and need either a bridge adapter or a v2 `stream` type.
@@ -321,6 +322,7 @@ These gaps are explicit — the boundary of v1, not bugs in it.
 | `outputs.required` non-empty | Silent-stub class is the largest single failure mode this primitive closes. |
 | 6 trigger types, no `else` branch | Each branch is reviewable; an open-ended `custom` would defeat the purpose. |
 | Hooks reference ids, not embedded scripts | Pushes script surface to a named, reviewable, host-runtime registry. |
+| One contract per agent execution | Multi-agent coordination composes separately fingerprinted envelopes; an orchestrator cannot widen a child by inheritance or hide delegation inside one run. |
 
 ---
 

@@ -1,6 +1,6 @@
 # Engineering Doctrine
 
-[![License: AGPL-3.0-or-later](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 Reusable engineering doctrine that separates stable principles from replaceable tooling.
 
@@ -8,11 +8,11 @@ This repository is intended to be a reference library for teams building applica
 
 ## License
 
-This repository is licensed under **AGPL-3.0-or-later** (see [LICENSE](LICENSE)). You may use, copy, adapt, and redistribute the text and code **subject to the license** — including the AGPL network-use / source-disclosure obligations if you make a modified version available to users over a network. This is not legal advice; confirm with your counsel for regulated or commercial deployments.
+This repository is licensed under **Apache-2.0** (see [LICENSE](LICENSE)). You may use, copy, adapt, and redistribute the text and code subject to the licence's notice and attribution conditions. This is not legal advice; confirm with your counsel for regulated or commercial deployments.
 
-**Why AGPL-3.0-or-later:** Engineering Doctrine is the OSS wedge of a larger ecosystem (see council D6 / `release-surfaces/public-vs-gated.md`). AGPL keeps the doctrine genuinely open and copyleft-protected: improvements made by downstream redistributors stay accessible to the community, while permissive embed in proprietary stacks requires a separate commercial arrangement.
+**Why Apache-2.0:** Engineering Doctrine is an adoption-first reference library intended to be copied, forked, vendored, and adapted into internal and commercial engineering systems. Apache-2.0 keeps that path permissive and supplies an explicit patent grant without requiring downstream modifications to be published.
 
-**Pre-v0.2.0 caveat:** Versions of this repository tagged before `v0.2.0` were released under their original license (Apache-2.0; preserved as [LICENSE.old](LICENSE.old)). The AGPL-3.0-or-later relicense applies from `v0.2.0` forward. Pre-relicense versions remain available under their original terms.
+**Licence history:** `v0.1.0` and earlier were released under Apache-2.0. The default branch was offered under AGPL-3.0-or-later from commit `5f6d783` until the adoption-first decision recorded in [ADR 0025](docs/adr/0025-restore-apache-2.0-as-project-license.md). Effective 2026-07-17, the copyright holder also offers the repository material published during that interval under Apache-2.0. Existing AGPL grants remain valid; recipients may use that material under either applicable grant.
 
 ## Project governance (public trust)
 
