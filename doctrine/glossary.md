@@ -92,11 +92,11 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Effective challenge** — Independent review with **incentives** (not invested in delivery), **competence** (can identify limitations and assumptions), and **influence** (authority to force change) — the SR 11-7 test for whether "second opinion" review is real. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §2.
 
-**Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
-
 **Error budget** — Allowed **unreliability** derived from an SLO; spending it signals **slow down or invest** in reliability. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
 **Estate** — In this repo: a **specific** organisation, cloud, or region whose **named** product choices live under `tooling/estates/`—not global law. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
+
+**Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
 
 **Exactly-once (illusion)** — True end-to-end **exactly-once side effects** are rare; most systems are **at-least-once** plus **idempotent** design. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
@@ -122,9 +122,9 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **GitOps** — In this library: **anchored** to **OpenGitOps** v1.0.0 [PRINCIPLES.md](https://raw.githubusercontent.com/open-gitops/documents/v1.0.0/PRINCIPLES.md) (declarative, versioned, pull, reconcile) plus [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/) and [NIST SSDF](https://csrc.nist.gov/publications/detail/sp/800-218/final) *pointers* in [gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md), then mapped to in-repo build/collab/merge-path doctrine. Community hub: [OpenGitOps](https://opengitops.dev/).
 
-**Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
-
 **Governed execution** — Model/agent execution that gains material authority or reliance through tool use, persistent mutation, sensitive data, asynchronous/delegated work, material budget, cross-system scope, controlled-path output, or acceptance without full inspection. It requires a [run contract](patterns/run-contracts.md); incidental ephemeral assistance does not automatically qualify.
+
+**Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
 ---
 
@@ -188,11 +188,11 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## N
 
-**Normative terms (BCP 14)** — Capitalised `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` express claim-level strength under RFC 2119/8174. Applicability is determined before strength is enforced; `CONTEXT-DEPENDENT` and `EXAMPLE` are content classes, not BCP 14 levels. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).
-
 **NIST AI 600-1** — *AI Risk Management Framework: Generative Artificial Intelligence Profile* (July 2024): GenAI-specific risks and suggested actions aligned with **AI RMF** functions. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2, [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) references.
 
 **Nit (non-blocking review)** — Style, naming, or **optional** improvement that **need not** block merge; often lands as a follow-up **issue**. See [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §3.
+
+**Normative terms (BCP 14)** — Capitalised `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` express claim-level strength under RFC 2119/8174. Applicability is determined before strength is enforced; `CONTEXT-DEPENDENT` and `EXAMPLE` are content classes, not BCP 14 levels. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).
 
 ---
 
