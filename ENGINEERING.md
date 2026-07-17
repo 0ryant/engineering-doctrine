@@ -11,7 +11,7 @@ Build and delivery guidance is split deliberately:
 
 When tooling changes, update the tooling docs first. Change the principles only when the operating model itself has changed.
 
-**AI and ML-assisted systems** are **first-class**: `doctrine/principles/ai-ml-systems.md` (tiers A–D, retrieval lifecycle, agents, MCP-class tools) applies whenever you ship GenAI, RAG, custom training, or agentic automation—alongside `doctrine/patterns/rag-retrieval-baseline.md` and `doctrine/tooling/vector-retrieval-and-embedding-illustration.md` where retrieval is in scope. The **adoption operating model** (inventory & materiality, ownership & independent challenge, harm-surface testing, AI provider continuity, capability uplift) is `doctrine/patterns/ai-adoption-controls.md` + `doctrine/checklists/ai-adoption-readiness.md`.
+**AI and ML-assisted systems** are **first-class**: `doctrine/principles/ai-ml-systems.md` (tiers A–D, retrieval lifecycle, agents, MCP-class tools) applies whenever you ship GenAI, RAG, custom training, or agentic automation—alongside `doctrine/patterns/rag-retrieval-baseline.md` and `doctrine/tooling/vector-retrieval-and-embedding-illustration.md` where retrieval is in scope. The **adoption operating model** (inventory & materiality, ownership & independent challenge, harm-surface testing, AI provider continuity, capability uplift) is `doctrine/patterns/ai-adoption-controls.md` + `doctrine/checklists/ai-adoption-readiness.md`. When AI participates across software delivery, use `doctrine/patterns/ai-native-software-development-lifecycle.md`: stakeholder need, objective and guardrailed outcome measures, intervention hypothesis, bounded work, executable change, authority, evidence, enactment, and observed outcome advance as explicit, reconciled transitions. Tasks and outputs are never substitutes for outcomes.
 
 **Principles vs tooling:** Portable **intent** lives in `doctrine/principles/`; replaceable **examples and estate notes** live in `doctrine/tooling/` (including `tooling/estates/`). See `doctrine/principles/timeless-principles-and-tooling.md`.
 
@@ -322,7 +322,7 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **API boundaries and API security** — `doctrine/principles/api-boundaries-and-security.md` (limits, authz, OWASP API alignment).
 
-**AI and ML-assisted systems** — `doctrine/principles/ai-ml-systems.md` (governance, tiers A–D + materiality axis, merge path, OWASP LLM); adoption controls: `doctrine/patterns/ai-adoption-controls.md`; **agentic loop design** (nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL): `doctrine/patterns/agentic-loop-design.md`; illustrative tooling: `doctrine/tooling/ai-assisted-development.md`.
+**AI and ML-assisted systems** — `doctrine/principles/ai-ml-systems.md` (governance, tiers A–D + materiality axis, merge path, OWASP LLM); adoption controls: `doctrine/patterns/ai-adoption-controls.md`; **AI-native delivery lifecycle** (objective → guardrailed outcome measures → intervention → bounded work → outputs → observed outcomes; S0 observed need → S10 reconciled; transition records, layered evidence, deterministic enactment): `doctrine/patterns/ai-native-software-development-lifecycle.md` + `doctrine/checklists/ai-native-sdlc-readiness.md`; **agentic loop design** (nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL): `doctrine/patterns/agentic-loop-design.md`; illustrative tooling: `doctrine/tooling/ai-assisted-development.md`.
 
 **Threat modeling (STRIDE lite)** — `doctrine/principles/threat-modeling-stride-lite.md` (trust boundaries; complements API and platform security).
 
@@ -330,7 +330,7 @@ The following **principle** documents extend build/trunk doctrine with **SRE, da
 
 **Reliability: SLOs, error budgets, incidents** — `doctrine/principles/reliability-slo-incidents.md`.
 
-**Delivery measurement (DORA / Four Keys)** — `doctrine/principles/measurement-and-dora.md` (outcomes vs practices; **SPACE** developer-experience framing in §4).
+**Delivery measurement (DORA metrics)** — `doctrine/principles/measurement-and-dora.md` (delivery-system signals, not company objectives; **SPACE** developer-experience framing in §4).
 
 **Developer experience** — `doctrine/principles/developer-experience.md` (time-to-first-change, local loop, docs findability, cognitive load, review flow); scorecard: `doctrine/checklists/developer-experience-scorecard.md`.
 

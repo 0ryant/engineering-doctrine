@@ -133,7 +133,7 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 
 ## AI, Agents, And GenAI
 
-Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `patterns/agentic-loop-design.md`, and the `tooling/` AI supplement.
+Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `patterns/agentic-loop-design.md`, `patterns/ai-native-software-development-lifecycle.md`, and the `tooling/` AI supplement.
 
 | Topic | Reference |
 | --- | --- |
@@ -141,6 +141,20 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | NIST AI 100-1 (AI RMF PDF) | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf |
 | NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
 | NIST SP 800-218A (GenAI / foundation models, SSDF profile) | https://csrc.nist.gov/pubs/sp/800/218/a/final |
+| NIST AI RMF Core — mission/goals, business value, tasks, benefits/costs, measures | https://airc.nist.gov/airmf-resources/airmf/5-sec-core/ |
+| ISACA — COBIT 2019 Goals Cascade | https://www.isaca.org/resources/news-and-trends/industry-news/2019/employing-cobit-2019-for-enterprise-governance-strategy |
+| Basili et al. — GQM+Strategies | https://arxiv.org/abs/1402.0292 |
+| University of Maryland — Goal/Question/Metric technical report | https://drum.lib.umd.edu/items/8119803a-362b-42ec-b6ce-2311713e7236 |
+| DORA — software delivery performance metrics and pitfalls | https://dora.dev/guides/dora-metrics/ |
+| Google — OKR playbook (practitioner guidance, reprinted with permission) | https://www.whatmatters.com/resources/google-okr-playbook |
+| NCSC/CISA et al. — Guidelines for Secure AI System Development | https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/guidelines |
+| ISO/IEC 5338:2023 — AI system life cycle processes | https://www.iso.org/standard/81118.html |
+| SLSA Specification v1.2 | https://slsa.dev/spec/v1.2/ |
+| EU AI Act — Regulation (EU) 2024/1689 | https://eur-lex.europa.eu/eli/reg/2024/1689/oj |
+| AWS — AI-Driven Development Life Cycle (vendor observation) | https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/ |
+| Microsoft — AI-led SDLC (vendor observation) | https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896 |
+| GitHub Spec Kit — Evolving specifications (vendor observation) | https://github.github.com/spec-kit/guides/evolving-specs.html |
+| Anthropic — 2026 Agentic Coding Trends Report (vendor research; landing page links the report) | https://resources.anthropic.com/2026-agentic-coding-trends-report |
 | OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
 | Model Context Protocol documentation hub | https://modelcontextprotocol.io |
 | Anthropic — Building Effective Agents (Dec 2024) | https://www.anthropic.com/engineering/building-effective-agents |
@@ -305,6 +319,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) | Enterprise RAG, ANN/indexing, hybrid search, MCP/agents — synthesis + doctrine gap map |
 | [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) | AI-accelerated vuln discovery, VulnOps, principle clusters — **research**; [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) maps **G1–G6** to closed corpus sections |
 | [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) | AI adoption-control gap audit (inventory/materiality, effective challenge, fairness/drift, provider continuity, literacy) — coverage map + verified authorities; [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) maps **A1–A8** to closed corpus sections |
+| [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) | Council-proposal audit and primary-source grounding for the AI-native SDLC, including objective/measure lineage; separates external support from the library's objective-to-outcome and eleven-state synthesis; [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) records adoption |
 | [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | ADR (Proposed): model routing policy v1 contract; structural 3-tier shape (premium/default/narrow_scope) + escalation + non-empty evidence-backed refusal rules + two-tier cost ceilings; encodes the v3 9-cell scoreboard, the council-D4 3-tier resolution, and the CC-2 interpreter-wrapper refusal |
 | [../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | ADR: research adoption + **G1–G6** closure traceability |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
@@ -363,6 +378,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
 | [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) | AI adoption operating model: inventory + materiality, ownership + effective challenge, harm-surface test matrix, provider continuity, role-based literacy (NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act–cited) |
+| [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) | AI-native SDLC: objective-to-outcome chain, S0–S10 evidence-backed transitions, transition records, authority separation, layered evidence, deterministic enactment, runtime reconciliation |
 | [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) | Feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt |
 | [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) | Agent harness patterns: nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL |
 | [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the first-class typed envelope of agent execution; lifecycle, schema surface, validation tooling; §3.5 auto-bundled skills |
@@ -391,7 +407,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) | Merge path, pipeline definitions, binding gates, evidence (NIST / CSF / CISA / SLSA–cited) |
 | [principles/developer-experience.md](principles/developer-experience.md) | DevEx, time-to-first-change, local loop, docs findability, cognitive load, review flow |
 | [principles/user-facing-quality.md](principles/user-facing-quality.md) | A11y, i18n |
-| [principles/measurement-and-dora.md](principles/measurement-and-dora.md) | Delivery metrics, Four Keys |
+| [principles/measurement-and-dora.md](principles/measurement-and-dora.md) | Current DORA delivery metrics, metric pitfalls, and delivery-signal/company-objective boundary |
 
 ### Illustrative tooling
 
@@ -421,6 +437,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) | Org governance programme for engineering controls |
 | [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md) | DevEx scorecard for local loop, docs findability, review flow, cognitive load |
 | [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) | AI adoption: inventory/materiality, challenge, harm-surface tests, provider continuity, uplift |
+| [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) | AI-native delivery readiness: objective/outcome lineage, design, agent bounds, evidence, authority, enactment, runtime reconciliation |
 
 ### Estates
 
