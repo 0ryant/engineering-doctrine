@@ -2,7 +2,7 @@
 
 These rules govern asynchronous integration: queues, topics, webhooks, event buses, and any other **message-shaped** boundary. They complement [build.md](build.md) and the umbrella **Contracts First** rule in `ENGINEERING.md`.
 
-Synchronous HTTP APIs remain OpenAPI-first; **events use an explicit envelope contract plus a versioned payload contract.**
+Synchronous HTTP APIs remain contract-first; **events use an explicit envelope contract plus a versioned payload contract.** CloudEvents is the portable default for new event-shaped boundaries, not a claim that every broker, protocol, or legacy ecosystem must use it.
 
 ---
 
@@ -15,20 +15,24 @@ Synchronous HTTP APIs remain OpenAPI-first; **events use an explicit envelope co
 
 ---
 
-## 2. Standard Envelope: CloudEvents
+## 2. Envelope Contract And CloudEvents Default
 
-- Use **[CloudEvents](https://github.com/cloudevents/spec)** as the **standard envelope** for event messages across services and transports, unless a platform makes that impossible and the exception is recorded.
-- The envelope carries interoperability metadata: **id**, **source**, **type**, **time**, and optional **subject**, **dataschema**, and extensions as needed.
+- Every event envelope defines stable identity, provenance/source, semantic type, occurrence-time semantics, specification version, and the relationship to its payload schema.
+- Use **[CloudEvents](https://github.com/cloudevents/spec)** as the **portable default** for new event messages across services and transports when no governing platform, ecosystem, external contract, or material constraint requires another envelope.
+- An equivalent broker-native, protocol-specific, constrained, or legacy envelope is valid when it preserves the required semantics. Record its schema, identity scope, delivery behaviour, compatibility rationale, and migration or mapping boundary; do not claim CloudEvents conformance for a merely similar shape.
+- When CloudEvents is used, its context attributes carry interoperability metadata including **id**, **source**, **type**, **specversion**, optional **time**, **subject**, **dataschema**, and extensions as needed.
 - **Payload data** remains a separate contract: define it with JSON Schema, Protobuf, or another explicit schema language; do not rely on undocumented JSON blobs.
 
 ---
 
-## 3. Event Types And Payloads
+## 3. CloudEvents Types And Payloads
+
+When CloudEvents is the selected envelope:
 
 - **`type`** (CloudEvents `type`) identifies the **semantic event** (for example `com.example.order.created.v1`). It must be **stable** and **unique** per distinct payload shape consumers rely on.
 - Prefer **one schema per `type`** for a given major version; avoid overloading one `type` with incompatible payload shapes.
 - **`source`** identifies the **logical producer** (URI or URN per team convention); it must be stable across deployments of the same system.
-- **`id`** is unique per event instance; consumers use it for **deduplication** where delivery is at-least-once.
+- The **`source` + `id` pair** is unique per distinct event. Consumers may use that pair for **deduplication** where delivery is at-least-once; `id` alone is not globally unique under the specification.
 
 ---
 
@@ -45,7 +49,7 @@ Synchronous HTTP APIs remain OpenAPI-first; **events use an explicit envelope co
 
 ## 5. Tooling Defaults
 
-Current CloudEvents version, bindings, and validation expectations live in [../tooling/cloudevents.md](../tooling/cloudevents.md). Update that file when the organisation upgrades spec version or default serialization.
+Current CloudEvents version, bindings, and validation examples live in [../tooling/cloudevents.md](../tooling/cloudevents.md). A consuming estate records the spec version and serialization it supports.
 
 ---
 
@@ -55,9 +59,9 @@ Contract and schema correctness are not enough: define **dead-letter / poison** 
 
 ---
 
-## 7. When This Principle Changes
+## 7. Selecting Or Replacing An Envelope
 
-Change this document only when the operating model for cross-service events changes — for example, if the organisation standardises on a different envelope **and** migrates all producers and consumers with a recorded cutover.
+An adopter may standardise a different envelope for a bounded ecosystem. The decision identifies affected producers and consumers, the equivalent semantics, validation evidence, compatibility period, and cutover or coexistence plan. Changing an envelope never removes the versioned payload and delivery-semantics obligations.
 
 ---
 
@@ -65,7 +69,7 @@ Change this document only when the operating model for cross-service events chan
 
 | Decision | Rationale |
 | --- | --- |
-| CloudEvents envelope | One **interop** shape across HTTP, Kafka, NATS, grids—reduces bespoke headers. |
+| CloudEvents portable default | One widely implemented **interop** shape reduces bespoke headers while an equivalent documented envelope remains valid where context demands it. |
 | Versioned `type` + payload schema | Reviewers can trace **contract** ↔ consumer without spelunking code. |
 | Fail closed on violations | Silent schema drift becomes **production** incidents. |
 | Webhooks as untrusted ingress | Same **authz** and **abuse** discipline as public APIs—see webhook pattern. |

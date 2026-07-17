@@ -201,7 +201,7 @@ Use multiple agents when tasks parallelise, exceed a single context window, or r
 ### 8.1 Orchestrator–Worker Model
 - Orchestrator (larger model) holds the plan and delegates subtasks with explicit: objective, output format, tool list, task boundaries.
 - Workers (smaller or specialised models) execute with narrow focused contexts.
-- Orchestrator never re-derives what a worker reported; it trusts the typed output schema.
+- Workers return typed outputs so claims, provenance, limitations, and evidence can be checked. A typed shape prevents ambiguity; it does not make the content true. The orchestrator or an independent verifier validates material worker claims before integration.
 
 ### 8.2 Evaluator–Optimizer Loop
 - A separate evaluator model applies a scoring rubric to agent outputs and returns structured critique.
@@ -209,10 +209,17 @@ Use multiple agents when tasks parallelise, exceed a single context window, or r
 - A single well-aligned judge beats a panel of poorly aligned ones; more judges is not always better.
 
 ### 8.3 Production Multi-Agent Operational Rules
-- **Checkpoint every step** — durable state persistence, not in-memory only. On failure, resume from last checkpoint rather than full restart.
+- **One writer or an explicit merge protocol** — each mutable workspace has one owner. Parallel writers use isolated workspaces and a named integration step.
+- **Immutable inputs** — each child records the input snapshot, dependency versions, and parent contract it received. Material input change invalidates derived work until it is re-evaluated.
+- **Authority attenuates** — a child receives a subset of the parent's authority. Delegation cannot widen tools, data, target, time, or budget, and an agent cannot authorise its own widening.
+- **Bound the tree** — enforce fan-out, depth, time, token/compute/cost, and retry limits outside model prompts. Exhaustion stops or escalates; it does not silently relax limits.
+- **Typed handoffs are claims** — handoffs carry provenance, outputs, open findings, limitations, and verifier results. They are checked before integration rather than trusted because they parse.
+- **Checkpoint with identity** — persist durable state at declared boundaries. Resume revalidates input snapshot, policy version, identity, authority, lease/expiry, and target; stale work starts a linked new run or stops.
+- **Propagate cancellation and revocation** — terminating or narrowing a parent recursively revokes affected child authority. Orphaned children cannot continue with cached credentials.
+- **Reconcile shared state** — shared mutable state uses transactions, compare-and-set/version checks, or an explicit reconciliation owner. Non-atomic multi-contract effects declare compensation or containment.
 - **Double-texting policy**: decide explicitly what happens when new input arrives while an agent is running (reject, queue, interrupt, or rollback to checkpoint). Default to **reject** for destructive agents; **queue** for retrieval agents.
 - **Rainbow deployments**: when deploying a new agent version, route traffic gradually while the old version may still be mid-run. Agents, unlike stateless APIs, cannot be cut over atomically.
-- **Effort budgets in prompts**: explicitly instruct the orchestrator how many sub-agents and calls are appropriate for different query complexities.
+- **Budget guidance may appear in prompts, but enforcement belongs to the host or workflow policy** and is recorded in receipts. The model cannot grant itself more calls, time, compute, or spend.
 
 **Why:** Anthropic's production research agent: multi-agent (Claude Opus 4 orchestrator + Sonnet 4 workers) outperformed single-agent Opus 4 by 90.2% on internal eval. Token cost: ~15× compared to chat, so multi-agent is not automatically preferable for cheap tasks.
 

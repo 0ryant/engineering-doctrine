@@ -1,6 +1,17 @@
 # Testing Strategy
 
-Durable rules for **automated test portfolios**: what to emphasise, how to avoid common failure modes, and how **contract** and **integration** tests fit the build model.
+Durable rules for **behavioural evidence and regression protection**: what to emphasise, how to avoid common failure modes, and how **contract**, integration, and other tests fit the build model.
+
+---
+
+## Evidence-Driven Development
+
+- Specify the behaviour, invariant, risk, or compatibility claim that a change must support, then choose evidence capable of discriminating success from failure.
+- Preserve regression protection for accepted behaviour at a level proportionate to impact. Tests are a primary evidence source, but static analysis, schema validation, formal checks, benchmarks, review, and runtime observation may be required for different claims.
+- **Test-driven development (TDD)** is a useful technique when executable examples and a fast feedback loop improve design. It is not a universal ordering rule: exploratory work, visual design, data science, integration investigation, performance work, and legacy remediation may establish evidence differently.
+- A spike may defer durable regression coverage while it remains disposable and isolated. Code entering a controlled delivery path still needs the applicable behavioural and risk evidence before authorisation.
+
+**Why:** The durable requirement is discriminating evidence and maintained regression protection, not whether every test was written before implementation.
 
 ---
 
@@ -73,6 +84,7 @@ Durable rules for **automated test portfolios**: what to emphasise, how to avoid
 
 | Decision | Rationale |
 | --- | --- |
+| Evidence before ideology | Behaviour and material risks need credible evidence; TDD is one technique for producing it. |
 | Favour fast tests for most logic | **Short feedback loops** and cheaper CI. |
 | Avoid E2E as the default hammer | E2E is **high cost per assertion** and often **nondeterministic**. |
 | Contract tests at boundaries | Matches **contracts-first** engineering and reduces distributed surprises. |

@@ -1,84 +1,105 @@
 # AI-Native SDLC Readiness Checklist
 
-Use with [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md). Record `Yes`, `No`, `N/A` with rationale, owner, evidence link, and due date. `N/A` is not a verifier verdict and must be justified by scope.
+Use with [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md). Record `Yes`, `No`, or `N/A` with rationale, owner, evidence link, and due date. `N/A` is not a verifier verdict: justify it from the activation profile.
 
-## Objective And Outcome Lineage
+Start by recording:
 
-- [ ] The change links to an authorised objective, standing obligation, or risk/incident response with an accountable owner and decision horizon.
-- [ ] Outcome measures/key results/KPIs declare baseline, target or range, window, population/unit, data source/query, owner, cadence, leading/lagging role, guardrail/countermetric, and known data-quality limits.
-- [ ] Key results describe outcomes or credible outcome evidence—not tasks completed, artefacts produced, code volume, deployments, or generic activity.
-- [ ] An explicit intervention hypothesis states the expected causal mechanism, assumptions, alternatives, dependencies, capacity/cost, materiality, and review/kill date.
-- [ ] AI may propose objectives, measures, initiatives, and decomposition; accountable business/product governance accepts their value, validity, priority, capacity, and trade-offs.
-- [ ] Every task/run contract and output traces upward to the intervention and objective/measure version; orphan AI-generated work is rejected or deliberately classified.
-- [ ] The outcome review can continue, change, stop, or reverse the intervention; completing the output alone cannot close the objective.
+- mandate class: product/strategic, external obligation, vulnerability/incident, compatibility/lifecycle, risk reduction/invariant, or enabling work;
+- AI capability tier and change materiality as separate axes;
+- whether governed-execution triggers apply;
+- whether multi-agent/long-running, high-materiality, externally controlled data, or strategic-outcome overlays apply; and
+- the controlled systems of record that own mandate, candidate, evidence/authority, enactment, and observation.
 
-## Intent And Scope
+## Baseline AI-Assisted Change
 
-- [ ] A real observation, consumer need, defect, risk, or opportunity is linked to the change.
-- [ ] The intended outcome, non-goals, owner, affected consumers/services, and source-of-truth records are explicit.
-- [ ] The issue/spec and acceptance claims are versioned; material clarifications invalidate and rebind derived plans, contracts, evidence, and approvals.
-- [ ] AI capability tier and change materiality are recorded as separate classifications.
-- [ ] Acceptance claims include security, privacy, data, operational, and person-impact obligations where relevant.
-- [ ] The affected artefact and dependency graph is known well enough to bound review and rollout.
+Apply whenever model-produced content enters a software candidate or AI materially assists a controlled transition.
 
-## Transition Design
+### Admit Mandate And Specify Claims
 
-- [ ] Design or ADR depth is proportional to reversibility, novelty, blast radius, and consumer impact.
-- [ ] Rollout, containment, and rollback/forward-recovery are defined and testable.
-- [ ] High-risk classes and required accountable approvers are identified before implementation.
-- [ ] Competing designs have shared constraints, explicit alternatives, a decision owner, and recorded rationale.
+- [ ] An addressable need, obligation, exposure, incident, compatibility condition, invariant, or authorised opportunity justifies the change.
+- [ ] Purpose, owner, scope, non-goals, affected consumers/systems, and materiality are explicit.
+- [ ] Strategic objectives/KPIs are required only when the strategic-outcome overlay or an external authority activates them.
+- [ ] Claims state subject, scope, property/threshold, evidence obligation, owner, validity/observation window, limitations, and candidate binding where material.
+- [ ] Security, privacy, data, compatibility, operational, and person-impact claims are included where applicable.
+- [ ] Rollout, containment, rollback, or forward recovery is proportionate to impact and reversibility.
 
-## Agent Work
+### Produce And Challenge The Candidate
 
-- [ ] Every agent execution has a validated [run contract](../patterns/run-contracts.md).
-- [ ] Inputs, tools, data access, permissions, budgets, required outputs, and handoff rules are bounded.
-- [ ] Multi-agent work records parent/child run identifiers, delegated scope, dependencies, non-overlapping workspace ownership, and integration responsibility.
-- [ ] Long-running work has durable checkpoints, expiry, escalation, cancellation, and safe stop/resume rules; a stale run cannot silently continue.
-- [ ] Every invoked skill has its required [verifier pack](../patterns/verifier-packs.md).
-- [ ] Agent work occurs away from protected branches and production authority.
-- [ ] Agent-produced executable content runs in an isolated preview/test environment without standing production credentials.
-- [ ] The producing agent is not the sole verifier or approver of its candidate.
+- [ ] The candidate is reviewable and immutable build artefacts are addressable by digest or equivalent identity.
+- [ ] AI involvement, generated surfaces, material limitations, and affected dependencies are declared.
+- [ ] Required structural, functional, quantitative, compatibility, security/safety, operational, and causal/outcome evidence is selected by claim rather than by habit.
+- [ ] First-party tests are retained as evidence; additional challenge uses sufficiently different failure modes for the claim and materiality.
+- [ ] Evidence is authenticatable, current, scoped to candidate/claim/target/time, retrievable, and reproducible where feasible.
+- [ ] Binding CI and protected-branch policy reject missing, stale, untrusted, inconclusive, or unbound required evidence.
+- [ ] A changed candidate invalidates evidence and approvals bound to the earlier identity.
 
-## Candidate And Evidence
-
-- [ ] The candidate is a reviewable repository change and immutable build artefacts are addressable by digest or equivalent identity.
-- [ ] Required structural, behavioural, semantic/harm, security, supply-chain, human/policy, and runtime evidence classes are declared.
-- [ ] Evidence is authenticatable, scoped to the candidate, retrievable, current, and reproducible where feasible.
-- [ ] Audit evidence records observable actions, tool receipts, outputs, and decisions without requiring private chain-of-thought or unnecessary prompt/secret retention.
-- [ ] Binding CI and protected-branch policy reject missing, stale, untrusted, inconclusive, or unbound evidence.
-- [ ] A changed candidate invalidates evidence and approvals bound to the earlier version.
-- [ ] Verifier-pack results are treated as bounded execution evidence, not whole-system correctness.
-
-## Authority And Enactment
+### Authorise, Enact, Observe, And Close
 
 - [ ] Request, production, challenge, authorisation, and enactment duties have explicit identities and separation appropriate to materiality.
-- [ ] High-risk changes receive accountable human approval under estate policy.
-- [ ] Any waiver has an owner, rationale, exact scope, expiry, compensating control, and removal issue; it does not rewrite a failed or inconclusive result.
-- [ ] Deployment/promotion uses deterministic least-privilege tooling and the exact authorised artefact.
-- [ ] The target, actor, time, candidate/resulting digest, and decision are emitted in a durable enactment receipt.
+- [ ] AI recommendations, confidence, self-scores, or model votes are not treated as merge/release authority.
+- [ ] Any waiver has an authority, owner, rationale, exact scope, expiry, compensating control, evidence/detection, and remediation link; it does not rewrite a failed or inconclusive result.
+- [ ] Promotion uses the exact authorised artefact and a least-privilege workload identity through configured, bounded, inspectable control execution.
+- [ ] The target, actor, time, policy/candidate identity, result, and rollback state are emitted in a durable receipt.
+- [ ] Runtime evidence maps to declared claims and supports technical, operational, or outcome closure as applicable.
+- [ ] Divergence reopens the earliest falsified assumption or triggers containment/rollback and an accountable follow-up.
 
-## Runtime And Reconciliation
+## Governed-Execution Overlay
 
-- [ ] Progressive delivery or bounded exposure is used where blast radius warrants it.
-- [ ] Runtime checks map back to specified claims and include SLO/security/AI harm or drift signals where relevant.
-- [ ] Runtime evidence evaluates objective/KPI movement, guardrails, costs, unintended effects, and attribution limits—not only technical health.
-- [ ] Rollback or containment authority is usable without model discretion at the control boundary.
-- [ ] Runtime divergence reopens the earliest falsified assumption and links incidents or follow-up work.
-- [ ] An operational agent may originate a traceable S0 observation, but cannot implement, approve, and deploy its own remediation as one authority loop.
-- [ ] Intent, repository state, deployed state, evidence, and operational knowledge are reconciled before closure.
+Apply when the model/agent invokes tools, mutates persistent state, receives sensitive data, runs asynchronously or delegates, consumes material budget, crosses systems, can enter a controlled path without full inspection, or will otherwise be relied on without full inspection.
+
+- [ ] Every governed execution has a validated [run contract](../patterns/run-contracts.md); incidental fully inspected assistance is not misclassified merely to create paperwork.
+- [ ] Input snapshot, tools, data, filesystem, network, subprocess, target, permissions, required outputs, and verifier packs are bounded.
+- [ ] Time/token/compute/cost limits are enforced by the contract where represented or by a versioned host/workflow policy; prompt wording alone is not enforcement.
+- [ ] Stop, expiry, escalation, cancellation, and receipt behaviour are explicit.
+- [ ] Agent work occurs away from protected branches and production authority.
+- [ ] Agent-produced executable content runs in an isolated preview/test environment without standing production credentials.
+- [ ] Verifier-pack results remain bounded execution evidence, not whole-system correctness or approval.
+
+## Multi-Agent And Long-Running Overlay
+
+Apply when governed executions delegate, run concurrently, or can stop and resume.
+
+- [ ] Parent/child contract identities, delegated scope, dependencies, integration owner, and authority attenuation are recorded.
+- [ ] Each mutable workspace has one writer or an explicit merge protocol; parallel work uses isolated input snapshots.
+- [ ] Fan-out, depth, retries, time, token/compute/cost, and total budget are externally bounded.
+- [ ] Typed handoffs carry provenance, claims, limitations, evidence, and unresolved findings and are checked before integration.
+- [ ] Parent cancellation or authority narrowing propagates to affected children and revokes cached authority.
+- [ ] Resume revalidates input snapshot, policy, identity, authority, lease/expiry, and target rather than trusting an old checkpoint.
+- [ ] Shared mutable state uses transaction/version checks or an explicit reconciliation owner; non-atomic effects have compensation or containment.
+
+## High-Materiality Overlay
+
+Apply to estate-defined high-impact change, including authentication/authorisation, cryptography, tenant isolation, data/schema migration, pipeline/policy, irreversible operations, or person-affecting decisions.
+
+- [ ] Accountable human approval is explicit and bound to the candidate.
+- [ ] Challenge includes domain/security expertise with enough independence and influence to force change.
+- [ ] Progressive exposure, guardrails, rollback/containment authority, and observation windows are declared.
+- [ ] Person-affecting decisions include fallback, contest, override/halt, automation-bias controls, and reconstructable decision evidence where applicable.
+- [ ] External control profiles identify governing authority, exact revision, boundary, tailoring/parameters, assessment basis, exceptions, and migration state.
+
+## Strategic Outcome Overlay
+
+Apply only to product/strategic interventions or when an external authority requires objective-to-outcome lineage; see [Outcome And Portfolio Linkage](../patterns/outcome-and-portfolio-linkage.md).
+
+- [ ] Objective, owner, scope, time horizon, and non-goals describe a stakeholder/customer/mission/business/risk outcome rather than an activity.
+- [ ] Measures and guardrails declare baseline, target/range, population/unit, source/query, owner, cadence, observation window, uncertainty, and countermetrics.
+- [ ] Intervention hypothesis states the expected mechanism, assumptions, alternatives, dependencies, materiality, capacity/cost, and review/kill date.
+- [ ] Bounded work and outputs trace to the accepted intervention without being treated as outcome proof.
+- [ ] Outcome evidence records guardrails, costs, unintended effects, confounders, and attribution limits.
+- [ ] Accountable governance can continue, scale, change, stop, or reverse the intervention; a missed KPI does not automatically generate more work.
+- [ ] Technical or operational change records may close while a linked aggregate outcome review continues.
 
 ## Adoption And Measurement
 
-- [ ] One representative brownfield change has been reconstructed end to end before platform-wide automation.
-- [ ] The pilot exercises at least one blocked, failed, or inconclusive path.
-- [ ] Measures cover flow, evidence quality, safety/quality, authority health, agent effectiveness, and runtime reconciliation.
-- [ ] Measures include coordination failures, human attention per accepted outcome, generated-to-accepted ratio, abandoned artefacts, and induced maintenance/backlog load.
-- [ ] Delivery-health metrics remain diagnostic rather than universal targets; objective measures are contextual and use countermetrics to surface gaming or local optimisation.
-- [ ] Measures are segmented by materiality/change class and reviewed for gaming or hidden manual control debt.
-- [ ] Autonomy widens only from observed success, discriminating verification, rollback performance, and sampled human review.
+- [ ] Existing issue, repository, CI/CD, artefact, policy, deployment, and observability records are reused before adding a workflow database.
+- [ ] Representative routine, governed-agent, high-materiality, and strategic cases select the intended overlays consistently.
+- [ ] At least one negative case confirms stale evidence, unbound approval, inconclusive challenge, unauthorised enactment, or expired authority is blocked.
+- [ ] Measures cover flow, evidence quality, safety/quality, authority health, agent effectiveness, coordination, demand amplification, and runtime reconciliation as applicable.
+- [ ] Autonomy expands only from observed success, discriminating verification, rollback performance, incident data, and sampled review—not confidence, duration, or agent count.
+- [ ] Controls identify operating cost and effectiveness and can be simplified or retired without losing the evidence obligation.
 
 ## Decision
 
-- [ ] **Ready:** all applicable blocking items are satisfied and evidenced.
-- [ ] **Conditionally ready:** named owner and expiry exist for every bounded exception.
-- [ ] **Not ready:** missing authority, binding evidence, deterministic enactment, or rollback/reconciliation blocks adoption.
+- [ ] **Ready:** every applicable blocking item is satisfied and evidenced.
+- [ ] **Conditionally ready:** every bounded exception has accountable authority, owner, compensating control, and expiry.
+- [ ] **Not ready:** missing mandate, binding evidence, authority, candidate-bound enactment, or rollback/observation blocks adoption.

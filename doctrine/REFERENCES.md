@@ -13,6 +13,9 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | OpenTelemetry | https://opentelemetry.io/ |
 | W3C Trace Context | https://www.w3.org/TR/trace-context/ |
 | HTTP Problem Details | https://www.rfc-editor.org/rfc/rfc9457.html |
+| BCP 14 / RFC 2119 normative keywords | https://www.rfc-editor.org/info/bcp14 |
+| RFC 8174 uppercase-keyword clarification | https://www.rfc-editor.org/rfc/rfc8174.html |
+| RFC 9110 HTTP Semantics | https://www.rfc-editor.org/rfc/rfc9110.html |
 | SPDX (SBOM) | https://spdx.dev/ |
 | CycloneDX (SBOM + VEX) | https://cyclonedx.org/ |
 | OpenFeature (feature flags) | https://openfeature.dev/ |
@@ -147,7 +150,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | NIST AI 100-1 (AI RMF PDF) | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf |
 | NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
 | NIST SP 800-218A (GenAI / foundation models, SSDF profile) | https://csrc.nist.gov/pubs/sp/800/218/a/final |
-| NIST AI RMF Core — mission/goals, business value, tasks, benefits/costs, measures | https://airc.nist.gov/airmf-resources/airmf/5-sec-core/ |
+| NIST AI RMF 1.0 Core — mission/goals, business value, tasks, benefits/costs, measures | https://airc.nist.gov/airmf-resources/airmf/5-sec-core/ |
 | ISACA — COBIT 2019 Goals Cascade | https://www.isaca.org/resources/news-and-trends/industry-news/2019/employing-cobit-2019-for-enterprise-governance-strategy |
 | Basili et al. — GQM+Strategies | https://arxiv.org/abs/1402.0292 |
 | University of Maryland — Goal/Question/Metric technical report | https://drum.lib.umd.edu/items/8119803a-362b-42ec-b6ce-2311713e7236 |
@@ -155,7 +158,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Google — OKR playbook (practitioner guidance, reprinted with permission) | https://www.whatmatters.com/resources/google-okr-playbook |
 | NCSC/CISA et al. — Guidelines for Secure AI System Development | https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/guidelines |
 | ISO/IEC 5338:2023 — AI system life cycle processes | https://www.iso.org/standard/81118.html |
-| SLSA Specification v1.2 | https://slsa.dev/spec/v1.2/ |
+| SLSA Provenance v1.2 | https://slsa.dev/spec/v1.2/provenance |
 | EU AI Act — Regulation (EU) 2024/1689 | https://eur-lex.europa.eu/eli/reg/2024/1689/oj |
 | AWS — AI-Driven Development Life Cycle (vendor observation) | https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/ |
 | Microsoft — AI-led SDLC (vendor observation) | https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896 |
@@ -250,6 +253,10 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | ICO — data minimisation (UK GDPR principle) | https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/principles/data-minimisation/ |
 | NIST Privacy Framework | https://www.nist.gov/privacy-framework |
 | NTIA SBOM minimum elements | https://www.ntia.gov/SBOM |
+| NIST Cybersecurity Framework 2.0 | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
+| NIST SP 1301 — creating and using CSF organisational profiles | https://csrc.nist.gov/pubs/sp/1301/final |
+| NIST SP 1303 — Monitor–Evaluate–Adjust control cycle | https://csrc.nist.gov/pubs/sp/1303/final |
+| NIST SP 800-53 Rev. 5 — security and privacy controls | https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final |
 
 ---
 
@@ -307,15 +314,17 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 
 | File | Focus |
 | --- | --- |
-| [../ENGINEERING.md](../ENGINEERING.md) | Headline principles index (repo root) |
+| [../ENGINEERING.md](../ENGINEERING.md) | Compact core constitution and canonical-topic route map |
 | [../CHANGELOG.md](../CHANGELOG.md) | Version history for **SemVer-shaped** doctrine tags |
 | [../AGENTS.md](../AGENTS.md) | Short agent instructions; points at **harness** for library edits |
 | [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md) | Semantic route map for humans and agents: ingestion set, task routes, evidence paths |
 | [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) | **Library change** workflow: research, ADR, cross-links, sitemap, glossary, refs |
+| [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) | Claim-level BCP 14 strength, composable applicability, bounded exceptions, and control lifecycle |
 | [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md) | Domain-by-domain scorecard vs 11 mainstream frameworks (Google SRE, DORA, AWS WAF, NIST, etc.) |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
+| [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md) | Primary-source decision ledger for normative language, applicability, exceptions, claim precision, and control lifecycle; supports ADRs 0028 and 0029 |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
 | [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) | Public doctrine benchmark, scorecard, and residual gap analysis |
 | [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) | Taxonomy of public *kinds* of doctrine, honest scorecard refresh, **which to choose when** |
@@ -325,9 +334,13 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) | Enterprise RAG, ANN/indexing, hybrid search, MCP/agents — synthesis + doctrine gap map |
 | [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) | AI-accelerated vuln discovery, VulnOps, principle clusters — **research**; [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) maps **G1–G6** to closed corpus sections |
 | [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) | AI adoption-control gap audit (inventory/materiality, effective challenge, fairness/drift, provider continuity, literacy) — coverage map + verified authorities; [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) maps **A1–A8** to closed corpus sections |
-| [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) | Primary-source grounding for the AI-native SDLC, including objective/measure lineage; separates external support from the library's objective-to-outcome and eleven-state synthesis; [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) records adoption. |
+| [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) | Source-classified grounding for the AI-native SDLC; separates external support and vendor observation from the library's seven-gate, five-record-family synthesis; [ADR 0030](../docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) amends [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md). |
 | [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) | NIST SP 800-171 Rev. 2/Rev. 3 applicability and migration analysis; maps the CUI profile across the wider doctrine; [ADR 0026](../docs/adr/0026-adopt-revision-pinned-external-control-profiles.md) records adoption |
-| [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | ADR (Proposed): model routing policy v1 contract; structural 3-tier shape (premium/default/narrow_scope) + escalation + non-empty evidence-backed refusal rules + two-tier cost ceilings; encodes the v3 9-cell scoreboard, the council-D4 3-tier resolution, and the CC-2 interpreter-wrapper refusal |
+| [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md) | `v0.3.0` release decisions, task ownership, dependencies, acceptance criteria, and verification gates |
+| [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | Accepted model-routing policy v1 contract: provider-neutral structural tiers, evidence-bound escalation and refusal, review requirements, and cost ceilings |
+| [../docs/adr/0028-adopt-claim-level-authority-applicability-and-exceptions.md](../docs/adr/0028-adopt-claim-level-authority-applicability-and-exceptions.md) | Accepted claim-level normative strength, composable applicability, bounded exceptions, and control lifecycle |
+| [../docs/adr/0029-adopt-a-compact-non-duplicative-core-constitution.md](../docs/adr/0029-adopt-a-compact-non-duplicative-core-constitution.md) | Accepted compact, non-duplicative core constitution and route-map decision |
+| [../docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md](../docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) | Accepted AI-native SDLC refinement; amends ADR 0024 with gates, record families, governed execution, typed claims, and closure modes |
 | [../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | ADR: research adoption + **G1–G6** closure traceability |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
 | [README.md](README.md) | Doctrine folder entry |
@@ -355,7 +368,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [principles/interoperability-and-standards.md](principles/interoperability-and-standards.md) | Specs vs stacks |
 | [principles/container-runtime-choice.md](principles/container-runtime-choice.md) | Managed vs K8s |
 | [principles/kubernetes-platform-security.md](principles/kubernetes-platform-security.md) | Cluster baseline |
-| [principles/single-source-of-truth.md](principles/single-source-of-truth.md) | DRY vs wrong abstraction |
+| [principles/single-source-of-truth.md](principles/single-source-of-truth.md) | One authority per concept, intentional replication, and wrong-abstraction avoidance |
 | [principles/configuration-and-secrets.md](principles/configuration-and-secrets.md) | Config vs secrets |
 | [principles/audit-logging.md](principles/audit-logging.md) | Audit fields and retention |
 | [principles/errors-and-failure-modes.md](principles/errors-and-failure-modes.md) | Errors at boundaries |
@@ -370,6 +383,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | --- | --- |
 | [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) | External baseline applicability, exact revision, boundary, assessment, evidence, exceptions, and revision migration |
 | [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) | Navigation |
+| [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) | Claim strength, applicability composition, exception record, and control lifecycle |
 | [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) | Doctrine release labels, change classes, and downstream compatibility impact |
 | [patterns/build-surface-model.md](patterns/build-surface-model.md) | Layer model |
 | [patterns/trunk-workflow.md](patterns/trunk-workflow.md) | Trunk + delivery |
@@ -387,10 +401,11 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
 | [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) | AI adoption operating model: inventory + materiality, ownership + effective challenge, harm-surface test matrix, provider continuity, role-based literacy (NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act–cited) |
-| [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) | AI-native SDLC: objective-to-outcome chain, S0–S10 evidence-backed transitions, transition records, authority separation, layered evidence, deterministic enactment, runtime reconciliation |
+| [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) | AI-native SDLC: seven gates, five record families, governed execution, typed claims, candidate-bound authority, bounded enactment, and three closure modes |
+| [patterns/outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md) | Optional strategic objective/measure/intervention/outcome overlay with attribution limits and continue/change/stop decisions |
 | [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) | Feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt |
 | [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) | Agent harness patterns: nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL |
-| [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the first-class typed envelope of agent execution; lifecycle, schema surface, validation tooling; §3.5 auto-bundled skills |
+| [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the typed envelope of governed execution; activation boundary, lifecycle, v1 schema surface, validation tooling, and host-enforced limits |
 | [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
 | [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Optional anti-confabulation priming pattern with estate evaluation, content addressing, and independent-verification requirements. |
 | [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md) | Skill pack containing the verbatim canonical priming block (SHA-256 `c138dd96…`); auto-bundled into build-class run contracts |
@@ -446,7 +461,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) | Org governance programme for engineering controls |
 | [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md) | DevEx scorecard for local loop, docs findability, review flow, cognitive load |
 | [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) | AI adoption: inventory/materiality, challenge, harm-surface tests, provider continuity, uplift |
-| [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) | AI-native delivery readiness: objective/outcome lineage, design, agent bounds, evidence, authority, enactment, runtime reconciliation |
+| [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) | Profile-based AI-native readiness: baseline assistance, governed execution, multi-agent/long-running, high-materiality, and strategic-outcome overlays |
 
 ### Estates
 

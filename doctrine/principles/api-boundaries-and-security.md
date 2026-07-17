@@ -42,6 +42,15 @@ Official overview: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
 
 **Why:** OWASP **API1** and **API3** (2023) emphasise authorisation at **object** and **property** level, not only gateway auth.
 
+### 2.1 Cryptographic Choices At Boundaries
+
+- Use platform-approved, authenticated cryptography through maintained libraries, cryptographic modules, or managed services; do not design custom cryptographic algorithms or protocols.
+- Bind algorithm suites, key sizes, key lifecycle, password-storage parameters, and transition dates to the applicable threat model and maintained security or external-control profile. A portable principle does not freeze one short algorithm menu for every platform and jurisdiction.
+- Select the layer for encryption—application, database, filesystem, hardware, or managed service—from the threat model and governing authority. Record which threats the selected layer does and does not address.
+- Treat password hashing as a distinct purpose from deriving or protecting encryption keys. Follow the active password-storage profile and migration path; do not reuse a legacy password hash merely because it is available.
+
+**Why:** Cryptographic suitability changes with purpose, implementation quality, platform support, external approval, and transition guidance. Maintained profiles allow algorithms and parameters to change without inventing application-specific cryptography.
+
 ---
 
 ## 3. Rate Limiting And Abuse
@@ -55,7 +64,7 @@ Official overview: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
 
 ## 4. Idempotency And Retries
 
-- **Mutating** endpoints that clients retry (payments, provisioning) accept **idempotency keys** or equivalent deduplication.
+- **Mutating** endpoints that clients may retry, or whose response may be lost, declare an idempotency, duplicate-detection, or recovery strategy. Where a duplicate payment, allocation, or external action could cause material harm, enforce the strategy at the controlling boundary. See [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md).
 
 **Why:** At-least-once networks and clients make **duplicate submits** inevitable; APIs must be explicit about safe retry.
 
@@ -159,3 +168,6 @@ If GraphQL (or similar) is exposed, treat **query planning** as part of the **se
 - OWASP **Cheat Sheet Series** — **REST Security** (CORS and related): https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html  
 - OWASP **GraphQL Cheat Sheet**: https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html  
 - OWASP **ASVS** (application verification, browser controls): https://owasp.org/www-project-application-security-verification-standard/  
+- OWASP **Cryptographic Storage Cheat Sheet** (threat-modelled encryption layer, authenticated modes, key lifecycle): https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html
+- OWASP **Password Storage Cheat Sheet** (password hashing is a separate purpose; legacy algorithm migration): https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+- NIST **SP 800-131A** — transition guidance for cryptographic algorithms and key lengths: https://csrc.nist.gov/pubs/sp/800/131/a/r2/final

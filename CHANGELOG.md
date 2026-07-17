@@ -8,6 +8,57 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 No unreleased changes.
 
+## [0.3.0] - 2026-07-17
+
+Precision and applicability release. **Change classes:** normative replacement,
+normative tightening, additive guidance, navigation, and editorial correction.
+**Compatibility:** intentional pre-1.0 minor; pinned consumers must review the
+migration before adoption.
+
+### Added
+
+- [Normative Language, Applicability, And Exceptions](doctrine/patterns/normative-language-applicability-and-exceptions.md) — claim-level BCP 14 strength, composable profiles, a portable bounded-exception contract, and control simplification/retirement rules; grounded by [research](doctrine/evolution/research-doctrine-authority-applicability-2026-07.md) and [ADR 0028](docs/adr/0028-adopt-claim-level-authority-applicability-and-exceptions.md).
+- [Outcome And Portfolio Linkage](doctrine/patterns/outcome-and-portfolio-linkage.md) — optional objective → measures/guardrails → intervention → work/output → observed-outcome → continue/change/stop overlay for strategic work and externally required lineage. Routine maintenance and obligations do not invent KPIs.
+- [ADR 0029](docs/adr/0029-adopt-a-compact-non-duplicative-core-constitution.md) — makes `ENGINEERING.md` a compact core constitution and route map rather than a duplicate canonical corpus.
+- [ADR 0030](docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) — amends ADR 0024 with seven operational gates, five record families, governed-execution activation, typed claims, failure-mode-diverse challenge, federated authoritative records, and three closure modes.
+
+### Changed
+
+- [ENGINEERING.md](ENGINEERING.md) now owns ten compact propositions and routes detailed obligations to their canonical principle or pattern. Evolution notes remain available as evidence/history but are not default operating authority.
+- [AI-Native Software Development Lifecycle](doctrine/patterns/ai-native-software-development-lifecycle.md) preserves the evidence/authority kernel while replacing S0–S10 as the primary operating vocabulary. Its four-column Mermaid uses equal vertical lanes, dark text, and bottom-to-top handoffs. The [readiness checklist](doctrine/checklists/ai-native-sdlc-readiness.md) now activates baseline, governed-execution, multi-agent/long-running, high-materiality, and strategic-outcome profiles separately.
+- [Run Contracts](doctrine/patterns/run-contracts.md) now apply to governed execution rather than every incidental model interaction. Tool use, persistent mutation, sensitive data, asynchronous/delegated work, material budget, cross-system scope, controlled-path output, or material reliance still activate the contract. The v1 schema is unchanged; host/workflow policy owns limits that v1 cannot express.
+- Multi-agent guidance now requires owned workspaces or an explicit merge protocol, authority attenuation, bounded delegation, typed handoffs treated as claims, cancellation propagation, resume revalidation, and shared-state reconciliation.
+- Broad claims were made proportional: retry boundaries need a duplicate strategy without making every domain transition idempotent; audit evidence targets material actions; TDD is one evidence-producing technique; CloudEvents is the portable event-envelope default with a documented-equivalent path; cryptography follows maintained applicable profiles; ports/adapters, I/O placement, layering, module evolution, and replication are context-based.
+- Material engineering controls now record the failure addressed, evidence, owner, operating cost, effectiveness, review trigger, and simplify/retire condition. Exceptions and failed evidence remain separate.
+
+### Consumer Impact
+
+- **All consumers:** review the compact constitution, claim-level strength, applicability composition, and exception semantics. A shorter umbrella does not weaken the linked topic rules.
+- **AI-assisted delivery:** distinguish incidental assistance from governed execution; map existing S0–S10 fields to the seven gates; group linked records into the five families; keep challenge and authorisation separate; select technical, operational, or strategic outcome closure explicitly.
+- **Strategic/product work:** use the outcome overlay when attempting to change a stakeholder outcome. Other mandate classes retain traceability without fictional product metrics.
+- **Event-driven systems:** CloudEvents remains the portable default; a governing protocol, platform, external contract, legacy boundary, or material constraint may justify a documented equivalent while versioned payload and delivery-semantics obligations remain.
+- **Control owners:** add lifecycle records for material controls, not a governance ticket for every low-risk lint rule.
+
+### Repository History Repair
+
+- Published branch and tag history is rewritten to remove a non-portable local coordination-path reference from ADR 0009. The doctrinal decision is unchanged, but affected commit and annotated-tag object identities change.
+- Consumers with existing clones or branches based on the earlier history must force-refresh branches and tags, then rebase or cherry-pick private work onto the rewritten references. Do not merge the old and rewritten histories together.
+
+### Migration
+
+1. Refresh rewritten branches and tags before adopting `v0.3.0`; preserve private work by rebasing or cherry-picking it onto the new references.
+2. Pin and review `v0.3.0`; map any copied `ENGINEERING.md` detail to the canonical topic links.
+3. Classify material adopted claims and active profiles; migrate live exceptions into the bounded record while preserving failed or inconclusive evidence.
+4. For AI delivery, replace mandatory eleven-status workflow encoding with the seven gates and activate run contracts only at the governed-execution boundary.
+5. Keep routine maintenance, obligations, incidents, compatibility, risk-reduction, and enabling work on an accountable mandate; activate objective/measure/intervention lineage only where applicable.
+6. Recalibrate material controls and remove duplicate ceremony only through accountable evidence and authority.
+
+### Evidence
+
+- Decisions and source limits: ADRs 0028–0030 and their linked research ledgers. External support is distinguished from vendor observation and library synthesis.
+- Primary grounding rechecked on 2026-07-17: BCP 14/RFC 2119/8174, RFC 9110, NIST CSF 2.0/SP 1301/SP 1303, NIST SSDF/SP 800-218A, NIST AI RMF, OWASP guidance, CloudEvents, SLSA provenance, NCSC secure-AI guidance, DORA, and applicable legal/standards sources.
+- Release-candidate checks: doctrine preflight, contract-schema validation, Python compilation, Markdown links, Mermaid render and visual inspection, portability/current-history scans, scenario sampling, whitespace checks, and Git object integrity.
+
 ## [0.2.0] - 2026-07-17
 
 Second SemVer-tagged doctrine release. **Change classes:** additive guidance,

@@ -6,14 +6,32 @@ Use this page when onboarding to the repository or deciding **what to adopt** in
 
 ## Layers (Outermost To Innermost)
 
-1. **`ENGINEERING.md`** (repo root) — **Umbrella** summary: the full list of headline principles and pointers. It can lag slightly; if in doubt, the **`doctrine/principles/`** file wins for detail.
+1. **`ENGINEERING.md`** (repo root) — **Core constitution and route map**: canonical for the small set of core propositions, normative vocabulary, applicability/exception entry points, and adoption routes. It does not duplicate topic detail.
 2. **`doctrine/SEMANTIC_INDEX.md`** — **Route map**: task intent to the source files an agent or reader should ingest. It is navigation, not authority over the linked files.
-3. **`doctrine/principles/`** — **Timeless** rules: platform-agnostic, with **rationale** and **references** per topic. Prefer citing these when embedding doctrine in another repo.
-4. **`doctrine/patterns/`** — **Compositional** guidance: how build surfaces, trunk workflow, message operations, and similar ideas fit together. Not every pattern applies to every repo.
-5. **`doctrine/tooling/`** — **Illustrative** stacks (task runners, CI mapping, bots). Swap freely; keep **surface meanings** from `principles/build.md`.
-6. **`doctrine/tooling/estates/`** — **Optional** vendor/cloud notes (example: Azure). Never copy estate content into portable principles without generalising.
+3. **`doctrine/principles/`** — **Durable topic authority**: platform-agnostic outcomes, constraints, and trade-offs, with rationale and references. Prefer citing these when embedding doctrine in another repo.
+4. **`doctrine/patterns/`** — **Compositional and conditional guidance**: how principles fit together in an operating model. A pattern's scoped obligations activate only when its applicability conditions are met.
+5. **`doctrine/checklists/`** — **Derived review surfaces**: questions and evidence prompts for applicable principles and patterns. A checklist is not the sole authority for a new obligation.
+6. **`doctrine/tooling/`** — **Illustrative** stacks, filenames, and implementation options. Swap freely while preserving the applicable outcomes and contracts.
+7. **`doctrine/tooling/estates/`** — **Optional** organisation/cloud supplements. Never copy estate content into portable principles without generalising.
+8. **`doctrine/evolution/`** — **Non-normative evidence and history**: research, audits, and change rationale. Use it when investigating why, not as default operating authority.
 
 Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md)** explains why the split exists.
+
+## Normative Language, Applicability, And Exceptions
+
+Before applying a material claim, read
+[normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md):
+
+1. determine which baseline, named profile, and external authority apply;
+2. interpret capitalised `MUST`, `SHOULD`, and `MAY` at claim level;
+3. treat `CONTEXT-DEPENDENT` guidance as a required trade-off decision and
+   `EXAMPLE` content as non-normative;
+4. bind the claim to expected evidence; and
+5. keep any authorised exception separate from the rule and evidence result.
+
+Applicability is an overlay on the layers above, not another directory
+hierarchy. A high-materiality or externally governed surface can activate a
+stricter profile without making that profile universal doctrine.
 
 ---
 
@@ -25,21 +43,35 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 | --- | --- | --- |
 | **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` | **15–35 min** (TL;DR **~8 min**, glossary skim **~12 min**) |
 | **Agent / AI contributor** | [`SEMANTIC_INDEX.md`](../SEMANTIC_INDEX.md) → route matching the task → [`doctrine-library-change-harness.md`](doctrine-library-change-harness.md) if editing doctrine/ADR/umbrella files | **10-25 min** before focused work; more for the routed source docs |
-| **New org adopting wholesale** | `timeless-principles-and-tooling` → `build` → `collaboration` → `ENGINEERING.md` | **~60–120 min** for those four; full §18 extended set **adds 2–4 h** |
+| **New org adopting wholesale** | `ENGINEERING.md` → `normative-language-applicability-and-exceptions` → `timeless-principles-and-tooling` → `adoption-playbook` → routed topic principles | **~45–90 min** before topic depth |
 | **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → [platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md) → `platform-readiness` checklist | **~55–100 min** + checklist **~20 min** |
 | **Developer experience / platform enablement** | [`developer-experience.md`](../principles/developer-experience.md) → [`developer-experience-scorecard.md`](../checklists/developer-experience-scorecard.md) → `measurement-and-dora` §4 → `documentation-knowledge` → `build` §3 | **~35–70 min** |
-| **Security / API** | `api-boundaries-and-security` → `threat-modeling-stride-lite` → [`merge-path-evidence-and-pipeline-integrity.md`](../principles/merge-path-evidence-and-pipeline-integrity.md) → `ENGINEERING.md` §18 (extended principles) → `dependencies-supply-chain`; when a contract/regulation applies, add [`revision-pinned-control-profiles.md`](revision-pinned-control-profiles.md) | **~55–110 min** for core; **+20–35 min** for the external-profile path; **+1–2 h** if reading every extended principle |
+| **Security / API** | `api-boundaries-and-security` → `threat-modeling-stride-lite` → [`merge-path-evidence-and-pipeline-integrity.md`](../principles/merge-path-evidence-and-pipeline-integrity.md) → `dependencies-supply-chain`; when a contract/regulation applies, add [`revision-pinned-control-profiles.md`](revision-pinned-control-profiles.md) | **~55–110 min** for core; **+20–35 min** for the external-profile path |
 | **GenAI / RAG / retrieval (product)** | [`ai-ml-systems.md`](../principles/ai-ml-systems.md) (esp. §§6–7) → [rag-retrieval-baseline.md](rag-retrieval-baseline.md) → [`tooling/vector-retrieval-and-embedding-illustration.md`](../tooling/vector-retrieval-and-embedding-illustration.md) → `privacy-and-data-governance` §5 → `api-boundaries-and-security` → (optional) [research-enterprise-rag-agents-indexing-2026-04.md](../evolution/research-enterprise-rag-agents-indexing-2026-04.md), [research-ai-ml-ops-landscape-2026-04.md](../evolution/research-ai-ml-ops-landscape-2026-04.md) skim | **~50–90 min** |
-| **Internal AI / dev agents (enterprise)** | [`ai-ml-systems.md`](../principles/ai-ml-systems.md) §§4, 7 → [research-internal-ai-knowledge-factory-governance-2026-04.md](../evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) → `collaboration` §3, `documentation-knowledge`, `audit-logging` → [`tooling/ai-assisted-development.md`](../tooling/ai-assisted-development.md) → (optional) [research-enterprise-rag-agents-indexing-2026-04.md](../evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4 (MCP) | **~50–95 min** |
+| **Internal AI / dev agents (enterprise)** | [`ai-ml-systems.md`](../principles/ai-ml-systems.md) §§4, 7 → `collaboration` §3, `documentation-knowledge`, `audit-logging` → [`tooling/ai-assisted-development.md`](../tooling/ai-assisted-development.md); consult evolution notes only for rationale or research | **~40–80 min** |
 | **Async / events** | `event-contracts` → `state-machines-and-workflows` → `message-channel-operations` → `tooling/cloudevents.md` (optional `tooling/nats-jetstream` / `kafka-and-cloudevents`, examples below) | **~40–80 min** + **~15–25 min** per worked **fiction** example |
 
 ---
 
 ## Resolving Apparent Conflicts
 
-- If **`ENGINEERING.md`** and a **principle file** disagree on detail, treat the **principle** as authoritative and propose an **ENGINEERING** edit.
-- If **two principle files** seem to overlap (for example security vs API), apply the **stricter** consumer-facing requirement and open a PR to cross-link both.
-- For **merge-path invariants** (binding gates, pipeline definitions in scope, evidence expectations), [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2 is authoritative over general build-surface wording where they differ until texts are harmonised.
+- `ENGINEERING.md` owns core propositions; principle files own durable topic
+  detail. A contradiction between them is a defect: block the affected policy
+  decision, record the conflict, and propose a harmonising change rather than
+  selecting the convenient wording.
+- If two applicable principles overlap, satisfy both compatible obligations
+  and use the stricter result for the shared property. If their required
+  methods or authorities conflict, escalate an explicit authority decision.
+- A binding law, regulation, contract, or external profile keeps its own
+  authority and revision rules. Use
+  [revision-pinned-control-profiles.md](revision-pinned-control-profiles.md);
+  this library cannot grant an exception from an external obligation.
+- Patterns are authoritative for their activated operating model; checklists
+  derive review questions; tooling and examples do not override principles or
+  activated patterns; evolution notes never create an obligation by themselves.
+- For merge-path invariants, [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md)
+  owns the detailed controlled-channel and evidence requirements. Any broader
+  build wording must remain compatible with it.
 
 ---
 
@@ -47,7 +79,7 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 
 - Repo rollout: `checklists/build-readiness.md`, `collaboration-readiness.md`, `platform-readiness.md`, `developer-experience-scorecard.md`.
 - **Releases:** `checklists/release-readiness.md`.
-- **Editing this library:** [doctrine-library-change-harness.md](doctrine-library-change-harness.md) (research, ADR, navigation); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); [gitops-and-declarative-operations.md](gitops-and-declarative-operations.md) (declarative **ops** and **IaC** invariants); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md).
+- **Editing this library:** [doctrine-library-change-harness.md](doctrine-library-change-harness.md) (research, claim strength/applicability, ADR, navigation); [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md).
 - **Adopting with a team:** `patterns/adoption-playbook.md`, `tooling/estates/minimum-viable-doctrine.template.md`, `principles/measurement-and-dora.md`.
 
 ---

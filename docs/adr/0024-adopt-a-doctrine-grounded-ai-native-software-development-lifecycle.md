@@ -1,9 +1,26 @@
 # 0024. Adopt A Doctrine-Grounded AI-Native Software Development Lifecycle
 
-Status: Accepted
+Status: Accepted (amended by [ADR 0030](0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md))
 Decision date: 2026-07-17
 Recorded date: 2026-07-17
 Retrospective: No
+
+## Amendment: 2026-07-17
+
+[ADR 0030](0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) refines this decision without rewriting its history. The evidence-backed kernel, immutable candidate binding, separate challenge and authority, uncertainty verdicts, bounded waivers, promotion of the authorised artefact, and runtime observation remain accepted.
+
+ADR 0030 replaces the following operating details where they conflict with the original text below:
+
+- seven operational gates become the primary vocabulary; S0-S10 remains a diagnostic and migration crosswalk rather than mandatory workflow status;
+- five record families replace one universal transition-record checklist while keeping evidence, decisions, enactment receipts, and observations separately addressable;
+- run contracts apply to **governed execution**, not incidental, ephemeral, fully inspected model assistance;
+- typed claims select evidence, and challenge diversity is assessed by materially different failure modes rather than actor or model count;
+- executable intent may use federated, identified, versioned systems of record, with repository state preferred where the surface is representable as code;
+- final authority and enactment use configured, bounded, inspectable, reconstructable non-model controls; immutable candidate identity and promotion remain deterministic where required;
+- technical closure, operational closure, and optional outcome review replace one universal runtime/portfolio closure; and
+- every change needs a mandate, while objective/measure/intervention/portfolio lineage is required only for strategic/product work or an applicable external obligation.
+
+The original decision is retained below as the contemporaneous record. Consumers should follow ADR 0030 for the revised operating model and migration.
 
 ## Context
 

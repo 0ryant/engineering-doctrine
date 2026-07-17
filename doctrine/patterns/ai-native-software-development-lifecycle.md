@@ -1,368 +1,357 @@
 # AI-Native Software Development Lifecycle
 
-Use this pattern when AI agents or model-mediated automation participate in software delivery. It preserves the familiar work of discovery, design, implementation, release, and operation, but governs that work as **evidence-backed state transitions** rather than as an agent-enhanced sequence of phases.
+Use this pattern when AI agents or model-mediated automation participate in software delivery. AI changes the speed and provenance of candidate production; it does not collapse the distinctions that make change governable:
 
-The core model is:
+> Intent is not implementation. Implementation is not evidence. Evidence is not authority. Authority is not enactment. Enactment is not outcome.
 
-> Stakeholder need, objective, outcome measures, intervention hypothesis, executable change, authority, verification evidence, and observed production reality are separate records. A change advances only when the links and transitions between them are explicit, authorised, evidenced, and reconcilable.
+The lifecycle therefore governs **evidence-backed transitions** between separately addressable records. It keeps the familiar work of discovery, design, implementation, release, and operation, while making candidate identity, challenge, authority, enactment, and observation explicit.
 
-This pattern implements [ADR 0024](../../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md). Its research basis and source limits are recorded in [research-ai-native-sdlc-2026-07.md](../evolution/research-ai-native-sdlc-2026-07.md).
+This pattern implements [ADR 0030](../../docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md), which amends [ADR 0024](../../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md). Its claim-by-claim research basis and source limits are recorded in [research-ai-native-sdlc-2026-07.md](../evolution/research-ai-native-sdlc-2026-07.md).
 
 ---
 
 ## 1. Scope And Non-Goals
 
-Apply this pattern to software changes where an AI capability drafts intent, plans work, changes code or configuration, evaluates a candidate, recommends approval, or operates a delivery tool. It also applies when several agents divide or hand off those duties, and when a domain expert outside an engineering role uses an agent to create executable software or automation.
+Apply this pattern when AI drafts or changes executable intent, invokes delivery tools, evaluates a candidate, recommends approval, coordinates delegated work, or operates on a change whose result may enter a controlled delivery path.
 
-This is **not**:
+This pattern is not:
 
 - permission for an agent to merge, deploy, or change production directly;
 - a replacement for secure development, protected branches, CI, supply-chain controls, or accountable review;
-- a claim that every small change needs a new workflow product or database;
-- a linear waterfall. Work may loop, stop, or revisit an earlier state as evidence changes.
+- a requirement to encode a new workflow product, central database, or eleven status fields;
+- a rule that every incidental use of autocomplete, explanation, or fully inspected drafting is a governed execution;
+- a rule that every change needs a KPI, causal product hypothesis, or portfolio review; or
+- a linear waterfall. Work may loop, stop, or return to the earliest falsified assumption.
 
-A pull request, issue, CI run, deployment record, and telemetry link may together implement the lifecycle record. Reuse existing systems of record before adding a new orchestration layer.
+Issues, repositories, CI runs, artefact stores, deployment records, policy systems, and telemetry may together hold the lifecycle record. Reuse controlled systems of record before adding orchestration.
 
-## 2. Invariants
+## 2. Five-Minute Field Guide
 
-1. **The repository is authoritative for executable intent.** Chats, prompts, model memory, and council notes are inputs, not the source of truth for what ships.
-2. **Intent and evidence remain addressable.** Claims, constraints, artefact digests, approvals, verifier results, and runtime outcomes must point to the change they concern.
-3. **Every agent execution has a run contract.** Scope, inputs, allowed tools, required outputs, authority, and verifier packs are compiled before execution; see [run-contracts.md](run-contracts.md).
-4. **Agents may propose; policy authorises.** A model output, self-score, or agent-authored approval is not merge or deployment authority.
-5. **No actor proves its own work alone.** Agent-local verifier packs are necessary execution evidence, not global proof of correctness. CI, domain tests, security checks, review, and runtime evidence remain separate challenge surfaces.
-6. **Build and enactment are deterministic.** Policy evaluation, artefact addressing, promotion, deployment, rollback, and receipt emission use bounded, reproducible tooling and workload identity.
-7. **Promote the same artefact.** Authorisation addresses an immutable digest or equivalent identity; later environments do not rebuild a semantically different candidate.
-8. **Risk controls scale on two axes.** AI capability tier and change materiality are recorded separately; controls use the stricter result.
-9. **High-risk change is human-gated.** Authentication, authorisation, cryptography, tenant isolation, data/schema migration, pipeline/policy, irreversible operations, person-affecting decisions, and other estate-defined high-impact classes require accountable human approval.
-10. **Uncertainty blocks silently unsafe progress.** Inconclusive or untrusted verification cannot be translated into success. A waiver is a separate, expiring authority decision and never changes the underlying result.
-11. **Runtime evidence closes the loop.** Enactment is not completion. The owner compares observed behaviour with intended claims and reopens, rolls back, contains, or learns when they diverge.
-12. **The lifecycle is auditable without becoming surveillance.** Retain change-relevant identities, actions, tool receipts, decisions, evidence, and outcomes; do not depend on private chain-of-thought or capture unnecessary prompt, personal, or secret data.
-13. **Multi-agent and long-running work has explicit coordination.** Each execution keeps its own run contract; parent/child scope, dependencies, workspace ownership, handoffs, checkpoints, expiry, escalation, and stop/resume conditions are addressable.
-14. **Agent-produced executable content is untrusted until challenged.** Build, test, preview, and evaluation run in an isolated environment without standing production credentials; promotion still uses the normal deterministic path.
-15. **Outputs are not outcomes.** Completing tasks or shipping artefacts proves delivery activity; the accountable owner closes an objective only from credible outcome and guardrail evidence.
+This is a training view over the canonical rules below, not a second authority surface.
 
-## 2.1 Objective-To-Outcome Operating Chain
-
-A company using AI across strategy and execution should maintain this traceable chain:
-
-`stakeholder need → objective → outcome measures and guardrails → intervention hypothesis → tasks/run contracts → outputs → observed outcomes → continue, change, or stop`
-
-This is not a deterministic “KPI-to-task compiler.” AI may propose decomposition, questions, candidate measures, initiatives, and tasks. Accountable business/product governance owns the objective, accepts the measurement contract, chooses and funds the intervention, resolves cross-objective trade-offs, and decides whether observed evidence justifies continuation.
-
-| Record | Minimum contract | Boundary |
-| --- | --- | --- |
-| **Objective** | Desired stakeholder/business outcome; owner; scope; time horizon; non-goals; strategic or standing-obligation source. | A qualitative direction is not a task list. Incidents, legal duties, and operational obligations may enter without a quarterly OKR, but still need an explicit purpose and owner. |
-| **Outcome measures / key results / KPIs** | Baseline; target or acceptable range; window; population/unit; data source/query; data owner; cadence; leading/lagging role; guardrail/countermetric; uncertainty or data-quality limit. | Measures test progress and harm; they do not authorise work and must not be treated as the objective itself. |
-| **Intervention hypothesis** | Proposed causal mechanism; expected effect; assumptions; alternatives; dependencies; capacity/cost; materiality; review/kill date. | It is a bet, not a fact. Several interventions may serve one objective; one intervention may affect several objectives. |
-| **Tasks and run contracts** | Bounded work linked to the accepted intervention and the objective/measure version it serves. | Tasks are execution units, not key results. AI-generated work without upward lineage is backlog inflation. |
-| **Outputs** | Addressable diffs, artefacts, decisions, experiments, deployments, or retired assets with evidence. | Output completion proves that something was produced—not that users, risk, revenue, cost, reliability, or mission outcomes improved. |
-| **Observed outcomes** | Measured change, guardrail effects, user/affected-party evidence, costs, risks, confidence, and attribution limits. | Correlation does not silently become causation. Record confounders and unintended effects. |
-| **Portfolio decision** | Continue, scale, change, stop, or reverse; owner; rationale; resource change; follow-up/reconciliation record. | A missed KPI does not automatically generate more tasks. Revisit the objective, measure validity, causal hypothesis, and opportunity cost. |
-
-Rules:
-
-1. Every S1 intent links to an authorised objective, standing obligation, or risk/incident response and names the intervention hypothesis; exceptions explain why no higher-level link applies.
-2. Every measure is reviewable as a data contract. Use several measures with useful tension—outcome, delivery health, risk/quality, cost, and human impact as applicable—rather than one universal score.
-3. Key results describe measurable outcomes or credible outcome evidence, not activities such as “analyse,” “build,” “launch,” or “complete 20 tasks.”
-4. Portfolio owners limit work in progress. Greater agent throughput is not permission to create unlimited initiatives, artefacts, review demand, or maintenance liability.
-5. S9 tests the intervention against outcome and guardrail measures; S10 records the portfolio decision and feeds new evidence back into objectives, measures, and future S0 observations.
-
-External grounding for this chain is direct, not inherited from this repository:
-
-- **COBIT 2019 goals cascade** links stakeholder needs and enterprise goals to alignment goals and prioritised governance/management objectives ([ISACA](https://www.isaca.org/resources/news-and-trends/industry-news/2019/employing-cobit-2019-for-enterprise-governance-strategy)).
-- **GQM+Strategies** explicitly links business strategies and organisational goals to operational software goals and measurement ([Basili et al.](https://arxiv.org/abs/1402.0292)); the underlying **Goal/Question/Metric** paradigm derives measures from explicit goals and questions ([University of Maryland](https://drum.lib.umd.edu/items/8119803a-362b-42ec-b6ce-2311713e7236)).
-- **NIST AI RMF 1.0** requires an organisation's AI mission/goals, business value, risk tolerance, tasks, expected benefits/costs, and relevant measures to be understood and documented, then iterated through Govern, Map, Measure, and Manage ([NIST AIRC](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/)).
-- **DORA** treats delivery metrics as outcomes of the delivery process and explicitly warns against setting the metric itself as the goal or using one metric for a complex system ([DORA metrics guide](https://dora.dev/guides/dora-metrics/)).
-- Google's published **OKR playbook** is useful practitioner guidance: key results should express measurable outcomes with credible evidence, and “launch X” without end-user or economic benefit is a low-value objective ([Google OKR playbook, reprinted with permission](https://www.whatmatters.com/resources/google-okr-playbook)). It is an implementation option, not a required vocabulary.
-
-## 2.2 Lifecycle At A Glance
-
-```mermaid
-%%{init: {"themeCSS": ".value p, .delivery p, .control p, .runtime p, .failure p { color: #1E1E1E !important; }"}}%%
-block-beta
-    columns 4
-
-    valueHeader["1. Direction and value"] deliveryHeader["2. Agent-assisted delivery"] controlHeader["3. Deterministic control"] runtimeHeader["4. Runtime and portfolio"]
-    need(["Stakeholder need"]) deliveryTop(["Work admitted"]) controlTop(["Candidate admitted"]) runtimeTop(["Transition observed"])
-    s0["S0 Observed need"] s1["S1 Intent registered"] boundCandidate["Evidence-bound candidate"] s9{"S9 Acceptable?"}
-    objective["Owned objective"] s2["S2 Claims specified"] policy["Policy evaluation"] s10["S10 Reconciled"]
-    measures["Outcome measures"] s3["S3 Transition designed"] s7{"S7 Authorised?"} portfolio{"Portfolio decision?"}
-    guardrails["Guardrails"] s4["S4 Work compiled"] s8["S8 Enacted"] nextCycle["Next-cycle decision"]
-    intervention["Intervention hypothesis"] s5["S5 Candidate produced"] receipt["Deployment receipt"] contain["No: rollback or contain"]
-    workMandate["Bounded work mandate"] s6{"S6 Supported?"} denied["No: return for repair"] reenter["Re-enter or observe"]
-    workEvidence["Task and output lineage"] repair["No: repair or re-scope"] controlEvidence["Authority receipt"] runtimeEvidence["Outcome evidence"]
-    valueBottom(["Work ready"]) deliveryBottom(["Candidate ready"]) controlBottom(["Transition enacted"]) runtimeBottom(["Learning retained"])
-
-    valueHeader --> need
-    need --> s0
-    s0 --> objective
-    objective --> measures
-    measures --> guardrails
-    guardrails --> intervention
-    intervention --> workMandate
-    workMandate --> workEvidence
-    workEvidence --> valueBottom
-    deliveryHeader --> deliveryTop
-    deliveryTop --> s1
-    s1 --> s2
-    s2 --> s3
-    s3 --> s4
-    s4 --> s5
-    s5 --> s6
-    s6 --> deliveryBottom
-    s6 --> repair
-    repair --> s2
-    controlHeader --> controlTop
-    controlTop --> boundCandidate
-    boundCandidate --> policy
-    policy --> s7
-    s7 --> s8
-    s8 --> receipt
-    receipt --> controlEvidence
-    controlEvidence --> controlBottom
-    s7 --> denied
-    denied --> s2
-    runtimeHeader --> runtimeTop
-    runtimeTop --> s9
-    s9 --> s10
-    s10 --> portfolio
-    portfolio --> nextCycle
-    nextCycle --> runtimeEvidence
-    runtimeEvidence --> runtimeBottom
-    s9 --> contain
-    contain --> reenter
-    reenter --> runtimeEvidence
-
-    valueBottom --> deliveryTop
-    deliveryBottom --> controlTop
-    controlBottom --> runtimeTop
-
-    classDef value fill:#FFE0C2,stroke:#FF9E42,color:#1E1E1E
-    classDef delivery fill:#C2E5FF,stroke:#3DADFF,color:#1E1E1E
-    classDef control fill:#FFECBD,stroke:#FFC943,color:#1E1E1E
-    classDef runtime fill:#CDF4D3,stroke:#66D575,color:#1E1E1E
-    classDef failure fill:#FFCDC2,stroke:#FF7556,color:#1E1E1E
-    class valueHeader,need,s0,objective,measures,guardrails,intervention,workMandate,workEvidence,valueBottom value
-    class deliveryHeader,deliveryTop,s1,s2,s3,s4,s5,s6,deliveryBottom delivery
-    class controlHeader,controlTop,boundCandidate,policy,s7,s8,receipt,controlEvidence,controlBottom control
-    class runtimeHeader,runtimeTop,s9,s10,portfolio,nextCycle,reenter,runtimeEvidence,runtimeBottom runtime
-    class repair,denied,contain failure
-```
-
-The diagram is a view over the lifecycle records, not a new workflow authority. Its four equal columns are separate vertical charts with handoffs from the bottom terminal of one chart to the top admission point of the next. Agent assistance is permitted throughout bounded analysis and production, but S7 authorisation and S8 enactment remain deterministic control surfaces. S9 and S10 distinguish technical deployment from evidenced outcome and portfolio closure. Compact evidence and decision cells do not introduce lifecycle states; S0–S10 remain canonical, and “re-enter” refers to the loops defined in §3.
-
-## 3. Lifecycle States
-
-The states are control points, not mandatory team names. A low-materiality change may move through several states in one pull request, but it does not skip their obligations.
-
-| State | Question answered | Minimum exit evidence |
-| --- | --- | --- |
-| **S0 Observed need** | What stakeholder, strategic, legal, risk, incident, opportunity, or runtime signal justifies attention? | Addressable observation; affected stakeholder/service/consumer; strategic or standing-obligation source where applicable; initial owner. |
-| **S1 Intent registered** | What outcome is sought, within what boundary, through which intervention hypothesis, and who owns it? | Versioned issue/spec; linked objective/obligation and measure version; intervention hypothesis; outcome and non-goals; owner; open questions; capability and materiality classification. |
-| **S2 Claims specified** | What must be true for the change and intended outcome to be acceptable? | Versioned acceptance properties; outcome measures and guardrails; invariants; resolved or owned clarifications; threat/abuse cases; test/evaluation obligations; SLO or policy effects. |
-| **S3 Transition designed** | How is the intervention expected to change the current state safely? | Design or ADR as needed; causal assumptions and alternatives; affected artefact/dependency graph; data and security impact; rollout, containment, rollback, and kill plan. |
-| **S4 Work compiled** | What bounded work may humans and agents perform? | Task/dependency graph; run contracts for every agent execution; parent/child scope; workspace ownership; tool and data permissions; checkpoints, escalation/stop conditions; required outputs; verifier packs; handoff rules. |
-| **S5 Candidate produced** | What exact change and artefacts are proposed? | Reviewable diff linked to the intent/claim version; build output/provenance; candidate digest; action receipts; declared limitations; generated or updated tests/docs. |
-| **S6 Candidate challenged** | What independent evidence supports or falsifies the claims? | Binding CI; domain tests/evaluations; security and supply-chain evidence; verifier results; accountable review; unresolved findings. |
-| **S7 Transition authorised** | Who or what policy permits this exact candidate to advance? | Protected-branch or release policy decision; identity; approvals; addressed digest; scope and expiry of any waiver. |
-| **S8 Transition enacted** | Was the authorised candidate changed in the target system as intended? | Deterministic deployment/promotion receipt; target/environment; actor identity; timestamps; resulting digest; rollback readiness. |
-| **S9 Runtime evaluated** | Does observed behaviour satisfy the intended claims and move outcome measures without violating guardrails? | Smoke/progressive-delivery results; objective/KPI and guardrail evidence; telemetry and SLO signals; security/AI evals where relevant; attribution limits; anomaly, rollback, or continuation recommendation. |
-| **S10 Reconciled** | Are objective, intent, repository state, deployed state, outcome evidence, and operational knowledge consistent? | Continue/change/stop portfolio decision; closed or reopened intent record; linked runtime evidence; objective/measure update; incident/learning actions; stale artefact and access cleanup. |
-
-### Loops And Re-entry
-
-- A failed or inconclusive challenge returns the change to S2–S5; it does not jump to authorisation.
-- A material change to intent, claims, constraints, or organisational policy invalidates derived designs, run contracts, candidates, evidence, or approvals until they are reviewed and rebound to the new version.
-- A changed candidate invalidates approvals and evidence that were bound to the earlier digest.
-- Runtime divergence at S9 triggers rollback/containment and re-entry at the earliest state whose assumption was falsified.
-- An operational agent or incident may create a new S0 observation. It cannot authorise its own remediation; emergency procedures enact a separately authorised bounded response.
-
-## 4. Transition Admissibility
-
-Every controlled transition must be reconstructable from a **transition record**. The record may be distributed across linked systems, but the links and identities must be stable enough for review and audit.
-
-Minimum fields:
-
-| Field | Requirement |
+| Principle | Remember |
 | --- | --- |
-| Transition identity | Unique change/release identifier; source state; requested destination state. |
-| Strategy lineage | Stakeholder need; objective or standing obligation; objective/measure version; intervention hypothesis; portfolio owner and decision horizon. |
-| Intent and claims | Addressable issue/spec, acceptance properties, constraints, non-goals, and owner. |
-| Scope | Repositories, services, data, environments, consumers, and dependencies affected. |
-| Risk | AI capability tier; change materiality; security/privacy/data/operational classifications. |
-| Lineage and coordination | Intent/claim version; parent and child run identifiers; delegated scopes; dependencies; workspace ownership; checkpoints and handoffs. |
-| Candidate | Immutable commit and artefact identifiers; provenance; declared generated content. |
-| Execution evidence | Run-contract version; observable actions and tool/command receipts; timestamps; outputs; escalation, stop, and resume events. Do not require private chain-of-thought. |
-| Authority | Requesting identity; policy decision; required approvers; separation-of-duties result. |
-| Verification | Required checks and evaluations; evidence references; actual verdicts; unresolved findings. |
-| Enactment | Tool/workload identity; target; bounded permissions; rollout and rollback/containment plan. |
-| Outcome | Receipts, runtime signals, incidents, reconciliation decision, and follow-up owner. |
-| Exception | Waiver owner, rationale, exact scope, expiry, compensating control, and removal issue. |
+| **Start with an accountable mandate.** Know the customer, mission, business, risk, operational, or obligation purpose and its owner. Strategic work uses outcomes rather than task completion as success. | Outputs are not outcomes. |
+| **Keep every change traceable.** Link purpose, claims, candidate, decision, enactment, and observed result. Use an objective/intervention link only where it genuinely applies. | If its purpose cannot be defended, do not create the work merely because generation is cheap. |
+| **AI may propose; policy and accountable people authorise.** AI may analyse, design, implement, review, and recommend. It does not become production authority. | Assistance is not authority. |
+| **Challenge material claims.** First-party tests are evidence, but no producer is the only challenge where the verifier can fail for the same reason. | Every material claim needs a discriminating challenge surface. |
+| **Trust evidence, not confidence.** Assertions, model scores, and majority votes are not proof. Tests, review, policy decisions, receipts, and runtime behaviour support bounded claims. | Evidence beats confidence. |
+| **Build once and promote the artefact.** Test and approve the immutable candidate that later environments receive. | Same artefact, all environments. |
+| **Let impact determine controls.** Capability and materiality are separate; the stricter applicable control wins. | Risk drives controls. |
+| **Bound governed agent work.** Define scope, inputs, permissions, tools, outputs, limits, stops, and evidence before execution. | Every governed execution has a contract. |
+| **Deployment starts observation.** Enactment proves neither acceptable runtime behaviour nor stakeholder value. Be ready to contain or roll back. | Production supplies evidence. |
+| **Learn from actual behaviour.** Compare claims and expected effects with observation, then revise designs, controls, or interventions. | Reality can falsify the plan. |
 
-A transition is admissible only when:
+## 3. Invariants
+
+1. **Authoritative records are identified and versioned.** Repository state is authoritative for repository-owned executable intent. External configuration, deployment, model, policy, or workflow state uses its own controlled record and remains linked and reconcilable.
+2. **Mandate, claims, evidence, decisions, and receipts remain addressable.** They identify the candidate, target, scope, and time they cover.
+3. **Every governed execution has a run contract.** Activation and the v1 boundary are defined in [run-contracts.md](run-contracts.md).
+4. **Agents may propose; policy authorises.** A model output, self-score, multi-model vote, or agent-authored approval is not merge or deployment authority.
+5. **Challenge uses diverse failure modes.** Producer-run tests are valid first-party evidence. Required independence scales with claim type and materiality and asks whether the challenge can fail for the same reason as the producer.
+6. **Final control execution is bounded and reconstructable.** Identity, policy version, inputs, target, decision, and result are explicit. Open-ended model discretion stays outside the final authority boundary.
+7. **Promote the same artefact.** Authorisation addresses an immutable digest or equivalent identity; later environments do not rebuild a semantically different candidate.
+8. **Risk controls scale on two axes.** AI capability tier and change materiality are recorded separately; controls use the stricter applicable result.
+9. **High-impact change is human-gated.** Authentication, authorisation, cryptography, tenant isolation, data/schema migration, pipeline/policy, irreversible operations, person-affecting decisions, and estate-defined high-impact classes require accountable human approval.
+10. **Uncertainty cannot silently become success.** Missing, stale, untrusted, or inconclusive evidence blocks where the evidence is required. A waiver is a separate, expiring authority decision and never changes the technical result.
+11. **Enactment is not completion.** Runtime observation selects technical, operational, or outcome closure and reopens or contains work when claims diverge from reality.
+12. **Auditability is not surveillance.** Retain change-relevant identities, actions, receipts, decisions, evidence, and outcomes; do not require private chain-of-thought or unnecessary prompt, personal, or secret data.
+13. **Delegation cannot widen authority.** Multi-agent work uses owned workspaces or an explicit merge protocol, immutable inputs, bounded delegation, typed handoffs, cancellation propagation, resume revalidation, and reconciliation of shared state; see [agentic-loop-design.md](agentic-loop-design.md) §8.
+
+## 4. Mandates And Optional Outcome Linkage
+
+Every change has an accountable mandate. Choose the justification class that matches why the work exists:
+
+| Justification class | Minimum mandate | Additional overlay |
+| --- | --- | --- |
+| **Product or strategic intervention** | Stakeholder need, objective, owner, scope, materiality, non-goals. | Apply [Outcome And Portfolio Linkage](outcome-and-portfolio-linkage.md): measures/guardrails, intervention hypothesis, attribution limits, and continue/change/stop review. |
+| **External or standing obligation** | Governing authority, obligation, affected boundary, owner, due condition. | Add a revision-pinned control profile where applicable. |
+| **Vulnerability or incident response** | Exposure/incident, affected system, urgency, containment objective, owner. | Use emergency authority and evidence rules without inventing a product KPI. |
+| **Compatibility or lifecycle maintenance** | Dependency/platform condition, supported-state target, affected consumers, owner. | Add migration and deprecation evidence where relevant. |
+| **Invariant preservation or risk reduction** | Invariant/exposure, expected risk reduction, affected boundary, owner. | Add threat, reliability, or operational evidence appropriate to the claim. |
+| **Enabling work** | Authorised capability enabled, dependency, bounded output, owner. | Link to the accepted capability or programme; output completion still does not prove later value. |
+
+An agent may propose mandate wording or decomposition. It cannot self-assign organisational priority, funding, external authority, or risk acceptance.
+
+## 5. Seven Operational Gates
+
+The gates are decision boundaries, not mandatory team names or workflow statuses. A low-materiality change may cross several in one pull request, but it does not skip their obligations.
+
+| Gate | Question | Minimum exit evidence |
+| --- | --- | --- |
+| **G1 Admit mandate** | Why does the work exist, who owns it, and what boundary/materiality applies? | Justification class; addressable source; owner; scope/non-goals; capability and materiality classification. |
+| **G2 Specify claims** | What must be true, and what evidence could support or falsify it? | Typed candidate and runtime claims; invariants; threat/abuse cases; evidence obligations; validity windows and owners. |
+| **G3 Bound governed execution** | What may humans and agents inspect, change, invoke, spend, delegate, and return? | Run contracts where activated; input snapshots; permissions; outputs; host/workflow limits; stops; handoffs; integration owner. |
+| **G4 Produce candidate** | What exact change and artefacts are proposed? | Reviewable diff; immutable candidate identity; provenance; action receipts; limitations; tests/docs changed. |
+| **G5 Challenge candidate** | What evidence supports or falsifies each material claim? | Binding CI; domain and security tests; supply-chain evidence; review; verifier results; unresolved findings and evidence-diversity rationale. |
+| **G6 Authorise transition** | Who or what policy permits this exact candidate to advance? | Policy verdict; identity; required accountable approvals; addressed digest; separation-of-duties result; scoped/expiring waiver if any. |
+| **G7 Enact, observe, and close** | Was the authorised candidate enacted, how did it behave, and which closure is justified? | Deployment/promotion receipt; target/resulting identity; runtime evidence; rollback state; technical/operational/outcome decision and follow-up owner. |
+
+A change advances only when required evidence is authenticatable, current, scoped, and bound to the exact candidate. Silence is not success.
+
+## 6. S0-S10 Reference Crosswalk
+
+S0-S10 remains a useful diagnostic decomposition for evidence invalidation and audit reconstruction. Adopters do not need to encode these as eleven operational statuses.
+
+| Reference state | Operational gate | Diagnostic meaning |
+| --- | --- | --- |
+| **S0 Observed need** | G1 | Source signal or obligation is captured. |
+| **S1 Intent registered** | G1 | Mandate, owner, boundary, and materiality are explicit. |
+| **S2 Claims specified** | G2 | Acceptance and runtime claims are typed. |
+| **S3 Transition designed** | G3 | Change, rollout, containment, and rollback are designed. |
+| **S4 Work compiled** | G3 | Governed executions, delegation, limits, outputs, and challenge are bounded. |
+| **S5 Candidate produced** | G4 | Exact candidate and provenance exist. |
+| **S6 Candidate challenged** | G5 | Required evidence and findings are recorded. |
+| **S7 Transition authorised** | G6 | Policy and accountable authority address the candidate. |
+| **S8 Transition enacted** | G7 | Authorised candidate is promoted and a receipt exists. |
+| **S9 Runtime evaluated** | G7 | Immediate and observation-window claims are evaluated. |
+| **S10 Reconciled** | G7 | Records, deployed state, learning, and chosen closure agree. |
+
+## 7. Five Record Families
+
+The record is normally distributed across existing controlled systems. These are logical families, not a mandate for one schema or database.
+
+| Family | Minimum content | Separately addressable parts |
+| --- | --- | --- |
+| **Mandate** | Justification class; source; owner; scope/non-goals; materiality; affected systems/consumers; optional strategic linkage. | External authority, risk acceptance, objective/measure versions where applicable. |
+| **Governed execution** | Run-contract identity; input snapshot; allowed tools/data/targets; outputs; host/workflow limits; delegation; stops; receipts. | Parent/child contracts, checkpoints, cancellations, handoffs, integration result. |
+| **Candidate claim set** | Immutable candidate; typed claims; limitations; affected surfaces; evidence obligations and falsifiers. | Each claim and the candidate version it addresses. |
+| **Challenge and decision** | Evidence, findings, policy verdict, accountable authority, approvals, and waiver. | Technical evidence remains distinct from policy verdict, approval, and exception. |
+| **Enactment and observation** | Target; actor/workload identity; policy and candidate versions; deployment receipt; runtime evidence; rollback/containment; closure. | Receipt, technical verdict, operational observation, incident, and optional outcome review. |
+
+## 8. Claim Model
+
+Each material claim states its subject, scope, property or threshold, evidence obligation, owner, validity/observation window, limitations, and candidate binding.
+
+| Claim type | Example | Suitable evidence |
+| --- | --- | --- |
+| **Structural** | Schema exists and validates. | Deterministic schema/build validation. |
+| **Functional** | Unauthorised callers are rejected. | Unit/integration/contract tests plus relevant abuse cases. |
+| **Quantitative** | p95 latency remains below the declared threshold. | Reproducible benchmark and/or runtime telemetry with population/window. |
+| **Compatibility** | Supported consumers continue to operate. | Contract tests, replay, compatibility matrix, consumer evidence. |
+| **Security or safety** | Cross-tenant disclosure is prevented. | Threat analysis, permission checks, adversarial tests, independent review. |
+| **Operational** | Rollback restores the supported state within the objective. | Deployment evidence, game day, recovery test, runtime observation. |
+| **Causal or outcome** | The intervention reduces abandonment without worsening a guardrail. | Ethical experiment or bounded observational evidence with attribution limits. |
+
+Evidence diversity depends on failure mode, not the number of people or models. A compiler, property test, policy engine, isolated replay, domain reviewer, canary, or external assessment may provide more independent challenge than another model sharing the producer's assumptions.
+
+## 9. Transition Admissibility
+
+A controlled transition is admissible only when:
 
 1. source and destination are explicit;
-2. the requestor and enacting identity are authenticated;
-3. authority covers this action, artefact, target, and time window;
+2. requesting and enacting identities are authenticated;
+3. authority covers the action, candidate, target, and time window;
 4. required evidence is present, authenticatable, current, and bound to the candidate;
-5. material findings are resolved or an authorised, expiring waiver exists;
-6. rollback or containment is proportionate to materiality; and
+5. material findings are resolved or a separately authorised, expiring waiver exists;
+6. rollback, containment, or forward recovery is proportionate to materiality; and
 7. the transition emits a durable receipt.
 
-Absence, stale evidence, an unbound approval, or an inconclusive result blocks the transition. **Silence is not success.**
+A changed candidate invalidates evidence and approvals bound to the earlier identity. A material change to mandate, claim, input, or policy invalidates derived records until they are reviewed and rebound.
 
-## 5. Authority Model
+## 10. Authority Model
 
-Separate these duties even when one platform implements several of them:
+Separate these duties even when one platform implements several:
 
-| Duty | May be agent-assisted? | Authority boundary |
+| Duty | AI assistance | Authority boundary |
 | --- | --- | --- |
-| Set objectives, outcome measures, and portfolio priority | Yes, for analysis and proposals | Accountable business/product governance accepts value, risk, measure validity, capacity, and trade-offs. Agents do not self-assign company objectives or funding. |
-| Observe and clarify need | Yes | Agent labels uncertainty and preserves source provenance. An operational agent may register S0; an accountable owner or policy triages it. |
-| Specify claims and propose design | Yes | Accountable owner accepts material scope and invariants. |
-| Compile tasks/run contracts | Yes | Policy constrains tools, data, spend, time, required outputs, parent/child delegation, workspaces, checkpoints, and stop/resume conditions. |
-| Produce candidate | Yes | Work occurs on a short-lived branch/worktree; no direct protected-branch mutation. |
-| Challenge/evaluate | Yes, as one input | The candidate producer cannot be the sole verifier; binding CI and required human/domain review remain independent. |
-| Authorise merge/release | Recommendation only | Protected-branch/release policy and named accountable approvers decide. |
-| Enact/promotion | No model discretion at the control boundary | Deterministic tooling uses least-privilege workload identity and the authorised digest. |
-| Reconcile runtime outcome | Yes, for analysis | Service owner remains accountable for rollback, incident, and acceptance decisions. |
+| Establish mandate or strategic linkage | Analysis and proposals | Accountable owner accepts purpose, priority, scope, and trade-offs. |
+| Specify claims and design | Drafting, alternatives, threat prompts | Owner accepts material claims and invariants. |
+| Compile governed work | Decomposition and contract proposals | Policy constrains data, tools, targets, spend, time, delegation, outputs, and stops. |
+| Produce candidate | Implementation and iteration | Short-lived isolated workspace; no protected-branch or standing production mutation. |
+| Challenge candidate | Tests, review assistance, evaluation | Required evidence diversity and accountable review remain independent of producer confidence. |
+| Authorise merge/release | Recommendation only | Protected-branch/release policy and named approvers decide for the exact candidate. |
+| Enact/promotion | No open-ended model discretion at the boundary | Configured tooling uses least-privilege workload identity and the authorised candidate. |
+| Observe and reconcile | Analysis and anomaly proposals | Service/change owner decides rollback, incident, and closure; portfolio owner decides strategic outcomes where activated. |
 
-For competing agents or designs, converge through an addressable decision: shared claims and constraints, explicit alternatives, independent challenge, named decision owner, rationale, and the discarded options. Majority vote or model confidence is not authority.
+For competing designs or agents, converge through shared claims/constraints, explicit alternatives, material challenge, a named decision owner, and rationale. Majority vote or model confidence is not authority.
 
-## 6. Verification And Evidence
+## 11. Verification And Evidence
 
-Verification is layered. No single layer substitutes for the others.
+No single evidence layer substitutes for the others:
 
 | Evidence class | Examples | Primary question |
 | --- | --- | --- |
-| **E0 Intent** | stakeholder need, objective/obligation, outcome measures, intervention hypothesis, owner, materiality | Are we testing an authorised and measurable value/risk hypothesis? |
-| **E1 Contract** | run contract, task/coordination graph, permissions, checkpoints, required outputs | Was the work and every delegation bounded before execution? |
-| **E2 Structural** | required files, schemas, formats, buildability | Does the candidate have the declared shape? |
-| **E3 Behavioural** | unit/integration/contract tests, deterministic replay | Does it behave as specified under controlled cases? |
-| **E4 Semantic and harm** | domain evaluation, adversarial tests, fairness/leakage/abuse cases where applicable | Are higher-order claims supported and material harms challenged? |
-| **E5 Security and supply chain** | threat model, SAST/SCA/secrets, SBOM, provenance/signatures | Is the candidate and its production path acceptably protected? |
-| **E6 Human and policy** | review, segregation, policy decision, waiver | Has accountable authority accepted residual risk? |
-| **E7 Enactment and runtime** | deployment receipt, telemetry, SLO, drift/anomaly signals, incident links | Did the authorised transition occur and remain acceptable? |
+| **E0 Mandate** | need/obligation, owner, scope, materiality | Are we addressing authorised work? |
+| **E1 Execution contract** | run contract, inputs, permissions, host limits, outputs | Was governed work bounded before execution? |
+| **E2 Structural** | schema, format, buildability | Does the candidate have the declared shape? |
+| **E3 Behavioural/quantitative** | unit, integration, contract, replay, benchmark | Does it behave as claimed under controlled cases? |
+| **E4 Semantic and harm** | domain evaluation, abuse, fairness, leakage, safety tests | Are higher-order claims and material harms challenged? |
+| **E5 Security and supply chain** | threat model, SAST/SCA/secrets, SBOM, provenance/signatures | Is the candidate and path acceptably protected? |
+| **E6 Policy and authority** | review, policy verdict, approval, waiver | Has accountable authority accepted the evidenced residual risk? |
+| **E7 Enactment and runtime** | deployment receipt, telemetry, SLO, anomaly, incident | Did the authorised transition occur and remain acceptable? |
 
-Verifier packs use the doctrine verdicts `pass`, `fail_loud`, `mark_untrusted`, and `inconclusive`; there is no silent skip. Lifecycle policy consumes those results alongside the other evidence classes. A waiver is recorded at E6 and does not overwrite an E2–E5 result.
+Verifier packs use `pass`, `fail_loud`, `mark_untrusted`, and `inconclusive`; there is no silent skip. A waiver is E6 authority evidence and does not overwrite an E2-E5 result.
 
-Evidence must be:
+Evidence is:
 
 - **authenticatable** — origin and identity can be checked;
-- **scoped** — it states which candidate, claim, target, and time it covers;
-- **retrievable** — links survive the decision and retention period;
-- **reproducible where feasible** — commands, inputs, versions, and environment are declared; and
-- **proportionate** — stronger materiality adds evidence and authority, not unbounded ceremony.
+- **scoped** — candidate, claim, target, and time are explicit;
+- **retrievable** — links survive the decision and required retention period;
+- **reproducible where feasible** — inputs, commands, versions, and environment are declared; and
+- **proportionate** — materiality adds discriminating evidence, not unbounded ceremony.
 
-## 7. Capability, Materiality, And Autonomy
+## 12. Agentic And Control Surfaces
 
-Record both axes from [ai-ml-systems.md](../principles/ai-ml-systems.md) and [ai-adoption-controls.md](ai-adoption-controls.md):
-
-- **Capability** describes what the AI can do: advise, retrieve, propose a change, or invoke tools.
-- **Materiality** describes what failure costs: consumer impact, data/security exposure, irreversibility, regulatory or financial harm, and blast radius.
-
-Autonomy may increase only when the task is sufficiently observable and reversible, verification is discriminating, and the authority boundary remains deterministic. A longer task horizon or more concurrent agents increases coordination and review risk; it does not grant more authority. Default examples:
-
-| Work class | Typical autonomy | Required escalation |
-| --- | --- | --- |
-| Low-materiality, reversible, strongly testable | Agent may draft/iterate within a run contract; normal review and CI. | Repeated inconclusive results, scope expansion, or unexpected affected graph. |
-| Moderate materiality or partial observability | Bounded agent production; named reviewer; staged rollout and explicit runtime checks. | Security/data/operational finding, rollback uncertainty, or evidence disagreement. |
-| High/critical materiality, weakly reversible, person-affecting | Agent may analyse or propose; two-person or estate-defined accountable approval; deterministic enactment; progressive exposure. | Any unverified claim, novel boundary, exception, or material runtime anomaly. |
-
-Confidence scores, run duration, and agent count do not justify autonomy. Use observed task success, verifier discrimination, rollback success, incident data, and sampled review findings.
-
-## 8. Deterministic And Agentic Surfaces
-
-Keep model discretion away from the final authority boundary.
-
-| Agentic surface | Deterministic control surface |
+| Agentic surface | Bounded control surface |
 | --- | --- |
-| Clarification, decomposition, alternative design, implementation, review assistance, log analysis, coordination proposals | Contract/schema validation, identity and permission enforcement, workspace isolation, checkpoint/timeout enforcement, protected-branch rules, CI gates, artefact hashing/signing, policy evaluation, deployment, rollback, receipts |
+| Clarification, decomposition, alternative design, implementation, review assistance, log analysis, coordination proposals | Contract/schema validation, identity and permission enforcement, workspace isolation, host limits/timeouts, protected-branch rules, CI gates, artefact addressing/signing, policy decision, deployment, rollback/containment, receipts |
 
-Every agent execution has a run contract because it is non-deterministic work with a bounded authority envelope. A normal deterministic build or deployment job does **not** need to masquerade as an agent run; its pipeline manifest, workload identity, immutable inputs, policy, and receipt provide the corresponding contract surface.
+The control side may consume statistical or incomplete signals; it need not be mathematically deterministic. It is explicitly configured, bounded, inspectable, attributable, and reconstructable and does not delegate the final authority decision to open-ended model discretion.
 
-## 9. Brownfield Adoption
+## 13. Closure, Loops, And Re-entry
 
-Adopt by inserting control points into the existing delivery path, not by replacing the whole SDLC at once.
+Select the closure supported by evidence:
 
-| Stage | Outcome | Exit evidence |
+1. **Technical closure** — the authorised candidate was enacted and immediate technical claims were evaluated.
+2. **Operational closure** — runtime behaviour remained within declared guardrails for the relevant window.
+3. **Outcome review** — aggregate intervention evidence supports a strategic continue/change/stop/reverse decision.
+
+Not every change requires all three. A routine change may close technically while an operational observation remains linked. Strategic work may aggregate many changes into one outcome review.
+
+- Failed or inconclusive challenge returns to G2-G4; it does not jump to authorisation.
+- Runtime divergence triggers containment/rollback and returns to the earliest falsified mandate, claim, design, or execution assumption.
+- An operational agent may originate a new mandate or remediation proposal. It cannot detect, implement, approve, and deploy its own change as one closed authority loop.
+- Cancellation or authority narrowing propagates to delegated runs; resume revalidates inputs and authority.
+
+## 14. Lifecycle At A Glance
+
+```mermaid
+%%{init: {"themeVariables": {"textColor": "#1E1E1E", "primaryTextColor": "#1E1E1E", "lineColor": "#6B7280"}, "themeCSS": ".mandate p, .work p, .evidence p, .runtime p { color: #1E1E1E !important; }"}}%%
+block-beta
+    columns 4
+
+    mandateHeader["1. Mandate and claims"] workHeader["2. Governed work"] evidenceHeader["3. Evidence and authority"] runtimeHeader["4. Enactment, observation, closure"]
+    mandateTop(["Purpose admitted"]) workTop(["Work admitted"]) evidenceTop(["Candidate admitted"]) runtimeTop(["Transition admitted"])
+    admit["G1 Admit mandate"] bound["G3 Bound execution"] challenge["G5 Challenge candidate"] enact["G7 Enact candidate"]
+    mandate["Owned mandate"] contract["Run contract when governed"] proof["Claim-bound evidence"] receipt["Deployment receipt"]
+    specify["G2 Specify claims"] produce["G4 Produce candidate"] authorise["G6 Authorise transition"] observe["Observe runtime claims"]
+    claims["Typed claims"] candidate["Immutable candidate"] decision["Policy and accountable decision"] closure{"Closure mode"}
+    strategy["Strategic outcome overlay (optional)"] outputs["Declared outputs and limitations"] authorityReceipt["Authority receipt"] learning["Reconcile and learn"]
+    mandateBottom(["Mandate ready"]) workBottom(["Candidate ready"]) evidenceBottom(["Transition authorised"]) runtimeBottom(["Evidence retained"])
+
+    mandateHeader --> mandateTop
+    mandateTop --> admit
+    admit --> mandate
+    mandate --> specify
+    specify --> claims
+    claims --> mandateBottom
+    claims -.-> strategy
+    strategy -.-> mandateBottom
+
+    workHeader --> workTop
+    workTop --> bound
+    bound --> contract
+    contract --> produce
+    produce --> candidate
+    candidate --> outputs
+    outputs --> workBottom
+
+    evidenceHeader --> evidenceTop
+    evidenceTop --> challenge
+    challenge --> proof
+    proof --> authorise
+    authorise --> decision
+    decision --> authorityReceipt
+    authorityReceipt --> evidenceBottom
+
+    runtimeHeader --> runtimeTop
+    runtimeTop --> enact
+    enact --> receipt
+    receipt --> observe
+    observe --> closure
+    closure --> learning
+    learning --> runtimeBottom
+
+    mandateBottom --> workTop
+    workBottom --> evidenceTop
+    evidenceBottom --> runtimeTop
+
+    classDef mandate fill:#FFE0C2,stroke:#FF9E42,color:#1E1E1E
+    classDef work fill:#C2E5FF,stroke:#3DADFF,color:#1E1E1E
+    classDef evidence fill:#FFECBD,stroke:#FFC943,color:#1E1E1E
+    classDef runtime fill:#CDF4D3,stroke:#66D575,color:#1E1E1E
+    class mandateHeader,mandateTop,admit,mandate,specify,claims,strategy,mandateBottom mandate
+    class workHeader,workTop,bound,contract,produce,candidate,outputs,workBottom work
+    class evidenceHeader,evidenceTop,challenge,proof,authorise,decision,authorityReceipt,evidenceBottom evidence
+    class runtimeHeader,runtimeTop,enact,receipt,observe,closure,learning,runtimeBottom runtime
+```
+
+The four equal vertical charts hand off from the bottom of one chart to the top of the next. The optional outcome overlay informs mandate and later outcome review; it is not a required gate for every change.
+
+## 15. Brownfield Adoption
+
+Insert the gates into existing records rather than replacing the delivery system:
+
+| Stage | Outcome | Evidence |
 | --- | --- | --- |
-| **P0 Baseline** | Map current change path, agents, systems of record, protected environments, and control gaps. | One representative change reconstructed end to end; missing evidence and authority boundaries named. |
-| **P1 Register** | Add objective/obligation lineage, outcome/guardrail measures, intervention hypothesis, intent, owner, capability/materiality, claims, and affected-scope fields to existing issue/PR templates. | Sample changes trace from stakeholder need or standing obligation through task/output to outcome review. |
-| **P2 Bound agent work** | Require run contracts and verifier packs for every agent execution; restrict tool/data permissions; isolate executable candidates; make multi-agent lineage, workspaces, checkpoints, and stop/resume rules explicit. | Contract validation and isolation are enforced; undeclared delegation or outputs fail loudly; a stopped run cannot resume under stale authority. |
-| **P3 Bind merge and release** | Make CI/evidence binding; address immutable artefacts; enforce accountable approvals and expiring waivers. | Protected merge/release path rejects missing, stale, or unbound evidence. |
-| **P4 Reconcile runtime** | Link deployment receipts, progressive checks, SLO/AI signals, rollback, and incidents to the change. | A release can be followed from intent to observed outcome. |
-| **P5 Calibrate and scale** | Tune controls with evidence; retire duplicative ceremony; widen only proven autonomy. | Trend review shows quality/safety maintained or improved, with no hidden manual control debt. |
+| **P0 Baseline** | Map the current change path, AI interactions, systems of record, protected targets, and gaps. | One representative change can be reconstructed from mandate to runtime receipt. |
+| **P1 Admit and claim** | Add justification class, owner, materiality, claims, and affected scope to issue/PR templates. | Routine and strategic changes select the right mandate without invented KPIs. |
+| **P2 Bound governed work** | Activate run contracts and isolated workspaces only when governed-execution triggers apply. | Undeclared authority, delegation, or output fails visibly; incidental assistance remains lightweight. |
+| **P3 Bind challenge and authority** | Candidate identity, evidence, policy verdict, approvals, and waivers are linked but distinct. | Missing, stale, inconclusive, or unbound evidence blocks the controlled path. |
+| **P4 Observe and close** | Deployment receipts and runtime claims link back to the candidate; closure mode is explicit. | Release can be followed to technical/operational closure and optional outcome review. |
+| **P5 Calibrate and simplify** | Review effectiveness, reviewer load, exceptions, and incident data; retire duplicative ceremony. | Autonomy and controls change only from observed evidence. |
 
-Pilot one real, bounded change before designing a universal schema. The pilot must include at least one failed or inconclusive check so the blocked/repair path is tested, not only the happy path.
+## 16. Measures
 
-## 10. Measures And Review
+Segment results by mandate class, materiality, and capability; do not optimise speed alone:
 
-Use a balanced set; do not optimise change speed alone:
+- **Flow:** lead time, review wait, rework loops, deployment frequency.
+- **Evidence:** required-evidence completeness, stale/unbound rejection, sampled false-pass/false-fail, inconclusive rate, waiver age.
+- **Safety and quality:** change fail rate, rollback/containment success, escaped defects, security and person-impact findings.
+- **Authority:** separation violations, direct mutation attempts, invalidated approvals, exception expiry compliance.
+- **Agent effectiveness:** accepted-change rate after review, human correction, cost per accepted result, recurring failure clusters.
+- **Coordination:** overlapping-write conflicts, orphaned runs, failed resumes, cancellation propagation, attention per accepted result.
+- **Demand amplification:** generated-to-accepted ratio, abandoned artefacts, induced backlog and maintenance load.
+- **Reconciliation:** releases linked to runtime evidence, time to detect divergence, unresolved observation, incident feedback closure.
+- **Strategic outcomes, where activated:** measure and guardrail movement with attribution limits; never aggregate unrelated objectives into one score.
 
-- **Enterprise/product outcomes:** objective progress, user/affected-party benefit, risk reduction, revenue/cost or mission effect, guardrail movement, and attribution confidence. These are contextual; do not aggregate unrelated objectives into one company score.
-- **Flow:** lead time by materiality, review wait, rework loops, deployment frequency.
-- **Evidence quality:** required-evidence completeness, stale/unbound evidence rejection, verifier false-pass/false-fail samples, waiver age.
-- **Safety and quality:** change fail rate, rollback/containment success, escaped defects, security findings, person-impact or AI harm signals where relevant.
-- **Authority health:** separation-of-duties violations, direct mutation attempts, approval invalidation after candidate change, exception expiry compliance.
-- **Agent effectiveness:** accepted-change rate after review, human correction rate, inconclusive rate, cost per accepted outcome, repeated failure clusters.
-- **Coordination and attention:** overlapping-write conflicts, orphaned/deadlocked runs, failed resumes, escalation precision/recall samples, human review time per accepted outcome.
-- **Demand amplification:** generated-to-accepted change ratio, abandoned artefacts, new backlog/maintenance load, and work created that would not otherwise have been attempted.
-- **Operational reconciliation:** percentage of releases linked to runtime evidence, time to detect divergence, unreconciled releases, incident feedback closure.
+## 17. Failure Modes
 
-Segment by change class and materiality. A faster low-risk path must not hide worse high-risk outcomes.
-
-## 11. Failure Modes
-
-- Treating a specification or plan as proof that implementation is correct.
-- Treating tasks completed, code generated, deployments, or output volume as proof that an objective was achieved.
-- Compiling a KPI directly into tasks without an explicit intervention hypothesis, measure contract, guardrails, capacity decision, or kill criterion.
-- Letting agents create orphan work that has no objective/obligation lineage or portfolio owner.
-- Turning a delivery-health metric into a universal target and inducing gaming, local optimisation, or hidden harm.
-- Allowing the producing agent to be the only reviewer or verifier.
-- Counting verifier-pack success as whole-system correctness.
-- Rebuilding after approval so the deployed artefact is not the reviewed artefact.
+- Treating a specification, plan, model confidence, or self-score as implementation evidence.
+- Making a producer or another model with the same failure mode the sole challenge.
+- Combining technical evidence and authorisation into one verdict.
+- Rebuilding after approval so the deployed artefact differs from the reviewed candidate.
 - Translating missing, untrusted, or inconclusive evidence into pass.
-- Creating permanent waivers, unnamed owners, or exceptions without compensating control.
-- Granting a model standing production credentials or direct protected-branch access.
-- Treating a non-engineering originator as exempt from repository, security, ownership, and operational controls.
-- Allowing parallel agents to share an unowned workspace, overwrite one another, or resume after their context or authority has expired.
-- Recording prompts or purported model "reasoning" while failing to record observable actions, approvals, candidate digests, or deployment receipts.
-- Letting an SRE/operations agent detect, implement, approve, and deploy its own remediation as one closed authority loop.
-- Declaring success at deployment without runtime evaluation and reconciliation.
-- Building a universal workflow platform before a representative estate pilot validates the transition record.
+- Creating permanent waivers, unnamed owners, or exceptions that rewrite technical results.
+- Granting standing production credentials or protected-branch mutation to a model.
+- Requiring private reasoning traces while omitting observable actions, receipts, approvals, or candidate identity.
+- Resuming delegated work after inputs, authority, policy, or lease have expired.
+- Declaring success at deployment without runtime observation.
+- Requiring a fictional KPI or causal hypothesis for maintenance, vulnerability, compatibility, obligation, or enabling work.
+- Treating task, code, deployment, or generated-output volume as stakeholder value.
+- Building a universal orchestration platform before the gates have been mapped onto existing controlled records.
 
-## 12. Consumer Impact And Migration
+## 18. Consumer Impact And Migration
 
-**Change class:** normative tightening for consumers that use AI or agents across the delivery lifecycle. Existing non-agentic delivery paths keep their established secure-development and merge/release obligations.
+**Change class:** normative replacement and clarification for consumers using AI or agents across delivery. Non-agentic paths retain existing secure-development and merge/release obligations.
 
-**Compatibility/release proposal:** **0.x minor**. This release intentionally adds normative obligations for lifecycle-wide AI/agent consumers, so pinned consumers must review the migration before upgrading. It does not relax or replace the existing path for non-agentic delivery.
+**Compatibility:** `0.x` minor. Pinned consumers must review the migration:
 
-Affected consumers must, at minimum, add objective/obligation-to-outcome traceability, measurement and guardrail contracts, an explicit intervention hypothesis, run contracts for all agent executions, explicit multi-agent/long-running coordination, isolated execution of untrusted candidates, evidence-bound authorisation, deterministic enactment, and runtime/portfolio reconciliation. Teams may implement those obligations with existing strategy, portfolio, issue, repository, CI/CD, artefact, and observability systems.
-
-Recommended migration: complete P0–P2 before expanding agent tool authority; complete P3 before allowing agents to produce release candidates routinely; complete P4 before claiming the operating model is AI-native end to end.
+- replace mandatory S0-S10 workflow status with the seven operational gates while retaining the crosswalk for evidence and audit;
+- replace universal KPI/intervention requirements with mandate classes and activate the strategic outcome overlay only when applicable;
+- distinguish incidental model interaction from governed execution; do not weaken contracts for tool use, persistent mutation, sensitive data, delegation, controlled-path output, or material reliance;
+- keep challenge evidence and authority separately addressable;
+- replace broad deterministic wording with bounded, configured, inspectable, reconstructable control execution while preserving immutable promotion; and
+- adopt technical, operational, and optional outcome closure rather than keeping every change open for portfolio attribution.
 
 ## Related
 
 - [AI And ML-Assisted Systems](../principles/ai-ml-systems.md)
-- [Secure Development Lifecycle And Vulnerability Response](../principles/secure-development-lifecycle.md)
-- [Merge-Path Evidence And Pipeline Integrity](../principles/merge-path-evidence-and-pipeline-integrity.md)
-- [Build, Packaging, And Delivery](../principles/build.md)
-- [Reliability, SLOs, And Incidents](../principles/reliability-slo-incidents.md)
-- [Code Review And Change Approval](code-review-and-change-approval.md)
+- [Outcome And Portfolio Linkage](outcome-and-portfolio-linkage.md)
 - [Run Contracts](run-contracts.md)
 - [Verifier Packs](verifier-packs.md)
+- [Agentic Loop Design](agentic-loop-design.md)
 - [AI Adoption Controls](ai-adoption-controls.md)
-- [Revision-Pinned External Control Profiles](revision-pinned-control-profiles.md)
+- [Code Review And Change Approval](code-review-and-change-approval.md)
+- [Merge-Path Evidence And Pipeline Integrity](../principles/merge-path-evidence-and-pipeline-integrity.md)
 - [AI-Native SDLC Readiness Checklist](../checklists/ai-native-sdlc-readiness.md)
 
 ## References
 
-The objective-to-outcome rules are grounded directly in §2.1. The lifecycle and control model additionally draw on:
+- NIST [SSDF 1.1](https://csrc.nist.gov/pubs/sp/800/218/final), [SP 800-218A](https://csrc.nist.gov/pubs/sp/800/218/a/final), and [AI RMF 1.0 Core](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/)
+- NCSC and international partners, [Guidelines for Secure AI System Development](https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/guidelines)
+- [ISO/IEC 5338:2023](https://www.iso.org/standard/81118.html), [SLSA v1.2 provenance](https://slsa.dev/spec/v1.2/provenance/), and [Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [DORA software delivery metrics](https://dora.dev/guides/dora-metrics/)
 
-- NIST [SSDF 1.1](https://csrc.nist.gov/pubs/sp/800/218/final), [SP 800-218A](https://csrc.nist.gov/pubs/sp/800/218/a/final), and [AI RMF 1.0](https://airc.nist.gov/airmf-resources/airmf/);
-- NCSC and international partners, [Guidelines for Secure AI System Development](https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/guidelines);
-- [ISO/IEC 5338:2023](https://www.iso.org/standard/81118.html), [SLSA v1.2](https://slsa.dev/spec/v1.2/), and [Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj); and
-- the [AWS AI-DLC](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/), [Microsoft AI-led SDLC](https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896), and [Anthropic 2026 Agentic Coding Trends](https://resources.anthropic.com/2026-agentic-coding-trends-report) publications as vendor observations, not normative authorities.
-
-The broader claim-by-claim analysis, source limits, and distinction between external requirements, guidance, vendor observations, and this library's synthesis are in [research-ai-native-sdlc-2026-07.md](../evolution/research-ai-native-sdlc-2026-07.md).
+Current vendor lifecycle publications remain useful observations, not normative authorities; their contribution and limits are recorded in [research-ai-native-sdlc-2026-07.md](../evolution/research-ai-native-sdlc-2026-07.md).

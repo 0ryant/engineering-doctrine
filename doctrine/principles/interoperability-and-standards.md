@@ -6,8 +6,9 @@ This doctrine may cite **open specifications** (for example **CloudEvents**, **O
 
 ## 1. Standards Are Wire And Contract Shapes
 
-- **CloudEvents** — portable **event envelope** for queues, buses, and HTTP callbacks; avoids bespoke headers per team.
+- **CloudEvents** — portable default **event envelope** for queues, buses, and HTTP callbacks; an equivalent documented envelope may be preferable where a protocol, ecosystem, external contract, legacy boundary, or material constraint already governs.
 - **OpenTelemetry** — portable **instrumentation** and **OTLP**-style export where used; backends may be **vendor SaaS**, **cloud observability suites**, or **self-hosted**.
+- Adopting a standard means accepting its relevant conformance contract at the named boundary. Similar field names or an adapter do not silently establish conformance.
 
 **Why:** Managed runtimes and **PaaS** still require **stable contracts** between services. Vendor-neutral specs at the **contract** layer reduce lock-in while letting each org pick **runtime and backend** freely.
 
@@ -45,7 +46,7 @@ This doctrine may cite **open specifications** (for example **CloudEvents**, **O
 
 | Decision | Rationale |
 | --- | --- |
-| Cite specs, not stacks | Teams may use **zero** projects from a foundation’s landscape and still use **OTel + CloudEvents**. |
+| Cite specs, not stacks | Teams may use **zero** adjacent projects from a foundation’s landscape and still adopt a narrow interoperability specification. |
 | Estate-specific names in `tooling/estates/` | Keeps principles **readable** outside one cloud. |
 | Minimum standard surface | Avoids standards creep. |
 | gRPC / Protobuf optional parity | **JSON + OpenAPI** and **gRPC + proto** are both valid **contracts-first** stacks; pick per boundary and record gateways where needed. |

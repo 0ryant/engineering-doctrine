@@ -1,34 +1,35 @@
 # Modularity, Ports, Adapters, And Layering
 
-Durable rules for **replaceable** components, **explicit boundaries**, and **dependency direction** so systems stay testable and evolvable. Implements umbrella **Lego Extensibility** and **Layered Architecture** in depth.
+Durable rules for **replaceable** components, **explicit boundaries**, and **dependency direction** so systems stay testable and evolvable. Ports and adapters and layered architecture are strong patterns where their trade-offs fit; they are not a required four-layer shape for every system.
 
 ---
 
-## 1. Ports And Adapters (Hexagonal)
+## 1. Ports And Adapters (When Applicable)
 
-- **Domain / application core** depends on **abstractions** (ports)—not on databases, HTTP clients, or message brokers.
-- **Adapters** implement ports for a given technology; they are **swapped** without rewriting core rules.
-- **I/O at the edges** — file, network, clock, randomness injected or wrapped at boundaries for tests.
+- Where domain or application rules need to outlive infrastructure choices, make the core depend on **abstractions** (ports) rather than database, HTTP-client, or broker implementations.
+- **Adapters** implement ports for a technology and can be replaced without rewriting the protected rules.
+- Domain logic **SHOULD** be separable from infrastructure I/O when that improves testability or replacement. I/O libraries remain appropriate when file, network, database, telemetry, or messaging access is their explicit responsibility.
 
 **Why:** Alistair Cockburn’s **hexagonal architecture** and similar **ports-and-adapters** descriptions reduce “everything calls the ORM” coupling; see [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/) (authoritative summary on author site).
 
 ---
 
-## 2. Layered Responsibility
+## 2. Responsibility And Dependency Direction
 
-- Each **layer** has one job: e.g. **delivery** (HTTP/CLI), **application** (use cases), **domain** (rules), **infrastructure** (persistence, messaging).
-- **Dependencies point inward** — inner layers do not import outer layers’ concrete types.
+- Give each module or layer a coherent responsibility and make boundary crossings explicit. A delivery/application/domain/infrastructure split is one useful shape, alongside vertical slices, pipelines, plugins, dataflow, functional cores, and bounded components.
+- Declare and enforce dependency direction so stable policy does not depend accidentally on volatile infrastructure. “Inward” is meaningful only when the chosen architecture defines an inside and outside.
+- Keep boundaries testable and coupling controlled; do not add layers that merely forward calls or duplicate types without protecting a real invariant.
 
-**Why:** Matches the umbrella **layered architecture** sketch in `ENGINEERING.md` while staying **vendor-neutral**.
+**Why:** Dependency direction and explicit responsibility survive changes in architectural style; a fixed stack does not.
 
 ---
 
-## 3. Extension Without Mutation
+## 3. Coherent Evolution
 
-- **New behaviour** prefers **new modules** or **adapters** over editing stable core modules for unrelated features.
+- Preserve stable public contracts where compatibility matters. Extend or refactor existing modules when that produces the simpler coherent design; add a module or adapter when the behaviour has a genuinely separate responsibility or reason to change.
 - **Feature flags** or **conditional compilation** beat long-lived forks for optional capabilities.
 
-**Why:** Reduces merge conflict and regression risk on **high-trust** paths (money, auth, crypto).
+**Why:** Compatibility deserves protection, but extension-only accretion creates duplicate concepts, indirection, and permanent adapters. High-trust paths need stronger evidence for either refactoring or extension—not a blanket ban on modification.
 
 ---
 
@@ -38,6 +39,7 @@ Durable rules for **replaceable** components, **explicit boundaries**, and **dep
 | --- | --- |
 | Explicit ports | Makes **contract tests** and **fakes** natural at boundaries. |
 | Aligns with build surfaces | [build.md](build.md) deployable units map cleanly to **bounded** components. |
+| Architecture shape is contextual | The durable controls are responsibility, dependency direction, testability, and coupling. |
 
 ---
 

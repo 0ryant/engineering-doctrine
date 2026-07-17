@@ -84,7 +84,7 @@ The profile owns applicability and traceability. Existing principles own enginee
 | [Audit logging](../principles/audit-logging.md) | Capture security-relevant access and administrative events without copying CUI payloads unnecessarily; protect and retain evidence according to the profile. |
 | [Reliability and incidents](../principles/reliability-slo-incidents.md) | Route suspected exposure, control failure, supplier incident, recovery, and notification into the governed incident path. |
 | [AI and ML systems](../principles/ai-ml-systems.md) | Admit model providers, prompts, context stores, eval sets, logs, agent runners, and tools to the boundary before CUI use; run contracts cannot grant data authority the profile does not. |
-| [AI-native SDLC](ai-native-software-development-lifecycle.md) | Carry profile ID/revision, data/system scope, requirement claims, assessment evidence, authority, exceptions, and runtime outcomes through the transition record. |
+| [AI-native SDLC](ai-native-software-development-lifecycle.md) | Carry profile ID/revision, data/system scope, requirement claims, assessment evidence, authority, exceptions, and runtime outcomes through the linked lifecycle record families. |
 
 ## 6. Assessment And Evidence Semantics
 

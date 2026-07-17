@@ -10,7 +10,7 @@ Those files include:
 - `Decision date` — when the repository history shows the decision landed.
 - `Recorded date` — when the ADR was written.
 - `Retrospective: Yes` — a reminder that the ADR is evidence-based reconstruction, not proof the decision was documented at the time.
-- `Evidence` — commit hashes, file paths, or council notes that support the reconstruction.
+- `Evidence` — commit hashes, file paths, or contemporaneous decision records that support the reconstruction.
 
 Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 
@@ -31,12 +31,15 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0011](0011-add-semantic-index-for-agent-ingestion-and-topic-routing.md) | Accepted | 2026-05-09 | Add semantic index for agent ingestion and topic routing |
 | [0012](0012-model-routing-policy.md) | Accepted | 2026-05-20 | Portable model-routing contract: evidence-bound tiers, escalation, refusal, review, and cost ceilings |
 | [0021](0021-audit-as-discipline-applies-to-runner-itself.md) | Proposed | 2026-05-20 | Verification discipline applies recursively to measurement runners |
-| [0022](0022-hash-function-convergence-blake3-ed25519-hmac.md) | Proposed | 2026-05-20 | Portable cryptographic-purpose defaults: BLAKE3, Ed25519, and HMAC-SHA256 |
+| [0022](0022-hash-function-convergence-blake3-ed25519-hmac.md) | Rejected | 2026-05-20 | Reject a fixed portable cryptographic algorithm menu; use maintained applicable profiles |
 | [0023](0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) | Accepted | 2026-07-16 | Add AI adoption-control coverage: inventory & materiality, independent challenge, harm-surface testing, provider continuity, literacy |
-| [0024](0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) | Accepted | 2026-07-17 | Adopt an objective-to-outcome, evidence-backed AI-native SDLC with explicit authority, layered verification, deterministic enactment, and runtime reconciliation |
+| [0024](0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) | Accepted (amended by 0030) | 2026-07-17 | Adopt the evidence-and-authority kernel for an AI-native SDLC; operating model refined by ADR 0030 |
 | [0025](0025-restore-apache-2.0-as-project-license.md) | Accepted | 2026-07-17 | Restore Apache-2.0 as the adoption-first project licence and supersede the AGPL default-branch experiment |
 | [0026](0026-adopt-revision-pinned-external-control-profiles.md) | Accepted | 2026-07-17 | Adopt revision-pinned external control profiles; use NIST SP 800-171 as the worked CUI profile without making it a universal baseline |
 | [0027](0027-keep-public-doctrine-implementation-neutral.md) | Accepted | 2026-07-17 | Keep publishable doctrine implementation-neutral and remove organisation-private product names and local work records |
+| [0028](0028-adopt-claim-level-authority-applicability-and-exceptions.md) | Accepted | 2026-07-17 | Adopt claim-level normative strength, composable applicability, bounded exceptions, and control lifecycle |
+| [0029](0029-adopt-a-compact-non-duplicative-core-constitution.md) | Accepted | 2026-07-17 | Rebuild the umbrella as a compact core constitution and route map |
+| [0030](0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) | Accepted | 2026-07-17 | Refine AI-native delivery into seven gates, five record families, governed execution, typed claims, and three closure modes |
 
 ## Candidate Considered But Not Recorded
 
