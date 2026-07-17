@@ -1,12 +1,25 @@
 # Changelog
 
+<!-- markdownlint-configure-file {"MD013": false, "MD024": {"siblings_only": true}} -->
+
 All notable changes to this **engineering doctrine** library are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) (human-readable history). This repository uses **SemVer-shaped tags** for the *doctrine* contract, not for npm/cargo units—see [doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md](doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md) for patch / minor / major meaning, change classes, and release note expectations.
 
 ## [Unreleased]
 
+No unreleased changes.
+
+## [0.2.0] - 2026-07-17
+
+Second SemVer-tagged doctrine release. **Change classes:** additive guidance,
+normative tightening for AI/agent consumers, normative replacement for the
+portable-doctrine and licence boundaries, and repository-history repair.
+**Compatibility:** intentional `0.x` minor; every pinned consumer must review
+the migration notes before upgrading.
+
 ### Added
 
 - [doctrine/patterns/ai-native-software-development-lifecycle.md](doctrine/patterns/ai-native-software-development-lifecycle.md) — **doctrine-grounded AI-native SDLC**: stakeholder need → objective/standing obligation → guardrailed outcome measures → intervention hypothesis → bounded work → outputs → observed outcomes → portfolio decision; S0 observed need → S10 reconciled; transition admissibility, layered evidence, authority separation, deterministic enactment, brownfield P0–P5; with [readiness checklist](doctrine/checklists/ai-native-sdlc-readiness.md), [research basis](doctrine/evolution/research-ai-native-sdlc-2026-07.md), and [ADR 0024](docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md). **Consumer impact:** normative tightening for lifecycle-wide AI/agent consumers; adopt traceability and run contracts before expanding tool authority. **Compatibility proposal:** 0.x minor; pinned consumers must review before upgrading.
+- [doctrine/patterns/revision-pinned-control-profiles.md](doctrine/patterns/revision-pinned-control-profiles.md) — revision-pinned external control profiles, using NIST SP 800-171 Rev. 3 and explicitly authorised Rev. 2 obligations as the worked example; with [research basis](doctrine/evolution/research-nist-sp-800-171-control-profiles-2026-07.md) and [ADR 0026](docs/adr/0026-adopt-revision-pinned-external-control-profiles.md). **Consumer impact:** only consumers with an applicable CUI or other external-profile authority need adopt the profile record and migration controls.
 - [doctrine/patterns/ai-adoption-controls.md](doctrine/patterns/ai-adoption-controls.md) — **AI adoption controls**: system **inventory + materiality** tiers, named ownership with **independent challenge**, **harm-surface** testing, **third-party continuity**, workforce **literacy**; with [checklists/ai-adoption-readiness.md](doctrine/checklists/ai-adoption-readiness.md) (reviewable execution) and research basis [evolution/research-ai-adoption-control-gaps-2026-07.md](doctrine/evolution/research-ai-adoption-control-gaps-2026-07.md) (**A1–A8** gaps); [ADR 0023](docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md).
 - [doctrine/patterns/agentic-loop-design.md](doctrine/patterns/agentic-loop-design.md) — **agentic loop** design: ReAct, **verifiability gate**, ISC, **dual-path injection defence**, context engineering, verbal RL, **autonomy slider**.
 - [doctrine/patterns/feature-flag-lifecycle.md](doctrine/patterns/feature-flag-lifecycle.md) — **feature flag** lifecycle (creation → rollout → retirement).
@@ -24,6 +37,7 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 ### Changed
 
 - **Portable-doctrine boundary and history repair** — [ADR 0027](docs/adr/0027-keep-public-doctrine-implementation-neutral.md) removes organisation-private product names, internal repository links, and local execution/gap records from publishable doctrine; reusable decisions and examples now use capability-class wording. Reachable branch/tag history is rewritten, so commit-pinned consumers must re-fetch or re-clone and select a reviewed replacement pin. **Change class:** normative replacement plus history repair. **Compatibility proposal:** next `0.x` minor with an explicit breaking source-control notice.
+- **Repository branch hygiene** — completed and superseded feature heads were removed after their exact rewritten history was made reachable from `archive/pre-v0.2.0-divergent-branches-20260717`; the two explicitly named stash-backup branches remain as unmerged recovery records rather than active delivery branches.
 - **Project licence restored to Apache-2.0** — [ADR 0025](docs/adr/0025-restore-apache-2.0-as-project-license.md) supersedes the untagged AGPL-3.0-or-later default-branch experiment. Material published during that interval is additionally offered under Apache-2.0; prior AGPL grants remain valid. **Change class:** normative replacement, rights-expanding for consumers. **Consumer impact:** no migration required; consumers may adopt, copy, and adapt under Apache-2.0. **Compatibility proposal:** next `0.x` minor.
 - **ADR 0024 anchors** — lifecycle composition in [ai-ml-systems.md](doctrine/principles/ai-ml-systems.md), [secure-development-lifecycle.md](doctrine/principles/secure-development-lifecycle.md), [tooling/ai-assisted-development.md](doctrine/tooling/ai-assisted-development.md), and navigation/vocabulary surfaces. No universal transition schema is adopted without representative brownfield evidence.
 - **ADR 0024 vendor-source refinement** — AWS, Microsoft, and Anthropic observations add explicit multi-agent lineage/workspace ownership, long-running checkpoints and safe resume, isolated execution of untrusted candidates, action-level receipts without chain-of-thought dependence, operations-originated S0 feedback, and coordination/demand-amplification measures. Vendor speed claims, renamed rituals, and product stacks remain non-normative.
@@ -34,6 +48,27 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 - **ADR 0010 gap closure (G1–G6)** — Six parallel research passes (NIST/CISA/OWASP/FIRST/ISO anchors) synthesized into normative text: [secure-development-lifecycle.md](doctrine/principles/secure-development-lifecycle.md), [dependencies-supply-chain.md](doctrine/principles/dependencies-supply-chain.md), [measurement-and-dora.md](doctrine/principles/measurement-and-dora.md), [merge-path-evidence-and-pipeline-integrity.md](doctrine/principles/merge-path-evidence-and-pipeline-integrity.md), [testing-strategy.md](doctrine/principles/testing-strategy.md), [threat-modeling-stride-lite.md](doctrine/principles/threat-modeling-stride-lite.md), [incident-lifecycle-and-on-call-operations.md](doctrine/patterns/incident-lifecycle-and-on-call-operations.md), [ai-ml-systems.md](doctrine/principles/ai-ml-systems.md), [code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md), [tooling/merge-path-and-pipeline-control-suite.md](doctrine/tooling/merge-path-and-pipeline-control-suite.md); [ADR 0010](docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) updated with closure table; [REFERENCES](doctrine/REFERENCES.md), [ENGINEERING](ENGINEERING.md).
 
 - [doctrine/patterns/gitops-and-declarative-operations.md](doctrine/patterns/gitops-and-declarative-operations.md) — lead with **OpenGitOps** v1.0.0, **OWASP** CI/CD top risks, **NIST** SSDF and **12factor** config pointers; in-repo links moved to a **secondary** “alignment” section; [REFERENCES.md](doctrine/REFERENCES.md) and [glossary](doctrine/glossary.md) **GitOps** entry updated for external **bibliography**.
+
+### Consumer impact
+
+- **Commit-pinned, fork, subtree, and submodule consumers:** this release follows a history rewrite. Re-fetch with pruning or re-clone, review `v0.2.0`, and replace the old pin. Do not merge unrelated pre-rewrite and rewritten histories.
+- **AI/agent delivery consumers:** adopt objective-to-outcome lineage, run contracts, independent challenge, evidence-bound authorisation, deterministic enactment, and runtime reconciliation before expanding agent authority.
+- **Consumers subject to CUI or another external control profile:** record the governing authority, exact revision, boundary, organisation-defined parameters, assessment basis, exceptions, and migration state. Do not infer applicability from this library alone.
+- **Other consumers:** the new control-profile material is optional unless an external authority makes it applicable. Apache-2.0 remains the project licence.
+
+### Migration
+
+1. Re-clone or fetch with pruning, then pin the reviewed `v0.2.0` tag.
+2. AI/agent consumers should follow P0–P5 in the AI-native SDLC pattern; do not increase tool or production authority ahead of the corresponding evidence and authorisation controls.
+3. Externally regulated consumers should select a revision from the governing agreement, not from a generic “latest” or “NIST compliant” label, and retain old and new evidence separately during migration.
+4. Preserve estate-specific tooling and rollout records outside this portable library.
+
+### Evidence
+
+- Decisions and source grounding: ADRs 0023–0027 and their linked research notes.
+- Delivery record: merged pull requests [#15](https://github.com/0ryant/engineering-doctrine/pull/15), [#16](https://github.com/0ryant/engineering-doctrine/pull/16), [#17](https://github.com/0ryant/engineering-doctrine/pull/17), and [#18](https://github.com/0ryant/engineering-doctrine/pull/18).
+- Release comparison: [`v0.1.0...v0.2.0`](https://github.com/0ryant/engineering-doctrine/compare/v0.1.0...v0.2.0).
+- Verification on the release revision: doctrine preflight, contract-schema positive and negative cases, Python compilation, Markdown links, Mermaid rendering, private-name/history scans, and Git object integrity.
 
 ## [0.1.0] - 2026-04-27
 
