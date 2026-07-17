@@ -1,133 +1,70 @@
-# ADR-0022 — Hash function convergence: BLAKE3 (content) + Ed25519 (signatures) + HMAC (MAC)
+# 0022. Cryptographic Primitives By Purpose
 
-**Status:** Proposed 2026-05-20
-**Decision:** Operator-locked 2026-05-20
-**Supersedes:** —
-**Related:** ADR-0021 (audit-as-discipline applies to runner itself)
+Status: Proposed
+Decision date: 2026-05-20
+Recorded date: 2026-05-20
+Retrospective: No
 
 ## Context
 
-The Algol Suite cohort uses 4 different hash families across catalog
-tools today:
+Content addressing, digital signatures, message authentication, password
+storage, and key derivation solve different problems. Treating them as one
+generic “hashing” requirement leads to algorithm confusion, unverifiable
+receipts, or unsafe reuse of primitives outside their design purpose.
 
-- **BLAKE3** — `cortex` (hash-chained memory ledger; receipt envelopes)
-- **SHA-256** — most tools (event hashes, content addresses, receipt SHAs
-  in driftlock / mcpact / taudit / engineering-doctrine schemas / etc.)
-- **HMAC** (over SHA-256) — `tsafe` (audit-trail line MAC)
-- **Ed25519** — `cellos` (CloudEvent signatures), `aegress`
-  (artifact-egress signatures), `axiom-composer` (decision-packet signing)
+Portable doctrine should define purpose and migration obligations without
+embedding one organisation's product inventory.
 
-The conformance v2 matrix flagged this as cross-cutting pattern #5
-("hash-function convergence") and listed it as an operator decision.
+## Proposed Decision
 
-The lack of convergence costs:
+Use these defaults where an estate has not adopted a stronger compatible
+profile:
 
-1. **Cohort-wide verification scripts** can't assume one hash family;
-   they must dispatch per-tool.
-2. **Customer tooling that wants to verify Algol Suite receipts** has to
-   ship 2 hashing libraries (BLAKE3 + SHA-256) plus signature libs.
-3. **Doctrine clarity** suffers: when a new catalog tool is added,
-   "which hash should I use?" has no canonical answer.
+| Purpose | Default | Boundary |
+| --- | --- | --- |
+| Content addressing, hash chains, receipt and file fingerprints | BLAKE3 with a 256-bit output | Domain-separate record types; record algorithm and canonicalisation version. |
+| Digital signatures | Ed25519 | Record key identity and trust class; signatures provide integrity/origin only to the extent the trust root is authoritative. |
+| Shared-secret message authentication | HMAC-SHA256 | Use only where sender and verifier intentionally share a secret; do not use as a public signature. |
 
-## Decision
+Additional rules:
 
-**Canonical hash family per use-case:**
-
-| Use-case | Canonical algorithm | Library | Rationale |
-|----------|---------------------|---------|-----------|
-| Content addressing (hash chains, receipts, file content fingerprints) | **BLAKE3** | `blake3` (Rust crate, MIT/Apache-2.0) | Modern, fast (~3 GB/s single-threaded), 256-bit output, no known weaknesses. `cortex` already canonical. |
-| Digital signatures | **Ed25519** | `ed25519-dalek` (Rust crate, BSD-3) | Already canonical for `cellos`, `aegress`, `axiom-composer`. Industry standard; small keys / signatures; constant-time. |
-| Message Authentication Code (MAC over secrets) | **HMAC-SHA256** | `hmac` + `sha2` (RustCrypto) | Narrow scope — only when MAC is genuinely needed (e.g., `tsafe` audit-trail line authentication where the receiver shares a secret). NOT a general content-addressing replacement. |
-
-**Forbidden / deprecated:**
-
-- **SHA-256 as a content address** (when not part of HMAC) is
-  deprecated for new code. Migration: BLAKE3 replaces it.
-- **MD5, SHA-1, BLAKE2** — not in scope; do not introduce.
-- Re-implementing any of these from scratch — use the named crates.
-
-## Migration
-
-### Tools that ALREADY match canonical
-
-- `cortex` — BLAKE3 ✓
-- `cellos` — Ed25519 ✓
-- `aegress` — Ed25519 ✓
-- `axiom-composer` — Ed25519 ✓
-- `tsafe` — HMAC-SHA256 ✓ (narrow scope: audit-line MAC)
-
-### Tools that need migration (SHA-256 content addressing → BLAKE3)
-
-To be enumerated in a follow-up `standardisation/hash-functions/CONFORMANCE.md`
-audit. Likely candidates from conformance v2 matrix:
-
-- `mcpact` — receipt-emission pattern uses SHA-256 hashes; migrate to
-  BLAKE3 for content addressing
-- `driftlock` — TaskGraph hash-chained audit events use SHA-256;
-  migrate to BLAKE3
-- `taudit` — authority-graph fingerprints use SHA-256; migrate to BLAKE3
-- `corcept` — receipt content hashes use SHA-256; migrate to BLAKE3
-- `tapprove` — artifact trust-graph hashes use SHA-256; migrate to BLAKE3
-- `doctrine-mcp` — citation provenance hashes use SHA-256; migrate to
-  BLAKE3 (priming-block SHA-256 stays SHA-256 ONLY if the priming-block
-  is consumed by external verifiers that expect SHA-256; otherwise migrate)
-
-### Migration order
-
-1. **Phase 1**: write `ecosystem-catalog/standardisation/hash-functions/CONFORMANCE.md`
-   auditing every tool's current hash usage with citations.
-2. **Phase 2**: per-tool migration PRs (one PR per tool; ~5 LOC each
-   for the hash constructor + tests). Bump tool minor version.
-3. **Phase 3**: receipt-format ADR amendment in the relevant tool's
-   ADRs noting the hash transition (consumers reading old receipts need
-   a fallback during the transition).
-4. **Phase 4**: customer-facing receipts format change announced in
-   the bundle CHANGELOG.
+1. Plain SHA-256 remains acceptable where an external protocol, standard, or
+   compatibility contract requires it; label that boundary explicitly.
+2. Password storage uses a password-hashing or key-derivation function selected
+   by the estate security profile, not any content-addressing primitive above.
+3. Every signed or hashed format carries an algorithm identifier and
+   canonicalisation/version field.
+4. Algorithm migration uses dual-read or versioned verification during a bounded
+   transition; never reinterpret an old digest under a new algorithm name.
+5. Cryptographic agility is a format and trust-root concern, not permission for
+   arbitrary runtime algorithm selection.
 
 ## Consequences
 
-### Positive
+- Verifiers can dispatch by explicit purpose and algorithm identifier.
+- Cross-language implementations share test vectors and canonical bytes.
+- Estates still need key custody, rotation, revocation, and trust-root policy.
+- Post-quantum migration and password-storage parameters remain separate
+  decisions.
 
-- One content-addressing hash across the cohort.
-- Cohort-wide verifier scripts can assume BLAKE3 (single library).
-- New catalog tools have a canonical answer to "which hash?"
-- BLAKE3's speed is a real win for `cortex`'s ledger and any large-file
-  hashing.
+## Consumer Impact
 
-### Negative
-
-- ~5 tools need migration PRs.
-- Existing receipts in customer environments may have SHA-256 hashes;
-  consumers need fallback during transition.
-- BLAKE3 is less widely known than SHA-256; customer-side verifier
-  scripts need a BLAKE3 library (not in OS standard sets the way SHA-256
-  is in `openssl`).
-
-### Out of scope
-
-- Choosing between BLAKE3 keyed mode and HMAC for MAC. HMAC is the
-  canonical choice for the narrow MAC use-case; BLAKE3 keyed mode is
-  not adopted to keep the use-case → algorithm mapping clean.
-- Argon2 / scrypt / etc. (password hashing). The cohort doesn't store
-  passwords. Not in scope.
-- Post-quantum signatures. When the cohort adopts a post-quantum
-  scheme, a successor ADR replaces Ed25519 here.
+**Change class:** normative replacement of a portfolio inventory with portable
+purpose-based guidance. Consumers should inventory formats, record current
+algorithms honestly, and migrate only through versioned compatibility plans.
 
 ## Verification
 
-A new `ecosystem-catalog/standardisation/hash-functions/CONFORMANCE.md`
-will audit every tool's hash usage and track migration. Compliance is
-binary: a tool either uses the canonical hash for each use-case or it
-does not.
+- Cross-language test vectors produce identical canonical bytes and digests.
+- Signature verification rejects an unknown key identity and tampered payload.
+- HMAC verification is not accepted as public-key origin evidence.
+- A migration fixture verifies both explicitly versioned old and new records and
+  rejects algorithm-name substitution.
 
 ## References
 
-- BLAKE3 paper + spec: https://github.com/BLAKE3-team/BLAKE3-specs
-- Ed25519 RFC 8032
-- HMAC RFC 2104
-- Operator decision in AskUserQuestion 2026-05-20: option (a) selected
-  from the portfolio-tasks §2 hash-convergence decision
-- Cohort hash audit citations:
-  - `cortex/crates/cortex-core/src/hash.rs` (BLAKE3)
-  - `cellos/crates/cellos-core/src/sign.rs` (Ed25519)
-  - `tsafe/crates/tsafe-core/src/audit.rs` (HMAC-SHA256)
+- [RFC 8032](https://www.rfc-editor.org/rfc/rfc8032) — Ed25519.
+- [RFC 2104](https://www.rfc-editor.org/rfc/rfc2104) — HMAC.
+- [FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final) — SHA-2.
+- [BLAKE3 specification](https://github.com/BLAKE3-team/BLAKE3-specs) — BLAKE3.
+- [ADR 0027](0027-keep-public-doctrine-implementation-neutral.md).

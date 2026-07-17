@@ -135,9 +135,9 @@ NIST extended the SSDF with a community profile for generative AI and dual-use f
 OpenSSF framework for build provenance and supply chain integrity, with a draft Dependency track covering SBOM-backed vulnerability triage. SLSA L3 (hardened builds with isolated runners, signed provenance) is the target state for production artifact pipelines.
 [https://slsa.dev/](https://slsa.dev/)
 
-**OWASP ASVS 4.0 — V4.1 General Access Control Design**
-Codifies least-privilege (V4.1.3, all ASVS levels), fail-secure access controls (V4.1.5), and architecture-level secure design. The forthcoming ASVS 5.0 (RC 2025) refines authorization in V8.
-[https://owasp.org/www-community/controls/Least_Privilege_Principle](https://owasp.org/www-community/controls/Least_Privilege_Principle)
+**OWASP ASVS 4.0 And 5.0**
+Codifies least privilege and fail-secure access control in the version reviewed. OWASP released ASVS 5.0.0 on 30 May 2025; consumers should pin requirement identifiers with the ASVS version because numbering changes between releases. The current stable project page is the authority for later mappings.
+[https://owasp.org/www-project-application-security-verification-standard/](https://owasp.org/www-project-application-security-verification-standard/)
 
 **OWASP Secure by Design Framework**
 Design-phase principles: least privilege, defense in depth, secure defaults, minimized attack surface, simplicity. Explicitly a pre-implementation framework, complementing ASVS's implementation-phase verification.

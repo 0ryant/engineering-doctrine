@@ -8,7 +8,7 @@
 
 ## 1. Trigger And Provenance (Honesty Note)
 
-The trigger was an operator-supplied summary of a financial-services/insurance AI-risk paper arguing that the material risk is **adoption without enterprise-grade controls**, organised as a five-layer control model (inventory, ownership, testing, third-party controls, capability uplift). A search of actuarial, insurance-body, and consultancy publications did **not** confidently identify the source paper, so **nothing in this corpus is attributed to it**. Its headline statistic was verified independently: the Bank of England / FCA survey *Artificial intelligence in UK financial services — 2024* (21 Nov 2024) reports **75%** of firms already using AI and a further **10%** planning to within three years, with a **third of use cases being third-party implementations** (up from 17% in 2022).
+Initial working material argued that the material risk is **adoption without enterprise-grade controls**, organised as a five-layer model: inventory, ownership, testing, third-party controls, and capability uplift. Its source paper could not be confidently identified, so **nothing in this corpus is attributed to it**. The headline statistic was verified independently: the Bank of England / FCA survey *Artificial intelligence in UK financial services — 2024* (21 Nov 2024) reports **75%** of firms already using AI and a further **10%** planning to within three years, with a **third of use cases being third-party implementations** (up from 17% in 2022).
 
 The five-layer framing survives contact with primary sources (NIST AI RMF, SS1/23, DORA, EU AI Act — §3 below); the doctrine additions cite those primary sources, not the paper.
 

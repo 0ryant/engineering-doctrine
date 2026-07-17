@@ -7,6 +7,7 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] ADR: new docs/adr/NNNN-*.md + docs/adr/README.md index row, or explicit reference to existing ADR; skip only for pure editorial (note in PR)
 [ ] Research: external citations and/or doctrine/evolution/ note linked from the change or ADR when non-trivial
 [ ] Change belongs in principles (timeless) vs tooling (illustrative) vs estates (vendor-specific) — see principles/timeless-principles-and-tooling.md
+[ ] Portability: no organisation-private products, portfolio tools, internal repositories, local paths, or programme artefacts appear in publishable files
 [ ] If principle changed: rationale and references updated; not just opinion
 [ ] If umbrella ENGINEERING.md changed: principle file exists or is intentionally summary-only; no new prescriptive vendor picks in principles
 [ ] Cross-links added from related principles/patterns (avoid orphan pages)

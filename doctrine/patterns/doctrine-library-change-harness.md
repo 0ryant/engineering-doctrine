@@ -15,6 +15,8 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
    - **Principle** — timeless intent; no vendor SKUs; cite rationale and **references**.
    - **Pattern** — how surfaces fit; may reference examples.
    - **Tooling** — illustrative stack, filenames, bots; **optional** to adopt.
+     Do not name organisation-private portfolio implementations; keep those in
+     the consuming organisation's private estate documentation.
    - **Estates** — org-specific only: `doctrine/tooling/estates/`.
 3. **Classify** per [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md): editorial / navigation / additive guidance / normative tightening / replacement / estate-only / deprecation.
 4. If the idea does not fit a layer, stop and open an **issue** or **draft PR** (see [CONTRIBUTING.md](../../CONTRIBUTING.md)) before writing thousands of words.
@@ -55,6 +57,9 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
 1. **Principles** — assert durable intent; link outward to **patterns** and **tooling** *where* teams next look for how-to.
 2. **Patterns** — link back to **principles**; point to **tooling** for concrete examples; avoid duplicating long normative blocks.
 3. **Tooling** — link to **principles** and **patterns**; keep vendor names here, not in principles.
+   Public vendor names are allowed only as optional illustrations. Private
+   product, repository, and programme names do not belong in any publishable
+   layer; describe the capability class instead.
 4. **Checklists** — if the addition creates a **new obligation** for adopters, add or extend a checklist under [checklists/](../checklists/); link from the principle/pattern.
 5. **Umbrella** — if [ENGINEERING.md](../../ENGINEERING.md) has a one-line index or section for this area, add or update it; do not invent the only copy of a rule in the umbrella (see [doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md)).
 

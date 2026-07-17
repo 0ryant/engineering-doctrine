@@ -18,6 +18,10 @@ How this repository stays **useful for years** while stacks change: separate **w
 
 - **Tooling** documents capture **one possible** way to satisfy principles with concrete products and filenames (`.pipelines/`, `justfile`, a particular bot).
 - **Estate supplements** live under `doctrine/tooling/estates/`—**optional** notes for a given organisation, region, or cloud (for example one team’s Azure mappings). They are **not** global law.
+- Organisation-private products, portfolio tools, internal repositories, and
+  programme artefacts stay in the consuming organisation's private estate
+  documentation. Even the public tooling layer illustrates capability classes;
+  it does not catalogue a maintainer's private stack.
 - **GenAI, RAG, agents, and vector/embedding pipelines** are **first-class** delivery concerns: portable **intent** in [ai-ml-systems.md](ai-ml-systems.md); **illustrative** product categories in [../tooling/ai-assisted-development.md](../tooling/ai-assisted-development.md) and [../tooling/vector-retrieval-and-embedding-illustration.md](../tooling/vector-retrieval-and-embedding-illustration.md).
 - Teams **swap** tooling while keeping the same **surface contracts** (quality gate, build artefact, deploy unit, verification) described in [build.md](build.md) and `ENGINEERING.md`.
 
@@ -73,6 +77,7 @@ NIST’s **Secure Software Development Framework (SSDF)** groups practices into 
 | Principles avoid product mandates | Maximises **reuse** across clouds and acquisitions. |
 | Explicit tooling tier | Lets templates be **opinionated** without pretending those opinions are physics. |
 | Estate folder | Isolates **organisation-local** guidance from portable doctrine. |
+| No private portfolio names | Prevents one maintainer's implementation from becoming a public dependency or implied mandate. |
 | SSDF cross-walk table | Helps **regulated** readers without turning the repo into a **SOC2** checklist. |
 
 ---

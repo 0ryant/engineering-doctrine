@@ -219,7 +219,7 @@
     },
     "model_policy": {
       "type": "object",
-      "description": "Closed model allow-list plus explicit deny-list. The deny-list is load-bearing: Stage 2 evidence found Haiku-class confabulation on SKILLS access.",
+      "description": "Closed model allow-list plus explicit deny-list. Adopting estates bind these lists to current model evaluations and materiality policy.",
       "additionalProperties": false,
       "required": ["allowed_models"],
       "properties": {
@@ -273,7 +273,7 @@
             "ceiling": {
               "type": "string",
               "enum": ["LocalUnsigned", "SelfSigned", "RemoteSigned"],
-              "description": "Cortex truth-ceiling lattice level. RemoteSigned is the strongest."
+              "description": "Truth-ceiling level for retrieved memory. RemoteSigned is the strongest."
             }
           }
         }
@@ -281,7 +281,7 @@
     },
     "capabilities": {
       "type": "object",
-      "description": "Closed tool set. Anything outside is denied at the corcept boundary.",
+      "description": "Closed tool set. Anything outside is denied at the host policy boundary.",
       "additionalProperties": false,
       "required": ["tools"],
       "properties": {

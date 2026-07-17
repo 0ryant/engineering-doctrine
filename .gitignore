@@ -11,10 +11,8 @@ __pycache__/
 # Claude Code agent state (per-session local settings)
 .claude/
 
-# Cordance pack output (regenerable; not authoritative — ADR 0005)
-.cordance/
-# Local developer convention only — this filename is the operator's developer
-# harness target file. It is not a product feature and not required by any
-# doctrine consumer. Keeping it ignored prevents accidental commits during
-# local cordance pack experiments.
-pai-axiom-project-harness-target.json
+# Local execution and coordination records are not portable doctrine.
+/.local/
+/AXIOM.md
+/gaps.md
+/*-project-harness-target.json
