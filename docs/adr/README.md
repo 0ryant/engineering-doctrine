@@ -36,6 +36,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0023](0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) | Accepted | 2026-07-16 | Add AI adoption-control coverage: inventory & materiality, independent challenge, harm-surface testing, provider continuity, literacy |
 | [0024](0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) | Accepted | 2026-07-17 | Adopt an objective-to-outcome, evidence-backed AI-native SDLC with explicit authority, layered verification, deterministic enactment, and runtime reconciliation |
 | [0025](0025-restore-apache-2.0-as-project-license.md) | Accepted | 2026-07-17 | Restore Apache-2.0 as the adoption-first project licence and supersede the AGPL default-branch experiment |
+| [0026](0026-adopt-revision-pinned-external-control-profiles.md) | Accepted | 2026-07-17 | Adopt revision-pinned external control profiles; use NIST SP 800-171 as the worked CUI profile without making it a universal baseline |
 
 ## Candidate Considered But Not Recorded
 

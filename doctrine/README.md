@@ -38,6 +38,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) — **AI vulnerability storm / Mythos-era** engineering research (CSA briefing, SSDF/SLSA/OWASP anchors) + [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) (G1–G6 **synthesized** into principles/patterns—see ADR closure table)
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) — **AI adoption-control** gap audit (inventory/materiality, effective challenge, fairness/drift testing, provider continuity, literacy; NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act anchors) + [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) (A1–A8 closure table)
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) — **AI-native SDLC** research and council-proposal audit: objective/measure lineage, secure lifecycle, provenance, authority, evidence, deterministic enactment, runtime reconciliation + [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md)
+- [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) — **NIST SP 800-171 Rev. 2/Rev. 3 and wider-doctrine** analysis: applicability, revision migration, CUI boundary, assessment evidence, and compositional control profiles + [ADR 0026](../docs/adr/0026-adopt-revision-pinned-external-control-profiles.md)
 
 ### Governance & Assurance
 
@@ -45,6 +46,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 
 - [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) — **merge path & pipeline integrity** (binding gates, evidence, SBOM/provenance expectations; NIST / CISA / SLSA–cited)
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) — **engineering controls governance programme** (ownership, waivers, metrics, audit consumption; CSF 2.0–aligned)
+- [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) — **external control profiles** (governing authority, exact revision, bounded applicability, parameter/tailoring decisions, assessment evidence, exceptions, and migration; NIST SP 800-171 CUI worked profile)
 - [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) — illustrative **control suite** for merge paths and pipelines
 - [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls** (inventory & materiality, ownership & effective challenge, harm-surface testing, provider continuity, capability uplift)
@@ -104,6 +106,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) — **anti-confabulation priming** for build-class agents; canonical ~200-token block lifts Sonnet 4.6 canonical 78→85 (delta tightening 12 pts) at ~200-token cost
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls**: inventory & materiality, ownership & independent challenge, harm-surface test matrix, third-party AI continuity, role-based capability uplift
 - [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native SDLC**: objective and guardrailed outcome measures, intervention hypotheses, evidence-backed transitions, run-contract compilation, authority, enactment, runtime reconciliation
+- [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) — **revision-pinned external control profiles**: apply contractual/regulatory baselines without copying them into universal principles; NIST SP 800-171 CUI worked profile
 
 ### Skills
 

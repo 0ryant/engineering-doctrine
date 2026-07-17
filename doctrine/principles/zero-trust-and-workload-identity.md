@@ -1,6 +1,6 @@
 # Zero Trust And Workload Identity
 
-Durable rules for **verifying** callers and **least privilege** between services and humans. Deepens umbrella **Zero Trust** without mandating a single mesh or cloud product.
+Durable rules for **verifying** callers and **least privilege** between services and humans. Deepens umbrella **Zero Trust** without mandating a single mesh or cloud product. Where a contract, regulation, or estate decision applies an external baseline, [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) binds these identity controls to its exact revision, system/data boundary, evidence, and exceptions.
 
 ---
 
