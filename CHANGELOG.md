@@ -6,7 +6,12 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
-**Compatibility proposal:** `v0.3.1` patch. The implemented changes are editorial and navigation corrections; the linked `v0.4.0` items remain non-normative tasking.
+## [0.3.1] - 2026-07-17
+
+Post-v0.3.0 precision maintenance. **Change classes:** editorial and navigation.
+**Consumer impact:** existing consumers can adopt this release without changing
+their controls or operating model; the linked `v0.4.0` items remain
+non-normative tasking. **Compatibility:** patch.
 
 ### Added
 
