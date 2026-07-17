@@ -60,9 +60,9 @@ This is a training view over the canonical rules below, not a second authority s
 
 ## 4. Mandates And Optional Outcome Linkage
 
-Every change has an accountable mandate. Choose the justification class that matches why the work exists:
+Every change has an accountable mandate. Choose the mandate class that matches why the work exists:
 
-| Justification class | Minimum mandate | Additional overlay |
+| Mandate class | Minimum mandate | Additional overlay |
 | --- | --- | --- |
 | **Product or strategic intervention** | Stakeholder need, objective, owner, scope, materiality, non-goals. | Apply [Outcome And Portfolio Linkage](outcome-and-portfolio-linkage.md): measures/guardrails, intervention hypothesis, attribution limits, and continue/change/stop review. |
 | **External or standing obligation** | Governing authority, obligation, affected boundary, owner, due condition. | Add a revision-pinned control profile where applicable. |
@@ -79,7 +79,7 @@ The gates are decision boundaries, not mandatory team names or workflow statuses
 
 | Gate | Question | Minimum exit evidence |
 | --- | --- | --- |
-| **G1 Admit mandate** | Why does the work exist, who owns it, and what boundary/materiality applies? | Justification class; addressable source; owner; scope/non-goals; capability and materiality classification. |
+| **G1 Admit mandate** | Why does the work exist, who owns it, and what boundary/materiality applies? | Mandate class; addressable source; owner; scope/non-goals; capability and materiality classification. |
 | **G2 Specify claims** | What must be true, and what evidence could support or falsify it? | Typed candidate and runtime claims; invariants; threat/abuse cases; evidence obligations; validity windows and owners. |
 | **G3 Bound governed execution** | What may humans and agents inspect, change, invoke, spend, delegate, and return? | Run contracts where activated; input snapshots; permissions; outputs; host/workflow limits; stops; handoffs; integration owner. |
 | **G4 Produce candidate** | What exact change and artefacts are proposed? | Reviewable diff; immutable candidate identity; provenance; action receipts; limitations; tests/docs changed. |
@@ -113,7 +113,7 @@ The record is normally distributed across existing controlled systems. These are
 
 | Family | Minimum content | Separately addressable parts |
 | --- | --- | --- |
-| **Mandate** | Justification class; source; owner; scope/non-goals; materiality; affected systems/consumers; optional strategic linkage. | External authority, risk acceptance, objective/measure versions where applicable. |
+| **Mandate** | Mandate class; source; owner; scope/non-goals; materiality; affected systems/consumers; optional strategic linkage. | External authority, risk acceptance, objective/measure versions where applicable. |
 | **Governed execution** | Run-contract identity; input snapshot; allowed tools/data/targets; outputs; host/workflow limits; delegation; stops; receipts. | Parent/child contracts, checkpoints, cancellations, handoffs, integration result. |
 | **Candidate claim set** | Immutable candidate; typed claims; limitations; affected surfaces; evidence obligations and falsifiers. | Each claim and the candidate version it addresses. |
 | **Challenge and decision** | Evidence, findings, policy verdict, accountable authority, approvals, and waiver. | Technical evidence remains distinct from policy verdict, approval, and exception. |
@@ -286,7 +286,7 @@ Insert the gates into existing records rather than replacing the delivery system
 | Stage | Outcome | Evidence |
 | --- | --- | --- |
 | **P0 Baseline** | Map the current change path, AI interactions, systems of record, protected targets, and gaps. | One representative change can be reconstructed from mandate to runtime receipt. |
-| **P1 Admit and claim** | Add justification class, owner, materiality, claims, and affected scope to issue/PR templates. | Routine and strategic changes select the right mandate without invented KPIs. |
+| **P1 Admit and claim** | Add mandate class, owner, materiality, claims, and affected scope to issue/PR templates. | Routine and strategic changes select the right mandate without invented KPIs. |
 | **P2 Bound governed work** | Activate run contracts and isolated workspaces only when governed-execution triggers apply. | Undeclared authority, delegation, or output fails visibly; incidental assistance remains lightweight. |
 | **P3 Bind challenge and authority** | Candidate identity, evidence, policy verdict, approvals, and waivers are linked but distinct. | Missing, stale, inconclusive, or unbound evidence blocks the controlled path. |
 | **P4 Observe and close** | Deployment receipts and runtime claims link back to the candidate; closure mode is explicit. | Release can be followed to technical/operational closure and optional outcome review. |

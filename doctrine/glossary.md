@@ -96,6 +96,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Estate** — In this repo: a **specific** organisation, cloud, or region whose **named** product choices live under `tooling/estates/`—not global law. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
+**Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
+
 **Exactly-once (illusion)** — True end-to-end **exactly-once side effects** are rare; most systems are **at-least-once** plus **idempotent** design. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
 **Embedding** — Numeric **vector** representing text (or other content) for **similarity** search; used in **dense** retrieval alongside **lexical** search in typical RAG. Changing **model** or **dimensions** forces **re-embed** and index **migration** ([ai-ml-systems.md](principles/ai-ml-systems.md) §7). See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md).
@@ -119,6 +121,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Golden path** — Org’s **blessed** default way to build/run a service (scaffold → gates → promote → operate). See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 
 **GitOps** — In this library: **anchored** to **OpenGitOps** v1.0.0 [PRINCIPLES.md](https://raw.githubusercontent.com/open-gitops/documents/v1.0.0/PRINCIPLES.md) (declarative, versioned, pull, reconcile) plus [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/) and [NIST SSDF](https://csrc.nist.gov/publications/detail/sp/800-218/final) *pointers* in [gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md), then mapped to in-repo build/collab/merge-path doctrine. Community hub: [OpenGitOps](https://opengitops.dev/).
+
+**Governed execution** — Model/agent execution that gains material authority or reliance through tool use, persistent mutation, sensitive data, asynchronous/delegated work, material budget, cross-system scope, controlled-path output, or acceptance without full inspection. It requires a [run contract](patterns/run-contracts.md); incidental ephemeral assistance does not automatically qualify.
 
 **Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
@@ -164,6 +168,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## M
 
+**Mandate / mandate class (change)** — An addressable justification, accountable owner, scope, materiality, and non-goals for software work. Its mandate class is product/strategic, external obligation, vulnerability/incident response, compatibility/lifecycle maintenance, risk reduction/invariant preservation, or enabling work. A mandate does not always require a business KPI. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §4.
+
 **Materiality (AI)** — Business-impact tier of an AI system (person-affected decisions, money movement, irreversibility, blast radius) — **orthogonal** to capability tiers A–D; controls scale with the **max** of the two. See [ai-ml-systems.md](principles/ai-ml-systems.md) §2.1, [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.1.
 
 **MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover **tools** and **resources** (often JSON-RPC); treat servers as **production** integrations (authz, audit, supply chain). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
@@ -185,6 +191,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **NIST AI 600-1** — *AI Risk Management Framework: Generative Artificial Intelligence Profile* (July 2024): GenAI-specific risks and suggested actions aligned with **AI RMF** functions. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2, [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) references.
 
 **Nit (non-blocking review)** — Style, naming, or **optional** improvement that **need not** block merge; often lands as a follow-up **issue**. See [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §3.
+
+**Normative terms (BCP 14)** — Capitalised `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` express claim-level strength under RFC 2119/8174. Applicability is determined before strength is enforced; `CONTEXT-DEPENDENT` and `EXAMPLE` are content classes, not BCP 14 levels. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).
 
 ---
 
@@ -233,6 +241,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ## R
 
 **RAG** — *Retrieval-augmented generation*: **retrieve** relevant chunks from a corpus, then **generate** an answer (often via an LLM). Baseline: [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); principle: [ai-ml-systems.md](principles/ai-ml-systems.md); stack layers: [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md). Research: [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md); internal factory: [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md).
+
+**Record families (AI-native delivery)** — Five logical families—mandate, governed execution, candidate claim set, challenge and decision, and enactment and observation—distributed across linked controlled systems. Evidence, policy verdicts, approvals, exceptions, enactment receipts, and runtime observations remain separately addressable within them. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §7.
 
 **Reranking** — Second-stage **ordering** of retrieval candidates (often **cross-encoder** or managed API) to improve **precision** before LLM context assembly. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
@@ -302,8 +312,6 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Tooling** — In this repo: **illustrative** stacks under `tooling/` and `tooling/estates/`—swappable if **surface contracts** stay stable. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
-**Record families (AI-native delivery)** — Five logical families—mandate, governed execution, candidate claim set, challenge and decision, and enactment and observation—distributed across linked controlled systems. Evidence, policy verdicts, approvals, exceptions, enactment receipts, and runtime observations remain separately addressable within them. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §7.
-
 **Trunk-based development** — Integrate frequently to a **single** default branch (`main`); short-lived topic branches. See [collaboration.md](principles/collaboration.md).
 
 ---
@@ -337,10 +345,3 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ## Maintenance
 
 Add or tighten entries when a term appears in **multiple** principle files without a single definition. Prefer **links** over long prose here.
-**Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
-
-**Governed execution** — Model/agent execution that gains material authority or reliance through tool use, persistent mutation, sensitive data, asynchronous/delegated work, material budget, cross-system scope, controlled-path output, or acceptance without full inspection. It requires a [run contract](patterns/run-contracts.md); incidental ephemeral assistance does not automatically qualify.
-
-**Mandate (change)** — Addressable justification, accountable owner, scope, materiality, and non-goals for software work. It may arise from strategy, an external obligation, vulnerability/incident response, compatibility/lifecycle maintenance, risk reduction, or enabling work; it does not always require a business KPI. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §4.
-
-**Normative terms (BCP 14)** — Capitalised `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` express claim-level strength under RFC 2119/8174. Applicability is determined before strength is enforced; `CONTEXT-DEPENDENT` and `EXAMPLE` are content classes, not BCP 14 levels. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).

@@ -6,7 +6,22 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
-No unreleased changes.
+## [0.3.1] - 2026-07-17
+
+Post-v0.3.0 precision maintenance. **Change classes:** editorial and navigation.
+**Consumer impact:** existing consumers can adopt this release without changing
+their controls or operating model; the linked `v0.4.0` items remain
+non-normative tasking. **Compatibility:** patch.
+
+### Added
+
+- [Post-v0.3.0 External Review Decisions And v0.4.0 Plan](doctrine/evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md) — take/defer/reject register and executable tasks for progressive disclosure, claim-level BCP 14 review, proportionate semantic challenge, and prospective published-release immutability.
+
+### Fixed
+
+- Standardised the six AI-delivery justification categories on the canonical term **mandate class** and added the term to the glossary.
+- Restored `Exception`, `Governed execution`, `Mandate / mandate class`, `Normative terms`, and `Record families` to their alphabetical glossary sections.
+- Updated the AI/ML principle's lifecycle decision route to cite ADR 0024 as amended by ADR 0030.
 
 ## [0.3.0] - 2026-07-17
 

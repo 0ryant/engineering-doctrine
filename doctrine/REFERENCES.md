@@ -8,7 +8,7 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 
 | Topic | Reference |
 | --- | --- |
-| Semantic Versioning | https://semver.org/ |
+| Semantic Versioning 2.0.0 | https://semver.org/spec/v2.0.0.html |
 | CloudEvents | https://github.com/cloudevents/spec |
 | OpenTelemetry | https://opentelemetry.io/ |
 | W3C Trace Context | https://www.w3.org/TR/trace-context/ |
@@ -27,6 +27,18 @@ This index lists **authoritative external sources** used across the doctrine. Ea
 | OWASP — Top 10 CI/CD Security Risks | https://owasp.org/www-project-top-10-ci-cd-security-risks/ |
 | NIST — SSDF (SP 800-218) | https://csrc.nist.gov/publications/detail/sp/800-218/final |
 | Twelve-Factor App — Config | https://12factor.net/config |
+
+---
+
+## Review And Release Practice
+
+These sources ground review and release-integrity decisions. They do not mandate one repository host or organisation's workflow.
+
+| Topic | Reference |
+| --- | --- |
+| Google engineering practices — what to look for in code review | https://google.github.io/eng-practices/review/reviewer/looking-for.html |
+| Google engineering practices — code review standard | https://google.github.io/eng-practices/review/reviewer/standard.html |
+| GitHub immutable releases (optional host capability) | https://docs.github.com/en/code-security/concepts/supply-chain-security/immutable-releases |
 
 ---
 
@@ -324,6 +336,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md) | Domain-by-domain scorecard vs 11 mainstream frameworks (Google SRE, DORA, AWS WAF, NIST, etc.) |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
+| [evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md](evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md) | Retrospective `v0.3.0` review decisions, source-classified release/review grounding, patch corrections, and executable `v0.4.0` tasks |
 | [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md) | Primary-source decision ledger for normative language, applicability, exceptions, claim precision, and control lifecycle; supports ADRs 0028 and 0029 |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |
 | [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) | Public doctrine benchmark, scorecard, and residual gap analysis |

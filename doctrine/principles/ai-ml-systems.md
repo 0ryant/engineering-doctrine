@@ -126,7 +126,7 @@ Capability tiers say what a system **can do**; **materiality** says what its fai
 ## Related
 
 - AI-native delivery lifecycle and readiness review: [../patterns/ai-native-software-development-lifecycle.md](../patterns/ai-native-software-development-lifecycle.md) + [../checklists/ai-native-sdlc-readiness.md](../checklists/ai-native-sdlc-readiness.md)
-- Lifecycle research and decision: [../evolution/research-ai-native-sdlc-2026-07.md](../evolution/research-ai-native-sdlc-2026-07.md) + [ADR 0024](../../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md)
+- Lifecycle research and decision: [../evolution/research-ai-native-sdlc-2026-07.md](../evolution/research-ai-native-sdlc-2026-07.md) + [ADR 0024](../../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md), as amended by [ADR 0030](../../docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md)
 - Adoption operating model (inventory, challenge, harm-surface tests, provider continuity, uplift): [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) + [../checklists/ai-adoption-readiness.md](../checklists/ai-adoption-readiness.md)
 - Adoption-control gap research (2026-07): [../evolution/research-ai-adoption-control-gaps-2026-07.md](../evolution/research-ai-adoption-control-gaps-2026-07.md)
 - Retrieval implementation baseline: [../patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md)

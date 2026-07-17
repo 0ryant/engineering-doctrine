@@ -34,7 +34,7 @@ Candidate-bound evidence, separate challenge and authority, promotion of the aut
 
 The primary operational vocabulary is:
 
-1. **Admit mandate** — establish justification class, owner, materiality, scope, and non-goals.
+1. **Admit mandate** — establish mandate class, owner, materiality, scope, and non-goals.
 2. **Specify claims** — state what must be true and what evidence could discriminate it.
 3. **Bound governed execution** — constrain model/agent authority when the activation conditions apply.
 4. **Produce candidate** — create an addressable change and disclose limitations.
@@ -48,7 +48,7 @@ Challenge and authorisation remain separate because evidence is not authority. S
 
 Lifecycle evidence composes through:
 
-1. **Mandate** — justification class, owner, materiality, scope, non-goals, and optional strategic linkage.
+1. **Mandate** — mandate class, owner, materiality, scope, non-goals, and optional strategic linkage.
 2. **Governed execution** — authority envelope, inputs, permitted tools/data, outputs, limits, delegation, stop/escalation conditions, and receipts.
 3. **Candidate claim set** — immutable candidate identity, typed claims, limitations, affected surfaces, and required evidence.
 4. **Challenge and decision** — separately addressable evidence, findings, policy verdict, authority, approvals, and waivers.
