@@ -1,9 +1,13 @@
 # 0022. Cryptographic Primitives By Purpose
 
-Status: Proposed
+Status: Rejected
 Decision date: 2026-05-20
 Recorded date: 2026-05-20
 Retrospective: No
+
+## Disposition
+
+Rejected on 2026-07-17. A fixed portable menu of cryptographic primitives cannot account for purpose, threat model, platform implementation, external approval, jurisdiction, or transition guidance. Consumers instead select maintained, applicable security or external-control profiles as required by [API Boundaries And Security](../../doctrine/principles/api-boundaries-and-security.md) and [Revision-Pinned External Control Profiles](../../doctrine/patterns/revision-pinned-control-profiles.md). The proposal below is retained as decision history and is not adopted doctrine.
 
 ## Context
 

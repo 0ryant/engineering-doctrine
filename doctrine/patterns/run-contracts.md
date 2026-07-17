@@ -1,6 +1,6 @@
 # Run Contracts
 
-A **run contract** is a typed envelope that binds **trigger**, **model policy**, **context**, **capabilities**, **authority**, **hooks**, **verifiers**, and **outputs** into a single declarative shape. It is the **first-class primitive of agent execution**: every run authored, scheduled, or triggered in an adopting estate compiles down to a run-contract instance. There is no agent execution outside the envelope.
+A **run contract** is a typed envelope that binds **trigger**, **model policy**, **context**, **capabilities**, **authority**, **hooks**, **verifiers**, and **outputs** into a single declarative shape. It is the first-class primitive of **governed execution**: every governed run authored, scheduled, or triggered in an adopting estate compiles down to a run-contract instance. There is no governed execution outside the envelope.
 
 The canonical machine-readable shape lives at [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json) (JSON Schema 2020-12). The companion verifier-pack pattern lives at [verifier-packs.md](verifier-packs.md). External licence: Apache-2.0, same as the rest of this library.
 
@@ -17,6 +17,21 @@ Without a binding envelope, agents inherit **ambient affordance**: whatever tool
 
 A run contract collapses both into one envelope. Trigger says **when**; model policy says **who**; context and capabilities say **with what**; authority says **inside what membrane**; hooks say **with what gates**; verifiers say **what gets proven after**; outputs say **what must exist**.
 
+### 1.1 When A Run Is Governed
+
+A model interaction becomes governed execution when any of these are true:
+
+- it invokes tools or subprocesses;
+- it mutates a persistent artefact or external system;
+- it receives sensitive, non-public, or externally controlled data;
+- it runs asynchronously, delegates, or can outlive the initiating interaction;
+- it consumes a material time, token, compute, or financial budget;
+- it crosses repository, service, environment, tenant, or organisational boundaries;
+- its output can enter a controlled delivery or operational path without full inspection; or
+- a decision-maker will rely on the result without fully inspecting the underlying work.
+
+Autocomplete, explanation, comment rewriting, idea generation, and other ephemeral assistance may remain ordinary model interaction when a person fully inspects the result and no trigger above applies. If that output becomes part of a software candidate, the candidate still follows normal review, CI, security, authority, and release controls.
+
 ---
 
 ## 2. Lifecycle
@@ -31,7 +46,7 @@ Five phases. The body is **content-addressable**: a sha256 fingerprint anchors t
 | 4. Execute | Executor enforces capabilities + authority at the membrane; emits hook events. |
 | 5. Verify & emit | Packs run against `outputs.required`; verdict (pass / fail_loud / mark_untrusted / inconclusive) + audit log. |
 
-Trigger -> instantiate -> execute -> verify -> emit-artefacts is the **only** legal execution shape. An agent running without a contract is a runtime error, not a missing-doc problem.
+Trigger -> instantiate -> execute -> verify -> emit-artefacts is the only legal shape for governed execution. A governed agent running without a contract is a runtime error, not a missing-doc problem.
 
 ---
 
@@ -301,7 +316,7 @@ The v1 envelope does **not** address:
 - **Cross-contract atomicity.** No transactional rollback across instances. If A succeeds and B fails, A's effects stand. Compensation belongs to a higher-level saga.
 - **Live mutation.** A running contract cannot edit itself. Authors edit the source, re-validate, and the *next* instance picks it up — intentional, but it pushes some workflows (e.g. probe-then-widen-network) into multi-contract designs.
 - **Streaming triggers.** Long-lived stream subscriptions (Kafka, NATS subjects, MQTT) are out of scope and need either a bridge adapter or a v2 `stream` type.
-- **Per-contract budget.** No `budget` field for tokens, wall time, or dollars. Budgeting is left to the host runtime and `performance-and-cost`-class observability.
+- **Per-contract budget.** No `budget` field for tokens, wall time, or dollars. For v1, a host or workflow policy owns and enforces the budget and binds its policy version and result to the run receipt; prose in a prompt is not enforcement. A later schema version may type these limits.
 
 These gaps are explicit — the boundary of v1, not bugs in it.
 
@@ -317,7 +332,7 @@ These gaps are explicit — the boundary of v1, not bugs in it.
 | `outputs.required` non-empty | Silent-stub class is the largest single failure mode this primitive closes. |
 | 6 trigger types, no `else` branch | Each branch is reviewable; an open-ended `custom` would defeat the purpose. |
 | Hooks reference ids, not embedded scripts | Pushes script surface to a named, reviewable, host-runtime registry. |
-| One contract per agent execution | Multi-agent coordination composes separately fingerprinted envelopes; an orchestrator cannot widen a child by inheritance or hide delegation inside one run. |
+| One contract per governed execution | Multi-agent coordination composes separately fingerprinted envelopes; an orchestrator cannot widen a child by inheritance or hide delegation inside one run. |
 
 ---
 

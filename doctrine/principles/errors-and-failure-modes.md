@@ -25,7 +25,7 @@ Durable rules for **predictable** failures: what **users** see, what **operators
 
 ## 3. Retries And Idempotency
 
-- Document which operations are **safe to retry**; require **idempotency keys** for user-triggered mutating HTTP where duplicates are costly—see [patterns/idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md).
+- Document which operations are **safe to retry**. Where duplicate user-triggered mutation could be costly, enforce an idempotency, duplicate-detection, conditional-transition, or first-outcome strategy at the controlling HTTP boundary; an idempotency key is one common mechanism. See [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md).
 
 **Why:** At-least-once networks make **duplicate** submits inevitable without explicit design.
 

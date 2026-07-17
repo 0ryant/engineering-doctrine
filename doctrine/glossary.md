@@ -14,11 +14,13 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Agentic workflow** — An LLM **plans** and invokes **tools** (HTTP, CLI, browser, etc.) in **iterative** steps; treat like a new **client** at trust boundaries (SSRF, cost, audit). See [ai-ml-systems.md](principles/ai-ml-systems.md) §§2–4, §7, [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §7.
 
+**Applicability profile** — Named combination of exposure, criticality, data/authority, recoverability, change autonomy, compatibility, and observability conditions that activates existing controls. It is an overlay, not a new doctrine layer. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).
+
 **AI RMF (NIST)** — *Artificial Intelligence Risk Management Framework* (NIST AI 100-1): **Govern, Map, Measure, Manage**—**Govern** is cross-cutting. **Generative AI** companion: **NIST AI 600-1**. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2.
 
 **AI literacy** — **Role-based** capability to use, oversee, or challenge AI systems: builders ≠ reviewers ≠ approvers ≠ everyday users (EU AI Act **Art 4** vocabulary: "sufficient" literacy is contextual). See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §5.
 
-**AI-native SDLC** — Software delivery in which AI participates across lifecycle work while stakeholder need, objective, guardrailed outcome measures, intervention hypothesis, bounded work, executable change, authority, verification evidence, enactment, and observed outcome remain separate, addressable records advanced through governed transitions. Tasks and outputs are not outcomes; AI participation does not imply autonomous merge or deploy. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md).
+**AI-native SDLC** — Software delivery in which AI participates while mandate, governed execution, candidate claims, challenge evidence, authority, enactment, and observation remain separately addressable. Seven operational gates and five logical record families preserve this separation; strategic objective-to-outcome linkage is an optional overlay, not a universal requirement. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md).
 
 **AI system inventory** — Owned, **materiality**-tiered register of every AI system in production or on real data — including **embedded**, **vendor**, and **copilot**-class AI. Root control of AI adoption (NIST AI RMF **GOVERN 1.6**); each entry carries owner, capability tier, materiality, data classes, dependencies, oversight mode, test evidence. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1, [ai-ml-systems.md](principles/ai-ml-systems.md) §3.
 
@@ -28,7 +30,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Artefact / artifact** — Versioned output of a build (binary, image, package, chart). This library often uses **artefact** (British spelling); tools and US docs may say **artifact**. See [build.md](principles/build.md).
 
-**At-least-once delivery** — A message or request may arrive **more than once**; handlers must be **idempotent** or **dedupe** explicitly. See [event-contracts.md](principles/event-contracts.md), [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md).
+**At-least-once delivery** — A message or request may arrive **more than once**; the controlling boundary needs a declared duplicate and recovery strategy before material non-idempotent effects. See [event-contracts.md](principles/event-contracts.md), [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md).
 
 **Audit log** — Append-oriented record of **who** did **what** to **which** resource, for security and compliance—not the same as product analytics. See [audit-logging.md](principles/audit-logging.md).
 
@@ -56,15 +58,15 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Chunking** — Splitting documents into **retrieval-sized** segments (often hundreds of tokens) with metadata (source, heading, tenant); quality dominates RAG outcomes. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §2, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
 
-**CloudEvents** — Vendor-neutral **envelope** for events (`id`, `source`, `type`, `time`, …) over HTTP, Kafka, NATS, etc.; **payload** still needs its own schema. See [event-contracts.md](principles/event-contracts.md), [tooling/cloudevents.md](tooling/cloudevents.md).
+**CloudEvents** — Vendor-neutral **envelope** for events (`id`, `source`, `type`, `time`, …) and the portable default for new event-shaped boundaries when no governing protocol, platform, external contract, legacy boundary, or material constraint requires a documented equivalent. The **payload** still needs its own schema. See [event-contracts.md](principles/event-contracts.md), [tooling/cloudevents.md](tooling/cloudevents.md).
+
+**Closure mode (AI-native delivery)** — Evidence-supported end state selected for a change: technical closure, operational closure, or—where the strategic overlay applies—outcome review. Deployment alone proves only enactment. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §13.
 
 **CODEOWNERS** — Git host file mapping **paths** to **required reviewers** (teams or individuals). See [collaboration.md](principles/collaboration.md), [naming-and-repo-layout.md](principles/naming-and-repo-layout.md).
 
-**Contract** — Explicit, versioned **shape** and rules at a boundary (schema, OpenAPI, proto, migration contract). Violations are **build or runtime failures** per policy—not informal JSON. See [ENGINEERING.md](../ENGINEERING.md) §1.
+**Contract** — Explicit, versioned **shape** and rules at a boundary (schema, OpenAPI, proto, migration contract). Violations are **build or runtime failures** per policy—not informal JSON. See [event-contracts.md](principles/event-contracts.md) and [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
 **Context window** — Maximum **tokens** a model can take as input per call; large windows do **not** remove need for **RAG** on big or **governed** corpora. See [performance-and-cost.md](principles/performance-and-cost.md) §3, [ai-ml-systems.md](principles/ai-ml-systems.md).
-
-**Council (multi-agent)** — Several LLM **roles** (or agents) **critique** one proposal before a human decision—useful for **diversity of critique**, weak against **agreement bias** and **false confidence**; **not** a substitute for **CI** or review. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §6.
 
 **CUI** — *Controlled Unclassified Information*: information the U.S. Government creates or possesses, or that an entity creates or possesses for or on its behalf, that a law, regulation, or government-wide policy requires or permits an agency to handle using safeguarding or dissemination controls. Establish the governing authority, category/marking, exact baseline revision, and bounded system/data scope; do not infer CUI solely from content sensitivity. See [Revision-Pinned External Control Profiles](patterns/revision-pinned-control-profiles.md) and the [NARA CUI programme](https://www.archives.gov/cui).
 
@@ -190,7 +192,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Observability** — Logs, metrics, traces (and **correlation**) sufficient to debug **unknown-unknown** failures. See [observability.md](principles/observability.md).
 
-**Objective-to-outcome chain** — Traceable operating logic from stakeholder need to an owned objective or standing obligation, guardrailed outcome measures, an explicit intervention hypothesis, bounded tasks/run contracts, outputs, observed outcomes, and a continue/change/stop portfolio decision. It prevents task completion or artefact production from being reported as business value. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §2.1.
+**Objective-to-outcome chain** — Optional strategic operating logic from stakeholder need to an owned objective, measures and guardrails, intervention hypothesis, bounded work, outputs, observed outcomes, and a continue/change/stop/reverse decision. It prevents task completion from being reported as value but should not be invented for routine maintenance or obligations. See [outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md).
 
 **ODP** — *Organisation-defined parameter*: a value an organisation must choose where a control baseline deliberately leaves a parameter open. Record the value, scope, owner, source/approval, effective date, and evidence with the exact profile revision; never let an AI or implementation silently invent it. See [Revision-Pinned External Control Profiles](patterns/revision-pinned-control-profiles.md).
 
@@ -300,7 +302,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Tooling** — In this repo: **illustrative** stacks under `tooling/` and `tooling/estates/`—swappable if **surface contracts** stay stable. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
-**Transition record** — Reconstructable, addressable evidence for a controlled lifecycle step: source/destination, strategy lineage, objective and claims, scope/risk, candidate identity, authority, verification, enactment/rollback, outcome, and any bounded exception. It may be distributed across linked planning, issue, repository, CI/CD, artefact, policy, and observability systems. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §4.
+**Record families (AI-native delivery)** — Five logical families—mandate, governed execution, candidate claim set, challenge and decision, and enactment and observation—distributed across linked controlled systems. Evidence, policy verdicts, approvals, exceptions, enactment receipts, and runtime observations remain separately addressable within them. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §7.
 
 **Trunk-based development** — Integrate frequently to a **single** default branch (`main`); short-lived topic branches. See [collaboration.md](principles/collaboration.md).
 
@@ -335,3 +337,10 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ## Maintenance
 
 Add or tighten entries when a term appears in **multiple** principle files without a single definition. Prefer **links** over long prose here.
+**Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
+
+**Governed execution** — Model/agent execution that gains material authority or reliance through tool use, persistent mutation, sensitive data, asynchronous/delegated work, material budget, cross-system scope, controlled-path output, or acceptance without full inspection. It requires a [run contract](patterns/run-contracts.md); incidental ephemeral assistance does not automatically qualify.
+
+**Mandate (change)** — Addressable justification, accountable owner, scope, materiality, and non-goals for software work. It may arise from strategy, an external obligation, vulnerability/incident response, compatibility/lifecycle maintenance, risk reduction, or enabling work; it does not always require a business KPI. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §4.
+
+**Normative terms (BCP 14)** — Capitalised `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` express claim-level strength under RFC 2119/8174. Applicability is determined before strength is enforced; `CONTEXT-DEPENDENT` and `EXAMPLE` are content classes, not BCP 14 levels. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).

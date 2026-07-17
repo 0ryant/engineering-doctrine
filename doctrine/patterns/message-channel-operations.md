@@ -33,9 +33,9 @@ Companion to [principles/event-contracts.md](../principles/event-contracts.md). 
 
 | Broker / pattern | Typical ordering | “Exactly-once” reality |
 | --- | --- | --- |
-| **Single partition / shard** (Kafka topic partition, JetStream ordered consumer, SQS FIFO per group) | **Strong** per key when keyed correctly | Still **at-least-once** at the wire—**idempotent** consumers required |
+| **Single partition / shard** (Kafka topic partition, JetStream ordered consumer, SQS FIFO per group) | **Strong** per key when keyed correctly | Still **at-least-once** at the wire—use a duplicate-handling strategy at the controlling boundary |
 | **Competing consumers** on a shared queue | **No** global order | Duplicate delivery common under redelivery |
-| **Pub/sub fan-out** | Order **not** meaningful across subscribers | Side effects must be **deduped** per subscriber |
+| **Pub/sub fan-out** | Order **not** meaningful across subscribers | Each subscriber must protect material side effects from duplicate delivery |
 
 **Why:** Vendors market **effectively-once** processing; engineering doctrine should assume **at-least-once** delivery unless **you** prove end-to-end single-commit semantics.
 
@@ -43,7 +43,7 @@ Companion to [principles/event-contracts.md](../principles/event-contracts.md). 
 
 ## Idempotency And Dedup
 
-- Consumers should treat **`CloudEvents` `id`** (or equivalent) as the **dedup** key where at-least-once applies; persist **processed ids** or use **idempotent** writes (see event-contracts semantics section).
+- Where at-least-once delivery applies, consumers should use the CloudEvents **`source` + `id` pair** (or an equivalent producer-scoped identity) in their duplicate-handling strategy. The controlling boundary may record the first outcome, enforce a conditional transition, deduplicate delivery, or use an idempotent effect; see [idempotency-across-boundaries.md](idempotency-across-boundaries.md).
 
 ---
 

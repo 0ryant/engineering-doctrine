@@ -20,7 +20,7 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 [ ] SBOM policy matches what you ship (dependencies-supply-chain.md)
 [ ] CI abstract surfaces mapped to real host (ci-platform-mapping.md)
 [ ] Test pyramid healthy; flaky tests have owners (testing-strategy.md)
-[ ] Published or consumed async events use CloudEvents envelope and versioned payload schemas where applicable (event-contracts.md)
+[ ] Published or consumed async events use the selected explicit envelope contract (CloudEvents by portable default, or a documented equivalent) and versioned payload schemas where applicable (event-contracts.md)
 [ ] Event-backed workflows document states/transitions and map commits to stable event types where applicable (state-machines-and-workflows.md)
 [ ] Message channels have DLQ/poison, replay posture, and backlog metrics per patterns/message-channel-operations.md (if the system uses queues/topics)
 [ ] Delivery performance trended using stable definitions (measurement-and-dora.md) where org tracks Four Keys or equivalents

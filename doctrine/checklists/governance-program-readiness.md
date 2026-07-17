@@ -35,10 +35,25 @@ Use when an **organisation** (not only a single repo) is standing up or reviewin
 ## Metrics And Calibration
 
 ```text
-[ ] Leading metrics defined (e.g. gate coverage %, critical vuln SLA adherence, waiver age)
+[ ] Coverage/activity metrics (e.g. gate coverage %, finding count) are paired with effectiveness, escaped-failure, false-result, recovery, and operating-cost evidence where material
 [ ] Calibration exercises (golden PRs, simulated findings) run on documented cadence
 [ ] Post-incident reviews update programme policy when root cause is control design—not only app bug
 [ ] Publication or contract revision changes trigger an official-delta review, parameter resolution, migration plan, re-assessment, and accountable acceptance before the profile is relabelled
+```
+
+## Control Effectiveness And Lifecycle
+
+Apply these rows to material controls; a low-materiality check may inherit a class-level record rather than create per-check ceremony.
+
+```text
+[ ] Each material control identifies its scope and activation condition, the concrete failure addressed, accountable owner, and authority source
+[ ] Expected evidence includes operating or assessment evidence for the intended surface and a negative/calibration case that can exercise the claimed detection or prevention
+[ ] Adoption and operating cost records material compute/licence cost, latency, human attention, false results, availability impact, and behavioural side effects
+[ ] Effectiveness measures test risk reduction or escaped failure; control activity alone is not reported as the outcome
+[ ] Review triggers include the applicable cadence plus incident, material architecture/supplier change, authority revision, degraded discrimination, or disproportionate cost
+[ ] Review can retain, tune, replace/consolidate, or retire the control, with rationale and follow-up owner
+[ ] Replacement or retirement preserves the underlying evidence obligation and requires accountable authority; externally mandated controls change only through their governing authority or an accepted equivalent
+[ ] Failed or inconclusive evidence remains unchanged; any exception is a separate scoped, expiring authority decision
 ```
 
 ## Supplier And Acquisition
@@ -57,6 +72,7 @@ Use when an **organisation** (not only a single repo) is standing up or reviewin
 - NIST **SP 800-171 Rev. 3** (CUI in nonfederal systems): https://csrc.nist.gov/pubs/sp/800/171/r3/final
 - NIST **SP 800-171A Rev. 3** (assessment procedures): https://csrc.nist.gov/pubs/sp/800/171/a/r3/final
 - NIST **SP 1305** (CSF & C-SCRM): https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1305.pdf  
+- NIST **SP 1303** (CSF 2.0 Enterprise Risk Management; Monitor–Evaluate–Adjust): https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1303.pdf
 - **CISA SBOM**: https://www.cisa.gov/sbom  
 
 ---

@@ -32,7 +32,7 @@ Exact definitions evolve with your **value stream** tooling; record **your** def
 | **Failed deployment recovery time** | [reliability-slo-incidents.md](reliability-slo-incidents.md), [observability.md](observability.md), runbooks [documentation-knowledge.md](documentation-knowledge.md) |
 | **Deployment rework rate** | Small-batch correction, incident learning, [testing-strategy.md](testing-strategy.md), and prevention of repeated unplanned deployments |
 
-Use the map in **retrospectives**: a rising CFR often traces to **skipped gates** or **unclear ownership**, not “bad luck.”
+Use the map in **retrospectives**: when CFR rises, investigate changed risk mix, evidence discrimination, skipped controls, ownership, release shape, and recovery conditions rather than assuming one universal cause.
 
 ---
 
@@ -47,13 +47,15 @@ Use the map in **retrospectives**: a rising CFR often traces to **skipped gates*
 | **Known-exploited backlog** | Count and age of issues matching **weaponisation** feeds (e.g. [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)) still open |
 | **Security debt beyond policy** | Findings older than the published SLA without an approved exception |
 
-**Why:** NIST SSDF **RV** and sector practice expect **measurable** response; **DORA** throughput without these signals **games** behaviour—pair with [dependencies-supply-chain.md](dependencies-supply-chain.md) §2 and [secure-development-lifecycle.md](secure-development-lifecycle.md) §3.
+**Why:** NIST SSDF **RV** expects an ongoing vulnerability-identification and response capability. Stable response signals help an owner evaluate that capability; **DORA** throughput alone does not—pair with [dependencies-supply-chain.md](dependencies-supply-chain.md) §2 and [secure-development-lifecycle.md](secure-development-lifecycle.md) §3.
 
 ## 2.2 Delivery Metrics Are Not Company Objectives
 
 DORA explicitly warns against setting a delivery metric as the goal, using one metric for a complex system, or comparing unlike services. Treat delivery metrics as contextual leading/lagging signals about the delivery system—not as a universal company KPI, an individual target, or a deterministic source of tasks.
 
-For an AI-native company, connect stakeholder/business objectives to outcome measures, guardrails, intervention hypotheses, bounded tasks, outputs, and observed outcomes using [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md) §2.1. Select work by testing the most material constraint or hypothesis; do not reward agents for maximising deployment count, task completion, code volume, or artefact output.
+For strategic or product interventions, connect stakeholder objectives to outcome measures, guardrails, intervention hypotheses, bounded work, outputs, and observed outcomes using [Outcome And Portfolio Linkage](../patterns/outcome-and-portfolio-linkage.md). Select work by testing the most material constraint or hypothesis; do not reward agents for maximising deployment count, task completion, code volume, or artefact output.
+
+Not every change is a product intervention. Maintenance, vulnerability response, compatibility, lifecycle, operational-risk, and enabling work may be justified by the obligation, invariant, exposure, or capability they preserve. They still need an accountable mandate, but they do not need invented KPIs or causal attribution.
 
 ---
 

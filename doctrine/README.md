@@ -26,20 +26,6 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) — navigation and conflict resolution
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — how this library labels releases and downstream compatibility impact
 - [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) — principles vs tooling vs estate supplements
-- [evolution/moscow-review.md](evolution/moscow-review.md) — latest **thin-area / audit / MoSCoW** snapshot
-- [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — condensed **external review** signal
-- [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) — **gap analysis** by section vs industry frameworks
-- [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) — **public-doctrine benchmark** and portability-focused scorecard
-- [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) — **taxonomy** of public doctrines, **honest** refreshed scorecard, **which to choose when**
-- [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md) — **anti-patterns and failure modes** benchmark, taxonomy, and gap map
-- [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) — **AI/ML ops & governance** research (Azure AILZ, RAG, NIST/OWASP) + map to doctrine sections
-- [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — **internal AI / agent factory** vision: governance-first, handoffs, councils, agentic workflows + doctrine map (**no** build runbooks)
-- [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) — **enterprise RAG**, vectors, indexing, hybrid search, **MCP**/agents — research + gap map
-- [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) — **AI vulnerability storm / Mythos-era** engineering research (CSA briefing, SSDF/SLSA/OWASP anchors) + [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) (G1–G6 **synthesized** into principles/patterns—see ADR closure table)
-- [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) — **AI adoption-control** gap audit (inventory/materiality, effective challenge, fairness/drift testing, provider continuity, literacy; NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act anchors) + [ADR 0023](../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) (A1–A8 closure table)
-- [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) — **AI-native SDLC** research: objective/measure lineage, secure lifecycle, provenance, authority, evidence, deterministic enactment, runtime reconciliation + [ADR 0024](../docs/adr/0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md)
-- [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) — **NIST SP 800-171 Rev. 2/Rev. 3 and wider-doctrine** analysis: applicability, revision migration, CUI boundary, assessment evidence, and compositional control profiles + [ADR 0026](../docs/adr/0026-adopt-revision-pinned-external-control-profiles.md)
-- [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md) — proposed `v0.3.0` decision register, implementation tasks, dependencies, acceptance criteria, and release gates
 
 ### Governance & Assurance
 
@@ -47,13 +33,15 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 
 - [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) — **merge path & pipeline integrity** (binding gates, evidence, SBOM/provenance expectations; NIST / CISA / SLSA–cited)
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) — **engineering controls governance programme** (ownership, waivers, metrics, audit consumption; CSF 2.0–aligned)
+- [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) — claim-level normative strength, composable applicability profiles, bounded exceptions, and control retirement
 - [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) — **external control profiles** (governing authority, exact revision, bounded applicability, parameter/tailoring decisions, assessment evidence, exceptions, and migration; NIST SP 800-171 CUI worked profile)
 - [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) — illustrative **control suite** for merge paths and pipelines
 - [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls** (inventory & materiality, ownership & effective challenge, harm-surface testing, provider continuity, capability uplift)
 - [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) — **AI adoption** readiness checklist (org/team-level)
-- [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native delivery lifecycle** (objective → outcomes chain; S0 observed need → S10 reconciled; transition records, layered evidence, authority separation)
-- [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — objective and outcome lineage, lifecycle readiness, authority, and runtime reconciliation
+- [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native delivery lifecycle** (seven gates, five record families, governed execution, typed claims, authority separation, and three closure modes)
+- [patterns/outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md) — optional objective-to-outcome overlay for strategic/product interventions and externally required lineage
+- [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — profile-based lifecycle readiness for incidental assistance, governed execution, multi-agent work, high materiality, and strategic outcomes
 
 ### Adoption And Worked Examples
 
@@ -87,6 +75,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 ### Patterns
 
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
+- [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) — claim strength, activation profiles, exception records, and control lifecycle
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — doctrine release labels, change classes, and consumer pinning guidance
 - [patterns/code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) — code review and merge approval (duties, blockers, latency, high-risk, **agent**-authored diffs, escalation)
 - [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md) — **GitOps** (declarative desired state, **reconciliation**, **drift**, **secrets** boundaries); touches build, **SSOT**, **merge** path, collaboration
@@ -102,11 +91,12 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) — HTTP, messages, infra idempotency
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) — RAG retrieval (hybrid, eval, privacy)
 - [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md) — platform-as-product, golden paths, self-service, service catalog
-- [patterns/run-contracts.md](patterns/run-contracts.md) — agent **run contracts** (v1 envelope binding trigger, model, context, capabilities, authority, hooks, verifiers, outputs)
+- [patterns/run-contracts.md](patterns/run-contracts.md) — governed-execution **run contracts** (v1 envelope binding trigger, model, context, capabilities, authority, hooks, verifiers, outputs)
 - [patterns/verifier-packs.md](patterns/verifier-packs.md) — **verifier packs** (mandatory mirror of every skill; 11 canonical kinds plus `custom`)
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) — optional **anti-confabulation priming** pattern; adopters evaluate it on representative tasks and pair it with independent verification
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls**: inventory & materiality, ownership & independent challenge, harm-surface test matrix, third-party AI continuity, role-based capability uplift
-- [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native SDLC**: objective and guardrailed outcome measures, intervention hypotheses, evidence-backed transitions, run-contract compilation, authority, enactment, runtime reconciliation
+- [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native SDLC**: seven gates, five record families, typed claims, governed execution, candidate-bound authority, enactment, and closure
+- [patterns/outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md) — optional outcome/portfolio linkage for strategic work; does not invent KPIs for routine maintenance or obligations
 - [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) — **revision-pinned external control profiles**: apply contractual/regulatory baselines without copying them into universal principles; NIST SP 800-171 CUI worked profile
 
 ### Skills
@@ -122,7 +112,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
 - [checklists/doctrine-change-checklist.md](checklists/doctrine-change-checklist.md)
 - [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) — inventory/materiality, challenge, harm-surface tests, provider continuity, uplift
-- [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — objective/outcome lineage, transition design, agent bounds, evidence, authority, enactment, runtime reconciliation
+- [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — applicability-profiled mandate, governed-execution, evidence, authority, enactment, and closure checks
 
 ### Illustrative tooling (replace with your estate’s choices)
 
@@ -168,3 +158,18 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [REFERENCES.md](REFERENCES.md)
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md) — task and topic route map for ingestion
 - [SITEMAP.md](SITEMAP.md) — machine-friendly file list (regenerate via `scripts/generate-doctrine-sitemap.sh`)
+
+### Research And Evolution (Rationale, Not Operating Authority)
+
+Use these records to understand source grounding, decisions, audits, and known gaps. Follow their linked adopted principles, patterns, and ADRs for current operating doctrine.
+
+- [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — disposition of substantive external review feedback
+- [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md) — primary-source ledger for normative language, applicability, exceptions, and control lifecycle
+- [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md) — primary-source and vendor-observation ledger for the AI-native SDLC
+- [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) — NIST SP 800-171 revision migration and wider-doctrine applicability analysis
+- [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) — AI adoption-control gap audit and source ledger
+- [evolution/moscow-review.md](evolution/moscow-review.md), [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md), and [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md) — backlog and gap analyses
+- [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) and [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) — public-doctrine benchmark and source-selection context
+- [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md), and [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — historical AI/ML landscape research
+- [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md) — AI-accelerated vulnerability research and adopted gap map
+- [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md) — `v0.3.0` decision register, task plan, and release gates
