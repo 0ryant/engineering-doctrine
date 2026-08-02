@@ -177,6 +177,11 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | GitHub Spec Kit — Evolving specifications (vendor observation) | https://github.github.com/spec-kit/guides/evolving-specs.html |
 | Anthropic — 2026 Agentic Coding Trends Report (vendor research; landing page links the report) | https://resources.anthropic.com/2026-agentic-coding-trends-report |
 | OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
+| Edge et al. — From Local to Global: A Graph RAG Approach to Query-Focused Summarization (Microsoft Research) | https://arxiv.org/abs/2404.16130 |
+| Microsoft — GraphRAG project documentation | https://microsoft.github.io/graphrag/ |
+| Microsoft Research — LazyGraphRAG (vendor-measured cost/quality claims) | https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/ |
+| Peng et al. — Graph Retrieval-Augmented Generation: A Survey | https://arxiv.org/abs/2408.08921 |
+| Sarmah et al. — HybridRAG (vector + knowledge graph, finance) | https://arxiv.org/abs/2408.04948 |
 | Model Context Protocol documentation hub | https://modelcontextprotocol.io |
 | Anthropic — Building Effective Agents (Dec 2024) | https://www.anthropic.com/engineering/building-effective-agents |
 | Anthropic — Multi-Agent Research System (Jun 2025) | https://www.anthropic.com/engineering/built-multi-agent-research-system |

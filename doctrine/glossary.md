@@ -124,6 +124,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Governed execution** — Model/agent execution that gains material authority or reliance through tool use, persistent mutation, sensitive data, asynchronous/delegated work, material budget, cross-system scope, controlled-path output, or acceptance without full inspection. It requires a [run contract](patterns/run-contracts.md); incidental ephemeral assistance does not automatically qualify.
 
+**GraphRAG** — Retrieval over an **entity knowledge graph** extracted from the corpus (communities + pre-built summaries) instead of, or alongside, passage similarity; earns its extraction cost on **multi-hop** and **corpus-global** questions that hybrid retrieval measurably fails. New first-class concerns: extraction quality/poisoning, tenancy at **edge/traversal** level, and **text-to-query** (Cypher/SPARQL) injection. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §7; reference: [Edge et al. 2024](https://arxiv.org/abs/2404.16130).
+
 **Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
 ---
@@ -153,6 +155,12 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Ingestion pipeline (RAG)** — Jobs that **extract**, **chunk**, **embed**, and **write** lexical/vector indexes—**separate** from online **query** path; needs **freshness** SLAs and **idempotent** rebuilds. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
 
 **IVF** — *Inverted file* (clustering-based) **ANN** structure; common at **large** scale; may need **training** on representative vectors and **re-tuning** when the corpus distribution shifts. See [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §3.
+
+---
+
+## K
+
+**Knowledge graph** — **Entities** and typed **relationships** stored as a graph (often triples; queried via Cypher/SPARQL/Gremlin); in retrieval it supplies **relational** context that passage similarity cannot. **Extraction** quality and **freshness** dominate outcomes; rebuilds and extraction-prompt changes are index **migrations**. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §7, [ai-ml-systems.md](principles/ai-ml-systems.md) §7.
 
 ---
 
