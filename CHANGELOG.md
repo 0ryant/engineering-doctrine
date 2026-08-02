@@ -6,6 +6,10 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Added
+
+- [research-ai-native-sdlc-council-designs-2026-07.md](doctrine/evolution/research-ai-native-sdlc-council-designs-2026-07.md) — **AI-native SDLC council session 1** design-space record: ten-framework **landscape map** (Microsoft AI-led SDLC, AWS AI-DLC, Spec Kit/SDD, Anthropic practices, Kiro/specs.md, BMAD/MetaGPT/ChatDev/OpenHands, academic A-SDLC/V-Bounce, enterprise consensus, measurement/governance standards, day-2 ops), doctrine **invariant register** with tension list, three framed lifecycle designs (**verification-native**, **intent-ledger**, **fleet-charter**) with six adversarial critiques, convergence analysis, and decision list **D1–D17**. Companion to [research-ai-native-sdlc-2026-07.md](doctrine/evolution/research-ai-native-sdlc-2026-07.md); positioned against the landed ADR 0024/0030 chain (unadopted council proposals explicitly marked; nothing in the note overrides normative doctrine). Indexed in doctrine README, SITEMAP, SEMANTIC_INDEX, and REFERENCES.
+
 ### Changed
 
 - [rag-retrieval-baseline.md](doctrine/patterns/rag-retrieval-baseline.md) — new **§7 graph-augmented retrieval (GraphRAG)**: question classes that defeat passage retrieval (multi-hop, corpus-global, entity-centric), **decision rule + cost ladder** (hybrid → lazy → full LLM-extracted graph), **text-to-query injection** (SQL-class discipline for generated Cypher/SPARQL), tenancy at **edge/traversal** level, extraction poisoning, and extraction-quality / freshness evaluation; §3 bullet formatting repaired. Glossary: **GraphRAG** and **knowledge graph** entries; [REFERENCES](doctrine/REFERENCES.md): primary sources ([Edge et al. 2404.16130](https://arxiv.org/abs/2404.16130), [GraphRAG docs](https://microsoft.github.io/graphrag/), [LazyGraphRAG](https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/), [Peng et al. 2408.08921](https://arxiv.org/abs/2408.08921), [Sarmah et al. 2408.04948](https://arxiv.org/abs/2408.04948)).
