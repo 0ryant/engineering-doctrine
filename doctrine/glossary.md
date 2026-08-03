@@ -12,7 +12,11 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
+**Agent-definition artefact** — Machine-readable file that configures or steers an AI agent’s behaviour: custom-agent definitions, **steering/instruction files**, `SKILL.md`-class skill packs, MCP server configurations, and prompt templates wired into delivery. In the **pipeline-definition trust class** when it directs automation that can read secrets, mutate production, publish packages, or alter downstream systems. See [merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) §1–§2, [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §5.
+
 **Agent identity** — First-class workload-identity principal class for AI agents: distinguishable from generic service accounts in policy and audit, sponsored by a named human, credentialed per interaction. Floor is **tiered** (capability × materiality): dedicated per-agent principal MUST for high-autonomy/material agents (per-agent revocation is the kill switch); shared team principal MAY at lower tiers with harness-stamped per-agent attribution and acknowledged fleet-wide revocation. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
+
+**Agent memory lifecycle** — The four governed phases of an **agent-writable persistent memory** store: **admission** (validated, provenance-tagged writes; modes canonical in the run-contract `context.memory` schema), **retention** (TTL/expiry defaults; operator-initiated forget; privacy composition), **relinquishment** (decommissioned or role-changed agents' stores closed out; composes with §2.1 orphan handling), **recovery** (snapshot-restorable; poisoning suspicion → quarantine + rebuild from verified sources). See [ai-ml-systems.md](principles/ai-ml-systems.md) §7.
 
 **Agent responder** — A rostered **AI agent** in incident response: a roster role with a **named accountable human owner** (sponsor per [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1) who can page-steal or stop it at any time; remediation routed by **reversibility** (pre-declared reversible actions can auto-execute with notification; irreversible actions gate on a human); RCA output is **ranked leads** requiring human confirmation; **never** IC. Sole normative source: [incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) §10.
 
@@ -168,6 +172,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## K
 
+**Kappa deflation** — The gap between raw percent agreement and **chance-corrected** kappa when validating an LLM judge against human labels; measured at 33–41 percentage points across deployed judge models, which is why raw agreement is not evidence. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §8.2.
+
 **Knowledge graph** — **Entities** and typed **relationships** stored as a graph (often triples; queried via Cypher/SPARQL/Gremlin); in retrieval it supplies **relational** context that passage similarity cannot. **Extraction** quality and **freshness** dominate outcomes; rebuilds and extraction-prompt changes are index **migrations**. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §7, [ai-ml-systems.md](principles/ai-ml-systems.md) §7.
 
 ---
@@ -177,6 +183,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **LLM** — *Large language model*: often backs **chat** or **agent** UIs; treat **output** and **retrieved context** as **untrusted** at system boundaries until validated. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) Related, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
 **Lexical search** — Keyword / **inverted-index** retrieval (e.g. **BM25**); complements **semantic** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
+
+**Load-bearing judge** — An evaluator model whose verdicts **gate promotion, merges, or automation** (as opposed to advisory critique); the activation trigger for judge discipline — versioned config, chance-corrected agreement with an estate-set threshold, perturbation testing, escalation-gated automation. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §8.2.
 
 **LTS (long-term support) branch** — Exceptional **parallel** line for extended patch support; document EOL. See [trunk-workflow.md](patterns/trunk-workflow.md).
 
@@ -247,6 +255,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Promotion** — Moving a **built** artefact through environments **without** rebuilding for each hop (where the platform allows). See [build.md](principles/build.md).
 
 **Publishable unit** — Thing consumers pin versions on (package, image, API product, CLI); gets its **own** SemVer line. See [semantic-versioning.md](principles/semantic-versioning.md).
+
+**Planted-memory persistence** — ASI06 red-team scenario: a memory record written in session *N* alters agent behaviour on a **legitimate query** in session *N+1*, with no attacker present at recall time. Required in adversarial coverage where memory is **agent-writable** and the threat model warrants red-teaming. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §5.2.
 
 **Prompt injection** — Crafted input causes the model to **ignore** policy, **exfiltrate** data, or **mis-route** tools; **indirect** injection uses **retrieved** text (RAG) or hidden content. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 

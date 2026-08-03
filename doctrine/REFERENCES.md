@@ -203,6 +203,14 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | PagerDuty — SRE Agent virtual responder (GA 2026-03; fully autonomous mode in early access; vendor observation) | https://www.pagerduty.com/blog/ai/meet-your-virtual-responder-pagerdutys-sre-agent-for-ai-driven-reliability/ |
 | incident.io — AI SRE (hypothesis-driven investigations; self-healing drift-masking anti-pattern; vendor observation) | https://incident.io/ai-sre |
 | Datadog — Bits AI SRE (validated/invalidated/inconclusive hypothesis classification; vendor observation) | https://www.datadoghq.com/blog/bits-ai-sre/ |
+| Pillar Security — “Rules File Backdoor” (invisible-Unicode instruction injection in agent rules files, 2025-03) | https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents |
+| AWS Security Bulletin AWS-2025-019 — prompt-injection wiper in Amazon Q Developer VS Code extension | https://aws.amazon.com/security/security-bulletins/AWS-2025-019 |
+| Aikido — hallucinated package propagated via unreviewed AI-generated skill files (2026) | https://www.aikido.dev/blog/agent-skills-spreading-hallucinated-npx-commands |
+| GitHub Actions — secure-use reference (CODEOWNERS gate on workflow files; precedent for automation-defining files) | https://docs.github.com/en/actions/reference/security/secure-use |
+| MINJA — memory injection through query interaction (arXiv 2503.03704) | https://arxiv.org/abs/2503.03704 |
+| Zheng et al. — Judging LLM-as-a-Judge (MT-Bench; judge biases, NeurIPS 2023) | https://arxiv.org/abs/2306.05685 |
+| Trust or Escalate — confidence-gated selective LLM evaluation (ICLR 2025) | https://arxiv.org/abs/2407.18370 |
+| Anthropic — Demystifying Evals for AI Agents (judge calibration, abstain output) | https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents |
 | Anthropic — Building Effective Agents (Dec 2024) | https://www.anthropic.com/engineering/building-effective-agents |
 | Anthropic — Multi-Agent Research System (Jun 2025) | https://www.anthropic.com/engineering/built-multi-agent-research-system |
 | ReAct — Yao et al., ICLR 2023 (reason + act loop) | https://arxiv.org/abs/2210.03629 |

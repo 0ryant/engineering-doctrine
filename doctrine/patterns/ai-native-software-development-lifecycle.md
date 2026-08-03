@@ -199,6 +199,8 @@ Evidence is:
 
 The control side may consume statistical or incomplete signals; it need not be mathematically deterministic. It is explicitly configured, bounded, inspectable, attributable, and reconstructable and does not delegate the final authority decision to open-ended model discretion.
 
+**Agent-definition artefacts** — custom-agent definitions, steering/instruction files, skill packs, MCP server configurations — are themselves **governed change surfaces** in the pipeline-definition trust class when they direct privileged automation: see [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §1–§2 and [code-review-and-change-approval.md](code-review-and-change-approval.md) §5.
+
 ## 13. Closure, Loops, And Re-entry
 
 Select the closure supported by evidence:
