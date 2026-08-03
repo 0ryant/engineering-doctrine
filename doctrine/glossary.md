@@ -12,7 +12,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
-**Agent identity** — First-class workload-identity principal class for AI agents: distinguishable from generic service accounts in policy and audit, sponsored by a named human, credentialed per interaction. Compliance floor: a dedicated per-agent principal, labeled as an agent and resolvable to its sponsor. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
+**Agent identity** — First-class workload-identity principal class for AI agents: distinguishable from generic service accounts in policy and audit, sponsored by a named human, credentialed per interaction. Floor is **tiered** (capability × materiality): dedicated per-agent principal MUST for high-autonomy/material agents (per-agent revocation is the kill switch); shared team principal MAY at lower tiers with harness-stamped per-agent attribution and acknowledged fleet-wide revocation. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
 
 **Agentic workflow** — An LLM **plans** and invokes **tools** (HTTP, CLI, browser, etc.) in **iterative** steps; treat like a new **client** at trust boundaries (SSRF, cost, audit). See [ai-ml-systems.md](principles/ai-ml-systems.md) §§2–4, §7, [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §7.
 
@@ -27,6 +27,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **AI-native SDLC** — Software delivery in which AI participates while mandate, governed execution, candidate claims, challenge evidence, authority, enactment, and observation remain separately addressable. Seven operational gates and five logical record families preserve this separation; strategic objective-to-outcome linkage is an optional overlay, not a universal requirement. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md).
 
 **AI system inventory** — Owned, **materiality**-tiered register of every AI system in production or on real data — including **embedded**, **vendor**, and **copilot**-class AI. Root control of AI adoption (NIST AI RMF **GOVERN 1.6**); each entry carries owner, capability tier, materiality, data classes, dependencies, oversight mode, test evidence. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1, [ai-ml-systems.md](principles/ai-ml-systems.md) §3.
+
+**AIBOM** — *AI bill of materials*: BOM-class record for a **model or dataset** — artifact identity/digest, publisher, licence, base-model lineage, training-data references. Formats **emerging**: **CycloneDX ML-BOM** (1.6+), **SPDX 3.0** AI/Dataset profiles — record the information; format mandates route via ADR. See [dependencies-supply-chain.md](principles/dependencies-supply-chain.md) §8.
 
 **AILZ / Azure AI Landing Zone** — Microsoft’s **reference application landing zone** for AI workloads on Azure (e.g. **Foundry** and/or **APIM** as AI gateway); **preview**-style, **estate**-level mapping—not portable law. See [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md) §2.
 
@@ -192,6 +194,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Model drift** — Degradation of a deployed model as **input distribution** or the world shifts from the launch baseline; requires **continuous** monitoring with alert thresholds and a retrain/rollback path — not only change-triggered eval. Distinct from **config/GitOps drift**. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §3.
 
+**Model signing (OMS)** — *OpenSSF Model Signing*: PKI-agnostic specification (v1; signatures as **Sigstore bundles**) with the Sigstore-based **model-signing v1.0** library for signing/verifying ML model artifacts; verify signature **and** transparency-log entry before first production use. See [dependencies-supply-chain.md](principles/dependencies-supply-chain.md) §8.
+
 **mTLS** — *Mutual TLS*: both parties present certificates; common for **service-to-service** identity. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
 
 **Mutation testing** — Changes code under test to see if tests **fail**; surviving mutants imply weak assertions. See [testing-strategy.md](principles/testing-strategy.md).
@@ -273,6 +277,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ---
 
 ## S
+
+**safetensors** — Non-executable, tensor-only serialization format (Hugging Face) eliminating **pickle-class** load-time code execution; preferred weight format for locally loaded models — pickle-class loading is gated ([dependencies-supply-chain.md](principles/dependencies-supply-chain.md) §8).
 
 **Saga** — Multi-step **distributed** workflow with **forward** recovery or **compensating** actions; not one ACID transaction across services. See [state-machines-and-workflows.md](principles/state-machines-and-workflows.md).
 

@@ -49,7 +49,7 @@ Sections **1, 13, 14, 18** have strong mirrors in `doctrine/principles/` and pat
 | **reliability-slo-incidents** | SLO, error budget, incidents | **Chaos** / **Gamedays**, **toil** budget, **post-incident** metrics into DORA |
 | **performance-and-cost** | Budgets, load, FinOps tags | **Carbon** / sustainability (growing enterprise ask), **quota** governance at org level |
 | **documentation-knowledge** | ADR, runbook | **Onboarding curricula**, **internal search** / portal (see Platform below), **RFC** lifecycle vs ADR |
-| **dependencies-supply-chain** | Lockfiles, SBOM, licence | **Provenance** (SLSA), **typosquatting**, **package registry** hygiene, **vuln disclosure** to users |
+| **dependencies-supply-chain** | Lockfiles, SBOM, licence | **Provenance** (SLSA), **typosquatting** *(closed 2026-08: slopsquatting/typosquatting now in dependencies-supply-chain §7 + ai-ml-systems §4 pre-install gate)*, **package registry** hygiene, **vuln disclosure** to users |
 | **user-facing-quality** | WCAG, i18n scope | **Mobile** a11y, **voice** UIs, **PDF** accessibility if shipping docs |
 | **measurement-and-dora** | Four Keys map | **SPACE** metrics (developer experience), **North Star** product metrics (explicitly “not this doc”) |
 

@@ -1,6 +1,6 @@
 # AI Adoption Readiness Checklist
 
-Use when an organisation or team is **adopting, expanding, or reviewing** AI use (built, embedded, or vendor-supplied). Aligns with [patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) and [principles/ai-ml-systems.md](../principles/ai-ml-systems.md); per-system engineering depth (retrieval, agents, change path) stays with those files. Decision record: [ADR 0023](../../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md).
+Use when an organisation or team is **adopting, expanding, or reviewing** AI use (built, embedded, or vendor-supplied). Aligns with [patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md), [principles/ai-ml-systems.md](../principles/ai-ml-systems.md), and [principles/privacy-and-data-governance.md](../principles/privacy-and-data-governance.md) §5.4 (Art 50 transparency); per-system engineering depth (retrieval, agents, change path) stays with those files. Decision record: [ADR 0023](../../docs/adr/0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md).
 
 ## Inventory And Materiality
 
@@ -29,6 +29,7 @@ Use when an organisation or team is **adopting, expanding, or reviewing** AI use
 [ ] Production models: continuous drift monitoring (input distribution + output quality) with alert thresholds and a retrain/rollback path
 [ ] GenAI: prompt-injection (direct + indirect) tests; jailbreak/guardrail-bypass red-team where safety or policy constraints exist
 [ ] GenAI feeding downstream systems: output validation (schema, sanitisation, groundedness); leakage probing (system prompt, training/context data, cross-tenant)
+[ ] User-facing GenAI in EU AI Act scope (registered control profile): Art 50 transparency duties for the registered role verified before launch (disclosure UX / output marking for providers; notification / deepfake labelling for deployers)
 ```
 
 ## Third-Party AI Continuity

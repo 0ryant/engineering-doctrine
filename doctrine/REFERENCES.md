@@ -291,7 +291,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 
 ## AI Governance And Regulation
 
-Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `principles/threat-modeling-stride-lite.md` §3.1, and `checklists/ai-adoption-readiness.md`. Regulators are cited as **rationale and vocabulary**, not as obligations this doctrine imposes.
+Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `principles/privacy-and-data-governance.md` §5.4, `principles/threat-modeling-stride-lite.md` §3.1, and `checklists/ai-adoption-readiness.md`. Regulators are cited as **rationale and vocabulary**, not as obligations this doctrine imposes.
 
 | Topic | Reference |
 | --- | --- |
@@ -300,7 +300,10 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
 | Federal Reserve SR 11-7 — model risk management, effective challenge | https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm |
 | PRA SS1/23 — model risk management principles (inventory + tiering, independent validation) | https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss |
-| EU AI Act — Art 4 literacy, Art 12 logging, Art 14 human oversight, Art 15 lifecycle accuracy, Art 26 deployers | https://artificialintelligenceact.eu/ |
+| EU AI Act — Art 4 literacy, Art 12 logging, Art 14 human oversight, Art 15 lifecycle accuracy, Art 26 deployers, Art 50 transparency | https://artificialintelligenceact.eu/ |
+| EU AI Act Art 50 — transparency obligations (interaction disclosure, machine-readable marking, deepfake labelling; applies 2026-08-02) | https://artificialintelligenceact.eu/article/50/ |
+| European Commission — guidelines on Art 50 transparency obligations (2026-07-20) | https://digital-strategy.ec.europa.eu/en/news/commission-publishes-guidelines-transparency-obligations-providers-and-deployers-certain-ai-systems |
+| European Commission — Code of Practice on Transparency of AI-generated Content (final 2026-06-10; adequacy opinion 2026-07-08) | https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content |
 | EU DORA — Art 28 register + exit strategies, Art 29 concentration risk | https://www.digital-operational-resilience-act.com/Article_28.html |
 | EBA outsourcing guidelines (EBA/GL/2019/02) | https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-outsourcing-arrangements |
 | FCA PS21/3 — operational resilience (important business services, impact tolerances) | https://www.fca.org.uk/publications/policy-statements/ps21-3-building-operational-resilience |
@@ -453,13 +456,13 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [principles/state-machines-and-workflows.md](principles/state-machines-and-workflows.md) | FSM, transitions, event-type mapping |
 | [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md) | HTTP limits, OWASP API |
 | [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) | STRIDE-lite trust-boundary review |
-| [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md) | PII, retention |
+| [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md) | PII, retention, AI transparency (EU AI Act Art 50) |
 | [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents; [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) for full incident lifecycle / on-call |
 | [principles/performance-and-cost.md](principles/performance-and-cost.md) | Load, FinOps |
 | [principles/cost-and-finops.md](principles/cost-and-finops.md) | FinOps operating model, unit economics, anomaly detection, AI inference cost |
 | [principles/platform-engineering.md](principles/platform-engineering.md) | Team topologies, TVP, golden paths, cognitive load |
 | [principles/documentation-knowledge.md](principles/documentation-knowledge.md) | ADRs, runbooks |
-| [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md) | SBOM, licences |
+| [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md) | SBOM, licences; models and datasets as dependencies (OMS model signing, safetensors, AIBOM) |
 | [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) | Merge path, pipeline definitions, binding gates, evidence (NIST / CSF / CISA / SLSA–cited) |
 | [principles/developer-experience.md](principles/developer-experience.md) | DevEx, time-to-first-change, local loop, docs findability, cognitive load, review flow |
 | [principles/user-facing-quality.md](principles/user-facing-quality.md) | A11y, i18n |

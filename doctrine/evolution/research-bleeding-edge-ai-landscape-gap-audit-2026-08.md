@@ -285,7 +285,7 @@ Eight candidate findings were killed in adversarial verification — kept here a
 
 ## 7. Prioritised action list
 
-Ordered by severity, then ascending effort. Change class per doctrine versioning vocabulary; normative changes route via ADR. **Closure status:** rows 1 (S1), 4 (S2), and 6 (G1) closed by [ADR 0031](../../docs/adr/0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md) (2026-08-03).
+Ordered by severity, then ascending effort. Change class per doctrine versioning vocabulary; normative changes route via ADR. **Closure status:** rows 1 (S1), 4 (S2), and 6 (G1) closed by [ADR 0031](../../docs/adr/0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md) (2026-08-03); rows 2 (G2), 3 (G3), and 7 (G4) closed by [ADR 0032](../../docs/adr/0032-add-ai-act-transparency-slopsquatting-gate-and-model-dataset-admission.md) (2026-08-03), which also amends the ADR 0031 agent-principal floor to a capability×materiality tier.
 
 | # | Action | Target file(s) | Class | ADR? |
 |---|---|---|---|---|
@@ -310,6 +310,7 @@ Ordered by severity, then ascending effort. Change class per doctrine versioning
 | 19 | Message-level inter-agent controls: payload signing, anti-replay (from §11 crosswalk ASI07 no-coverage cell) | agentic-loop-design.md §8.3, zero-trust-and-workload-identity.md | normative | yes |
 | 20 | Adaptive trust calibration and anthropomorphism countermeasures (from crosswalk ASI09 no-coverage cell) | ai-adoption-controls.md §5, agentic-loop-design.md §6 | additive guidance | no |
 | 21 | Watchdog agents and per-agent cryptographic identity attestation (from crosswalk ASI10 no-coverage cell; attestation pairs with zero-trust §2.1) | agentic-loop-design.md §8, zero-trust-and-workload-identity.md §2.1 | normative | yes |
+| 22 | Registry-level attestation for agent and tool packages (skills, MCP server distributions) — residual half of the ASI04 cell after G4 closed model/dataset signing | dependencies-supply-chain.md, ai-ml-systems.md §7 | normative | yes |
 
 ---
 
