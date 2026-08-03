@@ -302,7 +302,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | NIST Cybersecurity Framework 2.0 | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
 | NIST SP 1301 — creating and using CSF organisational profiles | https://csrc.nist.gov/pubs/sp/1301/final |
 | NIST SP 1303 — Monitor–Evaluate–Adjust control cycle | https://csrc.nist.gov/pubs/sp/1303/final |
-| NIST SP 800-53 Rev. 5 — security and privacy controls | https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final |
+| NIST SP 800-53 Release 5.2.0 — security and privacy controls (adds SI-02(07) patch root-cause analysis, SA-15(13) structured logging, SA-24 cyber resiliency; none yet in an 800-53B baseline) | https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final |
 
 ---
 

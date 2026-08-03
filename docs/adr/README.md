@@ -44,6 +44,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0032](0032-add-ai-act-transparency-slopsquatting-gate-and-model-dataset-admission.md) | Accepted | 2026-08-03 | Add profile-gated EU AI Act Art 50 transparency (§5.4), the slopsquatting pre-install gate, and model/dataset admission (§8); amends ADR 0031 with the tiered agent-principal floor — closes gap-audit items G2, G3, G4 |
 | [0033](0033-add-agentic-threat-vocabulary-agent-responders-and-genai-telemetry.md) | Accepted | 2026-08-03 | Add agentic threat vocabulary (§3.2), the agent-responder incident role (§10), and the GenAI per-call telemetry floor (§7) — closes gap-audit items G5, G6, G7 |
 | [0034](0034-add-agent-definition-governance-memory-lifecycle-and-judge-discipline.md) | Accepted | 2026-08-03 | Add agent-definition artefacts to the pipeline trust class, the agent memory lifecycle, and load-bearing-judge discipline — closes gap-audit items G8, G9, G10 |
+| [0035](0035-add-agent-financial-authority-adaptive-evaluation-and-spend-governance.md) | Accepted | 2026-08-03 | Add agent financial authority default-deny (§7.1), adaptive defence evaluation (§5/§9.4), and vendor-native spend governance — closes gap-audit items G11, S3, S4, S5, completing the audit's original finding set |
 
 ## Candidate Considered But Not Recorded
 

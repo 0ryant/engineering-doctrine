@@ -216,6 +216,6 @@ activation and meaning changes before adoption.
 - RFC 8174: https://www.rfc-editor.org/rfc/rfc8174.html
 - NIST Cybersecurity Framework 2.0: https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final
 - NIST SP 1301, Creating and Using Organisational Profiles: https://csrc.nist.gov/pubs/sp/1301/final
-- NIST SP 800-53 Rev. 5: https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
+- NIST SP 800-53 Release 5.2.0 (2025-08): https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
 - NIST SP 800-37 Rev. 2: https://csrc.nist.gov/pubs/sp/800/37/r2/final
 - NIST IR 8286A Rev. 1: https://csrc.nist.gov/pubs/ir/8286/a/r1/final

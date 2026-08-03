@@ -78,7 +78,7 @@ Adjust per sector and regulator. Example **enterprise** cadences:
 | Inventory vs protected-branch reality | **Quarterly** |
 | Waiver / risk-acceptance review | **Monthly** sampling; **all** expiring items within 30 days of expiry |
 | Control calibration (golden tests) | At the risk/profile-defined cadence; **after** major implementation changes, relevant incidents, or evidence that discrimination has degraded |
-| Policy text vs NIST / sector baseline diff | **Annual**; **ad hoc** on US OMB or EU regulatory shifts affecting your estate |
+| Policy text vs NIST / sector baseline diff | **Annual**; **ad hoc** on US OMB or EU regulatory shifts affecting your estate. Catalog additions outside any 800-53B baseline (e.g. Release 5.2.0's SI-02(07), SA-15(13), SA-24) enter as candidates at the next diff cycle, not as automatic obligations |
 | External-profile applicability, revision, parameter, and boundary review | **On contract/authority change**, material architecture or supplier change, publication update, incident, and at the estate's documented periodic cadence |
 
 ---

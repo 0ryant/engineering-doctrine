@@ -60,6 +60,6 @@ For each in-scope audit event, capture at least:
 
 ## References
 
-- NIST **SP 800-53 Rev. 5** — Audit and Accountability (**AU**) control family: https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
+- NIST **SP 800-53 Release 5.2.0** — Audit and Accountability (**AU**) control family (5.2.0, 2025-08, adds SA-15(13) structured logging): https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final
 - OWASP **Logging** Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html
 - CloudEvents (an optional envelope for **event-shaped** audit export at boundaries): https://github.com/cloudevents/spec
