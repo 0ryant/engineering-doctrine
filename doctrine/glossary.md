@@ -248,6 +248,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **PITR** — *Point-in-time recovery*: restore a database (or object store with equivalent semantics) to a **specific timestamp** using **continuous** backups / WAL / logs—not only a **snapshot** from last night. See [data-and-migrations.md](principles/data-and-migrations.md).
 
+**Planted-memory persistence** — ASI06 red-team scenario: a memory record written in session *N* alters agent behaviour on a **legitimate query** in session *N+1*, with no attacker present at recall time. Required in adversarial coverage where memory is **agent-writable** and the threat model warrants red-teaming. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §5.2.
+
 **Platform as product** — Internal **platform** work treated as a **product**: clear offerings, customer (team) feedback, prioritised **adoption** and **toil** reduction—not only infra tickets. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 
 **Principle** — In this repo: **durable intent** under `principles/`—**not** tied to one vendor SKU. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
@@ -257,8 +259,6 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Promotion** — Moving a **built** artefact through environments **without** rebuilding for each hop (where the platform allows). See [build.md](principles/build.md).
 
 **Publishable unit** — Thing consumers pin versions on (package, image, API product, CLI); gets its **own** SemVer line. See [semantic-versioning.md](principles/semantic-versioning.md).
-
-**Planted-memory persistence** — ASI06 red-team scenario: a memory record written in session *N* alters agent behaviour on a **legitimate query** in session *N+1*, with no attacker present at recall time. Required in adversarial coverage where memory is **agent-writable** and the threat model warrants red-teaming. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §5.2.
 
 **Prompt injection** — Crafted input causes the model to **ignore** policy, **exfiltrate** data, or **mis-route** tools; **indirect** injection uses **retrieved** text (RAG) or hidden content. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
@@ -308,8 +308,6 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Separation of duties (SoD)** — Different roles for **authoring**, **approving**, and **operating** high-risk change (including **who runs agents** vs **who merges** to protected branches); **estate** policy detail complements portable collaboration rules. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §1, [collaboration.md](principles/collaboration.md).
 
-**Sponsor (agent)** — The named human accountable for an agent identity's existence, scope, and lifecycle; sponsor departure triggers reassignment or decommissioning, and an agent with no current sponsor is **orphaned** and disabled. Anchored on the named-owner control in [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §§1–2. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
-
 **Shadow AI** — Copilots, wrappers, vendor AI features, or low-code automations in production **outside the AI inventory** — spreading faster than documentation, lifecycle control, and auditability. Closed with a **cheap sanctioned path** (no-blame registration + approved-tools list), not punitive detection. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.
 
 **Service catalog** — **Index of systems** the org runs: identity, **ownership**, interfaces (APIs/events), runtime, dependencies, ops links (SLOs, runbooks)—**tool-agnostic**; may be a portal, Git index, or dedicated product. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
@@ -331,6 +329,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **SPACE** — Framework for **developer experience** (satisfaction, performance, activity, collaboration, flow)—complements DORA. See [measurement-and-dora.md](principles/measurement-and-dora.md).
 
 **SPIFFE / SPIRE** — *Secure production identity framework for everyone* and common implementation: **workload identities** and SVIDs. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
+
+**Sponsor (agent)** — The named human accountable for an agent identity's existence, scope, and lifecycle; sponsor departure triggers reassignment or decommissioning, and an agent with no current sponsor is **orphaned** and disabled. Anchored on the named-owner control in [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §§1–2. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
 
 **SSDF** — NIST *Secure Software Development Framework* (SP 800-218): practices grouped **Prepare, Protect, Produce, Respond**. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) §6.
 

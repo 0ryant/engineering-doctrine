@@ -4,6 +4,8 @@
 
 **Date:** 2026-07-17
 
+**Plan status update (2026-08-03):** the `v0.4.0` version number was consumed by the August 2026 gap-audit closure line ([ADRs 0031–0035](../../docs/adr/README.md), tagged `v0.4.0`) — minor-shaped normative additions that arrived ahead of this plan's lanes. **The V40–V44 lanes below retarget verbatim to `v0.5.0`**; their objectives, acceptance criteria, and stop conditions are unchanged, and V44's "no published tag is rewritten" criterion now also protects `v0.4.0`. A further lane V45 (below) registers the AI-native SDLC council's open decision list so all forward doctrine work is tracked in one register.
+
 **Change classes:** editorial and navigation fixes proposed for `v0.3.1`; investigation and possible normative tightening/replacement proposed for `v0.4.0`.
 
 ## 1. Review Outcome
@@ -92,6 +94,14 @@ The progressive-disclosure proposal is library synthesis. It must be evaluated w
 - **Acceptance criteria:** ADRs state take/defer/reject decisions, alternatives, consumer impact, measures, and residual risks; progressive disclosure preserves the ADR 0030 kernel; normative changes are classified as a pre-1.0 minor; no published tag is rewritten.
 - **Verification:** Doctrine preflight, links, claim/terminology consistency, scenario sampling, Mermaid rendering if changed, portability scan, Git integrity, and the newly adopted semantic challenge evidence.
 - **Stop conditions:** Stop release on unresolved authority/evidence collapse, unmeasured usability regression, ambiguous tag-withdrawal behaviour, or a claimed independent review that shares the producer's material failure mode.
+
+### V45 — AI-Native SDLC Council Open Decisions (added 2026-08-03)
+
+- **Objective:** Resolve the unadopted council proposals recorded in [research-ai-native-sdlc-council-designs-2026-07.md](research-ai-native-sdlc-council-designs-2026-07.md) §6 — the sampled-lane and routing-classifier designs (D3–D5, D10), calibration program (D8–D9, D17), model-churn recertification economics (D13), attention-budget governance (D14), and the two proposed supersessions (D12) — via a **new ADR against the landed ADR 0024/0030 pattern**, not by executing the council's superseded §7 session plan.
+- **Owned files:** next available ADR; `doctrine/patterns/ai-native-software-development-lifecycle.md` and any files a D-item's supersession mechanics touch (feature-flag-lifecycle, code-review-and-change-approval per D12).
+- **Inputs and dependencies:** the council note's invariant register and critique record; operational evidence from running the landed pattern; audit residue rows 19–22 where they intersect (judge calibration ↔ D8–D9).
+- **Acceptance criteria:** each D-item receives an explicit take/defer/reject with alternatives and consumer impact; any supersession routes through the change-class and deprecation mechanics the council itself demanded (D2).
+- **Stop conditions:** stop if a D-item's machinery would land without the calibration/accountability prerequisites its own critique record names as blockers.
 
 ## 5. Measures
 

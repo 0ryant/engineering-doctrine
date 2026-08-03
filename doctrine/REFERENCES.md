@@ -302,7 +302,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | NIST Cybersecurity Framework 2.0 | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
 | NIST SP 1301 — creating and using CSF organisational profiles | https://csrc.nist.gov/pubs/sp/1301/final |
 | NIST SP 1303 — Monitor–Evaluate–Adjust control cycle | https://csrc.nist.gov/pubs/sp/1303/final |
-| NIST SP 800-53 Release 5.2.0 — security and privacy controls (adds SI-02(07) patch root-cause analysis, SA-15(13) structured logging, SA-24 cyber resiliency; none yet in an 800-53B baseline) | https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final |
+| NIST SP 800-53 Release 5.2.0 — security and privacy controls (adds SI-02(07) patch root-cause analysis, SA-15(13) structured logging, SA-24 cyber resiliency; none yet in an 800-53B baseline) | https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final — 5.2.0 change record: https://csrc.nist.gov/csrc/media/Projects/risk-management/800-53%20Comment%20Site/SP800-53-r5.2.0-changes.pdf |
 
 ---
 
@@ -426,7 +426,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [principles/errors-and-failure-modes.md](principles/errors-and-failure-modes.md) | Errors at boundaries |
 | [principles/naming-and-repo-layout.md](principles/naming-and-repo-layout.md) | Repo layout |
 | [principles/modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md) | Hexagonal / ports |
-| [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) | Zero trust, workload ID |
+| [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) | Zero trust, workload ID, agent identity (§2.1: tiered principal floor, sponsor lifecycle, OBO chains) |
 | [principles/secure-development-lifecycle.md](principles/secure-development-lifecycle.md) | SDL / SSDF alignment |
 
 ### Patterns
@@ -450,13 +450,13 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) | Incident lifecycle, IC, comms, state doc, escalation, handoff, on-call sustainability, post-incident actions, agent responders (roster role, reversibility-routed remediation, ranked-leads RCA) |
 | [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) | Webhook ingress hardening |
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
-| [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
+| [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline, graph-augmented retrieval (§7) |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
 | [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) | AI adoption operating model: inventory + materiality, ownership + effective challenge, harm-surface test matrix, provider continuity, role-based literacy (NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act–cited) |
 | [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) | AI-native SDLC: seven gates, five record families, governed execution, typed claims, candidate-bound authority, bounded enactment, and three closure modes |
 | [patterns/outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md) | Optional strategic objective/measure/intervention/outcome overlay with attribution limits and continue/change/stop decisions |
 | [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) | Feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt |
-| [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) | Agent harness patterns: nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence, context engineering, verbal RL |
+| [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) | Agent harness patterns: nested loop, verifiability gate, ISC, autonomy slider, dual-path injection defence + adaptive evaluation (§9.4), context engineering, memory red-teaming (§5.2), judge discipline (§8.2), ASI crosswalk (§11) |
 | [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the typed envelope of governed execution; activation boundary, lifecycle, v1 schema surface, validation tooling, and host-enforced limits |
 | [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
 | [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Optional anti-confabulation priming pattern with estate evaluation, content addressing, and independent-verification requirements. |
@@ -468,7 +468,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | --- | --- |
 | [principles/ai-ml-systems.md](principles/ai-ml-systems.md) | GenAI, RAG, agents; governance tiers; merge path |
 | [principles/data-and-migrations.md](principles/data-and-migrations.md) | Schema evolution, backups |
-| [principles/observability.md](principles/observability.md) | Logs, metrics, traces |
+| [principles/observability.md](principles/observability.md) | Logs, metrics, traces, GenAI/agent per-call telemetry (§7) |
 | [principles/testing-strategy.md](principles/testing-strategy.md) | Pyramid, contracts, flakiness, adversarial CI / abuse-case testing (§5) |
 | [principles/state-machines-and-workflows.md](principles/state-machines-and-workflows.md) | FSM, transitions, event-type mapping |
 | [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md) | HTTP limits, OWASP API |
@@ -476,7 +476,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md) | PII, retention, AI transparency (EU AI Act Art 50) |
 | [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents; [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) for full incident lifecycle / on-call / agent responders |
 | [principles/performance-and-cost.md](principles/performance-and-cost.md) | Load, FinOps |
-| [principles/cost-and-finops.md](principles/cost-and-finops.md) | FinOps operating model, unit economics, anomaly detection, AI inference cost |
+| [principles/cost-and-finops.md](principles/cost-and-finops.md) | FinOps operating model, unit economics, anomaly detection, AI inference cost, agent financial authority (§7.1), vendor-native spend governance |
 | [principles/platform-engineering.md](principles/platform-engineering.md) | Team topologies, TVP, golden paths, cognitive load |
 | [principles/documentation-knowledge.md](principles/documentation-knowledge.md) | ADRs, runbooks |
 | [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md) | SBOM, licences; models and datasets as dependencies (OMS model signing, safetensors, AIBOM) |
