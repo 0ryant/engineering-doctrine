@@ -307,6 +307,9 @@ Ordered by severity, then ascending effort. Change class per doctrine versioning
 | 16 | Agentic-retrieval cost-ladder rung + evolution note (G12) | rag-retrieval-baseline.md §7.1, evolution/ | additive guidance | no |
 | 17 | COSAiS / Cyber AI Profile watch-note, no clause pinning (G13) | evolution/ + pointer from secure-development-lifecycle.md | editorial | no |
 | 18 | SP 800-53 → Release 5.2.0 in all three citing files; catalog-addition note for next baseline-diff cycle (S5) | REFERENCES.md, audit-logging.md, normative-language-applicability-and-exceptions.md | editorial | no |
+| 19 | Message-level inter-agent controls: payload signing, anti-replay (from §11 crosswalk ASI07 no-coverage cell) | agentic-loop-design.md §8.3, zero-trust-and-workload-identity.md | normative | yes |
+| 20 | Adaptive trust calibration and anthropomorphism countermeasures (from crosswalk ASI09 no-coverage cell) | ai-adoption-controls.md §5, agentic-loop-design.md §6 | additive guidance | no |
+| 21 | Watchdog agents and per-agent cryptographic identity attestation (from crosswalk ASI10 no-coverage cell; attestation pairs with zero-trust §2.1) | agentic-loop-design.md §8, zero-trust-and-workload-identity.md §2.1 | normative | yes |
 
 ---
 
