@@ -177,12 +177,24 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | GitHub Spec Kit — Evolving specifications (vendor observation) | https://github.github.com/spec-kit/guides/evolving-specs.html |
 | Anthropic — 2026 Agentic Coding Trends Report (vendor research; landing page links the report) | https://resources.anthropic.com/2026-agentic-coding-trends-report |
 | OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
+| OWASP Top 10 for Agentic Applications 2026 (Agentic Security Initiative) | https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ |
 | Edge et al. — From Local to Global: A Graph RAG Approach to Query-Focused Summarization (Microsoft Research) | https://arxiv.org/abs/2404.16130 |
 | Microsoft — GraphRAG project documentation | https://microsoft.github.io/graphrag/ |
 | Microsoft Research — LazyGraphRAG (vendor-measured cost/quality claims) | https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/ |
 | Peng et al. — Graph Retrieval-Augmented Generation: A Survey | https://arxiv.org/abs/2408.08921 |
 | Sarmah et al. — HybridRAG (vector + knowledge graph, finance) | https://arxiv.org/abs/2408.04948 |
 | Model Context Protocol documentation hub | https://modelcontextprotocol.io |
+| MCP specification changelog — 2025-06-18 revision (OAuth 2.1 resource-server model, RFC 8707 resource indicators) | https://modelcontextprotocol.io/specification/2025-06-18/changelog |
+| MCP specification changelog — 2026-07-28 revision (stateless core, extensions framework, twelve-month deprecation policy) | https://modelcontextprotocol.io/specification/2026-07-28/changelog |
+| MCP Registry — about page (preview status, namespace verification, downstream scanning) | https://modelcontextprotocol.io/registry/about |
+| NSA AISC — MCP Security Design Considerations CSI (2026-05-20) | https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/ |
+| OWASP Gen AI Security Project — A Practical Guide for Secure MCP Server Development (2026-02-16) | https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/ |
+| NIST CAISI — AI Agent Standards Initiative | https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative |
+| NIST NCCoE — Accelerating the Adoption of Software and AI Agent Identity and Authorization (concept paper, initial public draft) | https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd |
+| IETF OAuth WG — Identity Assertion JWT Authorization Grant (Internet-Draft, pre-final) | https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-assertion-authz-grant/ |
+| Microsoft Entra Agent ID — What's new | https://learn.microsoft.com/en-us/entra/agent-id/whats-new-agent-id |
+| A2A protocol specification v1.0 — signed Agent Cards | https://a2a-protocol.org/latest/specification/ |
+| AWS Bedrock AgentCore Identity — agent workload identities | https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/understanding-agent-identities.html |
 | Anthropic — Building Effective Agents (Dec 2024) | https://www.anthropic.com/engineering/building-effective-agents |
 | Anthropic — Multi-Agent Research System (Jun 2025) | https://www.anthropic.com/engineering/built-multi-agent-research-system |
 | ReAct — Yao et al., ICLR 2023 (reason + act loop) | https://arxiv.org/abs/2210.03629 |

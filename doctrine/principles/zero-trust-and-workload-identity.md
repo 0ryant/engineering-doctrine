@@ -20,6 +20,19 @@ Durable rules for **verifying** callers and **least privilege** between services
 
 **Why:** **SPIFFE** provides a **vendor-neutral** identity *shape* for workloads: https://spiffe.io/
 
+### 2.1 Agent Identity
+
+Applies when a workload is an **AI agent** — a model-driven principal that plans, calls tools, and produces side effects across systems — **holding its own workload identity**: its own credentials, standing infrastructure, or unattended operation. A tool acting entirely under a human's interactive session is that human's session, governed by §3 and [ai-ml-systems.md](ai-ml-systems.md) §4, not this subsection. §2's invariants apply unchanged; this subsection **extends** them with the identity granularity that generic workload identity does not capture.
+
+- **First-class identity type.** An agent MUST act under an identity distinguishable as an *agent* in policy and audit — a distinct principal class — not the anti-pattern of **agents as generic service accounts**: shared, long-lived principals under which agent actions are indistinguishable from deterministic services. **Compliance floor:** a dedicated per-agent principal, labeled or tagged as an agent and resolvable to its sponsor, satisfies "distinguishable in policy and audit"; only shared or multi-purpose principals fail. Purpose-built agent-identity platforms are rationale, not the bar.
+- **Named human sponsor.** Every agent identity MUST have a named human **sponsor** with a defined **lifecycle**: sponsor departure or role change triggers reassignment or decommissioning, and an **orphaned** agent — one with no current sponsor — is disabled, not left running. Sponsorship anchors on the existing named-owner control (a **role** with an escalation path, not a team alias) in [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §§1–2; this bullet binds that owner to the identity record rather than restating the control.
+- **Per-interaction credentials.** Agent credentials SHOULD narrow §2's short-lived, audience-scoped rule further: issued **per interaction or per task**, scoped to that run's tools and resources, and SHOULD NOT be a standing grant over the agent's whole capability surface. Run-scoped authority composition: [../patterns/agentic-loop-design.md](../patterns/agentic-loop-design.md) §8.
+- **Attribution chains.** When an agent acts **on behalf of** a human or another agent, audit records MUST preserve the full delegation chain — initiating human, sponsor, agent identity, and each hop (**on-behalf-of** / **actor-token** semantics) — so one record answers both *who asked* and *what acted*. Evidence fields and retention: [audit-logging.md](audit-logging.md).
+
+**Standards watch** *(informative, not normative — items are pre-final or vendor-specific; any future binding routes through [../patterns/revision-pinned-control-profiles.md](../patterns/revision-pinned-control-profiles.md))*: NIST **CAISI** AI Agent Standards Initiative (agent authentication and identity infrastructure): https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative — NIST NCCoE concept paper on AI agent identity and authorization (initial public draft, 2026-02): https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd — IETF OAuth **Identity Assertion JWT Authorization Grant** (draft-04; cross-app access via RFC 8693 token exchange): https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-assertion-authz-grant/ — Microsoft **Entra Agent ID** (GA; sponsor-lifecycle workflows, agent-specific auth flows): https://learn.microsoft.com/en-us/entra/agent-id/whats-new-agent-id — **A2A** v1.0 signed Agent Cards (JWS card signing): https://a2a-protocol.org/latest/specification/ — AWS Bedrock **AgentCore Identity** (per-agent workload identity gating a token vault): https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/understanding-agent-identities.html — named products are rationale, not mandated tooling.
+
+**Why:** Composed doctrine already yields short-lived, scoped workload identity for agent runners ([ai-ml-systems.md](ai-ml-systems.md) Tier D + §§1–2 above + agentic-loop authority); the missing residue was the **agent as principal** — sponsorship, per-interaction scope, delegation attribution — now converging across NIST, IETF, and the major platforms.
+
 ---
 
 ## 3. Human And Break-Glass
@@ -37,6 +50,7 @@ Durable rules for **verifying** callers and **least privilege** between services
 | --- | --- |
 | Principle, not mesh SKU | Service mesh is **tooling**; invariant is **verified identity** at each hop. |
 | Links to API doctrine | [api-boundaries-and-security.md](api-boundaries-and-security.md) covers **authorisation** semantics at HTTP boundaries. |
+| Agent identity as §2.1, not a new file | Agents inherit §2's invariants; §2.1 adds only the **granularity residue** — principal class, sponsor lifecycle, per-interaction scope, delegation attribution. Vendor mechanisms stay informative. |
 
 ---
 

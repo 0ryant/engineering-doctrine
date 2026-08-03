@@ -26,6 +26,7 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 | **Low** | Next **regular** dependency cadence (e.g. weekly/biweekly bot merge) |
 
 - **Known-exploited and triage order** — when a component matches [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) (or your estate’s equivalent **weaponisation** feed), treat it as **highest** urgency regardless of “ordinary” severity tables; use [FIRST EPSS](https://www.first.org/epss/user-guide) and asset context to **rank** non-KEV backlog, not to **ignore** KEV.
+- **Protocol dependencies with published lifecycles** — when a protocol adopted under [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) publishes a deprecation policy (for example **MCP**'s minimum **twelve-month** deprecation window — [2026-07-28 changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog)), treat announced deprecations as **update-cadence inputs**: schedule migration off deprecated features **inside** the publisher's window against the pinned revision in the profile record — not as an emergency when removal ships.
 
 **Why:** Outdated dependencies are a **known** attack surface; automation reduces toil and inconsistency across repos. **Named SLAs** prevent “we’ll get to it” drift without pretending every CVE is equal.
 

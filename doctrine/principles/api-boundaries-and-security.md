@@ -146,7 +146,7 @@ If GraphQL (or similar) is exposed, treat **query planning** as part of the **se
 ## Related
 
 - Architecture-level threat pass (trust boundaries): [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md)
-- **LLM / RAG / agents** — portable governance and tiered obligations: [ai-ml-systems.md](ai-ml-systems.md). **Retrieval** (tenant isolation, indirect injection via documents, cached context) and **tool** calls (SSRF-class fetches) still map to **this** file’s HTTP/RPC boundaries. Baseline: [../patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md); OWASP **LLM** list: https://genai.owasp.org/llm-top-10/
+- **LLM / RAG / agents** — portable governance and tiered obligations: [ai-ml-systems.md](ai-ml-systems.md). **Retrieval** (tenant isolation, indirect injection via documents, cached context) and **tool** calls (SSRF-class fetches) still map to **this** file’s HTTP/RPC boundaries. **MCP servers** are HTTP/RPC boundaries under this file (§§2–3, §§8–9); the MCP-specific baseline — spec-revision pinning, remote-server OAuth (RFC 8707), registry posture, and the gateway/session implications of the 2026-07-28 stateless core — lives in [ai-ml-systems.md](ai-ml-systems.md) §7. Baseline: [../patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md); OWASP **LLM** list: https://genai.owasp.org/llm-top-10/
 
 ---
 

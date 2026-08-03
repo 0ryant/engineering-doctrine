@@ -109,7 +109,7 @@ Invest proportionally in harness design:
 | **Verification mechanisms** | Closes the loop; enables Reflexion-style retry |
 | **Typed state and ISC** | Forces explicit goal decomposition; creates measurable progress |
 
-**What scaffolding cannot fix:** intrinsic motivation, curiosity, continuous learning between runs, long-horizon sparse reward tasks without human decomposition. Do not architect around capabilities current LLMs do not have. See §6 (autonomy slider) and §9 (anti-patterns).
+**What scaffolding cannot fix:** intrinsic motivation, curiosity, continuous learning between runs, long-horizon sparse reward tasks without human decomposition. Do not architect around capabilities current LLMs do not have. See §6 (autonomy slider) and §12 (anti-patterns).
 
 ---
 
@@ -289,7 +289,28 @@ Anthropic's design guidance: start with the simplest possible solution (single L
 
 ---
 
-## 11. Anti-Patterns
+## 11. ASI-To-Doctrine Crosswalk (OWASP Top 10 For Agentic Applications 2026)
+
+The **OWASP Top 10 for Agentic Applications 2026** (**ASI01–ASI10**; OWASP GenAI Security Project, Agentic Security Initiative, final release 2025-12-09) is the **agentic-layer companion** to the OWASP Top 10 for LLM Applications — **complementary, not superseding**; its entries cross-map to LLM Top 10 (2025) mitigations: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+
+This crosswalk is **navigational vocabulary**: it maps each ASI identifier to the existing doctrine control(s) that address it, so coverage can be demonstrated to reviewers and auditors who speak ASI vocabulary. It restates no mitigations and adds no new obligations — each linked section carries its own normative strength. Where doctrine has no control for a mitigation family, the gap is recorded honestly.
+
+| ASI id | Risk | Doctrine control(s) |
+| --- | --- | --- |
+| **ASI01** | Agent Goal Hijack | §9 (untrusted content never reaches the planning model); §3 (ISC pin the goal; VERIFY detects drift from declared criteria); [run-contracts.md](run-contracts.md) (scope, authority, and outputs bound before the run); [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §7 (retrieved/external text is untrusted input) |
+| **ASI02** | Tool Misuse and Exploitation | §7 (ACI design, poka-yoke `confirm` flags, scoped tool sets); §6 (approval gates before irreversible actions); [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §2 Tier D (per-tool least privilege, bounded loops/cost) and §7 (per-tool authorisation, rate limits, audited invocations); [run-contracts.md](run-contracts.md) capabilities |
+| **ASI03** | Identity and Privilege Abuse | §8.3 (authority attenuates; delegation cannot widen; resume revalidates identity, authority, lease; revocation propagates — orphaned children cannot continue with cached credentials); [../principles/zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2 (workload identity for runners) and §2.1 (agent identity: sponsor lifecycle, per-interaction credentials, on-behalf-of attribution) |
+| **ASI04** | Agentic Supply Chain Vulnerabilities | [../principles/dependencies-supply-chain.md](../principles/dependencies-supply-chain.md) (models, tools, and weights as dependencies); [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §7 (authenticate tool-protocol servers; track server-implementation dependencies); [ai-adoption-controls.md](ai-adoption-controls.md) §1 (vendor/embedded AI in the inventory). **No current coverage**: signed provenance/attestation specific to agent and tool registries (AIBOM-class evidence) |
+| **ASI05** | Unexpected Code Execution (RCE) | [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4 (agents propose — no direct mutation of production; CI and human gates on the change path); §5.1 Isolate (generated code runs in an execution sandbox; only typed return values re-enter context — **described practice, not a mandated control**: doctrine does not currently mandate sandboxed execution) |
+| **ASI06** | Memory & Context Poisoning | §5 (poisoning as a named context failure mode; Write/Select/Compress/Isolate strategies); [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §7 (persisted agent memory reopens Tier B retrieval rules — ACL, eval, injection); [rag-retrieval-baseline.md](rag-retrieval-baseline.md) (index hygiene and retrieval eval) |
+| **ASI07** | Insecure Inter-Agent Communication | §8.3 (typed handoffs are claims — checked before integration, never trusted because they parse; immutable input snapshots); [../principles/zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §1 (mutually authenticated service-to-service identities — mTLS, signed tokens — on every hop); [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §7 (authenticate servers and callers on tool protocols). **No current coverage**: message-level payload signing and anti-replay between agents |
+| **ASI08** | Cascading Failures | §8.3 (bound the tree — fan-out, depth, time, budget; cancellation and revocation propagate; reconcile shared state); §1.2 (capped inner-loop iterations); §6 (blast radius sets the autonomy default); [verifier-packs.md](verifier-packs.md) §4 (fail-loud, never fail-silent) |
+| **ASI09** | Human-Agent Trust Exploitation | §6 (transparent plan state; conservative autonomy defaults); [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4 (overseer authority to disregard, override, or halt; automation-bias awareness); [ai-adoption-controls.md](ai-adoption-controls.md) §2 (independent challenge) and §5 (role-based capability uplift). **No current coverage**: adaptive trust calibration and anthropomorphism-specific countermeasures |
+| **ASI10** | Rogue Agents | §8.3 (terminating or narrowing a parent recursively revokes child authority; budget enforcement outside prompts); §6 (autonomy earned from verified track record, retracted on regression or incident); [../principles/zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2.1 (sponsor lifecycle; orphaned agents are disabled, not left running); [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4 (human halt authority) with [../principles/audit-logging.md](../principles/audit-logging.md); [ai-adoption-controls.md](ai-adoption-controls.md) §1 (inventory) and §3 (continuous drift monitoring). **No current coverage**: watchdog agents and per-agent cryptographic identity attestation |
+
+---
+
+## 12. Anti-Patterns
 
 | Anti-pattern | What goes wrong |
 | --- | --- |
@@ -318,6 +339,7 @@ Anthropic's design guidance: start with the simplest possible solution (single L
 | Autonomy slider default-conservative | Blast radius asymmetry: over-supervision wastes time; under-supervision causes incidents. Start conservative, earn autonomy from data. |
 | External verifier required for Reflexion reliability | Shinn et al.'s own analysis: Reflexion gains come from external verifiers (unit tests). Self-critique without external grounding can confidently misdiagnose. |
 | Scaffolding investment priority | ReAct, PAI, Anthropic: structural and scaffolding improvements outperform model upgrades per unit of engineering effort. |
+| ASI crosswalk as vocabulary, not controls | Tier-D mitigations existed but were unmapped to ASI01–ASI10 identifiers, so coverage could not be demonstrated in auditor vocabulary. The crosswalk cross-links existing controls without duplicating normative content; gaps are recorded honestly. |
 
 ---
 
@@ -339,3 +361,4 @@ Anthropic's design guidance: start with the simplest possible solution (single L
 - **LangChain — Context Engineering** (Chase, Jun 2025): https://blog.langchain.com/the-rise-of-context-engineering/
 - **12 Factor Agents** (Horthy — "own your context window"): https://github.com/humanlayer/12-factor-agents
 - **LangGraph** (cyclic graphs for agentic loops): https://github.com/langchain-ai/langgraph
+- **OWASP Top 10 for Agentic Applications 2026** (ASI01–ASI10, Agentic Security Initiative, final release 2025-12-09): https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/

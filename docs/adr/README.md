@@ -40,6 +40,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0028](0028-adopt-claim-level-authority-applicability-and-exceptions.md) | Accepted | 2026-07-17 | Adopt claim-level normative strength, composable applicability, bounded exceptions, and control lifecycle |
 | [0029](0029-adopt-a-compact-non-duplicative-core-constitution.md) | Accepted | 2026-07-17 | Rebuild the umbrella as a compact core constitution and route map |
 | [0030](0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) | Accepted | 2026-07-17 | Refine AI-native delivery into seven gates, five record families, governed execution, typed claims, and three closure modes |
+| [0031](0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md) | Accepted | 2026-08-03 | Add first-class agent identity (§2.1), a revision-pinned MCP baseline, and the ASI01–ASI10 crosswalk — closes gap-audit items G1, S1, S2 |
 
 ## Candidate Considered But Not Recorded
 

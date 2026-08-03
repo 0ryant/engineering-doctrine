@@ -285,7 +285,7 @@ Eight candidate findings were killed in adversarial verification — kept here a
 
 ## 7. Prioritised action list
 
-Ordered by severity, then ascending effort. Change class per doctrine versioning vocabulary; normative changes route via ADR.
+Ordered by severity, then ascending effort. Change class per doctrine versioning vocabulary; normative changes route via ADR. **Closure status:** rows 1 (S1), 4 (S2), and 6 (G1) closed by [ADR 0031](../../docs/adr/0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md) (2026-08-03).
 
 | # | Action | Target file(s) | Class | ADR? |
 |---|---|---|---|---|

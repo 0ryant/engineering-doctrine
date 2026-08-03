@@ -12,7 +12,11 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
+**Agent identity** — First-class workload-identity principal class for AI agents: distinguishable from generic service accounts in policy and audit, sponsored by a named human, credentialed per interaction. Compliance floor: a dedicated per-agent principal, labeled as an agent and resolvable to its sponsor. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
+
 **Agentic workflow** — An LLM **plans** and invokes **tools** (HTTP, CLI, browser, etc.) in **iterative** steps; treat like a new **client** at trust boundaries (SSRF, cost, audit). See [ai-ml-systems.md](principles/ai-ml-systems.md) §§2–4, §7, [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §7.
+
+**ASI Top 10 (OWASP Top 10 for Agentic Applications)** — Peer-reviewed agentic-layer risk list (**ASI01–ASI10**: goal hijack, tool misuse, identity/privilege abuse, agentic supply chain, unexpected code execution, memory poisoning, inter-agent communication, cascading failures, trust exploitation, rogue agents) — **complementary** to the LLM Top 10, not superseding. Doctrine crosswalk: [agentic-loop-design.md](patterns/agentic-loop-design.md) §11.
 
 **Applicability profile** — Named combination of exposure, criticality, data/authority, recoverability, change autonomy, compatibility, and observability conditions that activates existing controls. It is an overlay, not a new doctrine layer. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).
 
@@ -180,7 +184,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Materiality (AI)** — Business-impact tier of an AI system (person-affected decisions, money movement, irreversibility, blast radius) — **orthogonal** to capability tiers A–D; controls scale with the **max** of the two. See [ai-ml-systems.md](principles/ai-ml-systems.md) §2.1, [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.1.
 
-**MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover **tools** and **resources** (often JSON-RPC); treat servers as **production** integrations (authz, audit, supply chain). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
+**MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover and invoke **tools** and **resources**, versioned as **dated specification revisions** (for example **2025-06-18**: OAuth 2.1 resource-server auth + RFC 8707 resource indicators; **2026-07-28**: stateless core, twelve-month deprecation policy); pin the revision per estate-governed host/server pair, require external-IdP OAuth for **remote** servers, and treat server discovery as a **curated registry** decision (namespace DNS verification is authenticity, not trust). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
 
 **Merge queue** — Serialises merges to `main` by testing the **merged** result; reduces “green branch, red main.” See [collaboration.md](principles/collaboration.md), [trunk-workflow.md](patterns/trunk-workflow.md).
 
@@ -213,6 +217,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **ODP** — *Organisation-defined parameter*: a value an organisation must choose where a control baseline deliberately leaves a parameter open. Record the value, scope, owner, source/approval, effective date, and evidence with the exact profile revision; never let an AI or implementation silently invent it. See [Revision-Pinned External Control Profiles](patterns/revision-pinned-control-profiles.md).
 
 **OIDC** — *OpenID Connect*: identity layer on OAuth 2.0; common for **human** and sometimes **workload** flows. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
+
+**On-behalf-of (OBO) chain** — Audit attribution preserving initiating human, sponsor, agent identity, and every delegation hop (**actor-token** semantics) for agent-performed actions, so one record answers both *who asked* and *what acted*. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1, [audit-logging.md](principles/audit-logging.md).
 
 **OpenTelemetry (OTel)** — Vendor-neutral telemetry APIs and **OTLP** export. See [interoperability-and-standards.md](principles/interoperability-and-standards.md), [tooling/observability.md](tooling/observability.md).
 
@@ -281,6 +287,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Semantic index** — Curated route map from task intent to the doctrine files an agent or reader should ingest. It is navigation, not a replacement for source principles, patterns, tooling pages, checklists, ADRs, or evolution notes. See [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md).
 
 **Separation of duties (SoD)** — Different roles for **authoring**, **approving**, and **operating** high-risk change (including **who runs agents** vs **who merges** to protected branches); **estate** policy detail complements portable collaboration rules. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §1, [collaboration.md](principles/collaboration.md).
+
+**Sponsor (agent)** — The named human accountable for an agent identity's existence, scope, and lifecycle; sponsor departure triggers reassignment or decommissioning, and an agent with no current sponsor is **orphaned** and disabled. Anchored on the named-owner control in [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §§1–2. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
 
 **Shadow AI** — Copilots, wrappers, vendor AI features, or low-code automations in production **outside the AI inventory** — spreading faster than documentation, lifecycle control, and auditability. Closed with a **cheap sanctioned path** (no-blame registration + approved-tools list), not punitive detection. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.
 
