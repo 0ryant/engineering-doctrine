@@ -156,6 +156,36 @@ Replace `0.001` with `1 − SLO_target` for your service. Replace `http_requests
 
 ---
 
+## 7. GenAI And Agent Call Telemetry
+
+**Applicability:** **production** and **estate-governed** paths that serve **GenAI or agent calls** — model inference, embeddings, agent/workflow runs, and model-mediated tool use ([Applicability Overlay](../patterns/normative-language-applicability-and-exceptions.md) §3). A service with **no** model calls is out of scope. The vocabulary here is deliberately **schema-neutral** — no telemetry attribute names — so it survives convention churn; the OpenTelemetry mapping and its stability caveats live in [../tooling/observability.md](../tooling/observability.md).
+
+### 7.1 Per-Call Minimum Signal Set
+
+- **MUST:** every production model-mediated call emits, joined to the request path by **trace/span id** (§2):
+  - **model id and version** — the requested model **and** the provider-reported responding model where they can differ; the responding model is the pricing and behaviour key.
+  - **token counts** — input and output, **separately**.
+  - **latency** — **percentile-tracked** total duration; **time-to-first-token** (TTFT) additionally for streaming responses where the serving path or instrumentation library exposes it (SHOULD where it requires custom client-side wiring).
+  - **cost-attribution key** — a direct cost figure, or the derivable pair (responding model id + token counts), sufficient to feed the token budgets, spend circuit breakers, and cost-per-outcome tracking of [cost-and-finops.md](cost-and-finops.md) §7.
+  - **run/session correlation** (agentic and multi-call workflow paths) — a run or session identifier carried in **traces/logs** per the §3 cardinality rules (never metric labels), so per-call spend rolls up to the **per-run and per-use-case** budget units of [cost-and-finops.md](cost-and-finops.md) §7.
+  - **tool-call identifiers** — per-invocation ids for model-initiated tool calls, joining the audited tool invocations and actor/model-version logging already mandated by [ai-ml-systems.md](ai-ml-systems.md) §§5 and 7.
+  - **retrieval linkage** (retrieval-augmented paths only) — the chunk and corpus ids already required by [../patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md) §5; link on the same trace, do not restate that rule here.
+- **SHOULD:** sampled **quality/eval scoring** hooks the **same trace ids**, so evaluation results join production traces instead of forming a parallel, uncorrelated dataset.
+- **Control record:** owner — the service-owning team, with the platform observability owner accountable for the ingestion path; evidence — the signal set present on sampled production traces (dashboard or policy-as-code check); failure addressed — unattributable token spend, undebuggable model-behaviour change, unauditable agent and tool activity; cost — a handful of low-cardinality attributes per call; review trigger — the OpenTelemetry GenAI conventions reaching a stable release, or the adopting ADR's review date ([Control Lifecycle](../patterns/normative-language-applicability-and-exceptions.md) §6).
+- **Exceptions** to the minimum set follow the [Exception Contract](../patterns/normative-language-applicability-and-exceptions.md) §5 — bounded, narrower and shorter-lived than the rule, evidence preserved.
+
+### 7.2 Privacy Default: Content Is Not Captured
+
+- Prompt and completion **content** (messages, system instructions, tool arguments/results carrying user data) **MUST NOT** be captured in telemetry **by default**. Content capture is **opt-in**, **scoped** (named surfaces, named fields, capped retention), and routes through the existing high-risk MUST of [privacy-and-data-governance.md](privacy-and-data-governance.md) §5.3 — minimisation, retention caps, vendor-flow review, no production PII in prompts/logs without clearance. This section adds the **default**; it does not duplicate that rule.
+
+### 7.3 Cardinality Discipline Carries Over
+
+- **Model id** is an acceptable **low-cardinality** metric label. Per-call, conversation/session, response, and tool-call identifiers belong in **traces**, **logs**, or **exemplars** — never in metric label sets (§3).
+
+**Why:** model-mediated calls are the fastest-growing cost and audit surface in the estate; without a per-call minimum, spend cannot be attributed, behaviour changes cannot be debugged, and agent actions cannot be audited. Content capture defaults off because prompt pipelines **log unless designed not to** ([privacy-and-data-governance.md](privacy-and-data-governance.md) §5.3 Why), and telemetry is the pipeline most likely to do it silently.
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -167,6 +197,7 @@ Replace `0.001` with `1 − SLO_target` for your service. Replace `http_requests
 | SLI doc stays with SLO doc | Avoids **duplicate** definitions that drift between teams. |
 | Tiered §5 | **SLIs** are mandatory with SLOs; profiling/eBPF stay **optional** power tools. |
 | Multi-window burn-rate alerting (§6) | Prevents both false pages (single window) and silent budget exhaustion (no slow-burn tier). Model from Google SRE Workbook. |
+| GenAI per-call minimum signal set; content capture off by default (§7) | Token spend, model behaviour, and agent tool use are unattributable without per-call signals; prompt/completion content is a PII surface, so capture is an explicit governed opt-in, never a default. |
 
 ---
 
@@ -180,3 +211,4 @@ Replace `0.001` with `1 − SLO_target` for your service. Replace `http_requests
 - Google SRE Workbook, **Implementing SLOs**: https://sre.google/workbook/implementing-slos/
 - Google SRE Workbook, **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/
 - Google **Cloud Profiler** concepts (illustrative continuous profiling): https://cloud.google.com/profiler/docs/concepts-profiling
+- OpenTelemetry **GenAI semantic conventions** (dedicated repository; **Development** stability — see [../tooling/observability.md](../tooling/observability.md) for the pinning caveat): https://github.com/open-telemetry/semantic-conventions-genai

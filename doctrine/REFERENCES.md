@@ -178,6 +178,9 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Anthropic — 2026 Agentic Coding Trends Report (vendor research; landing page links the report) | https://resources.anthropic.com/2026-agentic-coding-trends-report |
 | OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
 | OWASP Top 10 for Agentic Applications 2026 (Agentic Security Initiative) | https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ |
+| NIST AI 100-2e2025 — Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations | https://csrc.nist.gov/pubs/ai/100/2/e2025/final |
+| CSA — MAESTRO agentic threat-modeling framework | https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro |
+| OWASP — Multi-Agentic System Threat Modeling Guide v1.0 (applies CSA MAESTRO to multi-agent systems; landing page) | https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/ |
 | Edge et al. — From Local to Global: A Graph RAG Approach to Query-Focused Summarization (Microsoft Research) | https://arxiv.org/abs/2404.16130 |
 | Microsoft — GraphRAG project documentation | https://microsoft.github.io/graphrag/ |
 | Microsoft Research — LazyGraphRAG (vendor-measured cost/quality claims) | https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/ |
@@ -195,6 +198,11 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Microsoft Entra Agent ID — What's new | https://learn.microsoft.com/en-us/entra/agent-id/whats-new-agent-id |
 | A2A protocol specification v1.0 — signed Agent Cards | https://a2a-protocol.org/latest/specification/ |
 | AWS Bedrock AgentCore Identity — agent workload identities | https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/understanding-agent-identities.html |
+| Microsoft Learn — Azure SRE Agent overview / run modes / permissions (vendor observation) | https://learn.microsoft.com/en-us/azure/sre-agent/overview |
+| Microsoft — Autonomous AKS incident response with Azure SRE Agent (incident→issue→coding-agent loop; vendor observation) | https://techcommunity.microsoft.com/blog/appsonazureblog/autonomous-aks-incident-response-with-azure-sre-agent-from-alert-to-verified-rec/4511343 |
+| PagerDuty — SRE Agent virtual responder (GA 2026-03; fully autonomous mode in early access; vendor observation) | https://www.pagerduty.com/blog/ai/meet-your-virtual-responder-pagerdutys-sre-agent-for-ai-driven-reliability/ |
+| incident.io — AI SRE (hypothesis-driven investigations; self-healing drift-masking anti-pattern; vendor observation) | https://incident.io/ai-sre |
+| Datadog — Bits AI SRE (validated/invalidated/inconclusive hypothesis classification; vendor observation) | https://www.datadoghq.com/blog/bits-ai-sre/ |
 | Anthropic — Building Effective Agents (Dec 2024) | https://www.anthropic.com/engineering/building-effective-agents |
 | Anthropic — Multi-Agent Research System (Jun 2025) | https://www.anthropic.com/engineering/built-multi-agent-research-system |
 | ReAct — Yao et al., ICLR 2023 (reason + act loop) | https://arxiv.org/abs/2210.03629 |
@@ -237,6 +245,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Scaling the Collector | https://opentelemetry.io/docs/collector/scaling/ |
 | OTel log correlation (.NET example) | https://opentelemetry.io/docs/languages/dotnet/logs/correlation/ |
 | Azure Monitor + OpenTelemetry (example backend) | https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable |
+| OpenTelemetry GenAI semantic conventions (dedicated repository; Development stability — pin the adopted version) | https://github.com/open-telemetry/semantic-conventions-genai |
 
 ---
 
@@ -430,7 +439,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) | Fictional order FSM + JetStream sketch |
 | [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) | Fictional saga + compensation sketch |
 | [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) | Chaos experiments and game days |
-| [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) | Incident lifecycle, IC, comms, state doc, escalation, handoff, on-call sustainability, post-incident actions |
+| [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) | Incident lifecycle, IC, comms, state doc, escalation, handoff, on-call sustainability, post-incident actions, agent responders (roster role, reversibility-routed remediation, ranked-leads RCA) |
 | [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md) | Webhook ingress hardening |
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline |
@@ -457,7 +466,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md) | HTTP limits, OWASP API |
 | [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) | STRIDE-lite trust-boundary review |
 | [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md) | PII, retention, AI transparency (EU AI Act Art 50) |
-| [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents; [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) for full incident lifecycle / on-call |
+| [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) | SLOs, incidents; [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) for full incident lifecycle / on-call / agent responders |
 | [principles/performance-and-cost.md](principles/performance-and-cost.md) | Load, FinOps |
 | [principles/cost-and-finops.md](principles/cost-and-finops.md) | FinOps operating model, unit economics, anomaly detection, AI inference cost |
 | [principles/platform-engineering.md](principles/platform-engineering.md) | Team topologies, TVP, golden paths, cognitive load |

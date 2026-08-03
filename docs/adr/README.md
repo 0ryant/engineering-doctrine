@@ -42,6 +42,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0030](0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) | Accepted | 2026-07-17 | Refine AI-native delivery into seven gates, five record families, governed execution, typed claims, and three closure modes |
 | [0031](0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md) | Accepted | 2026-08-03 | Add first-class agent identity (§2.1), a revision-pinned MCP baseline, and the ASI01–ASI10 crosswalk — closes gap-audit items G1, S1, S2 |
 | [0032](0032-add-ai-act-transparency-slopsquatting-gate-and-model-dataset-admission.md) | Accepted | 2026-08-03 | Add profile-gated EU AI Act Art 50 transparency (§5.4), the slopsquatting pre-install gate, and model/dataset admission (§8); amends ADR 0031 with the tiered agent-principal floor — closes gap-audit items G2, G3, G4 |
+| [0033](0033-add-agentic-threat-vocabulary-agent-responders-and-genai-telemetry.md) | Accepted | 2026-08-03 | Add agentic threat vocabulary (§3.2), the agent-responder incident role (§10), and the GenAI per-call telemetry floor (§7) — closes gap-audit items G5, G6, G7 |
 
 ## Candidate Considered But Not Recorded
 

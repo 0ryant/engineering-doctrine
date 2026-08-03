@@ -285,7 +285,7 @@ Eight candidate findings were killed in adversarial verification — kept here a
 
 ## 7. Prioritised action list
 
-Ordered by severity, then ascending effort. Change class per doctrine versioning vocabulary; normative changes route via ADR. **Closure status:** rows 1 (S1), 4 (S2), and 6 (G1) closed by [ADR 0031](../../docs/adr/0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md) (2026-08-03); rows 2 (G2), 3 (G3), and 7 (G4) closed by [ADR 0032](../../docs/adr/0032-add-ai-act-transparency-slopsquatting-gate-and-model-dataset-admission.md) (2026-08-03), which also amends the ADR 0031 agent-principal floor to a capability×materiality tier.
+Ordered by severity, then ascending effort. Change class per doctrine versioning vocabulary; normative changes route via ADR. **Closure status:** rows 1 (S1), 4 (S2), and 6 (G1) closed by [ADR 0031](../../docs/adr/0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md) (2026-08-03); rows 2 (G2), 3 (G3), and 7 (G4) closed by [ADR 0032](../../docs/adr/0032-add-ai-act-transparency-slopsquatting-gate-and-model-dataset-admission.md) (2026-08-03), which also amends the ADR 0031 agent-principal floor to a capability×materiality tier; rows 5 (G5), 8 (G6), and 9 (G7) closed by [ADR 0033](../../docs/adr/0033-add-agentic-threat-vocabulary-agent-responders-and-genai-telemetry.md) (2026-08-03). Attribution correction recorded there: the ~81% agent-hijack statistic in §2.1 traces to the US/UK AISI hijacking-evaluations blog, not AI 100-2e2025 itself.
 
 | # | Action | Target file(s) | Class | ADR? |
 |---|---|---|---|---|

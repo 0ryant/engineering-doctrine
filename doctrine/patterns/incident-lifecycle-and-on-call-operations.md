@@ -54,9 +54,10 @@ Use a **small** set of named phases; exact labels are estate-specific, but the *
 | **Communications lead (comms lead)** | **Drafts/approves** user-facing and internal comms; keeps **one voice** and cadence (§4). **Must** for customer-visible SEV-1+ in many orgs. |
 | **Scribe** | Updates the **state doc** (§5) in **real time**; captures decisions, **hypotheses disproved**, **mitigations** tried. If no dedicated scribe, IC **rotates** the duty. |
 | **SMEs / responders** | People who know subsystems, **infra**, or **data**; work **tactical** tasks directed by IC. |
+| **Agent responder (rostered)** | Optional; only where the estate operates one. An **AI agent** on the roster working **tactical**, **pre-declared** tasks and investigation under IC direction; has a **named accountable human owner** (sponsor per [zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2.1) who can **page-steal** or **stop** it at any time; **never** IC (§10). |
 | **Executive / legal / customer liaison** | **Only** as required by **severity** and **regulatory** context—not every incident needs a C-suite. |
 
-**Must not:** have **no** single IC in a **multi-team** response—**everyone** owns it means **no one** owns it.
+**Must not:** have **no** single IC in a **multi-team** response—**everyone** owns it means **no one** owns it; **must not** assign **incident command** to an **agent responder** (§10)—command is a **human** accountability, not a coordination capability.
 
 **Why:** Incident command in aviation and ITIL-style command structures; portable doctrine only needs the **separation of coordination and execution**, not a certification.
 
@@ -142,7 +143,22 @@ The **incident state doc** (wiki page, **shared doc**, ticket, or **runbook** se
 
 ---
 
-## 10. Relation to SLOs, game days, and platform ownership
+## 10. Agent responders and AI-assisted investigation
+
+**Applies only** to estates operating **agent responders** — AI agents (Azure SRE Agent-class, PagerDuty virtual responder, incident.io AI SRE) rostered into incident response. Estates without them change nothing; the all-human roles in §3 remain complete. This section adds **incident-ops-specific** rules only. Agent **autonomy** and **authority** are already governed by [ai-native-software-development-lifecycle.md](ai-native-software-development-lifecycle.md) §10 (**service/change owner** decides rollback, incident, and closure) and §13 (an operational agent cannot detect, implement, approve, and deploy its own change as one closed authority loop) — this section composes with those rules; it does **not** define a parallel autonomy framework.
+
+- **Roster role with a named human owner.** An agent participating in response is a **roster role** in §3, not ambient tooling. It MUST have a **named accountable human owner** who can **page-steal** or **stop** it at any time. Identity, sponsorship, and lifecycle bind to existing controls — the **named human sponsor** and per-agent principal in [zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2.1 and the named-owner control in [ai-adoption-controls.md](ai-adoption-controls.md) §§1–2 — and are not restated here. An agent MUST NOT serve as **IC** (§3).
+- **Remediation routes by reversibility and blast radius.** Using the applicability vocabulary of [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md) §3 (**reversible / compensatable / irreversible**; change-autonomy dimension): **pre-declared, tested, deterministic** reversible actions MAY auto-execute under a **scoped response plan**, with **notification** landing in the state doc (§5); **irreversible or production-mutating** actions — any **novel** mutation — MUST gate on human approval before execution. The **reversible-action list** is pre-declared **outside incident time** by the agent's named accountable human owner together with the service owner, lives in the **runbook or service catalogue**, is versioned like the §2 severity matrix, and changes through normal review — it is **never extended mid-incident**; the **scoped response plan** is that artifact. This is the **"approve before irreversible only"** position of the [agentic-loop-design.md](agentic-loop-design.md) §6 autonomy slider specialised to incident response; per §6 the slider moves **left** on any incident, never right mid-incident. Vendor practice converges here: Azure SRE Agent defaults to **Review** mode (agent proposes, human approves; Autonomous recommended only outside production), and PagerDuty's virtual responder executes predefined actions only **when authorized**.
+- **RCA output is ranked leads, not conclusions.** Agent investigation output — hypotheses, correlations, suspected causes — enters the incident as **ranked leads with evidence** in the state doc's hypothesis log (§5). A **human** IC owns the incident **narrative** and **closure**; a lead MUST be **confirmed by a human** before it enters the postmortem record (§9) as cause. Vendor tooling is itself hypothesis-shaped (validated / invalidated / inconclusive, with evidence citations); treat un-reviewed agent RCA as **untriaged input** — the same class as an unverified SME hunch.
+- **Every agent action lands in the audit trail.** Proposed, approved, and auto-executed actions and every hypothesis MUST land in the **state doc** (§5) and the incident **audit trail**, carrying the full **attribution chain** (initiating human, sponsor, agent identity, each hop) per zero-trust §2.1 and [audit-logging.md](../principles/audit-logging.md). **Handoff** (§7) includes agent state: what it is running, which approvals are pending, who owns it next.
+- **Circuit breaker on the incident→issue→coding-agent loop.** Where the estate wires incidents to issue creation and **coding agents** (live mitigation paired with a tracked source fix), the loop MUST carry a **circuit breaker**: **rate caps** and **loop caps** so agents cannot open unbounded work items or re-trigger themselves. **Anti-pattern — self-healing that masks drift:** an agent that repeatedly patches **live state** (restart the pod, bump the limit) without a tracked **source/IaC** change hides the underlying defect and accumulates divergence from declared state; pair every live remediation with a source-closing item, per [gitops-and-declarative-operations.md](gitops-and-declarative-operations.md).
+- **Untrusted input surface.** Responder agents read **telemetry**, **logs**, and **ticket text** — attacker-influenceable content — making them a **confused-deputy** surface during the window when change velocity is highest; apply the injection defences of [agentic-loop-design.md](agentic-loop-design.md) §9.
+
+**Why:** Ops agents are shipping, and converged vendor design is **approval-gated by default** with **hypothesis-shaped** RCA — doctrine encodes the invariants (named owner, reversibility routing, human-owned narrative, audit trail, loop caps), not the products; release-status specifics live in the References annotations and the adopting ADR.
+
+---
+
+## 11. Relation to SLOs, game days, and platform ownership
 
 - **SLOs** and **error budgets** decide **strategic** **investment**; **this pattern** is **tactical** **response** when **SLOs** are **threatened** or **breached** **now**—[reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) §1–2.
 - **Chaos and game days** [chaos-engineering-and-game-days.md](chaos-engineering-and-game-days.md) **rehearse** **parts** of this (roles, runbooks) **before** **production** **pain**—**link** them in **onboarding** and **on-call** checklists.
@@ -158,6 +174,8 @@ The **incident state doc** (wiki page, **shared doc**, ticket, or **runbook** se
 | One IC in multi-party incidents | **Coordination** **failure** is a top **class** of **long** **outages** in public **RCAs**. |
 | State doc is mandatory concept | **Artifact** is **estate**-specific, **discipline** is **portable**. |
 | Fatigue in same pattern as comms | **Human** **limits** are part of **operating** **model**, not a **soft** “culture” add-on. |
+| Agent responders composed, not forked | **Identity/sponsorship**, **autonomy**, and **closed-loop** rules already live in zero-trust §2.1, agentic-loop §6, and AI-native SDLC §10/§13; §10 adds only the **incident-ops** residue (roster role, reversibility routing, ranked-leads RCA, audit trail, loop caps). |
+| Reversibility routes agent remediation | Converged vendor default (Azure **Review** mode; PagerDuty authorization gate); matches the autonomy-slider position **“approve before irreversible only”** with the slider moving **left** on any incident. |
 
 ---
 
@@ -170,6 +188,9 @@ The **incident state doc** (wiki page, **shared doc**, ticket, or **runbook** se
 - [platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md) — **escalation** to **platform**
 - [measurement-and-dora.md](../principles/measurement-and-dora.md) — **restore** **time** and **learning** **loops**
 - [secure-development-lifecycle.md](../principles/secure-development-lifecycle.md) — **RV** root-cause classes (patch vs process vs **architecture**)
+- [agentic-loop-design.md](agentic-loop-design.md) — **autonomy slider** (§6) and **injection defence** (§9) that §10 anchors on
+- [../principles/zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) — **agent identity**, **named human sponsor**, attribution chains (§2.1)
+- [ai-native-software-development-lifecycle.md](ai-native-software-development-lifecycle.md) — **authority model** (§10) and **closure loops** (§13) governing operational agents
 
 ---
 
@@ -178,3 +199,8 @@ The **incident state doc** (wiki page, **shared doc**, ticket, or **runbook** se
 - Google *Site Reliability Engineering* (O’Reilly) — **Managing Incidents** and **Postmortem Culture**: https://sre.google/sre-book/table-of-contents/  
 - Atlassian (example **incident** **management** and **comms** vocabulary): public **ITSM** and **on-call** playbooks in product docs (verify current URLs).  
 - *Practical Monitoring* / industry **on-call** practice—see [REFERENCES.md](../REFERENCES.md) for the library’s **external** index.
+- Microsoft Learn — **Azure SRE Agent** overview / run modes / permissions (vendor observation for §10): https://learn.microsoft.com/en-us/azure/sre-agent/overview  
+- PagerDuty — **SRE Agent virtual responder** (approval-gated remediation; GA 2026-03, fully autonomous mode in early access; vendor observation): https://www.pagerduty.com/blog/ai/meet-your-virtual-responder-pagerdutys-sre-agent-for-ai-driven-reliability/  
+- incident.io — **AI SRE** and the self-healing drift-masking anti-pattern (vendor observation): https://incident.io/ai-sre  
+- Datadog — **Bits AI SRE** (validated/invalidated/inconclusive hypothesis classification; vendor observation): https://www.datadoghq.com/blog/bits-ai-sre/  
+- Microsoft — **AKS incident→issue→coding-agent loop** (vendor observation): https://techcommunity.microsoft.com/blog/appsonazureblog/autonomous-aks-incident-response-with-azure-sre-agent-from-alert-to-verified-rec/4511343  

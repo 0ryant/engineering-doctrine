@@ -63,6 +63,7 @@ These are **four** separable obligations; teams may comply with **one** without 
 - **Must:** treat as a **high-risk** change until legal/privacy review says otherwise: **minimisation**, **retention** caps, **DPA** / vendor flow review, and **no** production PII in **dev** prompts/logs without clearance.
 - **Should:** map controls to **NIST SSDF** and **SP 800-218A** where the org adopts them (see [secure-development-lifecycle.md](secure-development-lifecycle.md)).
 - **Portable AI delivery rules** (tiers, merge path, RAG governance): [ai-ml-systems.md](ai-ml-systems.md).
+- **Telemetry content capture** (prompts/completions in observability pipelines) defaults **off**; the capture gate and per-call signal set: [observability.md](observability.md) §7.
 
 **Why:** Models **memorise** and **leak**; prompt pipelines **log** unless designed not to.
 

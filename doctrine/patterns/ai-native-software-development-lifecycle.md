@@ -211,7 +211,7 @@ Not every change requires all three. A routine change may close technically whil
 
 - Failed or inconclusive challenge returns to G2-G4; it does not jump to authorisation.
 - Runtime divergence triggers containment/rollback and returns to the earliest falsified mandate, claim, design, or execution assumption.
-- An operational agent may originate a new mandate or remediation proposal. It cannot detect, implement, approve, and deploy its own change as one closed authority loop.
+- An operational agent may originate a new mandate or remediation proposal. It cannot detect, implement, approve, and deploy its own change as one closed authority loop. Incident-operations composition — rostered **agent responders**, reversibility-routed remediation, ranked-leads RCA, and the incident audit trail — lives in [incident-lifecycle-and-on-call-operations.md](incident-lifecycle-and-on-call-operations.md) §10; it applies this rule, it does not extend it.
 - Cancellation or authority narrowing propagates to delegated runs; resume revalidates inputs and authority.
 
 ## 14. Lifecycle At A Glance

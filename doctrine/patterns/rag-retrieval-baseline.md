@@ -44,7 +44,7 @@
 
 ## 5. Observability And Cost
 
-- Trace **retrieval**: query id, corpus version, **ids** of chunks sent to the LLM (not necessarily full text in logs), fusion/rerank scores if useful for debug.
+- Trace **retrieval**: query id, corpus version, **ids** of chunks sent to the LLM (not necessarily full text in logs), fusion/rerank scores if useful for debug. The **generation call** itself carries the **per-call minimum signal set** of [../principles/observability.md](../principles/observability.md) §7; the chunk/corpus ids here are that set's **retrieval-linkage** leg — same restraint on content (ids, not full text).
 - Meter **tokens** and **third-party** search/embed/rerank API calls — [performance-and-cost.md](../principles/performance-and-cost.md) §3; alert on **spend** and **latency** anomalies like any high-cost dependency.
 
 ---
