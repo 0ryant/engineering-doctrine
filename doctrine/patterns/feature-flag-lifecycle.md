@@ -34,6 +34,8 @@ create ──► active ──► stabilize ──► cleanup ──► removed
                    decision deadline
 ```
 
+*One permitted reversal — `stabilize → active` with a recorded reason; see the state rules below.*
+
 | State | Entry criteria | Exit criteria | Max time in state |
 | --- | --- | --- | --- |
 | **Active** | Flag created, targeting rules set, code deployed | Feature rolled out to 100% or decision made | Type-dependent (see §1) |
@@ -41,8 +43,9 @@ create ──► active ──► stabilize ──► cleanup ──► removed
 | **Cleanup** | PR opened to remove flag code and conditional branches | Flag removed from codebase and platform | 1 sprint |
 | **Removed** | Code merged, flag deleted from flag store | — | — |
 
-- Flags do **not** move backwards. If a rollout is reversed, the flag returns to `active` with a lower percentage — it does not revert to a previous lifecycle state.
-- A flag in **stabilize** or **cleanup** must not have its targeting changed. If a new risk is discovered, create a new ops flag.
+- The single permitted reversal is **stabilize → active**: if a rollout must be reversed after promotion, the flag returns to `active` with a recorded reason for the reversal. Re-promotion restarts the stabilize clock.
+- A flag in **cleanup** must not have its targeting changed, except where an incident review directs it.
+- The two bullets above are an interim repair; the fuller revision of this file (typing, canonical home, de-vendoring, FSM rewrite) is tracked in plan lane **V45/D12** (feature-flag supersession ADR — [forward plan](../evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md)).
 
 **Why:** Without a lifecycle state machine, "we'll clean it up later" never happens. The FSM creates explicit handoffs and sprint-sized cleanup tasks.
 

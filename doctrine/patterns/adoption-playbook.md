@@ -35,7 +35,7 @@ Order is **dependency-aware**, not dogmatic. Skip steps already healthy.
 | --- | --- | --- |
 | **1** | **Quality gate** — one command (or CI job) that fails on fmt/lint/tests for the **main** branch workflow | Creates safety to change process; mirrors [build.md](../principles/build.md) surfaces |
 | **2** | **Trunk-oriented integration** — short-lived branches, PR review, green **main** | Reduces drift and batch risk; see [trunk-workflow.md](trunk-workflow.md), [collaboration.md](../principles/collaboration.md) |
-| **3** | **Contracts at boundaries** — API or events: schemas + examples + CI validation where possible | Stops “tribal JSON”; [event-contracts.md](../principles/event-contracts.md), umbrellas in `ENGINEERING.md` |
+| **3** | **Contracts at boundaries** — API or events: schemas + examples + CI validation where possible | Stops “tribal JSON”; [event-contracts.md](../principles/event-contracts.md), Core Proposition 4 in `ENGINEERING.md` |
 | **4** | **Observability baseline** — correlated logs/traces for main paths; basic SLO thinking where user-facing | Makes incidents diagnosable; [observability.md](../principles/observability.md) |
 | **5** | **Reliability habits** — incident severity, blameless reviews, error budget **policy** if SLOs exist | Ties delivery to risk; [reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) |
 

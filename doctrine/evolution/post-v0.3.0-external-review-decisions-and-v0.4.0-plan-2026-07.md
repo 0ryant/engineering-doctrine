@@ -103,6 +103,37 @@ The progressive-disclosure proposal is library synthesis. It must be evaluated w
 - **Acceptance criteria:** each D-item receives an explicit take/defer/reject with alternatives and consumer impact; any supersession routes through the change-class and deprecation mechanics the council itself demanded (D2).
 - **Stop conditions:** stop if a D-item's machinery would land without the calibration/accountability prerequisites its own critique record names as blockers.
 
+### V46 — Checklist/Derivation Reconciliation (added 2026-08-03, from the v0.4.0 corpus review)
+
+- **Objective:** Obligations must *reach* the checklists and navigation surfaces: absorb the [corpus review](research-full-corpus-council-review-2026-08.md) findings M3/M4/M6 (financial-authority inventory field, harm-surface items, memory-lifecycle overlay item) and the README/SEMANTIC_INDEX omissions; add an enforcement hook to the doctrine-change checklist — an ADR adding a typed obligation MUST name its checklist and navigation landings or record why none exist.
+- **Owned files:** `doctrine/patterns/ai-adoption-controls.md` §1, both AI checklists, `doctrine/README.md`, `doctrine/SEMANTIC_INDEX.md`, the doctrine-change checklist.
+- **Acceptance criteria:** every typed obligation landed by ADRs 0031–0035 is reachable from at least one checklist or semantic route; the enforcement hook is live for future ADRs.
+
+### V47 — Schema-Derived Facts (added 2026-08-03, from the v0.4.0 corpus review)
+
+- **Objective:** Eliminate the M7/M8/M9 recurrence class: no hand-copied schema counts in prose (count-free wording or one generated location naming the schema as authoritative); every in-doctrine YAML example validates in CI via `scripts/validate-contracts-v1.py` coverage extension.
+- **Acceptance criteria:** zero prose statements of schema-derived counts outside the single declared location per schema; CI fails on a non-validating in-doctrine example.
+
+### V48 — Link And Anchor Integrity (added 2026-08-03, from the v0.4.0 corpus review)
+
+- **Objective:** Close M15's class: repoint every reference into vanished umbrella ENGINEERING.md content; add a CI check failing on references into ENGINEERING.md that match no current heading; run the reference-status review the files' own annual-review footers promise (dead blog citation, mislabelled Workbook link, stale draft annotations).
+- **Acceptance criteria:** CI link check green; zero references to non-existent ENGINEERING.md anchors; flagged reference-rot minors resolved or recorded.
+
+### v0.5.0 Release Acceptance Criteria (added 2026-08-03)
+
+`v0.5.0` is cut when **all** of the following hold; each criterion names its owning lane or ADR route from the [corpus review](research-full-corpus-council-review-2026-08.md) §6:
+
+1. **Zero open blockers** from the v0.4.0 corpus review: B1 fully resolved (interim repair in the correction batch; complete file supersession via V45/D12) and B2 fixed and validated (correction batch).
+2. **Correction batch landed** (ADR 0036): B2+M20+M21 observability fix/move/typing, M7–M9 schema-derived-fact repairs with a validating example, M15 umbrella-reference sweep, M3/M4/M6 checklist/inventory reconciliation, B1 interim repair.
+3. **V41 retrofit delivered with an owner and tracked backlog** — prohibition cores typed first (M19), then safety-critical agentic rules (M11), deps core (M18), thresholds-as-defaults (M5, M13): zero **material** obligations left in the untyped register in the files the review names, and the ADR answering the house law's §6 lifecycle requirement for the retrofit itself.
+4. **Canonical-home consolidation ADR landed** resolving M1, M2, M10, M17, M22 to owner-plus-pointer, with the verification-derived guards (retain §2.1's tier-table clarification; generalise deps §2 scope before SDL defers; keep game-day named in reliability §5).
+5. **Machine-verdict precedence ADR landed** — the pre-v0.4.0 human-approval absolutes and §8.2 judge-gated authority reconciled by an explicit precedence clause.
+6. **V45/D12 feature-flag supersession ADR landed** absorbing B1's full rewrite plus M12–M14 and the flag minors.
+7. **V46 enforcement hook live**: every typed obligation from ADRs 0031–0035 reachable from a checklist or semantic route; the doctrine-change checklist requires future ADRs to name their checklist/navigation landings.
+8. **V47/V48 mechanised**: CI validates every in-doctrine YAML example and fails on rotted ENGINEERING.md anchors.
+9. **V40/V42/V43 delivered per their existing acceptance criteria** (progressive disclosure evidence-tested; published-release immutability adopted — protecting v0.4.0 and earlier; proportionate semantic challenge required for material normative releases).
+10. **Release mechanics**: all 31 review minors triaged (fixed or recorded with a reason), a fresh full-delta release sweep passes, the contracts gate is green on the tagged revision, and the changelog `[0.5.0]` section carries the six-element preamble.
+
 ## 5. Measures
 
 - **Terminology:** zero current canonical uses of `justification class` for the six mandate classes.

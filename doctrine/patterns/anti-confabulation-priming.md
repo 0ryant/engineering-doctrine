@@ -84,10 +84,17 @@ Priming needs a sibling verifier that checks presence and integrity of the
 rendered block; it does not score whether the model obeyed it.
 
 ```yaml
-assertions:
-  - id: priming-block-present
+name: anti-confabulation-verifier-pack
+skill: anti-confabulation
+version: 1.0.0
+schema_version: 1.1.0
+description: Verify the rendered run context contains the estate-approved anti-confabulation priming block.
+verifiers:
+  - id: priming_block_present
     kind: priming_active
-    expected: true
+    description: The rendered system prompt contains the versioned priming block, digest-matched to the policy record.
+    command: priming-digest-check ${RUN_CONTEXT} ${PRIMING_POLICY_DIGEST}
+    expected_exit: 0
     failure_mode: mark_untrusted
     severity: error
 ```

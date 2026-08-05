@@ -81,6 +81,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md) — **GitOps** (declarative desired state, **reconciliation**, **drift**, **secrets** boundaries); touches build, **SSOT**, **merge** path, collaboration
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
+- [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) — feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — example order FSM + JetStream (fiction)
@@ -91,6 +92,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) — HTTP, messages, infra idempotency
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) — RAG retrieval (hybrid, eval, privacy)
 - [patterns/platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md) — platform-as-product, golden paths, self-service, service catalog
+- [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) — **agent harness design**: nested loop, verifiability gate, autonomy slider, dual-path injection defence, context engineering, memory red-teaming, judge discipline
 - [patterns/run-contracts.md](patterns/run-contracts.md) — governed-execution **run contracts** (v1 envelope binding trigger, model, context, capabilities, authority, hooks, verifiers, outputs)
 - [patterns/verifier-packs.md](patterns/verifier-packs.md) — **verifier packs** (mandatory mirror of every skill; 11 canonical kinds plus `custom`)
 - [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) — optional **anti-confabulation priming** pattern; adopters evaluate it on representative tasks and pair it with independent verification
@@ -121,7 +123,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [tooling/nats-jetstream.md](tooling/nats-jetstream.md) — illustrative NATS / JetStream + CloudEvents
 - [tooling/kafka-and-cloudevents.md](tooling/kafka-and-cloudevents.md) — illustrative Kafka + CloudEvents sketch
 - [tooling/collaboration.md](tooling/collaboration.md) — example Git host branch rules
-- [tooling/observability.md](tooling/observability.md) — example OTel and collector patterns
+- [tooling/observability.md](tooling/observability.md) — example OTel/collector patterns, Prometheus burn-rate alerting, GenAI conventions mapping
 - [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md) — abstract CI surfaces vs example products
 - [tooling/dependency-automation.md](tooling/dependency-automation.md) — example dependency bots
 - [tooling/ai-assisted-development.md](tooling/ai-assisted-development.md) — illustrative **categories** of AI-assisted dev tooling (estate picks products)
@@ -146,9 +148,10 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) — STRIDE-lite trust-boundary review
 - [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md)
 - [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) — SLOs, error budgets, incidents; **tactical** response: [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)
-- [principles/measurement-and-dora.md](principles/measurement-and-dora.md) — current DORA delivery metrics, metric pitfalls, and the boundary between delivery signals and company objectives
+- [principles/measurement-and-dora.md](principles/measurement-and-dora.md) — current DORA delivery metrics, metric pitfalls, and the boundary between delivery signals and company objectives- [principles/platform-engineering.md](principles/platform-engineering.md) — team topologies, thinnest viable platform, golden paths, cognitive load
 - [principles/developer-experience.md](principles/developer-experience.md) — SPACE, local loop, docs findability, cognitive load
 - [principles/performance-and-cost.md](principles/performance-and-cost.md)
+- [principles/cost-and-finops.md](principles/cost-and-finops.md) — FinOps operating model, unit economics, AI inference cost governance, agent financial authority (§7.1)
 - [principles/documentation-knowledge.md](principles/documentation-knowledge.md)
 - [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md)
 - [principles/user-facing-quality.md](principles/user-facing-quality.md) — A11y, i18n, **§0 scope** (headless vs UI surfaces)

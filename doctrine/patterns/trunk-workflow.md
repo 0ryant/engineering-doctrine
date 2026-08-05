@@ -55,7 +55,7 @@ When many contributors land on `main`, use a **merge queue** so:
 
 ## Relation To Release Metadata
 
-- Version bumps and changelog entries may happen on `main` continuously or at release tags; either way, **one source of truth** for version (see `ENGINEERING.md` distribution principles).
+- Version bumps and changelog entries may happen on `main` continuously or at release tags; either way, **one source of truth** for version (see [single-source-of-truth.md](../principles/single-source-of-truth.md)).
 - **Hotfixes** branch from the tagged release, fix, tag patch, merge back to `main` so drift does not accumulate.
 
 ## Long-Term Support (LTS) Branches (Exceptional)

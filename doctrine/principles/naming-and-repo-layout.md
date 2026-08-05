@@ -1,6 +1,6 @@
 # Naming And Repository Layout
 
-Durable rules for **consistent** names and **discoverable** structure so contributors and automation find the right surface quickly. Deepens umbrella **Naming And Project Structure Conventions** in `ENGINEERING.md`.
+Durable rules for **consistent** names and **discoverable** structure so contributors and automation find the right surface quickly. Deepens Core Proposition 9 (**Prefer Simple, Replaceable Designs With Controlled Coupling**) in `ENGINEERING.md`; structural-boundary detail: [modularity-and-ports-adapters.md](modularity-and-ports-adapters.md).
 
 ---
 

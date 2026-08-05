@@ -58,7 +58,7 @@ Related build and release rules live in [build.md](build.md) and [../patterns/tr
 ## 6. Environments And Promotion
 
 - **Environment parity in intent** — staging (or equivalent) should exercise the same deploy path and checks as production, even if scale differs.
-- **Promote artefacts, not rebuilds** — same binary, image, or package version from test through prod where the platform allows (see `ENGINEERING.md` build surfaces).
+- **Promote artefacts, not rebuilds** — same binary, image, or package version from test through prod where the platform allows (see [build.md](build.md) build surfaces and [build-surface-model.md](../patterns/build-surface-model.md)).
 - **Data and secrets** — production-like data never required for unit tests; use fixtures. Secrets never in repo; parity includes *how* secrets are injected, not their values.
 
 ---

@@ -133,7 +133,7 @@ If GraphQL (or similar) is exposed, treat **query planning** as part of the **se
 | Decision | Rationale |
 | --- | --- |
 | Align with OWASP API Top 10 | Industry **checklist** for API-specific flaws; maps to concrete code review items. |
-| Limits everywhere by default | **Fail closed** on size, time, and rate — matches security baseline in `ENGINEERING.md`. |
+| Limits everywhere by default | **Fail closed** on size, time, and rate — matches Core Proposition 7 (**Protect Proportionately To Risk**) in `ENGINEERING.md` and [secure-development-lifecycle.md](secure-development-lifecycle.md). |
 | Object-level auth | Prevents **IDOR**-class bugs that auth tokens alone cannot fix. |
 | CSP + CORS explicit | Reduces **XSS** and **origin** confusion on browser clients. |
 | GraphQL numeric guardrails | **Depth/cost** limits make abuse **testable**; introspection policy is explicit. |

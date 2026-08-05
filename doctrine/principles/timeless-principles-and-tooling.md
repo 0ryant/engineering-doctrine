@@ -48,7 +48,7 @@ How this repository stays **useful for years** while stacks change: separate **w
 ## 5. Convictions, Interop Standards, And Team Validation
 
 - **Interop choices** (for example a **standard envelope** for events) are **deliberate** standards at boundaries—they are not metaphysical truths. They are defensible **contract** decisions; teams may negotiate exceptions with a **recorded** migration story. See [interoperability-and-standards.md](interoperability-and-standards.md).
-- **Illustrative tables** (languages, local container engines, example CI filenames) in `ENGINEERING.md` and **tooling** are **defaults for templates**, not mandatory global law. Organisation standardisation belongs in **`tooling/estates/`** when it must be shared.
+- **Illustrative tables** (languages, local container engines, example CI filenames) in **tooling** files are **defaults for templates**, not mandatory global law. Organisation standardisation belongs in **`tooling/estates/`** when it must be shared.
 - Doctrine that moves from **solo** depth to **multi-team** use should expect **pushback**, **legacy** code that violates many rules at once, and **time pressure** against contracts—address with **prioritisation** and pilots, not wholesale adoption overload. See [../patterns/adoption-playbook.md](../patterns/adoption-playbook.md).
 
 **Why:** Without this distinction, preferences and **current** commercial context (for example workstation licensing) read as **timeless** principles and undermine trust.

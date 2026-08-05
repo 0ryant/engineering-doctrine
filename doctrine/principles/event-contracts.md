@@ -1,6 +1,6 @@
 # Event And Message Contracts
 
-These rules govern asynchronous integration: queues, topics, webhooks, event buses, and any other **message-shaped** boundary. They complement [build.md](build.md) and the umbrella **Contracts First** rule in `ENGINEERING.md`.
+These rules govern asynchronous integration: queues, topics, webhooks, event buses, and any other **message-shaped** boundary. They complement [build.md](build.md) and Core Proposition 4 (**Define And Verify Material Boundaries**) in `ENGINEERING.md`.
 
 Synchronous HTTP APIs remain contract-first; **events use an explicit envelope contract plus a versioned payload contract.** CloudEvents is the portable default for new event-shaped boundaries, not a claim that every broker, protocol, or legacy ecosystem must use it.
 

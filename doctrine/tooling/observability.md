@@ -66,6 +66,69 @@ Official guidance: [Deploy the Collector](https://opentelemetry.io/docs/collecto
 
 ---
 
+## Burn-Rate Alerting (Prometheus-Compatible Backends)
+
+Illustrative implementation of the **multi-window burn-rate model** in [../principles/observability.md](../principles/observability.md) §6. The principle stays backend-neutral; this section is where PromQL may appear. All query text is **EXAMPLE** class — adapt metric names, thresholds, and the service-identity label to the estate.
+
+Define recording rules first to avoid query duplication and reduce evaluation load. **Author a rule for every window the alerts query** — all four below — because a missing recording rule evaluates as an **empty vector without error**, and the alert silently never fires:
+
+```yaml
+# Recording rules — per-job error ratio, one per alert window
+- record: job:request_error_ratio:rate1h
+  expr: |
+    sum by (job) (rate(http_requests_total{status=~"5.."}[1h]))
+    / sum by (job) (rate(http_requests_total[1h]))
+
+- record: job:request_error_ratio:rate5m
+  expr: |
+    sum by (job) (rate(http_requests_total{status=~"5.."}[5m]))
+    / sum by (job) (rate(http_requests_total[5m]))
+
+- record: job:request_error_ratio:rate6h
+  expr: |
+    sum by (job) (rate(http_requests_total{status=~"5.."}[6h]))
+    / sum by (job) (rate(http_requests_total[6h]))
+
+- record: job:request_error_ratio:rate3d
+  expr: |
+    sum by (job) (rate(http_requests_total{status=~"5.."}[3d]))
+    / sum by (job) (rate(http_requests_total[3d]))
+```
+
+```yaml
+# Alerting rule — fast burn (1h + 5m paired windows)
+- alert: ErrorBudgetBurnFast
+  expr: |
+    job:request_error_ratio:rate1h > (14.4 * 0.001)
+    and
+    job:request_error_ratio:rate5m > (14.4 * 0.001)
+  for: 2m
+  labels:
+    severity: page
+  annotations:
+    summary: "Fast error budget burn — {{ $labels.job }}"
+    description: "Burn rate >14.4× on 1h+5m windows. ~2% monthly budget at risk."
+
+# Alerting rule — slow burn (3d + 6h paired windows)
+- alert: ErrorBudgetBurnSlow
+  expr: |
+    job:request_error_ratio:rate3d > (1 * 0.001)
+    and
+    job:request_error_ratio:rate6h > (1 * 0.001)
+  for: 1h
+  labels:
+    severity: ticket
+  annotations:
+    summary: "Slow error budget burn — {{ $labels.job }}"
+    description: "Burn rate ≥1× sustained over 3d+6h. Review before budget exhaustion."
+```
+
+Adaptation: replace `0.001` with `1 − SLO_target` for your service; replace `http_requests_total` with your service's request counter metric; keep `sum by (job)` (or your estate's service-identity label) — a bare `sum(rate(...))` drops the label, blends error ratios across services, and leaves `{{ $labels.job }}` empty in notifications.
+
+**Why:** copy-paste-shaped examples must deploy safely: recording rules cover **every** window the alerts reference, and per-`job` aggregation keeps multi-service estates from blending budgets. Backends without recording rules can inline the ratio expressions — the **paired-window structure** is what must survive translation.
+
+---
+
 ## GenAI Telemetry (OpenTelemetry GenAI Conventions)
 
 Illustrative mapping for the **per-call minimum signal set** in [../principles/observability.md](../principles/observability.md) §7. The principles file stays schema-neutral; this section is where OTel names may appear — and why you must not lean on them.
@@ -89,6 +152,7 @@ Illustrative mapping for the **per-call minimum signal set** in [../principles/o
 | Collector tier **when on K8s** | Offloads **batching**, **retry**, and **PII scrubbing** (if configured) from app processes at scale. |
 | Gateway for tail sampling (cluster pattern) | Sampling needs **complete trace** views; DaemonSet-only sampling is **incorrect** for cross-node traces. |
 | Semantic conventions | Makes dashboards and alerts **portable** across services. |
+| Burn-rate YAML lives here, not in principles | Principles stay **backend-neutral** (non-PromQL estates must be able to comply); query examples are **estate-adaptable** tooling detail. |
 | GenAI conventions from the **dedicated repo**, version-pinned | Conventions are **Development** stability; main-repo `gen_ai.*` pages are deprecated (v1.42.0) — pinning plus a mapping layer keeps dashboards and policy stable through renames. |
 
 ---
@@ -98,5 +162,5 @@ Illustrative mapping for the **per-call minimum signal set** in [../principles/o
 - OpenTelemetry — **Deploy the Collector**: https://opentelemetry.io/docs/collector/deployment/  
 - OpenTelemetry — **Scaling the Collector**: https://opentelemetry.io/docs/collector/scaling/  
 - OpenTelemetry — **Collector hosting best practices** (security): https://opentelemetry.io/docs/security/collector-hosting/  
-- OpenTelemetry — **Semantic Conventions**: https://opentelemetry.io/docs/specs/semconv/  
+- OpenTelemetry — **Semantic Conventions**: https://opentelemetry.io/docs/specs/semconv/  - Google SRE Workbook — **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/  
 - OpenTelemetry — **GenAI semantic conventions** (dedicated repository; **Development** stability — pin the version you adopt): https://github.com/open-telemetry/semantic-conventions-genai  

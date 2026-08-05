@@ -21,6 +21,7 @@ Maintain an **AI system inventory**: one entry per AI system in production or ha
 | **Data classes** | Allowed inputs; personal-data flags → [../principles/privacy-and-data-governance.md](../principles/privacy-and-data-governance.md) §5. |
 | **Third-party dependencies** | External model APIs, hosting, subprocessors; links to continuity artifacts (§4). |
 | **Human oversight mode** | In-the-loop / on-the-loop / none, and the fallback path (§2). |
+| **Financial / transaction authority** | Default **none** ([../principles/cost-and-finops.md](../principles/cost-and-finops.md) §7.1). Where granted: link to the grant record, the accountable approver, per-run/session caps, expiry, and the dedicated per-agent principal ([../principles/zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2.1). |
 | **Test evidence** | Where the §3 harm-surface results live. |
 
 Reconcile the inventory **on material change and at least quarterly**, like the branch-protection register in [engineering-controls-governance-program.md](engineering-controls-governance-program.md) §2. An AI system in production above minimal materiality but absent from the inventory is a **finding**, not paperwork debt.

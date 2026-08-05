@@ -1,6 +1,6 @@
 # Errors And Failure Modes (APIs, CLIs, Operators)
 
-Durable rules for **predictable** failures: what **users** see, what **operators** log, and how **retries** behave. Complements [api-boundaries-and-security.md](api-boundaries-and-security.md) (HTTP) and umbrella **Error Handling** in `ENGINEERING.md`.
+Durable rules for **predictable** failures: what **users** see, what **operators** log, and how **retries** behave. Complements [api-boundaries-and-security.md](api-boundaries-and-security.md) (HTTP) and Core Proposition 6 (**Design Failure, Retry, Recovery, And Reconciliation**) in `ENGINEERING.md`.
 
 ---
 

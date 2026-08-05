@@ -52,7 +52,7 @@ Trigger -> instantiate -> execute -> verify -> emit-artefacts is the only legal 
 
 ## 3. Schema Surface
 
-The v1 schema declares **eleven top-level keys**. All object levels set `additionalProperties: false`: unknown fields are rejected loudly (the JSON Schema equivalent of `#[serde(deny_unknown_fields)]`).
+The v1 schema declares the top-level keys tabled below. All object levels set `additionalProperties: false`: unknown fields are rejected loudly (the JSON Schema equivalent of `#[serde(deny_unknown_fields)]`).
 
 | Key | Required | Purpose |
 | --- | --- | --- |
@@ -317,7 +317,7 @@ The v1 envelope does **not** address:
 - **Live mutation.** A running contract cannot edit itself. Authors edit the source, re-validate, and the *next* instance picks it up — intentional, but it pushes some workflows (e.g. probe-then-widen-network) into multi-contract designs.
 - **Streaming triggers.** Long-lived stream subscriptions (Kafka, NATS subjects, MQTT) are out of scope and need either a bridge adapter or a v2 `stream` type.
 - **Per-contract budget.** No `budget` field for tokens, wall time, or dollars. For v1, a host or workflow policy owns and enforces the budget and binds its policy version and result to the run receipt; prose in a prompt is not enforcement. A later schema version may type these limits.
-- **Actor identity.** The envelope has no `actor` field: none of the eleven top-level keys identifies the executing agent, and `trigger.manual.operator_id` names only a human initiator on one trigger type. For v1, attribution — sponsor, agent identity, on-behalf-of chain — lives in host audit logs per [../principles/zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2.1. v2 may introduce a typed `actor` field binding the executing agent's identity into the fingerprinted body.
+- **Actor identity.** The envelope has no `actor` field: none of the top-level keys identifies the executing agent, and `trigger.manual.operator_id` names only a human initiator on one trigger type. For v1, attribution — sponsor, agent identity, on-behalf-of chain — lives in host audit logs per [../principles/zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2.1. v2 may introduce a typed `actor` field binding the executing agent's identity into the fingerprinted body.
 
 These gaps are explicit — the boundary of v1, not bugs in it.
 

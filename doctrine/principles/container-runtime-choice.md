@@ -24,7 +24,7 @@ Durable rules for **where** containerised workloads run. The goal is **operation
 
 ## 3. Same Discipline Regardless Of Runtime
 
-- **Images** stay minimal, non-root by default, scanned in CI (aligned with `ENGINEERING.md` container strategy).
+- **Images** stay minimal, non-root by default, scanned in CI (aligned with [dependencies-supply-chain.md](dependencies-supply-chain.md) and image policy in [kubernetes-platform-security.md](kubernetes-platform-security.md)).
 - **Secrets** are not baked into images; prefer **short-lived** credentials and **workload identity** where the platform supports it.
 - **Observability** and **contracts** do not change—only the **plumbing** does.
 

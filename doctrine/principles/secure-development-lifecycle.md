@@ -26,7 +26,7 @@ Full control text remains **NIST’s** publication—this table is a **navigatio
 
 ## 2. Implementation Discipline
 
-- Follow language-appropriate **crypto**, **memory safety**, and **secret** handling (see `ENGINEERING.md` §5 and [configuration-and-secrets.md](configuration-and-secrets.md)).
+- Follow language-appropriate **crypto**, **memory safety**, and **secret** handling (see [configuration-and-secrets.md](configuration-and-secrets.md) and Core Proposition 7 in `ENGINEERING.md`).
 - **Static** and **dependency** analysis on the merge path—aligned with [dependencies-supply-chain.md](dependencies-supply-chain.md).
 
 **Why:** SSDF **PS** covers **protecting** components (including build pipelines) from tampering; **PW** covers producing **well-secured** software.

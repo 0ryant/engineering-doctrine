@@ -27,7 +27,7 @@ Each verifier item declares:
 
 | Field | Required | Purpose |
 | --- | --- | --- |
-| `kind` | yes | One of the 10 canonical kinds (plus `custom` escape hatch). |
+| `kind` | yes | One of the canonical kinds (plus `custom` escape hatch); see §3. |
 | `description` | yes | Human-readable assertion text. |
 | `command` | yes | Shell-or-program invocation. |
 | `expected_exit` | no | Integer 0..255 OR `null` if not asserted. |
@@ -60,7 +60,7 @@ Each kind is a *family* of binary-observable assertions, not a single command. P
 | `priming_active` | The rendered system prompt contains the estate-approved priming block, content-matched to the digest declared by the run contract; this proves configuration presence, not outcome correctness (see [anti-confabulation-priming.md](anti-confabulation-priming.md)). |
 | `custom` | Escape hatch — should be rare; high-friction by design. |
 
-`priming_active` was added in schema v1.1.0 (additive minor bump). Further kinds may be added in v1.x minors. Renaming or removing a kind is a v2 break.
+`priming_active` was added in schema v1.1.0 (additive minor bump). Further kinds may be added in v1.x minors. Renaming or removing a kind is a v2 break. The schema's `verifier_kind` enum is the authoritative list; this table mirrors it.
 
 ---
 
@@ -112,7 +112,7 @@ verifier_pack:
     # for the complete byte-for-byte instance that validates against v1.schema.json.
 ```
 
-The complete illustrative list, each with a `kind` from the canonical 10:
+The complete illustrative list, each with a `kind` from the canonical set:
 
 | # | id | kind | failure_mode | severity |
 | --- | --- | --- | --- | --- |
@@ -179,7 +179,7 @@ A pack runs as a post-run phase of a contract. It receives the contract fingerpr
 - **NOT a model evaluator.** Packs check binary-observable artefact properties (existence, exit codes, substring matches, byte-tamper). Quality eval is a higher-level concern ([../principles/ai-ml-systems.md](../principles/ai-ml-systems.md), [rag-retrieval-baseline.md](rag-retrieval-baseline.md)).
 - **NOT a security scanner.** Some assertions are security-flavoured, but packs are not a substitute for [secure-development-lifecycle](../principles/secure-development-lifecycle.md), SBOM, or supply-chain controls.
 - **NOT a substitute for human review.** A passing pack is *necessary*, not sufficient. High-blast-radius runs still route through [code-review-and-change-approval.md](code-review-and-change-approval.md).
-- **NOT extensible at runtime.** The 10 kinds are fixed in v1; adding one is a v1.x minor release. `custom` is the escape hatch and carries reviewer friction by design.
+- **NOT extensible at runtime.** The canonical kinds are fixed in v1; adding one is a v1.x minor release. `custom` is the escape hatch and carries reviewer friction by design.
 
 ---
 
@@ -218,7 +218,7 @@ These gaps define the boundary of v1.
 | Decision | Rationale |
 | --- | --- |
 | Every skill MUST have a pack | Unpaired skills net-harm weaker models; mandate is the structural close. |
-| 10 fixed kinds + `custom` escape hatch | Small enumerated set is reviewable; `custom` is high-friction by design. |
+| A fixed canonical kind set + `custom` escape hatch | Small enumerated set is reviewable; `custom` is high-friction by design. |
 | `fail_loud` / `mark_untrusted` / `inconclusive` (no `pass-silent`) | Silent-stub was the largest failure class; verdicts ARE the loud-not-silent signal. |
 | Sibling-file discovery convention | Removing alternative paths removes places a pack can hide. |
 | Packs validate via JSON Schema, not Rust-only | OSS-public reference must be language-neutral. |

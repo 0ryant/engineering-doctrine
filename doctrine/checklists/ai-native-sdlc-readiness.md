@@ -52,7 +52,7 @@ Apply when the model/agent invokes tools, mutates persistent state, receives sen
 - [ ] Time/token/compute/cost limits are enforced by the contract where represented or by a versioned host/workflow policy; prompt wording alone is not enforcement.
 - [ ] Stop, expiry, escalation, cancellation, and receipt behaviour are explicit.
 - [ ] Agent work occurs away from protected branches and production authority.
-- [ ] Agent-produced executable content runs in an isolated preview/test environment without standing production credentials.
+- [ ] Agent-produced executable content runs in an isolated preview/test environment without standing production credentials.- [ ] Agent-writable persistent memory declares its admission mode, retention/TTL defaults, an operator forget path covering derived artifacts, sponsor-bound relinquishment at decommission, and quarantine-and-rebuild recovery; vendor-managed stores without write-side or snapshot hooks record the compensating control (persistence disabled, or scope minimisation plus scheduled review-and-purge) per [agent-memory lifecycle](../principles/ai-ml-systems.md).
 - [ ] Verifier-pack results remain bounded execution evidence, not whole-system correctness or approval.
 
 ## Multi-Agent And Long-Running Overlay

@@ -107,6 +107,6 @@ Use [TL;DR And Minimum Viable Doctrine](doctrine/tldr-principles-and-mvp.md), [a
 | AI, RAG, agents, AI-native delivery | [ai-ml-systems.md](doctrine/principles/ai-ml-systems.md), [ai-native-software-development-lifecycle.md](doctrine/patterns/ai-native-software-development-lifecycle.md) |
 | Full task routing and research evidence | [SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md), [REFERENCES.md](doctrine/REFERENCES.md) |
 
-## Compatibility Note For `v0.3.0`
+## Compatibility Note For `v0.4.0`
 
-This version replaces the previous detailed umbrella and its deep section anchors with this compact constitution. Consumers that link to an old umbrella subsection SHOULD link to the canonical principle or pattern named above. The underlying topic files remain the stable source of detailed guidance; no directory taxonomy has changed.
+`v0.4.0` (tagged 2026-08-03) is an **additive** pre-1.0 minor scoped to agentic-AI governance; it changes no directory taxonomy and keeps the compact-constitution shape introduced at `v0.3.0`, which replaced the previous detailed umbrella and its deep section anchors. Consumers that link to an old umbrella subsection SHOULD link to the canonical principle or pattern named above; the underlying topic files remain the stable source of detailed guidance. Pin `v0.4.0` for a stable snapshot.

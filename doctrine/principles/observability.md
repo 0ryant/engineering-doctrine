@@ -71,6 +71,8 @@ Tiers separate **mandatory** SLO plumbing from **optional** deep diagnostics.
 
 ## 6. Multi-Window Burn-Rate Alerting
 
+**Applicability:** production services with **SLOs** **SHOULD** alert via multi-window burn rate; **low-traffic** services **MAY** use a single-tier alert with the reason **recorded** ([Applicability Overlay](../patterns/normative-language-applicability-and-exceptions.md) §3).
+
 Alert on **how fast the error budget is being consumed**, not just on instantaneous error rate. A single-window alert on raw error rate misses slow leaks and floods on spikes that resolved quickly.
 
 ### 6.1 Burn-Rate Definition
@@ -84,6 +86,7 @@ Where `SLO_error_budget_rate = 1 − SLO_target`. For a 99.9% availability SLO, 
 ### 6.2 Multi-Window Model
 
 Use **paired windows** (long + short) to filter out transient spikes. An alert fires only when **both** windows show elevated burn. This suppresses false pages from momentary errors and prevents delayed detection of slow burns.
+The table below is **EXAMPLE** class ([Normative Language](../patterns/normative-language-applicability-and-exceptions.md) §1): a widely adopted starting point from the Google SRE Workbook, replaceable if the outcome — fast burns page, slow burns ticket — is preserved.
 
 | Burn-rate threshold | Long window | Short window | Budget fraction consumed | Routing |
 | --- | --- | --- | --- | --- |
@@ -95,62 +98,19 @@ Use **paired windows** (long + short) to filter out transient spikes. An alert f
 - Slow burn (1×) → ticket for the responsible team; budget is leaking but not critically.
 - Reset pages when burn rate drops below threshold in the short window.
 
-### 6.3 PromQL Patterns
+### 6.3 Implementation Patterns
 
-Define recording rules first to avoid query duplication and reduce evaluation load:
-
-```yaml
-# Recording rule — error ratio over window
-- record: job:request_error_ratio:rate1h
-  expr: |
-    sum(rate(http_requests_total{status=~"5.."}[1h]))
-    / sum(rate(http_requests_total[1h]))
-
-- record: job:request_error_ratio:rate5m
-  expr: |
-    sum(rate(http_requests_total{status=~"5.."}[5m]))
-    / sum(rate(http_requests_total[5m]))
-```
-
-```yaml
-# Alerting rule — fast burn (1h + 5m paired windows)
-- alert: ErrorBudgetBurnFast
-  expr: |
-    job:request_error_ratio:rate1h > (14.4 * 0.001)
-    and
-    job:request_error_ratio:rate5m > (14.4 * 0.001)
-  for: 2m
-  labels:
-    severity: page
-  annotations:
-    summary: "Fast error budget burn — {{ $labels.job }}"
-    description: "Burn rate >14.4× on 1h+5m windows. ~2% monthly budget at risk."
-
-# Alerting rule — slow burn (3d + 6h paired windows)
-- alert: ErrorBudgetBurnSlow
-  expr: |
-    job:request_error_ratio:rate3d > (1 * 0.001)
-    and
-    job:request_error_ratio:rate6h > (1 * 0.001)
-  for: 1h
-  labels:
-    severity: ticket
-  annotations:
-    summary: "Slow error budget burn — {{ $labels.job }}"
-    description: "Burn rate ≥1× sustained over 3d+6h. Review before budget exhaustion."
-```
-
-Replace `0.001` with `1 − SLO_target` for your service. Replace `http_requests_total` with your service's request counter metric.
+Backend query patterns — recording rules and paired-window alert rules — are **deployment detail** and live in [../tooling/observability.md](../tooling/observability.md) under **Burn-Rate Alerting (Prometheus-Compatible Backends)**. This principle stays **backend-neutral**: any backend that can compute a **windowed error ratio** and evaluate **paired-window** conditions can implement §6.2.
 
 ### 6.4 Common Failure Modes
 
 | Failure mode | Symptom | Fix |
 | --- | --- | --- |
-| **Single-window alert** | Pages on transient spikes; misses slow leaks | Add the paired short window `and` clause |
+| **Single-window alert** | Pages on transient spikes; misses slow leaks | Pair a short window with the long window; fire only when both are elevated |
 | **Alert on raw error rate, not burn rate** | Fires equally at low and high traffic; meaningless at night | Compute error ratio, then multiply by burn-rate threshold |
 | **Threshold copied from a different SLO** | Wrong budget fraction for service's actual SLO | Derive threshold from `(1 − SLO_target)` explicitly |
 | **No slow-burn alert** | Budget silently exhausts over days; incident surprised | Add the 3d+6h tier routed to ticket/work queue |
-| **Page fatigue from 14.4× tier alone** | On-call desensitised; slow fires silently | Use all three tiers; route slow burn to ticket not page |
+| **Page fatigue from 14.4× tier alone** | On-call desensitised; slow fires silently | Use all three tiers (outside a recorded low-traffic exemption — §6 Applicability); route slow burn to ticket not page |
 
 **Why:** The Google SRE Workbook multi-burn-rate model is the industry standard for SLO-based alerting. Single-threshold or raw-rate alerts produce either excessive noise or silent budget exhaustion — both degrade on-call health and SLO reliability.
 

@@ -101,7 +101,7 @@ Version bumps align with **contract** changes tracked in schemas, OpenAPI, CLI c
 
 ## 8. Release Hygiene
 
-- **Single source of truth** for the version string in that unit’s manifest; derive everywhere else (see `ENGINEERING.md` distribution principles).
+- **Single source of truth** for the version string in that unit’s manifest; derive everywhere else (see [single-source-of-truth.md](single-source-of-truth.md)).
 - **Lockfiles and reproducible builds** updated when dependencies change as part of the release process.
 - **Changelog or release notes** reflect what changed and why **minor** or **major** was chosen when it is not obvious from titles alone.
 - **Migration notes** ship with majors when operators or developers must act.

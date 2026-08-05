@@ -1,6 +1,6 @@
 # Configuration And Secrets
 
-Durable rules for **non-secret configuration**, **secrets**, **rotation**, and **dynamic settings** so environments stay **reproducible** and **least-privilege**. Complements [build.md](build.md) (surfaces), [dependencies-supply-chain.md](dependencies-supply-chain.md), and umbrella **Configuration And Secrets** in `ENGINEERING.md`. External-profile parameters, approved values, implementation evidence, and exceptions remain bound to the exact authority and revision through [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md).
+Durable rules for **non-secret configuration**, **secrets**, **rotation**, and **dynamic settings** so environments stay **reproducible** and **least-privilege**. Complements [build.md](build.md) (surfaces), [dependencies-supply-chain.md](dependencies-supply-chain.md), and Core Proposition 7 (**Protect Proportionately To Risk**) in `ENGINEERING.md`. External-profile parameters, approved values, implementation evidence, and exceptions remain bound to the exact authority and revision through [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md).
 
 ---
 
@@ -37,7 +37,7 @@ Durable rules for **non-secret configuration**, **secrets**, **rotation**, and *
 - **`.env.example`** (or equivalent) lists **names** and **shape**, not values; real secrets never committed.
 - CI receives secrets via **OIDC** or **ephemeral** scoped credentials where possible—not permanent org-wide PATs on every fork.
 
-**Why:** Matches **shift security left** expectations in `ENGINEERING.md` and supply-chain hardening in [dependencies-supply-chain.md](dependencies-supply-chain.md).
+**Why:** Matches **shift security left** expectations in [secure-development-lifecycle.md](secure-development-lifecycle.md) and supply-chain hardening in [dependencies-supply-chain.md](dependencies-supply-chain.md).
 
 ---
 
