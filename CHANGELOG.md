@@ -6,6 +6,10 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Added
+
+- [research-full-corpus-council-review-2026-08.md](doctrine/evolution/research-full-corpus-council-review-2026-08.md) — **full-corpus council review at `v0.4.0`**: 7 full-file area reviews + 3 cross-cutting lenses (cross-file contradictions, normative discipline, reader experience), adversarial verification of every blocker/major. Confirms **2 blockers** (feature-flag-lifecycle rollback FSM contradiction; observability §6.3 undefined recording rules) and **20 majors**; systemic diagnosis: **layer drift** (checklists/schemas lag normative additions), **two-generation normativity** (typed new sections inside untyped older cores), **schema-prose count drift**, and **navigation lag**; 31 minors reviewer-reported; v0.5.0 inputs mapped to forward-plan lanes V40–V45. Indexed in doctrine README, SITEMAP, SEMANTIC_INDEX, and REFERENCES; registered as v0.5.0 input in the forward plan.
+
 ## [0.4.0] - 2026-08-03
 
 **AI-native gap closure release.** A ten-cluster landscape sweep of governance and hyperscaler/vendor sources was audited against the corpus with adversarial verification; five council-drafted, critiqued ADR batches ([ADR 0031](docs/adr/0031-add-agent-identity-mcp-revision-pinning-and-asi-crosswalk-coverage.md)–[ADR 0035](docs/adr/0035-add-agent-financial-authority-adaptive-evaluation-and-spend-governance.md)) closed every high- and medium-severity finding (G1–G11, S1–S5), plus the GraphRAG retrieval baseline and the AI-native SDLC council design-space record.
