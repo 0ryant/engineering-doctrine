@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-08-06 17:09 UTC
+Generated: 2026-08-06 21:30 UTC
 
 ## All Markdown files
 
@@ -33,6 +33,7 @@ Generated: 2026-08-06 17:09 UTC
 - [evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md](evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md)
 - [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md)
 - [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md)
+- [evolution/research-agent-loop-graph-cross-check-2026-08.md](evolution/research-agent-loop-graph-cross-check-2026-08.md)
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md)
