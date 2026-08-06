@@ -46,6 +46,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0034](0034-add-agent-definition-governance-memory-lifecycle-and-judge-discipline.md) | Accepted | 2026-08-03 | Add agent-definition artefacts to the pipeline trust class, the agent memory lifecycle, and load-bearing-judge discipline — closes gap-audit items G8, G9, G10 |
 | [0035](0035-add-agent-financial-authority-adaptive-evaluation-and-spend-governance.md) | Accepted | 2026-08-03 | Add agent financial authority default-deny (§7.1), adaptive defence evaluation (§5/§9.4), and vendor-native spend governance — closes gap-audit items G11, S3, S4, S5; all high- and medium-severity audit findings now closed, with low-severity G12–G13 (rows 16–17) and crosswalk residues (rows 19–22) tracked open |
 | [0036](0036-land-v050-correction-batch-from-the-corpus-review.md) | Accepted | 2026-08-03 | Land the v0.5.0 correction batch from the full-corpus review — B2/M20/M21 observability fix+move+typing, B1 interim FSM repair, M7–M9 schema-fact repairs, M15 umbrella-reference sweep, M3/M4/M6 checklist/inventory reconciliation |
+| [0037](0037-land-mcp-cross-check-correction-batch.md) | Accepted | 2026-08-06 | Land the MCP cross-check correction batch — NSA CSI date, RC-vs-final URLs, auth-change enumeration, AAIF hedge resolution, CIMD precision, fixture grammar; establishes in-place correction of verified factual defects in research-note digest rows |
 
 ## Candidate Considered But Not Recorded
 

@@ -273,7 +273,7 @@ def evidence_pack_verifier_pack() -> dict:
             {
                 "id": "lockfile_generated",
                 "kind": "lockfile_generated",
-                "description": "regenerating the MCP server produces an tool-contract.lock matching the running tool fingerprint",
+                "description": "regenerating the MCP server produces a tool-contract.lock matching the running tool fingerprint",
                 "command": "tool-contract verify-lock ${TOOL_CONTRACT_OUT}/tool-contract.lock",
                 "expected_exit": 0,
                 "expected_stdout_contains": "ok",

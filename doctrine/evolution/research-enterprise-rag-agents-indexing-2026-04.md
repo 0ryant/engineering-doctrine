@@ -47,7 +47,7 @@ Portable pattern detail: [../patterns/rag-retrieval-baseline.md](../patterns/rag
 
 - **MCP** standardises how **hosts** (IDEs, assistants) connect to **servers** that expose **tools** and **resources**; reduces bespoke N×M connectors but introduces **new** trust boundaries (see [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §7).
 - **Ecosystem** documentation: https://modelcontextprotocol.io  
-- **Origin / research note:** [Anthropic — Introducing the Model Context Protocol](https://www.anthropic.com/research/model-context-protocol) (Nov 2024). Governance context: protocol has moved toward **foundation-hosted** stewardship (industry reporting describes **Agentic AI Foundation** / Linux Foundation alignment—verify current charter for compliance packs).
+- **Origin / research note:** [Anthropic — Introducing the Model Context Protocol](https://www.anthropic.com/research/model-context-protocol) (Nov 2024). Governance context: protocol has moved toward **foundation-hosted** stewardship (industry reporting describes **Agentic AI Foundation** / Linux Foundation alignment—verify current charter for compliance packs). *(Update 2026-08-06, [ADR 0037](../../docs/adr/0037-land-mcp-cross-check-correction-batch.md): confirmed — Anthropic donated MCP to the **Agentic AI Foundation**, a Linux Foundation directed fund co-founded by Anthropic, OpenAI, and Block, on **2025-12-09**: https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/.)*
 - **Security:** treat MCP like any **RPC** surface: authn/z, rate limits, **audit**, dependency risk on server implementations; 2025 public analyses noted **outstanding** security topics—track **vendor** advisories.
 
 ---
