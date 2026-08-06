@@ -7,10 +7,11 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-08-06 09:27 UTC
+Generated: 2026-08-06 17:09 UTC
 
 ## All Markdown files
 
+- [DEPRECATED.md](DEPRECATED.md)
 - [README.md](README.md)
 - [REFERENCES.md](REFERENCES.md)
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
@@ -38,6 +39,7 @@ Generated: 2026-08-06 09:27 UTC
 - [evolution/research-ai-native-sdlc-council-designs-2026-07.md](evolution/research-ai-native-sdlc-council-designs-2026-07.md)
 - [evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md](evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md)
 - [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md)
+- [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
@@ -54,6 +56,7 @@ Generated: 2026-08-06 09:27 UTC
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md)
 - [patterns/code-review-and-change-approval.md](patterns/code-review-and-change-approval.md)
+- [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md)
 - [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md)
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md)
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md)

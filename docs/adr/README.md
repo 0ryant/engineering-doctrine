@@ -14,6 +14,15 @@ Those files include:
 
 Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 
+## Status Vocabulary
+
+Beyond `Proposed`, `Accepted`, and `Rejected`, two exit statuses are defined:
+
+- **Superseded** — a later ADR replaced this decision. The superseded ADR's status line reads `Superseded by [ADR NNNN](path)` and the superseding ADR names what it supersedes; both directions are required. A decision disavowed without a successor is reversed the same way — the reversing ADR supersedes it and records the disavowal. Amendment-in-place remains correct for refinements that do not reverse a decision.
+- **Withdrawn** — a terminal, proposer-initiated exit for a Proposed ADR that will not proceed; distinct from Rejected (a considered refusal). A Proposed ADR older than 90 days receives a recorded accept/reject/withdraw decision at the next lifecycle sweep ([doctrine-content-lifecycle.md](../../doctrine/patterns/doctrine-content-lifecycle.md) §7).
+
+Numbers 0013–0020 were never assigned in any reachable history; the gap is recorded here so it is not misread as deleted decisions.
+
 ## Index
 
 | ADR | Status | Decision date | Topic |
@@ -47,6 +56,7 @@ Do not rewrite retrospective ADRs to make the process look cleaner than it was.
 | [0035](0035-add-agent-financial-authority-adaptive-evaluation-and-spend-governance.md) | Accepted | 2026-08-03 | Add agent financial authority default-deny (§7.1), adaptive defence evaluation (§5/§9.4), and vendor-native spend governance — closes gap-audit items G11, S3, S4, S5; all high- and medium-severity audit findings now closed, with low-severity G12–G13 (rows 16–17) and crosswalk residues (rows 19–22) tracked open |
 | [0036](0036-land-v050-correction-batch-from-the-corpus-review.md) | Accepted | 2026-08-03 | Land the v0.5.0 correction batch from the full-corpus review — B2/M20/M21 observability fix+move+typing, B1 interim FSM repair, M7–M9 schema-fact repairs, M15 umbrella-reference sweep, M3/M4/M6 checklist/inventory reconciliation |
 | [0037](0037-land-mcp-cross-check-correction-batch.md) | Accepted | 2026-08-06 | Land the MCP cross-check correction batch — NSA CSI date, RC-vs-final URLs, auth-change enumeration, AAIF hedge resolution, CIMD precision, fixture grammar; establishes in-place correction of verified factual defects in research-note digest rows |
+| [0038](0038-adopt-a-doctrine-content-lifecycle.md) | Accepted | 2026-08-06 | Adopt a doctrine content lifecycle — status vocabulary with three exit states, promotion gates, ADR-routed demotion/supersession/restoration, the DEPRECATED.md register, checklist-wired staleness sweep and default-fade; Superseded/Withdrawn ADR statuses |
 
 ## Candidate Considered But Not Recorded
 

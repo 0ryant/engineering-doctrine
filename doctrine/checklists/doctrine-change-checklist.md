@@ -25,6 +25,7 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] Duplicate or conflicting normative owners were searched for and reconciled; evolution notes are not used as operating authority
 [ ] Change class labelled for consumer impact: editorial / navigation / additive guidance / normative tightening / normative replacement / estate-only / deprecation
 [ ] Migration notes added for normative tightening, replacement, deprecation, or removal
+[ ] Lifecycle: supersession, demotion, or retirement routed per [../patterns/doctrine-content-lifecycle.md](../patterns/doctrine-content-lifecycle.md); doctrine/DEPRECATED.md updated
 [ ] evolution/moscow-review.md or decision note updated for large shifts (optional but encouraged)
 [ ] evolution/honest-review-synthesis.md updated when absorbing a substantive external review of the library
 [ ] For material doctrine releases: update [CHANGELOG.md](../../CHANGELOG.md) at the tag; note version or date in evolution/moscow-review.md or a short decision log entry (optional but encouraged); classify release kind using patterns/doctrine-versioning-and-consumer-compatibility.md

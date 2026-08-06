@@ -7,7 +7,7 @@ Use this page when onboarding to the repository or deciding **what to adopt** in
 ## Layers (Outermost To Innermost)
 
 1. **`ENGINEERING.md`** (repo root) — **Core constitution and route map**: canonical for the small set of core propositions, normative vocabulary, applicability/exception entry points, and adoption routes. It does not duplicate topic detail.
-2. **`doctrine/SEMANTIC_INDEX.md`** — **Route map**: task intent to the source files an agent or reader should ingest. It is navigation, not authority over the linked files.
+2. **`doctrine/SEMANTIC_INDEX.md`** — **Route map**: task intent to the source files an agent or reader should ingest. It is navigation, not authority over the linked files. [`doctrine/DEPRECATED.md`](../DEPRECATED.md) is the companion **lifecycle register**: what is scheduled for removal, what has exited, and what the sweeps decided.
 3. **`doctrine/principles/`** — **Durable topic authority**: platform-agnostic outcomes, constraints, and trade-offs, with rationale and references. Prefer citing these when embedding doctrine in another repo.
 4. **`doctrine/patterns/`** — **Compositional and conditional guidance**: how principles fit together in an operating model. A pattern's scoped obligations activate only when its applicability conditions are met.
 5. **`doctrine/checklists/`** — **Derived review surfaces**: questions and evidence prompts for applicable principles and patterns. A checklist is not the sole authority for a new obligation.
@@ -79,7 +79,7 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 
 - Repo rollout: `checklists/build-readiness.md`, `collaboration-readiness.md`, `platform-readiness.md`, `developer-experience-scorecard.md`.
 - **Releases:** `checklists/release-readiness.md`.
-- **Editing this library:** [doctrine-library-change-harness.md](doctrine-library-change-harness.md) (research, claim strength/applicability, ADR, navigation); [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md).
+- **Editing this library:** [doctrine-library-change-harness.md](doctrine-library-change-harness.md) (research, claim strength/applicability, ADR, navigation); [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md); status vocabulary and supersession/retirement mechanics: [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md).
 - **Adopting with a team:** `patterns/adoption-playbook.md`, `tooling/estates/minimum-viable-doctrine.template.md`, `principles/measurement-and-dora.md`.
 
 ---

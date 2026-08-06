@@ -10,7 +10,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Acceptance (of messages)** — Consumer tells the broker it finished processing; behaviour (single vs cumulative ack, redelivery) is **broker-specific**. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
-**ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md).
+**ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md); supersession mechanics: [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md) §7.
 
 **Agent-definition artefact** — Machine-readable file that configures or steers an AI agent’s behaviour: custom-agent definitions, **steering/instruction files**, `SKILL.md`-class skill packs, MCP server configurations, and prompt templates wired into delivery. In the **pipeline-definition trust class** when it directs automation that can read secrets, mutate production, publish packages, or alter downstream systems. See [merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) §1–§2, [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §5.
 
@@ -95,6 +95,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Dead letter queue (DLQ)** — Destination for messages that **failed** processing after policy limits; avoids infinite retry loops. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
 **Deployable unit** — Thing you **ship or operate** with its own lifecycle (app, infra module, automation package, etc.); often maps to **separate** deploy surfaces. See [build.md](principles/build.md).
+
+**Deprecated (doctrine lifecycle)** — Scheduled for **supersession** or **retirement**; remains accurate at every tag in which it ships; new adoption should not reference it. Banner + register per [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
 
 **DORA delivery metrics** — Current delivery-system signals across throughput and instability: *change lead time*, *deployment frequency*, *failed deployment recovery time*, *change fail rate*, and *deployment rework rate*. They are not universal company objectives or individual targets. See [measurement-and-dora.md](principles/measurement-and-dora.md).
 
@@ -280,6 +282,10 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Replay** — Re-deliver or re-process messages from history or DLQ **deliberately**; needs **idempotency** and scope. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
+**Rescinded (doctrine lifecycle)** — Exit state: **disavowed** as wrong or harmful; consumers should stop following it even on old pins. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
+
+**Retired (doctrine lifecycle)** — Exit state: **no successor**; the topic no longer earns doctrine; historical value only. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
+
 **RFC (design)** — *Request for comments*: **pre-decision** exploration; outcomes land in ADRs when decided. See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
 **RPO / RTO** — *Recovery point* / *time* **objectives**: how much data loss and downtime are acceptable in DR. See [data-and-migrations.md](principles/data-and-migrations.md).
@@ -336,6 +342,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **STRIDE** — *Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege*—threat-model **prompts**. See [threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md).
 
+**Superseded (doctrine lifecycle)** — Exit state: replaced by a **named successor**; the tombstone points forward. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
+
 ---
 
 ## T
@@ -345,6 +353,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Threat modeling** — Structured identification of threats at **trust boundaries** (often STRIDE). See [threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md).
 
 **Toil** — Manual, repetitive operational work that does not **improve** the system long-term; budget its reduction. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
+
+**Tombstone (doctrine lifecycle)** — The stub left at a removed file's path: exit banner, ADR link, successor link, last tag at which the full text shipped. Nothing is **hard-deleted**. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md), [DEPRECATED.md](DEPRECATED.md).
 
 **Tooling** — In this repo: **illustrative** stacks under `tooling/` and `tooling/estates/`—swappable if **surface contracts** stay stable. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 

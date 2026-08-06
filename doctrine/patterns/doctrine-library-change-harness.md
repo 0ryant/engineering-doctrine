@@ -20,7 +20,8 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
    - **Estates** — org-specific only: `doctrine/tooling/estates/`.
 3. **Classify each material claim** per [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md): normative strength, content class, applicability conditions, expected evidence, and exception authority. Do not assign one normative level to a whole document.
 4. **Classify the library change** per [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md): editorial / navigation / additive guidance / normative tightening / replacement / estate-only / deprecation. A change to claim strength, applicability, evidence, or the exception path can change consumer obligations even when the prose becomes shorter.
-5. If the idea does not fit a layer, stop and open an **issue** or **draft PR** (see [CONTRIBUTING.md](../../CONTRIBUTING.md)) before writing thousands of words.
+5. **Does this change supersede, demote, or retire anything?** If yes, route the lifecycle mechanics — banner, register, exit state — in the same change ([doctrine-content-lifecycle.md](doctrine-content-lifecycle.md)).
+6. If the idea does not fit a layer, stop and open an **issue** or **draft PR** (see [CONTRIBUTING.md](../../CONTRIBUTING.md)) before writing thousands of words.
 
 ---
 

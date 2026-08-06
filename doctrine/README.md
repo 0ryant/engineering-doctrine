@@ -77,6 +77,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)
 - [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) — claim strength, activation profiles, exception records, and control lifecycle
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — doctrine release labels, change classes, and consumer pinning guidance
+- [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md) — **doctrine content lifecycle**: status vocabulary, promotion/demotion gates, deprecation clocks, tombstones, and the anti-accretion sweeps for this library's own content
 - [patterns/code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) — code review and merge approval (duties, blockers, latency, high-risk, **agent**-authored diffs, escalation)
 - [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md) — **GitOps** (declarative desired state, **reconciliation**, **drift**, **secrets** boundaries); touches build, **SSOT**, **merge** path, collaboration
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
@@ -161,6 +162,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [REFERENCES.md](REFERENCES.md)
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md) — task and topic route map for ingestion
 - [SITEMAP.md](SITEMAP.md) — machine-friendly file list (regenerate via `scripts/generate-doctrine-sitemap.sh`)
+- [DEPRECATED.md](DEPRECATED.md) — lifecycle register — what is scheduled for removal, what has exited, what the sweeps decided
 
 ### Research And Evolution (Rationale, Not Operating Authority)
 
@@ -176,6 +178,7 @@ Use these records to understand source grounding, decisions, audits, and known g
 - [evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md](evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md) — August 2026 landscape sweep (governance + hyperscaler/vendor sources) and adversarially verified doctrine gap/staleness audit (G1–G13, S1–S5)
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md) — full-corpus council review at `v0.4.0`: health scorecard per area, 2 blockers + 20 majors adversarially confirmed (layer drift, two-generation normativity, navigation lag), v0.5.0 inputs mapped to plan lanes V40–V45
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) — MCP 2026-07-28 spec cross-check — §7 baseline verified against primary sources; deprecation clocks, MRTR/state-handle security, extensions gap map
+- [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) — Doctrine lifecycle audit — internal machinery audit + eight external standards-lifecycle models; evidence for ADR 0038
 - [evolution/moscow-review.md](evolution/moscow-review.md), [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md), and [evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md](evolution/anti-patterns-and-failure-modes-gap-analysis-2026-04.md) — backlog and gap analyses
 - [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md) and [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md) — public-doctrine benchmark and source-selection context
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md), and [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) — historical AI/ML landscape research

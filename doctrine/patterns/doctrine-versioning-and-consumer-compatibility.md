@@ -29,7 +29,7 @@ Use **SemVer-shaped tags** for public releases of this library once releases are
 | **Minor** (`x.Y.0`) | New principle, pattern, checklist, tooling illustration, or adoption aid that is **additive** and does not make existing compliant consumers non-compliant. |
 | **Major** (`X.0.0`) | A normative shift: changed principle meaning, stricter baseline, removed or renamed doctrine surface, changed layering rule, or new default that can invalidate existing local doctrine. |
 
-Before a formal `1.0.0`, use `0.y.z` with the same intent: **minor** may contain intentional normative movement; **patch** stays safe and compatible.
+Before a formal `1.0.0`, use `0.y.z` with the same intent: **minor** may contain intentional normative movement, including lifecycle-governed removals per [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md); **patch** stays safe and compatible.
 
 **Why:** This keeps a familiar upgrade vocabulary without pretending Markdown doctrine has the exact same compatibility surface as a binary package.
 
@@ -47,7 +47,7 @@ Every substantive doctrine change should be labelled in the PR, release note, or
 | **Normative tightening** | New required gate, stronger "must", shorter waiver window, stricter default | Treat as policy change; consumers decide adoption date and exceptions. |
 | **Normative replacement** | Old guidance superseded by different default | Requires migration note and consumer impact statement. |
 | **Estate-only** | Cloud, vendor, org, regulatory mapping under `tooling/estates/` | Only affected estates need action. |
-| **Deprecation** | Planned removal or replacement of a file, rule, or blessed path | Consumers get a target replacement and sunset timing. |
+| **Deprecation** | Planned removal or replacement of a file, rule, or blessed path ([doctrine-content-lifecycle.md](doctrine-content-lifecycle.md)) | Consumers get a target replacement and sunset timing via [../DEPRECATED.md](../DEPRECATED.md). |
 
 **Why:** Consumers should not have to infer compatibility from diff size. A one-line "must" can matter more than a new 100-line example.
 
@@ -85,12 +85,12 @@ Downstream repos should treat this library like a dependency:
 
 ## 6. Deprecation And Removal
 
-When replacing a doctrine surface:
+Lifecycle mechanics — status vocabulary, banners, clocks, tombstones, restoration, and the register — live in [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md). For consumers, the promises are:
 
-- Mark the old file, section, or rule as **deprecated** with a link to the replacement.
-- State whether the old guidance is still acceptable, discouraged, or invalid.
-- Keep redirects or cross-links for at least one minor release where practical.
-- Remove only in a **major** release after migration notes exist, unless the old text is actively harmful or insecure.
+- A **Deprecated** surface remains accurate at every tag in which it ships; deprecation is a schedule, not a correction. New adoption SHOULD NOT reference a Deprecated surface.
+- Consumers SHOULD stop following **Rescinded** text even on old pins — rescission means the guidance is disavowed, not merely replaced.
+- Every deprecation carries an **Active replacement** (or an explicit statement that none is required) and tag-anchored sunset timing, recorded in [../DEPRECATED.md](../DEPRECATED.md).
+- Removed surfaces leave a tombstone at the original path pointing forward; the full text stays reachable at pinned tags.
 
 **Why:** Teams may have embedded links in READMEs, templates, ADRs, onboarding docs, and audit packs.
 
@@ -128,6 +128,8 @@ Before merging a material doctrine change:
 [ ] Consumer impact stated in PR, evolution note, or release note
 [ ] Migration notes added for normative tightening, replacement, or removal
 [ ] Deprecated surfaces link to replacements
+[ ] Lifecycle status markers applied and doctrine/DEPRECATED.md updated for any deprecation, exit, or restoration
+[ ] Minor release: doctrine-content-lifecycle §8 sweep executed and its record linked from the register's sweep ledger
 [ ] doctrine/README.md and REFERENCES.md internal map updated if a first-class file was added
 [ ] doctrine/SITEMAP.md regenerated after Markdown file changes
 [ ] Release kind proposed: patch / minor / major (or 0.x equivalent)
