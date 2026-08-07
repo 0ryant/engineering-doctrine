@@ -40,7 +40,7 @@ OBSERVE — what did the tool return? Does it affect the plan?
 
 - When a task fails and the environment is **resettable**, an agent that writes a textual critique of why it failed and carries that critique into the next attempt can improve without weight updates.
 - The episodic memory buffer (critiques + outcomes) is a form of test-time learning; it is the closest current equivalent to in-context adaptation.
-- **Critical constraint:** the critique must be grounded by an **external verifier** (test suite, human rating, structured rubric). Pure self-evaluation is unreliable — a model can confidently misdiagnose its own failure. Self-certified success is not success.
+- **Critical constraint:** the critique must be grounded by an **external grounding signal** (test suite, human rating, structured rubric — "verifier" in the pack sense is narrower: [verifier-packs.md](verifier-packs.md) §8). Pure self-evaluation is unreliable — a model can confidently misdiagnose its own failure. Self-certified success is not success.
 - Store critiques alongside the task id and ISC results; they are engineering artefacts, not conversation noise.
 
 **Why:** ReAct showed +34% task success over pure RL baselines using structural change alone — not a stronger model. Reflexion achieved 91% pass@1 on HumanEval (vs. GPT-4's 80%) through verbal critique backed by unit tests. Loop structure is higher-leverage than model choice.
@@ -60,6 +60,8 @@ OBSERVE — what did the tool return? Does it affect the plan?
 | **Rewardable** | Can an automated process score any specific attempt? | Without this, the loop is open; no signal, no convergence |
 
 A task that fails on any condition is a **human task with optional AI assistance** — not an autonomous agent task. Automate only what you can verify; everything else gets a human in the loop (see §6).
+
+**Recurrence gates promotion, not existence — and never governance.** A one-off, supervised, disposable run is always legitimate — construction can cost a single prompt, though cheapness is at the prompt layer only: a one-off that invokes tools or mutates state already **requires a run contract in full** ([run-contracts.md](run-contracts.md) §§1.1–2), including its gates and ceilings (§6.1); what it lacks is standing. Demonstrated **recurrence** is the admission ticket to **standing authority and scheduling** (§6.1) — harness build-and-maintenance cost amortises only over repetition (toil is definitionally repetitive work). Anything that persists past its one-off purpose either climbs the ladder, gaining an owner, a template, and standing authority, or is deleted.
 
 **Why:** Math and code improve explosively under AI because they are highly verifiable (compilers, test suites, automated checkers). Creative, strategic, and physical-world tasks lag because they lack cheap automated reward signals. Spending harness development effort on non-verifiable tasks produces overconfident failure rather than reliable automation.
 
@@ -140,7 +142,7 @@ The **context window is the model's working memory**. The discipline of deciding
 - **Episodic / few-shot**: retrieve relevant past examples from episodic memory by similarity.
 
 #### Compress — retain only required tokens
-- At context limit, run a LLM-distilled summary rather than truncation: recursive summaries preserve task context that sliding-window pruning destroys.
+- At context limit, run a LLM-distilled summary rather than truncation: recursive summaries preserve task context that sliding-window pruning destroys — but compaction silently drops in-context constraints, so pin policy/constraints outside the window or re-inject them post-compaction (§6.1; ledger L6.1).
 - Drop tool outputs after extracting the key value; the raw 10KB response rarely needs to stay in context after the model has processed it.
 
 #### Isolate — split context across agents
@@ -183,9 +185,20 @@ Fully supervised                                     Fully autonomous
 
 **Rules:**
 - Blast radius and verifiability (§2) determine the default starting position.
-- Any **auth, tenancy, crypto, schema, money-movement, or person-affecting** action must start at "approve before irreversible" regardless of agent maturity — see [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4; agent financial authority is default-deny per [../principles/cost-and-finops.md](../principles/cost-and-finops.md) §7.1.
+- Any **auth, tenancy, crypto, schema, money-movement, or person-affecting** action MUST start at "approve before irreversible" regardless of agent maturity — see [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4; agent financial authority is default-deny per [../principles/cost-and-finops.md](../principles/cost-and-finops.md) §7.1.
 - The slider can move **right** (more autonomous) as empirical data accumulates from VERIFY step + ISC pass rate. It moves **left** on any ISC regression or incident.
 - **Transparent plan state**: expose the agent's current plan and active ISC to operators in real time. An agent whose internals are invisible to its operators cannot be reliably supervised.
+
+### 6.1 Build Order — How A Loop Earns Each Rung
+
+**Gates are not a rung — they arrive with governed execution itself.** Any run that invokes tools or mutates state is governed from its first execution ([run-contracts.md](run-contracts.md) §§1.1–2) and carries the full envelope — the §3 VERIFY step and the externally enforced stop and budget ceilings of §1.2 and §8.3. The ladder orders what is *built*, under gates throughout:
+
+1. **Run it manually first**, in a supervised session at the slider's leftmost position. A task that fails hand-run fails scheduled, only faster.
+2. **Lock what worked into a reusable template** — instructions, criteria, tool list, versioned rather than living in one chat. Once that template steers scheduled automation it is an **agent-definition artefact** in the pipeline-definition trust class ([../principles/merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §§1–2).
+3. **Harden the enforcement locus.** Stop and budget ceilings MUST be enforced outside the context window — a widening of §8.3's outside-prompt enforcement rule from multi-agent trees to every governed loop. Verification MUST bind through a mechanism outside the model's own self-report — a harness-run §3 VERIFY, a test suite, or human approval per §6; the in-context VERIFY step is necessary, not sufficient. In-context constraints demonstrably decay under ordinary compaction, and the 2025 record's marquee agent incidents — the Replit production-database deletion during an explicit code freeze, and the Amazon Q injected-prompt incident (AWS-2025-015, CVE-2025-8217) — both occurred in *interactive* sessions, not scheduled runs.
+4. **Schedule last.** Standing triggers are earned by demonstrated recurrence (§2) and a verified track record, and run on the recurring-automation build surface ([build-surface-model.md](build-surface-model.md)); the worked cron example is [run-contracts.md](run-contracts.md) §5. Acquiring a standing trigger does not move the autonomy slider — a scheduled run inherits its slider position, and slider movement remains governed by the §6 observed-success rules alone.
+
+The ladder composes with the slider: build order says when a capability exists; the slider says how much oversight it runs under. Evidence: [research-agent-loop-graph-cross-check-2026-08.md](../evolution/research-agent-loop-graph-cross-check-2026-08.md) §5 second-pass addendum (L6.1–L6.2, L4.1–L4.6).
 
 ---
 
@@ -233,16 +246,30 @@ Use multiple agents when tasks parallelise, exceed a single context window, or r
 - **One writer or an explicit merge protocol** — each mutable workspace has one owner. Parallel writers use isolated workspaces and a named integration step.
 - **Immutable inputs** — each child records the input snapshot, dependency versions, and parent contract it received. Material input change invalidates derived work until it is re-evaluated.
 - **Authority attenuates** — a child receives a subset of the parent's authority. Delegation cannot widen tools, data, target, time, or budget, and an agent cannot authorise its own widening.
-- **Bound the tree** — enforce fan-out, depth, time, token/compute/cost, and retry limits outside model prompts. Exhaustion stops or escalates; it does not silently relax limits.
+- **Bound the tree** — fan-out, depth, time, token/compute/cost, and retry limits MUST be enforced outside model prompts. Exhaustion stops or escalates; it does not silently relax limits.
 - **Typed handoffs are claims** — handoffs carry provenance, outputs, open findings, limitations, and verifier results. They are checked before integration rather than trusted because they parse.
 - **Checkpoint with identity** — persist durable state at declared boundaries. Resume revalidates input snapshot, policy version, identity, authority, lease/expiry, and target; stale work starts a linked new run or stops.
 - **Propagate cancellation and revocation** — terminating or narrowing a parent recursively revokes affected child authority. Orphaned children cannot continue with cached credentials.
 - **Reconcile shared state** — shared mutable state uses transactions, compare-and-set/version checks, or an explicit reconciliation owner. Non-atomic multi-contract effects declare compensation or containment.
 - **Double-texting policy**: decide explicitly what happens when new input arrives while an agent is running (reject, queue, interrupt, or rollback to checkpoint). Default to **reject** for destructive agents; **queue** for retrieval agents.
 - **Rainbow deployments**: when deploying a new agent version, route traffic gradually while the old version may still be mid-run. Agents, unlike stateless APIs, cannot be cut over atomically.
-- **Budget guidance may appear in prompts, but enforcement belongs to the host or workflow policy** and is recorded in receipts. The model cannot grant itself more calls, time, compute, or spend.
+- **Budget guidance may appear in prompts, but enforcement belongs to the host or orchestrator policy** and is recorded in receipts. The model cannot grant itself more calls, time, compute, or spend.
 
 **Why:** Anthropic's production research agent: multi-agent (Claude Opus 4 orchestrator + Sonnet 4 workers) outperformed single-agent Opus 4 by 90.2% on internal eval. Token cost: ~15× compared to chat, so multi-agent is not automatically preferable for cheap tasks.
+
+### 8.4 Decomposition: Dependencies, Fan-Out, And Convergence
+
+How to split work across agents, once §§8.1–8.3 govern the running of it. **Register note:** this subsection is design guidance at §8.3's register — untyped imperatives are design defaults; the single typed claim is marked. "Converge" here names a **graph join**, not the §§2–3 sense of a loop reaching a verified terminal state. A dependency graph is a **partial order**; any execution sequence is one linearization of it, and wall-clock time is set by the **critical path** — so deleting false ordering is the only speedup that shortens nothing else.
+
+- **Audit every implied edge.** For each "B after A", ask: does B consume something A produces? A real data dependency keeps the edge; mere authoring order deletes it. Where ordering without data flow is genuinely required (shared-resource sequencing, an external constraint), declare it as an explicit *ordering* edge — a distinct edge type from *consumes-output-of*, never a fake data edge. Steps with no incoming edge can start immediately. **Work dependencies** (graph edges — not package dependencies, and not the pinned *dependency versions* in §8.3's input snapshots) SHOULD be **declared explicitly, with execution order derived from them** rather than hand-fixed — the invariant across orchestration systems since critical-path scheduling (1959).
+- **Fan-out/converge** (scatter-gather) is the recurring shape: independent branches in parallel feeding one integration step. Two preconditions, both load-bearing: branches share **no decision surface** (reads parallelise; writes stay single-threaded or behind §8.3's merge protocol), and the converge step genuinely needs **more than one branch's contribution under its declared completeness criterion** — an all-branches converge that uses only one input is waste; quorum and first-success trade redundancy for latency deliberately.
+- **The converge node is stateful, and it is a verification point** — in the §§2–3 sense, not a verifier pack ([verifier-packs.md](verifier-packs.md) §8 scopes packs to binary-observable artefact properties). It declares its **completeness criteria** (all branches / quorum / first-success), its **aggregation mode** (reduce; majority vote where outputs are comparable; judge — §8.2 discipline applies when the judge gates), and its **failure policy**. Majority vote **converges** outputs; it does not approve — §12's council-as-approval-substitute anti-pattern continues to bind for high-materiality integration. These declarations live in the external coordinator today: the run-contract v1 cannot express them ([run-contracts.md](run-contracts.md) §9 records the deferral). In the largest multi-agent failure study ([MAST, arXiv:2503.13657](https://arxiv.org/abs/2503.13657)), *incorrect* verification was roughly as common as *absent* verification — a bad judge at the converge point is not safer than none.
+- **Failure policy belongs to the downstream consumer or its edge** — the cross-system default (Airflow, Argo, GitHub Actions, Prefect declare it there; dbt's `on_error` is the producer-declared exception; global fail-fast overrides everywhere). Name the choice per converge point: fail-fast-halt, skip-downstream (the common default), continue-degraded on declared partial results, or compensate-and-unwind where branches carry side effects.
+- **Retry is not neutral for agent nodes.** A retried agent node is non-deterministic: it can make different implicit decisions than the attempt its completed siblings coordinated with — engines preserve *state* consistency, not *decision* consistency. Declare the re-run scope (retry the node vs re-run the subgraph from the last checkpoint) through §8.3's checkpoint-with-identity rule, and give side-effectful tools idempotency keys ([idempotency-across-boundaries.md](idempotency-across-boundaries.md)).
+- **Every dynamic fan-out carries a declared cardinality bound that fails loudly at the producer** — never silent truncation — alongside §8.3's tree bounds. Unbounded fan-out is unbounded spend ([../principles/cost-and-finops.md](../principles/cost-and-finops.md) §7).
+- **When not to graph.** The §8 opening triggers are the whole positive list — parallelisable work, context-window exhaustion, isolated specialisation — and §8's exclusions still bind: heavy cross-dependencies and continuous shared state stay single-agent (a graph whose critical path is near-serial after the edge audit is such a task). Check the **single-agent baseline first**: in token-matched comparisons a single agent has matched or beaten most multi-agent topologies on reasoning tasks (single study, preprint — ledger row G6.7), and the vendor record's own multi-agent cost is ~15× chat tokens (§8.3 Why). Prefer structure that can be deleted as models improve: encode coordination in contracts and checkpoints, not hand-tuned topology.
+
+**Why:** Fan-out/converge's pedigree runs from critical-path scheduling (1959) through scatter-gather and MapReduce to every mature orchestrator, all of which derive order from declared dependencies. The agent-specific additions — converge as a verification point, decision consistency under retry, single-threaded writes — come from the 2025–2026 empirical record. Full graded source ledger: [research-agent-loop-graph-cross-check-2026-08.md](../evolution/research-agent-loop-graph-cross-check-2026-08.md) §5 including its second-pass addendum.
 
 ---
 
@@ -316,7 +343,7 @@ Not every input requires the full nested loop. Route intelligently:
 
 Common failure mode: running FULL on continuation tasks causes the agent to re-plan what it was already doing, fragment the work, and lose context. Recognise continuation cues and skip re-decomposition.
 
-Anthropic's design guidance: start with the simplest possible solution (single LLM call + retrieval). Add workflows before agents. Add agents only when workflows demonstrably fail on task variability.
+Anthropic's design guidance: start with the simplest possible solution (single LLM call + retrieval). Add **deterministic workflows** (predefined code paths) before agents. Add agents only when workflows demonstrably fail on task variability.
 
 ---
 
@@ -352,11 +379,13 @@ This crosswalk is **navigational vocabulary**: it maps each ASI identifier to th
 | **Unbounded loops** | No stopping condition. Agent iterates until context limit or cost limit, not until task is done. |
 | **Context poisoning via chained outputs** | One model's hallucination enters the next model's context as fact. Chain LLM outputs only via typed structured values, not raw text. |
 | **Council as approval substitute** | Multiple model votes treated as equivalent to human approval or CI pass for high-risk change. Not a valid approval mechanism for auth, tenancy, schema, or person-affecting automation — see [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4. |
-| **Missing context compression** | Raw tool outputs accumulate in context. At 95%+ context fill, model degradation is steep. Compress before you hit the limit. |
+| **Missing context compression** | Raw tool outputs accumulate in context. At 95%+ context fill, model degradation is steep. Compress before you hit the limit — and pin constraints outside the window when you do: compaction silently drops them (§5.1). |
 | **Autonomy hard-coded to max** | New or insufficiently verified agents deployed silently. Default conservative; earn the right to more autonomy through ISC pass-rate data. |
 | **ACI neglect** | Tool descriptions written as notes to self. Treated as configuration, not documentation. Model tool misuse follows directly. |
 | **Unbounded, unvalidated agent memory** | Agent-writable memory with no admission validation, no TTL, and no recovery path is an **accumulating attack surface**: every poisoned write persists and re-enters context on retrieval. Lifecycle rules: [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §7; cross-session red-team hook: §5.2. |
 | **Unvalidated load-bearing judge** | Judge verdicts gate promotion or automation with no chance-corrected agreement, no perturbation testing, no versioned config. Raw percent agreement is theatre — it inflates on imbalanced labels while kappa sits near zero. An unvalidated judge treated as ground truth is self-certified success at one remove (§8.2). |
+| **Fake edges** | Authoring order encoded as dependency. Work queues behind steps it never needed and the critical path inflates for free. Audit every edge for real data flow (§8.4). |
+| **Parallelised decision surfaces** | Independent branches writing to shared artefacts or making overlapping decisions. Conflicting implicit assumptions compound at the merge. Writes stay single-threaded or behind an explicit merge protocol (§§8.3–8.4). |
 
 ---
 

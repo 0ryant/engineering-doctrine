@@ -225,6 +225,22 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | LangChain — Context Engineering (Chase, Jun 2025) | https://blog.langchain.com/the-rise-of-context-engineering/ |
 | 12 Factor Agents (Horthy — "own your context window") | https://github.com/humanlayer/12-factor-agents |
 | LangGraph (cyclic graphs / state machines for agentic loops) | https://github.com/langchain-ai/langgraph |
+| Hohpe & Woolf — **Enterprise Integration Patterns**: Scatter-Gather + Aggregator (fan-out/converge canon) | https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html |
+| Kahn — **Topological sorting of large networks** (CACM 1962; dependency graph as partial order) | https://dl.acm.org/doi/10.1145/368996.369025 |
+| Kelley & Walker — **Critical-Path Planning and Scheduling** (1959) | https://dl.acm.org/doi/10.1145/1460299.1460318 |
+| Dean & Ghemawat — **MapReduce** (OSDI 2004; parallelism from declared independence) | https://dl.acm.org/doi/10.1145/1327452.1327492 |
+| Huang et al. — **LLMs Cannot Self-Correct Reasoning Yet** (ICLR 2024) | https://arxiv.org/abs/2310.01798 |
+| Kamoi et al. — **When Can LLMs Actually Correct Their Own Mistakes?** (TACL 2024) | https://arxiv.org/abs/2406.01297 |
+| Cemri et al. — **MAST: Why Do Multi-Agent LLM Systems Fail?** (1,600+ annotated traces) | https://arxiv.org/abs/2503.13657 |
+| **Governance Decay** — in-context constraints silently dropped by compaction | https://arxiv.org/abs/2606.22528 |
+| Google SRE Book — **Eliminating Toil** (ch. 5) and **Evolution of Automation** (ch. 7) | https://sre.google/sre-book/eliminating-toil/ |
+| Sumers et al. — **CoALA: Cognitive Architectures for Language Agents** (memory taxonomy) | https://arxiv.org/abs/2309.02427 |
+| Feng et al. — **Levels of Autonomy for AI Agents** (autonomy separate from capability) | https://arxiv.org/abs/2506.12469 |
+| SAE **J3016** Levels of Driving Automation (public chart; responsibility-division archetype) | https://www.sae.org/binaries/content/assets/cm/content/blog/sae-j3016-visual-chart_5.3.21.pdf |
+| Anthropic **prompt caching** (0.1× reads; exact-prefix invalidation) | https://platform.claude.com/docs/en/build-with-claude/prompt-caching |
+| AWS Security Bulletin **AWS-2025-015** (Amazon Q VS Code injected-prompt incident, CVE-2025-8217) | https://aws.amazon.com/security/security-bulletins/AWS-2025-015/ |
+| **MCP servers at first glance** — 5.5%/1,899 tool-poisoning patterns; 66% code smells | https://arxiv.org/abs/2506.13538 |
+| **MCPTox** — tool-poisoning attack success on live servers | https://arxiv.org/abs/2508.14925 |
 
 | Topic | Reference |
 | --- | --- |

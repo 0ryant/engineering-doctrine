@@ -57,6 +57,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0036](0036-land-v050-correction-batch-from-the-corpus-review.md) | Accepted | 2026-08-03 | Land the v0.5.0 correction batch from the full-corpus review — B2/M20/M21 observability fix+move+typing, B1 interim FSM repair, M7–M9 schema-fact repairs, M15 umbrella-reference sweep, M3/M4/M6 checklist/inventory reconciliation |
 | [0037](0037-land-mcp-cross-check-correction-batch.md) | Accepted | 2026-08-06 | Land the MCP cross-check correction batch — NSA CSI date, RC-vs-final URLs, auth-change enumeration, AAIF hedge resolution, CIMD precision, fixture grammar; establishes in-place correction of verified factual defects in research-note digest rows |
 | [0038](0038-adopt-a-doctrine-content-lifecycle.md) | Accepted | 2026-08-06 | Adopt a doctrine content lifecycle — status vocabulary with three exit states, promotion gates, ADR-routed demotion/supersession/restoration, the DEPRECATED.md register, checklist-wired staleness sweep and default-fade; Superseded/Withdrawn ADR statuses |
+| [0039](0039-add-agent-loop-graph-decomposition-guidance.md) | Accepted | 2026-08-07 | Add graph-decomposition guidance (§8.4 fan-out/converge with converge-as-verification-point), the §6.1 build-order ladder with split enforcement MUSTs, loop economics, recurrence-gates-promotion, agent/graph glossary entries, and a lifecycle-compliant run-contracts v2 DAG deferral |
 
 ## Candidate Considered But Not Recorded
 

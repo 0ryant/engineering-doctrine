@@ -302,9 +302,9 @@ Segment results by mandate class, materiality, and capability; do not optimise s
 - **Evidence:** required-evidence completeness, stale/unbound rejection, sampled false-pass/false-fail, inconclusive rate, waiver age.
 - **Safety and quality:** change fail rate, rollback/containment success, escaped defects, security and person-impact findings.
 - **Authority:** separation violations, direct mutation attempts, invalidated approvals, exception expiry compliance.
-- **Agent effectiveness:** accepted-change rate after review, human correction, cost per accepted result, recurring failure clusters.
+- **Agent effectiveness:** accepted-change rate after review, human correction, cost per accepted result, recurring failure clusters. Same usage rule as demand amplification below: monitoring and stop signals, never KPIs to maximise.
 - **Coordination:** overlapping-write conflicts, orphaned runs, failed resumes, cancellation propagation, attention per accepted result.
-- **Demand amplification:** generated-to-accepted ratio, abandoned artefacts, induced backlog and maintenance load.
+- **Demand amplification:** generated-to-accepted ratio, abandoned artefacts, induced backlog and maintenance load. Usage rule for these ratios: near-horizon monitoring and stop signals, never KPIs to maximise — [../principles/cost-and-finops.md](../principles/cost-and-finops.md) §7 loop economics.
 - **Reconciliation:** releases linked to runtime evidence, time to detect divergence, unresolved observation, incident feedback closure.
 - **Strategic outcomes, where activated:** measure and guardrail movement with attribution limits; never aggregate unrelated objectives into one score.
 
