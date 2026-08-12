@@ -209,6 +209,7 @@ activation and meaning changes before adoption.
 - [Revision-Pinned External Control Profiles](revision-pinned-control-profiles.md)
 - [AI Adoption Controls](ai-adoption-controls.md)
 - [AI-Native Software Development Lifecycle](ai-native-software-development-lifecycle.md)
+- [Source Authority And Evidence Grading](source-authority-and-evidence-grading.md) — evidence-floor admission gates whose registered exceptions ([../EVIDENCE-EXCEPTIONS.md](../EVIDENCE-EXCEPTIONS.md)) instantiate this pattern's §5 contract
 
 ## References
 

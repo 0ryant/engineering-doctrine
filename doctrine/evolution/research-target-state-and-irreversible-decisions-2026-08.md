@@ -73,7 +73,7 @@ Ordered by severity, then ascending effort. Change class uses the canonical vers
 
 ## 5. Source ledger
 
-Authority classes: **A** = peer-reviewed / official standard or law / canonical book; **B** = primary vendor, government, or engineering-organisation documentation; **C** = industry research report (methodology published, not peer-reviewed); **D** = practitioner commentary. Verification caveats at the end of the section.
+Authority classes: **A** = peer-reviewed / official standard or law / canonical book; **B** = primary vendor, government, or engineering-organisation documentation; **C** = industry research report (methodology published, not peer-reviewed); **D** = practitioner commentary. Verification caveats at the end of the section. *(Legend retired for future notes by [ADR 0040](../../docs/adr/0040-adopt-source-authority-classes-and-evidence-weighted-citations.md) — new ledgers grade with [source-authority-and-evidence-grading.md](../patterns/source-authority-and-evidence-grading.md) classes; this legend stands as frozen history. This note's web citations carry no archive legs — registered as [EVIDENCE-EXCEPTIONS.md](../EVIDENCE-EXCEPTIONS.md) EX-0001.)*
 
 ### T — Target-state definition and early engagement
 

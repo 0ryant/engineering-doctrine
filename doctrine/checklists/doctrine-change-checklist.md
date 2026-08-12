@@ -7,6 +7,10 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] ADR: new docs/adr/NNNN-*.md + docs/adr/README.md index row, or explicit reference to existing ADR; skip only for pure editorial (note in PR)
 [ ] Research: external citations and/or doctrine/evolution/ note linked from the change or ADR when non-trivial
 [ ] Research distinguishes binding external requirements, official guidance, observations, and repository synthesis; source revisions and limits are recorded where material
+[ ] New citations supporting typed claims record source class, pin-or-rolling choice, and accessed date; archived copy captured where tooling permits (patterns/source-authority-and-evidence-grading.md §6)
+[ ] Typed claims meet their admission floor — MUST at C1, or C2 with recorded risk asymmetry, or a registered exception in doctrine/EVIDENCE-EXCEPTIONS.md; conformance claims satisfied by their pinned norm (patterns/source-authority-and-evidence-grading.md §4–§5)
+[ ] Promotion to typed standing re-admits evidence at the higher floor: re-fetch, re-grade, rolling converted to pinned, publisher status checked (patterns/doctrine-content-lifecycle.md §2)
+[ ] Sweep-facing changes: reference-status leg run for the cohort (publisher status, link health, diagonal-collapse audit) and EVIDENCE-EXCEPTIONS entries re-examined (patterns/doctrine-content-lifecycle.md §8)
 [ ] Change belongs in principles (durable topic authority) vs patterns (conditional operating model) vs checklists (derived review) vs tooling (illustrative) vs estates (optional supplement) — see principles/timeless-principles-and-tooling.md
 [ ] Portability: no organisation-private products, portfolio tools, internal repositories, local paths, or programme artefacts appear in publishable files
 [ ] If principle changed: rationale and references updated; not just opinion

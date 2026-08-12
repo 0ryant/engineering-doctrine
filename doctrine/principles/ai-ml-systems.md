@@ -165,7 +165,7 @@ Capability tiers say what a system **can do**; **materiality** says what its fai
 - OWASP **Top 10 for Agentic Applications 2026** (Agentic Security Initiative): https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/  
 - Federal Reserve **SR 11-7** — Model Risk Management (effective challenge): https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm  
 - PRA **SS1/23** — Model risk management principles for banks: https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss  
-- **EU AI Act** — Art 4 literacy / Art 14 human oversight / Art 15 lifecycle accuracy: https://artificialintelligenceact.eu/  
+- **EU AI Act** (Regulation (EU) 2024/1689, canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — Art 4 literacy / Art 14 human oversight / Art 15 lifecycle accuracy · article mirror: https://artificialintelligenceact.eu/  
 - **Model Context Protocol** — documentation hub: https://modelcontextprotocol.io  
 - **MCP specification changelog** — 2025-06-18 revision (OAuth 2.1 resource-server model, RFC 8707 resource indicators): https://modelcontextprotocol.io/specification/2025-06-18/changelog  
 - **MCP specification changelog** — 2026-07-28 revision (stateless core, extensions framework, twelve-month deprecation policy): https://modelcontextprotocol.io/specification/2026-07-28/changelog  

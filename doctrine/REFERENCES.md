@@ -2,6 +2,26 @@
 
 This index lists **authoritative external sources** used across the doctrine. Each principle and tooling file also contains **context-specific references** and **rationale tables**. Use this page for **navigation and audits**; use per-doc sections for **why** a decision applies to that topic.
 
+## Reference Classes And New-Entry Metadata
+
+New entries here and in per-doc reference sections are graded per [patterns/source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md): **source class** (S1–S7+X) with scope and role, a **durable identifier** as the canonical leg where one exists (CELEX/ELI, RFC number, DOI, dated TR URI — mirrors are convenience legs), a **pin-or-rolling** choice with its reciprocal duty, an **accessed date**, and an **archived copy** where tooling permits ([ADR 0040](../docs/adr/0040-adopt-source-authority-classes-and-evidence-weighted-citations.md)). Existing rows are re-bucketed cohort-by-cohort by the lifecycle sweeps (forward-only adoption); their missing metadata is recorded debt, not compliance. Evidence-floor exceptions: [EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md).
+
+The practice's grounding sources (all rows: accessed 2026-08-12; pinned via the stated identifier where immutable — RFC number, edition, DOI/citation, dated PDF — otherwise rolling with the §6 monitoring duty; full metadata per the research note's §8 ledger). Tooling note: EUR-Lex rejects scripted fetches (verified 2026-08-12), which is why article mirrors persist as convenience legs beside canonical ELI/CELEX identifiers.
+
+| Topic | Reference |
+| --- | --- |
+| IETF — downward references with registered exceptions (BCP 97) (S1, pinned) | https://www.rfc-editor.org/rfc/rfc3967.html · https://www.rfc-editor.org/rfc/rfc8067.txt |
+| IETF — RFC Style Guide §4.8.6 (URI stability; dated URIs required where available) (S1, pinned) | https://www.rfc-editor.org/rfc/rfc7322.html |
+| ISO/IEC Directives Part 2 — normative references, dated vs undated (clause 10) (S1, pinned ed. 9.0) | https://www.iso.org/sites/directives/current/part2/index.xhtml |
+| W3C — Normative References guidebook; URI Persistence Policy (S2, rolling) | https://www.w3.org/2013/09/normative-references · https://www.w3.org/Consortium/Persistence.html |
+| NIST — withdrawal practice (structured tombstones, superseding identifiers) (S2, pinned example) | https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final |
+| GRADE — per-claim evidence certainty, recommendation decoupling (BMJ 2008) (S3, pinned) | https://pmc.ncbi.nlm.nih.gov/articles/PMC2335261/ |
+| OCEBM Levels of Evidence 2011 — question-type-relative hierarchy (S1 — the instrument from its owner, pinned) | https://www.cebm.net/wp-content/uploads/2014/06/CEBM-Levels-of-Evidence-2.1.pdf |
+| Garousi, Felderer & Mäntylä — multivocal literature review guidelines (grey-literature grading) (S3 preprint, pinned) | https://arxiv.org/pdf/1707.02553 |
+| Kamei et al. — grey literature in SE, dead-URL finding (S3 preprint, pinned) | https://arxiv.org/abs/2104.13435 |
+| Zittrain, Albert & Lessig — *Perma*, link/reference rot in legal citations (S3, pinned) | https://harvardlawreview.org/forum/vol-127/perma-scoping-and-addressing-the-problem-of-link-and-reference-rot-in-legal-citations/ |
+| Klein et al. — *Scholarly Context Not Found* (link rot vs content drift) (S3, pinned DOI) | https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0115253 |
+
 ---
 
 ## Standards And Specifications
@@ -333,11 +353,11 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
 | Federal Reserve SR 11-7 — model risk management, effective challenge | https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm |
 | PRA SS1/23 — model risk management principles (inventory + tiering, independent validation) | https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss |
-| EU AI Act — Art 4 literacy, Art 12 logging, Art 14 human oversight, Art 15 lifecycle accuracy, Art 26 deployers, Art 50 transparency | https://artificialintelligenceact.eu/ |
-| EU AI Act Art 50 — transparency obligations (interaction disclosure, machine-readable marking, deepfake labelling; applies 2026-08-02) | https://artificialintelligenceact.eu/article/50/ |
+| EU AI Act — Regulation (EU) 2024/1689 — Art 4 literacy, Art 12 logging, Art 14 human oversight, Art 15 lifecycle accuracy, Art 26 deployers, Art 50 transparency | Canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/ |
+| EU AI Act Art 50 — transparency obligations (interaction disclosure, machine-readable marking, deepfake labelling; applies 2026-08-02) | Canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/article/50/ |
 | European Commission — guidelines on Art 50 transparency obligations (2026-07-20) | https://digital-strategy.ec.europa.eu/en/news/commission-publishes-guidelines-transparency-obligations-providers-and-deployers-certain-ai-systems |
 | European Commission — Code of Practice on Transparency of AI-generated Content (final 2026-06-10; adequacy opinion 2026-07-08) | https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content |
-| EU DORA — Art 28 register + exit strategies, Art 29 concentration risk | https://www.digital-operational-resilience-act.com/Article_28.html |
+| EU DORA — Regulation (EU) 2022/2554 — Art 28 register + exit strategies, Art 29 concentration risk | Canonical: https://eur-lex.europa.eu/eli/reg/2022/2554/oj · article mirror: https://www.digital-operational-resilience-act.com/Article_28.html |
 | EBA outsourcing guidelines (EBA/GL/2019/02) | https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-outsourcing-arrangements |
 | FCA PS21/3 — operational resilience (important business services, impact tolerances) | https://www.fca.org.uk/publications/policy-statements/ps21-3-building-operational-resilience |
 | BoE/FCA — AI in UK financial services 2024 (adoption survey) | https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024 |
@@ -411,6 +431,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |
 | [evolution/research-agent-loop-graph-cross-check-2026-08.md](evolution/research-agent-loop-graph-cross-check-2026-08.md) | Agent/loop/graph coverage cross-check against a practitioner foil: agents and loops covered (often stricter), graph design method and DAG primitive the confirmed gaps; divergence record + six-row action list |
 | [evolution/research-target-state-and-irreversible-decisions-2026-08.md](evolution/research-target-state-and-irreversible-decisions-2026-08.md) | Target-state and irreversible-decisions coverage check: no target operating envelope and no design-time one-way-door inventory — existing irreversibility doctrine is enactment- or asset-scoped; gap register, system-own end-of-life (DORA Art 28(8) the sectoral anchor), and design-time legal triggers (GDPR Art 25, CRA Art 13(2)) the further confirmed gaps; cost-of-change multiplier disqualified as basis; seven-row action list; diligence pass (six primaries read in full) + three-critic council ratification |
+| [patterns/source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) | Canonical owner of the source-class ladder (S1–S7+X with scope/role and the transcription rule), claim-support grades (C1–C4 with the independence test), the conformance/empirical split, BCP-14 admission floors with the registered-exception path, citation metadata and pin/rolling duties, and the diagonal-collapse audit; activation-gated to citation-bearing doctrine estates; ADR 0040 |
+| [EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md) | Evidence-floor exception register: downref-economics entries (adjudicated once, reusable while in force, expiring), re-examined by every lifecycle sweep; doubles as the evidence-upgrade worklist; two inaugural entries (August notes' archive deviation; context-engineering tweet) |
 | [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md) | Source authority and evidence weighting: 771-reference census, council-reproduced exactly (NIST the biggest dependency at 93; EU law cited 13:2 via unofficial mirrors; academic tier ~85% preprint; one tweet in a pattern file); two-axis grading core from the two disciplines that grade at scale (Admiralty × GRADE) with scope/role/appraisal fields from law, SE, and historiography; standards-body lifecycle mechanics (IETF downref registry, ISO dated-vs-undated review duty, W3C change-control grading, NIST tombstones × DoD pin divergence, link-rot data); proposed S1–S7+X × C1–C4 scheme with the conformance/empirical split, BCP-14 admission floors, citation metadata, sweep-anchored source-event reviews, and forward-only adoption; seven-row action list, ADR-bound; three-critic council ratification |
 | [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md) | `v0.3.0` release decisions, task ownership, dependencies, acceptance criteria, and verification gates |
 | [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | Accepted model-routing policy v1 contract: provider-neutral structural tiers, evidence-bound escalation and refusal, review requirements, and cost ceilings |

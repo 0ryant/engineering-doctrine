@@ -74,11 +74,17 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Chunking** — Splitting documents into **retrieval-sized** segments (often hundreds of tokens) with metadata (source, heading, tenant); quality dominates RAG outcomes. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §2, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
 
+**Claim-support grade (C1–C4)** — Per-claim grade of how strongly a citation set supports a material doctrine claim — corroborated / probable / plausible / contested — computed with a written independence test and recorded modifiers: a property of the evidence body, not of any single source, and coupled to claim strength by admission floors. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §3, §5.
+
 **CloudEvents** — Vendor-neutral **envelope** for events (`id`, `source`, `type`, `time`, …) and the portable default for new event-shaped boundaries when no governing protocol, platform, external contract, legacy boundary, or material constraint requires a documented equivalent. The **payload** still needs its own schema. See [event-contracts.md](principles/event-contracts.md), [tooling/cloudevents.md](tooling/cloudevents.md).
 
 **Closure mode (AI-native delivery)** — Evidence-supported end state selected for a change: technical closure, operational closure, or—where the strategic overlay applies—outcome review. Deployment alone proves only enactment. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §13.
 
 **CODEOWNERS** — Git host file mapping **paths** to **required reviewers** (teams or individuals). See [collaboration.md](principles/collaboration.md), [naming-and-repo-layout.md](principles/naming-and-repo-layout.md).
+
+**Conformance claim** — A claim that cites a norm *as* the norm ("conform to RFC 9110"; "behaves as the vendor documents"): satisfied by the pinned norm itself — corroboration floors apply to empirical claims, not to the existence or content of a norm. In-scope product documentation is S1-equivalent for a product's own behaviour. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §4.
+
+**Content drift** — A cited URL stays alive while its content silently changes — the invisible companion of **link rot**, corrupting quote-based citation; detected by re-verification or content hashes at review time. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §6.
 
 **Contract** — Explicit, versioned **shape** and rules at a boundary (schema, OpenAPI, proto, migration contract). Violations are **build or runtime failures** per policy—not informal JSON. See [event-contracts.md](principles/event-contracts.md) and [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
@@ -113,6 +119,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Error budget** — Allowed **unreliability** derived from an SLO; spending it signals **slow down or invest** in reliability. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
 **Estate** — In this repo: a **specific** organisation, cloud, or region whose **named** product choices live under `tooling/estates/`—not global law. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
+
+**Evidence exception (downref)** — A registered, expiring admission of a claim below its evidence floor ([EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md)): adjudicated once, reusable while in force — the IETF downref-registry economics applied to citations; never permanent. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §5.
 
 **Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
 
@@ -170,6 +178,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Incident command / incident lifecycle** — Coordinated **response** to a production-impacting event: **incident commander**, **comms** cadence, **state doc** (single source of truth), **escalation**, **handoff**, **sustainable** on-call, **post-incident** **actions**; estates operating **agent responders** add a rostered agent role under a **named human owner** (never IC). See [incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md), [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
+**Independence test (citations)** — Corroboration counts only across **different organisations with different incentive structures**: two posts by one vendor are one source; a paper and its authors' blog are one source. What makes a C1 grade mean something. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §3.
+
 **IDOR** — *Insecure direct object reference*—often overlaps **BOLA**. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
 **Ingestion pipeline (RAG)** — Jobs that **extract**, **chunk**, **embed**, and **write** lexical/vector indexes—**separate** from online **query** path; needs **freshness** SLAs and **idempotent** rebuilds. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
@@ -191,6 +201,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **LLM** — *Large language model*: often backs **chat** or **agent** UIs; treat **output** and **retrieved context** as **untrusted** at system boundaries until validated. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) Related, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
 **Lexical search** — Keyword / **inverted-index** retrieval (e.g. **BM25**); complements **semantic** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
+
+**Link rot** — Cited URLs dying over time (half to two-thirds of aged web citations in the studied literatures); countered by durable identifiers and archived copies captured at admission — durability is created at citation time, never later. Companion failure: **content drift**. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §6.
 
 **Load-bearing judge** — An evaluator model whose verdicts **gate promotion, merges, or automation** (as opposed to advisory critique); the activation trigger for judge discipline — versioned config, chance-corrected agreement with an estate-set threshold, perturbation testing, escalation-gated automation. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §8.2.
 
@@ -335,6 +347,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **SLSA** — *Supply-chain levels for software artifacts*: framework for **build integrity** and **provenance**. See [build.md](principles/build.md) §14, [dependencies-supply-chain.md](principles/dependencies-supply-chain.md).
 
 **Software factory (agent-assisted)** — In this repo’s research usage: **scaled** automation of engineering work **with** agents while **git + CI + human merge** stay the **system of record**—not autonomous **direct** production mutation. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §8.
+
+**Source class (S1–S7+X)** — Per-citation grade of **what kind of source** is cited: the norm itself (S1), statutory-body guidance (S2), peer-reviewed research (S3, preprints flagged), edited/reviewed artifacts (S4), product-scoped primary documentation (S5 — mandatory in scope, persuasive outside), named-practitioner writing (S6), community/marketing (S7), and X = cannot judge (distinct from low; never normative support). Carries **scope** (what the source is authoritative for) and **role** (primary/secondary for this claim). See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §2.
 
 **SP 800-218A** — NIST **SSDF community profile** for **generative AI** and dual-use **foundation model development** (training/integration—not a full substitute for **runtime** ops guidance). See [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [privacy-and-data-governance.md](principles/privacy-and-data-governance.md) §5.3.
 

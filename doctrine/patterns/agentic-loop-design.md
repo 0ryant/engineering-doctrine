@@ -423,7 +423,7 @@ This crosswalk is **navigational vocabulary**: it maps each ASI identifier to th
 - **NIST AI 100-2e2025** — Adversarial ML taxonomy (adaptive-attack evaluation requirement): https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf
 - **Anthropic — Building Effective Agents** (Dec 2024): https://www.anthropic.com/engineering/building-effective-agents
 - **Anthropic — Multi-Agent Research System** (Jun 2025): https://www.anthropic.com/engineering/built-multi-agent-research-system
-- **Context Engineering** (Karpathy tweet, Jun 2025): https://x.com/karpathy/status/1937902205765607626
+- **Context Engineering** (Karpathy tweet, Jun 2025): https://x.com/karpathy/status/1937902205765607626 — S7 vocabulary provenance, registered evidence exception [EX-0002](../EVIDENCE-EXCEPTIONS.md)
 - **LangChain — Context Engineering** (Chase, Jun 2025): https://blog.langchain.com/the-rise-of-context-engineering/
 - **12 Factor Agents** (Horthy — "own your context window"): https://github.com/humanlayer/12-factor-agents
 - **LangGraph** (cyclic graphs for agentic loops): https://github.com/langchain-ai/langgraph

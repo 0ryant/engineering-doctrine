@@ -34,6 +34,7 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
 | **External grounding** | Point to standards, public frameworks, or widely cited practice in **REFERENCES**-style form (per-doc rationale tables, or [REFERENCES.md](../REFERENCES.md) if first-class). |
 | **In-repo research note** (when the change is non-trivial or benchmark-driven) | Add or update a **dated** or titled file under [evolution/](../evolution/) (e.g. `research-*-2026-04.md`, gap analysis) describing sources and conclusions; the ADR links to it. |
 | **Source authority and limits** | Distinguish binding external requirements, official guidance, observations, and this library's synthesis. Record the revision or retrieval date where drift matters, and say what a source does **not** establish. |
+| **Source class and citation metadata** | Grade cited sources per [source-authority-and-evidence-grading.md](source-authority-and-evidence-grading.md): new citations supporting typed claims carry class, pin-or-rolling choice, accessed date, and an archived copy per its §6 (the typed obligations live there, not here); typed claims meet its §5 admission floors or carry a registered exception ([../EVIDENCE-EXCEPTIONS.md](../EVIDENCE-EXCEPTIONS.md)). Research-note ledgers use the pattern's classes plus verification state; ad-hoc per-note legends are retired — prior notes' legends stand as frozen history, annotated with a pointer. |
 | **Honesty** | If evidence is thin, say so and scope the text as contextual guidance or an example, not industry law. Repository precedent can explain consistency; it cannot be the sole external grounding for a new portable control. |
 
 **Editorial** fixes (typos, links) may skip a new research file but should still use the checklist.
@@ -96,7 +97,7 @@ Run through this table before opening the PR.
 2. Re-read [doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) and check every box that applies.
 3. Sample at least three materially different consumers or change classes. Confirm that applicability composition activates the intended controls without making every profile universal.
 4. Search for duplicate normative owners and conflicting strength, scope, or exception wording. Treat contradictions as defects; do not resolve them by selecting the convenient copy.
-5. Confirm cited sources support the claims attributed to them, exceptions do not rewrite failed or inconclusive evidence, and new controls have an accountable review and retirement path.
+5. Confirm cited sources support the claims attributed to them, new citations carry their source-authority metadata ([source-authority-and-evidence-grading.md](source-authority-and-evidence-grading.md) §6), exceptions do not rewrite failed or inconclusive evidence, and new controls have an accountable review and retirement path.
 6. PR description: **change class**, **consumer impact**, **ADR link**, link to **research** note if any, and any residual verification limits.
 
 ---

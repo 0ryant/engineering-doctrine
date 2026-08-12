@@ -101,7 +101,7 @@ Keyed to the existing machinery: the change harness, [doctrine-content-lifecycle
 
 ## 7. Prioritised action list
 
-Ordered by severity, then ascending effort. Change class uses the canonical versioning vocabulary — proposed classes, final class set by the ADR; normative changes route via ADR.
+Ordered by severity, then ascending effort. Change class uses the canonical versioning vocabulary — proposed classes, final class set by the ADR; normative changes route via ADR. **Closure status:** all seven rows closed by [ADR 0040](../../docs/adr/0040-adopt-source-authority-classes-and-evidence-weighted-citations.md) (2026-08-12) — rows 1–3 as its decisions 1–3, row 6 as decision 4, rows 4–5 as decision 6, row 7 as decisions 6–7; the new pattern is [source-authority-and-evidence-grading.md](../patterns/source-authority-and-evidence-grading.md) and the register is [EVIDENCE-EXCEPTIONS.md](../EVIDENCE-EXCEPTIONS.md). Open: the watch paragraph only.
 
 | # | Action | Basis (§8) | Target file(s) | Class | ADR? |
 | --- | --- | --- | --- | --- | --- |

@@ -7,11 +7,12 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-08-12 14:49 UTC
+Generated: 2026-08-12 16:06 UTC
 
 ## All Markdown files
 
 - [DEPRECATED.md](DEPRECATED.md)
+- [EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md)
 - [README.md](README.md)
 - [REFERENCES.md](REFERENCES.md)
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
@@ -77,6 +78,7 @@ Generated: 2026-08-12 14:49 UTC
 - [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md)
 - [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md)
 - [patterns/run-contracts.md](patterns/run-contracts.md)
+- [patterns/source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
 - [patterns/verifier-packs.md](patterns/verifier-packs.md)
 - [patterns/webhook-ingress-security.md](patterns/webhook-ingress-security.md)
