@@ -1,2 +1,4 @@
 # Shell entrypoints must remain executable by POSIX Bash, including in Windows checkouts.
 *.sh text eol=lf
+hooks/**        text eol=lf
+tslop.toml      text eol=lf
