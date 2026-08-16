@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# Hook dispatcher — run every script in `hooks/<hook-name>.d/` in lexical order.
+#
+# Git supports exactly ONE core.hooksPath, so two tools that both want a
+# pre-commit hook cannot each claim it. This dispatcher is the composition
+# point: each tool drops a numbered script into `<hook>.d/` and they run in
+# order, cheapest gate first.
+#
+# Naming convention for `<hook>.d/` entries:
+#   10-*  fast, local, no network      (e.g. dependency-name gate)
+#   20-*  text and content gates       (e.g. slop gate)
+#   50-*  slower project-specific gates
+#
+# Contract for a `<hook>.d/` script:
+#   - receives the hook's own arguments, verbatim, and stdin where git provides it
+#   - exit 0 to pass; any non-zero blocks
+#   - the FIRST non-zero exit wins and stops the run, so a blocked commit
+#     reports one actionable reason rather than a wall of them
+#
+# TSLOP_SKIP=1 (or HOOKS_SKIP=1) bypasses everything, and says so on stderr:
+# a silent bypass is how a gate rots without anyone noticing.
+set -euo pipefail
+
+HOOK="${1:?_dispatch requires a hook name}"
+shift
+
+HOOK_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PART_DIR="$HOOK_DIR/$HOOK.d"
+
+if [ "${HOOKS_SKIP:-${TSLOP_SKIP:-0}}" = "1" ]; then
+  echo "hooks: $HOOK SKIPPED via HOOKS_SKIP/TSLOP_SKIP=1 (operator override)" >&2
+  exit 0
+fi
+
+[ -d "$PART_DIR" ] || exit 0
+
+# stdin is single-consumption, and pre-push delivers its ref list there. Buffer
+# it once so every part can read the same content.
+STDIN_BUF=""
+if [ ! -t 0 ] && [ "$HOOK" = "pre-push" ]; then
+  STDIN_BUF="$(cat)"
+fi
+
+status=0
+for part in "$PART_DIR"/*; do
+  [ -e "$part" ] || continue          # empty .d/ directory
+  [ -x "$part" ] || [ -f "$part" ] || continue
+  case "$part" in
+    *.disabled|*~|*.sample) continue ;;
+  esac
+
+  set +e
+  if [ -n "$STDIN_BUF" ]; then
+    printf '%s\n' "$STDIN_BUF" | bash "$part" "$@"
+  else
+    bash "$part" "$@" </dev/null
+  fi
+  rc=$?
+  set -e
+
+  if [ "$rc" -ne 0 ]; then
+    echo "hooks: $HOOK blocked by $(basename "$part") (exit $rc)" >&2
+    status=$rc
+    break
+  fi
+done
+
+exit "$status"

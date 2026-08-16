@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# tslop — last gate before anything leaves the machine.
+#
+# pre-commit and commit-msg are per-commit at CREATION time. A history can reach
+# push without ever passing them: amended or reworded commits, an interactive
+# rebase, cherry-picks and merges from elsewhere, a clone where core.hooksPath
+# was never set, or plain `--no-verify`. This re-checks the outgoing range so
+# the weakest path into the history is still covered.
+#
+# Git delivers <local-ref> <local-sha> <remote-ref> <remote-sha> on stdin.
+#
+#   TSLOP_PUSH_FAIL_ON   suspect | slop | never  (default: slop)
+#   TSLOP_PUSH_FORENSIC  0 to stop gating on forensic findings (default: 1)
+#   TSLOP_PUSH_MAX       commits to check for a new branch (default: 200)
+set -euo pipefail
+
+TSLOP_BIN="${TSLOP_BIN:-tslop}"
+ZERO="0000000000000000000000000000000000000000"
+
+if ! command -v "$TSLOP_BIN" >/dev/null 2>&1 && [ ! -x "$TSLOP_BIN" ]; then
+  echo "tslop: '$TSLOP_BIN' not found on PATH; skipping." >&2
+  exit 0
+fi
+
+worst=0
+while read -r _local_ref local_sha _remote_ref remote_sha; do
+  [ -z "${local_sha:-}" ] && continue
+  [ "$local_sha" = "$ZERO" ] && continue   # branch deletion adds nothing
+
+  bound=()
+  if [ "$remote_sha" = "$ZERO" ]; then
+    # New branch: bound it, or pushing a long-lived branch re-audits all history.
+    range="$local_sha"
+    bound=(--max-commits "${TSLOP_PUSH_MAX:-200}")
+  else
+    range="$remote_sha..$local_sha"
+  fi
+
+  args=(check --commits "$range" "${bound[@]}" --fail-on "${TSLOP_PUSH_FAIL_ON:-slop}")
+  [ "${TSLOP_PUSH_FORENSIC:-1}" = "1" ] && args+=(--fail-on-forensic)
+
+  set +e
+  "$TSLOP_BIN" "${args[@]}"
+  rc=$?
+  set -e
+
+  [ "$rc" = "4" ] && rc=0               # degraded coverage is advisory
+  [ "$rc" -gt "$worst" ] && worst=$rc
+done
+
+if [ "$worst" = "1" ]; then
+  echo "tslop: BLOCKED — an outgoing commit message carries assistant context or filler." >&2
+  echo "  reword with 'git rebase -i'; bypass with TSLOP_SKIP=1" >&2
+fi
+exit "$worst"

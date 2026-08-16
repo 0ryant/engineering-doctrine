@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# tslop — score STAGED FILE BLOBS before the commit is created.
+#
+# Tuning comes from the repo's committed tslop.toml (discovered upward), not
+# from flags here, so the verdict is reproducible from a clone.
+#
+# The forensic channel is ADVISORY at pre-commit: those rules are
+# authorship-correlated and gating a file commit on them turns a register gate
+# into an authorship gate. The two message hooks gate on it; this one does not.
+#
+#   TSLOP_BIN      path to the binary        (default: tslop on PATH)
+#   TSLOP_FAIL_ON  suspect | slop | never    (default: slop)
+#   TSLOP_SKIP=1   bypass (printed)
+set -euo pipefail
+
+TSLOP_BIN="${TSLOP_BIN:-tslop}"
+
+if ! command -v "$TSLOP_BIN" >/dev/null 2>&1 && [ ! -x "$TSLOP_BIN" ]; then
+  echo "tslop: '$TSLOP_BIN' not found on PATH; skipping (set TSLOP_BIN to enforce)." >&2
+  exit 0
+fi
+
+# Nothing analysable staged? Do not pay for a process.
+if ! git diff --cached --name-only --diff-filter=ACM |
+     grep -qiE '\.(md|markdown|txt|rst|adoc|rs|go|c|h|cc|cpp|hpp|java|kt|swift|js|jsx|ts|tsx|cs|scala|php|py|rb|sh|bash|zsh|toml|yaml|yml|pl|r|png|jpg|jpeg|webp|gif|tif|tiff)$'; then
+  exit 0
+fi
+
+set +e
+"$TSLOP_BIN" check --staged --fail-on "${TSLOP_FAIL_ON:-slop}"
+rc=$?
+set -e
+
+case "$rc" in
+  0) ;;
+  1) echo "tslop: BLOCKED — staged content crossed the threshold. Rewrite the flagged spans." >&2
+     echo "  waive one line with 'tslop:allow'; bypass entirely with TSLOP_SKIP=1" >&2 ;;
+  4) echo "tslop: DEGRADED — some staged content was not analysable; allowing." >&2
+     rc=0 ;;
+esac
+exit "$rc"

@@ -1,0 +1,26 @@
+# tslop estate configuration — house style.
+#
+# Canonical copy lives in the `house-style` repo. Adopting repos COPY this file
+# to their root rather than referencing it: a gate whose configuration lives
+# outside the repo produces verdicts that cannot be reproduced from a clone.
+#
+# Rationale for every line below is in STYLE.md §1. Do not add a disable here
+# without a corresponding entry there.
+
+# Both of these fire on deliberate house documentation formatting, measured
+# against the existing corpus rather than assumed:
+#
+#   uniform-bullet-lead — the `**Term** — gloss` bullet form, which is what makes
+#                         a table of duties scannable in reference docs.
+#   em-dash-density     — the glossary's `**Term** — definition` form; the
+#                         engineering-doctrine glossary scored 224.0 on this rule
+#                         BEFORE any edit was made to it, across ~160 entries.
+#
+# Disabling these two keeps the remaining twenty-two rules live. Raising
+# `slop_at` to accommodate them instead would blind all of them at once.
+disable = "em-dash-density, uniform-bullet-lead"
+
+# Defaults, stated explicitly so a drift in tslop's own defaults is visible here
+# rather than silently changing every estate verdict.
+suspect_at = 12.0
+slop_at    = 25.0

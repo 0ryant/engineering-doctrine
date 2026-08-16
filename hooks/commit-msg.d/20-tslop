@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# tslop — score the COMMIT MESSAGE.
+#
+# pre-commit sees staged FILES. A commit message is not a file in the diff and
+# has no extension to classify by, so --staged never sees it. That gap is why
+# this hook exists as well as pre-commit, not instead of it.
+#
+# Forensic rules GATE here by default: assistant chat register and agent
+# attribution trailers in a message are exactly what this is for.
+#
+#   TSLOP_MSG_FAIL_ON   suspect | slop | never  (default: slop)
+#   TSLOP_MSG_FORENSIC  0 to stop gating on forensic findings (default: 1)
+set -euo pipefail
+
+MSG_FILE="${1:?commit-msg hook requires the message file path}"
+TSLOP_BIN="${TSLOP_BIN:-tslop}"
+
+if ! command -v "$TSLOP_BIN" >/dev/null 2>&1 && [ ! -x "$TSLOP_BIN" ]; then
+  echo "tslop: '$TSLOP_BIN' not found on PATH; skipping." >&2
+  exit 0
+fi
+
+args=(check --message "$MSG_FILE" --fail-on "${TSLOP_MSG_FAIL_ON:-slop}")
+[ "${TSLOP_MSG_FORENSIC:-1}" = "1" ] && args+=(--fail-on-forensic)
+
+set +e
+"$TSLOP_BIN" "${args[@]}"
+rc=$?
+set -e
+
+case "$rc" in
+  0) ;;
+  1) echo "tslop: BLOCKED — the commit message carries assistant context or filler." >&2
+     echo "  rewrite it; bypass with TSLOP_SKIP=1" >&2 ;;
+  4) rc=0 ;;
+esac
+exit "$rc"
