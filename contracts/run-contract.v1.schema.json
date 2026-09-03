@@ -273,7 +273,7 @@
             "ceiling": {
               "type": "string",
               "enum": ["LocalUnsigned", "SelfSigned", "RemoteSigned"],
-              "description": "Truth-ceiling level for retrieved memory. RemoteSigned is the strongest."
+              "description": "Truth-ceiling level for retrieved memory, i.e. the strongest provenance a retrieved item may claim. LocalUnsigned = written by this workstation with no signature; SelfSigned = signed by the emitting cell with its own key; RemoteSigned = signed by a key the estate trusts and verifies out of band. RemoteSigned is the strongest. Names are levels, not products."
             }
           }
         }

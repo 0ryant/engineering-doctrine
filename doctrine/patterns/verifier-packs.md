@@ -56,7 +56,7 @@ Each kind is a *family* of binary-observable assertions, not a single command. P
 | `output_cap_enforced` | Oversize outputs are rejected, not silently truncated. |
 | `jsonl_audit_event_emitted` | Exactly one well-formed JSONL audit event lands per CLI invocation. |
 | `lockfile_generated` | Regenerating the wrapper produces a lockfile that matches the running tool fingerprint. |
-| `host_registrations_generated` | Host registration files (claude/cursor/codex) exist and validate. |
+| `host_registrations_generated` | A registration file exists and validates for each agent host the estate has configured. |
 | `priming_active` | The rendered system prompt contains the estate-approved priming block, content-matched to the digest declared by the run contract; this proves configuration presence, not outcome correctness (see [anti-confabulation-priming.md](anti-confabulation-priming.md)). |
 | `custom` | Escape hatch — should be rare; high-friction by design. |
 
@@ -75,7 +75,7 @@ Four verdicts per assertion; verdicts compose to a pack-level verdict.
 | `mark_untrusted` | Failed in a way that downgrades trust without rejecting (e.g. size cap exceeded, lockfile drift). | Outputs marked **provisional**; audit log records the downgrade. |
 | `inconclusive` | Verifier itself errored — pack-execution crash, `timeout_seconds`, or chained precondition failure. | **Loudest possible signal** — worse than `fail_loud` because the system could not determine truth. |
 
-There is no `skip`. A precondition-failed verifier produces an *audited* skip in the JSONL log; the audit record is the loud-not-silent signal. Authors MUST NOT use preconditions to silence assertions they don't want to write.
+There is no `skip`. A precondition-failed verifier produces an *audited* skip in the JSONL log; the audit record is what makes the skip visible rather than silent. Authors MUST NOT use preconditions to silence assertions they don't want to write.
 
 A stub MUST NOT pass. A verifier that always returns 0 is a defect, caught at PR review the same way silent stubs in production code are caught.
 
@@ -125,7 +125,7 @@ The complete illustrative list, each with a `kind` from the canonical set:
 | 7 | `output_cap_enforced` | `output_cap_enforced` | `mark_untrusted` | error |
 | 8 | `jsonl_audit_event_emitted` | `jsonl_audit_event_emitted` | `fail_loud` | fatal |
 | 9 | `lockfile_generated` (tool-contract.lock) | `lockfile_generated` | `mark_untrusted` | error |
-| 10 | `host_registrations_generated` (claude/cursor/codex) | `host_registrations_generated` | `mark_untrusted` | error |
+| 10 | `host_registrations_generated` (one file per configured host) | `host_registrations_generated` | `mark_untrusted` | error |
 
 **Seven `fail_loud` / `fatal`**, three `mark_untrusted` / `error`. A skill that cannot pass all seven fatal assertions has not earned the right to ship. The three error-level assertions downgrade trust without blocking the run — lockfile drift or missing host registration is observable in the audit log but does not reject otherwise-valid outputs.
 
@@ -219,7 +219,7 @@ These gaps define the boundary of v1.
 | --- | --- |
 | Every skill MUST have a pack | Unpaired skills net-harm weaker models; mandate is the structural close. |
 | A fixed canonical kind set + `custom` escape hatch | Small enumerated set is reviewable; `custom` is high-friction by design. |
-| `fail_loud` / `mark_untrusted` / `inconclusive` (no `pass-silent`) | Silent-stub was the largest failure class; verdicts ARE the loud-not-silent signal. |
+| `fail_loud` / `mark_untrusted` / `inconclusive` (no `pass-silent`) | Silent-stub was the largest failure class; a verdict is always emitted, so nothing can fail silently. |
 | Sibling-file discovery convention | Removing alternative paths removes places a pack can hide. |
 | Packs validate via JSON Schema, not Rust-only | OSS-public reference must be language-neutral. |
 | No `skip` verdict; audited skips only | Silencing an assertion requires explicit deletion in a reviewed PR. |
