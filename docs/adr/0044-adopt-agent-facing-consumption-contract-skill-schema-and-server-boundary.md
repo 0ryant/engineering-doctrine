@@ -4,7 +4,7 @@
 - **Decision date:** 2026-09-03
 - **Recorded date:** 2026-09-03
 - **Retrospective:** No
-- **Builds on:** [ADR 0027](0027-keep-public-doctrine-implementation-neutral.md) (implementation neutrality), [ADR 0038](0038-adopt-doctrine-content-lifecycle.md) (lifecycle), [ADR 0043](0043-replace-agent-coauthorship-disclosure-with-a-method-record.md) (method record)
+- **Builds on:** [ADR 0027](0027-keep-public-doctrine-implementation-neutral.md) (implementation neutrality), [ADR 0038](0038-adopt-a-doctrine-content-lifecycle.md) (lifecycle), [ADR 0043](0043-replace-agent-coauthorship-disclosure-with-a-method-record.md) (method record)
 
 ## Context
 
@@ -15,7 +15,7 @@ This library is increasingly consumed by agents rather than read by people, thro
 3. **The skill did not follow the sibling layout the library mandates.** [verifier-packs.md §6](../../doctrine/patterns/verifier-packs.md) fixes `<skill-root>/<skill>/SKILL.md` beside `<skill-root>/<skill>/verifier-pack.yml` and calls a skill that cannot point to its pack inadmissible. The file was a flat `.skill.md`.
 4. **The question "should the server move into this repo" had no principled answer.** The server is under a different licence from the library's Apache-2.0, depends on private crates, and carries a Rust toolchain plus fuzz, mutation, and vulnerability workflows. Nothing in the library said whether a consumer of that shape belongs inside it.
 
-Separately, the owner asked which skills an agent needs to get the most from the doctrine. Without a schema, a lifecycle, and a derivation rule, answering that produces sprawl: skills that restate doctrine in a second voice, drift from it, and accrete without review, which is the failure [ADR 0038](0038-adopt-doctrine-content-lifecycle.md) exists to prevent for every other file class.
+Separately, the owner asked which skills an agent needs to get the most from the doctrine. Without a schema, a lifecycle, and a derivation rule, answering that produces sprawl: skills that restate doctrine in a second voice, drift from it, and accrete without review, which is the failure [ADR 0038](0038-adopt-a-doctrine-content-lifecycle.md) exists to prevent for every other file class.
 
 ## Decision
 
