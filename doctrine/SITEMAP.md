@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-03 21:30 UTC
+Generated: 2026-09-03 22:19 UTC
 
 ## All Markdown files
 
@@ -50,6 +50,7 @@ Generated: 2026-09-03 21:30 UTC
 - [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md)
 - [evolution/research-target-state-and-irreversible-decisions-2026-08.md](evolution/research-target-state-and-irreversible-decisions-2026-08.md)
 - [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
+- [evolution/sweep-2026-09.md](evolution/sweep-2026-09.md)
 - [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md)
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
@@ -67,6 +68,7 @@ Generated: 2026-09-03 21:30 UTC
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md)
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md)
+- [patterns/feature-flag-governance.md](patterns/feature-flag-governance.md)
 - [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md)
 - [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md)

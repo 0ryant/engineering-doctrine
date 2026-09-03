@@ -1,9 +1,10 @@
 # 0021. Verification Discipline Applies To The Runner Itself
 
-Status: Proposed
-Decision date: 2026-05-20
+Status: Accepted
+Decision date: 2026-09-03 (proposed 2026-05-20; decided at the first lifecycle sweep, [ADR 0045](0045-execute-the-first-lifecycle-sweep.md))
 Recorded date: 2026-05-20
 Retrospective: No
+Landed in: [run-contracts.md §8](../../doctrine/patterns/run-contracts.md) (executor preflight clause)
 
 ## Context
 
@@ -16,7 +17,7 @@ repair that evidence break.
 This is a recursive control problem: a system that evaluates evidence-backed
 work must apply the same evidence discipline to its own preconditions.
 
-## Proposed Decision
+## Decision
 
 When a runner declares an expected execution substrate:
 

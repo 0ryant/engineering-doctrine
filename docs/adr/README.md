@@ -21,6 +21,10 @@ Beyond `Proposed`, `Accepted`, and `Rejected`, two exit statuses are defined:
 - **Superseded** — a later ADR replaced this decision. The superseded ADR's status line reads `Superseded by [ADR NNNN](path)` and the superseding ADR names what it supersedes; both directions are required. A decision disavowed without a successor is reversed the same way — the reversing ADR supersedes it and records the disavowal. Amendment-in-place remains correct for refinements that do not reverse a decision.
 - **Withdrawn** — a terminal, proposer-initiated exit for a Proposed ADR that will not proceed; distinct from Rejected (a considered refusal). A Proposed ADR older than 90 days receives a recorded accept/reject/withdraw decision at the next lifecycle sweep ([doctrine-content-lifecycle.md](../../doctrine/patterns/doctrine-content-lifecycle.md) §7).
 
+### Review provenance
+
+Several ADRs (0006, 0031–0040) cite "council" or "critic" review as acceptance evidence. Those reviews were performed by agent critics on agent drafts and are model self-review, not independent review. Each affected ADR now carries a **Review provenance** line saying so. As of 2026-09-03 no ADR in this index records an independent human or domain review; the first one to do so should say who reviewed it and what they found.
+
 Numbers 0013–0020 were never assigned in any reachable history; the gap is recorded here so it is not misread as deleted decisions.
 
 ## Index
@@ -39,7 +43,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0010](0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | Accepted | 2026-04-28 | Record Mythos-era / AI vulnerability storm research; **G1–G6 closed** in corpus (2026-04-28 synthesis) |
 | [0011](0011-add-semantic-index-for-agent-ingestion-and-topic-routing.md) | Accepted | 2026-05-09 | Add semantic index for agent ingestion and topic routing |
 | [0012](0012-model-routing-policy.md) | Accepted | 2026-05-20 | Portable model-routing contract: evidence-bound tiers, escalation, refusal, review, and cost ceilings |
-| [0021](0021-audit-as-discipline-applies-to-runner-itself.md) | Proposed | 2026-05-20 | Verification discipline applies recursively to measurement runners |
+| [0021](0021-audit-as-discipline-applies-to-runner-itself.md) | Accepted | 2026-05-20 | Verification discipline applies recursively to measurement runners |
 | [0022](0022-hash-function-convergence-blake3-ed25519-hmac.md) | Rejected | 2026-05-20 | Reject a fixed portable cryptographic algorithm menu; use maintained applicable profiles |
 | [0023](0023-add-ai-adoption-control-coverage-inventory-challenge-testing-continuity-literacy.md) | Accepted | 2026-07-16 | Add AI adoption-control coverage: inventory & materiality, independent challenge, harm-surface testing, provider continuity, literacy |
 | [0024](0024-adopt-a-doctrine-grounded-ai-native-software-development-lifecycle.md) | Accepted (amended by 0030) | 2026-07-17 | Adopt the evidence-and-authority kernel for an AI-native SDLC; operating model refined by ADR 0030 |
@@ -61,6 +65,9 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0040](0040-adopt-source-authority-classes-and-evidence-weighted-citations.md) | Accepted | 2026-08-12 | Adopt source-authority classes and evidence-weighted citations — S1–S7+X × C1–C4 two-axis scheme with the conformance/empirical split, BCP-14 admission floors, citation metadata with admission-time archiving, sweep-anchored source-event reviews, the EVIDENCE-EXCEPTIONS register, and forward-only adoption with a sweep-routed back-catalogue |
 | [0043](0043-replace-agent-coauthorship-disclosure-with-a-method-record.md) | Accepted | 2026-08-16 | Replace agent co-authorship disclosure with a method record — a tool MUST NOT be named in an authorship field; §6 row 1's duty is preserved and its instrument replaced by a class-graded (`generated`/`curated`/`authored`), revision-pinned record of how the candidate was produced. Numbers 0041–0042 are reserved for routed-but-unlanded work |
 | [0044](0044-adopt-agent-facing-consumption-contract-skill-schema-and-server-boundary.md) | Accepted | 2026-09-03 | Adopt an agent-facing consumption contract — library ships skills, the skill manifest schema and validator, the doctrine tool contract (evidence cards, trust labels, forbidden capabilities, proposal-only receipt), and a skills register; a retrieval server is a pinned consumer, not vendored; skills gain a hash-pinned priming block, enforced sibling packs, tiers, and lifecycle; five-skill initial cohort |
+| [0045](0045-execute-the-first-lifecycle-sweep.md) | Accepted | 2026-09-03 | Execute the first lifecycle sweep (standalone) — ADR 0021 accepted and landed as the executor preflight clause; feature-flag-lifecycle superseded by feature-flag-governance; AWS and GCP estate stubs deprecated; first dying-table and sweep-ledger rows; banners stamp at the next tag |
+| [0046](0046-retire-private-vocabulary-where-a-standard-term-exists.md) | Proposed | — | Retire private vocabulary where a standard term exists — four single-file coinages retired now (editorial); enactment / mandate class / closure mode proposed to ride with ADR 0047; estate, materiality, candidate, governed execution, run contract, verifier pack kept with stated rationale |
+| [0047](0047-separate-maintainer-doctrine-and-collapse-the-ai-native-sdlc.md) | Proposed | — | Separate maintainer doctrine (lifecycle, source grading, change harness, versioning, the two registers) into `doctrine/maintainers/` out of the consumer path; collapse the AI-native SDLC to its seven gates plus a crosswalk; publish the normative-vs-meta word ratio each sweep |
 
 ## Candidate Considered But Not Recorded
 

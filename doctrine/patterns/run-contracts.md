@@ -15,7 +15,7 @@ Without a binding envelope, agents inherit **ambient affordance**: whatever tool
 1. **Skill-amplified confabulation.** A skill paired with no falsification surface gives weaker models a confidence prime without an evidence discipline. The structural fix: bind the skill to a verifier pack via `context.skills` and `verifiers`.
 2. **Silent-stub success.** A CLI prints *"Evidence written to: …"* and exits `0` without writing the file; an agent reads stdout, accepts success, self-scores PASS. The structural fix: declare the artefact in `outputs.required` and let a verifier check existence.
 
-A run contract collapses both into one envelope. Trigger says **when**; model policy says **who**; context and capabilities say **with what**; authority says **inside what membrane**; hooks say **with what gates**; verifiers say **what gets proven after**; outputs say **what must exist**.
+A run contract collapses both into one envelope. Trigger says **when**; model policy says **who**; context and capabilities say **with what**; authority says **inside what boundary**; hooks say **with what gates**; verifiers say **what gets proven after**; outputs say **what must exist**.
 
 ### 1.1 When A Run Is Governed
 
@@ -43,7 +43,7 @@ Five phases. The body is **content-addressable**: a sha256 fingerprint anchors t
 | 1. Author | Operator (or higher-level compiler) writes a contract YAML/JSON. |
 | 2. Validate | Schema check; fingerprint computed; verifier-pack existence check. |
 | 3. Trigger | Trigger source fires; contract is instantiated; fingerprint flows forward. |
-| 4. Execute | Executor enforces capabilities + authority at the membrane; emits hook events. |
+| 4. Execute | Executor enforces capabilities + authority at the declared boundary; emits hook events. |
 | 5. Verify & emit | Packs run against `outputs.required`; verdict (pass / fail_loud / mark_untrusted / inconclusive) + audit log. |
 
 Trigger -> instantiate -> execute -> verify -> emit-artefacts is the only legal shape for governed execution. A governed agent running without a contract is a runtime error, not a missing-doc problem.
@@ -84,7 +84,7 @@ The v1 schema declares the top-level keys tabled below. All object levels set `a
 
 ### 3.2 Authority axes (4)
 
-Every axis defaults to typed denial:
+Every axis defaults to an explicit deny (a typed value, never an absent field):
 
 - **filesystem** — `root` is required; `writable` defaults to read-only.
 - **env** — `inherit: false` is the typed-denial default; `allow: [...]` is the explicit list.
@@ -304,6 +304,8 @@ A reference Python validator at [../../scripts/validate-contracts-v1.py](../../s
 An implementation may use any language or orchestration platform. Conforming implementations MUST reject unknown fields, validate against the published schema, compute a stable fingerprint over the canonical body, enforce the declared authority independently of the model, resolve verifier-pack identifiers, and emit a receipt bound to the contract fingerprint.
 
 Implementations that emit or consume run contracts SHOULD identify the schema version and link to this pattern. A library, generator, runtime, or review engine is a consumer of the contract; none is doctrine authority or the sole reference implementation.
+
+**Executor preflight** ([ADR 0021](../../docs/adr/0021-audit-as-discipline-applies-to-runner-itself.md)). Before material work begins, an executor MUST observe the substrate the contract declares (tools, policies, verifier packs, memory sources), compute the missing, unexpected, and unhealthy sets, and emit a preflight receipt bound to the run identity that records the declared set, the observed set, the verdict, and the policy version. A missing required dependency fails closed; a dependency may be treated as optional only if the contract declared it optional before the run. Scoring and review MUST reject outputs whose preflight receipt is missing, invalid, or bound to a different run. Applicability: every governed execution; failure prevented: a run that reports one condition while measuring another because a declared dependency silently failed to initialise. A preflight receipt proves presence, not behaviour; behavioural verification remains the verifier pack's job.
 
 ---
 

@@ -1,5 +1,7 @@
 # Feature Flag Lifecycle
 
+> **Scheduled for deprecation** ([ADR 0045](../../docs/adr/0045-execute-the-first-lifecycle-sweep.md), verdict recorded 2026-09-03): this file is superseded by [feature-flag-governance.md](feature-flag-governance.md), which carries the complete state machine and typed claims. The Deprecated banner takes effect at the next tagged release; earliest removal is the release after that. Cite the replacement. This file is frozen: its text and citations are not edited further (lifecycle §8).
+
 Durable rules for **creating, operating, and retiring feature flags** so progressive delivery is safe, observable, and free of technical debt.
 
 Feature flags (also called feature toggles) allow code changes to ship to production decoupled from their activation. This enables trunk-based development (see `doctrine/principles/collaboration.md`), safe rollouts, and controlled experiments — but only if flags are governed as first-class engineering artefacts, not throwaway conditionals.
@@ -45,7 +47,7 @@ create ──► active ──► stabilize ──► cleanup ──► removed
 
 - The single permitted reversal is **stabilize → active**: if a rollout must be reversed after promotion, the flag returns to `active` with a recorded reason for the reversal. Re-promotion restarts the stabilize clock.
 - A flag in **cleanup** must not have its targeting changed, except where an incident review directs it.
-- The two bullets above are an interim repair; the fuller revision of this file (typing, canonical home, de-vendoring, FSM rewrite) is tracked in plan lane **V45/D12** (feature-flag supersession ADR — [forward plan](../evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md)).
+- The two bullets above were an interim repair. The complete state machine is in [feature-flag-governance.md](feature-flag-governance.md), which supersedes this file.
 
 **Why:** Without a lifecycle state machine, "we'll clean it up later" never happens. The FSM creates explicit handoffs and sprint-sized cleanup tasks.
 

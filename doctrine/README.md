@@ -84,7 +84,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md) — **GitOps** (declarative desired state, **reconciliation**, **drift**, **secrets** boundaries); touches build, **SSOT**, **merge** path, collaboration
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
-- [patterns/feature-flag-lifecycle.md](patterns/feature-flag-lifecycle.md) — feature flag taxonomy, lifecycle FSM, progressive delivery, flag debt
+- [patterns/feature-flag-governance.md](patterns/feature-flag-governance.md) — **feature-flag governance**: flag taxonomy, lifetimes, the full lifecycle state machine with every legal and illegal transition, progressive delivery, cleanup; supersedes feature-flag-lifecycle.md (deprecating at the next tag, [ADR 0045](../docs/adr/0045-execute-the-first-lifecycle-sweep.md))
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — example order FSM + JetStream (fiction)
@@ -182,6 +182,7 @@ Use these records to understand source grounding, decisions, audits, and known g
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md) — NIST SP 800-171 revision migration and wider-doctrine applicability analysis
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md) — AI adoption-control gap audit and source ledger
 - [evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md](evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md) — August 2026 landscape sweep (governance + hyperscaler/vendor sources) and adversarially verified doctrine gap/staleness audit (G1–G13, S1–S5)
+- [evolution/sweep-2026-09.md](evolution/sweep-2026-09.md) — **first lifecycle sweep** (standalone, 2026-09-03): ADR 0021 decided, feature-flag supersession, estate-stub retirements, cohort link health
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md) — full-corpus council review at `v0.4.0`: health scorecard per area, 2 blockers + 20 majors adversarially confirmed (layer drift, two-generation normativity, navigation lag), v0.5.0 inputs mapped to plan lanes V40–V45
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) — MCP 2026-07-28 spec cross-check — §7 baseline verified against primary sources; deprecation clocks, MRTR/state-handle security, extensions gap map
 - [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) — Doctrine lifecycle audit — internal machinery audit + eight external standards-lifecycle models; evidence for ADR 0038

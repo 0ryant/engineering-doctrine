@@ -6,6 +6,18 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Added
+
+- **Agent-facing consumption contract** ([ADR 0044](docs/adr/0044-adopt-agent-facing-consumption-contract-skill-schema-and-server-boundary.md)): skill manifest schema and validator, doctrine tool contract, `doctrine/skills/<name>/` layout with enforced sibling verifier packs, five-skill initial cohort, `patterns/agent-doctrine-consumption.md`.
+- **Method record replaces agent co-authorship** ([ADR 0043](docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md)): a tool MUST NOT be named in an authorship field; `code-review-and-change-approval.md` §6.1 defines the `generated`/`curated`/`authored` record.
+- **First lifecycle sweep executed** ([ADR 0045](docs/adr/0045-execute-the-first-lifecycle-sweep.md)): ADR 0021 accepted and landed as the executor preflight clause in `run-contracts.md` §8; `feature-flag-lifecycle.md` superseded by `patterns/feature-flag-governance.md`; the AWS and GCP estate stubs scheduled for retirement; `DEPRECATED.md` carries its first dying-table rows and sweep-ledger entry.
+
+### Changed
+
+- **Editorial register pass**: bold markers stripped from the 22 principle and pattern files above 90 bold pairs per 1,000 words; no wording changed (verified by script).
+- **Review provenance labelled**: ADRs that cited agent council review now carry a line stating it was model self-review; `docs/adr/README.md` explains the convention.
+- Six private coinages retired from normative text (membrane, typed denial, loud-not-silent, house law) in favour of plain terms; vendor host names removed from verifier-kind descriptions; the memory truth-ceiling levels in the run-contract schema are now explained.
+
 ### Fixed
 
 - **v0.5.0 correction batch** ([ADR 0036](docs/adr/0036-land-v050-correction-batch-from-the-corpus-review.md), from the [full-corpus review](doctrine/evolution/research-full-corpus-council-review-2026-08.md)): **B2** — burn-rate YAML corrected (all four windows' recording rules authored; `sum by (job)` throughout) and relocated to [tooling/observability.md](doctrine/tooling/observability.md) with the principle's §6 gaining typed **SHOULD/MAY** applicability (M20/M21); **B1 interim** — [feature-flag-lifecycle.md](doctrine/patterns/feature-flag-lifecycle.md) FSM contradiction resolved (`stabilize → active` permitted with recorded reason; freeze narrowed to `cleanup`; full supersession stays with V45/D12); **M7–M9** — verifier-kind/key counts made count-free with the schema declared authoritative, and the priming example replaced with a schema-validating pack; **M15** — twelve rotted umbrella `ENGINEERING.md` references repointed and the compatibility note updated to v0.4.0; **M3/M4/M6** — AI inventory gains the **financial/transaction-authority** row, checklists gain default-deny, adaptive agent-hijack, synthetic-media, and **memory-lifecycle** items; README lists four previously omitted first-class files; SEMANTIC_INDEX gains the cost-governance route.

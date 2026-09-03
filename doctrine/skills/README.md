@@ -49,7 +49,7 @@ owning doctrine so the skill cannot drift from it.
 | 1 | agent-pr-review-readiness | procedure | [code-review-and-change-approval.md §6](../patterns/code-review-and-change-approval.md), [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) |
 | 1 | trunk-and-branch-hygiene | procedure | [trunk-workflow.md](../patterns/trunk-workflow.md), [collaboration.md](../principles/collaboration.md) |
 | 2 | build-readiness-assessment | assessment | [checklists/build-readiness.md](../checklists/build-readiness.md) via [build.md](../principles/build.md) |
-| 2 | release-readiness-assessment | assessment | [checklists/release-readiness.md](../checklists/release-readiness.md) via [semantic-versioning.md](../principles/semantic-versioning.md), [feature-flag-lifecycle.md](../patterns/feature-flag-lifecycle.md) |
+| 2 | release-readiness-assessment | assessment | [checklists/release-readiness.md](../checklists/release-readiness.md) via [semantic-versioning.md](../principles/semantic-versioning.md), [feature-flag-governance.md](../patterns/feature-flag-governance.md) |
 | 2 | platform-readiness-assessment | assessment | [checklists/platform-readiness.md](../checklists/platform-readiness.md) via [platform-engineering.md](../principles/platform-engineering.md) |
 | 2 | collaboration-readiness-assessment | assessment | [checklists/collaboration-readiness.md](../checklists/collaboration-readiness.md) via [collaboration.md](../principles/collaboration.md) |
 | 2 | ai-adoption-readiness-assessment | assessment | [checklists/ai-adoption-readiness.md](../checklists/ai-adoption-readiness.md) via [ai-adoption-controls.md](../patterns/ai-adoption-controls.md) |
@@ -60,7 +60,7 @@ owning doctrine so the skill cannot drift from it.
 | 3 | stride-lite-threat-model | design | [threat-modeling-stride-lite.md](../principles/threat-modeling-stride-lite.md) |
 | 3 | idempotency-boundary-review | design | [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md) |
 | 3 | event-contract-design | design | [event-contracts.md](../principles/event-contracts.md), [tooling/cloudevents.md](../tooling/cloudevents.md) |
-| 3 | feature-flag-lifecycle-review | design | [feature-flag-lifecycle.md](../patterns/feature-flag-lifecycle.md) |
+| 3 | feature-flag-governance-review | design | [feature-flag-governance.md](../patterns/feature-flag-governance.md) |
 | 3 | state-machine-and-workflow-review | design | [state-machines-and-workflows.md](../principles/state-machines-and-workflows.md) |
 | 3 | webhook-ingress-review | design | [webhook-ingress-security.md](../patterns/webhook-ingress-security.md) |
 
