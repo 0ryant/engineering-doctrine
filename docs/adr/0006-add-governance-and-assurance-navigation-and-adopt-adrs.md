@@ -39,3 +39,5 @@ Also adopt ADRs for decisions about this doctrine library itself. Historical ADR
 - Consider a small `doctrine/governance-and-assurance.md` landing page if the section grows.
 - Add review ownership / CODEOWNERS guidance for high-impact doctrine paths.
 - Add a lightweight threat model for the doctrine repo itself.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

@@ -36,3 +36,5 @@ Council provenance: 5-item draft council (prep + draft per item), two critics (f
 - All 42 council edits applied with per-edit anchor assertions; 6 insert-seam defects caught and repaired during application; both critics' 9 minors applied.
 - Contracts validation gate green post-application; the M9 example validates in situ against the pack schema.
 - Corpus-review tasks B1(interim)/B2/M3/M4/M6/M7/M8/M9/M15/M20/M21 tracked to completion in the session task register; remaining majors stay open under their routed lanes.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

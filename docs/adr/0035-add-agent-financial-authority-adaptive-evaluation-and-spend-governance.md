@@ -65,3 +65,5 @@ Rejected. Vendor limits are preferred primary but plan-dependent and provider-sc
 - Audit provenance: G11/S3/S4/S5 confirmed (S-items verified stale) in the August 2026 audit; closure recorded in its §7 action list (rows 10, 14, 15, 18) — completing the audit's original finding set.
 - Council provenance: 11-agent council; blocker and all majors resolved; one vendor citation removed on failed verification during landing.
 - Primary sources indexed: AP2 announcement, Stripe/Mastercard/Visa agent-payment releases, OWASP AI Agent Security Cheat Sheet; Nasr et al. adaptive-attacks study, US/UK AISI hijacking-evaluations protocol, NIST AI 100-2e2025; Azure agent-unit pricing, Foundry cost management, Bedrock inference profiles/quotas, OpenAI/Anthropic spend-limit docs; NIST SP 800-53 Release 5.2.0 change record.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

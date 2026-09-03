@@ -65,3 +65,5 @@ Rejected. Threshold values are estate- and task-dependent; doctrine mandates the
 - Audit provenance: G8/G9/G10 confirmed by adversarial verification; closure recorded in the audit note §7 (rows 11, 12, 13).
 - Council provenance: 11-agent council; all 4 majors and applied minors resolved in landed text; verified:false claims (ADR-context incidents: postmark-mcp malicious MCP server, ClawHub malicious-skill audit, NVIDIA NGC signing) recorded here rather than in doctrine body.
 - Primary sources indexed: Pillar Security Rules File Backdoor, AWS-2025-019, Aikido skill-file propagation, GitHub secure-use/CODEOWNERS precedent; MINJA and Web3 memory-injection studies, OWASP Agent Memory Guard, Mem0 deletion APIs; MT-Bench judge biases, kappa-deflation and agreement-protocol studies, coin-flip-judge and master-key papers, Trust-or-Escalate, Anthropic and OpenAI judge-config practice.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

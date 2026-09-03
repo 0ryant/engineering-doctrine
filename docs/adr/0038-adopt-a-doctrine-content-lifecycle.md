@@ -72,3 +72,5 @@ Rejected for now. Stamping every Active file adds noise without information; Act
 - Decisions 1–2 files landed; decision 3–6 edits applied with per-edit anchor verification; decision 8 companions applied; SITEMAP regenerated.
 - Contracts validation gate green on the landed tree.
 - Operator approval of the batch recorded 2026-08-06 before landing.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

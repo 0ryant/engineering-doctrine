@@ -44,3 +44,5 @@ Scope note: the gap-audit's §8 reference block deliberately keeps the RC blog U
 - C1–C6 edits applied with per-edit anchor verification; C7 companion edits applied; SITEMAP regenerated.
 - Contracts validation gate green after the C6 script edit.
 - Operator approval of the batch recorded 2026-08-06 before landing.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

@@ -65,3 +65,5 @@ Rejected. The mitigations already exist in doctrine controls; the crosswalk is n
 - Audit provenance: gaps G1/S2 and stale S1 confirmed by adversarial verification in the August 2026 gap audit; closure recorded in its §7 action list (rows 1, 4, 6).
 - Council provenance: 11-agent draft council; 1 blocker and 5 majors from the critique phase resolved in the landed text.
 - Primary sources indexed in REFERENCES.md: MCP 2025-06-18 and 2026-07-28 changelogs, MCP Registry posture, NSA AISC MCP CSI, OWASP secure-MCP guide and ASI Top 10, NIST CAISI/NCCoE, IETF identity-assertion draft, Entra Agent ID, A2A v1.0, AWS AgentCore Identity.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

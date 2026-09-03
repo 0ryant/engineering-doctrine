@@ -61,3 +61,5 @@ Rejected. The conventions are pre-stable and actively churning (v1.41 restructur
 - Audit provenance: G5/G6/G7 confirmed by adversarial verification; closure recorded in the audit note §7 (rows 5, 8, 9).
 - Council provenance: 11-agent council; the major (reversible-action list ownership/artifact) and all applied minors resolved in landed text; mis-attributed statistics kept out of doctrine body.
 - Primary sources indexed: NIST AI 100-2e2025, ASI Top 10, CSA MAESTRO + OWASP Multi-Agentic guide, Bishop Fox STRIDE analysis; Azure SRE Agent docs, PagerDuty/incident.io/Datadog responder observations, AKS loop write-up; OTel GenAI semantic-conventions repository.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

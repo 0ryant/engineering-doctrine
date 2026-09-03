@@ -69,3 +69,5 @@ Rejected. No published basis exists (searched directly); suggestion-level data c
 - Decisions 1–8 edits applied with per-edit anchor verification; decision 9 companions applied; SITEMAP regenerated.
 - Contracts validation gate green on the landed tree.
 - Operator approval of the batch recorded 2026-08-07 before landing.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

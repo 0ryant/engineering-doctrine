@@ -69,3 +69,5 @@ Rejected: the ADR 0032/V41 deferral history shows unowned retrofits compound and
 - Decisions 1–6 edits applied with per-edit anchor verification; decision 7 companions applied; preflight green; all relative links resolve.
 - The two inaugural register entries landed with the batch, cross-pointed from their subject surfaces.
 - Operator approval: the batch was built, councilled, and landed on the operator's recorded instruction ("build the batch, council and land it", 2026-08-12), with landing conditional on blocker/major resolution — satisfied above.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.

@@ -69,3 +69,5 @@ Rejected per decision 4: it lands hardest on the lightest contexts and contradic
 - Audit provenance: G2/G3/G4 confirmed by adversarial verification; closure recorded in the audit note §7 (rows 2, 3, 7) alongside new residual-tracking row 22.
 - Council provenance: 11-agent council; blocker and all majors resolved in landed text; the G3 citation discrepancy resolved by verifying arXiv 2605.17062 against the live record during landing.
 - Primary sources indexed in REFERENCES.md and per-file References: EUR-Lex/Art 50 + Commission guidelines and Code of Practice; Spracklen + Churilov package-hallucination studies with in-the-wild incident reporting; OMS spec + model-signing v1.0, Hugging Face pickle-scanning docs, PyTorch 2.6 weights_only default, CycloneDX ML-BOM, SPDX 3.0, SLSA v1.2 tracks, CISA/NSA/FBI AI Data Security CSI.
+
+**Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.
