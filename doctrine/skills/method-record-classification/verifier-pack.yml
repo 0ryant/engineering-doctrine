@@ -1,0 +1,83 @@
+verifier_pack:
+  name: method-record-classification-verifier-pack
+  skill: method-record-classification
+  version: 1.0.0
+  schema_version: 1.0.0
+  description: >-
+    Verify the authorship fields and method record on a change candidate.
+    Environment: DOCTRINE_ROOT, RENDERED_PROMPT, CANDIDATE (git checkout whose HEAD
+    is the candidate commit), HUMAN_AUTHOR_ALLOWLIST (file of permitted author
+    and co-author identities, one per line, matched as fixed substrings).
+    Resolution rules are executor-defined.
+
+  setup: []
+  teardown: []
+
+  verifiers:
+    - id: priming_active
+      kind: priming_active
+      description: The canonical priming block, hash-matched to the skill manifest, appears verbatim in the rendered prompt.
+      command: python ${DOCTRINE_ROOT}/scripts/validate-skills.py assert-primed --skill method-record-classification --prompt ${RENDERED_PROMPT}
+      expected_exit: 0
+      expected_stdout_contains: "priming_active: OK"
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 30
+
+    - id: authorship_fields_human_only
+      kind: custom
+      description: >-
+        Every Co-Authored-By and Signed-off-by trailer on the candidate commit matches
+        an entry in the human-identity allowlist. custom because it inspects commit
+        metadata against an estate binding. An empty allowlist fails closed.
+      command: >-
+        test -s ${HUMAN_AUTHOR_ALLOWLIST}
+        && ! git -C ${CANDIDATE} log -1 --format=%B | grep -iE '^(Co-Authored-By|Signed-off-by):' | grep -viFf ${HUMAN_AUTHOR_ALLOWLIST} | grep -q .
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 10
+
+    - id: commit_author_human
+      kind: custom
+      description: >-
+        The commit author identity itself matches the allowlist. custom because it
+        inspects commit metadata against an estate binding.
+      command: git -C ${CANDIDATE} log -1 --format='%an <%ae>' | grep -qiFf ${HUMAN_AUTHOR_ALLOWLIST}
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 10
+
+    - id: method_record_well_formed
+      kind: custom
+      description: >-
+        If a Produced-With trailer is present it carries a class from the vocabulary.
+        Passes vacuously when absent, because an authored change MAY omit the record;
+        estates that require the record in a path add a presence assertion in their
+        own pack. custom because it inspects commit metadata.
+      command: >-
+        ! git -C ${CANDIDATE} log -1 --format=%B | grep -q '^Produced-With:'
+        || git -C ${CANDIDATE} log -1 --format=%B | grep -qE '^Produced-With: .*\bclass=(generated|curated|authored)\b'
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 10
+
+    - id: curated_pins_both_revisions
+      kind: custom
+      description: >-
+        A curated record pins both harness and doctrine revisions with an @rev suffix.
+        custom because it inspects commit metadata.
+      command: >-
+        ! git -C ${CANDIDATE} log -1 --format=%B | grep -q 'class=curated'
+        || git -C ${CANDIDATE} log -1 --format=%B | grep -qE '^Produced-With: .*harness=[^;@ ]+@[^;@ ]+;.*doctrine=[^;@ ]+@[^;@ ]+;.*class=curated'
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 10

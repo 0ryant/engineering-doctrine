@@ -105,6 +105,7 @@ Use [TL;DR And Minimum Viable Doctrine](doctrine/tldr-principles-and-mvp.md), [a
 | Observability, reliability, incidents | [observability.md](doctrine/principles/observability.md), [reliability-slo-incidents.md](doctrine/principles/reliability-slo-incidents.md) |
 | Platforms, developer experience, measurement | [platform-engineering.md](doctrine/principles/platform-engineering.md), [developer-experience.md](doctrine/principles/developer-experience.md), [measurement-and-dora.md](doctrine/principles/measurement-and-dora.md) |
 | AI, RAG, agents, AI-native delivery | [ai-ml-systems.md](doctrine/principles/ai-ml-systems.md), [ai-native-software-development-lifecycle.md](doctrine/patterns/ai-native-software-development-lifecycle.md) |
+| Consuming this library from an agent or tool server | [agent-doctrine-consumption.md](doctrine/patterns/agent-doctrine-consumption.md), [skills/README.md](doctrine/skills/README.md) |
 | Full task routing and research evidence | [SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md), [REFERENCES.md](doctrine/REFERENCES.md) |
 
 ## Compatibility Note For `v0.4.0`

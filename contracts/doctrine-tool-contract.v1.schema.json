@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-doctrine/contracts/doctrine-tool-contract.v1.schema.json",
+  "title": "Doctrine tool contract (v1)",
+  "description": "Vendor-neutral contract for any tool server that exposes this library to agents (for example over the Model Context Protocol). A conforming server publishes a contract document of this shape from its health tool and implements the named tools with the request and response shapes in $defs. Three invariants are fixed by the contract and cannot be relaxed by a server: (1) every evidence card carries a trust label and a revision-pinned citation; (2) the only mutating tool writes a proposal to a review queue and nothing else; (3) no tool can apply, promote, delete, or otherwise mutate active doctrine. Bodies of principles, patterns, and ADRs are returned only as bounded excerpts; Git remains the source of truth and every index is a derivative surface. See doctrine/patterns/agent-doctrine-consumption.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "library", "tools", "forbidden_capabilities"],
+  "properties": {
+    "contract_version": { "type": "string", "const": "1.0.0" },
+    "library": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "source"],
+      "properties": {
+        "revision": { "type": "string", "minLength": 7, "description": "Commit id of the library the server is serving." },
+        "release": { "type": "string", "description": "Release tag when the revision is a tagged release, e.g. v0.5.0." },
+        "source": { "$ref": "#/$defs/trust_label" }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/tool_binding" },
+      "description": "Every conforming server implements doctrine_health, doctrine_search, doctrine_lookup, doctrine_skill_list, and doctrine_skill_get. propose_doctrine_change is optional; when present it is the only tool with side effects."
+    },
+    "forbidden_capabilities": {
+      "type": "array",
+      "const": ["mutate_active_doctrine", "promote_proposal", "delete_entry", "bypass_review_queue"],
+      "description": "Fixed list. A server MUST NOT register any tool that performs these, and its health tool MUST assert their absence."
+    }
+  },
+  "$defs": {
+    "tool_name": {
+      "type": "string",
+      "enum": ["doctrine_health", "doctrine_search", "doctrine_lookup", "doctrine_skill_list", "doctrine_skill_get", "propose_doctrine_change"]
+    },
+    "tool_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "mutating"],
+      "properties": {
+        "name": { "$ref": "#/$defs/tool_name" },
+        "mutating": { "type": "boolean", "description": "true only for propose_doctrine_change." },
+        "input": { "type": "string", "description": "JSON pointer to the request $def, e.g. #/$defs/search_request." },
+        "output": { "type": "string", "description": "JSON pointer to the response $def." }
+      }
+    },
+    "trust_label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "verified_at"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": ["live", "cached", "fallback"],
+          "description": "live = resolved from the pinned library at request time; cached = served from an index built from the pinned revision; fallback = served from content vendored into the server. A fallback card MUST NOT be presented as live evidence."
+        },
+        "verified_at": { "type": "string", "description": "RFC 3339 timestamp of the last successful verification against the pinned revision." },
+        "stale_after": { "type": "string", "description": "RFC 3339 timestamp after which the server marks the card stale." }
+      }
+    },
+    "entry_status": {
+      "type": "string",
+      "enum": ["active", "deprecated", "retired", "proposed"],
+      "description": "Lifecycle state per doctrine/patterns/doctrine-content-lifecycle.md; proposed applies only to review-queue entries."
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "revision", "content_sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^(doctrine/|docs/adr/|contracts/|ENGINEERING\\.md$)" },
+        "section": { "type": "string" },
+        "revision": { "type": "string", "minLength": 7 },
+        "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of the cited file at the revision, LF-normalised, so drift is detectable." }
+      }
+    },
+    "evidence_card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entry_id", "layer", "title", "status", "citation", "excerpt", "trust"],
+      "properties": {
+        "entry_id": { "type": "string", "minLength": 1 },
+        "layer": {
+          "type": "string",
+          "enum": ["umbrella", "principle", "pattern", "checklist", "tooling", "estate", "evolution", "adr", "contract", "skill"],
+          "description": "Which layer of doctrine/patterns/how-to-read-this-doctrine.md the entry belongs to. Agents take authority only from principle and pattern."
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/entry_status" },
+        "citation": { "$ref": "#/$defs/citation" },
+        "excerpt": { "type": "string", "maxLength": 4000, "description": "Bounded excerpt of the cited section. Never the whole body." },
+        "strength_keywords": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["MUST", "MUST NOT", "SHOULD", "SHOULD NOT", "MAY", "CONTEXT-DEPENDENT", "EXAMPLE"] },
+          "uniqueItems": true,
+          "description": "Capitalised keywords present in the excerpt, so a consumer can see strength without parsing."
+        },
+        "trust": { "$ref": "#/$defs/trust_label" }
+      }
+    },
+    "health_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status", "detail"],
+      "properties": {
+        "name": { "type": "string", "enum": ["contract", "source", "index", "forbidden_tools", "skills"] },
+        "status": { "type": "string", "enum": ["ok", "warn", "error"] },
+        "detail": { "type": "string" }
+      }
+    },
+    "health_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "checks", "forbidden_tools_absent", "contract"],
+      "properties": {
+        "status": { "type": "string", "enum": ["ok", "degraded", "error"] },
+        "checks": { "type": "array", "minItems": 4, "items": { "$ref": "#/$defs/health_check" } },
+        "forbidden_tools_absent": { "type": "boolean", "const": true },
+        "contract": { "$ref": "#" },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "search_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query"],
+      "properties": {
+        "query": { "type": "string", "minLength": 1, "maxLength": 1024 },
+        "limit": { "type": "integer", "minimum": 1, "maximum": 50, "default": 5 },
+        "layers": { "type": "array", "items": { "$ref": "#/$defs/evidence_card/properties/layer" }, "uniqueItems": true },
+        "include_deprecated": { "type": "boolean", "default": false }
+      }
+    },
+    "search_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cards", "library_revision", "trust"],
+      "properties": {
+        "cards": { "type": "array", "items": { "$ref": "#/$defs/evidence_card" } },
+        "library_revision": { "type": "string", "minLength": 7 },
+        "trust": { "$ref": "#/$defs/trust_label" },
+        "truncated": { "type": "boolean" }
+      }
+    },
+    "lookup_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entry_id"],
+      "properties": {
+        "entry_id": { "type": "string", "minLength": 1 },
+        "section": { "type": "string" }
+      }
+    },
+    "lookup_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["card"],
+      "properties": {
+        "card": { "$ref": "#/$defs/evidence_card" },
+        "related": { "type": "array", "items": { "$ref": "#/$defs/citation" } }
+      }
+    },
+    "skill_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "tier", "status", "priming_block_sha256", "priming_block_bytes"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "tier": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "status": { "type": "string", "enum": ["active", "deprecated", "retired"] },
+        "applies_to": { "type": "array", "items": { "type": "string" } },
+        "priming_block_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "priming_block_bytes": { "type": "integer", "minimum": 1, "maximum": 4096 }
+      }
+    },
+    "skill_list_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skills", "trust"],
+      "properties": {
+        "skills": { "type": "array", "items": { "$ref": "#/$defs/skill_summary" } },
+        "trust": { "$ref": "#/$defs/trust_label" }
+      }
+    },
+    "skill_get_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "Omit for the latest active version." }
+      }
+    },
+    "skill_get_response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "priming_block", "manifest", "verifier_pack", "trust"],
+      "properties": {
+        "summary": { "$ref": "#/$defs/skill_summary" },
+        "priming_block": { "type": "string", "minLength": 1, "maxLength": 4096, "description": "Verbatim block, LF line endings, exactly the bytes hashed in the manifest. Consumers MUST re-hash before injecting." },
+        "manifest": { "type": "object", "description": "The SKILL.md front matter, validated against contracts/skill.v1.schema.json." },
+        "verifier_pack": { "type": "object", "description": "The sibling pack, validated against contracts/verifier-pack.v1.schema.json." },
+        "trust": { "$ref": "#/$defs/trust_label" }
+      }
+    },
+    "proposal_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_path", "change_class", "rationale", "proposed_text"],
+      "properties": {
+        "target_path": { "type": "string", "pattern": "^(doctrine/|docs/adr/|contracts/|ENGINEERING\\.md$)" },
+        "change_class": { "type": "string", "enum": ["editorial", "navigation", "additive-guidance", "normative-tightening", "normative-replacement", "estate-only", "deprecation"] },
+        "rationale": { "type": "string", "minLength": 1, "maxLength": 8000 },
+        "proposed_text": { "type": "string", "minLength": 1 },
+        "evidence": { "type": "array", "items": { "type": "string" }, "description": "Citations in the [S<n> C<n>, accessed YYYY-MM-DD] form." },
+        "method_record": { "type": "string", "pattern": "class=(generated|curated|authored)", "description": "Produced-With record for the proposal itself (ADR 0043)." }
+      }
+    },
+    "proposal_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposal_id", "queue_path", "status", "applied"],
+      "properties": {
+        "proposal_id": { "type": "string", "minLength": 1 },
+        "queue_path": { "type": "string", "minLength": 1, "description": "Where the proposal was written. Never a path under doctrine/, docs/adr/, or contracts/." },
+        "status": { "type": "string", "const": "pending-review" },
+        "applied": { "type": "boolean", "const": false, "description": "Fixed false. The receipt cannot claim application; only the review path applies changes." },
+        "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    }
+  }
+}

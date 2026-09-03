@@ -57,10 +57,10 @@ When enabled, bind the priming policy in the run contract:
 ```yaml
 context:
   skills:
-    - anti-confabulation@1.0.0
+    - anti-confabulation@1.1.0
 
 verifiers:
-  - anti-confabulation-verifier-pack@1.0.0
+  - anti-confabulation-verifier-pack@1.1.0
 ```
 
 The contract or policy expansion record must identify:
@@ -137,6 +137,8 @@ negative and inconclusive results, not only improvements.
 universal named-tool rule to an estate-evaluated optional policy. Consumers must
 retain independent verification and must not treat prior local measurements as
 portable evidence.
+
+Reference skill and sibling pack: [../skills/anti-confabulation/SKILL.md](../skills/anti-confabulation/SKILL.md) (1.1.0, hash-pinned block, `priming_active` verifier). Skill form, hashing, tiers, and lifecycle: [agent-doctrine-consumption.md](agent-doctrine-consumption.md) §3.
 
 ## References
 

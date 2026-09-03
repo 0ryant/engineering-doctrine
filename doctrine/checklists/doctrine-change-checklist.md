@@ -23,6 +23,7 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] Checklists derive prompts from an owning principle or pattern; no new obligation exists only in a checklist
 [ ] REFERENCES.md internal map updated if new first-class doc
 [ ] doctrine/SITEMAP.md regenerated: ./scripts/generate-doctrine-sitemap.sh
+[ ] Skills: python scripts/validate-skills.py passes (manifest schema, priming-block hash, sibling verifier pack, governing paths, review date) and doctrine/skills/README.md register updated (patterns/agent-doctrine-consumption.md §3)
 [ ] doctrine/README.md Start Here or section lists updated when files are added/removed
 [ ] Checklists updated if new obligation for adopting teams
 [ ] At least three materially different consumers or change classes were sampled to test applicability and evidence expectations

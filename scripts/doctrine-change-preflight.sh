@@ -14,6 +14,10 @@ fi
 
 ./scripts/generate-doctrine-sitemap.sh
 
+if [[ -d doctrine/skills ]]; then
+  python scripts/validate-skills.py
+fi
+
 echo ""
 echo "Manual checks (see doctrine/patterns/doctrine-library-change-harness.md):"
 echo "  [ ] ADR created/updated in docs/adr/ + index, or editorial-only skip documented"

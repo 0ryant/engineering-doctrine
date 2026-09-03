@@ -35,6 +35,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) — **engineering controls governance programme** (ownership, waivers, metrics, audit consumption; CSF 2.0–aligned)
 - [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) — claim-level normative strength, composable applicability profiles, bounded exceptions, and control retirement
 - [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) — **external control profiles** (governing authority, exact revision, bounded applicability, parameter/tailoring decisions, assessment evidence, exceptions, and migration; NIST SP 800-171 CUI worked profile)
+- [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) — **agent doctrine consumption**: library/server boundary, evidence cards with trust labels, proposal-only writes, skill form/hash/tiers/lifecycle
 - [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) — illustrative **control suite** for merge paths and pipelines
 - [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls** (inventory & materiality, ownership & effective challenge, harm-surface testing, provider continuity, capability uplift)
@@ -105,7 +106,10 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 
 ### Skills
 
-- [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md) — auto-bundled into build-class run contracts; ships the verbatim priming block (SHA-256 `c138dd96…`) and the `priming_active` verifier-pack reference
+- [skills/README.md](skills/README.md) — **skills register**: tiers, active skills, roadmap; every skill is `skills/<name>/SKILL.md` + sibling `verifier-pack.yml`, validated by `scripts/validate-skills.py`
+- [skills/anti-confabulation/SKILL.md](skills/anti-confabulation/SKILL.md) — reference primer (1.1.0): hash-pinned priming block, `priming_active` pack
+- [skills/doctrine-navigation/SKILL.md](skills/doctrine-navigation/SKILL.md), [skills/normative-language-reading/SKILL.md](skills/normative-language-reading/SKILL.md), [skills/evidence-graded-citation/SKILL.md](skills/evidence-graded-citation/SKILL.md) — Tier 0 primers for reading and citing this library
+- [skills/method-record-classification/SKILL.md](skills/method-record-classification/SKILL.md) — Tier 1 procedure discharging the ADR 0043 method record
 
 ### Checklists
 

@@ -1,0 +1,76 @@
+verifier_pack:
+  name: evidence-graded-citation-verifier-pack
+  skill: evidence-graded-citation
+  version: 1.0.0
+  schema_version: 1.0.0
+  description: >-
+    Verify the form of citations and grades in an agent report. Environment:
+    DOCTRINE_ROOT, RENDERED_PROMPT, REPORT. Resolution rules are executor-defined.
+    Form only; source content is not read.
+
+  setup: []
+  teardown: []
+
+  verifiers:
+    - id: priming_active
+      kind: priming_active
+      description: The canonical priming block, hash-matched to the skill manifest, appears verbatim in the rendered prompt.
+      command: python ${DOCTRINE_ROOT}/scripts/validate-skills.py assert-primed --skill evidence-graded-citation --prompt ${RENDERED_PROMPT}
+      expected_exit: 0
+      expected_stdout_contains: "priming_active: OK"
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 30
+
+    - id: citations_carry_source_class
+      kind: custom
+      description: >-
+        Every line containing an http(s) URL also carries a source class tag S1-S7 or X.
+        custom because it inspects report text.
+      command: "! grep -E 'https?://' ${REPORT} | grep -vqE '\\bS([1-7]|X)\\b'"
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 10
+
+    - id: citations_carry_accessed_date
+      kind: custom
+      description: >-
+        Every line containing an http(s) URL also carries an accessed date in ISO form.
+        custom because it inspects report text.
+      command: "! grep -E 'https?://' ${REPORT} | grep -vqE 'accessed [0-9]{4}-[0-9]{2}-[0-9]{2}'"
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 10
+
+    - id: must_claims_meet_floor
+      kind: custom
+      description: >-
+        No line asserting a MUST or MUST NOT carries a C3 or C4 grade. custom because it
+        inspects report text. C2 MUSTs are accepted here; the risk-asymmetry statement is
+        a review judgement.
+      command: "! grep -E '\\bMUST( NOT)?\\b' ${REPORT} | grep -qE '\\bC[34]\\b'"
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 10
+
+    - id: disconfirmation_search_stated
+      kind: custom
+      description: >-
+        The report states where disconfirming evidence was sought, or states that none
+        was sought. custom because it inspects report text. Passes vacuously when the
+        report grades no claims.
+      command: >-
+        ! grep -qE '\bC[1-4]\b' ${REPORT}
+        || grep -qiE '(contrary|disconfirm|counter-?evidence|searched for|looked for|no contrary evidence)' ${REPORT}
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: warning
+      timeout_seconds: 10

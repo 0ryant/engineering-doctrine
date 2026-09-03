@@ -122,6 +122,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Estate** — In this repo: a **specific** organisation, cloud, or region whose **named** product choices live under `tooling/estates/`—not global law. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
+**Evidence card** — The unit of doctrine retrieval a tool server returns to an agent: a bounded excerpt with a **revision-pinned citation** (path, section, commit, content hash), the entry's **layer** and lifecycle **status**, and a **trust label**. Never a whole body. See [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) §2, [../contracts/doctrine-tool-contract.v1.schema.json](../contracts/doctrine-tool-contract.v1.schema.json).
+
 **Evidence exception (downref)** — A registered, expiring admission of a claim below its evidence floor ([EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md)): adjudicated once, reusable while in force — the IETF downref-registry economics applied to citations; never permanent. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §5.
 
 **Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
@@ -274,6 +276,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Platform as product** — Internal **platform** work treated as a **product**: clear offerings, customer (team) feedback, prioritised **adoption** and **toil** reduction—not only infra tickets. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 
+**Priming block** — The only part of a skill a host injects: a fenced ```` ```priming ```` block of at most 4096 bytes whose SHA-256 (LF-normalised, fence lines excluded) is pinned in the manifest, recomputed by `scripts/validate-skills.py`, and asserted verbatim in the rendered prompt by the pack's `priming_active` verifier. See [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) §3.1, [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) §2.
+
 **Principle** — In this repo: **durable intent** under `principles/`—**not** tied to one vendor SKU. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 
 **Problem Details** — `application/problem+json` (RFC 9457) for **machine-readable** HTTP errors. See [errors-and-failure-modes.md](principles/errors-and-failure-modes.md), [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
@@ -342,6 +346,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Shift left** — Move security, quality, and validation **earlier** in the lifecycle (design, CI), not only pre-release. See [ENGINEERING.md](../ENGINEERING.md) §5.
 
+**Skill (doctrine)** — A small, **advisory** priming artefact derived from named doctrine, laid out as `doctrine/skills/<name>/SKILL.md` beside its **sibling verifier pack**, with front matter validating against [../contracts/skill.v1.schema.json](../contracts/skill.v1.schema.json) and exactly one hash-pinned **priming block**. Never approval or verification authority; tiered 0–3 with injection defaults; a first-class lifecycle file. See [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) §3, [skills/README.md](skills/README.md), [ADR 0044](../docs/adr/0044-adopt-agent-facing-consumption-contract-skill-schema-and-server-boundary.md).
+
 **SLA** — *Service level **agreement***: **contractual** promise to a customer (often stricter or broader than internal SLOs).
 
 **SLI** — *Service level **indicator***: measured metric backing an SLO (e.g. successful requests ÷ total).
@@ -387,6 +393,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 ---
 
 ## V
+
+**Trust label** — On every evidence card: `live` (resolved from the pinned library at request time), `cached` (index built from the pinned revision), or `fallback` (content vendored into the server), with `verified_at`. Fallback MUST NOT be presented as live evidence. See [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) §2.
 
 **Vector store** — Index or database for **embeddings** (similarity search); in multi-tenant RAG, isolation failures are **information disclosure** incidents. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
 

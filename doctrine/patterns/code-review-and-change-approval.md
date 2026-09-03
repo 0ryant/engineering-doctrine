@@ -115,7 +115,7 @@ Produced-With: harness=<id>@<rev>; doctrine=<id>@<rev>; class=curated
 
 `Produced-With` is a recommended key because it names tooling without implying standing; an estate **MAY** choose another, provided it is not an authorship field. Estates with an external **transparency obligation** route that duty through a registered control profile ([revision-pinned-control-profiles.md](revision-pinned-control-profiles.md)) rather than through this record — a method record is engineering evidence, not a compliance artifact ([privacy-and-data-governance.md](../principles/privacy-and-data-governance.md) §5.4).
 
-Rationale and rejected alternatives: [ADR 0043](../../docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md).
+Rationale and rejected alternatives: [ADR 0043](../../docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md). An agent producing the candidate can be primed to apply this section with the [`method-record-classification` skill](../skills/method-record-classification/SKILL.md), whose sibling pack checks authorship fields and record form on the candidate commit.
 
 ---
 

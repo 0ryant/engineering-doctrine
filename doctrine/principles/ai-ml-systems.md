@@ -108,6 +108,8 @@ Capability tiers say what a system **can do**; **materiality** says what its fai
 
 ---
 
+- **Doctrine served to agents follows the consumption contract** — a tool server exposing this library returns **evidence cards** (bounded excerpt, revision-pinned citation, layer, status, **trust label**), never whole bodies; its only mutating tool writes a **proposal** to a review queue; skills it vendors are **hash-pinned** and re-verified by the host. Git stays the source of truth; every index is derivative ([../patterns/agent-doctrine-consumption.md](../patterns/agent-doctrine-consumption.md), [../../contracts/doctrine-tool-contract.v1.schema.json](../../contracts/doctrine-tool-contract.v1.schema.json)). Failure prevented: an agent citing stale vendored text as current doctrine, or mutating the source of truth through a lookup surface.
+
 ## 8. Anti-Patterns
 
 - **Undifferentiated** “index everything” corpora without **ACLs** or **classification**.

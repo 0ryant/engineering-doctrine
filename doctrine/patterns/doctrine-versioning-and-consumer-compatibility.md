@@ -13,6 +13,7 @@ For consumers, the contract is not only file contents. It includes:
 - **Normative expectations** in `doctrine/principles/` and the umbrella `ENGINEERING.md`.
 - **Adoption mechanics** in `patterns/`, `checklists/`, and `tooling/estates/minimum-viable-doctrine.template.md`.
 - **Layering rules**: principles stay portable; tooling is illustrative; estates are organisation-specific.
+- **Agent-facing contracts** in `contracts/` (run contract, verifier pack, skill manifest, doctrine tool contract) and the skills under `doctrine/skills/`; a tool server that exposes the library is a consumer pinned to a revision, not part of it ([agent-doctrine-consumption.md](agent-doctrine-consumption.md) §1, §4).
 - **Compatibility promises** about whether an update should be safe to absorb without changing a consumer repo's policy, CI gates, or team operating model.
 
 **Why:** Consumers need to know whether an upstream pull is editorial, additive, or policy-changing before they import it into their own repo or programme.

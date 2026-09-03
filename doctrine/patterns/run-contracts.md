@@ -344,3 +344,4 @@ These gaps are explicit — the boundary of v1, not bugs in it.
 - [code-review-and-change-approval.md](code-review-and-change-approval.md) — review path for high-blast-radius contracts.
 - [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md), [../principles/single-source-of-truth.md](../principles/single-source-of-truth.md) — governed AI systems; canonical home.
 - [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json), [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py) — schema and reference validator.
+- [agent-doctrine-consumption.md](agent-doctrine-consumption.md), [../skills/README.md](../skills/README.md) — what `context.skills: [...]` resolves to in this library: `doctrine/skills/<name>/SKILL.md` with a hash-pinned priming block and sibling pack, validated by `scripts/validate-skills.py`.

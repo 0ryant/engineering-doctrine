@@ -1,0 +1,66 @@
+verifier_pack:
+  name: anti-confabulation-verifier-pack
+  skill: anti-confabulation
+  version: 1.1.0
+  schema_version: 1.0.0
+  description: >-
+    Verify that the anti-confabulation priming block was actually present in the
+    producing cell's rendered prompt and that the completion report exhibits the
+    behaviour the block asks for. Environment: DOCTRINE_ROOT (library checkout),
+    RENDERED_PROMPT (file holding the cell's final system prompt), REPORT (the
+    agent's completion report), DECLARED_OUTPUTS (newline-separated list of
+    paths the run contract required). Resolution rules are executor-defined.
+
+  setup: []
+  teardown: []
+
+  verifiers:
+    - id: priming_active
+      kind: priming_active
+      description: The canonical priming block, hash-matched to the skill manifest, appears verbatim in the rendered prompt.
+      command: python ${DOCTRINE_ROOT}/scripts/validate-skills.py assert-primed --skill anti-confabulation --prompt ${RENDERED_PROMPT}
+      expected_exit: 0
+      expected_stdout_contains: "priming_active: OK"
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 30
+
+    - id: declared_outputs_exist
+      kind: cli_writes_declared_output
+      description: Every output path the run contract declared exists and is non-empty.
+      command: >-
+        test -s ${DECLARED_OUTPUTS}
+        && { fail=0; while read -r p; do [ -s "$p" ] || { echo "missing or empty: $p"; fail=1; }; done < ${DECLARED_OUTPUTS}; exit $fail; }
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 60
+
+    - id: report_declares_unverified
+      kind: custom
+      description: >-
+        The completion report contains an explicit unverified / untested / residual-risk
+        statement. custom because the assertion is about report content, not an artefact
+        the standard kinds cover. A report that claims nothing is unverified must say so
+        in those words; silence fails.
+      command: grep -qiE '(unverified|untested|residual risk|not verified|nothing (remains|is) unverified)' ${REPORT}
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 10
+
+    - id: report_binds_candidate
+      kind: custom
+      description: >-
+        The completion report names the candidate revision it describes (a 7-40 hex
+        commit id or a content hash), so the claims are bound to something reviewable.
+        custom because binding-to-candidate is a report property.
+      command: grep -qE '\b([0-9a-f]{7,40}|sha256:[0-9a-f]{64})\b' ${REPORT}
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: warning
+      timeout_seconds: 10

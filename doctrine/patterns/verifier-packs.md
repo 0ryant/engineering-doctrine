@@ -140,7 +140,7 @@ Packs live alongside the skills they mirror, or are addressable from the same es
 | `<skill-root>/<skill>/SKILL.md` | `<skill-root>/<skill>/verifier-pack.yml` |
 | Skill registered by an API or tool server | Pack address registered in the same catalog record |
 
-The convention is intentionally rigid: a skill that cannot point to its pack is inadmissible.
+The convention is intentionally rigid: a skill that cannot point to its pack is inadmissible. This library's own skills follow it under `doctrine/skills/<name>/`, and `scripts/validate-skills.py` enforces the sibling-existence check that this pattern's §9 asks consumers to run ([agent-doctrine-consumption.md](agent-doctrine-consumption.md) §3).
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Status:** Canonical v2 protocol for evaluating whether an AI system gives a correct, appropriately bounded, and source-grounded answer.
 
-**Relates to:** [../patterns/anti-confabulation-priming.md](../patterns/anti-confabulation-priming.md), [../skills/anti-confabulation.skill.md](../skills/anti-confabulation.skill.md), [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md), [../patterns/verifier-packs.md](../patterns/verifier-packs.md), and [../patterns/code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md).
+**Relates to:** [../patterns/anti-confabulation-priming.md](../patterns/anti-confabulation-priming.md), [../skills/anti-confabulation/SKILL.md](../skills/anti-confabulation/SKILL.md), [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md), [../patterns/verifier-packs.md](../patterns/verifier-packs.md), and [../patterns/code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md).
 
 ---
 

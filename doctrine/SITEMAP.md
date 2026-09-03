@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-03 21:14 UTC
+Generated: 2026-09-03 21:30 UTC
 
 ## All Markdown files
 
@@ -53,6 +53,7 @@ Generated: 2026-09-03 21:14 UTC
 - [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md)
 - [glossary.md](glossary.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
+- [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md)
 - [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md)
@@ -116,7 +117,12 @@ Generated: 2026-09-03 21:14 UTC
 - [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md)
 - [principles/user-facing-quality.md](principles/user-facing-quality.md)
 - [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md)
-- [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md)
+- [skills/README.md](skills/README.md)
+- [skills/anti-confabulation/SKILL.md](skills/anti-confabulation/SKILL.md)
+- [skills/doctrine-navigation/SKILL.md](skills/doctrine-navigation/SKILL.md)
+- [skills/evidence-graded-citation/SKILL.md](skills/evidence-graded-citation/SKILL.md)
+- [skills/method-record-classification/SKILL.md](skills/method-record-classification/SKILL.md)
+- [skills/normative-language-reading/SKILL.md](skills/normative-language-reading/SKILL.md)
 - [test-protocols/test-5-honesty-rubric-v2.md](test-protocols/test-5-honesty-rubric-v2.md)
 - [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)
 - [tooling/ai-assisted-development.md](tooling/ai-assisted-development.md)

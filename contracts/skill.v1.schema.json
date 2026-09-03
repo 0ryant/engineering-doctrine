@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://engineering-doctrine/contracts/skill.v1.schema.json",
+  "title": "Doctrine skill manifest (v1)",
+  "description": "Canonical v1 schema for the YAML front matter of a doctrine skill (doctrine/skills/<name>/SKILL.md). A skill is a content-addressed, advisory priming artefact derived from named doctrine; it never holds approval or verification authority and MUST ship a sibling verifier pack at the conventional path (doctrine/patterns/verifier-packs.md section 6). The Markdown body carries the priming block inside exactly one fenced block whose info string is `priming`; doctrine.priming_block_sha256 is the SHA-256 of that block with LF line endings, fence lines excluded, ending in a single newline. scripts/validate-skills.py enforces the body rules, the hash, governing-path resolution, and sibling-pack existence; this schema validates front-matter shape only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "description", "doctrine"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Skill id. MUST equal the directory name. Top-level name and description deliberately match the SKILL.md front-matter convention used by agent hosts so the file is consumable unchanged."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "One-paragraph statement of what the skill primes an agent to do and when a host should load it."
+    },
+    "license": {
+      "type": "string",
+      "description": "Optional SPDX identifier when the skill licence differs from the library licence."
+    },
+    "compatibility": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Optional host-facing environment requirements, as in the common SKILL.md convention."
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Optional string-to-string map reserved for host conventions. Library-governed fields live under `doctrine`, which is this schema's documented extension key; a host that rejects unknown top-level keys strips `doctrine` at vendoring time and keeps the hash-pinned body."
+    },
+    "allowed-tools": {
+      "type": "string",
+      "description": "Optional space-separated host tool allowlist, as in the common SKILL.md convention. Advisory to the host; it grants no authority under this library."
+    },
+    "doctrine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "version",
+        "kind",
+        "authority",
+        "injection",
+        "status",
+        "tier",
+        "applies_to",
+        "governing",
+        "priming_block_sha256",
+        "verifier_pack",
+        "owner",
+        "review_date"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$",
+          "description": "Skill version consumers pin as <name>@<version>. Any byte change to the priming block MUST bump at least the minor version; a change that narrows applicability or strengthens an instruction MUST bump the major version."
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["primer", "procedure", "assessment", "design"],
+          "description": "primer = shapes behaviour across a task class; procedure = step-wise workflow that emits artefacts; assessment = grades a target against an owning checklist; design = design-time analysis method."
+        },
+        "authority": {
+          "type": "string",
+          "const": "advisory",
+          "description": "Fixed. A skill is never approval, verification, or policy authority; those live in verifier packs, reviewers, and estate policy."
+        },
+        "injection": {
+          "type": "string",
+          "enum": ["explicit-only", "estate-policy"],
+          "description": "explicit-only = loaded only when a run contract lists it; estate-policy = an estate MAY auto-inject through a versioned, evaluated policy (doctrine/patterns/anti-confabulation-priming.md section 4.1). The expanded run contract MUST show any injection either way."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "deprecated", "retired"],
+          "description": "Lifecycle state per doctrine/patterns/doctrine-content-lifecycle.md. deprecated MUST name superseded_by; retired skills keep their manifest as a tombstone and MUST NOT be loaded."
+        },
+        "tier": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "0 = always-on primers; 1 = agent change-lifecycle procedures; 2 = readiness assessments derived from checklists; 3 = design-time specialists. See doctrine/skills/README.md."
+        },
+        "applies_to": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Task classes the skill is intended for. Free text by design; estates map these onto their run-contract task taxonomy."
+        },
+        "governing": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path"],
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^(doctrine/|docs/adr/|contracts/|ENGINEERING\\.md$)",
+                "description": "Repo-relative path of the principle, pattern, checklist, contract, or ADR the skill derives from. At least one entry MUST be a principle or pattern; a checklist alone cannot govern a skill because no obligation exists only in a checklist."
+              },
+              "section": {
+                "type": "string",
+                "description": "Optional section reference such as 6.1."
+              }
+            }
+          }
+        },
+        "priming_block_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "priming_block_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096,
+          "description": "Optional declared size of the priming block. The validator enforces the 4096-byte cap regardless: primers are injected into rendered prompts and an unbounded block is a context-budget hazard."
+        },
+        "verifier_pack": {
+          "type": "string",
+          "const": "./verifier-pack.yml",
+          "description": "Sibling pack path, fixed by doctrine/patterns/verifier-packs.md section 6. A skill that cannot point to its pack is inadmissible."
+        },
+        "model_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "required_for": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "optional_for": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "experimental_for": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+          },
+          "description": "Model or provider families the supporting evaluation covered. Absent or empty means no portable evaluation evidence exists and every host SHOULD treat the skill as experimental for its cell."
+        },
+        "evaluation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["evidence"],
+          "properties": {
+            "evidence": {
+              "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }],
+              "description": "Repo-relative path or URL of the evaluation record that justifies model_scope; null states plainly that none exists."
+            },
+            "scope": { "type": "string" }
+          }
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Accountable role, not a person, in the adopting estate; library-maintainers for the reference skill."
+        },
+        "review_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Date by which the skill MUST be reconfirmed or demoted; the lifecycle sweep flags overdue skills."
+        },
+        "supersedes": { "type": "string", "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*@\\d+\\.\\d+\\.\\d+$" },
+        "superseded_by": { "type": "string", "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*@\\d+\\.\\d+\\.\\d+$" }
+      }
+    }
+  }
+}

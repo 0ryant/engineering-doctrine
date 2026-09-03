@@ -1,0 +1,65 @@
+verifier_pack:
+  name: normative-language-reading-verifier-pack
+  skill: normative-language-reading
+  version: 1.0.0
+  schema_version: 1.0.0
+  description: >-
+    Verify that an agent report handles normative strength per claim and that any
+    exception it proposes is complete. Environment: DOCTRINE_ROOT, RENDERED_PROMPT,
+    REPORT. Resolution rules are executor-defined.
+
+  setup: []
+  teardown: []
+
+  verifiers:
+    - id: priming_active
+      kind: priming_active
+      description: The canonical priming block, hash-matched to the skill manifest, appears verbatim in the rendered prompt.
+      command: python ${DOCTRINE_ROOT}/scripts/validate-skills.py assert-primed --skill normative-language-reading --prompt ${RENDERED_PROMPT}
+      expected_exit: 0
+      expected_stdout_contains: "priming_active: OK"
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 30
+
+    - id: no_document_wide_strength
+      kind: custom
+      description: >-
+        The report never assigns one BCP 14 strength to a whole document, pattern, or
+        principle. custom because it inspects report text.
+      command: "! grep -qiE '(this|the|whole|entire) (document|file|pattern|principle|checklist) (is|are) (a |an )?(MUST|SHOULD|MAY|required|optional|mandatory)' ${REPORT}"
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 10
+
+    - id: exceptions_carry_expiry_and_authority
+      kind: custom
+      description: >-
+        If the report proposes an exception, it names an expiry date and an accountable
+        authority or approver. custom because it inspects report text. Passes vacuously
+        when no exception is proposed.
+      command: >-
+        ! grep -qiE '\bexception\b' ${REPORT}
+        || { grep -qiE '(expir(y|es|ation)|until|sunset)[^\n]*[0-9]{4}-[0-9]{2}-[0-9]{2}' ${REPORT} && grep -qiE '(approver|approved by|authority|accountable)' ${REPORT}; }
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 10
+
+    - id: evidence_state_named
+      kind: custom
+      description: >-
+        Where the report says evidence was missing, failed, untrusted, or inconclusive,
+        it does not also declare the same item a pass. Approximated as: the report never
+        contains "inconclusive" or "not verified" on the same line as "pass" or "passed".
+        custom because it inspects report text.
+      command: "! grep -iE '(inconclusive|not verified|unverified|untrusted)' ${REPORT} | grep -qiE '\\b(pass|passed|passes)\\b'"
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 10

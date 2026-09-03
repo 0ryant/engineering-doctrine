@@ -393,6 +393,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [../contracts/examples/default-production.router-policy.yaml](../contracts/examples/default-production.router-policy.yaml) | Provider-neutral three-tier production example with evidence-bound escalation, review, refusal, and cost controls; adopter bindings are illustrative. |
 | [../contracts/examples/enterprise-strict.router-policy.yaml](../contracts/examples/enterprise-strict.router-policy.yaml) | Strict-estate example with immediate escalation on falsified evidence, complete independent review, and tighter cost ceilings. |
 | [../contracts/examples/experimental-narrow-scope.router-policy.yaml](../contracts/examples/experimental-narrow-scope.router-policy.yaml) | Experimental narrow-scope example for bounded work under complete independent review and estate-owned evaluation evidence. |
+| [../contracts/skill.v1.schema.json](../contracts/skill.v1.schema.json) | Skill manifest v1 JSON Schema 2020-12 (SKILL.md front matter); enforced with body, hash, and sibling-pack rules by `scripts/validate-skills.py`; consumed by `patterns/agent-doctrine-consumption.md` §3 |
+| [../contracts/doctrine-tool-contract.v1.schema.json](../contracts/doctrine-tool-contract.v1.schema.json) | Doctrine tool contract v1 JSON Schema 2020-12: tool names, evidence cards, trust labels, forbidden capabilities, proposal-only receipt; consumed by `patterns/agent-doctrine-consumption.md` §2 |
 | [../scripts/validate-contracts-v1.py](../scripts/validate-contracts-v1.py) | Reference Python validator (uses `jsonschema`) for all three v1 schemas; positive in-memory + on-disk YAML cases + 12 router-policy negative cases |
 
 ### Umbrella and meta
@@ -506,7 +508,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/run-contracts.md](patterns/run-contracts.md) | Run contracts as the typed envelope of governed execution; activation boundary, lifecycle, v1 schema surface, validation tooling, and host-enforced limits |
 | [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
 | [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Optional anti-confabulation priming pattern with estate evaluation, content addressing, and independent-verification requirements. |
-| [skills/anti-confabulation.skill.md](skills/anti-confabulation.skill.md) | Skill pack containing the verbatim canonical priming block (SHA-256 `c138dd96…`); auto-bundled into build-class run contracts |
+| [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) | Agent-facing consumption contract: library/server boundary, retrieval evidence cards and trust labels, proposal-only writes, skill form, hashing, tiers, lifecycle; owning pattern for ADR 0044 |
+| [skills/anti-confabulation/SKILL.md](skills/anti-confabulation/SKILL.md) | Reference skill: manifest per `contracts/skill.v1.schema.json`, hash-pinned priming block, sibling verifier pack; see `skills/README.md` for the register |
 
 ### Extended principles
 

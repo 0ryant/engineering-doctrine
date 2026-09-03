@@ -1,0 +1,72 @@
+verifier_pack:
+  name: doctrine-navigation-verifier-pack
+  skill: doctrine-navigation
+  version: 1.0.0
+  schema_version: 1.0.0
+  description: >-
+    Verify that doctrine citations in an agent report resolve in the pinned
+    library checkout and that asserted obligations rest on an authority layer.
+    Environment: DOCTRINE_ROOT (library checkout at the pinned revision),
+    RENDERED_PROMPT (the cell's final system prompt), REPORT (the agent's
+    report). Resolution rules are executor-defined.
+
+  setup: []
+  teardown: []
+
+  verifiers:
+    - id: priming_active
+      kind: priming_active
+      description: The canonical priming block, hash-matched to the skill manifest, appears verbatim in the rendered prompt.
+      command: python ${DOCTRINE_ROOT}/scripts/validate-skills.py assert-primed --skill doctrine-navigation --prompt ${RENDERED_PROMPT}
+      expected_exit: 0
+      expected_stdout_contains: "priming_active: OK"
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 30
+
+    - id: cited_paths_resolve
+      kind: custom
+      description: >-
+        Every repo-relative doctrine, ADR, or contract path mentioned in the report
+        exists in the pinned library checkout. custom because it inspects report text.
+        A report that cites no paths passes vacuously; the next verifier covers that.
+      command: >-
+        grep -oE '(doctrine|docs/adr|contracts)/[A-Za-z0-9_./-]+\.(md|json|ya?ml)' ${REPORT}
+        | sort -u
+        | { fail=0; while read -r p; do [ -e "${DOCTRINE_ROOT}/$p" ] || { echo "unresolved: $p"; fail=1; }; done; exit $fail; }
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: fail_loud
+      severity: fatal
+      timeout_seconds: 30
+
+    - id: obligations_cite_authority_layer
+      kind: custom
+      description: >-
+        If the report asserts an obligation (a capitalised MUST, MUST NOT, SHOULD, or
+        SHOULD NOT), it cites at least one principle or pattern path. custom because
+        it inspects report text.
+      command: >-
+        ! grep -qE '\b(MUST( NOT)?|SHOULD( NOT)?)\b' ${REPORT}
+        || grep -qE 'doctrine/(principles|patterns)/[A-Za-z0-9_.-]+\.md' ${REPORT}
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 10
+
+    - id: cited_files_not_deprecated
+      kind: custom
+      description: >-
+        No cited doctrine file carries a Status Deprecated or Status Retired marker at
+        the pinned revision. custom because it joins report text to library state.
+      command: >-
+        grep -oE 'doctrine/[A-Za-z0-9_./-]+\.md' ${REPORT}
+        | sort -u
+        | { fail=0; while read -r p; do [ -e "${DOCTRINE_ROOT}/$p" ] && grep -qE '^\*\*Status: (Deprecated|Retired)' "${DOCTRINE_ROOT}/$p" && { echo "deprecated: $p"; fail=1; }; done; exit $fail; }
+      expected_exit: 0
+      expected_artefacts: []
+      failure_mode: mark_untrusted
+      severity: error
+      timeout_seconds: 30
