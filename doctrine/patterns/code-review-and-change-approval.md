@@ -81,7 +81,7 @@ Regulated sectors or customer contracts may add approvals **outside** the PR—r
 
 | Rule | Rationale |
 | --- | --- |
-| **Disclose in the PR** | At minimum: which parts are model- or agent-generated, and what a human actually edited. “I used help” is not enough for audit or teaching. |
+| **Record the method, not a co-author** | A non-human tool **MUST NOT** be named in an authorship field (`Author`, `Co-Authored-By`, or any successor conferring authorship standing): authorship, ownership, and accountability are held whole by the human author, and a tool holds none of them. What **MUST** be recoverable instead is **how the candidate was produced** — see §6.1. “I used help” is not enough for audit or teaching, and neither is a co-author line. |
 | **Author must explain and own the change** | Merge implies a human can defend behaviour under incident pressure. Mystery diffs are higher risk than honest unfamiliarity. |
 | **Same automated gates as any other PR** | Tests, scans, and policies apply; no blanket waiver because “AI wrote it.” |
 | **Dependency and lockfile diffs reviewed explicitly** | Agent-added dependencies are the **slopsquatting** surface; every added or changed package passes the pre-install verification gate ([ai-ml-systems.md §4](../principles/ai-ml-systems.md)) and lockfile-diff review per [dependencies-supply-chain.md §7](../principles/dependencies-supply-chain.md). |
@@ -90,6 +90,32 @@ Regulated sectors or customer contracts may add approvals **outside** the PR—r
 | **Security-critical path: human must understand the diff** | For authn/authz, secrets/crypto, tenancy, schema safety, **CI/CD** privilege, or internet-exposed boundaries, the **approving human** must be able to **defend behaviour under incident pressure**; targeted **abuse-case** or adversarial evidence is expected when generation touched those paths ([testing-strategy.md](../principles/testing-strategy.md) §5, [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2). |
 
 **VCS “agents”** (Renovate, release bots) follow [collaboration.md](../principles/collaboration.md) and [tooling/collaboration.md](../tooling/collaboration.md) (bot accounts, auto-merge where allowed). This section is about **LLM- and agent-generated content in the diff**, not about dependency bots alone.
+
+### 6.1 The Method Record
+
+A **method record** states how a change candidate was produced. It makes **no authorship claim**: authorship names who is accountable, the method record describes process, and they are separately addressable facts ([normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md) §2). Recording the method is the author's own engineering evidence about a change they already own — it does not dilute ownership any more than a build attestation dilutes it.
+
+The record **MUST** carry a **class** and the **revision-pinned identity** of any harness and governing ruleset that shaped the output:
+
+| Class | Meaning |
+| --- | --- |
+| `generated` | Model or agent output accepted substantially as produced; human review was inspection, not material revision. |
+| `curated` | Model or agent output produced under a **declared harness and governing ruleset**, then **materially revised** by the named author, who can defend the result without reference to the tool. |
+| `authored` | Written by the named author. Ordinary tool assistance (completion, formatting, refactoring engines) does not change this class. |
+
+The class asserted **MUST** be the one the author can defend under review. `curated` is not a courtesy upgrade from `generated`; it claims the harness and ruleset were pinned and the output materially revised, and it is falsifiable by reading the diff against the cited revisions.
+
+Applicability: **MUST** in estate-governed and production delivery paths where this section already applies; **SHOULD** for local single-user development. `authored` changes **MAY** omit the record — its absence is the default claim, so ordinary work carries no stamping burden.
+
+This library specifies the **schema and class vocabulary only**. Concrete harness identifiers, ruleset identifiers, and transport (commit trailer, PR template field, or signed attestation) are estate bindings and are deliberately unnamed here ([ADR 0027](../../docs/adr/0027-keep-public-doctrine-implementation-neutral.md)). A commit-trailer binding might read:
+
+```
+Produced-With: harness=<id>@<rev>; doctrine=<id>@<rev>; class=curated
+```
+
+`Produced-With` is a recommended key because it names tooling without implying standing; an estate **MAY** choose another, provided it is not an authorship field. Estates with an external **transparency obligation** route that duty through a registered control profile ([revision-pinned-control-profiles.md](revision-pinned-control-profiles.md)) rather than through this record — a method record is engineering evidence, not a compliance artifact ([privacy-and-data-governance.md](../principles/privacy-and-data-governance.md) §5.4).
+
+Rationale and rejected alternatives: [ADR 0043](../../docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md).
 
 ---
 
