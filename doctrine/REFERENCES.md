@@ -413,6 +413,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md) | Domain-by-domain scorecard vs 11 mainstream frameworks (Google SRE, DORA, AWS WAF, NIST, etc.) |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
+| [evolution/scorecard-four-reader-lenses-2026-09.md](evolution/scorecard-four-reader-lenses-2026-09.md) | Four-lens reader scorecard (engineering manager, CIO, security engineer, non-technical sponsor) with fix list |
 | [evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md](evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md) | Retrospective `v0.3.0` review decisions, source-classified release/review grounding, patch corrections, and executable `v0.4.0` tasks |
 | [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md) | Primary-source decision ledger for normative language, applicability, exceptions, claim precision, and control lifecycle; supports ADRs 0028 and 0029 |
 | [evolution/deep-research-section-gaps.md](evolution/deep-research-section-gaps.md) | Section-by-section gap research |

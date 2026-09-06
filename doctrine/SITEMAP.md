@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-06 15:34 UTC
+Generated: 2026-09-06 16:02 UTC
 
 ## All Markdown files
 
@@ -49,6 +49,7 @@ Generated: 2026-09-06 15:34 UTC
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md)
 - [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md)
 - [evolution/research-target-state-and-irreversible-decisions-2026-08.md](evolution/research-target-state-and-irreversible-decisions-2026-08.md)
+- [evolution/scorecard-four-reader-lenses-2026-09.md](evolution/scorecard-four-reader-lenses-2026-09.md)
 - [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
 - [evolution/sweep-2026-09.md](evolution/sweep-2026-09.md)
 - [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md)
