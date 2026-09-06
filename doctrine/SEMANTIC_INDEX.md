@@ -11,7 +11,7 @@ Use this with [SITEMAP.md](SITEMAP.md): the sitemap lists every Markdown file; t
 Before substantive analysis, edits, or generated guidance in this repository, ingest this minimum set:
 
 1. [../AGENTS.md](../AGENTS.md) - repo-specific agent instructions and the doctrine change harness requirement.
-2. [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) - compact doctrine spine and minimum viable doctrine.
+2. [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) - compact doctrine spine, one non-normative line per principle file, and minimum viable doctrine.
 3. [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) - authority order, reading paths, and conflict resolution.
 4. This file - semantic routes by task and topic.
 5. The topic route below that matches the request.

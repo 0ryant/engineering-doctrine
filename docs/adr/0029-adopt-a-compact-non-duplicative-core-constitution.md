@@ -1,9 +1,46 @@
 # 0029. Adopt A Compact, Non-Duplicative Core Constitution
 
-Status: Accepted
+Status: Accepted (amended 2026-09-06)
 Decision date: 2026-07-17
 Recorded date: 2026-07-17
 Retrospective: No
+
+## Amendment: 2026-09-06
+
+Decision 5 is refined, not reversed. It now reads: keep
+[tldr-principles-and-mvp.md](../../doctrine/tldr-principles-and-mvp.md) as the
+minimum-adoption route and as the home of a one-line, human-readable glance at
+every active principle file. The page links to, and does not duplicate, the
+core propositions; it owns no obligation.
+
+What the amendment records:
+
+- The glance is navigation of the kind ADR 0011 accepted for the semantic
+  index: hand-written compressions under an explicit "not a doctrine layer"
+  disclaimer. Its lines carry no claim strength. A line that disagrees with
+  its file is a defect under decision 4, not a choice for the reader.
+- The lifecycle new-file test (content-lifecycle §2) was applied and the
+  section branch taken: a per-file signpost inventory is already within the
+  library's navigation scope, so no new first-class file is created.
+- The glance sits last on the page so the spine and minimum viable doctrine
+  still read whole in the time the reading guide promises. Each link uses the
+  file's own title so a retitle is visible.
+- The inventory has one owner. `doctrine/README.md` keeps a bare grouped link
+  list and points to the glance for the one-liners; the two hand-annotated
+  principle lists it previously carried are retired.
+- Enforcement: `scripts/check-principles-glance.sh`, run by the doctrine
+  preflight and by CI, fails when an active principle file has no row, a row
+  points at a missing or deprecated file, a file is listed twice, a link text
+  differs from the file title, or the README omits a file. The sweep record
+  re-reads each row against its file's opening paragraph (content-lifecycle
+  §8). The change checklist and harness carry the matching rows.
+- Change class: navigation. No consumer obligation changes.
+
+**Review provenance:** the amendment was reviewed by a three-critic council
+(ADR fidelity and process, line-by-line accuracy against all 34 files, reader
+red team); unanimous land-with-fixes, one blocker (the amendment itself was
+missing) and six majors, all applied. That council was model self-review; no
+independent human or domain review has been recorded as of 2026-09-06.
 
 ## Context
 

@@ -25,3 +25,5 @@ jobs:
         run: python scripts/validate-contracts-v1.py
       - name: Validate skills
         run: python scripts/validate-skills.py
+      - name: Check principle glance and README inventory
+        run: bash scripts/check-principles-glance.sh

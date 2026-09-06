@@ -13,6 +13,7 @@ if [[ ! -f "doctrine/patterns/doctrine-library-change-harness.md" ]]; then
 fi
 
 ./scripts/generate-doctrine-sitemap.sh
+./scripts/check-principles-glance.sh
 
 if [[ -d doctrine/skills ]]; then
   python scripts/validate-skills.py

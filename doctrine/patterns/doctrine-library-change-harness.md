@@ -84,7 +84,7 @@ Run through this table before opening the PR.
 | [REFERENCES.md](../REFERENCES.md) | New **first-class** doctrine file, new **standards** citations, or new **Internal doctrine map** row for repo navigability. |
 | [doctrine/README.md](../README.md) | **Start Here**, section lists, or topic hubs when a doc should be **discoverable** from the entry point. |
 | [patterns/how-to-read-this-doctrine.md](how-to-read-this-doctrine.md) | If reading order or “where to look for X” changes materially. |
-| [tldr-principles-and-mvp.md](../tldr-principles-and-mvp.md) | If the **spine** or **MVP** slice should call out this area. |
+| [tldr-principles-and-mvp.md](../tldr-principles-and-mvp.md) | If the **spine** or **MVP** slice should call out this area. Always when a principle file is added, removed, retitled, or deprecated, or its opening paragraph changes: update its row in **Every Principle At A Glance** and its README link, then run `./scripts/check-principles-glance.sh`. |
 | [ENGINEERING.md](../../ENGINEERING.md) | If the **umbrella** index should point at the new principle or area. |
 | [CHANGELOG.md](../../CHANGELOG.md) | **Material** releases: per [doctrine-versioning](doctrine-versioning-and-consumer-compatibility.md) and [GOVERNANCE.md](../../GOVERNANCE.md) (not every tiny PR). |
 | **Related evolution notes** | **Optional:** [evolution/moscow-review.md](../evolution/moscow-review.md) or gap analyses for large shifts. |

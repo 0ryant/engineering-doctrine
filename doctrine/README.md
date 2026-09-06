@@ -20,7 +20,7 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 ### Meta (how to read this repo)
 
 - **[SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)** — **semantic route map** for humans and agents: critical ingestion set, topic routes, and evidence paths
-- **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** — **TL;DR** spine + **minimum viable doctrine** (read this if the tree feels too large)
+- **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** — **TL;DR** spine, **every principle at a glance** (one human-readable line per principle file), and the **minimum viable doctrine** (read this if the tree feels too large)
 - **[glossary.md](glossary.md)** — terms and acronyms used across doctrine (orientation only)
 - [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) — **maintainer workflow** for library edits (research, ADR, layers, sitemap, glossary, references)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) — navigation and conflict resolution
@@ -52,26 +52,17 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) — chaos experiments and game day pattern
 - [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) — **incident command**, on-call, escalation, comms, handoff, post-incident actions
 
-### Core principles
+### Principles
 
-- [principles/build.md](principles/build.md) — enduring build and delivery rules
-- [principles/event-contracts.md](principles/event-contracts.md) — event and message contracts (CloudEvents + versioned payloads)
-- [principles/state-machines-and-workflows.md](principles/state-machines-and-workflows.md) — states, transitions, and emitted event types
-- [principles/collaboration.md](principles/collaboration.md) — trunk-based workflow, collaboration, SRE rigour
-- [principles/semantic-versioning.md](principles/semantic-versioning.md) — SemVer per publishable unit
-- [principles/interoperability-and-standards.md](principles/interoperability-and-standards.md) — portable specs vs full stacks
-- [principles/container-runtime-choice.md](principles/container-runtime-choice.md) — managed platforms vs Kubernetes
-- [principles/kubernetes-platform-security.md](principles/kubernetes-platform-security.md) — when clusters are in scope
-- [principles/single-source-of-truth.md](principles/single-source-of-truth.md) — DRY vs wrong abstraction
-- [principles/configuration-and-secrets.md](principles/configuration-and-secrets.md) — config vs secrets, rotation
-- [principles/audit-logging.md](principles/audit-logging.md) — audit fields, immutability, retention
-- [principles/errors-and-failure-modes.md](principles/errors-and-failure-modes.md) — HTTP, CLI, retries
-- [principles/naming-and-repo-layout.md](principles/naming-and-repo-layout.md) — repo layout, monorepo vs polyrepo
-- [principles/modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md) — ports and adapters / hexagonal boundaries
-- [principles/zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) — workload identity, SPIFFE pointer
-- [principles/secure-development-lifecycle.md](principles/secure-development-lifecycle.md) — SDL, vuln response, training (NIST SSDF alignment)
-- [principles/ai-ml-systems.md](principles/ai-ml-systems.md) — **First-class** GenAI / RAG / agents: governance, tiers A–D, retrieval lifecycle, truth in repo
-- [principles/developer-experience.md](principles/developer-experience.md) — **Developer experience**: time-to-first-change, local loop, docs findability, cognitive load, review flow
+One line on what each file says lives in [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md#every-principle-at-a-glance); this list is the bare inventory, grouped the same way. Start with [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
+
+- **How change lands:** [collaboration.md](principles/collaboration.md), [build.md](principles/build.md), [merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md), [testing-strategy.md](principles/testing-strategy.md), [semantic-versioning.md](principles/semantic-versioning.md)
+- **Boundaries and contracts:** [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [event-contracts.md](principles/event-contracts.md), [errors-and-failure-modes.md](principles/errors-and-failure-modes.md), [state-machines-and-workflows.md](principles/state-machines-and-workflows.md), [interoperability-and-standards.md](principles/interoperability-and-standards.md), [single-source-of-truth.md](principles/single-source-of-truth.md), [modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md), [naming-and-repo-layout.md](principles/naming-and-repo-layout.md)
+- **Operating it:** [observability.md](principles/observability.md), [reliability-slo-incidents.md](principles/reliability-slo-incidents.md) (tactical response: [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)), [performance-and-cost.md](principles/performance-and-cost.md), [cost-and-finops.md](principles/cost-and-finops.md), [container-runtime-choice.md](principles/container-runtime-choice.md)
+- **Security:** [secure-development-lifecycle.md](principles/secure-development-lifecycle.md), [threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md), [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md), [configuration-and-secrets.md](principles/configuration-and-secrets.md), [dependencies-supply-chain.md](principles/dependencies-supply-chain.md), [kubernetes-platform-security.md](principles/kubernetes-platform-security.md), [audit-logging.md](principles/audit-logging.md)
+- **Data and privacy:** [data-and-migrations.md](principles/data-and-migrations.md), [privacy-and-data-governance.md](principles/privacy-and-data-governance.md)
+- **People, platform, and measurement:** [developer-experience.md](principles/developer-experience.md), [platform-engineering.md](principles/platform-engineering.md), [documentation-knowledge.md](principles/documentation-knowledge.md), [measurement-and-dora.md](principles/measurement-and-dora.md), [user-facing-quality.md](principles/user-facing-quality.md)
+- **AI systems and agents:** [ai-ml-systems.md](principles/ai-ml-systems.md)
 
 ### Patterns
 
@@ -143,24 +134,6 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [tooling/estates/azure-container-runtimes.md](tooling/estates/azure-container-runtimes.md) — **example** Azure mapping only
 - [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md) — **stub** (no product picks)
 - [tooling/estates/gcp-container-runtimes.md](tooling/estates/gcp-container-runtimes.md) — **stub** (no product picks)
-
-### Platform, SRE, and governance principles
-
-- [principles/ai-ml-systems.md](principles/ai-ml-systems.md) — GenAI, RAG, agents (**first-class** delivery + governance)
-- [principles/data-and-migrations.md](principles/data-and-migrations.md)
-- [principles/observability.md](principles/observability.md)
-- [principles/testing-strategy.md](principles/testing-strategy.md)
-- [principles/api-boundaries-and-security.md](principles/api-boundaries-and-security.md)
-- [principles/threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md) — STRIDE-lite trust-boundary review
-- [principles/privacy-and-data-governance.md](principles/privacy-and-data-governance.md)
-- [principles/reliability-slo-incidents.md](principles/reliability-slo-incidents.md) — SLOs, error budgets, incidents; **tactical** response: [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md)
-- [principles/measurement-and-dora.md](principles/measurement-and-dora.md) — current DORA delivery metrics, metric pitfalls, and the boundary between delivery signals and company objectives- [principles/platform-engineering.md](principles/platform-engineering.md) — team topologies, thinnest viable platform, golden paths, cognitive load
-- [principles/developer-experience.md](principles/developer-experience.md) — SPACE, local loop, docs findability, cognitive load
-- [principles/performance-and-cost.md](principles/performance-and-cost.md)
-- [principles/cost-and-finops.md](principles/cost-and-finops.md) — FinOps operating model, unit economics, AI inference cost governance, agent financial authority (§7.1)
-- [principles/documentation-knowledge.md](principles/documentation-knowledge.md)
-- [principles/dependencies-supply-chain.md](principles/dependencies-supply-chain.md)
-- [principles/user-facing-quality.md](principles/user-facing-quality.md) — A11y, i18n, **§0 scope** (headless vs UI surfaces)
 
 ### Reference index
 

@@ -37,11 +37,11 @@ stricter profile without making that profile universal doctrine.
 
 ## Suggested Reading Order
 
-Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) when you need **under ~15 minutes**.
+Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) when you need **under ~15 minutes** for the spine and minimum viable doctrine; its closing per-principle glance adds about ten more.
 
 | Audience | Path | Approx. reading |
 | --- | --- | --- |
-| **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` | **15–35 min** (TL;DR **~8 min**, glossary skim **~12 min**) |
+| **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` | **15–45 min** (TL;DR spine and MVP **~8 min**, the per-principle glance **~10 min** more, glossary skim **~12 min**) |
 | **Agent / AI contributor** | [`SEMANTIC_INDEX.md`](../SEMANTIC_INDEX.md) → route matching the task → [`doctrine-library-change-harness.md`](doctrine-library-change-harness.md) if editing doctrine/ADR/umbrella files | **10-25 min** before focused work; more for the routed source docs |
 | **New org adopting wholesale** | `ENGINEERING.md` → `normative-language-applicability-and-exceptions` → `timeless-principles-and-tooling` → `adoption-playbook` → routed topic principles | **~45–90 min** before topic depth |
 | **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → [platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md) → `platform-readiness` checklist | **~55–100 min** + checklist **~20 min** |

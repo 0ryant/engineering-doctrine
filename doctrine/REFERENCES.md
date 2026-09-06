@@ -444,7 +444,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | ADR: research adoption + **G1–G6** closure traceability |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
 | [README.md](README.md) | Doctrine folder entry |
-| [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) | TL;DR spine + MVP synthesis |
+| [tldr-principles-and-mvp.md](tldr-principles-and-mvp.md) | TL;DR spine, per-principle glance, and MVP synthesis |
 | [glossary.md](glossary.md) | Terms and acronyms (in-repo usage) |
 
 ### Governance & Assurance
