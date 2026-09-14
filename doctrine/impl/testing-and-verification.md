@@ -64,6 +64,12 @@ Authentication, authorisation, tenant isolation, money movement, cryptography, p
 
 Pre-merge checks cannot prove that a deployed service is reachable, workload identity is bound correctly, a private endpoint works, telemetry arrives, failover succeeds, or a backup restores usable state.
 
+#### Fast Local Feedback And Git Hooks
+
+A practical default is one documented repository command for the local quality gate, backed by the same versioned scripts or task runner that CI invokes. Teams may wire a fast, deterministic subset—such as formatting, linting, generated-file checks, focused tests, or secret scanning—into version-controlled Git hook tooling so contributors receive feedback before commit or push.
+
+Git hooks shorten the feedback loop; they are not the merge authority. Local hooks can be absent, stale, misconfigured, or deliberately bypassed, so protected-branch required checks still establish the authoritative gate. Keep hook entrypoints thin, make installation and updates obvious, and avoid putting unique validation logic in a developer's untracked hook. The durable owners are [Build Principles](../principles/build.md), [Developer Experience](../principles/developer-experience.md), [Collaboration](../principles/collaboration.md), and the [Build Surface Model](../patterns/build-surface-model.md).
+
 ### Build And Package Verification
 
 This surface asks:
@@ -300,6 +306,7 @@ Layer contract: [Implementation References](README.md). Related composition: [CI
 | --- | --- |
 | Evidence-driven portfolio, contracts, flakiness, risk depth, adversarial/property/mutation testing | [Testing Strategy](../principles/testing-strategy.md) |
 | Quality, build/package, deploy, verify, scheduled assurance, candidate evidence | [Build Principles](../principles/build.md) |
+| Fast local feedback, contributor onboarding, and documented local entrypoints | [Developer Experience](../principles/developer-experience.md), [Build Surface Model](../patterns/build-surface-model.md) |
 | Protected merge, local/CI ordering, promotion, rollout | [Collaboration, Trunk-Based Delivery, And Operational Rigour](../principles/collaboration.md) |
 | Binding gates, pipeline evidence, promotion-time state | [Merge Path Evidence And Pipeline Integrity](../principles/merge-path-evidence-and-pipeline-integrity.md) |
 | API authentication, authorisation, limits, and runtime security boundaries | [API Boundaries, HTTP Semantics, And API Security](../principles/api-boundaries-and-security.md) |
