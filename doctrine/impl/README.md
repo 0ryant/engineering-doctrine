@@ -65,6 +65,7 @@ The final section always identifies the principles and patterns being composed, 
 ## Available References
 
 - [CI/CD Delivery](cicd-delivery.md) — branch-to-production flow, candidate identity, promotion, verification, and delivery-unit variations.
+- [Testing And Verification](testing-and-verification.md) — evidence placement across application CI, packages, deployments, infrastructure, migrations, and scheduled assurance.
 
 Proposed future references are screened in [the implementation-reference research note](../evolution/research-implementation-reference-layer-2026-09.md#screened-backlog); they are not adopted merely by appearing in that backlog.
 
