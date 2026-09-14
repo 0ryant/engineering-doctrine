@@ -36,6 +36,7 @@ actual="$(printf '%s' "$actual" | sort)"
 
 # Section body: from the glance heading to the next H2 (or end of file).
 section="$(awk -v h="$HEADING" '
+  { sub(/\r$/, "") }
   $0 == h { on = 1; next }
   on && /^## / { exit }
   on { print }

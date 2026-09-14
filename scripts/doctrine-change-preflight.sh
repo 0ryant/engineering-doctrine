@@ -16,7 +16,21 @@ fi
 ./scripts/check-principles-glance.sh
 
 if [[ -d doctrine/skills ]]; then
-  python scripts/validate-skills.py
+  if [[ -n "${PYTHON_BIN:-}" ]]; then
+    PYTHON=("$PYTHON_BIN")
+  elif command -v python3 >/dev/null 2>&1; then
+    PYTHON=(python3)
+  elif command -v python >/dev/null 2>&1; then
+    PYTHON=(python)
+  elif command -v py >/dev/null 2>&1; then
+    PYTHON=(py -3)
+  else
+    echo "error: Python 3 is required to validate doctrine skills" >&2
+    echo "hint: install Python 3 or set PYTHON_BIN to its executable" >&2
+    exit 1
+  fi
+
+  "${PYTHON[@]}" scripts/validate-skills.py
 fi
 
 echo ""
