@@ -11,7 +11,7 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] Typed claims meet their admission floor — MUST at C1, or C2 with recorded risk asymmetry, or a registered exception in doctrine/EVIDENCE-EXCEPTIONS.md; conformance claims satisfied by their pinned norm (patterns/source-authority-and-evidence-grading.md §4–§5)
 [ ] Promotion to typed standing re-admits evidence at the higher floor: re-fetch, re-grade, rolling converted to pinned, publisher status checked (patterns/doctrine-content-lifecycle.md §2)
 [ ] Sweep-facing changes: reference-status leg run for the cohort (publisher status, link health, diagonal-collapse audit) and EVIDENCE-EXCEPTIONS entries re-examined (patterns/doctrine-content-lifecycle.md §8)
-[ ] Change belongs in principles (durable topic authority) vs patterns (conditional operating model) vs checklists (derived review) vs tooling (illustrative) vs estates (optional supplement) — see principles/timeless-principles-and-tooling.md
+[ ] Change belongs in principles (durable topic authority) vs patterns (mechanics/trade-offs) vs impl (concise, non-authoritative composition of 3+ owners) vs checklists (derived review) vs tooling (illustrative) vs estates (optional supplement) — see principles/timeless-principles-and-tooling.md and impl/README.md
 [ ] Portability: no organisation-private products, portfolio tools, internal repositories, local paths, or programme artefacts appear in publishable files
 [ ] If principle changed: rationale and references updated; not just opinion
 [ ] Each material claim has a claim-level strength/content class, explicit applicability, expected evidence, and exception authority; no document-wide normative level is being inferred
@@ -20,6 +20,7 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] New or expanded controls name the failure addressed, evidence, owner, operating cost, review trigger, and simplification or retirement path
 [ ] If umbrella ENGINEERING.md changed: it remains a compact constitution and route map; detailed obligations have one canonical principle or pattern owner and are linked rather than copied
 [ ] Cross-links added from related principles/patterns (avoid orphan pages)
+[ ] New or changed impl reference creates no requirement, states canonical-owner precedence, stays implementation-neutral and concise, and ends with canonical principle/pattern plus tooling/checklist links
 [ ] Checklists derive prompts from an owning principle or pattern; no new obligation exists only in a checklist
 [ ] REFERENCES.md internal map updated if new first-class doc
 [ ] doctrine/SITEMAP.md regenerated: ./scripts/generate-doctrine-sitemap.sh

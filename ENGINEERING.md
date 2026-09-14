@@ -2,7 +2,7 @@
 
 This is the compact constitution for the library: durable propositions, adoption rules, and routes to canonical detail. It applies to software, services, data and infrastructure changes, automation, and AI-assisted delivery. It does not make every control applicable to every system.
 
-Use [doctrine/SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md) to find the canonical source for a task. Topic principles own detailed obligations and trade-offs; patterns own conditional operating models; checklists derive review questions; tooling and estate files are replaceable implementation guidance. Research under `doctrine/evolution/` is evidence and history, not adopted doctrine by itself.
+Use [doctrine/SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md) to find the right source for a task. Topic principles own detailed obligations and trade-offs; patterns own conditional operating models; [implementation references](doctrine/impl/README.md) compose their normal shape without creating authority; tooling and estate files map that shape to replaceable products; checklists derive review questions. Research under `doctrine/evolution/` is evidence and history, not adopted doctrine by itself.
 
 ---
 
@@ -96,7 +96,7 @@ Use [TL;DR And Minimum Viable Doctrine](doctrine/tldr-principles-and-mvp.md), [a
 
 | Need | Start here |
 | --- | --- |
-| Build, CI, artefacts, delivery | [build.md](doctrine/principles/build.md), [build-surface-model.md](doctrine/patterns/build-surface-model.md) |
+| Build, CI, artefacts, delivery | [CI/CD delivery reference](doctrine/impl/cicd-delivery.md), then [build.md](doctrine/principles/build.md) and [build-surface-model.md](doctrine/patterns/build-surface-model.md) for authority and depth |
 | Branching, review, approval | [collaboration.md](doctrine/principles/collaboration.md), [code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md) |
 | Security, vulnerabilities, supply chain | [secure-development-lifecycle.md](doctrine/principles/secure-development-lifecycle.md), [dependencies-supply-chain.md](doctrine/principles/dependencies-supply-chain.md) |
 | External controls and regulatory profiles | [revision-pinned-control-profiles.md](doctrine/patterns/revision-pinned-control-profiles.md) |

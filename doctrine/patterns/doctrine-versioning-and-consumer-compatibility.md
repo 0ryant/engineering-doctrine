@@ -11,8 +11,8 @@ It complements [semantic-versioning.md](../principles/semantic-versioning.md): t
 For consumers, the contract is not only file contents. It includes:
 
 - **Normative expectations** in `doctrine/principles/` and the umbrella `ENGINEERING.md`.
-- **Adoption mechanics** in `patterns/`, `checklists/`, and `tooling/estates/minimum-viable-doctrine.template.md`.
-- **Layering rules**: principles stay portable; tooling is illustrative; estates are organisation-specific.
+- **Adoption mechanics** in `patterns/`, implementation routes in `impl/`, review prompts in `checklists/`, and `tooling/estates/minimum-viable-doctrine.template.md`.
+- **Layering rules**: principles own durable intent; patterns own activated operating models; implementation references are non-authoritative compositions; tooling is illustrative; estates are organisation-specific.
 - **Agent-facing contracts** in `contracts/` (run contract, verifier pack, skill manifest, doctrine tool contract) and the skills under `doctrine/skills/`; a tool server that exposes the library is a consumer pinned to a revision, not part of it ([agent-doctrine-consumption.md](agent-doctrine-consumption.md) §1, §4).
 - **Compatibility promises** about whether an update should be safe to absorb without changing a consumer repo's policy, CI gates, or team operating model.
 
@@ -27,7 +27,7 @@ Use **SemVer-shaped tags** for public releases of this library once releases are
 | Release kind | Meaning for doctrine consumers |
 | --- | --- |
 | **Patch** (`x.y.Z`) | Editorial fixes, broken links, typos, clarifications, navigation updates, examples that do not change adoption expectations. |
-| **Minor** (`x.Y.0`) | New principle, pattern, checklist, tooling illustration, or adoption aid that is **additive** and does not make existing compliant consumers non-compliant. |
+| **Minor** (`x.Y.0`) | New principle, pattern, implementation reference, checklist, tooling illustration, or adoption aid that is **additive** and does not make existing compliant consumers non-compliant. |
 | **Major** (`X.0.0`) | A normative shift: changed principle meaning, stricter baseline, removed or renamed doctrine surface, changed layering rule, or new default that can invalidate existing local doctrine. |
 
 Before a formal `1.0.0`, use `0.y.z` with the same intent: **minor** may contain intentional normative movement, including lifecycle-governed removals per [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md); **patch** stays safe and compatible.
@@ -44,7 +44,7 @@ Every substantive doctrine change should be labelled in the PR, release note, or
 | --- | --- | --- |
 | **Editorial** | Typos, grammar, formatting, link repairs | Safe to absorb automatically after basic review. |
 | **Navigation** | README, sitemap, cross-link, reading-order updates | Safe unless it changes precedence or adoption order. |
-| **Additive guidance** | New optional pattern, example, checklist row, reference | Review and adopt when relevant; does not make current practice wrong. |
+| **Additive guidance** | New optional pattern, implementation reference, example, checklist row, or reference | Review and adopt when relevant; does not make current practice wrong. |
 | **Normative tightening** | New required gate, stronger "must", shorter waiver window, stricter default | Treat as policy change; consumers decide adoption date and exceptions. |
 | **Normative replacement** | Old guidance superseded by different default | Requires migration note and consumer impact statement. |
 | **Estate-only** | Cloud, vendor, org, regulatory mapping under `tooling/estates/` | Only affected estates need action. |

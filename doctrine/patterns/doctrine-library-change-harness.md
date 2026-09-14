@@ -13,7 +13,8 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
 1. **Name the change** in one sentence (outcome, not file names).
 2. **Choose the layer** per [timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md):
    - **Principle** — timeless intent; no vendor SKUs; cite rationale and **references**.
-   - **Pattern** — how surfaces fit; may reference examples.
+   - **Pattern** — mechanics, trade-offs, lifecycle behaviour, failure modes, and conditional operating models.
+   - **Implementation reference** — a concise, implementation-neutral normal shape composed from at least three canonical owners; creates no new requirement and ends with links to those owners.
    - **Tooling** — illustrative stack, filenames, bots; **optional** to adopt.
      Do not name organisation-private portfolio implementations; keep those in
      the consuming organisation's private estate documentation.
@@ -59,17 +60,18 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
 ## 4. Author the change (layered, cross-linked)
 
 1. **Principles** — assert durable intent; link outward to **patterns** and **tooling** *where* teams next look for how-to.
-2. **Patterns** — link back to **principles**; point to **tooling** for concrete examples; avoid duplicating long normative blocks.
-3. **Tooling** — link to **principles** and **patterns**; keep vendor names here, not in principles.
+2. **Patterns** — link back to **principles**; point to **implementation references** where a concise normal composition is useful and to **tooling** for concrete examples; avoid duplicating long normative blocks.
+3. **Implementation references** — follow [../impl/README.md](../impl/README.md): compose rather than invent, state canonical-owner precedence, remain concise and product-neutral, and end with the relevant principle/pattern plus tooling/checklist routes.
+4. **Tooling** — link to **principles**, **patterns**, and a relevant implementation reference where one exists; keep vendor names here, not in principles.
    Public vendor names are allowed only as optional illustrations. Private
    product, repository, and programme names do not belong in any publishable
    layer; describe the capability class instead.
-4. **Material claims** — state strength and content class at claim level; define who or what they apply to, what evidence demonstrates the outcome, and which authority can decide an exception. Keep an exception separate from the underlying rule and evidence verdict.
-5. **Controls** — for a new or materially expanded control, name the failure it addresses, expected evidence, accountable owner, operating cost, review trigger, and how the control can be simplified or retired. Prefer an outcome and bounded choice over one universal mechanism where context legitimately differs.
-6. **Checklists** — derive review prompts from the owning principle or pattern. If the addition creates a new obligation, add or extend a checklist under [checklists/](../checklists/) and link to the authority; do not make the checklist the only place the obligation exists.
-7. **Umbrella** — keep [ENGINEERING.md](../../ENGINEERING.md) a compact constitution and route map. It may own core propositions and vocabulary, but detailed topic obligations have one canonical principle or pattern owner and are linked rather than copied.
+5. **Material claims** — state strength and content class at claim level; define who or what they apply to, what evidence demonstrates the outcome, and which authority can decide an exception. Keep an exception separate from the underlying rule and evidence verdict.
+6. **Controls** — for a new or materially expanded control, name the failure it addresses, expected evidence, accountable owner, operating cost, review trigger, and how the control can be simplified or retired. Prefer an outcome and bounded choice over one universal mechanism where context legitimately differs.
+7. **Checklists** — derive review prompts from the owning principle or pattern. If the addition creates a new obligation, add or extend a checklist under [checklists/](../checklists/) and link to the authority; do not make the checklist the only place the obligation exists.
+8. **Umbrella** — keep [ENGINEERING.md](../../ENGINEERING.md) a compact constitution and route map. It may own core propositions and vocabulary, but detailed topic obligations have one canonical principle or pattern owner and are linked rather than copied.
 
-**Avoid orphan pages:** every new first-class file should be reachable from [doctrine/README.md](../README.md) **or** a clear hub (e.g. `how-to-read-this-doctrine.md`) and from at least one related sibling doc.
+**Avoid orphan pages:** every new first-class file should be reachable from [doctrine/README.md](../README.md) **or** a clear hub (e.g. `how-to-read-this-doctrine.md`) and from at least one related sibling doc. Every `impl/` file is also listed in [../impl/README.md](../impl/README.md) and ends with its canonical sources.
 
 ---
 
@@ -117,7 +119,7 @@ Follow doctrine/patterns/doctrine-library-change-harness.md in full:
 
 2) ADR: If this is a structural or material library decision, create docs/adr/NNNN-<slug>.md (next NNNN) and update docs/adr/README.md index; OR reference an existing ADR and update it if the decision is refined. Include alternatives, consequences, consumer impact, acceptance measures, and residual risk. Skip only for pure editorial fixes.
 
-3) Authority and layering: Place content in principles/ vs patterns/ vs tooling/ per timeless-principles-and-tooling.md. For every material claim, classify strength, content class, applicability, expected evidence, and exception authority per normative-language-applicability-and-exceptions.md. Cross-link principle ↔ pattern ↔ tooling; keep one canonical owner for detailed obligations.
+3) Authority and layering: Place content in principles/ vs patterns/ vs impl/ vs tooling/ per timeless-principles-and-tooling.md. An impl/ reference composes at least three canonical owners, creates no new requirement, and ends with those owner links. For every material claim, classify strength, content class, applicability, expected evidence, and exception authority per normative-language-applicability-and-exceptions.md. Cross-link principle ↔ pattern ↔ implementation reference ↔ tooling; keep one canonical owner for detailed obligations.
 
 4) Navigation: Regenerate doctrine/SITEMAP.md via ./scripts/generate-doctrine-sitemap.sh. Update glossary.md, REFERENCES.md, doctrine/README.md (and ENGINEERING.md / tldr-principles-and-mvp.md / how-to-read-this-doctrine.md if the spine or index should mention this area). Update checklists if adopters have new obligations.
 

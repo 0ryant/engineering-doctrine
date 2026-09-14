@@ -2,6 +2,8 @@
 
 This pattern shows how trunk-based development connects to the [build surface model](build-surface-model.md) and team practices described in [principles/collaboration.md](../principles/collaboration.md). Git host defaults for branch rules and merge queues live in [../tooling/collaboration.md](../tooling/collaboration.md).
 
+For the concise end-to-end implementation reference, see [CI/CD Delivery](../impl/cicd-delivery.md).
+
 ## Intent
 
 - Keep **one integration branch** (`main`) always deployable or clearly marked otherwise.
