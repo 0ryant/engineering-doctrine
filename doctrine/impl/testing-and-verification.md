@@ -56,7 +56,7 @@ These are concise compositions of the canonical owners listed at the end, not ne
 
 ### Application Evidence Before Merge
 
-Pre-merge evidence asks whether the source change is fit to become authoritative. Natural choices include unit and component tests, selective integration tests, API/event/schema contracts, regressions, boundary and negative cases, and static analysis. Snapshot or golden tests protect intentional structured output; characterisation tests capture legacy behaviour before change. Property-based tests, fuzzing, and mutation testing deepen evidence where generated inputs or assertion quality matter.
+Pre-merge evidence asks whether the source change is fit to become authoritative. Natural choices include linting and formatting checks, static analysis, unit and component tests, selective integration tests, API/event/schema contracts, regressions, and boundary and negative cases. Lint code, configuration, documentation, and repository-owned infrastructure definitions where applicable. Snapshot or golden tests protect intentional structured output; characterisation tests capture legacy behaviour before change. Property-based tests, fuzzing, and mutation testing deepen evidence where generated inputs or assertion quality matter.
 
 Security and delivery checks can include static security analysis, dependency analysis, secret scanning, and static configuration or IaC validation when the repository owns those surfaces. Apply them according to system risk and activated policy rather than as an indiscriminate menu.
 
@@ -203,33 +203,58 @@ Workers, queues, webhooks, parallel requests, distributed locks, retries, at-lea
 
 Test the compatibility matrix the product actually claims: backward/forward API and event schemas, data, runtime, OS/browser, upgrade, and downgrade paths as applicable. An isolated successful run does not create a permanent compatibility promise; the declared support boundary does.
 
-## Delivery Matrix
+## Delivery Placement Matrices
 
-`✓` marks a natural surface for that evidence, not a requirement for every repository. “Selective” means the claim or risk must justify the cost.
+These matrices identify likely evidence placement; they do not define a flat test taxonomy or a universal gate set.
 
-| Evidence | App pre-merge | Build/package | App deploy | Infra pre-merge | Infra post-apply | Scheduled/deep |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: |
-| Unit / component | ✓ |  |  | Module logic |  |  |
-| Integration | ✓ selective |  | ✓ | Ephemeral selective | ✓ |  |
-| Contract / schema | ✓ | ✓ | ✓ selective | Provider/schema |  |  |
-| E2E / critical journey | Selective |  | ✓ |  | Platform selective |  |
-| Smoke / synthetic |  | Startup | ✓ |  | ✓ | ✓ continuous |
-| Regression / negative | ✓ | Selective | ✓ critical | Policy/module | Known failures | ✓ deep |
-| Snapshot / characterisation | ✓ | Metadata |  | Plans carefully |  |  |
-| Property / fuzz / mutation | ✓ risk-based |  | Selective | Module/parser logic |  | ✓ deeper |
-| Static security / dependencies / secrets | ✓ | Exact package graph |  | ✓ | Effective state | Continuous feeds |
-| IaC validate / policy | Repo-owned IaC |  |  | ✓ | ✓ effective | Drift |
-| Plan / what-if / assertions |  |  |  | ✓ |  |  |
-| Resource / connectivity |  |  | ✓ |  | ✓ | Drift selective |
-| Authentication / authorisation | Logic |  | ✓ runtime | Policy/static | ✓ positive and negative | ✓ adversarial |
-| Dynamic security analysis |  |  | ✓ risk-based |  |  | ✓ deeper |
-| Canary |  |  | ✓ when used |  | Progressive infra where supported |  |
-| Benchmark / load | ✓ targeted |  | Runtime comparison |  | Capacity | ✓ |
-| Stress / spike / soak / volume |  |  | Targeted |  |  | ✓ |
-| Resilience / fault / failover | Selective |  | Targeted |  | Targeted | ✓ |
-| Backup / restore / DR |  |  |  |  |  | ✓ |
-| Migration | Representative state | Migration assets | Release gate | State change if relevant | ✓ | Rehearsal |
-| Observability verification | Instrumentation checks |  | ✓ | Config/static | ✓ export path | ✓ continuous |
+- `✓` — a common natural surface for this evidence.
+- `△` — selective: use when the claim, risk, or cost warrants it.
+- `—` — normally proved at another surface.
+
+### Application Delivery
+
+| Evidence | Pre-merge | Build/package | Deployed environment | Scheduled/deep |
+| --- | :---: | :---: | :---: | :---: |
+| Lint / format / static analysis | ✓ | — | — | — |
+| Unit / component | ✓ | — | — | — |
+| Integration / contract / schema | ✓ | △ | ✓ | △ |
+| Regression / boundary / negative | ✓ | — | △ | △ |
+| Snapshot / characterisation | ✓ | △ | — | — |
+| Property-based / fuzz / mutation | △ | — | △ | △ |
+| SAST / SCA / secret scanning | ✓ | ✓ | — | △ |
+| Package identity / contents / startup | — | ✓ | △ | — |
+| Health / smoke / synthetic | — | △ | ✓ | ✓ |
+| Authentication / authorisation / tenant isolation | △ | — | ✓ | △ |
+| Dynamic security / adversarial | — | — | △ | △ |
+| Critical E2E journey | △ | — | ✓ | △ |
+| Benchmark / load | △ | — | △ | ✓ |
+| Stress / spike / soak / volume | — | — | △ | ✓ |
+| Resilience / fault / recovery | △ | — | △ | ✓ |
+| Migration / data reconciliation | △ | ✓ | ✓ | △ |
+| Observability verification | △ | — | ✓ | ✓ |
+| Canary verification | — | — | △ | — |
+
+The build/package column concerns the candidate: its identity, contents, dependency graph, migration assets, installation, and minimal startup. Deployed-environment checks concern real wiring and behaviour. Scheduled checks carry slower, destructive, costly, or continuously changing evidence; they do not replace earlier checks.
+
+### Infrastructure Delivery
+
+| Evidence | Pre-merge | Post-apply | Scheduled/deep |
+| --- | :---: | :---: | :---: |
+| Lint / format / parse / compile / validate | ✓ | — | — |
+| Static security / policy | ✓ | — | △ |
+| Module / expression tests | ✓ | — | — |
+| Plan / what-if review | ✓ | — | — |
+| Plan assertions | ✓ | — | — |
+| Ephemeral integration | △ | — | △ |
+| Resource-state assertions | — | ✓ | △ |
+| DNS / routing / endpoint connectivity | — | ✓ | △ |
+| Identity / authority / effective policy | △ | ✓ | △ |
+| Representative workload / platform smoke | — | ✓ | △ |
+| Observability / diagnostic export | △ | ✓ | ✓ |
+| Drift detection | — | — | ✓ |
+| Capacity / failover / backup restore / DR | — | △ | ✓ |
+
+For infrastructure, pre-merge evidence predicts or constrains the intended change; post-apply evidence proves effective state and behaviour. A later `✓` therefore complements rather than repeats an earlier check. For example, static network policy cannot replace a connectivity probe, and a successful apply cannot replace a representative workload smoke test.
 
 ## Minimum Practical Sets
 
