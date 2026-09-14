@@ -2,6 +2,8 @@
 
 Durable rules for **behavioural evidence and regression protection**: what to emphasise, how to avoid common failure modes, and how **contract**, integration, and other tests fit the build model.
 
+Engineer-facing placement across application and infrastructure delivery surfaces: [Testing And Verification](../impl/testing-and-verification.md).
+
 ---
 
 ## Evidence-Driven Development

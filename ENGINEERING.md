@@ -97,6 +97,7 @@ Use [TL;DR And Minimum Viable Doctrine](doctrine/tldr-principles-and-mvp.md), [a
 | Need | Start here |
 | --- | --- |
 | Build, CI, artefacts, delivery | [CI/CD delivery reference](doctrine/impl/cicd-delivery.md), then [build.md](doctrine/principles/build.md) and [build-surface-model.md](doctrine/patterns/build-surface-model.md) for authority and depth |
+| Testing and verification placement | [Testing and verification reference](doctrine/impl/testing-and-verification.md), then [testing-strategy.md](doctrine/principles/testing-strategy.md) and the reference's activity-specific owners for authority and depth |
 | Branching, review, approval | [collaboration.md](doctrine/principles/collaboration.md), [code-review-and-change-approval.md](doctrine/patterns/code-review-and-change-approval.md) |
 | Security, vulnerabilities, supply chain | [secure-development-lifecycle.md](doctrine/principles/secure-development-lifecycle.md), [dependencies-supply-chain.md](doctrine/principles/dependencies-supply-chain.md) |
 | External controls and regulatory profiles | [revision-pinned-control-profiles.md](doctrine/patterns/revision-pinned-control-profiles.md) |

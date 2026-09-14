@@ -58,6 +58,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 
 - [impl/README.md](impl/README.md) — layer definition, authority boundary, candidate test, and reference shape
 - [impl/cicd-delivery.md](impl/cicd-delivery.md) — branch-to-production CI/CD flow, candidate promotion, verification, and application/IaC/database/configuration variations
+- [impl/testing-and-verification.md](impl/testing-and-verification.md) — where application, package, deployment, infrastructure, migration, and scheduled verification evidence naturally belongs
 
 ### Principles
 
