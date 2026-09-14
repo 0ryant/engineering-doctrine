@@ -34,6 +34,16 @@ trap 'rm -f "$tmp"' EXIT
   done
 } >"$tmp"
 
+if [[ -f "$OUT" ]] &&
+   diff -q \
+     <(tr -d '\r' <"$OUT" | sed '/^Generated: /d') \
+     <(sed '/^Generated: /d' "$tmp") >/dev/null; then
+  rm -f "$tmp"
+  trap - EXIT
+  echo "$OUT is up to date"
+  exit 0
+fi
+
 mv "$tmp" "$OUT"
 trap - EXIT
 echo "Wrote $OUT"

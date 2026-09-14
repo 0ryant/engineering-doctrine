@@ -39,4 +39,4 @@ echo "  [ ] ADR created/updated in docs/adr/ + index, or editorial-only skip doc
 echo "  [ ] Research note or external refs in doc + REFERENCES.md as needed"
 echo "  [ ] glossary.md, doctrine/README.md, ENGINEERING.md / tldr — if discoverability changes"
 echo "  [ ] doctrine/checklists/doctrine-change-checklist.md"
-echo "OK: sitemap regenerated."
+echo "OK: sitemap current."

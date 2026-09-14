@@ -96,8 +96,17 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{OUT} is up to date")
         return 0
 
+    files = collect_markdown(DOCTRINE)
+    existing_timestamp = existing_generated_timestamp()
+    if existing_timestamp is not None:
+        expected = render(files, existing_timestamp)
+        actual = OUT.read_text(encoding="utf-8").replace("\r\n", "\n")
+        if actual == expected:
+            print(f"{OUT} is up to date")
+            return 0
+
     generated = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    content = render(collect_markdown(DOCTRINE), generated)
+    content = render(files, generated)
     OUT.write_text(content, encoding="utf-8", newline="\n")
     print(f"Wrote {OUT}")
     return 0
