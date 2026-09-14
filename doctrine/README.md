@@ -7,10 +7,11 @@ This folder captures durable engineering doctrine for scaffolds and templates.
 It is split intentionally:
 
 - **`principles/`** — **Timeless intent**: platform-agnostic outcomes, constraints, and trade-offs. Change rarely; cite **rationale** and **references** when you do.
+- **`patterns/`** — **Mechanics and trade-offs**: how principles fit together, including lifecycle behaviour, alternatives, failure modes, and conditional operating models.
+- **`impl/`** — **Implementation-neutral references**: concise normal operating shapes composed from principles and patterns. They create no new normative requirements; canonical owners win on conflict.
 - **`tooling/`** — **Illustrative implementation**: example stacks, filenames, and bots that **one** estate might use. Change often; keep **surface contracts** stable (see `principles/build.md`).
 - **`tooling/estates/`** — **Optional supplements**: concrete product mappings for a **specific** organisation or cloud—never global law.
-- **`patterns/`** — how surfaces fit together in real repositories.
-- **`checklists/`** — reviewable execution.
+- **`checklists/`** — **Derived verification**: review prompts for applicable principles and patterns, not independent rule owners.
 - **`evolution/`** — audits, MoSCoW backlogs, and notes on **why** large changes happened.
 
 Read **[principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md)** first for how this split works.
@@ -25,11 +26,12 @@ Read **[principles/timeless-principles-and-tooling.md](principles/timeless-princ
 - [patterns/doctrine-library-change-harness.md](patterns/doctrine-library-change-harness.md) — **maintainer workflow** for library edits (research, ADR, layers, sitemap, glossary, references)
 - [patterns/how-to-read-this-doctrine.md](patterns/how-to-read-this-doctrine.md) — navigation and conflict resolution
 - [patterns/doctrine-versioning-and-consumer-compatibility.md](patterns/doctrine-versioning-and-consumer-compatibility.md) — how this library labels releases and downstream compatibility impact
-- [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) — principles vs tooling vs estate supplements
+- [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) — principles vs implementation references vs tooling and estate supplements
+- [impl/README.md](impl/README.md) — implementation-reference purpose, authority boundary, candidate test, and document shape
 
 ### Governance & Assurance
 
-This is a **navigation section**, not a new doctrine layer. Files stay under `principles/`, `patterns/`, `tooling/`, and `checklists/`.
+This is a **navigation section**, not a new doctrine layer. Files stay under `principles/`, `patterns/`, `impl/`, `tooling/`, and `checklists/`.
 
 - [principles/merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) — **merge path & pipeline integrity** (binding gates, evidence, SBOM/provenance expectations; NIST / CISA / SLSA–cited)
 - [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) — **engineering controls governance programme** (ownership, waivers, metrics, audit consumption; CSF 2.0–aligned)
@@ -51,6 +53,11 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/example-saga-payment-workflow.md](patterns/example-saga-payment-workflow.md) — worked **fiction**: saga, compensation, timeouts
 - [patterns/chaos-engineering-and-game-days.md](patterns/chaos-engineering-and-game-days.md) — chaos experiments and game day pattern
 - [patterns/incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) — **incident command**, on-call, escalation, comms, handoff, post-incident actions
+
+### Implementation References
+
+- [impl/README.md](impl/README.md) — layer definition, authority boundary, candidate test, and reference shape
+- [impl/cicd-delivery.md](impl/cicd-delivery.md) — branch-to-production CI/CD flow, candidate promotion, verification, and application/IaC/database/configuration variations
 
 ### Principles
 
@@ -147,6 +154,7 @@ One line on what each file says lives in [tldr-principles-and-mvp.md](tldr-princ
 
 Use these records to understand source grounding, decisions, audits, and known gaps. Follow their linked adopted principles, patterns, and ADRs for current operating doctrine.
 
+- [evolution/research-implementation-reference-layer-2026-09.md](evolution/research-implementation-reference-layer-2026-09.md) — repository evidence, CI/CD exemplar audit, layer boundaries, and screened backlog supporting [ADR 0048](../docs/adr/0048-add-implementation-reference-layer.md)
 - [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) — disposition of substantive external review feedback
 - [evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md](evolution/post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md) — retrospective `v0.3.0` decision register, `v0.3.1` corrections, and forward plan lanes (V40–V45, retargeted to `v0.5.0`)
 - [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md) — primary-source ledger for normative language, applicability, exceptions, and control lifecycle

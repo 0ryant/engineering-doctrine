@@ -1,6 +1,6 @@
-# Timeless Principles And Replaceable Tooling
+# Timeless Principles, Reference Implementations, And Replaceable Tooling
 
-How this repository stays useful for years while stacks change: separate what must stay true from how you implement it today.
+How this repository stays useful for years while stacks change: separate what must stay true, what the normal implementation looks like, and how a particular stack implements it today.
 
 ---
 
@@ -14,7 +14,18 @@ How this repository stays useful for years while stacks change: separate what mu
 
 ---
 
-## 2. Tooling Is Illustrative And Estate-Specific
+## 2. Implementation References Compose; They Do Not Own
+
+- Files under [`impl/`](../impl/) provide concise, implementation-neutral operating shapes for common engineering activities that otherwise require several canonical files to reconstruct.
+- They may simplify, visualise, summarise, and route principles and patterns. They must not invent a requirement or become a second authority.
+- When an implementation reference conflicts with a canonical principle or owning pattern, the canonical owner wins and the reference is defective.
+- Every implementation reference ends with the principles and patterns it composes, plus relevant tooling and verification routes.
+
+**Why:** A composition layer supports progressive disclosure without forcing patterns to serve both as deep explanatory models and quick engineer references.
+
+---
+
+## 3. Tooling Is Illustrative And Estate-Specific
 
 - Tooling documents capture one possible way to satisfy principles with concrete products and filenames (`.pipelines/`, `justfile`, a particular bot).
 - Estate supplements live under `doctrine/tooling/estates/`—optional notes for a given organisation, region, or cloud (for example one team’s Azure mappings). They are not global law.
@@ -29,7 +40,7 @@ How this repository stays useful for years while stacks change: separate what mu
 
 ---
 
-## 3. Standards Without Mandating A Full Stack
+## 4. Standards Without Mandating A Full Stack
 
 - Adopting a wire format or specification (for example for events or telemetry) does not mean adopting every project adjacent to that spec in an ecosystem catalogue.
 - Interoperability choices are narrow: encode the minimum standard shape needed at boundaries.
@@ -38,14 +49,15 @@ How this repository stays useful for years while stacks change: separate what mu
 
 ---
 
-## 4. How To Change This Repository
+## 5. How To Change This Repository
 
-- If an operating model change is real (how you ship, what you measure, what “done” means), update principles with rationale and references.
+- If an operating model change is real (how you ship, what you measure, what “done” means), update the owning principles or patterns with rationale and references before updating any derived implementation reference.
+- If several existing owners already define the normal model but readers must reconstruct it, consider an `impl/` reference using the candidate test in [`impl/README.md`](../impl/README.md).
 - If only tools change, update tooling / estates first; avoid editing principles unless the invariant actually changed.
 
 ---
 
-## 5. Convictions, Interop Standards, And Team Validation
+## 6. Convictions, Interop Standards, And Team Validation
 
 - **Interop choices** (for example a standard envelope for events) are deliberate standards at boundaries—they are not metaphysical truths. They are defensible contract decisions; teams may negotiate exceptions with a recorded migration story. See [interoperability-and-standards.md](interoperability-and-standards.md).
 - **Illustrative tables** (languages, local container engines, example CI filenames) in tooling files are defaults for templates, not mandatory global law. Organisation standardisation belongs in `tooling/estates/` when it must be shared.
@@ -55,7 +67,7 @@ How this repository stays useful for years while stacks change: separate what mu
 
 ---
 
-## 6. Illustrative Map To NIST SSDF Practices (SP 800-218)
+## 7. Illustrative Map To NIST SSDF Practices (SP 800-218)
 
 NIST’s Secure Software Development Framework (SSDF) groups practices into Prepare (PO), Protect (PS), Produce (PW), and Respond (RV). This repo is not a control framework mapping, but adopters often ask “where does SSDF live here?” The table below is a non-exhaustive cross-walk:
 
@@ -75,6 +87,7 @@ NIST’s Secure Software Development Framework (SSDF) groups practices into Prep
 | Decision | Rationale |
 | --- | --- |
 | Principles avoid product mandates | Maximises reuse across clouds and acquisitions. |
+| Separate implementation-reference layer | Makes common operating shapes quick to consume while preserving canonical ownership in principles and patterns. |
 | Explicit tooling tier | Lets templates be opinionated without pretending those opinions are physics. |
 | Estate folder | Isolates organisation-local guidance from portable doctrine. |
 | No private portfolio names | Prevents one maintainer's implementation from becoming a public dependency or implied mandate. |

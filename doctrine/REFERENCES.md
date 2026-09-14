@@ -409,7 +409,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md) | **Doctrine content lifecycle**: status vocabulary, promotion/demotion gates, deprecation clocks, tombstones, anti-accretion sweeps |
 | [DEPRECATED.md](DEPRECATED.md) | Lifecycle register: dying table, tombstone table, sweep ledger |
 | [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) | Claim-level BCP 14 strength, composable applicability, bounded exceptions, and control lifecycle |
-| [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs tooling vs estates |
+| [principles/timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) | Principles vs implementation references vs tooling and estates |
+| [impl/README.md](impl/README.md) | Implementation-reference layer contract: concise composition, no new requirements, canonical-owner precedence, candidate test |
 | [evolution/moscow-review.md](evolution/moscow-review.md) | Audit trail, MoSCoW, thin-area notes |
 | [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md) | Domain-by-domain scorecard vs 11 mainstream frameworks (Google SRE, DORA, AWS WAF, NIST, etc.) |
 | [evolution/honest-review-synthesis.md](evolution/honest-review-synthesis.md) | Condensed external review signal |
@@ -437,11 +438,13 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) | Canonical owner of the source-class ladder (S1–S7+X with scope/role and the transcription rule), claim-support grades (C1–C4 with the independence test), the conformance/empirical split, BCP-14 admission floors with the registered-exception path, citation metadata and pin/rolling duties, and the diagonal-collapse audit; activation-gated to citation-bearing doctrine estates; ADR 0040 |
 | [EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md) | Evidence-floor exception register: downref-economics entries (adjudicated once, reusable while in force, expiring), re-examined by every lifecycle sweep; doubles as the evidence-upgrade worklist; two inaugural entries (August notes' archive deviation; context-engineering tweet) |
 | [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md) | Source authority and evidence weighting: 771-reference census, council-reproduced exactly (NIST the biggest dependency at 93; EU law cited 13:2 via unofficial mirrors; academic tier ~85% preprint; one tweet in a pattern file); two-axis grading core from the two disciplines that grade at scale (Admiralty × GRADE) with scope/role/appraisal fields from law, SE, and historiography; standards-body lifecycle mechanics (IETF downref registry, ISO dated-vs-undated review duty, W3C change-control grading, NIST tombstones × DoD pin divergence, link-rot data); proposed S1–S7+X × C1–C4 scheme with the conformance/empirical split, BCP-14 admission floors, citation metadata, sweep-anchored source-event reviews, and forward-only adoption; seven-row action list, ADR-bound; three-critic council ratification |
+| [evolution/research-implementation-reference-layer-2026-09.md](evolution/research-implementation-reference-layer-2026-09.md) | Repository evidence, CI/CD exemplar audit, layer boundary, and screened backlog supporting ADR 0048 |
 | [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md) | `v0.3.0` release decisions, task ownership, dependencies, acceptance criteria, and verification gates |
 | [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | Accepted model-routing policy v1 contract: provider-neutral structural tiers, evidence-bound escalation and refusal, review requirements, and cost ceilings |
 | [../docs/adr/0028-adopt-claim-level-authority-applicability-and-exceptions.md](../docs/adr/0028-adopt-claim-level-authority-applicability-and-exceptions.md) | Accepted claim-level normative strength, composable applicability, bounded exceptions, and control lifecycle |
 | [../docs/adr/0029-adopt-a-compact-non-duplicative-core-constitution.md](../docs/adr/0029-adopt-a-compact-non-duplicative-core-constitution.md) | Accepted compact, non-duplicative core constitution and route-map decision |
 | [../docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md](../docs/adr/0030-refine-ai-native-sdlc-into-gates-records-and-applicability-overlays.md) | Accepted AI-native SDLC refinement; amends ADR 0024 with gates, record families, governed execution, typed claims, and closure modes |
+| [../docs/adr/0048-add-implementation-reference-layer.md](../docs/adr/0048-add-implementation-reference-layer.md) | Accepted implementation-reference layer decision; establishes non-authoritative composition and CI/CD as the first exemplar |
 | [../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) | ADR: research adoption + **G1–G6** closure traceability |
 | [SITEMAP.md](SITEMAP.md) | Auto-generated list of all Markdown under doctrine/ |
 | [README.md](README.md) | Doctrine folder entry |
@@ -511,6 +514,13 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Optional anti-confabulation priming pattern with estate evaluation, content addressing, and independent-verification requirements. |
 | [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) | Agent-facing consumption contract: library/server boundary, retrieval evidence cards and trust labels, proposal-only writes, skill form, hashing, tiers, lifecycle; owning pattern for ADR 0044 |
 | [skills/anti-confabulation/SKILL.md](skills/anti-confabulation/SKILL.md) | Reference skill: manifest per `contracts/skill.v1.schema.json`, hash-pinned priming block, sibling verifier pack; see `skills/README.md` for the register |
+
+### Implementation references
+
+| File | Focus |
+| --- | --- |
+| [impl/README.md](impl/README.md) | Layer definition, authority boundary, candidate test, and reference shape |
+| [impl/cicd-delivery.md](impl/cicd-delivery.md) | Branch-to-production CI/CD composition with application, IaC, database, and rendered-configuration variants |
 
 ### Extended principles
 

@@ -1,6 +1,6 @@
 # TL;DR And Minimum Viable Doctrine
 
-Use this page when the library feels too large. The compact constitution is [ENGINEERING.md](../ENGINEERING.md); canonical detail lives in the linked principles and patterns. This page owns two things: the first adoption slice, and a one-line human-readable glance at every principle file (at the end of this page). It owns no obligation; every line here is a signpost to the file that does.
+Use this page when the library feels too large. The compact constitution is [ENGINEERING.md](../ENGINEERING.md); canonical detail lives in the linked principles and patterns, while [implementation references](impl/README.md) show common operating shapes without owning requirements. This page owns two things: the first adoption slice, and a one-line human-readable glance at every principle file (at the end of this page). It owns no obligation; every line here is a signpost to the file that does.
 
 ## The Shape In One Minute
 
@@ -44,6 +44,7 @@ Profiles compose. Use the stricter applicable control on shared scope and keep l
 
 - Adoption sequence and troubleshooting: [adoption-playbook.md](patterns/adoption-playbook.md)
 - Semantic task routing: [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
+- Normal implementation shapes: [impl/README.md](impl/README.md), beginning with [CI/CD delivery](impl/cicd-delivery.md)
 - Build and collaboration readiness: [build-readiness.md](checklists/build-readiness.md), [collaboration-readiness.md](checklists/collaboration-readiness.md)
 - Developer experience: [developer-experience-scorecard.md](checklists/developer-experience-scorecard.md)
 - AI-native delivery: [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md), [ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md)
@@ -54,7 +55,7 @@ Profiles compose. Use the stricter applicable control on shared scope and keep l
 
 One line per principle file, written for a human deciding what to open. These lines are signposts, not rules: they carry no normative strength, and where a line and its file disagree the file wins and the line is a defect to fix. Each link uses the file's own title. Every active file under `principles/` appears here exactly once; a file carrying a deprecation or supersession banner drops out, and `scripts/check-principles-glance.sh` enforces both.
 
-Start with [Timeless Principles And Replaceable Tooling](principles/timeless-principles-and-tooling.md). It explains the split the rest of the library assumes: principles say what must stay true, tooling shows one way to do it today.
+Start with [Timeless Principles, Reference Implementations, And Replaceable Tooling](principles/timeless-principles-and-tooling.md). It explains the split the rest of the library assumes: principles say what must stay true, implementation references compose the normal shape, and tooling shows one way to realise it today.
 
 ### How Change Lands
 

@@ -10,10 +10,11 @@ Use this page when onboarding to the repository or deciding **what to adopt** in
 2. **`doctrine/SEMANTIC_INDEX.md`** — **Route map**: task intent to the source files an agent or reader should ingest. It is navigation, not authority over the linked files. [`doctrine/DEPRECATED.md`](../DEPRECATED.md) is the companion **lifecycle register**: what is scheduled for removal, what has exited, and what the sweeps decided.
 3. **`doctrine/principles/`** — **Durable topic authority**: platform-agnostic outcomes, constraints, and trade-offs, with rationale and references. Prefer citing these when embedding doctrine in another repo.
 4. **`doctrine/patterns/`** — **Compositional and conditional guidance**: how principles fit together in an operating model. A pattern's scoped obligations activate only when its applicability conditions are met.
-5. **`doctrine/checklists/`** — **Derived review surfaces**: questions and evidence prompts for applicable principles and patterns. A checklist is not the sole authority for a new obligation.
+5. **`doctrine/impl/`** — **Implementation-neutral reference implementations**: concise normal shapes composed from principles and patterns. They create no new requirements; if one conflicts with a canonical principle or owning pattern, the reference is defective.
 6. **`doctrine/tooling/`** — **Illustrative** stacks, filenames, and implementation options. Swap freely while preserving the applicable outcomes and contracts.
 7. **`doctrine/tooling/estates/`** — **Optional** organisation/cloud supplements. Never copy estate content into portable principles without generalising.
-8. **`doctrine/evolution/`** — **Non-normative evidence and history**: research, audits, and change rationale. Use it when investigating why, not as default operating authority.
+8. **`doctrine/checklists/`** — **Derived review surfaces**: questions and evidence prompts for applicable principles and patterns. A checklist is not the sole authority for a new obligation.
+9. **`doctrine/evolution/`** — **Non-normative evidence and history**: research, audits, and change rationale. Use it when investigating why, not as default operating authority.
 
 Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md)** explains why the split exists.
 
@@ -66,9 +67,10 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
   authority and revision rules. Use
   [revision-pinned-control-profiles.md](revision-pinned-control-profiles.md);
   this library cannot grant an exception from an external obligation.
-- Patterns are authoritative for their activated operating model; checklists
-  derive review questions; tooling and examples do not override principles or
-  activated patterns; evolution notes never create an obligation by themselves.
+- Patterns are authoritative for their activated operating model. Implementation
+  references only compose canonical owners; checklists derive review questions;
+  tooling and examples do not override principles or activated patterns;
+  evolution notes never create an obligation by themselves.
 - For merge-path invariants, [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md)
   owns the detailed controlled-channel and evidence requirements. Any broader
   build wording must remain compatible with it.

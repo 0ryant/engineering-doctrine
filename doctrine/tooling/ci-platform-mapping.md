@@ -1,6 +1,6 @@
 # CI Platform Mapping (Examples)
 
-Illustrative mappings from **abstract delivery surfaces** in `ENGINEERING.md` (quality gate, build/publish, deploy, verify) to **example** CI products. Paths such as `.pipelines/*.yaml` are **one** convention among many.
+Illustrative mappings from the implementation-neutral [CI/CD Delivery](../impl/cicd-delivery.md) reference and its **abstract delivery surfaces** (quality gate, build/publish, deploy, verify) to **example** CI products. Paths such as `.pipelines/*.yaml` are **one** convention among many.
 
 The **invariants** are the surfaces themselves, not the vendor.
 

@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-06 16:02 UTC
+Generated: 2026-09-14 14:06 UTC
 
 ## All Markdown files
 
@@ -44,6 +44,7 @@ Generated: 2026-09-06 16:02 UTC
 - [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md)
+- [evolution/research-implementation-reference-layer-2026-09.md](evolution/research-implementation-reference-layer-2026-09.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md)
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md)
@@ -54,6 +55,8 @@ Generated: 2026-09-06 16:02 UTC
 - [evolution/sweep-2026-09.md](evolution/sweep-2026-09.md)
 - [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md)
 - [glossary.md](glossary.md)
+- [impl/README.md](impl/README.md)
+- [impl/cicd-delivery.md](impl/cicd-delivery.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)

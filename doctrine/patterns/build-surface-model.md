@@ -2,6 +2,8 @@
 
 Use this model to design a repo's build and delivery flow without coupling the design to one CI system or one language stack.
 
+For the concise branch-to-production composition, start with [CI/CD Delivery](../impl/cicd-delivery.md); return here for delivery-unit shapes and surface mechanics.
+
 The **Typical entrypoint** column often shows `.pipelines/*.yaml` as **one** template—**swap** for `.github/workflows/`, `.gitlab-ci.yml`, or your standard; keep the **layer meaning**.
 
 ---

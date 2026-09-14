@@ -76,7 +76,7 @@ while IFS= read -r link; do
   name="$(printf '%s' "$link" | sed -E 's|.*\]\(principles/([^)]+)\)|\1|')"
   path="$PRINCIPLES/$name"
   [[ -f "$path" ]] || continue
-  h1="$(grep -m1 -E '^# ' "$path" | sed -E 's|^# ||; s| \([^)]*\)$||')"
+  h1="$(grep -m1 -E '^# ' "$path" | tr -d '\r' | sed -E 's|^# ||; s| \([^)]*\)$||')"
   if [[ "$text" != "$h1" ]]; then
     echo "error: glance link text does not match the file title:" >&2
     echo "  $name" >&2

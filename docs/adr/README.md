@@ -68,6 +68,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0045](0045-execute-the-first-lifecycle-sweep.md) | Accepted | 2026-09-03 | Execute the first lifecycle sweep (standalone) — ADR 0021 accepted and landed as the executor preflight clause; feature-flag-lifecycle superseded by feature-flag-governance; AWS and GCP estate stubs deprecated; first dying-table and sweep-ledger rows; banners stamp at the next tag |
 | [0046](0046-retire-private-vocabulary-where-a-standard-term-exists.md) | Proposed | — | Retire private vocabulary where a standard term exists — four single-file coinages retired now (editorial); enactment / mandate class / closure mode proposed to ride with ADR 0047; estate, materiality, candidate, governed execution, run contract, verifier pack kept with stated rationale |
 | [0047](0047-separate-maintainer-doctrine-and-collapse-the-ai-native-sdlc.md) | Proposed | — | Separate maintainer doctrine (lifecycle, source grading, change harness, versioning, the two registers) into `doctrine/maintainers/` out of the consumer path; collapse the AI-native SDLC to its seven gates plus a crosswalk; publish the normative-vs-meta word ratio each sweep |
+| [0048](0048-add-implementation-reference-layer.md) | Accepted | 2026-09-14 | Add `doctrine/impl/` as a non-authoritative composition layer and land CI/CD delivery as its first reference |
 
 ## Candidate Considered But Not Recorded
 
