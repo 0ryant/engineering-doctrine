@@ -16,6 +16,7 @@ set -euo pipefail
 
 TSLOP_BIN="${TSLOP_BIN:-tslop}"
 ZERO="0000000000000000000000000000000000000000"
+REMOTE_NAME="${1:-origin}"
 
 if ! command -v "$TSLOP_BIN" >/dev/null 2>&1 && [ ! -x "$TSLOP_BIN" ]; then
   echo "tslop: '$TSLOP_BIN' not found on PATH; skipping." >&2
@@ -29,9 +30,29 @@ while read -r _local_ref local_sha _remote_ref remote_sha; do
 
   bound=()
   if [ "$remote_sha" = "$ZERO" ]; then
-    # New branch: bound it, or pushing a long-lived branch re-audits all history.
-    range="$local_sha"
-    bound=(--max-commits "${TSLOP_PUSH_MAX:-200}")
+    # New branch: start after the nearest commit shared with any known ref on
+    # this remote. This checks only outgoing history instead of re-auditing old
+    # commits already reachable from the remote.
+    base=""
+    best_distance=""
+    while IFS= read -r remote_tracking_ref; do
+      [ -z "$remote_tracking_ref" ] && continue
+      merge_base="$(git merge-base "$local_sha" "$remote_tracking_ref" 2>/dev/null || true)"
+      [ -z "$merge_base" ] && continue
+      distance="$(git rev-list --count "$merge_base..$local_sha")"
+      if [ -z "$best_distance" ] || [ "$distance" -lt "$best_distance" ]; then
+        base="$merge_base"
+        best_distance="$distance"
+      fi
+    done < <(git for-each-ref --format='%(refname)' "refs/remotes/$REMOTE_NAME/")
+
+    if [ -n "$base" ]; then
+      range="$base..$local_sha"
+    else
+      # No local knowledge of the remote history: retain the bounded fallback.
+      range="$local_sha"
+      bound=(--max-commits "${TSLOP_PUSH_MAX:-200}")
+    fi
   else
     range="$remote_sha..$local_sha"
   fi
