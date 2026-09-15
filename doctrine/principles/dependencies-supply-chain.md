@@ -25,7 +25,7 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 | **Medium** | **30 calendar days** or next **scheduled** maintenance window (whichever is sooner) |
 | **Low** | Next **regular** dependency cadence (e.g. weekly/biweekly bot merge) |
 
-- **Known-exploited and triage order** — when a component matches [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) (or your estate’s equivalent **weaponisation** feed), treat it as **highest** urgency regardless of “ordinary” severity tables; use [FIRST EPSS](https://www.first.org/epss/user-guide) and asset context to **rank** non-KEV backlog, not to **ignore** KEV.
+- **Known-exploited and triage order** — when a component matches [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) (or your estate’s equivalent **weaponisation** feed), treat it as **highest** urgency regardless of “ordinary” severity tables; use [FIRST EPSS](https://www.first.org/epss/) and asset context to **rank** non-KEV backlog, not to **ignore** KEV.
 - **Protocol dependencies with published lifecycles** — when a protocol adopted under [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) publishes a deprecation policy (for example **MCP**'s minimum **twelve-month** deprecation window — [2026-07-28 changelog](https://modelcontextprotocol.io/specification/2026-07-28/changelog)), treat announced deprecations as **update-cadence inputs**: schedule migration off deprecated features **inside** the publisher's window against the pinned revision in the profile record — not as an emergency when removal ships.
 
 **Why:** Outdated dependencies are a **known** attack surface; automation reduces toil and inconsistency across repos. **Named SLAs** prevent “we’ll get to it” drift without pretending every CVE is equal.
@@ -148,7 +148,7 @@ A third-party **model artifact** (weights, checkpoints, adapters, tokenizers) or
 - **SLSA** Getting Started guide: https://slsa.dev/get-started
 - **Sigstore** — keyless signing and transparency: https://www.sigstore.dev/
 - **CycloneDX** — SBOM and VEX standard: https://cyclonedx.org/
-- EU **Cyber Resilience Act** (CRA) — SBOM and vulnerability disclosure obligations: https://www.european-parliament.europa.eu/doceo/document/TA-9-2024-0130_EN.pdf
+- EU **Cyber Resilience Act** (CRA) — SBOM and vulnerability disclosure obligations: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
 - OpenSSF **Supply-chain attacks** (awareness): https://openssf.org/
 - Spracklen et al. — **package hallucinations by code-generating LLMs** (USENIX Security 2025; 2024 model cohort): https://arxiv.org/abs/2406.10279
 - Churilov — **2026 frontier-cohort replication** (cross-model-identical hallucinated names remain registrable): https://arxiv.org/abs/2605.17062

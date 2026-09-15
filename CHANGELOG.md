@@ -6,7 +6,17 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-14
+
+**Progressive-disclosure and doctrine-integrity release.** This release adds the implementation-reference layer, with engineer-facing CI/CD and testing compositions; establishes the agent-facing consumption contract and doctrine lifecycle; and lands the post-v0.4.0 evidence, governance, graph-decomposition, correction, and navigation work recorded below.
+
+**Change classes:** additive implementation guidance and navigation; normative additions for agent consumption, method records, content lifecycle, evidence grading, and graph decomposition; editorial simplification; corrections; and deprecation activation. **Consumer impact:** existing controls are not weakened. Consumers should route common delivery questions through `impl/`, review the new normative ADRs where their adoption surface applies, and stop citing the three deprecated files. **Migration:** use `patterns/feature-flag-governance.md` instead of `patterns/feature-flag-lifecycle.md`; use `tooling/estates/TEMPLATE.md` instead of the unowned AWS/GCP stubs. **Compatibility:** pre-1.0 minor; pin `v0.5.0` for this contract snapshot.
+
+**Evidence:** each structural or normative change has a carrying ADR and evolution record; the `v0.5.0` release-coupled lifecycle sweep re-read all 34 principle summaries, checked ADR and exception clocks, activated the scheduled deprecations, and completed the reference-status leg. The tagged revision must pass doctrine preflight, contract validation, tracked Markdown link validation, style checks, and clean-diff checks before publication.
+
 ### Added
+
+- **Implementation references** ([ADR 0048](docs/adr/0048-add-implementation-reference-layer.md)): `doctrine/impl/` is a first-class, implementation-neutral composition layer. [cicd-delivery.md](doctrine/impl/cicd-delivery.md) and [testing-and-verification.md](doctrine/impl/testing-and-verification.md) give engineers the normal operating shape while routing obligations to canonical principles and patterns. The layer contract now applies activity, compression, no-new-doctrine, traceability, variation, and usefulness tests; “compiled view of doctrine” is the internal mental model, not a new authority label.
 
 - **Every principle at a glance** ([ADR 0029](docs/adr/0029-adopt-a-compact-non-duplicative-core-constitution.md), amended 2026-09-06): [tldr-principles-and-mvp.md](doctrine/tldr-principles-and-mvp.md) closes with one non-normative, human-readable line per active file under `doctrine/principles/`, grouped by theme and titled by the file's own H1; `doctrine/README.md` keeps a bare grouped inventory and drops its two hand-annotated principle lists; `scripts/check-principles-glance.sh` (preflight and CI) fails on a missing row, a dead or deprecated target, a duplicate, a title mismatch, or a README omission. Change class: navigation.
 - [scorecard-four-reader-lenses-2026-09.md](doctrine/evolution/scorecard-four-reader-lenses-2026-09.md) — the library scored through four reader lenses (engineering manager, CIO, security engineer, non-technical sponsor): every score file-cited, per-lens adopt verdicts, cross-lens agreement (the new AI and pipeline stratum scores highest, the older core and the entry path lowest), and a seven-row fix list led by the live SLSA hermeticity defect (M16) and the duplicate AWS bulletin identifier. Model self-review. Indexed in doctrine README, SITEMAP, SEMANTIC_INDEX, and REFERENCES.
@@ -16,14 +26,23 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ### Changed
 
+- **Testing composition compressed:** the testing reference now centres on evidence placement and delivery surfaces, keeps the application and infrastructure placement matrices, and routes specialist detail to canonical owners or future activity-specific references. It remains broader than the preferred 500–1,500-word exemplar range only where the cross-surface comparison requires it.
+- **Active authority locations refreshed:** moved FIRST EPSS, ICO DPIA, Sigstore, OpenTelemetry, COSO, CRA, Europol, DFARS, and Saga references now point to live sources. Federal Reserve SR 26-2 replaces superseded SR 11-7 on active surfaces while preserving historical records.
 - **Editorial register pass**: bold markers stripped from the 22 principle and pattern files above 90 bold pairs per 1,000 words; no wording changed (verified by script).
 - **Review provenance labelled**: ADRs that cited agent council review now carry a line stating it was model self-review; `docs/adr/README.md` explains the convention.
 - Six private coinages retired from normative text (membrane, typed denial, loud-not-silent, house law) in favour of plain terms; vendor host names removed from verifier-kind descriptions; the memory truth-ceiling levels in the run-contract schema are now explained.
 
 ### Fixed
 
+- **v0.5.0 release integrity:** the release-coupled lifecycle sweep activated the three scheduled deprecations, verified their replacements, checked Proposed ADR and evidence-exception clocks, and recorded the bounded full-corpus reference-status result.
+
 - **v0.5.0 correction batch** ([ADR 0036](docs/adr/0036-land-v050-correction-batch-from-the-corpus-review.md), from the [full-corpus review](doctrine/evolution/research-full-corpus-council-review-2026-08.md)): **B2** — burn-rate YAML corrected (all four windows' recording rules authored; `sum by (job)` throughout) and relocated to [tooling/observability.md](doctrine/tooling/observability.md) with the principle's §6 gaining typed **SHOULD/MAY** applicability (M20/M21); **B1 interim** — [feature-flag-lifecycle.md](doctrine/patterns/feature-flag-lifecycle.md) FSM contradiction resolved (`stabilize → active` permitted with recorded reason; freeze narrowed to `cleanup`; full supersession stays with V45/D12); **M7–M9** — verifier-kind/key counts made count-free with the schema declared authoritative, and the priming example replaced with a schema-validating pack; **M15** — twelve rotted umbrella `ENGINEERING.md` references repointed and the compatibility note updated to v0.4.0; **M3/M4/M6** — AI inventory gains the **financial/transaction-authority** row, checklists gain default-deny, adaptive agent-hijack, synthetic-media, and **memory-lifecycle** items; README lists four previously omitted first-class files; SEMANTIC_INDEX gains the cost-governance route.
 - **MCP cross-check correction batch** ([ADR 0037](docs/adr/0037-land-mcp-cross-check-correction-batch.md), from the [MCP spec cross-check](doctrine/evolution/research-mcp-spec-cross-check-2026-08.md)): NSA AISC MCP CSI date converged on the verified **2026-05-20** across the corpus; gap-audit §2.9 rows repointed from the release-candidate to the **final** 2026-07-28 announcement with the unenumerated "six auth hardening changes" replaced by the verifiable enumeration (RFC 9207 / CIMD / issuer-keyed credentials / application_type) and the external-IdP descriptor re-attributed as doctrine tightening; the April note's Agentic AI Foundation hedge resolved with the confirmed **2025-12-09** donation; **CIMD** acronym expanded with its citation split (introduced 2025-11-25, SEP-991; DCR deprecated 2026-07-28) in [ai-ml-systems.md](doctrine/principles/ai-ml-systems.md) §7; contracts-fixture grammar fix.
+
+### Deprecated
+
+- [patterns/feature-flag-lifecycle.md](doctrine/patterns/feature-flag-lifecycle.md) is deprecated since `v0.5.0`; use [patterns/feature-flag-governance.md](doctrine/patterns/feature-flag-governance.md).
+- The unowned [AWS](doctrine/tooling/estates/aws-container-runtimes.md) and [GCP](doctrine/tooling/estates/gcp-container-runtimes.md) container-runtime stubs are deprecated since `v0.5.0`; start from [tooling/estates/TEMPLATE.md](doctrine/tooling/estates/TEMPLATE.md).
 
 ### Added
 

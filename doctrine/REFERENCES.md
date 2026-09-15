@@ -98,7 +98,7 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | NIST — SP 800-171 Rev. 2, January 2021 update (withdrawn; use only where a governing obligation pins it) | https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final |
 | NIST — SP 800-172 Rev. 3, enhanced requirements for CUI associated with critical programmes and high-value assets | https://csrc.nist.gov/pubs/sp/800/172/r3/final |
 | NARA — Controlled Unclassified Information programme and Registry | https://www.archives.gov/cui |
-| U.S. Department of Defense — DFARS 252.204-7012 | https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting. |
+| U.S. Department of Defense — DFARS 252.204-7012 | https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting |
 | ISO/IEC 27002:2022 — information security controls (incl. technical vulnerability management) | https://www.iso.org/standard/75652.html |
 
 ---
@@ -131,7 +131,7 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | SLSA (supply-chain levels) | https://slsa.dev/ |
 | SLSA Getting Started | https://slsa.dev/get-started |
 | Sigstore — keyless signing | https://www.sigstore.dev/ |
-| EU Cyber Resilience Act (SBOM / vuln disclosure) | https://www.european-parliament.europa.eu/doceo/document/TA-9-2024-0130_EN.pdf |
+| EU Cyber Resilience Act (SBOM / vuln disclosure) | https://eur-lex.europa.eu/eli/reg/2024/2847/oj |
 | OWASP ASVS (application verification) | https://owasp.org/www-project-application-security-verification-standard/ |
 
 - Google SRE Workbook, **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/
@@ -351,7 +351,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | NIST AI RMF 1.0 (GOVERN 1.6 inventory; Map/Measure/Manage) | https://www.nist.gov/itl/ai-risk-management-framework |
 | NIST AI RMF Playbook — GOVERN | https://airc.nist.gov/airmf-resources/playbook/govern/ |
 | NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
-| Federal Reserve SR 11-7 — model risk management, effective challenge | https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm |
+| Federal Reserve SR 26-2 — revised model risk management guidance, effective challenge | https://www.federalreserve.gov/frrs/guidance/supervisory-guidance-on-model-risk-management.htm |
 | PRA SS1/23 — model risk management principles (inventory + tiering, independent validation) | https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss |
 | EU AI Act — Regulation (EU) 2024/1689 — Art 4 literacy, Art 12 logging, Art 14 human oversight, Art 15 lifecycle accuracy, Art 26 deployers, Art 50 transparency | Canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/ |
 | EU AI Act Art 50 — transparency obligations (interaction disclosure, machine-readable marking, deepfake labelling; applies 2026-08-02) | Canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/article/50/ |
@@ -369,7 +369,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | UK AISI Inspect — evaluation harness | https://inspect.aisi.org.uk/ |
 | NCSC — impact of AI on the cyber threat | https://www.ncsc.gov.uk/report/impact-of-ai-on-cyber-threat |
 | FinCEN FIN-2024-Alert004 — deepfake fraud targeting financial institutions | https://www.fincen.gov/system/files/shared/FinCEN-Alert-DeepFakes-Alert508FINAL.pdf |
-| Europol — deepfakes and law enforcement | https://www.europol.europa.eu/publications-events/publications/facing-reality-law-enforcement-and-challenge-of-deepfakes |
+| Europol — Internet Organised Crime Threat Assessment 2024 | https://www.europol.europa.eu/publication-events/main-reports/internet-organised-crime-threat-assessment-iocta-2024 |
 
 ---
 
@@ -505,7 +505,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) | Idempotency patterns |
 | [patterns/rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) | RAG retrieval: hybrid search, eval, privacy/security baseline, graph-augmented retrieval (§7) |
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level governance programme for merge-path / supply-chain controls (CSF 2.0 Govern / GV.SC) |
-| [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) | AI adoption operating model: inventory + materiality, ownership + effective challenge, harm-surface test matrix, provider continuity, role-based literacy (NIST AI RMF / SR 11-7 / SS1/23 / DORA / AI Act–cited) |
+| [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) | AI adoption operating model: inventory + materiality, ownership + effective challenge, harm-surface test matrix, provider continuity, role-based literacy (NIST AI RMF / SR 26-2 / SS1/23 / DORA / AI Act–cited) |
 | [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) | AI-native SDLC: seven gates, five record families, governed execution, typed claims, candidate-bound authority, bounded enactment, and three closure modes |
 | [patterns/outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md) | Optional strategic objective/measure/intervention/outcome overlay with attribution limits and continue/change/stop decisions |
 | [patterns/feature-flag-governance.md](patterns/feature-flag-governance.md) | Feature-flag governance: taxonomy, lifetimes, complete lifecycle state machine, progressive delivery, cleanup; supersedes feature-flag-lifecycle.md (ADR 0045) |

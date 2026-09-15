@@ -111,7 +111,7 @@ These are **four** separable obligations; teams may comply with **one** without 
 - ICO (UK) overview of **data minimisation** (principle): https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/principles/data-minimisation/  
 - GDPR **Article 5** principles (lawful basis, minimisation, storage limitation): official EUR-Lex text for EU law.  
 - NIST **Privacy Framework** (organisational privacy risk): https://www.nist.gov/privacy-framework  
-- ICO (UK) — **Data protection impact assessments (DPIAs)**: https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-lawful-basis/accountability-and-governance/data-protection-impact-assessments-dpias/  
+- ICO (UK) — **Data protection impact assessments (DPIAs)**: https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/
 - NIST **SP 800-218A** — SSDF community profile for **AI** systems (see SSDF project / news on csrc.nist.gov): https://csrc.nist.gov/Projects/ssdf  
 - EU AI Act **Article 50** — transparency obligations for providers and deployers (applies 2026-08-02) — canonical: Regulation (EU) 2024/1689, ELI: http://data.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/article/50/  
 - European Commission — **Guidelines on transparency obligations** for providers and deployers of AI systems (2026-07-20): https://digital-strategy.ec.europa.eu/en/news/commission-publishes-guidelines-transparency-obligations-providers-and-deployers-certain-ai-systems  

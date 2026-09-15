@@ -28,7 +28,9 @@ Add `doctrine/impl/` as a first-class layer between patterns and tooling:
 - is defective when it conflicts with a canonical owner; and
 - does not become a second source of truth for an underlying requirement.
 
-The normal candidate test is a common engineering activity for which a reader needs at least three canonical files to recover a useful operating shape. References target roughly 500–1,500 words and a two-to-five-minute scan, with exceptions only where the implementation genuinely needs more space.
+The normal candidate test is a common engineering activity for which a reader needs several canonical files to recover a useful operating shape. References target roughly 500–1,500 words and a two-to-five-minute scan, with exceptions only where the implementation genuinely needs more space.
+
+The contract was refined on 2026-09-14 after reviewing the first two references. `impl/README.md` now makes three decisive tests explicit: the file names an activity engineers perform, compresses a model distributed across canonical owners, and creates no obligation that would disappear if the reference were deleted. The internal mental model is a **compiled view of doctrine**: composition can select and simplify source semantics but cannot invent them. Traceability, variation, and practical-use tests complete the admission check.
 
 Land `doctrine/impl/cicd-delivery.md` as the first exemplar. It composes the branch-to-production flow and distinguishes unchanged application-artefact promotion from environment-specific infrastructure plans, stateful database changes, and rendered configuration.
 
@@ -75,7 +77,7 @@ Costs and risks:
 - “normal” can be misread as universal when applicability is omitted; and
 - low-value thin references could accumulate.
 
-Mitigations are canonical-owner precedence, mandatory bottom-of-file owner links, the candidate test, the concise document shape, normal lifecycle sweeps, and review for duplicated normative language.
+Mitigations are canonical-owner precedence, mandatory bottom-of-file owner links, the contract tests, the concise document shape, normal lifecycle sweeps, and review for duplicated normative language.
 
 ## Evidence
 

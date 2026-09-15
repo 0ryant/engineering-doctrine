@@ -62,7 +62,7 @@ The profile may live in a GRC system, repository, contract register, service cat
 | --- | --- |
 | New or renewed scope whose authority source permits the current NIST baseline | Adopt Rev. 3, resolve its organisation-defined parameters and tailoring, and assess using Rev. 3-compatible procedures. |
 | Existing agreement explicitly pins Rev. 2 | Preserve Rev. 2 as the binding profile and use the assessment method named by that agreement; create a separate Rev. 3 migration record. |
-| Agreement says the edition effective at solicitation/award | Record that date and edition as evidence. For example, current [DFARS 252.204-7012](https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting.) uses the edition effective when the solicitation was issued or one authorised by the contracting officer. |
+| Agreement says the edition effective at solicitation/award | Record that date and edition as evidence. For example, current [DFARS 252.204-7012](https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting) uses the edition effective when the solicitation was issued or one authorised by the contracting officer. |
 | Authority source or version is ambiguous | Mark the profile unresolved and obtain an accountable interpretation; do not assert compliance or choose the convenient revision. |
 | Critical programme or high-value asset requires enhanced APT protection | Evaluate a separately authorised [SP 800-172 Rev. 3](https://csrc.nist.gov/pubs/sp/800/172/r3/final) profile; do not silently treat it as part of the ordinary 800-171 baseline. |
 
@@ -156,4 +156,4 @@ Pilot one real boundary and one failed or inconclusive assessment path before sc
 - NIST SP 800-171 Rev. 2, January 2021 update (withdrawn by NIST; retained here for revision-pinned obligations): https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final
 - NIST announcement and Rev. 3 change summary: https://csrc.nist.gov/News/2024/updated-security-requirements-for-protecting-cui
 - NARA CUI programme and Registry: https://www.archives.gov/cui
-- DFARS 252.204-7012: https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting.
+- DFARS 252.204-7012: https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting

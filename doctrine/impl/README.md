@@ -6,6 +6,8 @@ Use this directory when you know the engineering activity and need its normal op
 
 If an implementation reference conflicts with a canonical principle or owning pattern, the canonical owner wins and the implementation reference is defective.
 
+Think of an implementation reference as a **compiled view of doctrine**. Principles and patterns are the source semantics; `impl/` selects, composes, and simplifies them for use. A compiled view may improve usability, but it cannot invent semantics or become the source of an obligation.
+
 ## Place In The Library
 
 ```mermaid
@@ -32,17 +34,18 @@ It must not invent an obligation. If the normal shape needs a requirement that n
 
 Implementation references do not replace the nuance, trade-offs, failure modes, or applicability rules in patterns. They do not contain vendor mappings, and they do not turn verification prompts into authority.
 
-## Candidate Test
+## Contract Tests
 
-Consider a new implementation reference when all of these are true:
+Use these tests before adding or materially expanding a reference:
 
-1. The subject is a common engineering activity.
-2. A reader currently needs three or more canonical files to reconstruct its normal shape.
-3. A useful flow, lifecycle, state model, or compact composition exists.
-4. The composition can be written without creating or strengthening requirements.
-5. An engineer would plausibly use it during delivery work.
+1. **Activity test:** it describes something engineers do and answers a practical question. Name the file for that activity rather than a broad subject area.
+2. **Compression test:** it saves the reader from reconstructing one operating model from several canonical owners. If one canonical file already provides the same model, link to it instead.
+3. **No-new-doctrine test:** deleting the reference would remove no engineering obligation. If an obligation disappears, the reference accidentally became authoritative.
+4. **Traceability test:** every material invariant maps to a named canonical principle or owning pattern.
+5. **Variation test:** the normal shape remains product-neutral and preserves legitimate alternatives, applicability conditions, and boundaries.
+6. **Usefulness test:** after a short read, a competent engineer knows the normal sequence, meaningful variations, expected evidence, and where to go deeper.
 
-If the subject is owned adequately by one principle or pattern, link to that owner instead of adding a thin reference.
+A useful flow, lifecycle, state model, evidence chain, or compact decision shape is normally the compression mechanism. Review every substantial section by asking whether it is implementation composition or content that belongs in a principle, pattern, tooling guide, checklist, or research note.
 
 ## Normal Document Shape
 
@@ -60,7 +63,7 @@ Most references should be roughly 500–1,500 words and optimised for a two-to-f
 ## Canonical doctrine
 ```
 
-The final section always identifies the principles and patterns being composed, plus relevant tooling and checklists. Longer references need a genuine implementation reason; research, duplicated rationale, exhaustive product matrices, and embedded mega-checklists belong elsewhere.
+The final section always identifies the principles and patterns being composed, plus relevant tooling and checklists. Longer references need a genuine implementation reason and should not become exemplars for future size. Research, duplicated rationale, specialist mini-guides, exhaustive product matrices, and embedded mega-checklists belong elsewhere.
 
 ## Available References
 

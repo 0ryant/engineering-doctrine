@@ -1,6 +1,6 @@
 # Feature Flag Lifecycle
 
-> **Scheduled for deprecation** ([ADR 0045](../../docs/adr/0045-execute-the-first-lifecycle-sweep.md), verdict recorded 2026-09-03): this file is superseded by [feature-flag-governance.md](feature-flag-governance.md), which carries the complete state machine and typed claims. The Deprecated banner takes effect at the next tagged release; earliest removal is the release after that. Cite the replacement. This file is frozen: its text and citations are not edited further (lifecycle §8).
+> **Deprecated since v0.5.0** ([ADR 0045](../../docs/adr/0045-execute-the-first-lifecycle-sweep.md)): this file is superseded by [feature-flag-governance.md](feature-flag-governance.md), which carries the complete state machine and typed claims. Earliest removal is the release after v0.5.0. Cite the replacement. This file is frozen: its text and citations are not edited further (lifecycle §8).
 
 Durable rules for **creating, operating, and retiring feature flags** so progressive delivery is safe, observable, and free of technical debt.
 

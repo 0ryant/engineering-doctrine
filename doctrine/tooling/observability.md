@@ -161,6 +161,6 @@ Illustrative mapping for the **per-call minimum signal set** in [../principles/o
 
 - OpenTelemetry — **Deploy the Collector**: https://opentelemetry.io/docs/collector/deployment/  
 - OpenTelemetry — **Scaling the Collector**: https://opentelemetry.io/docs/collector/scaling/  
-- OpenTelemetry — **Collector hosting best practices** (security): https://opentelemetry.io/docs/security/collector-hosting/  
+- OpenTelemetry — **Collector hosting best practices** (security): https://opentelemetry.io/docs/security/hosting-best-practices/
 - OpenTelemetry — **Semantic Conventions**: https://opentelemetry.io/docs/specs/semconv/  - Google SRE Workbook — **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/  
 - OpenTelemetry — **GenAI semantic conventions** (dedicated repository; **Development** stability — pin the version you adopt): https://github.com/open-telemetry/semantic-conventions-genai  

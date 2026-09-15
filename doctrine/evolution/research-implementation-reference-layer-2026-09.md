@@ -73,7 +73,7 @@ These candidates pass an initial repository-level screen: each is a common activ
 | 1 | `service-api.md` | How should one service expose functionality to another? | API security, errors, identity, observability, versioning, idempotency | Strong candidate |
 | 2 | `workload-identity-and-secrets.md` | How does an application obtain credentials safely? | Workload identity, configuration/secrets, audit, merge-path integrity | Strong candidate |
 | 3 | `database-migration.md` | How is schema or data changed safely? | Data/migrations, idempotency, failure modes, reliability, observability | Strong candidate |
-| 4 | `observability.md` | What telemetry should a normal service expose? | Observability, reliability/SLOs, incident operations, audit boundaries | Strong candidate; keep telemetry conditionality explicit |
+| 4 | `service-observability.md` | How is a service instrumented and its telemetry verified? | Observability, reliability/SLOs, incident operations, audit boundaries | Strong candidate; keep telemetry conditionality explicit |
 | 5 | `application-deployment.md` | What does a production-ready application deployment look like? | Build, configuration, identity, health, recovery, observability | Strong candidate |
 | 6 | `infrastructure-delivery.md` | How should infrastructure changes move through environments? | GitOps, build surfaces, merge-path integrity, collaboration, source authority | Strong candidate; do not force binary promotion semantics |
 | 7 | `release-and-rollback.md` | How are releases exposed, verified, and recovered? | Candidate identity, feature flags, reliability, collaboration, release readiness | Strong candidate |
@@ -83,6 +83,16 @@ These candidates pass an initial repository-level screen: each is a common activ
 | 11 | `privileged-automation.md` | What rules apply when automation can mutate real systems? | Merge-path integrity, workload identity, audit, run contracts, review/approval | Strong candidate; applicability must distinguish ordinary assistance from governed execution |
 
 The first implementation sequence should favour narrow, frequently used flows before `new-service.md`, whose breadth makes it most likely to become a framework or duplicate a checklist.
+
+## Post-Exemplar Contract Refinement
+
+Review of the first two references exposed two predictable failure modes: broad nouns invite subject handbooks, and a useful cross-cutting reference can absorb specialist operating models that future siblings should own. The layer contract therefore gained three decisive tests:
+
+- **Activity:** name and frame an activity engineers perform.
+- **Compression:** earn the page by composing a model distributed across several owners.
+- **No new doctrine:** deleting the reference removes no obligation.
+
+“Compiled view of doctrine” is the internal mental model, not a new formal layer name. It distinguishes source semantics in principles and patterns from a derived, usability-oriented view. The testing reference remains an admitted exception to the normal size target, but its specialist explanations were compressed so its spine is evidence placement across delivery surfaces. Future infrastructure, migration, identity, and observability references should absorb their own operating detail rather than repeat it.
 
 ## Consumer Impact
 

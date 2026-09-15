@@ -53,7 +53,7 @@ OWASP’s CI/CD risk work and field surveys (e.g. Filippo Valsorda’s 2024/2025
 - OWASP — **Top 10 CI/CD Security Risks**: https://owasp.org/www-project-top-10-ci-cd-security-risks/  
 - **Filippo Valsorda** — compromise survey: https://words.filippo.io/compromise-survey/  
 - **SLSA** — Build track: https://slsa.dev/spec/v1.2/  
-- **Sigstore** — **cosign** signing: https://docs.sigstore.dev/cosign/overview/  
+- **Sigstore** — **cosign** signing: https://docs.sigstore.dev/cosign/signing/overview/
 - **SPDX** / **CycloneDX** — SBOM interchange: https://spdx.dev/ , https://cyclonedx.org/  
 - **CISA SBOM** hub: https://www.cisa.gov/sbom  
 - **OpenSSF Scorecard** (automation health signals for OSS repos—illustrative metrics source): https://scorecard.dev/  

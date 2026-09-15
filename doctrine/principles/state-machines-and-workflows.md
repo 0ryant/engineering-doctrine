@@ -96,5 +96,5 @@ Requirements are tiered so teams can adopt timeouts before full saga documentati
 - Enterprise Integration Patterns — Message, Idempotent Receiver, Dead Letter Channel: https://www.enterpriseintegrationpatterns.com/patterns/messaging/  
 - CloudEvents (envelope at boundaries): https://github.com/cloudevents/spec  
 - Martin Fowler — Event Sourcing (state from history, optimistic concurrency, rebuild): https://martinfowler.com/eaaDev/EventSourcing.html  
-- Martin Fowler — Saga pattern: https://martinfowler.com/bliki/Saga.html  
+- Microservices.io — Saga pattern: https://microservices.io/patterns/data/saga.html
 - Canonical index: [../REFERENCES.md](../REFERENCES.md) — *Messaging, events, and NATS*  

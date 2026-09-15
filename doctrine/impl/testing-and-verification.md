@@ -54,37 +54,19 @@ These are concise compositions of the canonical owners listed at the end, not ne
 
 ## Normal Implementation
 
-### Application Evidence Before Merge
+### Local And Pre-Merge
 
-Pre-merge evidence asks whether the source change is fit to become authoritative. Natural choices include linting and formatting checks, static analysis, unit and component tests, selective integration tests, API/event/schema contracts, regressions, and boundary and negative cases. Lint code, configuration, documentation, and repository-owned infrastructure definitions where applicable. Snapshot or golden tests protect intentional structured output; characterisation tests capture legacy behaviour before change. Property-based tests, fuzzing, and mutation testing deepen evidence where generated inputs or assertion quality matter.
+This surface asks whether the source change is fit to become authoritative. It commonly holds formatting and linting, static analysis, unit/component tests, selective integration and contract checks, regressions, boundary and negative cases, and applicable security, dependency, secret, configuration, or IaC checks. Property-based, fuzz, snapshot, characterisation, and mutation techniques add depth where the risk warrants them.
 
-Security and delivery checks can include static security analysis, dependency analysis, secret scanning, and static configuration or IaC validation when the repository owns those surfaces. Apply them according to system risk and activated policy rather than as an indiscriminate menu.
+A practical default is one documented local quality-gate command backed by the same versioned scripts or task runner that CI invokes. A version-controlled Git-hook setup may run its fast deterministic subset before commit or push. Hooks shorten feedback; they are not merge authority because they may be absent, stale, misconfigured, or bypassed. Protected required checks remain authoritative.
 
-Authentication, authorisation, tenant isolation, money movement, cryptography, parsers, migration logic, retry/idempotency, privileged automation, and data integrity are common reasons to add deeper negative, adversarial, concurrency, or integration evidence.
+### Build And Package
 
-Pre-merge checks cannot prove that a deployed service is reachable, workload identity is bound correctly, a private endpoint works, telemetry arrives, failover succeeds, or a backup restores usable state.
+This surface asks: **did we produce the thing we intended to deploy?** Evidence can cover compilation, package identity and contents, version and manifest validation, locked dependencies, SBOM/provenance, signatures or checksums, container inspection, installation, minimal startup, migration assets, and claimed runtime compatibility. Bind results to the candidate identity; package correctness does not prove environment behaviour.
 
-#### Fast Local Feedback And Git Hooks
+### Application Deployment
 
-A practical default is one documented repository command for the local quality gate, backed by the same versioned scripts or task runner that CI invokes. Teams may wire a fast, deterministic subset—such as formatting, linting, generated-file checks, focused tests, or secret scanning—into version-controlled Git hook tooling so contributors receive feedback before commit or push.
-
-Git hooks shorten the feedback loop; they are not the merge authority. Local hooks can be absent, stale, misconfigured, or deliberately bypassed, so protected-branch required checks still establish the authoritative gate. Keep hook entrypoints thin, make installation and updates obvious, and avoid putting unique validation logic in a developer's untracked hook. The durable owners are [Build Principles](../principles/build.md), [Developer Experience](../principles/developer-experience.md), [Collaboration](../principles/collaboration.md), and the [Build Surface Model](../patterns/build-surface-model.md).
-
-### Build And Package Verification
-
-This surface asks:
-
-> **Did we produce the thing we intended to deploy?**
-
-Applicable evidence can include compilation, package contents, version and manifest validation, locked dependency resolution, SBOM and provenance generation, signatures or checksums, container inspection, installation, minimal startup, and runtime/OS compatibility that the product actually claims.
-
-The evidence remains bound to the candidate identity. A well-formed package can still fail after deployment because environment configuration, networking, identity, certificates, DNS, or dependencies are wrong.
-
-### Application Deployment Verification
-
-This surface asks:
-
-> **Did this exact candidate deploy correctly into this environment?**
+This surface asks: **did this exact candidate deploy correctly into this environment?**
 
 ```mermaid
 flowchart LR
@@ -93,121 +75,39 @@ flowchart LR
     E --> F["Runtime security and observability"] --> G["Promotion decision"]
 ```
 
-- **Health/readiness** is narrow workload or platform health: process state, readiness, dependency availability, or routing registration. Green health is not proof of a critical business path.
-- **Smoke** is a small set of critical probes answering whether the deployment is fundamentally alive: a response, authentication, a safe read/write, message consumption, or database connectivity.
-- **Environment integration** proves real wiring to databases, queues, identity providers, secret stores, object stores, and downstream services.
-- **Runtime security** exercises applicable authentication, authorisation, tenant isolation, TLS/security headers, known abuse regressions, and dynamic analysis.
-- **Observability verification** proves logs and metrics arrive, traces propagate, deployed version is visible, audit events emit, and an expected signal reaches alerting.
+Health/readiness proves narrow workload or platform state. Smoke probes a few critical paths. Environment integration proves real wiring to data, messaging, identity, secrets, and downstream services. Runtime checks prove applicable authentication, authorisation, isolation, TLS, and known security regressions. Observability verification proves that signals arrive with candidate identity and usable correlation. Synthetics may repeat deployed transactions; canaries bound exposure while comparing behaviour, but neither substitutes for earlier evidence.
 
-A **synthetic** is a fake transaction against a deployed system; it may run immediately after deployment or continuously. A **canary** is a deployment strategy plus comparison and verification. It can bound exposure while evaluating errors, latency, resource behaviour, business correctness, and security signals, but it does not replace other testing.
+### Infrastructure Delivery
 
-## Infrastructure Delivery
-
-Infrastructure delivery uses a different evidence chain from application binaries. Terraform, Bicep, and equivalent declarative IaC are examples; product-specific commands and policy engines belong in tooling guidance.
+Infrastructure evidence follows a different lifecycle from application binaries:
 
 ```mermaid
 flowchart TD
     A["IaC change"] --> B["Format / parse / compile / validate"]
-    B --> C["Static policy and security"]
-    C --> D["Module / expression tests"]
-    D --> E["Plan / what-if"]
-    E --> F["Plan assertions and review"]
-    F --> G["Apply"]
-    G --> H["Post-apply verification"]
-    H --> I["Representative platform / workload smoke"]
+    B --> C["Static policy and security"] --> D["Module / expression tests"]
+    D --> E["Plan / what-if"] --> F["Assertions and review"]
+    F --> G["Apply"] --> H["Verify effective state"]
+    H --> I["Exercise representative workload"]
 ```
 
-### Before Apply
+Before enactment, structural checks, module tests, policy, plans, and assertions constrain the intended change. Review concentrates on create/change/destroy/replace actions, authority or network changes, destructive effects, and unexpected churn. A plan is intended-change evidence, not proof of deployment.
 
-- **Format, parse, compile, and validate** establish structural correctness. They cannot prove intended behaviour.
-- **Static policy and security** can reject unintended public access, missing encryption or metadata, incorrect identity models, forbidden resource shapes, and invalid network policy.
-- **Module/expression tests** are useful for reusable modules, conditionals, defaults, naming, identity assignment, network rules, policy composition, and outputs.
-- **Plan/what-if** represents intended change. Review creates, changes, destroys, replacements, privilege/network changes, data-destructive operations, and unexpected churn.
-- **Plan assertions** mechanically protect critical invariants where practical: do not destroy a database or create a public endpoint; retain diagnostics, expected private connectivity, and the intended identity class.
+After enactment, verify resource state, DNS/routing/endpoints, positive and negative authority, effective policy, diagnostic export, and representative platform behaviour. A successful apply proves control-plane acceptance, not working infrastructure. High-value shared network, identity, connectivity, policy, or platform modules may justify an ephemeral environment that is created, exercised with a representative workload, and destroyed.
 
-> A plan is evidence of intended change, not proof of successful deployment.
+### Scheduled And Deep Assurance
 
-### After Apply
+Use deployed or scheduled verification for claims that need realistic duration, load, failure, authority, data, or changing external state:
 
-> **An infrastructure apply or control-plane deployment succeeding proves that the control plane accepted the operations. It does not prove the infrastructure works.**
+| Claim family | Typical evidence | Natural surfaces |
+| --- | --- | --- |
+| Performance | Benchmark, load, stress, spike, soak, scalability, volume | Targeted CI, deployed, scheduled |
+| Resilience and recovery | Fault injection, controlled chaos, failover, restore, disaster recovery | Deployed, scheduled |
+| Security | Dynamic analysis, negative authority, fuzz, abuse, penetration, detection exercises | Pre-merge, deployed, scheduled |
+| Stateful change | Migration validation, compatibility, reconciliation, recovery, realistic volume | Build, deployed, scheduled |
+| Concurrency and delivery | Duplicate delivery, races, locks, bounded retry/backoff, idempotency, DLQ/parking | Component, integration, scheduled |
+| Compatibility | Claimed API, event, data, runtime, OS/browser, upgrade/downgrade matrix | Build, integration, upgrade rehearsal |
 
-Post-apply verification selects the claims that matter:
-
-- **Resource state:** expected resources and configuration exist in the intended state.
-- **Connectivity:** DNS, routing, private endpoints, public exposure, and protocol reachability behave from the relevant network location.
-- **Identity and authority:** expected identities succeed and unexpected identities or forbidden operations are denied.
-- **Effective policy:** the resulting state—not only the declaration—enforces access, encryption, diagnostics, and network restrictions.
-- **Platform smoke:** a representative container schedules, function executes, workload identity resolves, runtime DNS works, or a workload reaches its intended dependency.
-
-> A platform that can create resources but cannot successfully run a representative workload is not proven.
-
-### Ephemeral Infrastructure Integration
-
-```mermaid
-flowchart LR
-    A["Create ephemeral environment"] --> B["Apply module"]
-    B --> C["Assert resources, networking, identity, and policy"]
-    C --> D["Exercise representative workload"] --> E["Destroy"]
-```
-
-This is useful for high-value network, identity, private-connectivity, runtime/platform, and shared policy modules. It is slower and incurs real infrastructure cost, so select it by risk and reuse rather than running every deep scenario on every change.
-
-## Stateful And Deep Verification
-
-### Migrations
-
-```mermaid
-flowchart LR
-    A["Old state"] --> B["Expand"] --> C["Deploy compatible code"]
-    C --> D["Migrate / backfill"] --> E["Verify data and behaviour"]
-    E --> F["Switch behaviour"] --> G["Contract old shape"]
-```
-
-Applicable evidence includes migration validation against representative data, backward compatibility, forward compatibility where claimed, count/checksum reconciliation, constraint checks, realistic-volume performance, idempotency and retry behaviour, and rollback or forward-recovery rehearsal. A migration command exiting zero is not proof that data is correct.
-
-### Performance
-
-| Type | Question |
-| --- | --- |
-| Benchmark | Did a repeatable operation regress? |
-| Load | Can the system handle a realistic expected workload? |
-| Stress | Where and how does the system fail? |
-| Spike | What happens under sudden demand? |
-| Soak | Does the system degrade over time? |
-| Scalability | Does added capacity have the expected effect? |
-| Volume | Can the system handle very large data or state? |
-
-Performance evidence can be a targeted pre-merge benchmark, scheduled suite, pre-release run, canary comparison, or production telemetry. A long soak test is rarely a useful gate for every small PR.
-
-### Resilience And Recovery
-
-Fault injection can exercise timeouts, bounded retries, dependency loss, backlog, partial failure, and degraded networks. Chaos is a controlled experiment with a hypothesis, scope/blast radius, abort condition, observation, owner, and recovery path—not random failure injection. Failover and disaster-recovery exercises test the actual transition and operator path.
-
-> A successful backup job is not proof of recovery. Restore it.
-
-### Security Across Surfaces
-
-```mermaid
-flowchart LR
-    A["Source"] --> A1["Static analysis"]
-    B["Dependencies"] --> B1["Composition analysis"]
-    C["Repository"] --> C1["Secret scanning"]
-    D["IaC"] --> D1["Static policy / security"]
-    E["Running application"] --> E1["Dynamic analysis"]
-    F["Behaviour"] --> F1["AuthN / AuthZ / tenant tests"]
-    G["Adversarial"] --> G1["Fuzz / abuse / penetration / red-team"]
-    H["Runtime"] --> H1["Detection and monitoring exercises"]
-```
-
-Avoid the undifferentiated claim “security tested.” Each check discriminates particular failure classes. Sensitive authority boundaries need both permitted and denied paths.
-
-### Concurrency, Retry, And Idempotency
-
-Workers, queues, webhooks, parallel requests, distributed locks, retries, at-least-once delivery, and material state transitions deserve explicit duplicate, race, deadlock, backoff, bounded-retry, and DLQ/parking evidence where applicable. Exercise these near component and integration scope so they are not left entirely to slow E2E suites.
-
-### Compatibility
-
-Test the compatibility matrix the product actually claims: backward/forward API and event schemas, data, runtime, OS/browser, upgrade, and downgrade paths as applicable. An isolated successful run does not create a permanent compatibility promise; the declared support boundary does.
+Depth remains claim-specific. Chaos is a controlled experiment with a hypothesis, bounded scope, abort condition, observation, owner, and recovery path. A successful backup job is not restore evidence; a migration command exiting zero is not data reconciliation; one scanner is not evidence for every security failure class. Test only the compatibility matrix the product actually claims.
 
 ## Delivery Placement Matrices
 
@@ -262,21 +162,17 @@ The build/package column concerns the candidate: its identity, contents, depende
 
 For infrastructure, pre-merge evidence predicts or constrains the intended change; post-apply evidence proves effective state and behaviour. A later `✓` therefore complements rather than repeats an earlier check. For example, static network policy cannot replace a connectivity probe, and a successful apply cannot replace a representative workload smoke test.
 
-## Minimum Practical Sets
+## Common Starting Compositions
 
-These are starting compositions, not universal checklists. Remove or add evidence according to the claims, risks, and canonical applicability rules.
+These are orientation, not compliance checklists:
 
-### Typical Application Or Service
+| Work type | Minimum useful evidence shape |
+| --- | --- |
+| Application or service | Fast source evidence, candidate/package verification, deployed smoke and integration, critical user journeys |
+| Declarative infrastructure | Static and plan evidence, post-apply state/authority/connectivity, representative workload |
+| Shared platform | Infrastructure evidence plus verification through the interface and golden path consumers actually use |
 
-Start with fast unit tests, selective integration and contract checks, regressions and negative boundaries, applicable static security/dependency/secret checks, package verification, post-deploy smoke and environment integration, observability verification, and a few critical E2E journeys. Add property, fuzz, mutation, load, resilience, dynamic security, migration, idempotency/concurrency, canary, or continuous synthetic evidence when the risk warrants it.
-
-### Typical Declarative Infrastructure Repository
-
-Start with format/parse/compile/validate, applicable static policy and security, module tests where useful, plan/what-if review, mechanical assertions for critical invariants, apply, post-apply resource/connectivity/authority checks, and representative platform smoke. Add ephemeral integration, negative policy, drift, failover, disaster recovery, and representative workload deployment according to reuse and blast radius.
-
-### Shared Platform
-
-Combine infrastructure evidence with consumer behaviour: module and policy validation, apply verification, identity and networking, runtime scheduling/execution, a golden-path application deployment, telemetry, recovery, upgrade/compatibility, and capacity. Test through the interface platform consumers actually use.
+Add deeper evidence according to claims, blast radius, reuse, compatibility promises, and activated canonical policy. Use the linked readiness checklists for review rather than expanding this table into another control surface.
 
 ## Anti-Patterns
 

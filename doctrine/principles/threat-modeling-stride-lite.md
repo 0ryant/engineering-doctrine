@@ -111,7 +111,7 @@ This file supplies the structured pass across boundaries; the others supply spec
 - NIST Zero Trust Architecture (SP 800-207): https://csrc.nist.gov/publications/detail/sp/800-207/final  
 - NCSC — Impact of AI on the cyber threat (social-engineering uplift): https://www.ncsc.gov.uk/report/impact-of-ai-on-cyber-threat  
 - FinCEN FIN-2024-Alert004 — deepfake media targeting financial institutions: https://www.fincen.gov/system/files/shared/FinCEN-Alert-DeepFakes-Alert508FINAL.pdf  
-- Europol — Facing Reality? Law enforcement and the challenge of deepfakes: https://www.europol.europa.eu/publications-events/publications/facing-reality-law-enforcement-and-challenge-of-deepfakes  
+- Europol — Internet Organised Crime Threat Assessment 2024: https://www.europol.europa.eu/publication-events/main-reports/internet-organised-crime-threat-assessment-iocta-2024
 - NIST AI 100-2e2025 — Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations: https://csrc.nist.gov/pubs/ai/100/2/e2025/final  
 - OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10): https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/  
 - CSA — MAESTRO agentic threat-modeling framework: https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro  

@@ -1,6 +1,6 @@
 # Supplement: AWS Container Runtimes (Stub Estate)
 
-> **Scheduled for deprecation** ([ADR 0045](../../../docs/adr/0045-execute-the-first-lifecycle-sweep.md), verdict recorded 2026-09-03): this stub is retiring in favour of [TEMPLATE.md](TEMPLATE.md). The Deprecated banner takes effect at the next tagged release; earliest removal is the release after that. Do not copy from this file.
+> **Deprecated since v0.5.0** ([ADR 0045](../../../docs/adr/0045-execute-the-first-lifecycle-sweep.md)): this stub is retiring in favour of [TEMPLATE.md](TEMPLATE.md). Earliest removal is the release after v0.5.0. Do not copy from this file.
 
 **Status:** **Stub** — no organisation-specific product table yet. **Do not** treat this file as guidance until your team fills it from [TEMPLATE.md](TEMPLATE.md).
 

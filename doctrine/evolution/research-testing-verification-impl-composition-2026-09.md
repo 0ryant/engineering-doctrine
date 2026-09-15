@@ -55,7 +55,9 @@ The reference therefore separates pre-apply evidence from post-apply resource, n
 
 ## Layer And Consumer Impact
 
-[ADR 0048](../../docs/adr/0048-add-implementation-reference-layer.md) already authorises concise implementation-neutral compositions under `doctrine/impl/`, so no new ADR is required. The reference passes the layer candidate test: testing placement is common delivery work, requires substantially more than three owners, has useful application and infrastructure flows, and can route to canonical rules without strengthening them.
+[ADR 0048](../../docs/adr/0048-add-implementation-reference-layer.md) already authorises concise implementation-neutral compositions under `doctrine/impl/`, so no new ADR is required. The reference passes the layer contract tests: testing placement is a common delivery activity; no single owner supplies the cross-surface model; deleting the reference removes no obligation; and every material invariant routes to an owner.
+
+Post-publication review found that the first version was technically strong but had begun to read like a compact testing handbook. It repeated specialist explanations, starting sets, and several secondary flows after the main evidence-placement model was already clear. The reference was therefore reduced by about one quarter, centred on the application and infrastructure delivery surfaces, and left specialist depth with canonical owners or future activity-specific references. This is the compression test operating as intended, not a change to testing doctrine.
 
 Change class: **additive guidance / navigation**.
 

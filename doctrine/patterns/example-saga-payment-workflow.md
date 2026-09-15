@@ -59,5 +59,5 @@ If **fraud** holds the payment: state **`awaiting_review`** with **SLA** (for ex
 
 ## References
 
-- Martin Fowler — **Saga**: https://martinfowler.com/bliki/Saga.html  
+- Microservices.io — **Saga**: https://microservices.io/patterns/data/saga.html
 - [reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) — operational learning from failure  

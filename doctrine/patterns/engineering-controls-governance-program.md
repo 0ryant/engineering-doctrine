@@ -120,7 +120,7 @@ This mirrors **CSF 2.0** intent: governance outcomes are **demonstrable**, not a
 - NIST **SP 1303** — CSF 2.0 Enterprise Risk Management Quick-Start Guide, including the Monitor–Evaluate–Adjust cycle for control effectiveness and efficiency: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.1303.pdf
 - ISO/IEC **27001:2022** — Annex A controls include **organisational** roles, supplier relationships, and improvement (use official ISO catalogue for control text; this pattern maps conceptually, not normatively).  
 - The White House / OMB — **M-26-05** (Jan. 2026) — federal **risk-based** software/hardware assurance; cites NIST SP 800-218 and CISA SBOM materials as **optional** references for agencies: https://www.whitehouse.gov/wp-content/uploads/2026/01/M-26-05-Adopting-a-Risk-based-Approach-to-Software-and-Hardware-Security.pdf  
-- **COSO** — *Internal Control — Integrated Framework* (2013) — internal control components (control environment, monitoring activities) as **enterprise** analogue for control lifecycle: https://www.coso.org/Pages/ic-integrated-framework.aspx  
+- **COSO** — *Internal Control — Integrated Framework* (2013) — internal control components (control environment, monitoring activities) as **enterprise** analogue for control lifecycle: https://www.coso.org/internal-control
 
 ---
 

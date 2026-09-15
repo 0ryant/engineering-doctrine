@@ -109,6 +109,6 @@ Use [TL;DR And Minimum Viable Doctrine](doctrine/tldr-principles-and-mvp.md), [a
 | Consuming this library from an agent or tool server | [agent-doctrine-consumption.md](doctrine/patterns/agent-doctrine-consumption.md), [skills/README.md](doctrine/skills/README.md) |
 | Full task routing and research evidence | [SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md), [REFERENCES.md](doctrine/REFERENCES.md) |
 
-## Compatibility Note For `v0.4.0`
+## Compatibility Note For `v0.5.0`
 
-`v0.4.0` (tagged 2026-08-03) is an **additive** pre-1.0 minor scoped to agentic-AI governance; it changes no directory taxonomy and keeps the compact-constitution shape introduced at `v0.3.0`, which replaced the previous detailed umbrella and its deep section anchors. Consumers that link to an old umbrella subsection SHOULD link to the canonical principle or pattern named above; the underlying topic files remain the stable source of detailed guidance. Pin `v0.4.0` for a stable snapshot.
+`v0.5.0` (tagged 2026-09-14) is a pre-1.0 minor that adds the non-authoritative `impl/` composition layer, agent-facing consumption and evidence contracts, and doctrine lifecycle machinery. Existing controls are not weakened. Consumers can route common delivery questions through `impl/`, then follow its links to canonical principles and patterns; consumers of the new normative surfaces should review the carrying ADRs and release notes. Three superseded or unowned files are deprecated with replacements recorded in [doctrine/DEPRECATED.md](doctrine/DEPRECATED.md). Pin `v0.5.0` for this contract snapshot.

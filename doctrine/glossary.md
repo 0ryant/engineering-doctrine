@@ -116,7 +116,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## E
 
-**Effective challenge** — Independent review with **incentives** (not invested in delivery), **competence** (can identify limitations and assumptions), and **influence** (authority to force change) — the SR 11-7 test for whether "second opinion" review is real. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §2.
+**Effective challenge** — Critical analysis by objective experts with appropriate expertise, sufficient independence, organisational standing, and influence to effect change — the SR 26-2 test for whether "second opinion" review is real. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §2.
 
 **Error budget** — Allowed **unreliability** derived from an SLO; spending it signals **slow down or invest** in reliability. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
