@@ -6,6 +6,8 @@
 
 **Plan status update (2026-08-03):** the `v0.4.0` version number was consumed by the August 2026 gap-audit closure line ([ADRs 0031–0035](../../docs/adr/README.md), tagged `v0.4.0`) — minor-shaped normative additions that arrived ahead of this plan's lanes. **The V40–V44 lanes below retarget verbatim to `v0.5.0`**; their objectives, acceptance criteria, and stop conditions are unchanged, and V44's "no published tag is rewritten" criterion now also protects `v0.4.0`. A further lane V45 (below) registers the AI-native SDLC council's open decision list so all forward doctrine work is tracked in one register. The [full-corpus council review at v0.4.0](research-full-corpus-council-review-2026-08.md) (2026-08-03) is a **direct input to these lanes**: its confirmed findings map to V40–V45 in its §6, and its two blockers (feature-flag rollback FSM; observability §6.3 undefined recording rules) plus the navigation-lag majors are candidates for an early v0.5.0 correction batch.
 
+**Plan status update (2026-09-15):** `v0.5.0` was tagged on 2026-09-15 as the progressive-disclosure and doctrine-integrity release ([ADRs 0036–0040, 0043–0045, and 0048](../../docs/adr/README.md)) before the [v0.5.0 release acceptance criteria](#v050-release-acceptance-criteria-added-2026-08-03) below were all met. Graded against the landed ADRs: criteria 1 and 2 hold, with B1's complete supersession landed through [ADR 0045](../../docs/adr/0045-execute-the-first-lifecycle-sweep.md) rather than a dedicated V45/D12 ADR; criterion 6 is partly met, because that supersession records no absorption of M12–M14 or the flag minors; criterion 10 is partly met, because the `[0.5.0]` preamble is present but no record shows the 31 minors triaged or a fresh full-delta release sweep; criteria 3, 4, 5, 7, 8, and 9 are unmet. **The unmet and partly met criteria retarget verbatim to `v0.6.0`**; lane objectives and stop conditions are unchanged, and V44's "no published tag is rewritten" criterion now also protects `v0.5.0`.
+
 **Change classes:** editorial and navigation fixes proposed for `v0.3.1`; investigation and possible normative tightening/replacement proposed for `v0.4.0`.
 
 ## 1. Review Outcome
@@ -120,6 +122,8 @@ The progressive-disclosure proposal is library synthesis. It must be evaluated w
 - **Acceptance criteria:** CI link check green; zero references to non-existent ENGINEERING.md anchors; flagged reference-rot minors resolved or recorded.
 
 ### v0.5.0 Release Acceptance Criteria (added 2026-08-03)
+
+**Retargeted 2026-09-15:** `v0.5.0` was tagged before these criteria were all met; the plan status update at the top of this note grades each one. The criteria text is unchanged, and criteria not met at the `v0.5.0` cut now gate `v0.6.0`.
 
 `v0.5.0` is cut when **all** of the following hold; each criterion names its owning lane or ADR route from the [corpus review](research-full-corpus-council-review-2026-08.md) §6:
 
