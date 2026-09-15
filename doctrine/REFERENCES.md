@@ -569,5 +569,5 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [tooling/estates/TEMPLATE.md](tooling/estates/TEMPLATE.md) | Scaffold |
 | [tooling/estates/minimum-viable-doctrine.template.md](tooling/estates/minimum-viable-doctrine.template.md) | One-page team pitch |
 | [tooling/estates/azure-container-runtimes.md](tooling/estates/azure-container-runtimes.md) | Example Azure |
-| [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md) | AWS stub (fill from TEMPLATE) |
+| [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md) | AWS mapping (App Runner / ECS on Fargate / EKS) |
 | [tooling/estates/gcp-container-runtimes.md](tooling/estates/gcp-container-runtimes.md) | GCP stub (fill from TEMPLATE) |

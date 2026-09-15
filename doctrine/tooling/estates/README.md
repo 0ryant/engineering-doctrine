@@ -20,5 +20,5 @@ Read [../../principles/timeless-principles-and-tooling.md](../../principles/time
 | File | Scope |
 | --- | --- |
 | [azure-container-runtimes.md](azure-container-runtimes.md) | Example: one Azure-oriented mapping of managed application platform vs Kubernetes |
-| [aws-container-runtimes.md](aws-container-runtimes.md) | Stub: fill when AWS estate has an owner |
+| [aws-container-runtimes.md](aws-container-runtimes.md) | One AWS-oriented mapping: App Runner as paved default, ECS on Fargate + ALB, EKS by documented decision |
 | [gcp-container-runtimes.md](gcp-container-runtimes.md) | Stub: fill when GCP estate has an owner |

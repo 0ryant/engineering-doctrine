@@ -137,7 +137,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [tooling/estates/TEMPLATE.md](tooling/estates/TEMPLATE.md) — scaffold for a new estate
 - [tooling/estates/minimum-viable-doctrine.template.md](tooling/estates/minimum-viable-doctrine.template.md) — **one-page** team pitch (5–7 principles + links)
 - [tooling/estates/azure-container-runtimes.md](tooling/estates/azure-container-runtimes.md) — **example** Azure mapping only
-- [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md) — **stub** (no product picks)
+- [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md) — AWS mapping: App Runner default, ECS on Fargate + ALB, EKS by ADR
 - [tooling/estates/gcp-container-runtimes.md](tooling/estates/gcp-container-runtimes.md) — **stub** (no product picks)
 
 ### Platform, SRE, and governance principles
