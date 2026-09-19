@@ -76,6 +76,31 @@
 
 ---
 
+## Concurrent Local Work
+
+For the operating model, see [Branching And Integration](../impl/branching-and-integration.md) and its canonical owners. A separate working directory can keep one change undisturbed while you work on another. Git worktrees are an optional way to do this: distinct branch checkouts share repository history and objects. Separate clones are also valid.
+
+Illustrative commands, assuming `origin/main` is the integration branch and these example branch names and paths are unused:
+
+```bash
+git fetch origin
+git worktree add -b feat/example-change ../repo-example-change origin/main
+git worktree add -b fix/second-change ../repo-second-change origin/main
+git worktree list
+```
+
+Worktrees isolate checked-out files, not credentials or shared external resources. Two workspaces can still contend for a database, local port, or deployment target; apply the repository's normal development-environment controls. Each change still follows the same review and protected integration path.
+
+Source: [Git `worktree` manual, version 2.54.0](https://git-scm.com/docs/git-worktree/2.54.0), S5 product-scoped primary documentation, accessed 2026-09-19. The [composition research note](../evolution/research-branching-integration-impl-composition-2026-09.md#source-ledger) records the pin, capture, and limits.
+
+## Optional Branch Naming Convention
+
+A team can use `<purpose>/<short-description>` to make work easier to recognise: `feat/add-search`, `fix/retry-budget`, `chore/update-dependencies`, or `docs/onboarding`.
+
+These are optional examples, not a Git standard or a required extension of Conventional Commits. A prefix does not confer merge or release authority. Existing team conventions remain valid; this illustration adds no branch-name gate or mandatory type catalogue.
+
+---
+
 ## When To Revise This Doc
 
 Update this file when the organisation changes Git host features, renames default checks, or adopts a different merge policy—**before** teams drift into undocumented local workarounds.
