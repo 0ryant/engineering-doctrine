@@ -4,6 +4,12 @@
 **Status:** Non-normative research note. Nothing here changes doctrine by itself — every fix routes through the forward plan ([post-v0.3.0 decisions and v0.4.0 plan](post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md), lanes V40–V45) or a new ADR.
 **Scope:** The full corpus at tag `v0.4.0`.
 
+**September reconciliation:** The historical totals below miscount the tables:
+there are 2 blocker, 22 major and 30 minor rows. See
+[v0.6.0 readiness and finding reconciliation](v060-readiness-2026-09.md) for
+current dispositions and evidence limits. The original review remains historical
+model-review evidence, not independent human review or current release approval.
+
 ---
 
 ## 1. Purpose And Method

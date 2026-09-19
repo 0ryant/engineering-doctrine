@@ -44,7 +44,7 @@ Not every repo runs every stage; **missing stages must be explicit**, not accide
 ## Feature Work Without Blocking Trunk
 
 1. **Vertical slices** — mergeable increments that keep the product working.
-2. **Feature flags** — default off or safe; remove flags after stabilization.
+2. **Feature flags** — use the safe defaults and type-specific retirement rules in [Feature Flag Governance](feature-flag-governance.md); temporary release flags do not become permanent integration branches in code.
 3. **Contract versioning** — additive changes first; breaking changes versioned and coordinated.
 
 ## Merge Queue (Optional, At Scale)

@@ -13,7 +13,7 @@ For the normal branching, concurrent-work, and integration shape, start with [Br
 - **Single integration branch** (usually `main`) is the authoritative integration state for active development. Long-lived branches are for exceptional cases, not day-to-day work.
 - **Short-lived topic branches** exist only long enough to produce a reviewable change. Days, not weeks.
 - **Integrate frequently** — small, incremental merges reduce merge pain and keep feedback loops tight.
-- **Avoid merge queues of doom** — if a branch cannot merge within a few days, the work is probably too large; split it.
+- **Avoid long-lived integration backlogs** — if a branch cannot merge within a few days, the work is probably too large; split it.
 - **Release from trunk** (or from tags on trunk). Releases are not separate parallel development lines unless the product model truly requires it (and that requirement is documented).
 
 The current tip of `main` does not identify what is running in an environment. Use the deployed candidate, its source revision, configuration binding, and deployment evidence; see [Build Principles](build.md) and [Authoritative Sources And Intentional Duplication](single-source-of-truth.md).
@@ -44,6 +44,10 @@ The current tip of `main` does not identify what is running in an environment. U
 ---
 
 ## 4. Feature Flags And Controlled Rollout
+
+The detailed lifecycle, metadata, testing, and reversal rules are owned by
+[Feature Flag Governance](../patterns/feature-flag-governance.md). The points
+below describe why flags support collaboration; they do not replace that owner.
 
 - **Incomplete features do not block trunk** — ship behind flags with defaults that preserve current behaviour until intentionally enabled.
 - **Flag lifecycle is owned** — temporary flags have owners and removal dates; stale flags are debt.

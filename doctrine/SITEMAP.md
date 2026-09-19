@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-19 17:31 UTC
+Generated: 2026-09-19 20:02 UTC
 
 ## All Markdown files
 
@@ -42,6 +42,7 @@ Generated: 2026-09-19 17:31 UTC
 - [evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md](evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md)
 - [evolution/research-branching-integration-impl-composition-2026-09.md](evolution/research-branching-integration-impl-composition-2026-09.md)
 - [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md)
+- [evolution/research-doctrine-integrity-gates-2026-09.md](evolution/research-doctrine-integrity-gates-2026-09.md)
 - [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md)
@@ -56,6 +57,7 @@ Generated: 2026-09-19 17:31 UTC
 - [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
 - [evolution/sweep-2026-09.md](evolution/sweep-2026-09.md)
 - [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md)
+- [evolution/v060-readiness-2026-09.md](evolution/v060-readiness-2026-09.md)
 - [glossary.md](glossary.md)
 - [impl/README.md](impl/README.md)
 - [impl/branching-and-integration.md](impl/branching-and-integration.md)

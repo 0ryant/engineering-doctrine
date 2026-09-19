@@ -21,7 +21,7 @@ A pack closes both by binding the skill to a non-negotiable post-run check: `tes
 
 ## 2. Pack Format
 
-A pack declares **four required keys** (`name`, `skill`, `version`, `verifiers`) plus optional scaffolding (`description`, `fingerprint`, `schema_version`, `setup`, `teardown`). Every object level sets `additionalProperties: false`.
+A pack declares the required and optional fields owned by [the verifier-pack schema](../../contracts/verifier-pack.v1.schema.json). Every object level sets `additionalProperties: false`; copied field counts in prose are not authoritative.
 
 Each verifier item declares:
 
@@ -41,7 +41,7 @@ Each verifier item declares:
 
 ---
 
-## 3. The 11 Canonical Verifier Kinds
+## 3. Canonical Verifier Kinds
 
 Each kind is a *family* of binary-observable assertions, not a single command. Packs SHOULD reuse a canonical kind; `custom` is the escape hatch and MUST justify why a standard kind would not fit.
 
@@ -83,15 +83,16 @@ A stub MUST NOT pass. A verifier that always returns 0 is a defect, caught at PR
 
 ## 5. Worked Example: `evidence-pack-mcp-verifier-pack`
 
-This illustrative 10-assertion list for an evidence-pack skill is mapped to the v1 schema. The full YAML round-trips through [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py).
+This is a complete, schema-valid minimum pack with one assertion. The broader assertion catalogue below illustrates additional coverage an adopting estate may add; those omitted assertions are not claimed to be present in this YAML.
 
+<!-- doctrine-example: {"schema":"contracts/verifier-pack.v1.schema.json","wrapper":"verifier_pack"} -->
 ```yaml
 verifier_pack:
   name: evidence-pack-mcp-verifier-pack
   skill: evidence-pack-mcp
   version: 1.0.0
   schema_version: 1.0.0
-  description: Verify evidence-pack-mcp produces a complete tamper-resistant evidence pack with bounded authority.
+  description: Verify evidence-pack collect produces a non-empty pack.json at the declared output path.
 
   setup:
     - mkdir -p ${OUTPUT_DIR} ${SCRATCH}
@@ -105,14 +106,12 @@ verifier_pack:
       description: evidence-pack collect writes a non-empty pack.json at the declared output path
       command: test -s ${OUTPUT_DIR}/pack.json
       expected_exit: 0
-      expected_artefacts: [${OUTPUT_DIR}/pack.json]
+      expected_artefacts: ["${OUTPUT_DIR}/pack.json"]
       failure_mode: fail_loud
       severity: fatal
-    # ...nine more assertions in the same shape; see scripts/validate-contracts-v1.py
-    # for the complete byte-for-byte instance that validates against v1.schema.json.
 ```
 
-The complete illustrative list, each with a `kind` from the canonical set:
+The broader illustrative assertion catalogue, each with a `kind` from the canonical set:
 
 | # | id | kind | failure_mode | severity |
 | --- | --- | --- | --- | --- |
@@ -146,7 +145,7 @@ The convention is intentionally rigid: a skill that cannot point to its pack is 
 
 ## 7. Composition With Run Contracts
 
-A run contract names which packs to run; a pack names which assertions to test. The contract's `verifiers: [...]` array holds **pack ids**, and the validator (see [run-contracts.md §7](run-contracts.md#7-validation-tooling)) checks every id resolves.
+A run contract names which packs to run; a pack names which assertions to test. The contract's `verifiers: [...]` array holds **pack ids**, and the estate catalogue/compiler (see [run-contracts.md §7](run-contracts.md#7-validation-tooling)) checks every id resolves. Schema validation alone cannot prove that live catalogue relationship.
 
 A pack runs as a post-run phase of a contract. It receives the contract fingerprint, the materialised artefact tree, and the resolved environment (so `${OUTPUT_DIR}` binds to real paths). It produces a JSONL record per assertion plus a top-level verdict. The verdict feeds the run-contract verdict, which feeds the approval queue and memory substrate.
 
@@ -185,7 +184,7 @@ A pack runs as a post-run phase of a contract. It receives the contract fingerpr
 
 ## 9. Validation Tooling
 
-Packs are themselves validated. The reference Python validator at [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py) round-trips the §5 example. Consumers SHOULD: run the validator in CI on every committed `verifier-pack.yml`; run a *sibling-existence* check (every skill manifest has a pack at the conventional path); fingerprint the canonicalised body (`sha256:<hex>`) and pin it from the run contract's audit log so verifiers can be reconstructed byte-for-byte.
+Packs are themselves validated. [The doctrine-example checker](../../scripts/check_doctrine_examples.py) extracts the §5 YAML and validates it against the actual schema. [The constructed-sample validator](../../scripts/validate-contracts-v1.py) checks a separately constructed representative pack; it does not round-trip this Markdown. [`validate-skills.py`](../../scripts/validate-skills.py) validates sibling existence and pack shape for this library's own skills. Estate catalogue tooling owns sibling/address resolution beyond this repository. Consumers SHOULD: validate every committed `verifier-pack.yml` in CI; run the applicable sibling-existence check; fingerprint the canonicalised body (`sha256:<hex>`) and pin it from the run contract's audit log so verifiers can be reconstructed byte-for-byte.
 
 A buggy pack is load-bearing. Mitigations: pack PRs are reviewed like any change; the canonical-kind library lets most assertions reuse vetted implementations; the pack-execution engine itself is verifiable by a meta-pack.
 

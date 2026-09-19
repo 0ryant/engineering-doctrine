@@ -25,5 +25,11 @@ jobs:
         run: python scripts/validate-contracts-v1.py
       - name: Validate skills
         run: python scripts/validate-skills.py
+      - name: Test documentation validators
+        run: python -m unittest discover -s scripts/tests -p "test_*.py" -v
+      - name: Check local Markdown links and umbrella anchors
+        run: python scripts/check_markdown_links.py
+      - name: Validate YAML examples printed in doctrine
+        run: python scripts/check_doctrine_examples.py
       - name: Check principle glance and README inventory
         run: bash scripts/check-principles-glance.sh

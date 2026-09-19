@@ -55,6 +55,21 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
 
 **ADR must include (when new):** context, decision, alternatives considered, consequences, **evidence** (links or a research-note path), consumer impact and migration, acceptance criteria or measures, and residual risk. For retrospective ADRs, follow the **Honesty rule** in `docs/adr/README.md`.
 
+An ADR adding or changing a typed obligation MUST name its canonical owner and
+the checklist/navigation landings that make it discoverable, or record why no
+derived landing is needed. This is a maintainer traceability gate, not a new
+consumer control: the author supplies the map and the reviewer checks it against
+the diff. Recheck the map when the owner moves or its scope changes; remove a
+derived prompt when its owning obligation is retired. See [ADR 0049](../../docs/adr/0049-add-doctrine-integrity-gates-and-obligation-routing.md).
+
+Admission: **C2 with explicit risk asymmetry**. Independent documentation
+guidance supports selective links to authoritative content and discoverable
+entry points; this particular ADR map is library synthesis, not an external
+mandate. A short mapping costs review effort but guards against silently
+unreachable obligations. The [pinned source record](../evolution/research-doctrine-integrity-gates-2026-09.md#source-admission-for-the-maintainer-gate)
+states the support and limits. Scoped exceptions use the existing
+[exception contract](normative-language-applicability-and-exceptions.md#5-exception-contract).
+
 ---
 
 ## 4. Author the change (layered, cross-linked)
@@ -95,7 +110,10 @@ Run through this table before opening the PR.
 
 ## 6. Verify
 
-1. Run `./scripts/doctrine-change-preflight.sh` (sitemap + sanity reminders).
+1. Install `requirements.txt`, then run `./scripts/doctrine-change-preflight.sh`
+   (sitemap, principle inventory, local links/umbrella anchors, printed YAML,
+   skills and manual reminders). New files need staging or explicit paths for
+   the Git-tracked-file checks; see [contributor commands](../../CONTRIBUTING.md).
 2. Re-read [doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) and check every box that applies.
 3. Sample at least three materially different consumers or change classes. Confirm that applicability composition activates the intended controls without making every profile universal.
 4. Search for duplicate normative owners and conflicting strength, scope, or exception wording. Treat contradictions as defects; do not resolve them by selecting the convenient copy.

@@ -58,6 +58,7 @@ When you cite a source to support a claim:
 
 ## Run-Contract Use
 
+<!-- doctrine-example: {"partial":"Run-contract binding excerpt; the enclosing required fields are intentionally omitted."} -->
 ```yaml
 context:
   skills:

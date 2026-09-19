@@ -69,6 +69,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0046](0046-retire-private-vocabulary-where-a-standard-term-exists.md) | Proposed | — | Retire private vocabulary where a standard term exists — four single-file coinages retired now (editorial); enactment / mandate class / closure mode proposed to ride with ADR 0047; estate, materiality, candidate, governed execution, run contract, verifier pack kept with stated rationale |
 | [0047](0047-separate-maintainer-doctrine-and-collapse-the-ai-native-sdlc.md) | Proposed | — | Separate maintainer doctrine (lifecycle, source grading, change harness, versioning, the two registers) into `doctrine/maintainers/` out of the consumer path; collapse the AI-native SDLC to its seven gates plus a crosswalk; publish the normative-vs-meta word ratio each sweep |
 | [0048](0048-add-implementation-reference-layer.md) | Accepted | 2026-09-14 | Add `doctrine/impl/` as a non-authoritative composition layer and land CI/CD delivery as its first reference |
+| [0049](0049-add-doctrine-integrity-gates-and-obligation-routing.md) | Accepted | 2026-09-19 | Add direct Markdown/example integrity gates and canonical-owner readiness routing; tighten maintainer ADR landing traceability without adding consumer controls |
 
 ## Candidate Considered But Not Recorded
 

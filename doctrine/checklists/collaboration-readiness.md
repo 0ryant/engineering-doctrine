@@ -40,10 +40,14 @@ Use when adopting or auditing trunk-based workflow, branch protection, and deliv
 
 ## Feature Flags And Safety
 
+Derive flag readiness from [Feature Flag Governance](../patterns/feature-flag-governance.md),
+including its applicability and estate-tunable defaults.
+
 ```text
 [ ] Feature flags used for incomplete user-visible behaviour where applicable
 [ ] Flag defaults safe for production; kill switches or remote config where needed
 [ ] Stale flags tracked and removed on a cadence
+[ ] Applicable metadata, merge-gating, test-isolation and reversal checks reviewed against feature-flag-governance.md §§3–7
 ```
 
 ## SRE And Operations

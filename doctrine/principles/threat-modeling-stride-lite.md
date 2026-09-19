@@ -27,7 +27,7 @@ Skip full workshops for trivial internal tools; still record “not in scope” 
 
 | Category | Question (examples) |
 | --- | --- |
-| **Spoofing** | Can an caller impersonate another user, service, or tenant? Weak auth, trust-on-IP, unsigned webhooks? |
+| **Spoofing** | Can a caller impersonate another user, service, or tenant? Weak auth, trust-on-IP, unsigned webhooks? |
 | **Tampering** | Can data or config be altered in transit or at rest without detection? Missing integrity checks on events or uploads? |
 | **Repudiation** | Can abuse or admin actions occur without durable, correlated audit evidence? |
 | **Information disclosure** | Can secrets, PII, or cross-tenant data leak via logs, errors, caches, or overly verbose APIs? |

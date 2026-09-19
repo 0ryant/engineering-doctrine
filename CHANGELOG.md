@@ -9,10 +9,16 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 ### Added
 
 - [Branching And Integration](doctrine/impl/branching-and-integration.md): an implementation-neutral reference for protected-trunk integration, concurrent work, release-tag hotfixes, and exceptional support lines. It distinguishes workspace, branch, revision, candidate, and environment state and composes existing canonical owners without adding obligations. [Owner audit](doctrine/evolution/research-branching-integration-impl-composition-2026-09.md); [PR #28](https://github.com/0ryant/engineering-doctrine/pull/28).
+- Doctrine integrity gates ([ADR 0049](docs/adr/0049-add-doctrine-integrity-gates-and-obligation-routing.md)): preflight and CI check local Markdown targets, umbrella anchors and the YAML examples printed in doctrine. Complete owned examples validate against local schemas; partial/external snippets have explicit syntax-only boundaries. A [current finding ledger](doctrine/evolution/v060-readiness-2026-09.md) reconciles all 54 historical findings and keeps the remaining v0.6.0 gates open.
 
 ### Changed
 
 - Repository CI now uses commit-pinned `actions/checkout` v7.0.1 and `actions/setup-python` v7.0.0, both on Node 24, and explicitly selects Ubuntu 24.04. Python 3.12 and the existing contract, skill, and principle-inventory checks are unchanged. These are maintainer-tooling updates, not new consumer requirements.
+- Obligation-changing ADRs now identify canonical owners and derived checklist/navigation landings, or explain why none is needed. This is a maintainer-process tightening, not a new control for consuming applications. Existing AI controls gain owner-linked readiness routes; feature-flag and SDLC navigation repairs preserve their activation boundaries.
+
+### Fixed
+
+- Repaired concatenated checklist items and the verifier-pack YAML example; corrected claims about validator coverage and removed copied schema counts. Small link, terminology and typo corrections preserve existing engineering obligations. Model walkthroughs found SDLC navigation defects; human cold-reader verification remains explicitly open.
 
 ## [0.5.0] - 2026-09-15
 

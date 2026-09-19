@@ -52,7 +52,7 @@ Trigger -> instantiate -> execute -> verify -> emit-artefacts is the only legal 
 
 ## 3. Schema Surface
 
-The v1 schema declares the top-level keys tabled below. All object levels set `additionalProperties: false`: unknown fields are rejected loudly (the JSON Schema equivalent of `#[serde(deny_unknown_fields)]`).
+The v1 schema declares the top-level keys tabled below. The top-level object and each concrete nested object shape are closed with `additionalProperties: false`; discriminated unions such as `trigger` close each `oneOf` branch. Unknown fields are therefore rejected against the selected shape (the JSON Schema equivalent of `#[serde(deny_unknown_fields)]`).
 
 | Key | Required | Purpose |
 | --- | --- | --- |
@@ -60,7 +60,7 @@ The v1 schema declares the top-level keys tabled below. All object levels set `a
 | `schema_version` | yes | `1.x.y` — semver of this schema. |
 | `fingerprint` | generated | `sha256:<hex>` of the canonicalised body. |
 | `description` | no | One-sentence summary. |
-| `trigger` | yes | One of 6 trigger types (`cron`, `webhook`, `repo_event`, `file_event`, `email`, `manual`). |
+| `trigger` | yes | A member of the schema's closed trigger union; the schema is authoritative for the current members. |
 | `model_policy` | yes | `allowed_models` plus explicit `disallow_models`. |
 | `context` | yes | `skills` (each must have a verifier pack) and `memory` mode. |
 | `capabilities` | yes | Closed `tools` set. |
@@ -69,7 +69,9 @@ The v1 schema declares the top-level keys tabled below. All object levels set `a
 | `verifiers` | yes | Closed set of verifier-pack ids; empty array is legal but loud. |
 | `outputs` | yes | `required` (non-empty), `optional`, `audit.jsonl_path`. |
 
-### 3.1 Trigger types (6)
+The actionable machine-readable route for `context.memory.mode` is [`$defs.context.properties.memory.properties.mode` in the run-contract schema](../../contracts/run-contract.v1.schema.json). That definition, rather than a copied prose enumeration, is authoritative for accepted memory modes.
+
+### 3.1 Trigger types
 
 | Type | Discriminator fields |
 | --- | --- |
@@ -82,7 +84,7 @@ The v1 schema declares the top-level keys tabled below. All object levels set `a
 
 `signature_scheme: none` is a typed declaration that the webhook is *intentionally* unsigned; it is not a silent omission. See [webhook-ingress-security.md](webhook-ingress-security.md) for the surrounding ingress hardening.
 
-### 3.2 Authority axes (4)
+### 3.2 Authority axes
 
 Every axis defaults to an explicit deny (a typed value, never an absent field):
 
@@ -91,9 +93,9 @@ Every axis defaults to an explicit deny (a typed value, never an absent field):
 - **network** — `mode` is one of `deny` or `allow_list`. There is **no `allow_all`**; that omission is intentional.
 - **subprocess** — `allowed` is either a boolean or a closed list of absolute binary paths.
 
-### 3.3 Hooks (13)
+### 3.3 Hooks
 
-The canonical 13-hook list:
+The schema's current closed hook-name set is:
 
 ```
 before_run, after_run,
@@ -132,6 +134,7 @@ See [anti-confabulation-priming.md](anti-confabulation-priming.md) for one optio
 
 This illustrative shape describes a PR-triggered build and review contract. The YAML validates against [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json):
 
+<!-- doctrine-example: {"schema":"contracts/run-contract.v1.schema.json","wrapper":"run_contract"} -->
 ```yaml
 run_contract:
   name: evidence-pack-build-review
@@ -210,6 +213,7 @@ Read as one sentence: *on a PR against `example-org/evidence-pack`, use an appro
 
 The same shape, cron-triggered, narrower capability surface:
 
+<!-- doctrine-example: {"schema":"contracts/run-contract.v1.schema.json","wrapper":"run_contract"} -->
 ```yaml
 run_contract:
   name: nightly-evidence-pack-audit
@@ -265,7 +269,7 @@ run_contract:
       content_addressable: true
 ```
 
-The trigger swaps `repo_event` for `cron`; the rest of the envelope is structurally identical. That is the abstraction's value — six trigger types compile to one shape, and reviewers reason about one shape.
+The trigger swaps `repo_event` for `cron`; the rest of the envelope is structurally identical. That is the abstraction's value — the schema's closed trigger alternatives compile to one shape, and reviewers reason about one shape.
 
 ---
 
@@ -289,13 +293,13 @@ Contracts are themselves validated; validators are simpler than runs.
 | Validator | What it checks |
 | --- | --- |
 | Schema check | required fields, types, `additionalProperties: false`. |
-| Capability closure | every `capabilities.tools[i]` resolves to a known MCP tool with a matching authority class. |
-| Authority coherence | `network.mode: deny` is incompatible with a network-using tool in `capabilities.tools`. |
-| Verifier-pack existence | every `verifiers[i]` resolves to a real pack (see [verifier-packs.md](verifier-packs.md)). |
+| Capability closure | The estate compiler/runtime resolves every `capabilities.tools[i]` to a known tool with a matching authority class. |
+| Authority coherence | The estate compiler/runtime rejects conflicts such as `network.mode: deny` with a network-using tool. |
+| Verifier-pack existence | The estate catalogue/compiler resolves every `verifiers[i]` to a real pack (see [verifier-packs.md](verifier-packs.md)). |
 | Fingerprint stability | same canonical body produces same `sha256`. |
-| Skill-pack pairing | every `context.skills[i]` has a sibling verifier pack. |
+| Skill-pack pairing | This library's validator checks its own siblings; an estate catalogue/compiler resolves the estate's registered skills and packs. |
 
-A reference Python validator at [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py) uses `jsonschema` against the JSON Schema 2020-12 draft. Consumers SHOULD wire it into CI.
+[The constructed-sample validator](../../scripts/validate-contracts-v1.py) exercises representative in-memory instances against JSON Schema 2020-12; it does not extract the examples printed in this page or resolve an estate's live tools and catalogue. [The doctrine-example checker](../../scripts/check_doctrine_examples.py) extracts and schema-validates the complete YAML examples above. [`validate-skills.py`](../../scripts/validate-skills.py) validates the sibling packs for this library's own skills. Estate compilers and runtimes own live tool, authority, pack, and catalogue resolution. Consumers SHOULD wire the checks relevant to their owned surface into CI.
 
 ---
 
@@ -330,10 +334,10 @@ These gaps are explicit — the boundary of v1, not bugs in it.
 | Decision | Rationale |
 | --- | --- |
 | Single envelope, no shortcuts | A contract that omits a required key cannot be reviewed for what it is missing. |
-| `additionalProperties: false` everywhere | Loud rejection of unknown fields closes a tamper class. |
+| `additionalProperties: false` on concrete object shapes | Loud rejection of unknown fields closes a tamper class. |
 | Network `deny` default, no `allow_all` | Removing the option removes the temptation. |
 | `outputs.required` non-empty | Silent-stub class is the largest single failure mode this primitive closes. |
-| 6 trigger types, no `else` branch | Each branch is reviewable; an open-ended `custom` would defeat the purpose. |
+| Closed trigger union, no `else` branch | Each schema branch is reviewable; an open-ended `custom` would defeat the purpose. |
 | Hooks reference ids, not embedded scripts | Pushes script surface to a named, reviewable, host-runtime registry. |
 | One contract per governed execution | Multi-agent coordination composes separately fingerprinted envelopes; an orchestrator cannot widen a child by inheritance or hide delegation inside one run. |
 
@@ -345,5 +349,5 @@ These gaps are explicit — the boundary of v1, not bugs in it.
 - [webhook-ingress-security.md](webhook-ingress-security.md), [idempotency-across-boundaries.md](idempotency-across-boundaries.md) — trigger hardening and retry semantics.
 - [code-review-and-change-approval.md](code-review-and-change-approval.md) — review path for high-blast-radius contracts.
 - [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md), [../principles/single-source-of-truth.md](../principles/single-source-of-truth.md) — governed AI systems; canonical home.
-- [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json), [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py) — schema and reference validator.
+- [../../contracts/run-contract.v1.schema.json](../../contracts/run-contract.v1.schema.json), [../../scripts/validate-contracts-v1.py](../../scripts/validate-contracts-v1.py), [../../scripts/check_doctrine_examples.py](../../scripts/check_doctrine_examples.py) — schema, constructed-sample validator, and printed-example checker.
 - [agent-doctrine-consumption.md](agent-doctrine-consumption.md), [../skills/README.md](../skills/README.md) — what `context.skills: [...]` resolves to in this library: `doctrine/skills/<name>/SKILL.md` with a hash-pinned priming block and sibling pack, validated by `scripts/validate-skills.py`.
