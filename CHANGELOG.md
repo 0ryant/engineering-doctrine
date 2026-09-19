@@ -6,6 +6,14 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Added
+
+- [Branching And Integration](doctrine/impl/branching-and-integration.md): an implementation-neutral reference for protected-trunk integration, concurrent work, release-tag hotfixes, and exceptional support lines. It distinguishes workspace, branch, revision, candidate, and environment state and composes existing canonical owners without adding obligations. [Owner audit](doctrine/evolution/research-branching-integration-impl-composition-2026-09.md); [PR #28](https://github.com/0ryant/engineering-doctrine/pull/28).
+
+### Changed
+
+- Repository CI now uses commit-pinned `actions/checkout` v7.0.1 and `actions/setup-python` v7.0.0, both on Node 24, and explicitly selects Ubuntu 24.04. Python 3.12 and the existing contract, skill, and principle-inventory checks are unchanged. These are maintainer-tooling updates, not new consumer requirements.
+
 ## [0.5.0] - 2026-09-15
 
 **Progressive-disclosure and doctrine-integrity release.** This release adds the implementation-reference layer, with engineer-facing CI/CD and testing compositions; establishes the agent-facing consumption contract and doctrine lifecycle; and lands the post-v0.4.0 evidence, governance, graph-decomposition, correction, and navigation work recorded below.
