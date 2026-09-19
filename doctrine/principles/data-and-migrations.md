@@ -61,7 +61,6 @@ Durable rules for persisted state: relational and document stores, object storag
 
 - Martin Fowler, ParallelChange (parallel implementation for safe evolution): https://martinfowler.com/bliki/ParallelChange.html  
 - Pramod Sadalage & Scott Ambler, *Refactoring Databases* (evolutionary database design patterns) — canonical book treatment of incremental schema change.  
-- PostgreSQL and other vendors document lock behaviour and concurrent index/DDL options; always verify against your engine version.  
-- James Ross Jr., “Database Migrations in Production: Zero-Downtime Strategies” (overview of safe vs unsafe DDL and expand/contract): https://www.jamesrossjr.com/blog/database-migrations-guide  
+- PostgreSQL 18 — [CREATE INDEX](https://www.postgresql.org/docs/18/sql-createindex.html), [explicit locking](https://www.postgresql.org/docs/18/explicit-locking.html), and [modifying tables](https://www.postgresql.org/docs/18/ddl-alter.html) (S5, primary documentation for PostgreSQL behaviour; pinned to major version 18, accessed 2026-09-19). These support the engine-specific locking and staged-DDL discussion, not universal safe-operation or batch-size guarantees. Verify against the deployed engine version; this reference does not select an estate's database baseline. The [source review](../evolution/research-v060-source-maintenance-2026-09.md#m23-migration-guidance) records why these replace the prior practitioner overview.
 - Google Cloud — Disaster recovery planning (conceptual DR vs backup): https://cloud.google.com/architecture/dr-scenarios-planning-guide  
 - AWS — Disaster Recovery whitepapers and well-architected reliability pillar (use current AWS docs for your estate)  

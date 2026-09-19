@@ -83,7 +83,7 @@ Complements [performance-and-cost.md](performance-and-cost.md) (budgets, load, s
 - **Vector store and embedding costs** (Tier B+): include ANN index storage, embedding re-generation costs, and reranker compute in the service cost model—not only model inference.
 - **Agentic workloads in capacity planning** (Tier D): carry agent workloads through capacity planning and portfolio funding like any other growth workload—where the platform meters agentic consumption in **agent units** (e.g. [Azure agent units](https://learn.microsoft.com/en-us/azure/sre-agent/pricing-billing)), agent-unit forecasts belong in the §4 month-end projection, not only the incident channel. Budget and load baselines live in [performance-and-cost.md](performance-and-cost.md); this file governs the spend controls around them.
 
-**Why:** AI inference is the fastest-growing cloud cost category for engineering teams in 2026. A missing token budget on one agentic workflow can exceed the monthly compute budget of the entire service.
+**Why:** Usage-dependent inference charges accumulate across calls and retries. Explicit budgets and circuit breakers bound that exposure before the billing review.
 
 ### 7.1 Agent Financial And Transaction Authority
 

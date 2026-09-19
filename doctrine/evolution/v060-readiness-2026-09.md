@@ -7,8 +7,11 @@ review. No independent human cold-reader or domain review is claimed.
 
 The [release roadmap](post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md)
 owns acceptance criteria. This note reconciles its historical inputs against
-commit `c82af3b3ee76b6888ca0787b2edcfff65b1f8181` and the linked correction batch.
-It does not weaken those criteria to make a release pass.
+commit `c82af3b3ee76b6888ca0787b2edcfff65b1f8181` and the linked correction batches.
+The integrity batch landed in [PR #30](https://github.com/0ryant/engineering-doctrine/pull/30)
+at `e21bb294d1010c4353d66a419c15d57c0acf3349`. The subsequent
+[source-maintenance batch](research-v060-source-maintenance-2026-09.md) is
+identified separately below. Neither weakens criteria to make a release pass.
 
 ## Accounting Correction
 
@@ -26,8 +29,8 @@ on neighbouring content, external source currency or runtime effectiveness.
 ## Blockers And Majors
 
 Paths in this table name the current canonical surface under `doctrine/`.
-“This batch” means source changes accompanying this note, not a claim that they
-were present in the baseline or already released.
+“This batch” in the original rows means the PR #30 integrity batch, not the
+baseline or a released version. Later repairs explicitly say “source batch”.
 
 | ID | Disposition | Evidence / remaining action |
 | --- | --- | --- |
@@ -48,7 +51,7 @@ were present in the baseline or already released.
 | M13 | Resolved before this batch | Active flag replacement types requirements and makes numeric defaults estate-tunable. Frozen predecessor is not edited. |
 | M14 | Resolved before this batch | Replacement uses neutral metadata and an EXAMPLE shape, with migration mapping in §10. |
 | M15 | Resolved before this batch | Principle references point to existing umbrella propositions; V48 adds recurrence detection. |
-| M16 | Open — source/scope decision | Separate SLSA provenance level from hermeticity and reproducibility in dependencies §4. An L2 minimum does not itself contradict an additional stronger requirement. |
+| M16 | Open — source/scope decision | [Pinned SLSA review](research-v060-source-maintenance-2026-09.md#m16-slsa-attribution--decision-remains-open) separates provenance level, cache isolation, hermeticity and reproducibility. Dependencies §4 remains unchanged pending the scope/strength decision; an L2 minimum does not itself contradict an additional stronger library requirement. |
 | M17 | Open — owner consolidation | Dependencies §2 and secure-development §3 differ on vulnerability triage; preserve first-party scope before routing to one owner. |
 | M18 | Open — V41 | Dependencies §§3–5 need explicit SBOM, provenance and signing strength/scope, evidence and exception paths. |
 | M19 | Open — V41 | Configuration/secrets and audit logging contain untyped prohibition cores; preserve mechanisms as contextual choices. |
@@ -60,9 +63,9 @@ were present in the baseline or already released.
 
 | ID | Disposition | Evidence / remaining action |
 | --- | --- | --- |
-| m01 | Open — source currency | AI/ML §7 calls the MCP registry preview; verify if retained, or remove transient status from the durable rule. |
-| m02 | Open — route | Zero trust §2.1 names governance re-absorption without routing to the exception-review mechanism. |
-| m03 | Open — editorial/source | Cost §4 currency is already illustrative; §7's unbounded 2026 growth claim needs removal or dated support. |
+| m01 | Resolved in source batch | AI/ML §7 retains the registry trust boundary; the still-preview status is dated in the source note rather than embedded in the rule. |
+| m02 | Resolved in source batch | Zero trust §2.1 links the existing exception-review and permanent-deviation route; authority is unchanged. |
+| m03 | Resolved in source batch | Removed the unbounded 2026 growth ranking and budget comparison; retained the usage-cost mechanism and existing controls. |
 | m04 | Open — editorial | Fairness/drift anti-pattern appears in AI/ML §8 and AI adoption §6; warning summaries are not two typed control owners. |
 | m05 | Open — V41 | RAG §4's “non-negotiable” heading cannot substitute for claim-level strength and activation. |
 | m06 | Resolved in this batch | Run-contract §3 links the schema and identifies the exact `context.memory.mode` definition beside the context table. |
@@ -72,21 +75,21 @@ were present in the baseline or already released.
 | m10 | Closed — allegation not sustained | Semver §6.2's illustrative migration period is compatible with §9's blast-radius-based notice; §9 is not claimed as the source of the numbers. |
 | m11 | Resolved in this batch | Renamed “merge queues of doom” to long-lived integration backlogs without changing merge-queue guidance. |
 | m12 | Closed — allegation not sustained | Trunk workflow explicitly names collaboration §3 as the owner of PR-size defaults; no divergent numeric rule found. |
-| m13 | Open — readability | Split dense merge-path definition/scope/attack narrative without changing activation or review duties. |
-| m14 | Open — source currency | Verify CISA SBOM minimum-elements publication status before retaining the “draft” annotation. |
+| m13 | Resolved in source batch | Split the merge-path definition/scope/attack narrative; activation, review duties and precedent boundaries are retained. |
+| m14 | Resolved in source batch | CISA's 2025 draft is distinguished from its published 2026 successor; no adopted baseline is migrated. |
 | m15 | Resolved before this batch | Flag-governance §4.4 permits predeclared/tested safe-default reversion inside `active`, distinct from human state transitions. |
 | m16 | Open — layering | Move slopsquatting empirical incident detail out of the principle while retaining the threat distinction and evidence route. |
 | m17 | Closed — allegation not sustained | Retaining a rescannable SBOM and declaring re-evaluation triggers are complementary properties, not duplicate rules. |
-| m18 | Open — portability/source | Generalise the live registry-support claim in dependencies §3 or verify and date it in tooling. |
+| m18 | Resolved in source batch | Removed blanket named-registry support claims; retained digest-associated SBOM attachment and promotion duties. |
 | m19 | Resolved in this batch | Corrected “an caller” in the STRIDE table. |
 | m20 | Resolved in this batch | Corrected the estate key-rotation possessive. |
-| m21 | Open — source currency | Observability tooling's GenAI version/status claims need publisher checks and a dated compatibility boundary. |
+| m21 | Resolved in source batch | GenAI illustration is pinned and dated; documented conventions are separated from untested implementation/default/adoption claims. |
 | m22 | Resolved in this batch | Expanded the regulatory DORA name in reliability §7 to distinguish it from delivery research in §6. |
-| m23 | Open — source support | Verify the migration article's availability and support or replace it with verified primary guidance; the old fabrication suspicion is not evidence. |
+| m23 | Resolved in source batch | Article exists, but its PostgreSQL lock claim conflicts with primary docs; replaced its DDL support with pinned engine documentation, which also clarifies version boundaries, not a new database baseline. |
 | m24 | Resolved in this batch | Corrected Google SRE Book label to match the linked publisher table of contents, retrieved 2026-09-19. |
 | m25 | Retain — already illustrative | Governance-program §3 explicitly labels the revision-specific control example as candidates, not automatic obligations; relocation is unnecessary for this release. |
 | m26 | Resolved in this batch | Converted real platform-engineering targets from inert code spans into relative links. |
-| m27 | Open — source/support | Dated Gartner citation alone is not a defect; qualify/remove the unsupported NPS leading-indicator claim or ground it properly. |
+| m27 | Resolved in source batch | Replaced the unsupported NPS leading-indicator assertion with bounded survey feedback, supported by the pinned CNCF paper. |
 | m28 | Resolved before this batch | Umbrella compatibility note describes the actual v0.5.0 release, not the former v0.3.0 replacement. |
 | m29 | Open — navigation ownership | Umbrella and TL;DR adoption lists are compatible but duplicate detail; keep a single detailed adoption owner. |
 | m30 | Open — authority decision | Honesty test protocol calls itself canonical but lacks a declared layer/route; decide its authority before treating a link as sufficient repair. |
@@ -117,6 +120,8 @@ comprehension or timing improvement has **not** been demonstrated.
   remains open**, at the operator's explicit direction. No timing improvement is claimed.
 - V41: claim-level strength/scope and supporting-source admission, not a keyword sweep.
 - V42/V43: immutable release identity and proportionate semantic challenge decisions.
+  [Source-backed options and model scenarios](research-v060-release-and-review-options-2026-09.md)
+  are prepared; no new policy or host setting has been adopted.
 - Canonical-owner consolidations and machine-verdict precedence. The model-judge
   pattern currently permits sole calibrated authority where ADR 0034 forbids it.
 - V45 proposal dispositions; V44 full-delta lifecycle, source and release closeout.

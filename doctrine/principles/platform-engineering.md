@@ -124,7 +124,7 @@ Platform APIs are first-class contracts. Apply the same discipline as any other 
 | Decision | Rationale |
 | --- | --- |
 | Team Topologies as the reference model | Provides explicit vocabulary for team interactions. Avoids "DevOps" ambiguity. Widely adopted and well-evidenced. |
-| Platform-as-a-product orientation | Platforms that lack product discipline drift toward shelfware or shadow IT. Consumer NPS is a leading indicator of platform health. |
+| Platform-as-a-product orientation | Platforms that lack product discipline drift toward shelfware or shadow IT. Consumer surveys, including NPS, provide satisfaction feedback alongside adoption and delivery measures; they do not by themselves establish platform health. |
 | Thinnest viable platform | Over-built platforms are slower to change than no platform. Real production needs drive capability; build-ahead investment rarely lands correctly. |
 | Separate platform team from enabling team function | Mixing sustained platform ops with short-term coaching produces neither outcome well. Enabling should be time-boxed by design. |
 | Cognitive load as the primary metric | It is actionable, consumer-facing, and connects infrastructure decisions to developer experience outcomes better than adoption count alone. |
@@ -135,7 +135,7 @@ Platform APIs are first-class contracts. Apply the same discipline as any other 
 ## References
 
 - Team Topologies (Skelton & Pais, 2019): https://teamtopologies.com/book
-- CNCF Platforms Whitepaper: https://tag-app-delivery.cncf.io/whitepapers/platforms/
+- CNCF Platforms White Paper v1 — product thinking and user-satisfaction measurement, including NPS as one survey option (S4, foundation-reviewed guidance; pinned to commit `cadc7760e7e55a8c9a26c58c53d9d567fd6dcb9d`, accessed 2026-09-19): https://github.com/cncf/tag-app-delivery/blob/cadc7760e7e55a8c9a26c58c53d9d567fd6dcb9d/platforms-whitepaper/v1/index.md. It does not establish NPS as a predictive measure of platform health; see the [source review](../evolution/research-v060-source-maintenance-2026-09.md#m27-platform-survey-claim).
 - Platform engineering glossary and community: https://platformengineering.org/
 - Backstage — open-source developer portal: https://backstage.io/
 - SPACE framework for developer productivity: https://queue.acm.org/detail.cfm?id=3454124
