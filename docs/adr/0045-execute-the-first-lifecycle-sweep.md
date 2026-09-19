@@ -66,3 +66,21 @@ Rejected. ADR 0038 explicitly chose supersession for this file as the test case 
 ## Review Note
 
 Drafted and executed in a single agent session under the owner's direction, in response to the 2026-09-03 assessment. No council was convened; no independent human review has been recorded. The verdicts on the estate stubs and ADR 0021 are the owner's to reverse at the next sweep if they disagree.
+
+## Clarification (2026-09-19): Removal Floor
+
+Decision 3's phrase "the release after that" omitted the minimum interval
+already adopted by [ADR 0038](0038-adopt-a-doctrine-content-lifecycle.md)
+decision 1 and [lifecycle §4](../../doctrine/patterns/doctrine-content-lifecycle.md#4-deprecation-mechanics).
+For all three deprecations, earliest removal is the first minor release cut
+at least 90 days after the deprecating tag, v0.5.0. The tag timestamp is
+`2026-09-15T10:38:16+01:00`; its 90-day floor is
+`2026-12-14T09:38:16Z`. This is an eligibility floor, not an automatic removal
+date or release commitment; the existing sweep verdict and tombstone
+mechanics still apply.
+
+The live banners and register now state that adopted condition. This is an
+editorial reconciliation, with no new lifecycle decision, status transition
+or removal. The original decision text and dated sweep evidence remain as
+history; the clarification does not imply the omitted interval was written
+there in September's first sweep.
