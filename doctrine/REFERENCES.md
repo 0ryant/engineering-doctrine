@@ -103,6 +103,19 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 
 ---
 
+## Branching And Concurrent Work
+
+Context for the branching implementation composition and optional tooling, not new obligations. All accessed 2026-09-19. The [source ledger](evolution/research-branching-integration-impl-composition-2026-09.md#source-ledger) records scope, role, captured-byte pins, verification limits, and archive status; local captures exist, but no public archive URL was established.
+
+| Source | Class and pin | Use |
+| --- | --- | --- |
+| [DORA: Trunk-Based Development](https://dora.dev/capabilities/trunk-based-development/) | S4; dated HTML capture with SHA-256 in ledger | Frequent integration and small-batch context; no universal superiority claim or new numerical threshold. |
+| [Driessen: A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) | S6; 2010 article / 2020 reflection, captured-byte pin in ledger | Author's context for simpler continuous-delivery workflows and supported versioned products. |
+| [Trunk Based Development: Branch For Release](https://trunkbaseddevelopment.com/branch-for-release/) | S6; published SHA and captured-byte pin in ledger | Release-branch illustration; its trunk-first fix preference does not replace this library's tag-first hotfix policy. |
+| [Git: Worktree Manual](https://git-scm.com/docs/git-worktree/2.54.0) | S5; version 2.54.0 | Optional linked-working-tree commands and shared repository behaviour. |
+
+---
+
 ## Platform Engineering (Reference Framing)
 
 Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** external maturity framing—not a mandate to adopt any CNCF project.
@@ -440,6 +453,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md) | Source authority and evidence weighting: 771-reference census, council-reproduced exactly (NIST the biggest dependency at 93; EU law cited 13:2 via unofficial mirrors; academic tier ~85% preprint; one tweet in a pattern file); two-axis grading core from the two disciplines that grade at scale (Admiralty × GRADE) with scope/role/appraisal fields from law, SE, and historiography; standards-body lifecycle mechanics (IETF downref registry, ISO dated-vs-undated review duty, W3C change-control grading, NIST tombstones × DoD pin divergence, link-rot data); proposed S1–S7+X × C1–C4 scheme with the conformance/empirical split, BCP-14 admission floors, citation metadata, sweep-anchored source-event reviews, and forward-only adoption; seven-row action list, ADR-bound; three-critic council ratification |
 | [evolution/research-implementation-reference-layer-2026-09.md](evolution/research-implementation-reference-layer-2026-09.md) | Repository evidence, CI/CD exemplar audit, layer boundary, and screened backlog supporting ADR 0048 |
 | [evolution/research-testing-verification-impl-composition-2026-09.md](evolution/research-testing-verification-impl-composition-2026-09.md) | Repository owner audit and evidence-placement rationale for the testing and verification implementation reference |
+| [evolution/research-branching-integration-impl-composition-2026-09.md](evolution/research-branching-integration-impl-composition-2026-09.md) | Repository owner audit and composition rationale for concurrent local work, branching, integration, hotfixes, and supported release lines |
 | [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md) | `v0.3.0` release decisions, task ownership, dependencies, acceptance criteria, and verification gates |
 | [../docs/adr/0012-model-routing-policy.md](../docs/adr/0012-model-routing-policy.md) | Accepted model-routing policy v1 contract: provider-neutral structural tiers, evidence-bound escalation and refusal, review requirements, and cost ceilings |
 | [../docs/adr/0028-adopt-claim-level-authority-applicability-and-exceptions.md](../docs/adr/0028-adopt-claim-level-authority-applicability-and-exceptions.md) | Accepted claim-level normative strength, composable applicability, bounded exceptions, and control lifecycle |
@@ -523,6 +537,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [impl/README.md](impl/README.md) | Layer definition, authority boundary, candidate test, and reference shape |
 | [impl/cicd-delivery.md](impl/cicd-delivery.md) | Branch-to-production CI/CD composition with application, IaC, database, and rendered-configuration variants |
 | [impl/testing-and-verification.md](impl/testing-and-verification.md) | Evidence placement across application CI, packages, deployments, infrastructure, migrations, and scheduled assurance |
+| [impl/branching-and-integration.md](impl/branching-and-integration.md) | Concurrent local work, short-lived branches into protected trunk, revision and delivery-state distinctions, hotfixes, and supported release lines |
 
 ### Extended principles
 

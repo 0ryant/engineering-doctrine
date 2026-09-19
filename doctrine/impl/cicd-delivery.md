@@ -133,3 +133,5 @@ Layer contract: [Implementation References](README.md).
 Product mappings and verification prompts: [CI Platform Mapping](../tooling/ci-platform-mapping.md), [Build Readiness Checklist](../checklists/build-readiness.md), and [Release Readiness Checklist](../checklists/release-readiness.md).
 
 Related composition: [Testing And Verification](testing-and-verification.md) places evidence across these delivery surfaces.
+
+Related composition: [Branching And Integration](branching-and-integration.md) covers concurrent local work, protected-trunk integration, hotfixes, and supported release lines.

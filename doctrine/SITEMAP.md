@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-14 14:26 UTC
+Generated: 2026-09-19 17:31 UTC
 
 ## All Markdown files
 
@@ -40,6 +40,7 @@ Generated: 2026-09-14 14:26 UTC
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md)
 - [evolution/research-ai-native-sdlc-council-designs-2026-07.md](evolution/research-ai-native-sdlc-council-designs-2026-07.md)
 - [evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md](evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md)
+- [evolution/research-branching-integration-impl-composition-2026-09.md](evolution/research-branching-integration-impl-composition-2026-09.md)
 - [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md)
 - [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
@@ -57,6 +58,7 @@ Generated: 2026-09-14 14:26 UTC
 - [evolution/v0.3.0-release-plan.md](evolution/v0.3.0-release-plan.md)
 - [glossary.md](glossary.md)
 - [impl/README.md](impl/README.md)
+- [impl/branching-and-integration.md](impl/branching-and-integration.md)
 - [impl/cicd-delivery.md](impl/cicd-delivery.md)
 - [impl/testing-and-verification.md](impl/testing-and-verification.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)

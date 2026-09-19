@@ -4,15 +4,19 @@ These rules govern how teams work together on shared code, how changes land on t
 
 Related build and release rules live in [build.md](build.md) and [../patterns/trunk-workflow.md](../patterns/trunk-workflow.md). GitHub and GitLab implementation defaults live in [../tooling/collaboration.md](../tooling/collaboration.md).
 
+For the normal branching, concurrent-work, and integration shape, start with [Branching And Integration](../impl/branching-and-integration.md).
+
 ---
 
 ## 1. Trunk-Based Development Is The Default
 
-- **Single integration branch** (usually `main`) is the source of truth for what ships. Long-lived branches are for exceptional cases, not day-to-day work.
+- **Single integration branch** (usually `main`) is the authoritative integration state for active development. Long-lived branches are for exceptional cases, not day-to-day work.
 - **Short-lived topic branches** exist only long enough to produce a reviewable change. Days, not weeks.
 - **Integrate frequently** — small, incremental merges reduce merge pain and keep feedback loops tight.
 - **Avoid merge queues of doom** — if a branch cannot merge within a few days, the work is probably too large; split it.
 - **Release from trunk** (or from tags on trunk). Releases are not separate parallel development lines unless the product model truly requires it (and that requirement is documented).
+
+The current tip of `main` does not identify what is running in an environment. Use the deployed candidate, its source revision, configuration binding, and deployment evidence; see [Build Principles](build.md) and [Authoritative Sources And Intentional Duplication](single-source-of-truth.md).
 
 ---
 
