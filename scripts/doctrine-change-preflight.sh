@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Preflight for doctrine library edits: regenerate sitemap and print harness reminders.
+# Preflight for doctrine library edits: generated navigation and integrity checks.
 # Run from repo root: ./scripts/doctrine-change-preflight.sh
 set -euo pipefail
 
@@ -15,21 +15,24 @@ fi
 ./scripts/generate-doctrine-sitemap.sh
 ./scripts/check-principles-glance.sh
 
-if [[ -d doctrine/skills ]]; then
-  if [[ -n "${PYTHON_BIN:-}" ]]; then
-    PYTHON=("$PYTHON_BIN")
-  elif command -v python3 >/dev/null 2>&1; then
-    PYTHON=(python3)
-  elif command -v python >/dev/null 2>&1; then
-    PYTHON=(python)
-  elif command -v py >/dev/null 2>&1; then
-    PYTHON=(py -3)
-  else
-    echo "error: Python 3 is required to validate doctrine skills" >&2
-    echo "hint: install Python 3 or set PYTHON_BIN to its executable" >&2
-    exit 1
-  fi
+if [[ -n "${PYTHON_BIN:-}" ]]; then
+  PYTHON=("$PYTHON_BIN")
+elif command -v python3 >/dev/null 2>&1; then
+  PYTHON=(python3)
+elif command -v python >/dev/null 2>&1; then
+  PYTHON=(python)
+elif command -v py >/dev/null 2>&1; then
+  PYTHON=(py -3)
+else
+  echo "error: Python 3 is required for doctrine integrity checks" >&2
+  echo "hint: install Python 3 or set PYTHON_BIN to its executable" >&2
+  exit 1
+fi
 
+"${PYTHON[@]}" scripts/check_markdown_links.py
+"${PYTHON[@]}" scripts/check_doctrine_examples.py
+
+if [[ -d doctrine/skills ]]; then
   "${PYTHON[@]}" scripts/validate-skills.py
 fi
 

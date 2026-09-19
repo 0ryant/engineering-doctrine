@@ -57,4 +57,4 @@ Record results in a short log (wiki, ADR appendix, or ticket)—link to dashboar
 ## References
 
 - **Principles of Chaos Engineering**: https://principlesofchaos.org/  
-- Google SRE Workbook — related disaster and load testing culture: https://sre.google/sre-book/table-of-contents/  
+- Google SRE Book — related disaster and load testing culture: https://sre.google/sre-book/table-of-contents/

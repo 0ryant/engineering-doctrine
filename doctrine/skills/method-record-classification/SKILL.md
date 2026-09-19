@@ -57,6 +57,7 @@ Before you finalise a commit or change candidate:
 
 ## Run-Contract Use
 
+<!-- doctrine-example: {"partial":"Run-contract binding excerpt; the enclosing required fields are intentionally omitted."} -->
 ```yaml
 context:
   skills:

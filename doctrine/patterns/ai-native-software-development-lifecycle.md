@@ -29,6 +29,10 @@ Issues, repositories, CI runs, artefact stores, deployment records, policy syste
 
 This is a training view over the canonical rules below, not a second authority surface.
 
+For a change in hand, start with the [seven gates](#5-seven-operational-gates).
+Use the later states, record families and evidence classes as reference material,
+not prerequisites for choosing the next action.
+
 | Principle | Remember |
 | --- | --- |
 | **Start with an accountable mandate.** Know the customer, mission, business, risk, operational, or obligation purpose and its owner. Strategic work uses outcomes rather than task completion as success. | Outputs are not outcomes. |
@@ -88,6 +92,12 @@ The gates are decision boundaries, not mandatory team names or workflow statuses
 | **G7 Enact, observe, and close** | Was the authorised candidate enacted, how did it behave, and which closure is justified? | Deployment/promotion receipt; target/resulting identity; runtime evidence; rollback state; technical/operational/outcome decision and follow-up owner. |
 
 A change advances only when required evidence is authenticatable, current, scoped, and bound to the exact candidate. Silence is not success.
+
+For a software candidate within this pattern's scope, assess G1–G7. At G3, a run
+contract is required only when a [governed-execution trigger](run-contracts.md#11-when-a-run-is-governed)
+applies; otherwise ordinary review, CI, security, authority and release controls
+continue. At G7, record the closure justified now and the owner of any linked
+observation or outcome review that remains open.
 
 ## 6. S0-S10 Reference Crosswalk
 
@@ -150,6 +160,11 @@ A controlled transition is admissible only when:
 A changed candidate invalidates evidence and approvals bound to the earlier identity. A material change to mandate, claim, input, or policy invalidates derived records until they are reviewed and rebound.
 
 ## 10. Authority Model
+
+Owner map: mandate owners own purpose and scope; claim/evidence owners own
+validity obligations; integration owners accept governed-run handoffs; named
+approvers authorise candidate transitions; service/change owners decide runtime
+closure; portfolio owners decide strategic outcomes where activated.
 
 Separate these duties even when one platform implements several:
 

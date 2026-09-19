@@ -72,7 +72,7 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 - **Sign container images and release binaries** using **cosign** with keyless signing via OIDC. In a hosted CI environment (GitHub Actions, Azure DevOps with Workload Identity), no long-lived private key is required — the CI runtime obtains a short-lived certificate from **Fulcio**, signs the artefact, and records the signature in the **Rekor** transparency log.
 - **Verification** at deploy time: consumers validate the signature against the Rekor ledger and the identity that was permitted to sign (e.g., only the `release` workflow in `org/repo` may sign production images).
 - **No long-lived signing keys in secret stores** for build pipelines that support OIDC. Key rotation burden and secret exfiltration risk both drop to zero for keyless flows.
-- Where keyless signing is not available (air-gapped or legacy environments), use **cosign** with a KMS-backed key and rotate per the estates key-rotation policy.
+- Where keyless signing is not available (air-gapped or legacy environments), use **cosign** with a KMS-backed key and rotate per the estate's key-rotation policy.
 
 **Why:** Signature verification closes the gap between "we fetched this image from our registry" and "we know this image was built from commit X by our authorised CI pipeline, not by anyone else."
 

@@ -22,8 +22,11 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] Cross-links added from related principles/patterns (avoid orphan pages)
 [ ] New or changed impl reference creates no requirement, states canonical-owner precedence, stays implementation-neutral and concise, and ends with canonical principle/pattern plus tooling/checklist links
 [ ] Checklists derive prompts from an owning principle or pattern; no new obligation exists only in a checklist
+[ ] Each ADR adding or changing a typed obligation names its canonical owner and checklist/navigation landings, or explicitly explains why no derived landing is needed (harness §3)
 [ ] REFERENCES.md internal map updated if new first-class doc
 [ ] doctrine/SITEMAP.md regenerated: ./scripts/generate-doctrine-sitemap.sh
+[ ] Local Markdown targets and ENGINEERING.md anchors pass: python scripts/check_markdown_links.py (external URLs and other-file fragments are outside this gate)
+[ ] YAML fences have explicit complete-schema / partial / external classification and pass python scripts/check_doctrine_examples.py; no runtime-conformance claim is inferred from syntax or schema validity
 [ ] Principle file added, removed, retitled, deprecated, or its opening paragraph changed: its row in tldr-principles-and-mvp.md "Every Principle At A Glance" and its doctrine/README.md link updated; ./scripts/check-principles-glance.sh passes
 [ ] Skills: python scripts/validate-skills.py passes (manifest schema, priming-block hash, sibling verifier pack, governing paths, review date) and doctrine/skills/README.md register updated (patterns/agent-doctrine-consumption.md §3)
 [ ] doctrine/README.md Start Here or section lists updated when files are added/removed

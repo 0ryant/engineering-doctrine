@@ -4,7 +4,7 @@ Durable rules for **building and operating internal developer platforms** that r
 
 Platform engineering is an intentional discipline rooted in [Team Topologies](https://teamtopologies.com/book) thinking. It is not "DevOps renamed", not "a shared ops team", and not "self-service for its own sake". The goal is deliberate reduction of extraneous cognitive complexity so stream-aligned teams can focus on their domain.
 
-Implementation guidance (Backstage, Port, specific IDP tooling) lives in `doctrine/tooling/`. This file holds portable intent.
+Implementation guidance (Backstage, Port, specific IDP tooling) lives in [tooling](../tooling/). This file holds portable intent.
 
 ---
 
@@ -40,7 +40,7 @@ The platform is a product consumed by internal teams. Apply product management d
 - Treat **stream-aligned teams as customers**; platform team as the product team.
 - Maintain a **platform backlog** with prioritised roadmap, not just reactive tickets.
 - Measure **adoption**, **DORA metrics** of platform consumers, **time to first production deployment** for new teams, and **cognitive load surveys** — not just uptime.
-- Publish a **changelog** for every breaking or significant platform change; version platform APIs (see `doctrine/principles/semantic-versioning.md`).
+- Publish a **changelog** for every breaking or significant platform change; version platform APIs (see [semantic versioning](semantic-versioning.md)).
 - Run **regular feedback loops**: office hours, usage instrumentation, quarterly consumer surveys.
 - Do not add platform features ahead of demonstrated demand. Thinnest viable platform (see §3) applies.
 
@@ -95,7 +95,7 @@ Cognitive load is the primary outcome the platform must reduce. Measure it delib
 - **Intrinsic** cognitive load (essential domain complexity) cannot be removed — only unneeded complexity can.
 - **Extraneous** cognitive load (tooling complexity, unclear process, toil) is the platform's target. Reduce it by absorbing or automating.
 - Measure via:
-  - **Developer productivity surveys** (SPACE framework dimensions: Satisfaction, Performance, Activity, Communication, Efficiency) — see `doctrine/principles/measurement-and-dora.md`.
+  - **Developer productivity surveys** (SPACE framework dimensions: Satisfaction, Performance, Activity, Communication, Efficiency) — see [measurement and DORA](measurement-and-dora.md).
   - **Time-on-undifferentiated-work** ratio (hours on toil vs product-domain work — target: <20% toil).
   - **Onboarding time** (time from day-0 to first PR merged and deployed to staging — target: ≤1 day with golden path).
   - **DORA Four Keys** of platform consumers (deployment frequency, lead time, MTTR, change failure rate).
@@ -113,7 +113,7 @@ Platform APIs are first-class contracts. Apply the same discipline as any other 
 - Breaking changes follow **semantic versioning** and require **migration guides** with deprecation windows (minimum one sprint; major changes require one release cycle advance notice).
 - The platform team owns documentation currency. Stale docs erode trust faster than missing features.
 - **Use the platform to document the platform**: if the catalogue cannot describe platform services, the catalogue is broken.
-- **Internal ADRs** for platform architecture decisions are public within the org. Teams consuming the platform deserve to understand why it works the way it does — see `doctrine/principles/documentation-knowledge.md`.
+- **Internal ADRs** for platform architecture decisions are public within the org. Teams consuming the platform deserve to understand why it works the way it does — see [documentation and knowledge](documentation-knowledge.md).
 
 **Why:** Documentation is the delivery contract. A platform that cannot be used without ad-hoc Slack questions is not self-service.
 

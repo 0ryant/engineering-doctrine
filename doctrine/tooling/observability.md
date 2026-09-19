@@ -72,6 +72,7 @@ Illustrative implementation of the **multi-window burn-rate model** in [../princ
 
 Define recording rules first to avoid query duplication and reduce evaluation load. **Author a rule for every window the alerts query** — all four below — because a missing recording rule evaluates as an **empty vector without error**, and the alert silently never fires:
 
+<!-- doctrine-example: {"external":"Prometheus owns rule and PromQL semantics; this gate checks YAML syntax only."} -->
 ```yaml
 # Recording rules — per-job error ratio, one per alert window
 - record: job:request_error_ratio:rate1h
@@ -95,6 +96,7 @@ Define recording rules first to avoid query duplication and reduce evaluation lo
     / sum by (job) (rate(http_requests_total[3d]))
 ```
 
+<!-- doctrine-example: {"external":"Prometheus owns rule and PromQL semantics; this gate checks YAML syntax only."} -->
 ```yaml
 # Alerting rule — fast burn (1h + 5m paired windows)
 - alert: ErrorBudgetBurnFast

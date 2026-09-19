@@ -136,6 +136,7 @@ Disagreement is normal; **indefinite stall** and silent resentment are failure m
 ## 8. References and related doctrine
 
 - [collaboration.md](../principles/collaboration.md) — trunk, PR size, feature flags, review latency
+- [feature-flag-governance.md](feature-flag-governance.md) — canonical flag metadata, merge gating, test isolation, rollout and reversal rules
 - [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) — gates, evidence, pipeline as security surface
 - [measurement-and-dora.md](../principles/measurement-and-dora.md) — lead time, flow
 - [ai-ml-systems.md](../principles/ai-ml-systems.md) — governed GenAI and agents

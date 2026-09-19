@@ -54,6 +54,7 @@ model, prompt stack, tool surface, or task distribution changes materially.
 
 When enabled, bind the priming policy in the run contract:
 
+<!-- doctrine-example: {"partial":"Run-contract excerpt; the enclosing required fields are intentionally omitted."} -->
 ```yaml
 context:
   skills:
@@ -83,6 +84,7 @@ skill so the run does not gain invisible context.
 Priming needs a sibling verifier that checks presence and integrity of the
 rendered block; it does not score whether the model obeyed it.
 
+<!-- doctrine-example: {"schema":"contracts/verifier-pack.v1.schema.json"} -->
 ```yaml
 name: anti-confabulation-verifier-pack
 skill: anti-confabulation
