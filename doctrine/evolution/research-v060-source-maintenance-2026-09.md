@@ -5,8 +5,9 @@ Status: non-normative research and editorial repair record; not release approval
 Evidence: directly inspected repository text and publisher material, followed by
 model review. No independent human or domain review is claimed.
 
-This note covers only m01, m02, m03, m13, m14, m18, m21, m23 and m27 in the
-[readiness reconciliation](v060-readiness-2026-09.md), plus research for M16.
+This note covers only m01, m02, m03, m13, m14, m16, m18, m21, m23 and m27 in the
+[readiness reconciliation](v060-readiness-2026-09.md), plus research for M16
+and the SBOM attribution under M18.
 The repairs preserve existing duties, activation, strength and exception
 authority. Citation pins identify evidence; they do not upgrade a consumer's
 protocol, telemetry or control-profile baseline. M16's policy decision remains
@@ -24,12 +25,14 @@ or ADR acceptance is made here.
 
 ## Evidence Method And Limits
 
-All external sources below were accessed on 2026-09-19. Each source record
+Except for the explicitly carried-forward evidence in m16, external sources
+below were accessed on 2026-09-19. Each newly checked source record
 states its class, claim-specific scope, role and pin. Publisher descriptions
 are evidence of documented behaviour, not live implementation tests. Sources
 from one publisher count once for independence. Local source captures with
 SHA-256 hashes were retained separately; no public archive URL is claimed.
-Repository references in m02/m13 establish existing doctrine only.
+Repository references in m02/m13 establish existing doctrine only. The m16
+relocation records earlier narration and does not claim a new source check.
 
 This is a bounded citation check, not the full release-delta source sweep or
 an admission review of neighbouring untyped claims. Descriptive removals do
@@ -106,6 +109,29 @@ assess every changed SBOM field or establish a legal obligation. Existing
 profile pins and any migration decision remain under
 [revision-pinned control profiles](../patterns/revision-pinned-control-profiles.md).
 Review on further publisher revision or when an estate considers migration.
+
+## m16 Package-Hallucination Evidence Placement
+
+Editorial relocation recorded 2026-09-19. The study and incident narration
+below was carried forward from [dependencies §7](../principles/dependencies-supply-chain.md)
+at repository revision `cec57249dbee6c375e37f1d8c6c211f573ac3c63`; its external
+sources were **not re-fetched or independently verified in this repair**.
+These are historical reported findings, not current model-cohort rates or
+new source-admission evidence. The [August gap audit](research-bleeding-edge-ai-landscape-gap-audit-2026-08.md)
+G3 and [ADR 0032](../../docs/adr/0032-add-ai-act-transparency-slopsquatting-gate-and-model-dataset-admission.md)
+record the original control rationale and its review provenance.
+
+- **Study narration:** the existing text attributed to [Spracklen et al., USENIX Security 2025](https://arxiv.org/abs/2406.10279), measured on a **2024 model cohort**, 2.23 million package recommendations from 16 code-generating LLMs: 19.7% hallucinations, 205,474 unique names, approximately 5.2% for commercial models versus 21.7% for open-source models, and 43% of hallucinated names recurring in all ten re-runs of the same prompt. It separately attributed to [Churilov 2026](https://arxiv.org/abs/2605.17062) a **2026 frontier-cohort** replication with per-model rates of 4.62–6.10%, 127 package names invented identically by all five evaluated models, and 53 still registrable after registry defences.
+- **Separate incident narration:** the existing text cited [The Register, 2024-03-28](https://www.theregister.com/2024/03/28/ai_bots_hallucinate_software_packages/) for a researcher-registered PyPI package matching `huggingface-cli` receiving 15,000+ downloads in three months, and [Aikido, 2026-02](https://www.aikido.dev/blog/slopsquatting-ai-package-hallucination-attacks) for the hallucinated npm name `react-codeshift` spreading through 47 LLM-generated agent skills into 237 repositories. These reports remain distinct from the studies; a registrable name is not itself evidence of a live malicious package or compromise.
+
+Dependencies §7 now separates the stable attack mechanism and controls from
+that dated narration. The pre-install gate's owner remains
+[AI/ML §4](../principles/ai-ml-systems.md#4-engineering-change-path-agents-and-humans),
+including its estate-governed/production MUST, local single-user SHOULD,
+registry-lookup evidence and bounded, expiring exception with compensating
+controls. Dependency/lockfile review, curated registry or proxy advice and
+install-script defaults are unchanged. No new rate estimate, mitigation or
+normative claim is introduced.
 
 ## m18 Registry Support Claim
 
@@ -214,3 +240,29 @@ requirement for hermetic or reproducible builds. The owner must decide between:
 
 Neither option is adopted here. Dependencies §4 is unchanged. Source checking
 alone cannot choose the policy strength or justify marking M16 resolved.
+
+## M18 SBOM Attribution — Verified Table, Decision Remains Open
+
+The official [NTIA July 12, 2021 report](https://www.ntia.gov/sites/default/files/publications/sbom_minimum_elements_report_0.pdf)
+was retrieved on 2026-09-19 through a direct download after browser retrieval
+returned HTTP 403. Its title and §IV data-field table (PDF pages 1, 8–9) were
+inspected. **S2, primary institutional guidance; pin: July 12, 2021 publication;
+scope: the historical report's field list, not a universal current baseline.**
+The captured PDF's SHA-256 is
+`b0fbbe5e3c5773977df1f402eceb845c4d5715a02cde4d967e54aef51856b716`;
+no public archive was created by this check.
+
+The table includes the supplier, component name and version, other identifiers,
+dependency relationships, the author of SBOM data, and a timestamp.
+[Dependencies §3](../principles/dependencies-supply-chain.md#3-sbom-generation-and-attachment)
+omits the author and substitutes known-vulnerability references. Those references
+may be an additional library expectation but are not one of that table's seven
+fields. The report also covers automation and operational practices; reproducing
+its field list alone does not establish full conformance.
+
+This closes the earlier full-table retrieval gap, not M18. The canonical list
+is unchanged pending the final consumer-impact decision: correct the historical
+attribution, separately disposition the extra vulnerability field, and decide
+whether to retain the historical baseline or migrate to the successor described
+under m14 above. A source correction must not silently choose a new baseline or
+remove an additional obligation.

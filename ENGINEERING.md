@@ -81,7 +81,7 @@ Every material control SHOULD identify the failure it addresses, evidence that i
 
 ## Minimum Viable Adoption
 
-For a team starting from little shared doctrine, establish these foundations first:
+These six foundations summarise the [first adoption slice](doctrine/tldr-principles-and-mvp.md#minimum-viable-doctrine) for a team starting from little shared doctrine:
 
 1. one local-and-CI quality gate;
 2. a protected default branch and reviewed small changes;

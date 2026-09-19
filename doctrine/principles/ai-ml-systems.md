@@ -118,7 +118,7 @@ Capability tiers say what a system can do; materiality says what its failure cos
 - Long-lived secrets in prompts or logged context.
 - Multi-agent “council” outcomes treated as approval without CI or human sign-off for high-risk change.
 - **Shadow AI** — copilots, wrappers, or vendor AI features in production outside the inventory ([../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §1); or registration made so heavy that teams route around it.
-- **Fairness and drift as launch-only checks** — person-affected outputs never re-evaluated after retrain or silent vendor model upgrade.
+- **Fairness and drift as launch-only checks** — person-affected outputs never re-evaluated after retrain or silent vendor model upgrade. Testing scope and evidence: [AI adoption controls §3](../patterns/ai-adoption-controls.md#3-testing-matched-to-the-harm-surface).
 - **Self-certifying output verification**: the agent evaluates its own output with no external signal (test run, structured rubric, human check). Without an external verifier, the loop is open; confident wrong answers are worse than uncertain right ones.
 - **Flat injection defence**: relying on a probabilistic LLM-based filter to detect indirect injection instead of architectural separation of untrusted content from the planning model. Probabilistic guards fail at scale; enforcement belongs in deterministic code.
 - **Unscoped tool access at startup**: all tools loaded and available regardless of which task phase the agent is in. Increases attack surface and degrades tool selection accuracy. Scope tools to the current task stage; use tool RAG for large libraries.

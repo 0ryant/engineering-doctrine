@@ -19,6 +19,7 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ### Fixed
 
+- Three editorial findings are closed: AI testing-owner navigation, dated package-hallucination evidence placement, and the umbrella's adoption-summary route. Deprecation notices now match the existing 90-day minor-release floor, with a dated ADR 0045 clarification; no content is removed. The [readiness ledger](doctrine/evolution/v060-readiness-2026-09.md) retains the policy and human-usability gates. The NTIA field table is verified in the source note, but SBOM baseline and extra-field decisions remain open. Change class: editorial/navigation; no new consumer obligation.
 - Nine source/readability findings are repaired in a [dated maintenance record](doctrine/evolution/research-v060-source-maintenance-2026-09.md): transient registry status, exception routing, unsupported cost/NPS claims, merge-path readability, SBOM publication status, registry-support overreach, GenAI compatibility claims and migration-source support. Change class: editorial/navigation; existing control duties and consumer baselines are unchanged. Policy-strength and ownership decisions remain open.
 - Repaired concatenated checklist items and the verifier-pack YAML example; corrected claims about validator coverage and removed copied schema counts. Small link, terminology and typo corrections preserve existing engineering obligations. Model walkthroughs found SDLC navigation defects; human cold-reader verification remains explicitly open.
 

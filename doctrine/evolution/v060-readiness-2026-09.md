@@ -30,7 +30,8 @@ on neighbouring content, external source currency or runtime effectiveness.
 
 Paths in this table name the current canonical surface under `doctrine/`.
 “This batch” in the original rows means the PR #30 integrity batch, not the
-baseline or a released version. Later repairs explicitly say “source batch”.
+baseline or a released version. Later repairs explicitly say “source batch”
+or “editorial follow-up”.
 
 | ID | Disposition | Evidence / remaining action |
 | --- | --- | --- |
@@ -53,7 +54,7 @@ baseline or a released version. Later repairs explicitly say “source batch”.
 | M15 | Resolved before this batch | Principle references point to existing umbrella propositions; V48 adds recurrence detection. |
 | M16 | Open — source/scope decision | [Pinned SLSA review](research-v060-source-maintenance-2026-09.md#m16-slsa-attribution--decision-remains-open) separates provenance level, cache isolation, hermeticity and reproducibility. Dependencies §4 remains unchanged pending the scope/strength decision; an L2 minimum does not itself contradict an additional stronger library requirement. |
 | M17 | Open — owner consolidation | Dependencies §2 and secure-development §3 differ on vulnerability triage; preserve first-party scope before routing to one owner. |
-| M18 | Open — V41 | Dependencies §§3–5 need explicit SBOM, provenance and signing strength/scope, evidence and exception paths. |
+| M18 | Open — V41 | Dependencies §§3–5 need explicit SBOM, provenance and signing strength/scope, evidence and exception paths. The [official NTIA table is now verified](research-v060-source-maintenance-2026-09.md#m18-sbom-attribution--verified-table-decision-remains-open); correcting its attribution and dispositioning extra fields or a successor baseline remain final-phase work. |
 | M19 | Open — V41 | Configuration/secrets and audit logging contain untyped prohibition cores; preserve mechanisms as contextual choices. |
 | M20 | Resolved before this batch | PromQL moved from the principle to observability tooling. |
 | M21 | Resolved before this batch | Burn-rate guidance has production/SLO activation, low-traffic variance and EXAMPLE defaults. |
@@ -66,7 +67,7 @@ baseline or a released version. Later repairs explicitly say “source batch”.
 | m01 | Resolved in source batch | AI/ML §7 retains the registry trust boundary; the still-preview status is dated in the source note rather than embedded in the rule. |
 | m02 | Resolved in source batch | Zero trust §2.1 links the existing exception-review and permanent-deviation route; authority is unchanged. |
 | m03 | Resolved in source batch | Removed the unbounded 2026 growth ranking and budget comparison; retained the usage-cost mechanism and existing controls. |
-| m04 | Open — editorial | Fairness/drift anti-pattern appears in AI/ML §8 and AI adoption §6; warning summaries are not two typed control owners. |
+| m04 | Resolved in editorial follow-up | AI/ML §8 now routes its fairness/drift warning to AI adoption §3's harm-surface testing owner. Both warning scopes remain; no broader owner consolidation is claimed. |
 | m05 | Open — V41 | RAG §4's “non-negotiable” heading cannot substitute for claim-level strength and activation. |
 | m06 | Resolved in this batch | Run-contract §3 links the schema and identifies the exact `context.memory.mode` definition beside the context table. |
 | m07 | Closed — allegation not sustained | Schema defines `RemoteSigned` as a provenance level, not a product. No enum rename is needed. |
@@ -78,7 +79,7 @@ baseline or a released version. Later repairs explicitly say “source batch”.
 | m13 | Resolved in source batch | Split the merge-path definition/scope/attack narrative; activation, review duties and precedent boundaries are retained. |
 | m14 | Resolved in source batch | CISA's 2025 draft is distinguished from its published 2026 successor; no adopted baseline is migrated. |
 | m15 | Resolved before this batch | Flag-governance §4.4 permits predeclared/tested safe-default reversion inside `active`, distinct from human state transitions. |
-| m16 | Open — layering | Move slopsquatting empirical incident detail out of the principle while retaining the threat distinction and evidence route. |
+| m16 | Resolved in editorial follow-up | Dependencies §7 retains the threat distinction and unchanged controls; study cohorts and incident narration moved to a [dated record](research-v060-source-maintenance-2026-09.md#m16-package-hallucination-evidence-placement), explicitly carried forward rather than claimed as freshly verified. |
 | m17 | Closed — allegation not sustained | Retaining a rescannable SBOM and declaring re-evaluation triggers are complementary properties, not duplicate rules. |
 | m18 | Resolved in source batch | Removed blanket named-registry support claims; retained digest-associated SBOM attachment and promotion duties. |
 | m19 | Resolved in this batch | Corrected “an caller” in the STRIDE table. |
@@ -91,10 +92,19 @@ baseline or a released version. Later repairs explicitly say “source batch”.
 | m26 | Resolved in this batch | Converted real platform-engineering targets from inert code spans into relative links. |
 | m27 | Resolved in source batch | Replaced the unsupported NPS leading-indicator assertion with bounded survey feedback, supported by the pinned CNCF paper. |
 | m28 | Resolved before this batch | Umbrella compatibility note describes the actual v0.5.0 release, not the former v0.3.0 replacement. |
-| m29 | Open — navigation ownership | Umbrella and TL;DR adoption lists are compatible but duplicate detail; keep a single detailed adoption owner. |
+| m29 | Resolved in editorial follow-up | The umbrella labels its unchanged six foundations as a summary of the TL;DR's first adoption slice and links there. No new adoption order or detailed owner is introduced. |
 | m30 | Open — authority decision | Honesty test protocol calls itself canonical but lacks a declared layer/route; decide its authority before treating a link as sufficient repair. |
 
 ## Release Gates Still Open
+
+### Editorial Follow-Up Boundary
+
+The live deprecation notices and register now express the already-adopted
+90-day minor-release floor, with a [dated ADR 0045 clarification](../../docs/adr/0045-execute-the-first-lifecycle-sweep.md#clarification-2026-09-19-removal-floor).
+Frozen content and original sweep records are preserved; nothing is removed
+and no lifecycle clock is reset. This is notice reconciliation, not the V44
+release-coupled sweep. A human walkthrough pack and draft claim/decision
+packages are preparation only; V40 and the policy gates below remain open.
 
 ### V40 Model Walkthrough, Not Human Evidence
 
