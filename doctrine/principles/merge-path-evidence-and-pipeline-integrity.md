@@ -11,9 +11,23 @@ This principle **adds** merge-path and pipeline-specific invariants. It does **n
 | Term | Meaning here |
 | --- | --- |
 | **Merge path** | The sequence of human and automated steps after which commits are eligible to become the **protected baseline** for a repository (e.g. default branch, release train). |
-| **Pipeline definition** | Machine-readable automation that runs on behalf of the repo: CI job graphs, release workflows, packaging hooks, and **third-party** steps they invoke — **including agent-definition artefacts** (custom-agent definitions, steering/instruction files, `SKILL.md`-class skill packs, MCP server configurations, and prompt templates wired into delivery) **when they direct automation that can read secrets, mutate production, publish packages, or alter downstream systems**. Boundary: in scope when the artefact steers automation **executing on the merge path or holding standing credentials beyond the invoking human's own session**; an instruction file consumed only by an interactive assistant operating under the developer's interactive authority is ordinary repo content (review hygiene still applies). Vendor filenames (e.g. `.github/agents/*.md`, `.kiro/steering/`, `CLAUDE.md`-class instruction files) are illustrative examples, not the normative enumeration. |
+| **Pipeline definition** | Machine-readable automation that runs on behalf of the repo: CI job graphs, release workflows, packaging hooks, and **third-party** steps they invoke. Agent-definition artefacts are included within the boundary below. |
 | **Evidence** | Durable outputs that demonstrate which checks ran and what they concluded: logs under retention policy, published test reports, SARIF or equivalent, SBOM files, signed attestations, checksum manifests. |
 | **Gate** | An automated check configured so that **policy violations prevent** the merge path from completing successfully for the protected baseline. |
+
+**Agent-definition boundary:** custom-agent definitions, steering/instruction
+files, `SKILL.md`-class skill packs, MCP server configurations, and prompt
+templates wired into delivery are pipeline definitions **when they direct
+automation that can read secrets, mutate production, publish packages, or
+alter downstream systems**. They are in scope when that automation is
+**executing on the merge path or holding standing credentials beyond the
+invoking human's own session**.
+
+An instruction file consumed only by an interactive assistant operating under
+the developer's interactive authority is ordinary repo content; review hygiene
+still applies. Vendor filenames (e.g. `.github/agents/*.md`, `.kiro/steering/`,
+`CLAUDE.md`-class instruction files) are illustrative examples, not the
+normative enumeration.
 
 ---
 
@@ -21,7 +35,13 @@ This principle **adds** merge-path and pipeline-specific invariants. It does **n
 
 1. **Non-bypassable gates for agreed scope** — Every automated control claimed as a **merge requirement** for the protected baseline must be **enforced** by platform configuration (protected branches, required contexts, equivalent server-side rules). Local-only scripts do not satisfy merge enforcement.
 
-2. **Pipeline definitions in scope** — Pipeline definitions that can **read secrets**, **mutate production**, **publish packages**, or **alter downstream** systems are **in the same trust class** as application code for review and static analysis. “Application-only” threat models are incomplete when automation holds privileges. **Agent-definition artefacts** in scope per §1 are in this trust class for the same reason: they **steer what an agent does with the pipeline’s authority**, and injected instructions in these files are **code execution by another name** — the “Rules File Backdoor” attack hid invisible-Unicode instruction payloads in rules files that coding agents obeyed and that survived forking and PR review (Pillar Security: https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents). Give them the **same protected-path, review, and provenance treatment** as CI workflow files — the platform precedent is CODEOWNERS gating of `.github/workflows` (https://docs.github.com/en/actions/reference/security/secure-use) — with two review conditions specific to this class: **no self-review** (the agent whose definition changes is not the approver of that change), and an **informed reviewer** who understands the tool authority the file grants. **Third-party** skills and MCP servers additionally pass [dependencies-supply-chain.md](dependencies-supply-chain.md) admission; for recording an injected skill’s **version/digest**, selecting policy rule, and companion verifier, see [run-contracts.md](../patterns/run-contracts.md) §3.5 and [verifier-packs.md](../patterns/verifier-packs.md) §6 as **precedent** (that envelope governs this library’s own runs, not vendor-native agent-config files in ordinary repos).
+2. **Pipeline definitions in scope** — Pipeline definitions that can **read secrets**, **mutate production**, **publish packages**, or **alter downstream** systems are **in the same trust class** as application code for review and static analysis. “Application-only” threat models are incomplete when automation holds privileges. **Agent-definition artefacts** in scope per §1 are in this trust class for the same reason: they **steer what an agent does with the pipeline’s authority**, and injected instructions in these files are **code execution by another name**.
+
+   The “Rules File Backdoor” attack hid invisible-Unicode instruction payloads in rules files that coding agents obeyed and that survived forking and PR review (Pillar Security: https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents).
+
+   Give these artefacts the **same protected-path, review, and provenance treatment** as CI workflow files — the platform precedent is CODEOWNERS gating of `.github/workflows` (https://docs.github.com/en/actions/reference/security/secure-use). Two review conditions are specific to this class: **no self-review** (the agent whose definition changes is not the approver of that change), and an **informed reviewer** who understands the tool authority the file grants.
+
+   **Third-party** skills and MCP servers additionally pass [dependencies-supply-chain.md](dependencies-supply-chain.md) admission. For recording an injected skill’s **version/digest**, selecting policy rule, and companion verifier, see [run-contracts.md](../patterns/run-contracts.md) §3.5 and [verifier-packs.md](../patterns/verifier-packs.md) §6 as **precedent** (that envelope governs this library’s own runs, not vendor-native agent-config files in ordinary repos).
 
 3. **Binding outcomes, not advisory logs** — A tool step that **always succeeds** while emitting warnings is **telemetry**, not a **gate**. If policy requires a finding class to block merge, the automation must **fail the merge path** on violation.
 
@@ -75,7 +95,7 @@ Other files in this library address **build surfaces**, **semantic versioning**,
 - **SPDX** — Software Package Data Exchange (SBOM format family): https://spdx.dev/  
 - **CycloneDX** — OWASP bill of materials standard: https://cyclonedx.org/  
 - **CISA** — Software Bill of Materials (SBOM) programme hub: https://www.cisa.gov/sbom  
-- **CISA** — *2025 Minimum Elements for a Software Bill of Materials (SBOM)* (draft; superseding narrative for NTIA 2021 minimum elements—verify **current** published status on CISA site): https://www.cisa.gov/resources-tools/resources/2025-minimum-elements-software-bill-materials-sbom  
+- **CISA** — *2025 Minimum Elements for a Software Bill of Materials (SBOM)* (August 22, 2025 public-comment draft; historical development evidence, S3 provisional): https://www.cisa.gov/resources-tools/resources/2025-minimum-elements-software-bill-materials-sbom. The publisher subsequently issued *2026 Minimum Elements for a Software Bill of Materials (SBOM)* (July 29, 2026 released guidance, S2), incorporating that consultation and replacing NTIA's 2021 guidance: https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom. Publication status checked 2026-09-19; [dated source record](../evolution/research-v060-source-maintenance-2026-09.md#m14-sbom-publication-status). This bibliographic update does not migrate an adopted control-profile baseline; that remains governed by [revision-pinned control profiles](../patterns/revision-pinned-control-profiles.md).
 - **CISA** & partners — *A Shared Vision of Software Bill of Materials (SBOM) for Cybersecurity* (joint guidance PDF on cisa.gov): https://www.cisa.gov/sites/default/files/2025-09/joint-guidance-a-shared-vision-of-software-bill-of-materials-for-cybersecurity_508c.pdf  
 - The White House — **Executive Order 14028** (May 12, 2021) — *Improving the Nation’s Cybersecurity* (historical driver for SBOM and secure development practices in US federal procurement context): https://www.federalregister.gov/documents/2021/05/17/2021-10460/improving-the-nations-cybersecurity  
 - OMB / The White House — **M-26-05**, *Adopting a Risk-based Approach to Software and Hardware Security* (Jan. 23, 2026; rescinds M-22-18 / M-23-16; **agency discretion** on attestations/SBOM while still pointing agencies to NIST SP 800-218 and CISA SBOM materials): https://www.whitehouse.gov/wp-content/uploads/2026/01/M-26-05-Adopting-a-Risk-based-Approach-to-Software-and-Hardware-Security.pdf  

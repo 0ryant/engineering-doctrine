@@ -135,13 +135,21 @@ Adaptation: replace `0.001` with `1 − SLO_target` for your service; replace `h
 
 Illustrative mapping for the **per-call minimum signal set** in [../principles/observability.md](../principles/observability.md) §7. The principles file stays schema-neutral; this section is where OTel names may appear — and why you must not lean on them.
 
+**Compatibility snapshot, checked 2026-09-19:** this illustration describes the
+dedicated GenAI repository at commit
+[`c88d504ab3d9879f8e50d3cc87e69775e11db234`](https://github.com/open-telemetry/semantic-conventions-genai/tree/c88d504ab3d9879f8e50d3cc87e69775e11db234).
+It is a citation pin, not a selected instrumentation or estate baseline. The
+[source record](../evolution/research-v060-source-maintenance-2026-09.md#m21-genai-telemetry-compatibility)
+records status and limits; this snapshot does not establish SDK or backend
+compatibility.
+
 - **Span vocabulary**: the conventions define inference/embedding client spans plus an **agent layer** — create-agent, invoke-agent, invoke-workflow, and plan spans — and tool-execution spans; use these as the span-type vocabulary for agent traces rather than inventing one.
 - **Token and latency instruments**: client token-usage and operation-duration histograms, streaming time-to-first-chunk, and server-side TTFT / time-per-output-token metrics cover §7's token and latency signals.
-- **Content capture is opt-in by design**: prompt/completion message attributes are **Opt-In** requirement level with an explicit PII warning; instrumentations do not capture content by default and gate it behind an explicit opt-in switch (for example an instrumentation environment variable). Vendor stacks mirror this — Azure's content-recording flag defaults to **false**.
-- **No cost attribute exists**: the conventions define no cost/price attribute; OTLP-ingesting backends (Langfuse, LangSmith, and similar) derive cost from **token counts + the provider-reported response model**. Emit those and let the backend price them.
-- **Stability warning — Development; pin what you adopt**: the GenAI conventions are **pre-stable** (“Development”); as of main-repo **v1.42.0** every `gen_ai.*` attribute there is **deprecated**, the conventions having moved to the dedicated [semantic-conventions-genai](https://github.com/open-telemetry/semantic-conventions-genai) repository; **v1.41** restructured agent/tool spans; the schema URL is literally still TODO. **Pin the conventions version you adopt and expect breaking renames.** Do **not** hard-pin `gen_ai.*` attribute names in dashboards, alerts, or policy-as-code — route them through a mapping layer you own — and reference only the dedicated repository, never the deprecated main-repo pages.
+- **Content capture is opt-in by design**: the inspected conventions mark input/output message attributes **Opt-In**, warn that content may be sensitive, and recommend that instrumentations omit it by default while offering an opt-in. Check the selected instrumentation's actual configuration; the convention text does not prove its runtime default.
+- **Cost accounting is separate**: the inspected GenAI attribute registry and metrics define no generic cost/price signal. Emit **token counts + the provider-reported response model** for backend pricing; keep the §7 cost signal in the backend or application accounting layer and check it against the applicable billing model.
+- **Stability warning — Development; pin what you adopt**: the inspected GenAI conventions carry **Development** status. The core repository's [v1.42.0 changelog](https://github.com/open-telemetry/semantic-conventions/blob/v1.42.0/CHANGELOG.md#v1420) records their move and deprecation **in that repository**; it does not retire the `gen_ai.*` namespace in the dedicated repository. **Pin the conventions version you adopt and expect breaking renames.** Do **not** bind dashboards, alerts, or policy-as-code directly to `gen_ai.*` attribute names — route them through a mapping layer you own. Use the dedicated repository for the adopted GenAI revision and migration details.
 
-**Why:** these conventions are the only vendor-neutral GenAI telemetry vocabulary with real backend adoption (Azure AI Foundry tracing is GA on them; Langfuse and LangSmith ingest them over OTLP), but they are churning — teams that hard-code today's attribute names into alert rules buy silent breakage on every convention bump. Adopt the vocabulary, pin the version, isolate the names.
+**Why:** a shared vocabulary supports telemetry integration, while Development status leaves room for incompatible changes. Pinning and a mapping layer make those changes reviewable without tying policy directly to a moving schema.
 
 ---
 
@@ -155,7 +163,7 @@ Illustrative mapping for the **per-call minimum signal set** in [../principles/o
 | Gateway for tail sampling (cluster pattern) | Sampling needs **complete trace** views; DaemonSet-only sampling is **incorrect** for cross-node traces. |
 | Semantic conventions | Makes dashboards and alerts **portable** across services. |
 | Burn-rate YAML lives here, not in principles | Principles stay **backend-neutral** (non-PromQL estates must be able to comply); query examples are **estate-adaptable** tooling detail. |
-| GenAI conventions from the **dedicated repo**, version-pinned | Conventions are **Development** stability; main-repo `gen_ai.*` pages are deprecated (v1.42.0) — pinning plus a mapping layer keeps dashboards and policy stable through renames. |
+| GenAI conventions from the **dedicated repo**, version-pinned | The inspected snapshot is **Development** stability; core v1.42.0 records the repository move. A mapping layer isolates dashboards and policy from schema-name changes. |
 
 ---
 
@@ -165,4 +173,4 @@ Illustrative mapping for the **per-call minimum signal set** in [../principles/o
 - OpenTelemetry — **Scaling the Collector**: https://opentelemetry.io/docs/collector/scaling/  
 - OpenTelemetry — **Collector hosting best practices** (security): https://opentelemetry.io/docs/security/hosting-best-practices/
 - OpenTelemetry — **Semantic Conventions**: https://opentelemetry.io/docs/specs/semconv/  - Google SRE Workbook — **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/  
-- OpenTelemetry — **GenAI semantic conventions** (dedicated repository; **Development** stability — pin the version you adopt): https://github.com/open-telemetry/semantic-conventions-genai  
+- OpenTelemetry — **GenAI semantic conventions** (S3 provisional, primary developing specification; pinned to commit `c88d504ab3d9879f8e50d3cc87e69775e11db234`, accessed 2026-09-19): https://github.com/open-telemetry/semantic-conventions-genai/tree/c88d504ab3d9879f8e50d3cc87e69775e11db234/docs/gen-ai. Core relocation record (S4, versioned foundation changelog): https://github.com/open-telemetry/semantic-conventions/blob/v1.42.0/CHANGELOG.md#v1420. These support the illustration's vocabulary and status, not implementation conformance.

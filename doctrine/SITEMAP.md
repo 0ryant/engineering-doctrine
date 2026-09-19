@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-19 20:02 UTC
+Generated: 2026-09-19 20:48 UTC
 
 ## All Markdown files
 
@@ -53,6 +53,8 @@ Generated: 2026-09-19 20:02 UTC
 - [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md)
 - [evolution/research-target-state-and-irreversible-decisions-2026-08.md](evolution/research-target-state-and-irreversible-decisions-2026-08.md)
 - [evolution/research-testing-verification-impl-composition-2026-09.md](evolution/research-testing-verification-impl-composition-2026-09.md)
+- [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md)
+- [evolution/research-v060-source-maintenance-2026-09.md](evolution/research-v060-source-maintenance-2026-09.md)
 - [evolution/scorecard-four-reader-lenses-2026-09.md](evolution/scorecard-four-reader-lenses-2026-09.md)
 - [evolution/scorecard-vs-mainstream-frameworks.md](evolution/scorecard-vs-mainstream-frameworks.md)
 - [evolution/sweep-2026-09.md](evolution/sweep-2026-09.md)
