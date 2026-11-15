@@ -1,6 +1,6 @@
 # ADR 0032: Add AI Act Transparency, Slopsquatting Gate, And Model/Dataset Admission
 
-- **Status:** Accepted
+- **Status:** Accepted (Omnibus review trigger recorded 2026-11-15)
 - **Decision date:** 2026-08-03
 - **Recorded date:** 2026-08-03
 - **Retrospective:** No
@@ -71,3 +71,16 @@ Rejected per decision 4: it lands hardest on the lightest contexts and contradic
 - Primary sources indexed in REFERENCES.md and per-file References: EUR-Lex/Art 50 + Commission guidelines and Code of Practice; Spracklen + Churilov package-hallucination studies with in-the-wild incident reporting; OMS spec + model-signing v1.0, Hugging Face pickle-scanning docs, PyTorch 2.6 weights_only default, CycloneDX ML-BOM, SPDX 3.0, SLSA v1.2 tracks, CISA/NSA/FBI AI Data Security CSI.
 
 **Review provenance:** the council review cited above was model self-review (agent critics re-reading agent drafts). No independent human or domain review of this ADR has been recorded as of 2026-09-03.
+
+## Review Trigger Outcome: AI Omnibus (2026-11-15)
+
+The Costs And Risks section named the Digital Omnibus transition as a review trigger. It fired when the AI Omnibus, identified by the Commission as Regulation (EU) 2026/1744, entered into force in July 2026.
+
+Outcome:
+
+- **Decision 1 (Art 50 transparency) stands.** The four duty families, their provider and deployer split, and the profile gate are unchanged. The Commission timeline adds a transitional deadline of 2026-12-02 for Art 50(2) providers whose systems were on the market before 2026-08-02. [Privacy And Data Governance](../../doctrine/principles/privacy-and-data-governance.md) §5.4, the AI and ML-assisted systems pointer, and REFERENCES now state it as an external-baseline fact.
+- **Outside this ADR's scope but recorded:** Annex III high-risk rules now apply from 2027-12-02 and Annex I rules from 2028-08-02. Art 4 literacy now requires measures to support AI literacy without a mandated level. The role-based literacy default in [AI Adoption Controls](../../doctrine/patterns/ai-adoption-controls.md) §5 remains portable doctrine, and its wording now cites the amended article.
+- **Consumers:** no obligation in this library changes. Estates with a registered EU AI Act profile review it against the amended regulation through the existing migration path in [Revision-Pinned External Control Profiles](../../doctrine/patterns/revision-pinned-control-profiles.md).
+- **Decisions 2–4** are unaffected.
+
+Evidence: [latest-developments source check](../../doctrine/evolution/research-latest-developments-2026-11.md), headline finding 4. The timeline and literacy FAQ were read on the Commission's pages; the regulation text on EUR-Lex was not retrieved. This is model review, not independent legal review.

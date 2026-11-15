@@ -100,6 +100,10 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | NARA — Controlled Unclassified Information programme and Registry | https://www.archives.gov/cui |
 | U.S. Department of Defense — DFARS 252.204-7012 | https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting |
 | ISO/IEC 27002:2022 — information security controls (incl. technical vulnerability management) | https://www.iso.org/standard/75652.html |
+| AWS IAM security best practices — workloads use temporary credentials (S5, product-scoped, accessed 2026-11-15) | https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html |
+| Google Cloud — best practices for managing service account keys (S5, product-scoped, accessed 2026-11-15) | https://docs.cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys |
+| OWASP Non-Human Identities Top 10, 2025 (S4 awareness, accessed 2026-11-15) | https://owasp.github.io/www-project-non-human-identities-top-10/2025 |
+| IETF WIMSE — Workload Identity Practices, draft-08 (S3, Informational draft; watch only) | https://datatracker.ietf.org/doc/draft-ietf-wimse-workload-identity-practices/ |
 
 ---
 
@@ -113,6 +117,7 @@ Context for the branching implementation composition and optional tooling, not n
 | [Driessen: A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) | S6; 2010 article / 2020 reflection, captured-byte pin in ledger | Author's context for simpler continuous-delivery workflows and supported versioned products. |
 | [Trunk Based Development: Branch For Release](https://trunkbaseddevelopment.com/branch-for-release/) | S6; published SHA and captured-byte pin in ledger | Release-branch illustration; its trunk-first fix preference does not replace this library's tag-first hotfix policy. |
 | [Git: Worktree Manual](https://git-scm.com/docs/git-worktree/2.54.0) | S5; version 2.54.0 | Optional linked-working-tree commands and shared repository behaviour. |
+| [Git: githooks Manual](https://git-scm.com/docs/githooks) | S5; last changed in 2.54.0, unchanged through 2.56.1; accessed 2026-11-15 | Hook locations, `core.hooksPath`, which hooks `--no-verify` skips, and pre-push abort behaviour |
 
 ---
 
@@ -209,7 +214,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Microsoft — AI-led SDLC (vendor observation) | https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896 |
 | GitHub Spec Kit — Evolving specifications (vendor observation) | https://github.github.com/spec-kit/guides/evolving-specs.html |
 | Anthropic — 2026 Agentic Coding Trends Report (vendor research; landing page links the report) | https://resources.anthropic.com/2026-agentic-coding-trends-report |
-| OWASP Top 10 for LLM Applications | https://genai.owasp.org/llm-top-10/ |
+| OWASP Top 10 for LLM Applications, 2025 edition (identifiers cited as `LLM0x:2025`; the 2026 edition of 2026-08-03 renumbers entries and is not adopted) | https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/ |
 | OWASP Top 10 for Agentic Applications 2026 (Agentic Security Initiative) | https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ |
 | NIST AI 100-2e2025 — Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations | https://csrc.nist.gov/pubs/ai/100/2/e2025/final |
 | CSA — MAESTRO agentic threat-modeling framework | https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro |
@@ -223,7 +228,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | MCP specification changelog — 2025-06-18 revision (OAuth 2.1 resource-server model, RFC 8707 resource indicators) | https://modelcontextprotocol.io/specification/2025-06-18/changelog |
 | MCP specification changelog — 2026-07-28 revision (stateless core, extensions framework, twelve-month deprecation policy) | https://modelcontextprotocol.io/specification/2026-07-28/changelog |
 | Agent Skills specification (S4, rolling whole-spec reference, accessed 2026-11-15; no archive captured) | https://agentskills.io/specification |
-| MCP stable Skills extension (S1-equivalent in extension scope, rolling stable path, accessed 2026-11-15; no archive captured) | https://github.com/modelcontextprotocol/ext-skills/blob/main/specification/stable/skills.mdx |
+| MCP Skills extension, Beta stage (S3 provisional: Beta under the MCP extension lifecycle, breaking changes allowed; rolling beta path, accessed 2026-11-15; no archive captured; corrected 2026-11-15 from a `stable/` path that returns 404) | https://github.com/modelcontextprotocol/ext-skills/blob/main/specification/beta/skills.mdx |
+| MCP extensions overview and lifecycle (S5, primary for MCP extension stages; rolling, accessed 2026-11-15) | https://modelcontextprotocol.io/extensions/overview |
 | Bash programmable completion manual (S5, S1-equivalent in Bash scope, rolling, accessed 2026-11-15) | https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html |
 | PowerShell argument completion (S5 product documentation, rolling, accessed 2026-11-15) | https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions_argument_completion |
 | MCP Registry — about page (preview status, namespace verification, downstream scanning) | https://modelcontextprotocol.io/registry/about |
@@ -368,10 +374,11 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | NIST AI RMF 1.0 (GOVERN 1.6 inventory; Map/Measure/Manage) | https://www.nist.gov/itl/ai-risk-management-framework |
 | NIST AI RMF Playbook — GOVERN | https://airc.nist.gov/airmf-resources/playbook/govern/ |
 | NIST AI 600-1 — Generative AI Profile | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
-| Federal Reserve SR 26-2 — revised model risk management guidance, effective challenge | https://www.federalreserve.gov/frrs/guidance/supervisory-guidance-on-model-risk-management.htm |
+| Federal Reserve SR 26-2 — revised model risk management guidance, effective challenge (footnote 3 excludes generative and agentic AI models; cited as vocabulary for those systems) | https://www.federalreserve.gov/frrs/guidance/supervisory-guidance-on-model-risk-management.htm |
 | PRA SS1/23 — model risk management principles (inventory + tiering, independent validation) | https://www.bankofengland.co.uk/prudential-regulation/publication/2023/may/model-risk-management-principles-for-banks-ss |
 | EU AI Act — Regulation (EU) 2024/1689 — Art 4 literacy, Art 12 logging, Art 14 human oversight, Art 15 lifecycle accuracy, Art 26 deployers, Art 50 transparency | Canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/ |
-| EU AI Act Art 50 — transparency obligations (interaction disclosure, machine-readable marking, deepfake labelling; applies 2026-08-02) | Canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/article/50/ |
+| EU AI Act Art 50 — transparency obligations (interaction disclosure, machine-readable marking, deepfake labelling; applies 2026-08-02; Art 50(2) transitional deadline 2026-12-02 for systems already on the market) | Canonical: https://eur-lex.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/article/50/ |
+| Regulation (EU) 2026/1744 (AI Omnibus) — amends the AI Act: Annex III high-risk rules from 2027-12-02, Annex I from 2028-08-02, Art 50(2) transition to 2026-12-02, Art 4 literacy reworded (S1; identified through the Commission timeline and literacy FAQ, accessed 2026-11-15; EUR-Lex text not retrieved) | Canonical identifier: http://data.europa.eu/eli/reg/2026/1744/oj · official timeline: https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act |
 | European Commission — guidelines on Art 50 transparency obligations (2026-07-20) | https://digital-strategy.ec.europa.eu/en/news/commission-publishes-guidelines-transparency-obligations-providers-and-deployers-certain-ai-systems |
 | European Commission — Code of Practice on Transparency of AI-generated Content (final 2026-06-10; adequacy opinion 2026-07-08) | https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content |
 | EU DORA — Regulation (EU) 2022/2554 — Art 28 register + exit strategies, Art 29 concentration risk | Canonical: https://eur-lex.europa.eu/eli/reg/2022/2554/oj · article mirror: https://www.digital-operational-resilience-act.com/Article_28.html |
@@ -452,6 +459,10 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-doctrine-integrity-gates-2026-09.md](evolution/research-doctrine-integrity-gates-2026-09.md) | Repository evidence, obligation-to-readiness map and verification limits for ADR 0049 |
 | [evolution/research-agent-ready-application-discovery-2026-11.md](evolution/research-agent-ready-application-discovery-2026-11.md) | Source-graded basis and limits for the optional app-estate Skills and autocomplete/discovery shipping profile |
 | [evolution/research-v060-source-maintenance-2026-09.md](evolution/research-v060-source-maintenance-2026-09.md) | Primary-source pins, publication status and bounded editorial repairs; no baseline migration or policy adoption |
+| [evolution/research-latest-developments-2026-11.md](evolution/research-latest-developments-2026-11.md) | November 2026 source check (2026-08 to 2026-11) with V1/V2/V3 verification states; headline findings routed as candidate decisions, not adopted |
+| [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md) | Source-graded basis for ADR 0051: convergent provider guidance, a standards draft, an awareness list, and runtime token-theft counter-evidence |
+| [evolution/research-impl-reference-batch-composition-2026-11.md](evolution/research-impl-reference-batch-composition-2026-11.md) | Owner audit for three implementation references, removed phrasings, and one checklist-only migration alternative left for an owner decision |
+| [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md) | Owner audit, layer-fit reasoning, and checked Git behaviour for the git hooks and worktrees references |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |
@@ -548,6 +559,11 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [impl/cicd-delivery.md](impl/cicd-delivery.md) | Branch-to-production CI/CD composition with application, IaC, database, and rendered-configuration variants |
 | [impl/testing-and-verification.md](impl/testing-and-verification.md) | Evidence placement across application CI, packages, deployments, infrastructure, migrations, and scheduled assurance |
 | [impl/branching-and-integration.md](impl/branching-and-integration.md) | Concurrent local work, short-lived branches into protected trunk, revision and delivery-state distinctions, hotfixes, and supported release lines |
+| [impl/service-api.md](impl/service-api.md) | Synchronous HTTP/RPC endpoint composition: contract, caller identity, authorisation, limits, retry semantics, errors, telemetry, and versioning |
+| [impl/secretless-workload-identity.md](impl/secretless-workload-identity.md) | Secretless access for services, jobs, and pipelines: federated short-lived identity by default, stored-secret fallback, rotation, and evidence |
+| [impl/database-migration.md](impl/database-migration.md) | Schema and data change during rolling deploys: expand/contract sequence, bounded backfills, reconciliation, and recovery variants |
+| [impl/git-hooks.md](impl/git-hooks.md) | Local hook stages reusing CI's versioned scripts; hooks as feedback, protected required checks as enforcement |
+| [impl/git-worktrees.md](impl/git-worktrees.md) | Parallel changes and parallel agents in linked worktrees; one branch and one writer per worktree; what worktrees do not isolate |
 
 ### Extended principles
 

@@ -2,6 +2,8 @@
 
 Durable rules for persisted state: relational and document stores, object storage with lifecycle semantics, and schema evolution in systems that deploy continuously.
 
+For the normal sequence of a schema or data change, start with [Database Migration](../impl/database-migration.md).
+
 ---
 
 ## 1. Schema Changes And Rolling Deploys

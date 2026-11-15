@@ -2,12 +2,14 @@
 
 Durable rules for non-secret configuration, secrets, rotation, and dynamic settings so environments stay reproducible and least-privilege. Complements [build.md](build.md) (surfaces), [dependencies-supply-chain.md](dependencies-supply-chain.md), and Core Proposition 7 (Protect Proportionately To Risk) in `ENGINEERING.md`. External-profile parameters, approved values, implementation evidence, and exceptions remain bound to the exact authority and revision through [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md).
 
+For how a workload normally obtains credentials, start with [Secretless Workload Identity](../impl/secretless-workload-identity.md).
+
 ---
 
 ## 1. Separate Config From Secrets
 
 - **Configuration** — feature flags, endpoints, pool sizes, log levels: safe to load from files or env when values are not credentials.
-- **Secrets** — passwords, API keys, signing keys, client secrets: never treat as normal config; use secret stores, managed identity, or short-lived tokens (OIDC) per estate.
+- **Secrets** — passwords, API keys, signing keys, client secrets: never treat as normal config. Where the target accepts federated or platform identity, workloads use it instead of a stored secret; [zero trust §2](zero-trust-and-workload-identity.md#2-workload-identity) owns that secretless default and its registered fallback. Secret stores hold the fallbacks.
 
 **Why:** The [Twelve-Factor App](https://12factor.net/config) config principle is often misread as “put everything in env”—credentials in env on developer laptops and CI logs are a recurring breach class. NIST SSDF PS practices expect protection of software components including secrets handling (see [NIST SP 800-218](https://csrc.nist.gov/publications/detail/sp/800-218/final)).
 
@@ -35,7 +37,7 @@ Durable rules for non-secret configuration, secrets, rotation, and dynamic setti
 ## 4. Local And CI
 
 - **`.env.example`** (or equivalent) lists names and shape, not values; real secrets never committed.
-- CI receives secrets via OIDC or ephemeral scoped credentials where possible—not permanent org-wide PATs on every fork.
+- CI and CD jobs follow the secretless default in [zero trust §2](zero-trust-and-workload-identity.md#2-workload-identity): OIDC federation where the target supports it, otherwise ephemeral scoped credentials or a registered fallback—not permanent org-wide PATs on every fork.
 
 **Why:** Matches shift security left expectations in [secure-development-lifecycle.md](secure-development-lifecycle.md) and supply-chain hardening in [dependencies-supply-chain.md](dependencies-supply-chain.md).
 
@@ -47,6 +49,7 @@ Durable rules for non-secret configuration, secrets, rotation, and dynamic setti
 | --- | --- |
 | Config ≠ secrets | Reduces accidental exfil via logs, dumps, and support bundles. |
 | Rotation as policy | Meets organisational and regulatory expectations without naming a single vault product. |
+| Secretless default owned elsewhere | How a workload proves identity belongs to zero trust §2 ([ADR 0051](../../docs/adr/0051-make-secretless-workload-identity-the-default.md)); this file keeps secret handling and points there. |
 
 ---
 

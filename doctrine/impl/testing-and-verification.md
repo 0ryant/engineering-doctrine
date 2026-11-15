@@ -58,7 +58,7 @@ These are concise compositions of the canonical owners listed at the end, not ne
 
 This surface asks whether the source change is fit to become authoritative. It commonly holds formatting and linting, static analysis, unit/component tests, selective integration and contract checks, regressions, boundary and negative cases, and applicable security, dependency, secret, configuration, or IaC checks. Property-based, fuzz, snapshot, characterisation, and mutation techniques add depth where the risk warrants them.
 
-A practical default is one documented local quality-gate command backed by the same versioned scripts or task runner that CI invokes. A version-controlled Git-hook setup may run its fast deterministic subset before commit or push. Hooks shorten feedback; they are not merge authority because they may be absent, stale, misconfigured, or bypassed. Protected required checks remain authoritative.
+A practical default is one documented local quality-gate command backed by the same versioned scripts or task runner that CI invokes. A version-controlled Git-hook setup may run its fast deterministic subset before commit or push. Hooks shorten feedback; they are not merge authority because they may be absent, stale, misconfigured, or bypassed. Protected required checks remain authoritative. See [Local Checks With Git Hooks](git-hooks.md) for the normal hook setup.
 
 ### Build And Package
 

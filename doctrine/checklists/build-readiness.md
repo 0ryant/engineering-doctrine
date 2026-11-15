@@ -15,6 +15,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] Published or consumed async events use the selected explicit envelope contract (CloudEvents by portable default, or a documented equivalent) and versioned payload schemas where applicable
 [ ] Message DLQ/replay/observability addressed where the repo owns async consumers (see patterns/message-channel-operations.md)
 [ ] Secret scanning exists before merge
+[ ] CI and CD jobs authenticate to clouds and registries with OIDC federation where the target supports it; any other stored CI credential is a registered fallback or a bounded exception (principles/zero-trust-and-workload-identity.md §2)
 [ ] Dependency and IaC scanning exist where relevant
 [ ] Build provenance / SLSA-style attestations exist where regulators or customers require tamper-evident delivery (principles/build.md §14, principles/dependencies-supply-chain.md)
 [ ] Checked-out sibling or shared inputs are included in validation or scan scope when they influence delivery

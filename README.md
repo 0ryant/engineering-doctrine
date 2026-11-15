@@ -6,6 +6,22 @@ Reusable engineering doctrine that separates stable principles from replaceable 
 
 This repository is intended to be a reference library for teams building applications, automation, CLIs, APIs, and infrastructure. The goal is to keep the operating model durable while allowing implementation details to evolve over time.
 
+## Where To Look
+
+| If you want | Go to |
+| --- | --- |
+| The normal way to do a common task, in a few minutes | [`doctrine/impl/`](doctrine/impl/README.md): CI/CD delivery, testing, branching, service APIs, secretless workload identity, database migrations, git hooks, worktrees |
+| The rules and why they exist | [`doctrine/principles/`](doctrine/principles/), starting with the [one-line glance at every principle](doctrine/tldr-principles-and-mvp.md#every-principle-at-a-glance) |
+| How the pieces fit together, with trade-offs and failure modes | [`doctrine/patterns/`](doctrine/patterns/) |
+| Examples with specific products and commands | [`doctrine/tooling/`](doctrine/tooling/) (illustrations; swap freely) |
+| A list to review your work against | [`doctrine/checklists/`](doctrine/checklists/) |
+| The core rules on one page | [ENGINEERING.md](ENGINEERING.md) |
+| The right files for a specific task (people and agents) | [doctrine/SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md) |
+| Why the library changed | [`docs/adr/`](docs/adr/README.md) for decisions, [`doctrine/evolution/`](doctrine/evolution/) for research |
+| A term you don't recognise | [doctrine/glossary.md](doctrine/glossary.md) |
+
+`impl/` pages summarise; they add no rules of their own. If one disagrees with a principle or pattern, the principle or pattern wins.
+
 ## License
 
 This repository is licensed under **Apache-2.0** (see [LICENSE](LICENSE)). You may use, copy, adapt, and redistribute the text and code subject to the licence's notice and attribution conditions. This is not legal advice; confirm with your counsel for regulated or commercial deployments.
@@ -31,6 +47,7 @@ For contribution workflow, **security reporting**, **maintainer and review** exp
 - `doctrine/principles/` contains **timeless**, platform-agnostic rules (collaboration, trunk, operational rigour, versioning, contracts, runtime **trade-offs**, interoperability posture). See `doctrine/principles/timeless-principles-and-tooling.md`.
 - `doctrine/tooling/` contains **illustrative** implementation examples (build stack, CloudEvents baseline, Git host settings—swap freely). `doctrine/tooling/estates/` holds **optional** vendor-specific supplements.
 - `doctrine/patterns/` shows how build and delivery surfaces fit together (including trunk workflow).
+- `doctrine/impl/` gives short, implementation-neutral walkthroughs of common activities, composed from principles and patterns; they add no rules of their own.
 - `doctrine/checklists/` turns the doctrine into reviewable execution (build, collaboration, platform/SRE, release, and doctrine edits).
 - `doctrine/evolution/` holds audit notes (for example MoSCoW reviews).
 - `doctrine/SEMANTIC_INDEX.md` maps task intent to the highest-value doctrine files for humans and agents.

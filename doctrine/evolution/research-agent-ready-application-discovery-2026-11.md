@@ -19,11 +19,20 @@ profile and its evidence, not silently make it the baseline for all consumers.
 | Source | Class and role | Pin / accessed | Supports | Does not establish |
 | --- | --- | --- | --- | --- |
 | [Agent Skills specification](https://agentskills.io/specification) | S4, primary for the published cross-host Skill form | Rolling whole-spec reference; accessed 2026-11-15; no archive captured because repository tooling has no archive step | A Skill can be a portable, metadata-bearing, progressively disclosed agent instruction package | That a Skill is authoritative, effective, safe, or mandatory for every app |
-| [MCP stable Skills extension](https://github.com/modelcontextprotocol/ext-skills/blob/main/specification/stable/skills.mdx) | S1-equivalent within the extension's own protocol scope; primary | Stable branch path, monitored as rolling; accessed 2026-11-15; no archive captured | Machine discovery and retrieval of versioned Skills can be a protocol surface | Host support, user consent, or the quality of any Skill |
+| [MCP Skills extension (Beta)](https://github.com/modelcontextprotocol/ext-skills/blob/main/specification/beta/skills.mdx) | S3 provisional: Beta-stage extension; primary for its own draft behaviour | Beta path, monitored as rolling; accessed 2026-11-15; no archive captured; corrected 2026-11-15 (see below) | Machine discovery and retrieval of versioned Skills can be a protocol surface | Host support, user consent, or the quality of any Skill |
 | [Bash programmable completion](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html) | S5, S1-equivalent within Bash behaviour; primary | Rolling product manual; accessed 2026-11-15 | A shell exposes a defined programmable completion mechanism | That Bash is the required shell or that completion should be hand-written |
 | [PowerShell argument completion](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions_argument_completion) | S5, primary for PowerShell behaviour | Rolling product documentation; accessed 2026-11-15 | A second major shell exposes a supported completion mechanism | Cross-shell parity or a portable generator |
 | [Build Principles section 7](../principles/build.md#7-release-artefacts-include-operational-usefulness) | Repository authority | Pinned by consuming doctrine revision | Shell completions and other operationally required material are release artefacts, not afterthoughts | Which estates must require them for every app |
 | [Agent Doctrine Consumption section 3](../patterns/agent-doctrine-consumption.md#3-skills) | Repository authority | Pinned by consuming doctrine revision | Skills are advisory, versioned, hashable and subject to lifecycle/evaluation | A product-specific Skill schema or release inventory |
+
+Correction, 2026-11-15: the MCP row first cited a `specification/stable/` path as
+S1-equivalent. The [MCP extensions overview](https://modelcontextprotocol.io/extensions/overview)
+lists Skills over MCP as Beta with no stated destination, and the stable path
+returns 404. The row now cites the beta path at S3 provisional. The supported
+claim is weak enough to survive the downgrade, and the profile's obligations do
+not depend on this source. The
+[latest-developments note](research-latest-developments-2026-11.md#corrections-made-in-this-change)
+records the finding.
 
 ## Synthesis
 
