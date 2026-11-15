@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-19 20:48 UTC
+Generated: 2026-11-15 03:03 UTC
 
 ## All Markdown files
 
@@ -17,6 +17,7 @@ Generated: 2026-09-19 20:48 UTC
 - [REFERENCES.md](REFERENCES.md)
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
 - [SITEMAP.md](SITEMAP.md)
+- [checklists/agent-ready-application-readiness.md](checklists/agent-ready-application-readiness.md)
 - [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md)
 - [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md)
 - [checklists/build-readiness.md](checklists/build-readiness.md)
@@ -35,6 +36,7 @@ Generated: 2026-09-19 20:48 UTC
 - [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md)
 - [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md)
 - [evolution/research-agent-loop-graph-cross-check-2026-08.md](evolution/research-agent-loop-graph-cross-check-2026-08.md)
+- [evolution/research-agent-ready-application-discovery-2026-11.md](evolution/research-agent-ready-application-discovery-2026-11.md)
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md)
@@ -67,6 +69,7 @@ Generated: 2026-09-19 20:48 UTC
 - [impl/testing-and-verification.md](impl/testing-and-verification.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md)
+- [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md)
 - [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md)

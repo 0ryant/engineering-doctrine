@@ -70,6 +70,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0047](0047-separate-maintainer-doctrine-and-collapse-the-ai-native-sdlc.md) | Proposed | — | Separate maintainer doctrine (lifecycle, source grading, change harness, versioning, the two registers) into `doctrine/maintainers/` out of the consumer path; collapse the AI-native SDLC to its seven gates plus a crosswalk; publish the normative-vs-meta word ratio each sweep |
 | [0048](0048-add-implementation-reference-layer.md) | Accepted | 2026-09-14 | Add `doctrine/impl/` as a non-authoritative composition layer and land CI/CD delivery as its first reference |
 | [0049](0049-add-doctrine-integrity-gates-and-obligation-routing.md) | Accepted | 2026-09-19 | Add direct Markdown/example integrity gates and canonical-owner readiness routing; tighten maintainer ADR landing traceability without adding consumer controls |
+| [0050](0050-adopt-agent-ready-application-shipping-profile.md) | Accepted | 2026-11-15 | Add an optional profile requiring every inventoried shippable app surface to carry exact-artifact Skills and autocomplete/discovery |
 
 ## Candidate Considered But Not Recorded
 

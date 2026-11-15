@@ -38,6 +38,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) — claim-level normative strength, composable applicability profiles, bounded exceptions, and control retirement
 - [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) — **external control profiles** (governing authority, exact revision, bounded applicability, parameter/tailoring decisions, assessment evidence, exceptions, and migration; NIST SP 800-171 CUI worked profile)
 - [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) — **agent doctrine consumption**: library/server boundary, evidence cards with trust labels, proposal-only writes, skill form/hash/tiers/lifecycle
+- [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md) — optional estate profile: closed shippable-app manifest, versioned Skills, autocomplete/discovery, and exact-artifact release evidence
 - [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) — illustrative **control suite** for merge paths and pipelines
 - [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls** (inventory & materiality, ownership & effective challenge, harm-surface testing, provider continuity, capability uplift)
@@ -45,6 +46,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native delivery lifecycle** (seven gates, five record families, governed execution, typed claims, authority separation, and three closure modes)
 - [patterns/outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md) — optional objective-to-outcome overlay for strategic/product interventions and externally required lineage
 - [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — profile-based lifecycle readiness for incidental assistance, governed execution, multi-agent work, high materiality, and strategic outcomes
+- [checklists/agent-ready-application-readiness.md](checklists/agent-ready-application-readiness.md) — derived review for the activated Skills-and-autocomplete shipping profile
 
 ### Adoption And Worked Examples
 

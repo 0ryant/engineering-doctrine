@@ -222,6 +222,10 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Model Context Protocol documentation hub | https://modelcontextprotocol.io |
 | MCP specification changelog — 2025-06-18 revision (OAuth 2.1 resource-server model, RFC 8707 resource indicators) | https://modelcontextprotocol.io/specification/2025-06-18/changelog |
 | MCP specification changelog — 2026-07-28 revision (stateless core, extensions framework, twelve-month deprecation policy) | https://modelcontextprotocol.io/specification/2026-07-28/changelog |
+| Agent Skills specification (S4, rolling whole-spec reference, accessed 2026-11-15; no archive captured) | https://agentskills.io/specification |
+| MCP stable Skills extension (S1-equivalent in extension scope, rolling stable path, accessed 2026-11-15; no archive captured) | https://github.com/modelcontextprotocol/ext-skills/blob/main/specification/stable/skills.mdx |
+| Bash programmable completion manual (S5, S1-equivalent in Bash scope, rolling, accessed 2026-11-15) | https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html |
+| PowerShell argument completion (S5 product documentation, rolling, accessed 2026-11-15) | https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions_argument_completion |
 | MCP Registry — about page (preview status, namespace verification, downstream scanning) | https://modelcontextprotocol.io/registry/about |
 | NSA AISC — MCP Security Design Considerations CSI (2026-05-20) | https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/ |
 | OWASP Gen AI Security Project — A Practical Guide for Secure MCP Server Development (2026-02-16) | https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/ |
@@ -446,6 +450,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md) | Historical model review at v0.4.0; original counts corrected by the September reconciliation, not independent human review |
 | [evolution/v060-readiness-2026-09.md](evolution/v060-readiness-2026-09.md) | Current disposition of all 54 actual historical findings; open release and human-evidence gates |
 | [evolution/research-doctrine-integrity-gates-2026-09.md](evolution/research-doctrine-integrity-gates-2026-09.md) | Repository evidence, obligation-to-readiness map and verification limits for ADR 0049 |
+| [evolution/research-agent-ready-application-discovery-2026-11.md](evolution/research-agent-ready-application-discovery-2026-11.md) | Source-graded basis and limits for the optional app-estate Skills and autocomplete/discovery shipping profile |
 | [evolution/research-v060-source-maintenance-2026-09.md](evolution/research-v060-source-maintenance-2026-09.md) | Primary-source pins, publication status and bounded editorial repairs; no baseline migration or policy adoption |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
@@ -532,6 +537,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/verifier-packs.md](patterns/verifier-packs.md) | Verifier packs as the mandatory mirror of every skill; 11 canonical kinds plus `custom`, fail-loud verdicts, discovery convention |
 | [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) | Optional anti-confabulation priming pattern with estate evaluation, content addressing, and independent-verification requirements. |
 | [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) | Agent-facing consumption contract: library/server boundary, retrieval evidence cards and trust labels, proposal-only writes, skill form, hashing, tiers, lifecycle; owning pattern for ADR 0044 |
+| [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md) | Optional estate profile: exhaustive shippable-app manifest, versioned advisory Skills, interface-appropriate autocomplete/discovery and exact-artifact release gates; owning pattern for ADR 0050 |
 | [skills/anti-confabulation/SKILL.md](skills/anti-confabulation/SKILL.md) | Reference skill: manifest per `contracts/skill.v1.schema.json`, hash-pinned priming block, sibling verifier pack; see `skills/README.md` for the register |
 
 ### Implementation references
@@ -595,6 +601,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [checklists/developer-experience-scorecard.md](checklists/developer-experience-scorecard.md) | DevEx scorecard for local loop, docs findability, review flow, cognitive load |
 | [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md) | AI adoption: inventory/materiality, challenge, harm-surface tests, provider continuity, uplift |
 | [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) | Profile-based AI-native readiness: baseline assistance, governed execution, multi-agent/long-running, high-materiality, and strategic-outcome overlays |
+| [checklists/agent-ready-application-readiness.md](checklists/agent-ready-application-readiness.md) | Derived readiness review for an estate that activates the agent-ready application shipping profile |
 
 ### Estates
 

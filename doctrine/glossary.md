@@ -8,6 +8,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## A
 
+**Agent-ready application shipping profile** - Optional estate profile that closes the distributable app inventory and requires each row to ship a versioned advisory Skill plus interface-appropriate autocomplete/discovery, verified from exact packaged and installed artefacts. See [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md) and [ADR 0050](../docs/adr/0050-adopt-agent-ready-application-shipping-profile.md).
+
 **Acceptance (of messages)** — Consumer tells the broker it finished processing; behaviour (single vs cumulative ack, redelivery) is **broker-specific**. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
 **ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md); supersession mechanics: [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md) §7.
