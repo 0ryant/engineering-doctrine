@@ -70,6 +70,11 @@ The final section always identifies the principles and patterns being composed, 
 - [CI/CD Delivery](cicd-delivery.md) — branch-to-production flow, candidate identity, promotion, verification, and delivery-unit variations.
 - [Testing And Verification](testing-and-verification.md) — evidence placement across application CI, packages, deployments, infrastructure, migrations, and scheduled assurance.
 - [Branching And Integration](branching-and-integration.md) — concurrent local work, short-lived topic branches, protected-trunk integration, hotfixes, and supported release lines.
+- [Service API](service-api.md) — exposing a synchronous HTTP or RPC endpoint: contract, caller identity, authorisation, limits, retry semantics, errors, telemetry, and evolution.
+- [Secretless Workload Identity](secretless-workload-identity.md) — how services, jobs, and pipelines get access without stored secrets: federated short-lived identity by default, stored secrets only as the documented fallback.
+- [Database Migration](database-migration.md) — schema and persisted-data change during continuous delivery: expand, compatible deploy, bounded backfill, reconciliation, switch, and contract.
+- [Local Checks With Git Hooks](git-hooks.md) — what runs before commit and push, how hooks share CI's scripts, and why protected required checks stay authoritative.
+- [Parallel Work In Git Worktrees](git-worktrees.md) — several changes at once, including parallel coding agents: one branch and one writer per worktree, same integration path, clean-up.
 
 Proposed future references are screened in [the implementation-reference research note](../evolution/research-implementation-reference-layer-2026-09.md#screened-backlog); they are not adopted merely by appearing in that backlog.
 

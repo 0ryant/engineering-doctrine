@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-09-19 20:48 UTC
+Generated: 2026-11-15 14:51 UTC
 
 ## All Markdown files
 
@@ -17,6 +17,7 @@ Generated: 2026-09-19 20:48 UTC
 - [REFERENCES.md](REFERENCES.md)
 - [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md)
 - [SITEMAP.md](SITEMAP.md)
+- [checklists/agent-ready-application-readiness.md](checklists/agent-ready-application-readiness.md)
 - [checklists/ai-adoption-readiness.md](checklists/ai-adoption-readiness.md)
 - [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md)
 - [checklists/build-readiness.md](checklists/build-readiness.md)
@@ -35,6 +36,7 @@ Generated: 2026-09-19 20:48 UTC
 - [evolution/public-doctrine-benchmark-gap-analysis-2026-04.md](evolution/public-doctrine-benchmark-gap-analysis-2026-04.md)
 - [evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md](evolution/public-doctrine-taxonomy-scorecard-and-choice-2026-04-27.md)
 - [evolution/research-agent-loop-graph-cross-check-2026-08.md](evolution/research-agent-loop-graph-cross-check-2026-08.md)
+- [evolution/research-agent-ready-application-discovery-2026-11.md](evolution/research-agent-ready-application-discovery-2026-11.md)
 - [evolution/research-ai-adoption-control-gaps-2026-07.md](evolution/research-ai-adoption-control-gaps-2026-07.md)
 - [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md)
 - [evolution/research-ai-native-sdlc-2026-07.md](evolution/research-ai-native-sdlc-2026-07.md)
@@ -46,10 +48,14 @@ Generated: 2026-09-19 20:48 UTC
 - [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md)
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md)
+- [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md)
+- [evolution/research-impl-reference-batch-composition-2026-11.md](evolution/research-impl-reference-batch-composition-2026-11.md)
 - [evolution/research-implementation-reference-layer-2026-09.md](evolution/research-implementation-reference-layer-2026-09.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
+- [evolution/research-latest-developments-2026-11.md](evolution/research-latest-developments-2026-11.md)
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md)
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md)
+- [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md)
 - [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md)
 - [evolution/research-target-state-and-irreversible-decisions-2026-08.md](evolution/research-target-state-and-irreversible-decisions-2026-08.md)
 - [evolution/research-testing-verification-impl-composition-2026-09.md](evolution/research-testing-verification-impl-composition-2026-09.md)
@@ -64,9 +70,15 @@ Generated: 2026-09-19 20:48 UTC
 - [impl/README.md](impl/README.md)
 - [impl/branching-and-integration.md](impl/branching-and-integration.md)
 - [impl/cicd-delivery.md](impl/cicd-delivery.md)
+- [impl/database-migration.md](impl/database-migration.md)
+- [impl/git-hooks.md](impl/git-hooks.md)
+- [impl/git-worktrees.md](impl/git-worktrees.md)
+- [impl/secretless-workload-identity.md](impl/secretless-workload-identity.md)
+- [impl/service-api.md](impl/service-api.md)
 - [impl/testing-and-verification.md](impl/testing-and-verification.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md)
+- [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md)
 - [patterns/agentic-loop-design.md](patterns/agentic-loop-design.md)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md)
 - [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md)

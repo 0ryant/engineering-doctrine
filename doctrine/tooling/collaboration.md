@@ -93,6 +93,28 @@ Worktrees isolate checked-out files, not credentials or shared external resource
 
 Source: [Git `worktree` manual, version 2.54.0](https://git-scm.com/docs/git-worktree/2.54.0), S5 product-scoped primary documentation, accessed 2026-09-19. The [composition research note](../evolution/research-branching-integration-impl-composition-2026-09.md#source-ledger) records the pin, capture, and limits.
 
+For the operating model, including parallel agents, see [Parallel Work In Git Worktrees](../impl/git-worktrees.md). When a change is merged or abandoned, clean up:
+
+```bash
+git worktree remove ../repo-example-change
+git branch -d feat/example-change
+git worktree prune
+```
+
+## Version-Controlled Git Hooks
+
+For the operating model, see [Local Checks With Git Hooks](../impl/git-hooks.md). Git looks for hooks in the repository's administrative directory by default, which is not tracked. To share a hook set, keep it in a tracked directory and point Git at it during setup:
+
+```bash
+git config core.hooksPath hooks
+```
+
+Make that command part of the repository's idempotent setup. Each hook should call the same scripts the CI quality gate calls. One illustrative layout is a small dispatcher per hook that runs every executable in a matching directory, such as `hooks/pre-commit.d/`, in order and stops on the first failure. A third-party hook manager is an equally valid choice when its configuration and hook versions are committed.
+
+Contributors can skip pre-commit and commit-msg hooks with `--no-verify`. That is expected: protected required checks remain the enforcement point.
+
+Source: [Git `githooks` manual](https://git-scm.com/docs/githooks), last changed in 2.54.0 and unchanged through 2.56.1, S5 product-scoped primary documentation, accessed 2026-11-15. The [composition research note](../evolution/research-git-local-workflow-impl-composition-2026-11.md#git-behaviour-relied-on) records the behaviour relied on.
+
 ## Optional Branch Naming Convention
 
 A team can use `<purpose>/<short-description>` to make work easier to recognise: `feat/add-search`, `fix/retry-budget`, `chore/update-dependencies`, or `docs/onboarding`.

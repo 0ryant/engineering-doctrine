@@ -63,7 +63,7 @@ One revision can produce several deployable units; each has its own delivery sur
 
 ### Concurrent Local Work
 
-Keep unrelated changes in separate workspaces when that helps preserve unfinished work. Worktrees and separate clones are optional techniques; neither changes the integration policy. See [Collaboration Tooling](../tooling/collaboration.md#concurrent-local-work) for worktrees and optional purpose-based branch names.
+Keep unrelated changes in separate workspaces when that helps preserve unfinished work. Worktrees and separate clones are optional techniques; neither changes the integration policy. [Parallel Work In Git Worktrees](git-worktrees.md) covers the normal shape, including parallel agents. See [Collaboration Tooling](../tooling/collaboration.md#concurrent-local-work) for worktrees and optional purpose-based branch names.
 
 ### Incomplete Features
 
@@ -105,6 +105,6 @@ Layer contract: [Implementation References](README.md).
 
 Tooling and verification: [Collaboration Tooling](../tooling/collaboration.md), [Collaboration Readiness](../checklists/collaboration-readiness.md), and [Release Readiness](../checklists/release-readiness.md).
 
-Related references: [CI/CD Delivery](cicd-delivery.md) and [Testing And Verification](testing-and-verification.md).
+Related references: [CI/CD Delivery](cicd-delivery.md), [Testing And Verification](testing-and-verification.md), [Local Checks With Git Hooks](git-hooks.md), and [Parallel Work In Git Worktrees](git-worktrees.md).
 
 Decisions and evidence: [ADR 0002](../../docs/adr/0002-adopt-trunk-workflow-and-cloudevents-as-portable-defaults.md), [ADR 0048](../../docs/adr/0048-add-implementation-reference-layer.md), and the [composition research note](../evolution/research-branching-integration-impl-composition-2026-09.md).

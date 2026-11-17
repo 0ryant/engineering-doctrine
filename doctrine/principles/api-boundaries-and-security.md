@@ -2,6 +2,8 @@
 
 Durable rules for externally exposed HTTP and RPC surfaces: predictable behaviour under load, abuse resistance, and alignment with common API security failure modes.
 
+For the normal shape of exposing a service endpoint, start with [Service API](../impl/service-api.md).
+
 ---
 
 ## OWASP API Security Top 10 (2023) — Cross-Reference

@@ -9,6 +9,7 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 [ ] Production runtime chosen per container-runtime-choice.md; concrete products recorded in estate catalogue or tooling/estates/
 [ ] Multi-team / platform slice: golden paths, self-service guardrails, and service-catalog metadata aligned with patterns/platform-as-product-and-golden-paths.md (ownership, interfaces, runbooks/SLO pointers)
 [ ] If Kubernetes in use: kubernetes-platform-security.md baseline applied
+[ ] Production workloads use federated or platform identity where the target supports it; remaining stored secrets are registered fallbacks (owner, rotation, blast radius, reason) or bounded exceptions (zero-trust-and-workload-identity.md §2)
 [ ] Database migrations follow expand/contract or documented maintenance window (data-and-migrations.md)
 [ ] Backup RPO/RTO documented; restore tested on cadence (data-and-migrations.md)
 [ ] API limits: pagination, payload size, rate limits on auth routes (api-boundaries-and-security.md)

@@ -84,6 +84,8 @@ These candidates pass an initial repository-level screen: each is a common activ
 
 The first implementation sequence should favour narrow, frequently used flows before `new-service.md`, whose breadth makes it most likely to become a framework or duplicate a checklist.
 
+Status update, 2026-11-15: rows 1–3 landed as [Service API](../impl/service-api.md), [Secretless Workload Identity](../impl/secretless-workload-identity.md) (row 2, renamed to lead with the secretless path), and [Database Migration](../impl/database-migration.md) after an [owner audit](research-impl-reference-batch-composition-2026-11.md). Rows 4–11 remain proposals.
+
 ## Post-Exemplar Contract Refinement
 
 Review of the first two references exposed two predictable failure modes: broad nouns invite subject handbooks, and a useful cross-cutting reference can absorb specialist operating models that future siblings should own. The layer contract therefore gained three decisive tests:

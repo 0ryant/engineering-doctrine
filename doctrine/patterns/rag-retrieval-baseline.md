@@ -91,7 +91,7 @@ The §1 stack retrieves **passages** and answers questions whose evidence sits i
 
 ## References
 
-- OWASP — **Top 10 for LLM Applications** (GenAI): https://genai.owasp.org/llm-top-10/  
+- OWASP — **Top 10 for LLM Applications** (GenAI), 2025 edition: https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/  
 - OWASP — project home: https://owasp.org/www-project-top-10-for-large-language-model-applications  
 - NIST — **SP 800-218A** (secure practices for GenAI / foundation model **development**; use with SP 800-218): https://csrc.nist.gov/pubs/sp/800/218/a/final  
 - Willison — **Dual LLM Pattern** (architectural injection defence, Apr 2023): https://simonwillison.net/2023/Apr/25/dual-llm-pattern/  

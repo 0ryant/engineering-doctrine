@@ -8,6 +8,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## A
 
+**Agent-ready application shipping profile** - Optional estate profile that closes the distributable app inventory and requires each row to ship a versioned advisory Skill plus interface-appropriate autocomplete/discovery, verified from exact packaged and installed artefacts. See [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md) and [ADR 0050](../docs/adr/0050-adopt-agent-ready-application-shipping-profile.md).
+
 **Acceptance (of messages)** — Consumer tells the broker it finished processing; behaviour (single vs cumulative ack, redelivery) is **broker-specific**. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
 **ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md); supersession mechanics: [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md) §7.
@@ -116,7 +118,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## E
 
-**Effective challenge** — Critical analysis by objective experts with appropriate expertise, sufficient independence, organisational standing, and influence to effect change — the SR 26-2 test for whether "second opinion" review is real. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §2.
+**Effective challenge** — Critical analysis by objective experts with appropriate expertise, sufficient independence, organisational standing, and influence to effect change — the SR 26-2 test for whether "second opinion" review is real. SR 26-2 excludes generative and agentic AI from its own scope; this library borrows the test as vocabulary. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §2.
 
 **Error budget** — Allowed **unreliability** derived from an SLO; spending it signals **slow down or invest** in reliability. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
@@ -129,6 +131,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
 
 **Exactly-once (illusion)** — True end-to-end **exactly-once side effects** are rare; most systems are **at-least-once** plus **idempotent** design. See [message-channel-operations.md](patterns/message-channel-operations.md).
+
+**Expand / contract (parallel change)** — Schema or interface change in stages: add the new shape, move readers and writers, backfill, then remove the old shape, so old and new versions can run together. See [data-and-migrations.md](principles/data-and-migrations.md) and [impl/database-migration.md](impl/database-migration.md).
 
 **Embedding** — Numeric **vector** representing text (or other content) for **similarity** search; used in **dense** retrieval alongside **lexical** search in typical RAG. Changing **model** or **dimensions** forces **re-embed** and index **migration** ([ai-ml-systems.md](principles/ai-ml-systems.md) §7). See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md).
 
@@ -144,11 +148,13 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## G
 
-**GenAI** — *Generative artificial intelligence*: models that **synthesize** content (text, code, media). Portable rules: [ai-ml-systems.md](principles/ai-ml-systems.md); security framing: **OWASP LLM Top 10**, **NIST AI 600-1**, **NIST SP 800-218A**. Research: [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md).
+**GenAI** — *Generative artificial intelligence*: models that **synthesize** content (text, code, media). Portable rules: [ai-ml-systems.md](principles/ai-ml-systems.md); security framing: **OWASP LLM Top 10** (2025 edition, cited as `LLM0x:2025`), **NIST AI 600-1**, **NIST SP 800-218A**. Research: [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md).
 
 **GenAIOps** — Operating **GenAI** systems in production: **eval** and regression on outputs/retrieval, **index** freshness and **embedding** migrations, **cost** and quota governance, **provider** resilience, and **observability** (trace to chunk/tool ids)—same **SRE** habits as other critical dependencies. See [ai-ml-systems.md](principles/ai-ml-systems.md) §§6–7, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §4, [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
 **Golden path** — Org’s **blessed** default way to build/run a service (scaffold → gates → promote → operate). See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
+
+**Git hook** — A script Git runs at a local event such as commit or push. Useful for fast feedback; not merge enforcement, because it can be missing or skipped. See [impl/git-hooks.md](impl/git-hooks.md).
 
 **GitOps** — In this library: **anchored** to **OpenGitOps** v1.0.0 [PRINCIPLES.md](https://raw.githubusercontent.com/open-gitops/documents/v1.0.0/PRINCIPLES.md) (declarative, versioned, pull, reconcile) plus [OWASP Top 10 CI/CD Security Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/) and [NIST SSDF](https://csrc.nist.gov/publications/detail/sp/800-218/final) *pointers* in [gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md), then mapped to in-repo build/collab/merge-path doctrine. Community hub: [OpenGitOps](https://opengitops.dev/).
 
@@ -202,6 +208,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## L
 
+**Linked worktree** — An additional checkout of the same Git repository with its own files, `HEAD`, and index, sharing branches and history with the others. Isolates files, not credentials. See [impl/git-worktrees.md](impl/git-worktrees.md).
+
 **LLM** — *Large language model*: often backs **chat** or **agent** UIs; treat **output** and **retrieved context** as **untrusted** at system boundaries until validated. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) Related, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
 
 **Lexical search** — Keyword / **inverted-index** retrieval (e.g. **BM25**); complements **semantic** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
@@ -220,7 +228,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Materiality (AI)** — Business-impact tier of an AI system (person-affected decisions, money movement, irreversibility, blast radius) — **orthogonal** to capability tiers A–D; controls scale with the **max** of the two. See [ai-ml-systems.md](principles/ai-ml-systems.md) §2.1, [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.1.
 
-**MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover and invoke **tools** and **resources**, versioned as **dated specification revisions** (for example **2025-06-18**: OAuth 2.1 resource-server auth + RFC 8707 resource indicators; **2026-07-28**: stateless core, twelve-month deprecation policy); pin the revision per estate-governed host/server pair, require external-IdP OAuth for **remote** servers, and treat server discovery as a **curated registry** decision (namespace DNS verification is authenticity, not trust). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
+**MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover and invoke **tools** and **resources**, versioned as **dated specification revisions** (for example **2025-06-18**: OAuth 2.1 (an IETF Internet-Draft) resource-server auth + RFC 8707 resource indicators; **2026-07-28**: stateless core, twelve-month deprecation policy); pin the revision per estate-governed host/server pair, require external-IdP OAuth for **remote** servers, and treat server discovery as a **curated registry** decision (namespace DNS verification is authenticity, not trust). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
 
 **Method record** — Statement of **how a change candidate was produced**, carrying a **class** (`generated` — accepted substantially as produced; `curated` — produced under a declared, revision-pinned harness and ruleset then **materially revised** by the named author; `authored` — written by the author) plus the revision-pinned identity of any harness and governing ruleset. Makes **no authorship claim**: authorship names who is accountable, the method record describes process, and they are separately addressable facts. MUST in estate-governed and production paths; `authored` MAY omit it. This library specifies **schema and class vocabulary only** — transport and identifiers are estate bindings. Contrast **Agent co-authorship (anti-pattern)**. See [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §6.1; [ADR 0043](../docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md).
 
@@ -335,6 +343,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **SDL** — *Secure development lifecycle*: design review, implementation norms, **vulnerability response**. See [secure-development-lifecycle.md](principles/secure-development-lifecycle.md).
 
 **SemVer** — *Semantic versioning* `MAJOR.MINOR.PATCH` per **publishable unit**. See [semantic-versioning.md](principles/semantic-versioning.md).
+
+**Secretless access** — A workload authenticates with short-lived credentials that the platform issues against its verified identity and replaces automatically, so the team stores, distributes, and rotates no long-lived secret for that access. Tokens still exist; nobody keeps them as secrets. The default for estate-governed and production workloads, including CI and CD jobs, where the target supports it ([ADR 0051](../docs/adr/0051-make-secretless-workload-identity-the-default.md)); stored secrets for targets that cannot federate are registered fallbacks. See [impl/secretless-workload-identity.md](impl/secretless-workload-identity.md), [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2, and [configuration-and-secrets.md](principles/configuration-and-secrets.md).
 
 **Semantic index** — Curated route map from task intent to the doctrine files an agent or reader should ingest. It is navigation, not a replacement for source principles, patterns, tooling pages, checklists, ADRs, or evolution notes. See [SEMANTIC_INDEX.md](SEMANTIC_INDEX.md).
 

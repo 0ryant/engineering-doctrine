@@ -38,6 +38,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) — claim-level normative strength, composable applicability profiles, bounded exceptions, and control retirement
 - [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) — **external control profiles** (governing authority, exact revision, bounded applicability, parameter/tailoring decisions, assessment evidence, exceptions, and migration; NIST SP 800-171 CUI worked profile)
 - [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) — **agent doctrine consumption**: library/server boundary, evidence cards with trust labels, proposal-only writes, skill form/hash/tiers/lifecycle
+- [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md) — optional estate profile: closed shippable-app manifest, versioned Skills, autocomplete/discovery, and exact-artifact release evidence
 - [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) — illustrative **control suite** for merge paths and pipelines
 - [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) — **governance programme** readiness checklist (org-level)
 - [patterns/ai-adoption-controls.md](patterns/ai-adoption-controls.md) — **AI adoption controls** (inventory & materiality, ownership & effective challenge, harm-surface testing, provider continuity, capability uplift)
@@ -45,6 +46,7 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [patterns/ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) — **AI-native delivery lifecycle** (seven gates, five record families, governed execution, typed claims, authority separation, and three closure modes)
 - [patterns/outcome-and-portfolio-linkage.md](patterns/outcome-and-portfolio-linkage.md) — optional objective-to-outcome overlay for strategic/product interventions and externally required lineage
 - [checklists/ai-native-sdlc-readiness.md](checklists/ai-native-sdlc-readiness.md) — profile-based lifecycle readiness for incidental assistance, governed execution, multi-agent work, high materiality, and strategic outcomes
+- [checklists/agent-ready-application-readiness.md](checklists/agent-ready-application-readiness.md) — derived review for the activated Skills-and-autocomplete shipping profile
 
 ### Adoption And Worked Examples
 
@@ -60,6 +62,11 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [impl/cicd-delivery.md](impl/cicd-delivery.md) — branch-to-production CI/CD flow, candidate promotion, verification, and application/IaC/database/configuration variations
 - [impl/testing-and-verification.md](impl/testing-and-verification.md) — where application, package, deployment, infrastructure, migration, and scheduled verification evidence naturally belongs
 - [impl/branching-and-integration.md](impl/branching-and-integration.md) — concurrent local work, short-lived branches into protected trunk, revision and delivery-state distinctions, hotfixes, and supported release lines
+- [impl/service-api.md](impl/service-api.md) — exposing a synchronous HTTP or RPC endpoint: contract, caller identity, object-level authorisation, limits, retry semantics, errors, telemetry, and versioning
+- [impl/secretless-workload-identity.md](impl/secretless-workload-identity.md) — how services, jobs, and pipelines get access without stored secrets: federated short-lived identity by default, stored secrets only as the documented fallback
+- [impl/database-migration.md](impl/database-migration.md) — schema and data change during rolling deploys: expand, compatible deploy, bounded backfill, reconciliation, switch, and contract
+- [impl/git-hooks.md](impl/git-hooks.md) — local pre-commit, commit-msg, and pre-push checks that reuse CI's scripts; feedback, not enforcement
+- [impl/git-worktrees.md](impl/git-worktrees.md) — parallel changes and parallel agents in linked worktrees: one branch and one writer each, same integration path
 
 ### Principles
 
@@ -169,6 +176,10 @@ Use these records to understand source grounding, decisions, audits, and known g
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md) — historical model review at `v0.4.0`; corrected finding counts and current dispositions live in [v0.6.0 readiness](evolution/v060-readiness-2026-09.md)
 - [evolution/research-doctrine-integrity-gates-2026-09.md](evolution/research-doctrine-integrity-gates-2026-09.md) — direct link/example checks and canonical-owner readiness routing supporting ADR 0049
 - [evolution/research-v060-source-maintenance-2026-09.md](evolution/research-v060-source-maintenance-2026-09.md) — dated source checks and editorial repairs; no automatic control-baseline migration
+- [evolution/research-latest-developments-2026-11.md](evolution/research-latest-developments-2026-11.md) — November 2026 source check across AI protocols, supply chain, regulation, and delivery standards: seven headline findings routed as candidate decisions, one citation correction
+- [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md) — source-graded basis and limits for ADR 0051 (secretless workload identity as the default)
+- [evolution/research-impl-reference-batch-composition-2026-11.md](evolution/research-impl-reference-batch-composition-2026-11.md) — owner audit for the Service API, Secretless Workload Identity, and Database Migration references
+- [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md) — owner audit and Git behaviour checks for the git hooks and worktrees references
 - [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) — release identity, withdrawal and semantic-review options with model scenario checks; decisions remain pending
 - [evolution/scorecard-four-reader-lenses-2026-09.md](evolution/scorecard-four-reader-lenses-2026-09.md) — the library scored through four reader lenses (engineering manager, CIO, security engineer, non-technical sponsor) with file-cited scores, per-lens verdicts, and a seven-row fix list; model self-review
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) — MCP 2026-07-28 spec cross-check — §7 baseline verified against primary sources; deprecation clocks, MRTR/state-handle security, extensions gap map
