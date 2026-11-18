@@ -23,7 +23,7 @@ Classes follow [Source Authority And Evidence Grading](../patterns/source-author
 3. **Recall is not a safe source for licences.** One widely used fuzzer's repository now carries AGPL-3.0, with Apache-2.0 and commercial licence files beside it. A Rails security scanner carries a public-use licence that is not open source. A code scanner carries the Elastic License 2.0. The best-known infrastructure CLI carries the Business Source License. Each would have been listed wrongly from memory.
 4. **Some classes have no Apache-2.0 or MIT tool.** Shell and YAML linting, Dockerfile linting, Ruby dependency auditing, and general multi-language static analysis are served only by copyleft tools. Ruby security analysis has no open-source option among the candidates.
 5. **Open-source tools ship with companions that are not free for private code.** Eight were confirmed; the table below records them.
-6. **One candidate is the maintainer's own.** taudit, a CI/CD authority scanner, is public. Its published repository carried AGPL-3.0-or-later on 2026-11-18; the maintainer committed a change to MIT that day, which had not been published when this note was written. On his instruction it is recorded as MIT and listed in the first table under a disclosed exception (ADR 0060 D6), with that caveat stated on the page. Its GitHub Action repository has no licence file, so the wrapper is not offered.
+6. **One candidate is the maintainer's own.** taudit, a CI/CD authority scanner, is public. Its maintainer relicensed it from AGPL-3.0-or-later to MIT on 2026-11-18, and its published repository carries MIT. It meets the selection rule and is listed in the first table under a disclosed exception (ADR 0060 D6). Its GitHub Action repository has no licence file, so the wrapper is not offered.
 7. **Several projects are fading.** Two are archived by their publishers, one publisher directs users to a successor, and four show little recent activity.
 
 ## Plan Terms Checked
@@ -188,8 +188,6 @@ As read on 2026-11-18. "Apache-2.0" may stand for a dual Apache-2.0 and MIT proj
 | Hypothesis | [HypothesisWorks/hypothesis](https://github.com/HypothesisWorks/hypothesis) | MPL-2.0 |
 | OpenTofu (tofu validate, tofu fmt) | [opentofu/opentofu](https://github.com/opentofu/opentofu) | MPL-2.0 |
 | TFLint | [terraform-linters/tflint](https://github.com/terraform-linters/tflint) | MPL-2.0 |
-
-One row was not read from a published repository. taudit is recorded as MIT on its maintainer's statement and his relicensing commit of 2026-11-18; the published repository still showed AGPL-3.0-or-later that day.
 
 Named but not offered: the CodeQL CLI (vendor terms), Brakeman (Brakeman Public Use License), Bearer CLI (Elastic License 2.0), the Terraform CLI (Business Source License), Terrascan and the original OWASP Dependency-Check repository (archived; Dependency-Check continues in the repository listed above), tfsec (publisher directs users to Trivy), and cfn_nag, LicenseFinder, Security Code Scan, and Horusec (little recent activity).
 

@@ -51,7 +51,7 @@ Start here. One tool per class covers most languages in a mixed estate.
 
 Trivy appears in several rows because one binary scans dependencies, images, configuration, and licences, and can emit an SBOM. cfn-lint carries MIT-0, the no-attribution form of MIT.
 
-**Disclosure.** taudit, which scans the authority CI/CD pipelines hold (secrets, identities, trust boundaries), is written by the maintainer of this library. It is listed under the same rule as every other tool, and it is the only tool here with that connection ([ADR 0060](../../docs/adr/0060-name-only-open-source-gate-tools-usable-without-a-paid-plan.md) D6). Its licence is given as MIT on the maintainer's statement: the change from AGPL-3.0-or-later was committed on 2026-11-18 and had not reached the published repository when this page was written. Check the repository.
+**Disclosure.** taudit, which scans the authority CI/CD pipelines hold (secrets, identities, trust boundaries), is written by the maintainer of this library. It is listed under the same rule as every other tool, and it is the only tool here with that connection ([ADR 0060](../../docs/adr/0060-name-only-open-source-gate-tools-usable-without-a-paid-plan.md) D6). It was relicensed from AGPL-3.0-or-later to MIT on 2026-11-18.
 
 ---
 
@@ -103,7 +103,7 @@ An open-source tool can have a companion that is not free for private code. Thes
 | Artifact attestations | The build-provenance action (MIT) | On GitHub's Free and Team plans, public repositories only; private repositories need the Enterprise plan. |
 | Harden-Runner | The action (Apache-2.0) | The free tier covers public repositories on hosted runners. Private repositories and self-hosted runners need the paid tier. |
 | Semgrep rules | The Semgrep Community Edition engine (LGPL-2.1) | The publisher's own rules carry a separate licence that allows internal business use and bars use in competing products. |
-| taudit GitHub Action | taudit (MIT, as above) | The action's repository carries no licence file at the date above, so the wrapper is not offered. |
+| taudit GitHub Action | taudit (MIT) | The action's repository carries no licence file at the date above, so the wrapper is not offered. |
 | Renovate hosted app | The Renovate CLI and images (AGPL-3.0) | The hosted app is a vendor service under its own terms, which were not checked. The open-source route is to run it yourself. |
 
 ---
