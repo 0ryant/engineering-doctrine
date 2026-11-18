@@ -75,6 +75,10 @@ The final section always identifies the principles and patterns being composed, 
 - [Database Migration](database-migration.md) — schema and persisted-data change during continuous delivery: expand, compatible deploy, bounded backfill, reconciliation, switch, and contract.
 - [Local Checks With Git Hooks](git-hooks.md) — what runs before commit and push, how hooks share CI's scripts, and why protected required checks stay authoritative.
 - [Parallel Work In Git Worktrees](git-worktrees.md) — several changes at once, including parallel coding agents: one branch and one writer per worktree, same integration path, clean-up.
+- [Service Observability](service-observability.md) — instrumenting a service and verifying its telemetry, with SLI, GenAI, and audit duties kept conditional.
+- [Release And Rollback](release-and-rollback.md) — exposing an identified candidate, verifying it in production, and recovering by flag reversion, rollback, or forward fix.
+- [Event Consumer](event-consumer.md) — consuming messages against a versioned contract: validate, deduplicate before effects, classify failures, dead-letter, and replay deliberately.
+- [Dependency Adoption](dependency-adoption.md) — admitting a package, image, model, dataset, skill, or tool server: pin, check, review, record, and keep current.
 
 Proposed future references are screened in [the implementation-reference research note](../evolution/research-implementation-reference-layer-2026-09.md#screened-backlog); they are not adopted merely by appearing in that backlog.
 

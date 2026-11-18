@@ -10,7 +10,7 @@ This repository is intended to be a reference library for teams building applica
 
 | If you want | Go to |
 | --- | --- |
-| The normal way to do a common task, in a few minutes | [`doctrine/impl/`](doctrine/impl/README.md): CI/CD delivery, testing, branching, service APIs, secretless workload identity, database migrations, git hooks, worktrees |
+| The normal way to do a common task, in a few minutes | [`doctrine/impl/`](doctrine/impl/README.md): CI/CD delivery, testing, branching, service APIs, event consumers, secretless workload identity, database migrations, observability, release and rollback, dependency adoption, git hooks, worktrees |
 | The rules and why they exist | [`doctrine/principles/`](doctrine/principles/), starting with the [one-line glance at every principle](doctrine/tldr-principles-and-mvp.md#every-principle-at-a-glance) |
 | How the pieces fit together, with trade-offs and failure modes | [`doctrine/patterns/`](doctrine/patterns/) |
 | Examples with specific products and commands | [`doctrine/tooling/`](doctrine/tooling/) (illustrations; swap freely) |

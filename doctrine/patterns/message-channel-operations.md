@@ -2,6 +2,8 @@
 
 Companion to [principles/event-contracts.md](../principles/event-contracts.md). Contracts define shape and semantics; this pattern covers operational behaviour for queues, topics, and buses: failure, replay, and poison messages.
 
+For the normal consumer shape, start with [Event Consumer](../impl/event-consumer.md).
+
 ---
 
 ## Intent
@@ -47,6 +49,16 @@ Companion to [principles/event-contracts.md](../principles/event-contracts.md). 
 
 ---
 
+## Acknowledgement And Commit Order
+
+- **SHOULD (consumers of at-least-once channels):** acknowledge a message, or commit the consumer position, only after its effect is **durably committed**, **scheduled**, or written to an **outbox**, so a crash leads to redelivery rather than loss. Pair this with the duplicate handling above.
+- **MUST (where losing the effect would cause material harm):** do not acknowledge before the effect is durable.
+- **Exception path:** acknowledging first gives **at-most-once** delivery for that consumer. Where that loss is acceptable, the consumer's documentation states the choice and the loss it accepts ([exception contract](../patterns/normative-language-applicability-and-exceptions.md#5-exception-contract) for estate-governed paths).
+
+**Why:** delivery semantics follow from when the position is saved: saving it before processing gives at-most-once delivery on failure, and processing first gives at-least-once. Channel mechanics differ and belong in tooling ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)).
+
+---
+
 ## Observability
 
 - Metrics: depth age, DLQ rate, processing lag, retry count per event type.
@@ -68,3 +80,4 @@ Companion to [principles/event-contracts.md](../principles/event-contracts.md). 
 - AWS — dead-letter queues (concept, widely mirrored): search vendor docs for “SQS dead-letter queue” or your broker’s equivalent.
 - Azure — Service Bus dead-lettering: https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues  
 - **Enterprise Integration Patterns** — Dead Letter Channel (conceptual): https://www.enterpriseintegrationpatterns.com/patterns/messaging/DeadLetterChannel.html  
+- Apache Kafka 4.4 — design, **message delivery semantics** (position saved before or after processing) (S5, product-scoped; general semantics, accessed 2026-11-18): https://kafka.apache.org/44/design/design/

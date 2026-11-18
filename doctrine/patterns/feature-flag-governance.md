@@ -2,6 +2,8 @@
 
 Canonical home for the portable rules on creating, operating, reverting, and retiring feature flags. It supersedes `feature-flag-lifecycle.md`; see §10 for migration.
 
+For the end-to-end release, verification, and recovery shape, start with [Release And Rollback](../impl/release-and-rollback.md).
+
 Flags decouple deploying code from activating it, which lets incomplete work land on trunk ([trunk-workflow.md](trunk-workflow.md); [principles/collaboration.md](../principles/collaboration.md) §4) and lets risky changes reach users gradually, provided every flag has an owner, a safe default, and a removal date.
 
 Flag SDKs, feature-management platforms, and rollout controllers are tooling choices and belong in `doctrine/tooling/`; this file names none.

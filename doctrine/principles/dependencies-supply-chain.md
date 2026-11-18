@@ -2,6 +2,8 @@
 
 Durable rules for **third-party code** in production: **pinning**, **updates**, **licensing**, and **evidence** (SBOM) aligned with security and compliance expectations. Admission of **AI-proposed** dependencies is gated pre-install per [ai-ml-systems.md](ai-ml-systems.md) §4, enforced here (§7). When a supplier, build service, support path, external model, or other dependency enters a declared contractual/regulatory boundary, [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) records the exact authority, baseline revision, scope, assessment evidence, flow-down obligations, and exceptions.
 
+For the normal admission sequence, start with [Dependency Adoption](../impl/dependency-adoption.md).
+
 ---
 
 ## 1. Pinning And Lockfiles
@@ -15,7 +17,7 @@ Durable rules for **third-party code** in production: **pinning**, **updates**, 
 
 ## 2. Update Cadence And Automation
 
-- **Automate** update PRs with human review; do not rely on **ad-hoc** `npm update` before releases only.
+- **Automate** update PRs; do not rely on **ad-hoc** `npm update` before releases only. Updates that estate policy classifies as **low risk** MAY merge through a **documented bot-only path** ([collaboration.md](collaboration.md) §2) once **required checks** pass; other updates get **human review**. Agent-authored dependency and lockfile diffs keep the explicit human review in [code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §6 ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)).
 - **Security patches** merge on an **SLA** appropriate to severity. **Example estate defaults** (adjust per sector, **CISA KEV** / regulatory duty, internet exposure, and compensating controls—publish **yours** in an estate or security doc; numbers below are **illustrative**, not universal law):
 
 | Severity (typical CVSS-aligned) | Target time to **patched release** or **approved compensating control** |
@@ -135,6 +137,7 @@ A third-party **model artifact** (weights, checkpoints, adapters, tokenizers) or
 | Published patch SLAs | Makes vulnerability response **measurable**; aligns with SSDF-style expectations. |
 | SBOM + promotion loop | **AI-accelerated disclosure** means merge-time green is insufficient without **re-scan** at promote/deploy. |
 | Models/datasets admitted like code (§8) | **Pickle-class deserialization is code execution** and hub scanning is evadable; digest + publisher + signature + AIBOM evidence extends the §1/§3/§5 machinery to ML artifacts instead of trusting popularity signals. |
+| Documented bot-only path for low-risk updates | Reviewing every trivial bump builds update backlogs; unpolicied auto-merge removes the check. An estate-defined low-risk class, gated by required checks, matches collaboration §2 and this file's own cadence row ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)). |
 
 ---
 
@@ -165,3 +168,4 @@ A third-party **model artifact** (weights, checkpoints, adapters, tokenizers) or
 - SPDX 3.0 — **AI and Dataset profiles** (Linux Foundation announcement): https://www.linuxfoundation.org/press/spdx-3-revolutionizes-software-management-in-systems-with-enhanced-functionality-and-streamlined-use-cases
 - **SLSA v1.2 tracks** (Build and Source; no AI/ML track): https://slsa.dev/spec/v1.2/tracks
 - CISA/NSA/FBI — **AI Data Security** CSI (2025-05-22): https://media.defense.gov/2025/May/22/2003720601/-1/-1/0/CSI_AI_DATA_SECURITY.PDF
+- Renovate — **automerge** (waits for required checks; recommended for updates you would merge anyway; lockfile maintenance and dev dependencies as lowest risk) (S5, product-scoped, accessed 2026-11-18): https://docs.renovatebot.com/key-concepts/automerge/  

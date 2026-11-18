@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-11-15 14:51 UTC
+Generated: 2026-11-18 00:04 UTC
 
 ## All Markdown files
 
@@ -49,12 +49,14 @@ Generated: 2026-11-15 14:51 UTC
 - [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md)
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md)
 - [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md)
+- [evolution/research-impl-backlog-batch-2-composition-2026-11.md](evolution/research-impl-backlog-batch-2-composition-2026-11.md)
 - [evolution/research-impl-reference-batch-composition-2026-11.md](evolution/research-impl-reference-batch-composition-2026-11.md)
 - [evolution/research-implementation-reference-layer-2026-09.md](evolution/research-implementation-reference-layer-2026-09.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
 - [evolution/research-latest-developments-2026-11.md](evolution/research-latest-developments-2026-11.md)
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md)
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md)
+- [evolution/research-owner-gap-rules-2026-11.md](evolution/research-owner-gap-rules-2026-11.md)
 - [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md)
 - [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md)
 - [evolution/research-target-state-and-irreversible-decisions-2026-08.md](evolution/research-target-state-and-irreversible-decisions-2026-08.md)
@@ -71,10 +73,14 @@ Generated: 2026-11-15 14:51 UTC
 - [impl/branching-and-integration.md](impl/branching-and-integration.md)
 - [impl/cicd-delivery.md](impl/cicd-delivery.md)
 - [impl/database-migration.md](impl/database-migration.md)
+- [impl/dependency-adoption.md](impl/dependency-adoption.md)
+- [impl/event-consumer.md](impl/event-consumer.md)
 - [impl/git-hooks.md](impl/git-hooks.md)
 - [impl/git-worktrees.md](impl/git-worktrees.md)
+- [impl/release-and-rollback.md](impl/release-and-rollback.md)
 - [impl/secretless-workload-identity.md](impl/secretless-workload-identity.md)
 - [impl/service-api.md](impl/service-api.md)
+- [impl/service-observability.md](impl/service-observability.md)
 - [impl/testing-and-verification.md](impl/testing-and-verification.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md)

@@ -72,6 +72,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0049](0049-add-doctrine-integrity-gates-and-obligation-routing.md) | Accepted | 2026-09-19 | Add direct Markdown/example integrity gates and canonical-owner readiness routing; tighten maintainer ADR landing traceability without adding consumer controls |
 | [0050](0050-adopt-agent-ready-application-shipping-profile.md) | Accepted | 2026-11-15 | Add an optional profile requiring every inventoried shippable app surface to carry exact-artifact Skills and autocomplete/discovery |
 | [0051](0051-make-secretless-workload-identity-the-default.md) | Accepted | 2026-11-15 | Make secretless workload identity the default for estate-governed and production workloads where the target supports federation; stored secrets for other targets become registered fallbacks |
+| [0052](0052-close-owner-gaps-from-implementation-batch-2.md) | Accepted | 2026-11-18 | Close owner gaps from implementation batch 2: bot-only path for low-risk dependency updates, acknowledgement after durable effects, deployment canary signals and rollback decider, telemetry verification, and identifier minimisation |
 
 ## Candidate Considered But Not Recorded
 

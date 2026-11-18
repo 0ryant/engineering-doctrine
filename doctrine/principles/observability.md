@@ -2,6 +2,8 @@
 
 Durable rules for **logs**, **metrics**, and **traces** so systems can be **understood under failure** and **SLOs** can be measured honestly.
 
+For the normal instrumentation and verification shape, start with [Service Observability](../impl/service-observability.md).
+
 Deployment details (Kubernetes collectors vs **managed** platform ingestion) live in [../tooling/observability.md](../tooling/observability.md). OpenTelemetry and similar specs are **interoperability choices** at boundaries—see [interoperability-and-standards.md](interoperability-and-standards.md) and [timeless-principles-and-tooling.md](timeless-principles-and-tooling.md).
 
 ---
@@ -21,6 +23,7 @@ Deployment details (Kubernetes collectors vs **managed** platform ingestion) liv
 - Propagate **distributed trace context** (W3C Trace Context) across service boundaries.
 - **Structured logs** (JSON or equivalent) with **trace_id** and **span_id** aligned to OpenTelemetry so logs and traces join in backends.
 - Add **business identifiers** (order id, tenant id) to spans or logs for support workflows; **do not** use high-cardinality IDs as **metric labels** (see cardinality section).
+- **SHOULD (identifier minimisation):** keep those identifiers to what support and investigation need, and prefer stable internal or pseudonymous references over direct personal data. Keep session identifiers, access tokens, credentials, keys, and payment data out of telemetry, or mask or hash them where a reference is needed. Personal data that does enter telemetry follows its data category's retention ([privacy-and-data-governance.md](privacy-and-data-governance.md) §§1–2; [ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)).
 
 **Why:** OpenTelemetry’s logging model explicitly ties logs to spans for correlation ([OTel log correlation](https://opentelemetry.io/docs/specs/otel/logs/)). Without this, incident response devolves to **grep** and guesswork.
 
@@ -146,6 +149,15 @@ Backend query patterns — recording rules and paired-window alert rules — are
 
 ---
 
+## 8. Telemetry Verification
+
+- **SHOULD (production services on material paths):** post-deployment verification ([build.md](build.md) §5) checks that the expected logs, metrics, and traces arrive, that trace context joins across the service's boundaries, and, where SLOs exist, that the SLI data alerts depend on is present.
+- **SHOULD:** alerting rules and monitoring configuration are reviewed and tested like code. Alerts that rarely fire are validated with a known signal or an exercise ([../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md)).
+
+**Why:** a deployment can pass every health check while the telemetry that would detect its next failure is broken. Monitoring and alerting code deserves the same testing standard as other code ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)).
+
+---
+
 ## Rationale And Decisions
 
 | Decision | Rationale |
@@ -158,6 +170,7 @@ Backend query patterns — recording rules and paired-window alert rules — are
 | Tiered §5 | **SLIs** are mandatory with SLOs; profiling/eBPF stay **optional** power tools. |
 | Multi-window burn-rate alerting (§6) | Prevents both false pages (single window) and silent budget exhaustion (no slow-burn tier). Model from Google SRE Workbook. |
 | GenAI per-call minimum signal set; content capture off by default (§7) | Token spend, model behaviour, and agent tool use are unattributable without per-call signals; prompt/completion content is a PII surface, so capture is an explicit governed opt-in, never a default. |
+| Telemetry verified after deployment; identifiers minimised (§§2, 8) | Detection depends on telemetry that is itself untested without §8; support identifiers need a bound so logs and traces do not accumulate personal data and secrets ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)). |
 
 ---
 
@@ -172,3 +185,5 @@ Backend query patterns — recording rules and paired-window alert rules — are
 - Google SRE Workbook, **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/
 - Google **Cloud Profiler** concepts (illustrative continuous profiling): https://cloud.google.com/profiler/docs/concepts-profiling
 - OpenTelemetry **GenAI semantic conventions** (dedicated repository; **Development** stability — see [../tooling/observability.md](../tooling/observability.md) for the pinning caveat): https://github.com/open-telemetry/semantic-conventions-genai
+- Google SRE Workbook — **Monitoring** (ch. 4; testing alerting logic, monitoring configuration as code) (S4, accessed 2026-11-18): https://sre.google/workbook/monitoring/  
+- OWASP **Logging Cheat Sheet** — data to exclude, mask, or de-identify (S4, accessed 2026-11-18): https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html  

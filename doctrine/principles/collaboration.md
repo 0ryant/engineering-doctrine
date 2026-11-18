@@ -91,6 +91,15 @@ below describe why flags support collaboration; they do not replace that owner.
 - **Change risk** — risky changes use canaries, gradual rollout, or maintenance windows per service policy; emergency changes still get a retrospective.
 - **On-call handoff** — open incidents, risky in-flight changes, and **alert noise** state are handed off explicitly; avoid “silent” pager takeover. See Google SRE — **Being On-Call**: https://sre.google/sre-book/being-on-call/
 
+### 8.1 Deployment Canaries And Rollback
+
+- **SHOULD (deployments using a canary or gradual rollout):** before the rollout starts, record the **signals** it is judged on and their **tolerance**, and do not widen exposure while a signal degrades beyond it.
+- **MAY:** automation rolls back to the **previously verified candidate** when the trigger, target, and alert are recorded and the rollback path has been exercised. Automation does not widen exposure or roll forward.
+- **Decider:** the service owner, the on-call engineer following the documented runbook, or the incident commander during an incident can roll back to the previously verified candidate without further approval. A forward fix follows the controlled change path or the documented emergency path.
+- Feature flags keep their own gates and reversion rules in [feature-flag-governance.md](../patterns/feature-flag-governance.md) §§4.3–4.4.
+
+**Why:** comparing a canary with a control on defined signals, and pausing or rolling back when it degrades, is the workbook pattern; naming who may roll back stops on-call staff waiting for permission ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)).
+
 ---
 
 ## 9. Security And Compliance In The Loop
@@ -137,6 +146,7 @@ When these principles conflict with a deadline, **narrow scope** or **add safety
 | One-sentence concern | Makes **bisect** and **rollback** predictable. |
 | Merge queue at scale | Fixes **last-green** races without hiding flaky tests. |
 | Async decisions in repo | Chat scrollback is not a **system of record**. |
+| Deployment canaries judged on recorded signals (§8.1) | Mirrors the flag gate for deployments; SHOULD because evidence comes from one provider's practice and canary tooling varies ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)). |
 
 ---
 
@@ -147,3 +157,4 @@ When these principles conflict with a deadline, **narrow scope** or **add safety
 - [../patterns/code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) — author and reviewer **duties**, blockers vs nits, latency examples, high-risk classes, **agent-authored** PRs, **escalation** when review disagrees  
 - [../patterns/gitops-and-declarative-operations.md](../patterns/gitops-and-declarative-operations.md) — *GitOps* (OpenGitOps, OWASP CI/CD) as **declarative** **reconciled** desired state, not **manual** **prod** **drift**; aligns with **reviewed** **automation** here  
 - [build.md](build.md), [patterns/trunk-workflow.md](../patterns/trunk-workflow.md), [tooling/collaboration.md](../tooling/collaboration.md)  
+- Google SRE Workbook — **Canarying Releases** (ch. 16; compare canary with control, pause and roll back when unhealthy) (S4, accessed 2026-11-18): https://sre.google/workbook/canarying-releases/  

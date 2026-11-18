@@ -16,7 +16,7 @@ Companion to [principles/event-contracts.md](../principles/event-contracts.md) f
 ## 2. Timestamp And Replay Window
 
 - Require a timestamp or monotonic event id from the sender; reject events outside a short clock-skew window (for example 5 minutes) unless using idempotent dedup only.
-- Store processed delivery ids (`ce_id`, provider id) for deduplication—see [message-channel-operations.md](message-channel-operations.md).
+- Store processed delivery identities for deduplication: the CloudEvents `source` + `id` pair where the callback uses CloudEvents, otherwise the provider's documented delivery id and its scope—see [message-channel-operations.md](message-channel-operations.md) and [idempotency-across-boundaries.md](idempotency-across-boundaries.md) §3.
 
 **Why:** Signed payloads without freshness checks allow replay attacks.
 
