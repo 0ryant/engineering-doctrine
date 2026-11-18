@@ -53,6 +53,17 @@ Official overview: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
 
 **Why:** Cryptographic suitability changes with purpose, implementation quality, platform support, external approval, and transition guidance. Maintained profiles allow algorithms and parameters to change without inventing application-specific cryptography.
 
+### 2.2 Cryptographic Inventory And Agility
+
+This subsection applies wherever the system uses cryptography, not only at request boundaries: transport, tokens, code and artefact signing, data at rest, and certificates.
+
+- **SHOULD (estate-governed and production systems):** keep a **cryptographic inventory**: where public-key cryptography is used for key establishment and signatures (protocols, certificates, tokens, signing, libraries, hardware modules, and suppliers), which algorithms and key sizes are in use, and which data must stay confidential beyond the transition horizon. Start with the systems whose data has the longest confidentiality life. A cryptography bill of materials is one way to hold it; no format is required.
+- **SHOULD (new designs and material changes):** design for **agility**: algorithms, parameters, and keys can be replaced through configuration, a library or module update, or a provider change, without redesigning the protocol or data format. Persisted signed or encrypted formats carry an algorithm identifier and version, migration uses a bounded dual-read or dual-verify period, and retired algorithms are removed, not left selectable. Agility is not arbitrary runtime algorithm choice.
+- **SHOULD:** record in the threat model ([threat-modeling-stride-lite.md](threat-modeling-stride-lite.md)) the data whose confidentiality must outlast the transition. Traffic captured now can be decrypted later if its key establishment is quantum-vulnerable.
+- **Transition dates are profile-bound.** Post-quantum deadlines differ by authority and scope, so they bind through the active profile (§2.1; [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md)), not this file. As an example of a baseline a profile might pin, NIST IR 8547 (final, 2026-10-27) deprecates quantum-vulnerable public-key algorithms under NIST standards after 2030 and disallows them after 2035. This file names no post-quantum algorithm.
+
+**Why:** every published transition schedule starts with knowing where public-key cryptography is used, and none can be met by a system whose algorithms are fixed into its formats. A profile can set a date; inventory and agility are what make an estate able to meet it ([ADR 0054](../../docs/adr/0054-add-cryptographic-inventory-and-agility.md)).
+
 ---
 
 ## 3. Rate Limiting And Abuse
@@ -142,6 +153,7 @@ If GraphQL (or similar) is exposed, treat query planning as part of the security
 | OWASP Top 10 table | Makes review and audit questions answerable from one map. |
 | SSRF §8 | URL fetch features are always in scope for security review. |
 | Inventory + outbound §9 | API9/API10 are operational discipline, not only code bugs. |
+| Cryptographic inventory and agility (§2.2) | Transition dates are set by profiles, but only an estate that knows where its public-key cryptography is, and can replace it, can meet one. No algorithm menu and no library date ([ADR 0054](../../docs/adr/0054-add-cryptographic-inventory-and-agility.md)). |
 
 ---
 
@@ -173,3 +185,8 @@ If GraphQL (or similar) is exposed, treat query planning as part of the security
 - OWASP Cryptographic Storage Cheat Sheet (threat-modelled encryption layer, authenticated modes, key lifecycle): https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html
 - OWASP Password Storage Cheat Sheet (password hashing is a separate purpose; legacy algorithm migration): https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
 - NIST SP 800-131A — transition guidance for cryptographic algorithms and key lengths: https://csrc.nist.gov/pubs/sp/800/131/a/r2/final
+- NIST IR 8547 — **Transition to Post-Quantum Cryptography Standards** (S2; final 2026-10-27; accessed 2026-11-18): https://csrc.nist.gov/pubs/ir/8547/final
+- NIST CSWP 39 update 1 — **Considerations for Achieving Crypto Agility** (S2; 2025-12-19, updated 2026-06-29; accessed 2026-11-18): https://csrc.nist.gov/pubs/cswp/39/upd1/considerations-for-achieving-crypto-agility/final
+- UK NCSC — **Timelines for migration to post-quantum cryptography** (S2; v1.0, 2025-03-20; accessed 2026-11-18): https://www.ncsc.gov.uk/guidance/pqc-migration-timelines
+- NIS Cooperation Group — **Coordinated implementation roadmap for the transition to post-quantum cryptography** (S2; v1.1, 2025-06-11; accessed 2026-11-18): https://digital-strategy.ec.europa.eu/en/library/coordinated-implementation-roadmap-transition-post-quantum-cryptography
+- NIST **FIPS 203, 204, 205** — post-quantum key-encapsulation and signature standards (S1; final 2024-08-13): https://csrc.nist.gov/pubs/fips/203/final

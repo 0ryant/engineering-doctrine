@@ -88,6 +88,8 @@ Status update, 2026-11-15: rows 1–3 landed as [Service API](../impl/service-ap
 
 Status update, 2026-11-17: rows 4, 7, 8, and 9 landed as [Service Observability](../impl/service-observability.md), [Release And Rollback](../impl/release-and-rollback.md), [Event Consumer](../impl/event-consumer.md), and [Dependency Adoption](../impl/dependency-adoption.md) after an [owner audit](research-impl-backlog-batch-2-composition-2026-11.md). Rows 5, 6, 10, and 11 remain proposals.
 
+Status update, 2026-11-18: rows 5, 6, 10, and 11 landed as [Application Deployment](../impl/application-deployment.md), [Infrastructure Delivery](../impl/infrastructure-delivery.md), [New Service](../impl/new-service.md), and [Privileged Automation](../impl/privileged-automation.md) after an [owner audit](research-impl-backlog-batch-3-composition-2026-11.md). The screened backlog is now fully landed.
+
 ## Post-Exemplar Contract Refinement
 
 Review of the first two references exposed two predictable failure modes: broad nouns invite subject handbooks, and a useful cross-cutting reference can absorb specialist operating models that future siblings should own. The layer contract therefore gained three decisive tests:

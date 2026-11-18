@@ -4,6 +4,8 @@
 
 **Estate** choices (Argo CD, Flux, cloud services, push-based tools) live under `doctrine/tooling/estates/` or your org catalogue.
 
+For the normal sequence of an infrastructure change, start with [Infrastructure Delivery](../impl/infrastructure-delivery.md).
+
 ---
 
 ## 1. OpenGitOps: canonical principles (v1.0.0)
@@ -60,6 +62,16 @@ The [OpenGitOps](https://opengitops.dev/) project publishes versioned GitOps pri
 5. **Drift** is measured and triaged; if break-glass is frequent, treat it as a **governance or automation** gap, not only heroics.
 
 6. **Blast radius** of shared control planes: treat IaC and orchestrator changes as **high-impact** review, aligned with [code-review-and-change-approval.md](code-review-and-change-approval.md) §5 and OWASP CI/CD risk *themes* (§2).
+
+7. **Reviewed plan, per environment (SHOULD).** Where the tool computes a plan or diff, review it against the target environment's current state before apply, and apply the plan that was reviewed, or recompute it and review it again. A plan belongs to one environment and one moment; it is not promoted between environments.
+
+8. **Applies to shared environments run from the pipeline (SHOULD).** They run under the pipeline's scoped identity with shared, locked state, not from a workstation. Local runs are for personal or prototype instances; anything else is break-glass (invariant 5).
+
+9. **Destroying or replacing a data-bearing resource is called out (SHOULD).** Such a plan gets explicit review, deletion protection where the platform offers it, and a verified backup or snapshot first ([data-and-migrations.md](../principles/data-and-migrations.md) §§2–3).
+
+10. **Drift ends one of two ways (SHOULD).** Revert the live change by re-applying declared state, or adopt it into the declaration through the reviewed path. A reconciler does the first automatically.
+
+**Why (7–10):** a plan is computed against one environment's state, so reviewing one and applying another is applying something unreviewed; workstation applies bypass the pipeline's identity and evidence; routine plans have destroyed data stores; and drift left standing makes the declaration untrue. Evidence note: support is mainly tool and cloud vendor documentation from four or more publishers, with two independent practitioner sources ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)). Sources: [Terraform in automation](https://developer.hashicorp.com/terraform/tutorials/automation/automate-terraform); [Google Cloud Terraform operations](https://docs.cloud.google.com/docs/terraform/best-practices/operations); [AWS CloudFormation best practices](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html); [AWS Prescriptive Guidance, Terraform backends](https://docs.aws.amazon.com/prescriptive-guidance/latest/terraform-aws-provider-best-practices/backend.html); [Azure Well-Architected, infrastructure as code](https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/infrastructure-as-code-design); [Pulumi drift](https://www.pulumi.com/docs/iac/operations/stack-management/drift/); [Kief Morris, pipelines for environments](https://infrastructure-as-code.com/posts/environment-pipeline.html) (all accessed 2026-11-18).
 
 ---
 

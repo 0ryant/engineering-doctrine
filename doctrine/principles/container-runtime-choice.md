@@ -2,6 +2,8 @@
 
 Durable rules for where containerised workloads run. The goal is operational sobriety: fewer self-managed control planes unless capabilities or constraints genuinely require them—regardless of cloud.
 
+For the shape of a production deployment on either kind of runtime, start with [Application Deployment](../impl/application-deployment.md).
+
 ---
 
 ## 1. Prefer Managed Application Runtimes When They Fit

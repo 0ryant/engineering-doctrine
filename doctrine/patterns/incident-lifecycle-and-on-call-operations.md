@@ -72,6 +72,7 @@ Internal comms keep responders aligned; external comms protect trust and contrac
 - External / customer comms: follow estate policy; often tied to status page first update within N minutes of confirmed user impact.
 - **All-clear / resolved:** one clear message: what was wrong, what was done, what follow-up is planned, known residual risk.
 - Coordination with security or privacy for possible breach-class events; comms may be gated on facts—must not fabricate.
+- Where an active external profile carries a reporting clock, the state doc records when the estate became aware and the reporting deadlines; the runbook duties are in [secure-development-lifecycle.md](../principles/secure-development-lifecycle.md) §3.1.
 
 **Why:** Atlassian, PagerDuty, and SRE comms playbooks all stress predictable updates over ad hoc noise.
 

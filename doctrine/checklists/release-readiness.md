@@ -17,7 +17,7 @@ Use when cutting a **versioned** release of a publishable unit (library, service
 ```text
 [ ] Lockfiles and reproducible build inputs updated if dependencies changed
 [ ] Quality gate green on the exact revision (commit / tag) that ships
-[ ] SBOM or provenance generated where organisation policy or regulators expect it (see dependencies-supply-chain.md, SLSA)
+[ ] SBOM attached for artefacts shipped externally, to regulated environments, or where law, contract, or policy demands one; provenance per the artefact's SLSA target (dependencies-supply-chain.md §§3–4)
 [ ] Artefact is immutable (tag, digest, or build ID) before promotion beyond first trusted environment
 ```
 

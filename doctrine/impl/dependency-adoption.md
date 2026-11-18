@@ -32,7 +32,7 @@ These summarise the canonical owners below, including their applicability and ex
 4. **Licence policy:** distributed software has an open-source licence allowlist or policy, with attribution files where required.
 5. **Reviewed diff:** new dependencies are called out as a review hotspot. In agent-authored pull requests, dependency and lockfile diffs get explicit human review, and agents do not regenerate a lockfile unless explicitly asked.
 6. **AI-proposed packages checked before install:** in estate-governed and production delivery paths, a package first suggested by a model or agent is checked against the intended registry before installation for existence, registry age, publisher identity, and download history. The same lookup is recommended for local single-user development.
-7. **Evidence with the artefact:** each shipped artefact carries a machine-readable SBOM attached at build time, per build or per release as the owner scopes it. Provenance follows the owning principle's SLSA targets, and transparency artefacts that law, contract, or policy demands are release inputs.
+7. **Evidence with the artefact:** artefacts shipped externally, to regulated environments, or under a legal, contractual, or policy demand carry a machine-readable SBOM attached at build time; other production artefacts normally do too. Provenance follows the owning principle's SLSA targets, and transparency artefacts that law, contract, or policy demands are release inputs.
 8. **Kept current:** update pull requests are automated. Update classes the estate defines as low risk can merge on a documented bot-only path once required checks pass; other updates are human-reviewed. Security fixes meet the estate's published severity targets, with known-exploited issues most urgent. Promotion re-checks the exact artefact against current advisories; a green merge does not authorise promotion past a new disclosure without a scoped exception or exploitability record.
 9. **Bounded exceptions:** risk acceptances carry an owner, expiry, and compensating control. Silent indefinite waivers count as control failure.
 
@@ -53,7 +53,7 @@ These summarise the canonical owners below, including their applicability and ex
 
 ### Container Images
 
-Verify the base-image digest before pull in security-sensitive pipelines, and keep images minimal, non-root by default, and scanned in CI. Sign images you build, keyless through the pipeline's short-lived identity where supported, and verify the signature at deploy against the identity permitted to sign. Attach the SBOM to the image digest. On container orchestration platforms, image policy allows only trusted registries, and admission validates signed images where adopted.
+Verify the base-image digest before pull in security-sensitive pipelines, and keep images minimal, non-root by default, and scanned in CI. Sign images you build, keyless through the pipeline's short-lived identity where supported, and verify the signature at deploy against the identity and issuer permitted to sign, checking provenance against the expected builder and source where it is used. Attach the SBOM to the image digest. On container orchestration platforms, image policy allows only trusted registries, and admission validates signed images where adopted.
 
 ### AI-Proposed Packages
 

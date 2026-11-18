@@ -4,6 +4,8 @@
 
 This principle **adds** merge-path and pipeline-specific invariants. It does **not** restate general build-surface vocabulary or dependency-licence policy; those remain separate topics so each file stays auditable on its own.
 
+For how these invariants combine with identity, run contracts, and approval when automation can change real systems, start with [Privileged Automation](../impl/privileged-automation.md).
+
 ---
 
 ## 1. Definitions (Normative For This File)

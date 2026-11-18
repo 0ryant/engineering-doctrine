@@ -71,6 +71,10 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [impl/release-and-rollback.md](impl/release-and-rollback.md) — exposing, verifying, and recovering an identified candidate: flags, rollback, forward fix, stateful limits
 - [impl/event-consumer.md](impl/event-consumer.md) — message consumption: contract, deduplication before effects, failure classification, dead-letter, deliberate replay
 - [impl/dependency-adoption.md](impl/dependency-adoption.md) — admitting packages, images, models, datasets, skills, and tool servers, and keeping them current
+- [impl/application-deployment.md](impl/application-deployment.md) — a production deployment's shape: immutable candidate, environment bindings, runtime shape, bounds, ownership, verification
+- [impl/infrastructure-delivery.md](impl/infrastructure-delivery.md) — declared infrastructure change through environments: per-environment plan, pipeline apply, drift, recovery
+- [impl/new-service.md](impl/new-service.md) — reading order for a new service, routing each step to its reference; not a gate or checklist
+- [impl/privileged-automation.md](impl/privileged-automation.md) — automation and agents that can change real systems: governed runs, identity, scope, approval, evidence
 
 ### Principles
 
@@ -186,6 +190,12 @@ Use these records to understand source grounding, decisions, audits, and known g
 - [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md) — owner audit and Git behaviour checks for the git hooks and worktrees references
 - [evolution/research-impl-backlog-batch-2-composition-2026-11.md](evolution/research-impl-backlog-batch-2-composition-2026-11.md) — owner audit for the observability, release, event-consumer, and dependency references, plus 14 owner gaps found
 - [evolution/research-owner-gap-rules-2026-11.md](evolution/research-owner-gap-rules-2026-11.md) — sources and strengths for ADR 0052 (acknowledgement order, deployment canaries and rollback, telemetry verification, identifier minimisation, bot update path)
+- [evolution/research-impl-backlog-batch-3-composition-2026-11.md](evolution/research-impl-backlog-batch-3-composition-2026-11.md) — owner audit for the last four implementation references, 25 owner gaps found, and how each is resolved or left open
+- [evolution/research-owner-gap-rules-batch-3-2026-11.md](evolution/research-owner-gap-rules-batch-3-2026-11.md) — sources and strengths for ADR 0057 (workload runtime shape, deploy-time configuration, infrastructure plans and drift)
+- [evolution/research-supply-chain-evidence-decisions-2026-11.md](evolution/research-supply-chain-evidence-decisions-2026-11.md) — SLSA v1.2 attribution, provenance limits, evidence triggers, and the SBOM baseline; basis for ADR 0053
+- [evolution/research-cryptographic-inventory-and-agility-2026-11.md](evolution/research-cryptographic-inventory-and-agility-2026-11.md) — post-quantum transition sources, inventory and agility; basis for ADR 0054
+- [evolution/research-regulatory-reporting-clocks-2026-11.md](evolution/research-regulatory-reporting-clocks-2026-11.md) — Cyber Resilience Act reporting deadlines and a profile-gated hook; basis for ADR 0055
+- [evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md](evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md) — OWASP LLM Top 10 2026 entry mapping from 2025; basis for ADR 0056
 - [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) — release identity, withdrawal and semantic-review options with model scenario checks; decisions remain pending
 - [evolution/scorecard-four-reader-lenses-2026-09.md](evolution/scorecard-four-reader-lenses-2026-09.md) — the library scored through four reader lenses (engineering manager, CIO, security engineer, non-technical sponsor) with file-cited scores, per-lens verdicts, and a seven-row fix list; model self-review
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) — MCP 2026-07-28 spec cross-check — §7 baseline verified against primary sources; deprecation clocks, MRTR/state-handle security, extensions gap map

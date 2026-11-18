@@ -36,9 +36,10 @@ For the normal admission sequence, start with [Dependency Adoption](../impl/depe
 
 ## 3. SBOM Generation And Attachment
 
-- Produce an **SBOM** (Software Bill of Materials) for **every shipped artefact** — not only on request, and not only when regulators ask. Attach it to the artefact at build time so the questions "what was in this binary?" and "is this vulnerable component in production?" are answerable in seconds.
-- **Format choice**: prefer **CycloneDX** (ECMA-424) for supply-chain depth (includes VEX, Cryptography BOM, AI/ML-BOM) or **SPDX** (ISO/IEC 5962:2021) where licence compliance is the primary driver. Either is acceptable; pick one per build pipeline and be consistent.
-- **NTIA minimum elements** per component: name, version, unique identifier (PURL or CPE), supplier name, dependency relationships, known vulnerability references, and timestamp.
+- **MUST (artefacts shipped to customers or other external parties, artefacts for regulated environments, and any artefact for which law, contract, or estate policy demands one):** produce a machine-readable **SBOM** (Software Bill of Materials) at build time and attach it to the artefact.
+- **SHOULD (every other production artefact):** do the same, not only on request, so the questions "what was in this binary?" and "is this vulnerable component in production?" are answerable in seconds.
+- **Format choice**: prefer **CycloneDX** (ECMA-424) for supply-chain depth (includes VEX, Cryptography BOM, AI/ML-BOM) or **SPDX** (ISO/IEC 5962:2021) where licence compliance is the primary driver. Either is acceptable; pick one per build pipeline and be consistent. The cryptographic inventory expectation that a cryptography BOM can serve is in [api-boundaries-and-security.md](api-boundaries-and-security.md) §2.2.
+- **Minimum content — SHOULD:** meet the minimum-elements baseline active at adoption time ([merge-path-evidence-and-pipeline-integrity.md](merge-path-evidence-and-pipeline-integrity.md) invariant 6). Where no other baseline binds, use CISA's **2026 Minimum Elements for an SBOM** (2026-07-29), which replaces NTIA's 2021 list and adds, among others, component hash, licence, tool name and version, generation context, and SBOM author signature. Neither list makes vulnerability data a minimum element: keep exploitability and advisory data in the **VEX** and advisory records below, linked to the SBOM, not embedded in it.
 - **When to generate**: per-build for customer-facing or regulated software; per-release minimum for internal-only tooling. Do not rely on post-hoc reconstruction from VCS.
 - **Attachment**: for container images, attach the SBOM to the image digest as an **OCI attestation**, using the registry's supported mechanism; for standalone binaries and packages, publish an adjacent `.sbom.json` alongside the release artefact. Machine-readable JSON or XML only — plain-text SBOMs cannot be reliably parsed. Generation alone is insufficient for operations: each **immutable** artefact digest/version should retain an **SBOM** that can be **re-scanned** against **current** advisory feeds ([SPDX](https://spdx.dev/), [CycloneDX](https://cyclonedx.org/)—see [../REFERENCES.md](../REFERENCES.md)).
 - **Continuous feed-backed re-evaluation** — on **promotion** or **deploy** to an environment, and when **material** feed updates land, re-check the **same** SBOM identity (**purl** / version / hash where available) against vulnerability intelligence; merge-time green does **not** authorise deploy after **new** disclosures unless policy explicitly allows a time-bounded exception ([merge-path-evidence-and-pipeline-integrity.md](merge-path-evidence-and-pipeline-integrity.md)).
@@ -46,37 +47,42 @@ For the normal admission sequence, start with [Dependency Adoption](../impl/depe
 - **VEX / exploitability** — when a CVE appears in the SBOM but the shipped configuration is **not exploitable**, record disposition with **scope** (artefact version, environment) using a **VEX** document or equivalent **signed** attestation (for example CycloneDX [VEX](https://cyclonedx.org/capabilities/vex/)) so promotion evidence stays honest—**not** to replace scanning or future re-evaluation when code or reachability changes.
 - **SCA** (dependency scanning) and **secret scanning** run on every merge path, and separately on a scheduled cadence to catch newly published vulnerabilities against already-merged code.
 
-**Why:** EU Cyber Resilience Act, US Executive Order 14028, and enterprise procurement increasingly treat **SBOM** as non-negotiable evidence. SCA on the merge path alone misses vulnerabilities disclosed after merge, and **AI-accelerated disclosure** widens the gap between “we built once with a green scan” and “what is exposed **now**.”
+**Why:** EU Cyber Resilience Act, US Executive Order 14028, and enterprise procurement increasingly expect an **SBOM** as evidence, with triggers that differ by regime and buyer ([ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md)). SCA on the merge path alone misses vulnerabilities disclosed after merge, and **AI-accelerated disclosure** widens the gap between “we built once with a green scan” and “what is exposed **now**.”
 
 ---
 
 ## 4. SLSA: Build Provenance And Pipeline Integrity
 
-- **Target SLSA L2 as the starting baseline** for any artefact that ships externally or to regulated environments. SLSA L3 is the mature target for critical or customer-facing software. SLSA L1 (documented-but-unsigned provenance) is acceptable only for internal-only tooling.
-- **SLSA level requirements** (abbreviated):
+- **SHOULD (artefacts shipped externally or to regulated environments):** target **SLSA Build L2** as the starting baseline: signed provenance generated by a hosted build platform. **Build L3** is the target for critical or customer-facing software. Build L1 (provenance that may be unsigned) is acceptable only for internal-only tooling.
+- **MUST (where law, contract, or estate policy demands provenance):** it is a release input at the level demanded ([merge-path-evidence-and-pipeline-integrity.md](merge-path-evidence-and-pipeline-integrity.md) invariant 6).
+- **SLSA v1.2 Build levels** (abbreviated from the specification). A level describes the build platform, so confirm which level the platform meets instead of assuming it:
 
-  | Level | Provenance | Key requirement |
+  | Level | What the specification requires | Addresses |
   | --- | --- | --- |
-  | **L1** | Unsigned, formatted | Build process documented; output includes provenance file |
-  | **L2** | Signed; hosted platform prevents user tampering | Build runs on a hosted service (GitHub Actions, Azure DevOps) that generates and signs provenance; user config cannot influence the provenance itself |
-  | **L3** | Signed; strict isolation between builds | Builds cannot influence each other's provenance; no shared writable cache across builds; separation of duties between build and signing |
+  | **L1** | The producer follows a consistent build process; the platform generates provenance describing who built the artefact, how, and from which top-level inputs. Provenance may be incomplete or unsigned. | Mistakes; missing documentation |
+  | **L2** | A hosted build platform generates and signs the provenance, and the consumer validates its authenticity. | Tampering after the build |
+  | **L3** | A hardened platform: runs cannot influence one another (isolated, ephemeral environments; no cache poisoning), signing material is out of reach of user-defined build steps, and the platform's control plane generates or verifies every provenance field. | Tampering during the build |
 
-- **Hermetic builds**: pin toolchain versions (compiler, base image by digest, not by tag), commit lockfiles, and ensure the build environment cannot fetch packages from the network during build. Two builds from the same inputs must produce the same output.
+- **What provenance shows.** Provenance records which builder, source, and parameters produced an artefact. It does not show that the code that ran in the build was the code the producer intended: a compromised workflow on the legitimate builder produces valid provenance. It protects only when a consumer verifies it against expectations.
+- **SHOULD (consumers of provenance, at deploy or admission, and at dependency admission where a publisher provides it):** verify against **expectations**, not only that a valid attestation exists: the expected builder identity, the expected source repository, and the build type and parameters where the format carries them. A verification summary from a verifier the estate trusts MAY stand in for re-verifying each attestation.
+- **Reproducible inputs** (library policy, not a SLSA requirement): pin toolchain versions, reference base images by digest (below), and build from committed lockfiles (§1), so the same commit resolves the same inputs.
+- **Hermetic and reproducible builds — SHOULD, context-dependent:** where the threat model, a Build L3 target, or an active profile calls for it, builds run with declared inputs only (in the strong form, no network access during the build), and outputs are reproducible apart from documented nondeterminism. SLSA v1.2 requires neither at any Build level; this is an estate hardening target, not a level claim.
 - **Base image pinning**: reference container base images by **digest** (`FROM golang:1.24.0@sha256:...`), not by mutable tag. Verify digest before pull in security-sensitive pipelines.
 - **Build provenance attestation**: emit a signed provenance document (SLSA provenance JSON) as part of the build output; attach to the artefact via `cosign attest` or the SLSA GitHub generator action. This document answers "which commit, which pipeline, which runner produced this binary?"
+- **Cache trust:** release and deploy builds restore only caches written at the same or higher trust ([build.md](build.md) §11).
 
-**Why:** Supply-chain attacks increasingly target the build pipeline rather than the source code. SLSA provenance makes tampering between source and artefact **detectable**, not merely **prohibited**.
+**Why:** Supply-chain attacks increasingly target the build pipeline rather than the source code. Verified provenance makes tampering after the build **detectable**, and an isolated build platform makes tampering during the build hard. Neither vouches for the workflow's own code: in the May 2026 npm compromise analysed on the SLSA project blog, attacker code reached a release workflow through a poisoned cache and published packages with valid attestations ([ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md)). Evidence note: the verification and cache rules rest on the SLSA specification and one incident analysis from the same project.
 
 ---
 
 ## 5. Artifact Signing With Sigstore
 
-- **Sign container images and release binaries** using **cosign** with keyless signing via OIDC. In a hosted CI environment (GitHub Actions, Azure DevOps with Workload Identity), no long-lived private key is required — the CI runtime obtains a short-lived certificate from **Fulcio**, signs the artefact, and records the signature in the **Rekor** transparency log.
-- **Verification** at deploy time: consumers validate the signature against the Rekor ledger and the identity that was permitted to sign (e.g., only the `release` workflow in `org/repo` may sign production images).
-- **No long-lived signing keys in secret stores** for build pipelines that support OIDC. Key rotation burden and secret exfiltration risk both drop to zero for keyless flows.
+- **SHOULD (container images and release binaries shipped externally or deployed to production):** sign them using **cosign** with keyless signing via OIDC. In a hosted CI environment (GitHub Actions, Azure DevOps with Workload Identity), no long-lived private key is required — the CI runtime obtains a short-lived certificate from **Fulcio**, signs the artefact, and records the signature in the **Rekor** transparency log.
+- **SHOULD (where signatures are produced):** verify at deploy or admission against the Rekor ledger and the **identity and issuer** permitted to sign (e.g., only the `release` workflow in `org/repo` may sign production images). A check that accepts any valid signature says nothing about origin.
+- **No long-lived signing keys in secret stores** for build pipelines that support OIDC. This is the secretless default of [zero-trust-and-workload-identity.md](zero-trust-and-workload-identity.md) §2 applied to signing, and the same default covers publishing to package registries that accept a federated publishing identity. Keyless flows remove the stored key and its rotation burden. They do not remove theft of the short-lived credential from a compromised job, which is why build isolation and cache trust (§4) still matter.
 - Where keyless signing is not available (air-gapped or legacy environments), use **cosign** with a KMS-backed key and rotate per the estate's key-rotation policy.
 
-**Why:** Signature verification closes the gap between "we fetched this image from our registry" and "we know this image was built from commit X by our authorised CI pipeline, not by anyone else."
+**Why:** Signature verification closes the gap between "we fetched this image from our registry" and "this image was signed by our authorised CI pipeline identity". It does not show that only intended code ran in that pipeline (§4).
 
 ---
 
@@ -128,16 +134,17 @@ A third-party **model artifact** (weights, checkpoints, adapters, tokenizers) or
 | Automation + review | Balances **velocity** with **governance**; blocks neither security nor shipping. |
 | SBOM per build | Makes incidents and audits **factual** ("what was in build X?") — not reconstructed after the fact. |
 | CycloneDX preferred over SPDX | Better tooling support for VEX and security extensions; SPDX remains an acceptable alternative. |
-| SLSA L2 as starting target | Achievable with standard CI providers; L3 (hermetic) reserved for mature pipelines. |
+| SLSA Build L2 as starting target | Achievable on hosted build platforms; L3 needs a platform that isolates builds and keeps signing material out of build steps. Hermetic builds are a separate hardening target that SLSA v1.2 does not require ([ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md)). |
 | Keyless cosign (OIDC + Rekor) | Eliminates long-lived signing key management; transparency log adds public accountability. |
 | Scoped package names + lockfile CI | Prevents dependency confusion attacks at zero cost; `npm ci` / `poetry install --no-update` enforce integrity. |
 | Pre-install gate for AI-proposed packages | Slopsquats install **legitimately** — scoped names, registry precedence, and lockfile CI never fire; only a **pre-install** existence/provenance check discriminates, and it costs one registry lookup. |
 | Explicit licence policy | Prevents **surprise** copyleft or attribution gaps in releases. |
-| Provenance when required | **Attestations** answer “was this binary built from **this** source?” faster than manual forensics. |
+| Provenance verified against expectations | **Attestations** record which builder and source produced an artefact. They protect only when a consumer checks them against the expected builder and source, and they do not vouch for code that ran inside a compromised workflow ([ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md)). |
 | Published patch SLAs | Makes vulnerability response **measurable**; aligns with SSDF-style expectations. |
 | SBOM + promotion loop | **AI-accelerated disclosure** means merge-time green is insufficient without **re-scan** at promote/deploy. |
 | Models/datasets admitted like code (§8) | **Pickle-class deserialization is code execution** and hub scanning is evadable; digest + publisher + signature + AIBOM evidence extends the §1/§3/§5 machinery to ML artifacts instead of trusting popularity signals. |
 | Documented bot-only path for low-risk updates | Reviewing every trivial bump builds update backlogs; unpolicied auto-merge removes the check. An estate-defined low-risk class, gated by required checks, matches collaboration §2 and this file's own cadence row ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)). |
+| SBOM, provenance, and signing typed on one trigger set | Required where artefacts leave the estate, enter regulated environments, or are demanded by law, contract, or policy; recommended elsewhere. One trigger set replaces the four previously in use ([ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md)). |
 
 ---
 
@@ -145,7 +152,8 @@ A third-party **model artifact** (weights, checkpoints, adapters, tokenizers) or
 
 - OWASP **Dependency-Check** / SCA concept (industry framing): https://owasp.org/www-project-dependency-check/
 - SPDX — **Software Bill of Materials** specification: https://spdx.dev/
-- NTIA / CISA **SBOM** minimum elements (US guidance): https://www.ntia.gov/SBOM
+- CISA — **2026 Minimum Elements for a Software Bill of Materials (SBOM)** (S2; 2026-07-29; replaces the 2021 NTIA list; accessed 2026-11-18): https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom
+- NTIA — *The Minimum Elements For a Software Bill of Materials (SBOM)* (2021-07-12; historical baseline): https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom
 - White House **Executive Order 14028** (secure software supply chain): https://www.federalregister.gov/documents/2021/05/17/2021-10460/improving-the-nations-cybersecurity
 - **SLSA** — Supply-chain Levels for Software Artifacts: https://slsa.dev/
 - **SLSA** Getting Started guide: https://slsa.dev/get-started
@@ -169,3 +177,8 @@ A third-party **model artifact** (weights, checkpoints, adapters, tokenizers) or
 - **SLSA v1.2 tracks** (Build and Source; no AI/ML track): https://slsa.dev/spec/v1.2/tracks
 - CISA/NSA/FBI — **AI Data Security** CSI (2025-05-22): https://media.defense.gov/2025/May/22/2003720601/-1/-1/0/CSI_AI_DATA_SECURITY.PDF
 - Renovate — **automerge** (waits for required checks; recommended for updates you would merge anyway; lockfile maintenance and dev dependencies as lowest risk) (S5, product-scoped, accessed 2026-11-18): https://docs.renovatebot.com/key-concepts/automerge/  
+- **SLSA v1.2 Build track** — levels and build requirements (S4; status Approved; accessed 2026-11-18): https://slsa.dev/spec/v1.2/build-track-basics and https://slsa.dev/spec/v1.2/build-requirements  
+- **SLSA v1.2** — verifying artifacts and threats (S4; accessed 2026-11-18): https://slsa.dev/spec/v1.2/verifying-artifacts and https://slsa.dev/spec/v1.2/threats  
+- SLSA blog — **Mini Shai-Hulud: Where SLSA's Boundaries Fall** (S6, named practitioner; 2026-05-15; secondary for the incident; accessed 2026-11-18): https://slsa.dev/blog/2026/05/mini-shai-hulud-what-slsa-can-and-cannot-do  
+- Sigstore — **cosign 2.0** (identity and issuer required at verification) (S5, product-scoped; 2023-02-23; accessed 2026-11-18): https://blog.sigstore.dev/cosign-2-0-released/  
+- npm — **trusted publishing** (short-lived workflow identity instead of a long-lived token) (S5, product-scoped; accessed 2026-11-18): https://docs.npmjs.com/trusted-publishers/  

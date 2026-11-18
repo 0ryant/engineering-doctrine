@@ -148,10 +148,36 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | Principles of Chaos Engineering | https://principlesofchaos.org/ |
 | NIST SSDF (secure SDLC) | https://csrc.nist.gov/Projects/SSDF |
 | NIST SP 800-218 (SSDF publication) | https://csrc.nist.gov/publications/detail/sp/800-218/final |
+| NIST IR 8547 — Transition to Post-Quantum Cryptography Standards (S2; final 2026-10-27) | https://csrc.nist.gov/pubs/ir/8547/final |
+| NIST CSWP 39 update 1 — Considerations for Achieving Crypto Agility (S2; updated 2026-06-29) | https://csrc.nist.gov/pubs/cswp/39/upd1/considerations-for-achieving-crypto-agility/final |
+| UK NCSC — Timelines for migration to post-quantum cryptography (S2; v1.0, 2025-03-20) | https://www.ncsc.gov.uk/guidance/pqc-migration-timelines |
+| NIS Cooperation Group — Coordinated implementation roadmap for the transition to post-quantum cryptography (S2; v1.1, 2025-06-11) | https://digital-strategy.ec.europa.eu/en/library/coordinated-implementation-roadmap-transition-post-quantum-cryptography |
+| US Executive Order 14412 and OMB M-26-15 — federal post-quantum migration (S2; federal civilian agencies only; June 2026) | https://www.whitehouse.gov/presidential-actions/2026/06/securing-the-nation-against-advanced-cryptographic-attacks/ |
+| CycloneDX — cryptography bill of materials (S5, format documentation) | https://cyclonedx.org/capabilities/cbom/ |
+| Kubernetes documentation — probes, pod termination, disruptions, resource management, ConfigMaps (S5) | https://kubernetes.io/docs/concepts/workloads/pods/probes/ |
+| AWS Well-Architected Framework — REL10-BP01, REL11-BP02 (S5) | https://docs.aws.amazon.com/wellarchitected/latest/framework/rel10-bp01.html |
+| Azure Architecture Center — Health Endpoint Monitoring pattern (S5) | https://learn.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring |
+| Google SRE Book — Load Balancing in the Datacenter (ch. 20; S4) | https://sre.google/sre-book/load-balancing-datacenter/ |
+| The Twelve-Factor App — Disposability; Build, release, run (S6) | https://12factor.net/disposability |
+| DORA — capability: deployment automation (S4) | https://dora.dev/capabilities/deployment-automation/ |
+| HashiCorp — Running Terraform in automation (S5) | https://developer.hashicorp.com/terraform/tutorials/automation/automate-terraform |
+| Google Cloud — Best practices for Terraform operations (S5) | https://docs.cloud.google.com/docs/terraform/best-practices/operations |
+| AWS Prescriptive Guidance — Terraform backend best practices (S5) | https://docs.aws.amazon.com/prescriptive-guidance/latest/terraform-aws-provider-best-practices/backend.html |
+| Pulumi — Detecting and reconciling drift (S5) | https://www.pulumi.com/docs/iac/operations/stack-management/drift/ |
+| Kief Morris — Using Pipelines to Manage Environments (S6; 2017) | https://infrastructure-as-code.com/posts/environment-pipeline.html |
 | SLSA (supply-chain levels) | https://slsa.dev/ |
 | SLSA Getting Started | https://slsa.dev/get-started |
+| SLSA v1.2 Build track — levels (S4; Approved; accessed 2026-11-18) | https://slsa.dev/spec/v1.2/build-track-basics |
+| SLSA v1.2 build requirements (isolation, cache poisoning, hermetic note) | https://slsa.dev/spec/v1.2/build-requirements |
+| SLSA v1.2 verifying artifacts (expectations) and threats | https://slsa.dev/spec/v1.2/verifying-artifacts |
+| SLSA blog — Mini Shai-Hulud: Where SLSA's Boundaries Fall (S6; 2026-05-15) | https://slsa.dev/blog/2026/05/mini-shai-hulud-what-slsa-can-and-cannot-do |
+| Sigstore — cosign 2.0 (identity and issuer required at verification; S5) | https://blog.sigstore.dev/cosign-2-0-released/ |
+| npm — trusted publishing (S5) | https://docs.npmjs.com/trusted-publishers/ |
 | Sigstore — keyless signing | https://www.sigstore.dev/ |
 | EU Cyber Resilience Act (SBOM / vuln disclosure) | https://eur-lex.europa.eu/eli/reg/2024/2847/oj |
+| EU Cyber Resilience Act, Art 14 reporting obligations (S1; canonical ELI; applies from 2026-09-11) | http://data.europa.eu/eli/reg/2024/2847/oj |
+| European Commission — CRA reporting summary (S2; last update 2026-09-11) | https://digital-strategy.ec.europa.eu/en/policies/cra-reporting |
+| European Commission — guidance on the application of the Cyber Resilience Act, C/2026/6013 (S2; OJ C 2026-11-17; not binding) | http://publications.europa.eu/resource/celex/52026XC06013 |
 | OWASP ASVS (application verification) | https://owasp.org/www-project-application-security-verification-standard/ |
 
 - Google SRE Workbook, **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/
@@ -218,7 +244,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Microsoft — AI-led SDLC (vendor observation) | https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896 |
 | GitHub Spec Kit — Evolving specifications (vendor observation) | https://github.github.com/spec-kit/guides/evolving-specs.html |
 | Anthropic — 2026 Agentic Coding Trends Report (vendor research; landing page links the report) | https://resources.anthropic.com/2026-agentic-coding-trends-report |
-| OWASP Top 10 for LLM Applications, 2025 edition (identifiers cited as `LLM0x:2025`; the 2026 edition of 2026-08-03 renumbers entries and is not adopted) | https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/ |
+| OWASP Top 10 for LLM Applications, 2026 edition (published 2026-08-03; identifiers cited as `LLM0x:2026`; S4 awareness document; adopted for citation by ADR 0056) | https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/ |
+| OWASP Top 10 for LLM Applications, 2025 edition (prior edition; eight entries renumbered in 2026) | https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/ |
 | OWASP Top 10 for Agentic Applications 2026 (Agentic Security Initiative) | https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ |
 | NIST AI 100-2e2025 — Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations | https://csrc.nist.gov/pubs/ai/100/2/e2025/final |
 | CSA — MAESTRO agentic threat-modeling framework | https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro |
@@ -362,7 +389,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | --- | --- |
 | ICO — data minimisation (UK GDPR principle) | https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/principles/data-minimisation/ |
 | NIST Privacy Framework | https://www.nist.gov/privacy-framework |
-| NTIA SBOM minimum elements | https://www.ntia.gov/SBOM |
+| NTIA — The Minimum Elements For an SBOM (2021-07-12; historical baseline, replaced by CISA 2026) | https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom |
+| CISA — 2026 Minimum Elements for an SBOM (S2; 2026-07-29; replaces the NTIA list) | https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom |
 | NIST Cybersecurity Framework 2.0 | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
 | NIST SP 1301 — creating and using CSF organisational profiles | https://csrc.nist.gov/pubs/sp/1301/final |
 | NIST SP 1303 — Monitor–Evaluate–Adjust control cycle | https://csrc.nist.gov/pubs/sp/1303/final |
@@ -470,6 +498,12 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md) | Owner audit, layer-fit reasoning, and checked Git behaviour for the git hooks and worktrees references |
 | [evolution/research-impl-backlog-batch-2-composition-2026-11.md](evolution/research-impl-backlog-batch-2-composition-2026-11.md) | Owner audit for four backlog references, dropped phrasings, and 14 owner gaps and contradictions recorded for later decisions |
 | [evolution/research-owner-gap-rules-2026-11.md](evolution/research-owner-gap-rules-2026-11.md) | Source-graded basis for ADR 0052: delivery semantics, canarying, monitoring tests, logging exclusions, and update automerge |
+| [evolution/research-impl-backlog-batch-3-composition-2026-11.md](evolution/research-impl-backlog-batch-3-composition-2026-11.md) | Owner audit for implementation batch 3; 25 owner gaps and their resolution |
+| [evolution/research-owner-gap-rules-batch-3-2026-11.md](evolution/research-owner-gap-rules-batch-3-2026-11.md) | Source-graded basis for ADR 0057: workload runtime shape, deploy-time configuration, infrastructure plans and drift |
+| [evolution/research-supply-chain-evidence-decisions-2026-11.md](evolution/research-supply-chain-evidence-decisions-2026-11.md) | Source-graded basis for ADR 0053: SLSA v1.2 levels, provenance limits, evidence triggers, SBOM baseline |
+| [evolution/research-cryptographic-inventory-and-agility-2026-11.md](evolution/research-cryptographic-inventory-and-agility-2026-11.md) | Source-graded basis for ADR 0054: post-quantum transition, cryptographic inventory and agility |
+| [evolution/research-regulatory-reporting-clocks-2026-11.md](evolution/research-regulatory-reporting-clocks-2026-11.md) | Source-graded basis for ADR 0055: regulatory reporting clocks, with the Cyber Resilience Act as the worked example |
+| [evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md](evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md) | Source basis for ADR 0056: OWASP LLM Top 10 2026 entries and the mapping from 2025 |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |
@@ -575,6 +609,10 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [impl/release-and-rollback.md](impl/release-and-rollback.md) | Progressive exposure, production verification, flag reversion, deployment rollback or forward fix, and stateful recovery limits |
 | [impl/event-consumer.md](impl/event-consumer.md) | Contract-first consumption, identity-scoped deduplication, retryable versus permanent failures, dead-letter, and replay |
 | [impl/dependency-adoption.md](impl/dependency-adoption.md) | Admission and upkeep of packages, images, models, datasets, skills, and tool servers |
+| [impl/application-deployment.md](impl/application-deployment.md) | Production deployment shape: immutable candidate, environment bindings, runtime shape, bounds, ownership, and verification |
+| [impl/infrastructure-delivery.md](impl/infrastructure-delivery.md) | Declared infrastructure change through environments: per-environment plan, pipeline apply, drift, and recovery |
+| [impl/new-service.md](impl/new-service.md) | Reading order for a new service, routing each step to its reference |
+| [impl/privileged-automation.md](impl/privileged-automation.md) | Automation and agents that can change real systems: governed runs, identity, scope, approval, and evidence |
 
 ### Extended principles
 

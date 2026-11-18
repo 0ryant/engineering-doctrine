@@ -52,6 +52,7 @@ The profile may live in a GRC system, repository, contract register, service cat
 | System boundary | Components, environments, identities, networks, stores, backups, logs, build/release paths, support tools, suppliers, and excluded components with rationale. |
 | Parameters and tailoring | Organisation-defined parameters, overlays, alternatives, non-applicable determinations, and their approvals. |
 | Requirement ownership | Implementer, evidence producer, control owner, assessor, risk owner, and authoriser. |
+| Reporting obligations | Where the baseline imposes them: triggers, the event that starts each clock, deadlines, recipient, channel, and authorised submitter. |
 | Evidence | Requirement-to-evidence map; assessment objects/methods; depth/coverage; result; date; candidate/system version; retention location. |
 | Findings and exceptions | Finding state, remediation/plan-of-action owner, due date, variance/waiver authority, compensating controls, expiry. |
 | Migration | Current and target profiles, official delta source, changed requirements/parameters, re-assessment plan, acceptance decision. |
@@ -77,7 +78,7 @@ The profile owns applicability and traceability. Existing principles own enginee
 | [Privacy and data governance](../principles/privacy-and-data-governance.md) | Classify CUI separately from personal data; preserve category, marking, dissemination, retention, and decontrol metadata; avoid assuming privacy rules alone satisfy CUI handling. |
 | [Zero trust and workload identity](../principles/zero-trust-and-workload-identity.md) | Bind users, workloads, administrators, and service calls to authenticated identities and least-privilege policy within the declared boundary. |
 | [Configuration and secrets](../principles/configuration-and-secrets.md) | Keep profile parameters and approved configuration versioned; protect credentials and cryptographic material through the estate's controlled secret lifecycle. |
-| [Secure development lifecycle](../principles/secure-development-lifecycle.md) | Treat applicable requirements as design constraints, acceptance claims, review criteria, tests, and vulnerability-response obligations. |
+| [Secure development lifecycle](../principles/secure-development-lifecycle.md) | Treat applicable requirements as design constraints, acceptance claims, review criteria, tests, and vulnerability-response obligations. Reporting clocks follow its §3.1. |
 | [Threat modelling](../principles/threat-modeling-stride-lite.md) | Model CUI flows, protection components, suppliers, administrative paths, and boundary escape; test blast-radius claims. |
 | [Dependencies and supply chain](../principles/dependencies-supply-chain.md) | Include external services, libraries, build systems, and suppliers in the scoped boundary and retain provenance/evidence required by the profile. |
 | [Merge-path evidence](../principles/merge-path-evidence-and-pipeline-integrity.md) | Bind profile-aware checks, approvals, evidence, and exceptions to the exact change and protected baseline. |
