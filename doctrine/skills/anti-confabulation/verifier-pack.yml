@@ -1,7 +1,7 @@
 verifier_pack:
   name: anti-confabulation-verifier-pack
   skill: anti-confabulation
-  version: 1.1.1
+  version: 1.1.2
   schema_version: 1.1.0
   description: >-
     Verify that the anti-confabulation priming block was actually present in the
@@ -57,8 +57,12 @@ verifier_pack:
       description: >-
         The completion report names the candidate revision it describes (a 7-40 hex
         commit id or a content hash), so the claims are bound to something reviewable.
-        custom because binding-to-candidate is a report property.
-      command: grep -qE '\b([0-9a-f]{7,40}|sha256:[0-9a-f]{64})\b' ${REPORT}
+        A hex id must contain at least one letter a-f, so a date or count written as
+        digits does not satisfy it; the rare abbreviated id made only of digits needs
+        its longer form. custom because binding-to-candidate is a report property.
+      command: >-
+        grep -qE '\bsha256:[0-9a-f]{64}\b' ${REPORT}
+        || grep -oE '\b[0-9a-f]{7,40}\b' ${REPORT} | grep -q '[a-f]'
       expected_exit: 0
       expected_artefacts: []
       failure_mode: mark_untrusted

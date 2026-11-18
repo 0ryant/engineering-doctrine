@@ -62,7 +62,7 @@ context:
   skills:
     - doctrine-navigation@1.0.1
 verifiers:
-  - doctrine-navigation-verifier-pack@1.0.1
+  - doctrine-navigation-verifier-pack@1.0.2
 ```
 
 Suitable for estate-policy injection on every task class that touches doctrine;
@@ -72,7 +72,7 @@ the block is small and carries no task-specific behaviour.
 
 - every doctrine path the agent cites resolves in the pinned library revision;
 - at least one cited authority is the umbrella, a principle, or a pattern when an obligation is asserted;
-- cited files are not marked deprecated or retired at the pinned revision; and
+- cited files carry no file-level deprecation or exit banner at the pinned revision; and
 - a reviewer independent of the producing execution confirms the citation
   supports the claim made (this pack cannot check semantics).
 
