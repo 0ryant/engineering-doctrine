@@ -62,7 +62,7 @@ context:
   skills:
     - normative-language-reading@1.0.1
 verifiers:
-  - normative-language-reading-verifier-pack@1.0.1
+  - normative-language-reading-verifier-pack@1.0.2
 ```
 
 ## Required Independent Checks

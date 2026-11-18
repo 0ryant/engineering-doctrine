@@ -1,7 +1,7 @@
 verifier_pack:
   name: normative-language-reading-verifier-pack
   skill: normative-language-reading
-  version: 1.0.1
+  version: 1.0.2
   schema_version: 1.1.0
   description: >-
     Verify that an agent report handles normative strength per claim and that any
@@ -38,11 +38,16 @@ verifier_pack:
     - id: exceptions_carry_expiry_and_authority
       kind: custom
       description: >-
-        If the report proposes an exception, it names an expiry date and an accountable
-        authority or approver. custom because it inspects report text. Passes vacuously
-        when no exception is proposed.
+        If the report proposes an exception to a doctrine claim, it names an expiry date
+        and an accountable authority or approver. A proposal is approximated as a line
+        that uses the word "exception" together with a capitalised MUST or SHOULD, a
+        doctrine path, a section number, or a word such as propose, grant, approve,
+        expire, claim, obligation, or waiver; the word alone, as in a runtime error, does
+        not count. custom because it inspects report text. Passes vacuously when no
+        exception is proposed.
       command: >-
-        ! grep -qiE '\bexception\b' ${REPORT}
+        ! grep -iE '\bexception\b' ${REPORT}
+        | grep -qE '(\b(MUST|SHOULD)( NOT)?\b|doctrine/|[Ss]ection [0-9]|[Pp]ropos|[Gg]rant|[Aa]pprov|[Ee]xpir|[Cc]laim|[Oo]bligation|[Ww]aiver|compensating)'
         || { grep -qiE '(expir(y|es|ation)|until|sunset)[^\n]*[0-9]{4}-[0-9]{2}-[0-9]{2}' ${REPORT} && grep -qiE '(approver|approved by|authority|accountable)' ${REPORT}; }
       expected_exit: 0
       expected_artefacts: []
@@ -53,11 +58,13 @@ verifier_pack:
     - id: evidence_state_named
       kind: custom
       description: >-
-        Where the report says evidence was missing, failed, untrusted, or inconclusive,
-        it does not also declare the same item a pass. Approximated as: the report never
-        contains "inconclusive" or "not verified" on the same line as "pass" or "passed".
+        Where the report says evidence was stale, untrusted, unverified, or inconclusive,
+        it does not also declare the same item a pass. Approximated as: none of those
+        words, nor "not verified", shares a line with "pass", "passed", or "passes".
+        Absent and failed evidence are not observed here, because an honest count of
+        passes and failures would trip the same pattern; they stay with the reviewer.
         custom because it inspects report text.
-      command: "! grep -iE '(inconclusive|not verified|unverified|untrusted)' ${REPORT} | grep -qiE '\\b(pass|passed|passes)\\b'"
+      command: "! grep -iE '(inconclusive|not verified|unverified|untrusted|stale)' ${REPORT} | grep -qiE '\\b(pass|passed|passes)\\b'"
       expected_exit: 0
       expected_artefacts: []
       failure_mode: mark_untrusted

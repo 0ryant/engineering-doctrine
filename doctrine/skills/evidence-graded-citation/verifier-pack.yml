@@ -1,7 +1,7 @@
 verifier_pack:
   name: evidence-graded-citation-verifier-pack
   skill: evidence-graded-citation
-  version: 1.0.1
+  version: 1.0.2
   schema_version: 1.1.0
   description: >-
     Verify the form of citations and grades in an agent report. Environment:
@@ -26,9 +26,10 @@ verifier_pack:
     - id: citations_carry_source_class
       kind: custom
       description: >-
-        Every line containing an http(s) URL also carries a source class tag S1-S7 or X.
+        Every line containing an http(s) URL also carries a source class tag: S1-S7
+        anywhere on the line, or X inside the bracketed tag the priming block prescribes.
         custom because it inspects report text.
-      command: "! grep -E 'https?://' ${REPORT} | grep -vqE '\\bS([1-7]|X)\\b'"
+      command: "! grep -E 'https?://' ${REPORT} | grep -vqE '(\\bS[1-7]\\b|\\[X[] ,])'"
       expected_exit: 0
       expected_artefacts: []
       failure_mode: mark_untrusted

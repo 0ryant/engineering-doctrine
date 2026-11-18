@@ -64,7 +64,7 @@ context:
   skills:
     - evidence-graded-citation@1.0.1
 verifiers:
-  - evidence-graded-citation-verifier-pack@1.0.1
+  - evidence-graded-citation-verifier-pack@1.0.2
 ```
 
 ## Required Independent Checks

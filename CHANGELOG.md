@@ -6,6 +6,23 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-11-18
+
+Verifier-pack corrections, found by executing every pack check for the first time. **Change classes:** correction; maintainer tooling. **Consumer impact:** no control changes. Skill versions and block hashes are unchanged, so nothing is re-pinned by hash; four pack versions change. **Compatibility:** patch.
+
+### Added
+
+- `scripts/tests/test_skill_packs.py` runs every check in every shipped verifier pack against at least one input it should accept and one it should reject: 68 fixtures over 22 checks, in the existing unit-test step of CI. A check with no accepting or no rejecting fixture fails the suite. Until now nothing executed pack checks; `scripts/validate-skills.py` checks a pack's shape and the skill's block hash only. The [skills register](doctrine/skills/README.md) now asks for fixtures when a check is added.
+
+### Fixed
+
+- **Navigation pack 1.0.2:** `cited_files_not_deprecated` could never fail. It looked for a line starting `**Status: Deprecated`, a form no file carries. It now reads the first twelve lines of each cited file for a file-level banner in either form in use, the lifecycle template's `> **Status: Deprecated**` or the `> **Deprecated since …**` form the three deprecated files carry, and also recognises Retired, Superseded, and Rescinded. The template and the live banners still differ in wording; which is canonical is left open.
+- **Citation pack 1.0.2:** `citations_carry_source_class` rejected class X as the skill's own priming block writes it (`[X C4, …]`). It now accepts X inside the bracketed tag.
+- **Reading pack 1.0.2:** `exceptions_carry_expiry_and_authority` failed fatally on any use of the word "exception", including a runtime error. It now fires only when the word appears with a capitalised MUST or SHOULD, a doctrine path, a section number, or a word such as propose, grant, approve, expire, claim, obligation, or waiver. `evidence_state_named` now also catches stale evidence reported as a pass; absent and failed evidence stay with the reviewer, because an honest count of passes and failures would trip the same pattern.
+- **Anti-confabulation pack 1.1.2:** `report_binds_candidate` passed on any seven-digit number, such as a date. A hex id now needs at least one letter a to f.
+
+**Migration:** hosts that pin packs by version move to navigation, citation, and reading packs 1.0.2 and anti-confabulation pack 1.1.2. The method-record pack stays at 1.0.1. All five checks remain text approximations of a review judgement; the test fixes what each accepts and rejects, not whether a report is true.
+
 ## [0.6.1] - 2026-11-18
 
 Skill and contract corrections held from the [full review](doctrine/evolution/review-full-doctrine-2026-11.md). **Change classes:** correction. **Consumer impact:** no control changes. Hosts and tool servers that pin skills re-pin three of them. **Compatibility:** patch.

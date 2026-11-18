@@ -75,6 +75,10 @@ owning doctrine so the skill cannot drift from it.
    `python ${DOCTRINE_ROOT}/scripts/validate-skills.py assert-primed --skill <name> --prompt ${RENDERED_PROMPT}`,
    plus assertions that observe the behaviour the block asks for.
 3. Pin the hash: `python scripts/validate-skills.py hash --skill <name>`.
+   Then add, for every check in the pack, at least one fixture it should accept and
+   one it should reject to `scripts/tests/test_skill_packs.py`. The validator checks a
+   pack's shape; only that test executes the checks, and it fails for a check with
+   no fixtures.
 4. Run `python scripts/validate-skills.py` and the doctrine preflight; add the
    row above; follow [checklists/doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md).
 5. Any later byte change to the priming block bumps the version and the hash.

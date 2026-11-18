@@ -61,7 +61,7 @@ context:
     - anti-confabulation@1.1.0
 
 verifiers:
-  - anti-confabulation-verifier-pack@1.1.1
+  - anti-confabulation-verifier-pack@1.1.2
 ```
 
 The contract or policy expansion record must identify:
