@@ -1,0 +1,3 @@
+# Doctrine library change harness
+
+> **Scheduled for deprecation** ([ADR 0047](../../docs/adr/0047-separate-maintainer-doctrine-and-collapse-the-ai-native-sdlc.md), accepted 2026-11-18): this file moved to [../maintainers/doctrine-library-change-harness.md](../maintainers/doctrine-library-change-harness.md). The Deprecated banner takes effect at the next tagged release. Earliest exit: the first minor release cut at least 90 days after that tag, per [lifecycle §4](../maintainers/doctrine-content-lifecycle.md#4-deprecation-mechanics). Exit state: Superseded. This path then stays as a tombstone that points forward. Cite the new path.

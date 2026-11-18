@@ -74,8 +74,8 @@ The contract or policy expansion record must identify:
 
 ### 4.1 Policy injection
 
-A run-contract compiler MAY inject the skill for estate-defined `build-class`
-tasks. Injection is not a universal doctrine default: it requires an addressable
+A run-contract compiler MAY inject the skill for the `build-class` tasks
+the adopting organisation defines. Injection is not a universal doctrine default: it requires an addressable
 estate policy and evaluation. The expanded contract must record the injected
 skill so the run does not gain invisible context.
 
@@ -90,7 +90,7 @@ name: anti-confabulation-verifier-pack
 skill: anti-confabulation
 version: 1.1.0
 schema_version: 1.1.0
-description: Verify the rendered run context contains the estate-approved anti-confabulation priming block.
+description: Verify the rendered run context contains the anti-confabulation priming block the adopting organisation approved.
 verifiers:
   - id: priming_block_present
     kind: priming_active
@@ -136,7 +136,7 @@ negative and inconclusive results, not only improvements.
 ## 8. Consumer Impact
 
 **Change class:** normative replacement. Automatic priming changes from a
-universal named-tool rule to an estate-evaluated optional policy. Consumers must
+universal named-tool rule to an optional policy that the adopting organisation evaluates. Consumers must
 retain independent verification and must not treat prior local measurements as
 portable evidence.
 

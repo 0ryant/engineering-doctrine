@@ -51,13 +51,13 @@
     },
     "escalation_rules": {
       "type": "array",
-      "description": "Ordered list of escalation rules. First matching rule wins; later rules are not consulted. An empty array is loud-not-silent: it explicitly declares NO escalation. Validators MAY warn on empty arrays at policy level.",
+      "description": "Ordered list of escalation rules. First matching rule wins; later rules are not consulted. An empty array is not silence: it explicitly declares NO escalation. Validators MAY warn on empty arrays at policy level.",
       "items": { "$ref": "#/$defs/escalation_rule" },
       "uniqueItems": true
     },
     "refusal_rules": {
       "type": "array",
-      "description": "Ordered list of refusal rules. ANY matching refusal rule wins (denial is final). An empty array is loud-not-silent: it explicitly declares the router has NO empirically-grounded refusals; this is rejected at policy-level (minItems: 1) per ADR-0012.",
+      "description": "Ordered list of refusal rules. ANY matching refusal rule wins (denial is final). An empty array is not silence: it explicitly declares the router has NO empirically-grounded refusals; this is rejected at policy-level (minItems: 1) per ADR-0012.",
       "items": { "$ref": "#/$defs/refusal_rule" },
       "minItems": 1,
       "uniqueItems": true
@@ -91,7 +91,7 @@
     "model_family": {
       "type": "string",
       "pattern": "^[a-z][a-z0-9_./-]*$",
-      "description": "Estate-defined family identifier used only when evaluation evidence supports a rule at family rather than exact-model scope."
+      "description": "Family identifier defined by the adopting organisation, used only when evaluation evidence supports a rule at family rather than exact-model scope."
     },
     "primer_id": {
       "type": "string",

@@ -7,8 +7,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 echo "== doctrine-change-preflight =="
-if [[ ! -f "doctrine/patterns/doctrine-library-change-harness.md" ]]; then
-  echo "error: expected doctrine/patterns/doctrine-library-change-harness.md" >&2
+if [[ ! -f "doctrine/maintainers/doctrine-library-change-harness.md" ]]; then
+  echo "error: expected doctrine/maintainers/doctrine-library-change-harness.md" >&2
   exit 1
 fi
 
@@ -37,7 +37,7 @@ if [[ -d doctrine/skills ]]; then
 fi
 
 echo ""
-echo "Manual checks (see doctrine/patterns/doctrine-library-change-harness.md):"
+echo "Manual checks (see doctrine/maintainers/doctrine-library-change-harness.md):"
 echo "  [ ] ADR created/updated in docs/adr/ + index, or editorial-only skip documented"
 echo "  [ ] Research note or external refs in doc + REFERENCES.md as needed"
 echo "  [ ] glossary.md, doctrine/README.md, ENGINEERING.md / tldr — if discoverability changes"

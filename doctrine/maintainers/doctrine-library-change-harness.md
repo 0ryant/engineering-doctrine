@@ -4,7 +4,7 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
 
 **Not for:** trivial one-line typos in a single file (use [doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) only).
 
-**Related:** [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md) (change classes, consumer impact), [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md) (claim strength, scope, and exceptions), [how-to-read-this-doctrine.md](how-to-read-this-doctrine.md) (layering), [../checklists/doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) (pre-merge list).
+**Related:** [doctrine-versioning-and-consumer-compatibility.md](../patterns/doctrine-versioning-and-consumer-compatibility.md) (change classes, consumer impact), [normative-language-applicability-and-exceptions.md](../patterns/normative-language-applicability-and-exceptions.md) (claim strength, scope, and exceptions), [how-to-read-this-doctrine.md](../patterns/how-to-read-this-doctrine.md) (layering), [../checklists/doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) (pre-merge list).
 
 ---
 
@@ -19,8 +19,8 @@ Use this when **adding or substantially changing** content under `doctrine/`, `d
      Do not name organisation-private portfolio implementations; keep those in
      the consuming organisation's private estate documentation.
    - **Estates** — org-specific only: `doctrine/tooling/estates/`.
-3. **Classify each material claim** per [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md): normative strength, content class, applicability conditions, expected evidence, and exception authority. Do not assign one normative level to a whole document.
-4. **Classify the library change** per [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md): editorial / navigation / additive guidance / normative tightening / replacement / estate-only / deprecation. A change to claim strength, applicability, evidence, or the exception path can change consumer obligations even when the prose becomes shorter.
+3. **Classify each material claim** per [normative-language-applicability-and-exceptions.md](../patterns/normative-language-applicability-and-exceptions.md): normative strength, content class, applicability conditions, expected evidence, and exception authority. Do not assign one normative level to a whole document.
+4. **Classify the library change** per [doctrine-versioning-and-consumer-compatibility.md](../patterns/doctrine-versioning-and-consumer-compatibility.md): editorial / navigation / additive guidance / normative tightening / replacement / estate-only / deprecation. A change to claim strength, applicability, evidence, or the exception path can change consumer obligations even when the prose becomes shorter.
 5. **Does this change supersede, demote, or retire anything?** If yes, route the lifecycle mechanics — banner, register, exit state — in the same change ([doctrine-content-lifecycle.md](doctrine-content-lifecycle.md)).
 6. If the idea does not fit a layer, stop and open an **issue** or **draft PR** (see [CONTRIBUTING.md](../../CONTRIBUTING.md)) before writing thousands of words.
 
@@ -68,7 +68,7 @@ entry points; this particular ADR map is library synthesis, not an external
 mandate. A short mapping costs review effort but guards against silently
 unreachable obligations. The [pinned source record](../evolution/research-doctrine-integrity-gates-2026-09.md#source-admission-for-the-maintainer-gate)
 states the support and limits. Scoped exceptions use the existing
-[exception contract](normative-language-applicability-and-exceptions.md#5-exception-contract).
+[exception contract](../patterns/normative-language-applicability-and-exceptions.md#5-exception-contract).
 
 ---
 
@@ -101,10 +101,10 @@ Run through this table before opening the PR.
 | [SEMANTIC_INDEX.md](../SEMANTIC_INDEX.md) | A **first-class** doctrine file is added, removed, or re-scoped: add or update its task route. |
 | [REFERENCES.md](../REFERENCES.md) | New **first-class** doctrine file, new **standards** citations, or new **Internal doctrine map** row for repo navigability. |
 | [doctrine/README.md](../README.md) | **Start Here**, section lists, or topic hubs when a doc should be **discoverable** from the entry point. |
-| [patterns/how-to-read-this-doctrine.md](how-to-read-this-doctrine.md) | If reading order or “where to look for X” changes materially. |
+| [patterns/how-to-read-this-doctrine.md](../patterns/how-to-read-this-doctrine.md) | If reading order or “where to look for X” changes materially. |
 | [tldr-principles-and-mvp.md](../tldr-principles-and-mvp.md) | If the **spine** or **MVP** slice should call out this area. Always when a principle file is added, removed, retitled, or deprecated, or its opening paragraph changes: update its row in **Every Principle At A Glance** and its README link, then run `./scripts/check-principles-glance.sh`. |
 | [ENGINEERING.md](../../ENGINEERING.md) | If the **umbrella** index should point at the new principle or area. |
-| [CHANGELOG.md](../../CHANGELOG.md) | **Material** releases: per [doctrine-versioning](doctrine-versioning-and-consumer-compatibility.md) and [GOVERNANCE.md](../../GOVERNANCE.md) (not every tiny PR). |
+| [CHANGELOG.md](../../CHANGELOG.md) | **Material** releases: per [doctrine-versioning](../patterns/doctrine-versioning-and-consumer-compatibility.md) and [GOVERNANCE.md](../../GOVERNANCE.md) (not every tiny PR). |
 | **Related evolution notes** | **Optional:** [evolution/moscow-review.md](../evolution/moscow-review.md) or gap analyses for large shifts. |
 
 ---
@@ -132,7 +132,7 @@ You are editing the canonical engineering-doctrine library at ~/prj/engineering-
 
 Task: <describe the addition in one short paragraph>
 
-Follow doctrine/patterns/doctrine-library-change-harness.md in full:
+Follow doctrine/maintainers/doctrine-library-change-harness.md in full:
 
 1) Research: Ground the change in authoritative external references and a committed note under doctrine/evolution/ when the decision is non-trivial. Distinguish binding requirements, guidance, observations, and repository synthesis; record source limits.
 
@@ -160,4 +160,38 @@ Output: a short summary of files changed, ADR number, and change class; no drive
 - **Layering, canonical ownership, and cross-links** keep principles portable and implementation swappable without duplicate authority.
 - **SITEMAP, glossary, and REFERENCES** are the **discovery contract**; skipping them makes the library look larger without being easier to use.
 
-For consumer-facing version semantics, see [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md).
+For consumer-facing version semantics, see [doctrine-versioning-and-consumer-compatibility.md](../patterns/doctrine-versioning-and-consumer-compatibility.md).
+
+---
+
+## 9. Release Notes Minimum
+
+Each material release or dated release note should include:
+
+- **Summary** — what changed and why.
+- **Change class list** — editorial, additive, normative tightening, replacement, estate-only, deprecation.
+- **Consumer impact** — who should act: all consumers, only event-driven repos, only AI/RAG systems, only a named estate, etc.
+- **Migration notes** — what to do before adopting a normative tightening or replacement.
+- **Compatibility statement** — patch / minor / major rationale.
+- **Evidence** — links to changed files, references, gap analyses, ADRs, or issue IDs.
+
+**Why:** Doctrine is used to justify work. Release notes should tell adopters what policy conversation they are importing.
+
+---
+
+## 10. Maintainer Checklist
+
+Before merging a material doctrine change:
+
+```text
+[ ] Change class labelled: editorial / navigation / additive / normative tightening / replacement / estate-only / deprecation
+[ ] Principle vs tooling vs estate boundary checked
+[ ] Consumer impact stated in PR, evolution note, or release note
+[ ] Migration notes added for normative tightening, replacement, or removal
+[ ] Deprecated surfaces link to replacements
+[ ] Lifecycle status markers applied and doctrine/DEPRECATED.md updated for any deprecation, exit, or restoration
+[ ] Minor release: doctrine-content-lifecycle §8 sweep executed and its record linked from the register's sweep ledger
+[ ] doctrine/README.md and REFERENCES.md internal map updated if a first-class file was added
+[ ] doctrine/SITEMAP.md regenerated after Markdown file changes
+[ ] Release kind proposed: patch / minor / major (or 0.x equivalent)
+```

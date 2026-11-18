@@ -61,7 +61,7 @@
     },
     "verifiers": {
       "type": "array",
-      "description": "Closed set of verifier-pack ids (doctrine/patterns/verifier-packs.md) to run post-execution. An empty array is loud-not-silent: it explicitly declares NO post-run verification. Validators MAY still reject empty arrays at policy level.",
+      "description": "Closed set of verifier-pack ids (doctrine/patterns/verifier-packs.md) to run post-execution. An empty array is not silence: it explicitly declares NO post-run verification. Validators MAY still reject empty arrays at policy level.",
       "items": {
         "type": "string",
         "minLength": 1
@@ -108,7 +108,7 @@
             "signature_scheme": {
               "type": "string",
               "enum": ["hmac_sha256", "ed25519", "none"],
-              "description": "Signature scheme the sender must use. `none` is loud-not-silent — it makes the absence explicit."
+              "description": "Signature scheme the sender must use. `none` makes the absence explicit instead of silent."
             },
             "shared_secret_ref": {
               "type": "string",
@@ -239,7 +239,7 @@
         "fallback": {
           "type": "string",
           "minLength": 1,
-          "description": "What to do when no allowed_model is available. Either a model id to substitute, or the literal string `fail` (loud-not-silent default). Validators MAY warn if neither a known model id nor `fail`."
+          "description": "What to do when no allowed_model is available. Either a model id to substitute, or the literal string `fail` (the default, so a missing model fails visibly). Validators MAY warn if neither a known model id nor `fail`."
         }
       }
     },
@@ -295,7 +295,7 @@
     },
     "authority": {
       "type": "object",
-      "description": "Bounded authority surface for the run. Filesystem, env, network and subprocess are the four axes; each defaults to typed denial.",
+      "description": "Bounded authority surface for the run. Filesystem, env, network and subprocess are the four axes; each defaults to an explicit deny.",
       "additionalProperties": false,
       "required": ["filesystem", "env", "network", "subprocess"],
       "properties": {
@@ -335,7 +335,7 @@
           "properties": {
             "inherit": {
               "type": "boolean",
-              "description": "Whether to inherit parent env. Default false (typed denial)."
+              "description": "Whether to inherit parent env. Default false (an explicit deny)."
             },
             "allow": {
               "type": "array",

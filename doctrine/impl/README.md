@@ -90,6 +90,6 @@ The [screened backlog](../evolution/research-implementation-reference-layer-2026
 
 - [How To Read This Doctrine](../patterns/how-to-read-this-doctrine.md) — authority order, reading paths, and conflict handling.
 - [Timeless Principles, Reference Implementations, And Replaceable Tooling](../principles/timeless-principles-and-tooling.md) — durable intent, composition references, and replaceable tooling.
-- [Doctrine Library Change Harness](../patterns/doctrine-library-change-harness.md) — required process for adding or materially changing a reference.
+- [Doctrine Library Change Harness](../maintainers/doctrine-library-change-harness.md) — required process for adding or materially changing a reference.
 - [ADR 0048](../../docs/adr/0048-add-implementation-reference-layer.md) — decision to introduce this layer and its authority boundary.
 - [Implementation Reference Layer Research](../evolution/research-implementation-reference-layer-2026-09.md) — repository evidence, CI/CD exemplar audit, and screened backlog.

@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-11-18 13:52 UTC
+Generated: 2026-11-18 19:42 UTC
 
 ## All Markdown files
 
@@ -96,6 +96,10 @@ Generated: 2026-11-18 13:52 UTC
 - [impl/service-api.md](impl/service-api.md)
 - [impl/service-observability.md](impl/service-observability.md)
 - [impl/testing-and-verification.md](impl/testing-and-verification.md)
+- [maintainers/README.md](maintainers/README.md)
+- [maintainers/doctrine-content-lifecycle.md](maintainers/doctrine-content-lifecycle.md)
+- [maintainers/doctrine-library-change-harness.md](maintainers/doctrine-library-change-harness.md)
+- [maintainers/source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md)
 - [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md)

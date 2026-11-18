@@ -3,14 +3,14 @@
 Use for any change under `doctrine/`, `docs/adr/`, or the umbrella `ENGINEERING.md`. An editorial fix ticks only the boxes that apply.
 
 ```text
-[ ] For substantive additions: follow patterns/doctrine-library-change-harness.md (research → ADR → layers → navigation)
+[ ] For substantive additions: follow maintainers/doctrine-library-change-harness.md (research → ADR → layers → navigation)
 [ ] ADR: new docs/adr/NNNN-*.md + docs/adr/README.md index row, or explicit reference to existing ADR; skip only for pure editorial (note in PR)
 [ ] Research: external citations and/or doctrine/evolution/ note linked from the change or ADR when non-trivial
 [ ] Research distinguishes binding external requirements, official guidance, observations, and repository synthesis; source revisions and limits are recorded where material
-[ ] New citations supporting typed claims record source class, pin-or-rolling choice, and accessed date; archived copy captured where tooling permits (patterns/source-authority-and-evidence-grading.md §6)
-[ ] Typed claims meet their admission floor — MUST at C1, or C2 with recorded risk asymmetry, or a registered exception in doctrine/EVIDENCE-EXCEPTIONS.md; conformance claims satisfied by their pinned norm (patterns/source-authority-and-evidence-grading.md §4–§5)
-[ ] Promotion to typed standing re-admits evidence at the higher floor: re-fetch, re-grade, rolling converted to pinned, publisher status checked (patterns/doctrine-content-lifecycle.md §2)
-[ ] Sweep-facing changes: reference-status leg run for the cohort (publisher status, link health, diagonal-collapse audit) and EVIDENCE-EXCEPTIONS entries re-examined (patterns/doctrine-content-lifecycle.md §8)
+[ ] New citations supporting typed claims record source class, pin-or-rolling choice, and accessed date; archived copy captured where tooling permits (maintainers/source-authority-and-evidence-grading.md §6)
+[ ] Typed claims meet their admission floor — MUST at C1, or C2 with recorded risk asymmetry, or a registered exception in doctrine/EVIDENCE-EXCEPTIONS.md; conformance claims satisfied by their pinned norm (maintainers/source-authority-and-evidence-grading.md §4–§5)
+[ ] Promotion to typed standing re-admits evidence at the higher floor: re-fetch, re-grade, rolling converted to pinned, publisher status checked (maintainers/doctrine-content-lifecycle.md §2)
+[ ] Sweep-facing changes: reference-status leg run for the cohort (publisher status, link health, diagonal-collapse audit) and EVIDENCE-EXCEPTIONS entries re-examined (maintainers/doctrine-content-lifecycle.md §8)
 [ ] Change belongs in principles (durable topic authority) vs patterns (mechanics/trade-offs) vs impl (concise, non-authoritative composition of 3+ owners) vs checklists (derived review) vs tooling (illustrative) vs estates (optional supplement) — see principles/timeless-principles-and-tooling.md and impl/README.md
 [ ] Portability: no organisation-private products, portfolio tools, internal repositories, local paths, or programme artefacts appear in publishable files
 [ ] If principle changed: rationale and references updated; not just opinion
@@ -36,7 +36,7 @@ Use for any change under `doctrine/`, `docs/adr/`, or the umbrella `ENGINEERING.
 [ ] Duplicate or conflicting normative owners were searched for and reconciled; evolution notes are not used as operating authority
 [ ] Change class labelled for consumer impact: editorial / navigation / additive guidance / normative tightening / normative replacement / estate-only / deprecation
 [ ] Migration notes added for normative tightening, replacement, deprecation, or removal
-[ ] Lifecycle: supersession, demotion, or retirement routed per [../patterns/doctrine-content-lifecycle.md](../patterns/doctrine-content-lifecycle.md); doctrine/DEPRECATED.md updated
+[ ] Lifecycle: supersession, demotion, or retirement routed per [../maintainers/doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md); doctrine/DEPRECATED.md updated
 [ ] evolution/moscow-review.md or decision note updated for large shifts (optional but encouraged)
 [ ] evolution/honest-review-synthesis.md updated when absorbing a substantive external review of the library
 [ ] For material doctrine releases: update [CHANGELOG.md](../../CHANGELOG.md) at the tag; note version or date in evolution/moscow-review.md or a short decision log entry (optional but encouraged); classify release kind using patterns/doctrine-versioning-and-consumer-compatibility.md

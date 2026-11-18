@@ -64,7 +64,7 @@
     "entry_status": {
       "type": "string",
       "enum": ["active", "deprecated", "retired", "proposed"],
-      "description": "Lifecycle state per doctrine/patterns/doctrine-content-lifecycle.md; proposed applies only to review-queue entries."
+      "description": "Lifecycle state per doctrine/maintainers/doctrine-content-lifecycle.md; proposed applies only to review-queue entries."
     },
     "citation": {
       "type": "object",

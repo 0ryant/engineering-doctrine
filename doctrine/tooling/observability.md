@@ -175,7 +175,7 @@ compatibility.
 | Collector tier **when on K8s** | Offloads **batching**, **retry**, and **PII scrubbing** (if configured) from app processes at scale. |
 | Gateway for tail sampling (cluster pattern) | Sampling needs **complete trace** views; DaemonSet-only sampling is **incorrect** for cross-node traces. |
 | Semantic conventions | Makes dashboards and alerts **portable** across services. |
-| Burn-rate YAML lives here, not in principles | Principles stay **backend-neutral** (non-PromQL estates must be able to comply); query examples are **estate-adaptable** tooling detail. |
+| Burn-rate YAML lives here, not in principles | Principles stay **backend-neutral** (non-PromQL estates must be able to comply); query examples are tooling detail **each organisation adapts**. |
 | GenAI conventions from the **dedicated repo**, version-pinned | The inspected snapshot is **Development** stability; core v1.42.0 records the repository move. A mapping layer isolates dashboards and policy from schema-name changes. |
 
 ---

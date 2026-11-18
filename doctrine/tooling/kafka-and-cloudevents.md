@@ -13,7 +13,7 @@ Worked **fiction** — **order** workflow on JetStream (different broker, same p
 - High **throughput**, **durable** log retention, **replay** by offset, **consumer groups** for scale-out.
 - **Ordering** per **partition** key (often entity id).
 
-Prefer managed **PaaS** Kafka or estate-approved operators; tuning is **tooling**, not universal law.
+Prefer managed **PaaS** Kafka or operators your organisation has approved; tuning is **tooling**, not universal law.
 
 Prefer **NATS JetStream** when the org already standardised on it—see [nats-jetstream.md](nats-jetstream.md); keep the same **CloudEvents + workflow** principles.
 

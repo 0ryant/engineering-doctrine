@@ -16,6 +16,8 @@ Use this page when onboarding to the repository or deciding **what to adopt** in
 8. **`doctrine/checklists/`** — **Derived review surfaces**: questions and evidence prompts for applicable principles and patterns. A checklist is not the sole authority for a new obligation.
 9. **`doctrine/evolution/`** — **Non-normative evidence and history**: research, audits, and change rationale. Use it when investigating why, not as default operating authority.
 
+**`doctrine/maintainers/`** holds three patterns whose applicability condition is that you are changing this library: the change procedure, the content lifecycle, and source grading. They bind maintainers and change automation and nobody else. If you maintain this library rather than consume it, start at [maintainers/](../maintainers/README.md).
+
 Meta-rule: **[principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md)** explains why the split exists.
 
 ## Normative Language, Applicability, And Exceptions
@@ -43,7 +45,7 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 | Audience | Path | Approx. reading |
 | --- | --- | --- |
 | **Sponsor / TL;DR** | [`tldr-principles-and-mvp.md`](../tldr-principles-and-mvp.md) → [`glossary.md`](../glossary.md) if jargon-heavy → `timeless-principles-and-tooling` or `adoption-playbook` | **15–45 min** (TL;DR spine and MVP **~8 min**, the per-principle glance **~10 min** more, glossary skim **~12 min**) |
-| **Agent / AI contributor** | [`SEMANTIC_INDEX.md`](../SEMANTIC_INDEX.md) → route matching the task → [`doctrine-library-change-harness.md`](doctrine-library-change-harness.md) if editing doctrine/ADR/umbrella files | **10-25 min** before focused work; more for the routed source docs |
+| **Agent / AI contributor** | [`SEMANTIC_INDEX.md`](../SEMANTIC_INDEX.md) → route matching the task → [`doctrine-library-change-harness.md`](../maintainers/doctrine-library-change-harness.md) if editing doctrine/ADR/umbrella files | **10-25 min** before focused work; more for the routed source docs |
 | **New org adopting wholesale** | `ENGINEERING.md` → `normative-language-applicability-and-exceptions` → `timeless-principles-and-tooling` → `adoption-playbook` → routed topic principles | **~45–90 min** before topic depth |
 | **Platform / SRE** | `observability` → `reliability-slo-incidents` → `data-and-migrations` → `platform-engineering` → [platform-as-product-and-golden-paths.md](platform-as-product-and-golden-paths.md) → `platform-readiness` checklist | **~55–100 min** + checklist **~20 min** |
 | **Developer experience / platform enablement** | [`developer-experience.md`](../principles/developer-experience.md) → [`developer-experience-scorecard.md`](../checklists/developer-experience-scorecard.md) → `measurement-and-dora` §4 → `documentation-knowledge` → `build` §3 | **~35–70 min** |
@@ -81,7 +83,7 @@ Times are **rough first-pass** estimates (skim vs deep read varies). Use [`tldr-
 
 - Repo rollout: `checklists/build-readiness.md`, `collaboration-readiness.md`, `platform-readiness.md`, `developer-experience-scorecard.md`.
 - **Releases:** `checklists/release-readiness.md`.
-- **Editing this library:** [doctrine-library-change-harness.md](doctrine-library-change-harness.md) (research, claim strength/applicability, ADR, navigation); [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md); status vocabulary and supersession/retirement mechanics: [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md).
+- **Editing this library:** [doctrine-library-change-harness.md](../maintainers/doctrine-library-change-harness.md) (research, claim strength/applicability, ADR, navigation); [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md); `checklists/doctrine-change-checklist.md`; [code-review-and-change-approval.md](code-review-and-change-approval.md) (review **duties** and **escalation** for contributors); release labels and consumer impact: [doctrine-versioning-and-consumer-compatibility.md](doctrine-versioning-and-consumer-compatibility.md); status vocabulary and supersession/retirement mechanics: [doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md).
 - **Adopting with a team:** `patterns/adoption-playbook.md`, `tooling/estates/minimum-viable-doctrine.template.md`, `principles/measurement-and-dora.md`.
 
 ---

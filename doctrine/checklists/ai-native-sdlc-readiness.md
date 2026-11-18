@@ -71,7 +71,7 @@ Apply when governed executions delegate, run concurrently, or can stop and resum
 
 ## High-Materiality Overlay
 
-Apply to estate-defined high-impact change, including authentication/authorisation, cryptography, tenant isolation, data/schema migration, pipeline/policy, irreversible operations, or person-affecting decisions.
+Apply to high-impact change as the adopting organisation defines it, including authentication/authorisation, cryptography, tenant isolation, data/schema migration, pipeline/policy, irreversible operations, or person-affecting decisions.
 
 - [ ] Accountable human approval is explicit and bound to the candidate.
 - [ ] Challenge includes domain/security expertise with enough independence and influence to force change.

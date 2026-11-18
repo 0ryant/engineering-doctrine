@@ -9,7 +9,7 @@ Checks every doctrine/skills/<name>/SKILL.md:
   * doctrine.priming_block_sha256 equals SHA-256 of that block (LF-normalised,
     fence lines excluded, single trailing newline)
   * every doctrine.governing[].path resolves on disk, and at least one is a
-    principle or pattern
+    principle or pattern (maintainer patterns under doctrine/maintainers/ count)
   * the sibling verifier-pack.yml exists, validates against
     contracts/verifier-pack.v1.schema.json, mirrors this skill by name, and
     contains at least one priming_active verifier
@@ -44,6 +44,10 @@ SKILLS_DIR = ROOT / "doctrine" / "skills"
 SKILL_SCHEMA = ROOT / "contracts" / "skill.v1.schema.json"
 PACK_SCHEMA = ROOT / "contracts" / "verifier-pack.v1.schema.json"
 MAX_BLOCK_BYTES = 4096
+# Layers a skill may take its authority from. Files under doctrine/maintainers/
+# are patterns whose applicability condition is that the reader is changing
+# this library (ADR 0047 D2), so they count as patterns here.
+AUTHORITY_PREFIXES = ("doctrine/principles/", "doctrine/patterns/", "doctrine/maintainers/")
 REQUIRED_SECTIONS = [
     "## Purpose",
     "## Instructions",
@@ -145,7 +149,7 @@ def validate_skill(skill_dir: Path, skill_validator, pack_validator, today: _dt.
         p = ROOT / entry["path"]
         if not p.exists():
             errors.append(f"{rel}: governing path does not exist: {entry['path']}")
-        if entry["path"].startswith(("doctrine/principles/", "doctrine/patterns/")):
+        if entry["path"].startswith(AUTHORITY_PREFIXES):
             has_authority_layer = True
     if not has_authority_layer:
         errors.append(f"{rel}: governing must include at least one principle or pattern")

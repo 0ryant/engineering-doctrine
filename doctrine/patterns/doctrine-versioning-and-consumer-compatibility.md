@@ -30,7 +30,7 @@ Use **SemVer-shaped tags** for public releases of this library once releases are
 | **Minor** (`x.Y.0`) | New principle, pattern, implementation reference, checklist, tooling illustration, or adoption aid that is **additive** and does not make existing compliant consumers non-compliant. |
 | **Major** (`X.0.0`) | A normative shift: changed principle meaning, stricter baseline, removed or renamed doctrine surface, changed layering rule, or new default that can invalidate existing local doctrine. |
 
-Before a formal `1.0.0`, use `0.y.z` with the same intent: **minor** may contain intentional normative movement, including lifecycle-governed removals per [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md); **patch** stays safe and compatible.
+Before a formal `1.0.0`, use `0.y.z` with the same intent: **minor** may contain intentional normative movement, including lifecycle-governed removals per [doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md); **patch** stays safe and compatible.
 
 **Why:** This keeps a familiar upgrade vocabulary without pretending Markdown doctrine has the exact same compatibility surface as a binary package.
 
@@ -48,7 +48,7 @@ Every substantive doctrine change should be labelled in the PR, release note, or
 | **Normative tightening** | New required gate, stronger "must", shorter waiver window, stricter default | Treat as policy change; consumers decide adoption date and exceptions. |
 | **Normative replacement** | Old guidance superseded by different default | Requires migration note and consumer impact statement. |
 | **Estate-only** | Cloud, vendor, org, regulatory mapping under `tooling/estates/` | Only affected estates need action. |
-| **Deprecation** | Planned removal or replacement of a file, rule, or blessed path ([doctrine-content-lifecycle.md](doctrine-content-lifecycle.md)) | Consumers get a target replacement and sunset timing via [../DEPRECATED.md](../DEPRECATED.md). |
+| **Deprecation** | Planned removal or replacement of a file, rule, or blessed path ([doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md)) | Consumers get a target replacement and sunset timing via [../DEPRECATED.md](../DEPRECATED.md). |
 
 **Why:** Consumers should not have to infer compatibility from diff size. A one-line "must" can matter more than a new 100-line example.
 
@@ -56,16 +56,7 @@ Every substantive doctrine change should be labelled in the PR, release note, or
 
 ## 4. Release Notes Minimum
 
-Each material release or dated release note should include:
-
-- **Summary** — what changed and why.
-- **Change class list** — editorial, additive, normative tightening, replacement, estate-only, deprecation.
-- **Consumer impact** — who should act: all consumers, only event-driven repos, only AI/RAG systems, only a named estate, etc.
-- **Migration notes** — what to do before adopting a normative tightening or replacement.
-- **Compatibility statement** — patch / minor / major rationale.
-- **Evidence** — links to changed files, references, gap analyses, ADRs, or issue IDs.
-
-**Why:** Doctrine is used to justify work. Release notes should tell adopters what policy conversation they are importing.
+Moved to the [change harness](../maintainers/doctrine-library-change-harness.md#9-release-notes-minimum) §9 ([ADR 0047](../../docs/adr/0047-separate-maintainer-doctrine-and-collapse-the-ai-native-sdlc.md)). The section number is kept as a pointer.
 
 ---
 
@@ -86,7 +77,7 @@ Downstream repos should treat this library like a dependency:
 
 ## 6. Deprecation And Removal
 
-Lifecycle mechanics — status vocabulary, banners, clocks, tombstones, restoration, and the register — live in [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md). For consumers, the promises are:
+Lifecycle mechanics — status vocabulary, banners, clocks, tombstones, restoration, and the register — live in [doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md). For consumers, the promises are:
 
 - A **Deprecated** surface remains accurate at every tag in which it ships; deprecation is a schedule, not a correction. New adoption SHOULD NOT reference a Deprecated surface.
 - Consumers SHOULD stop following **Rescinded** text even on old pins — rescission means the guidance is disavowed, not merely replaced.
@@ -121,20 +112,7 @@ Use release notes or tags for:
 
 ## 8. Maintainer Checklist
 
-Before merging a material doctrine change:
-
-```text
-[ ] Change class labelled: editorial / navigation / additive / normative tightening / replacement / estate-only / deprecation
-[ ] Principle vs tooling vs estate boundary checked
-[ ] Consumer impact stated in PR, evolution note, or release note
-[ ] Migration notes added for normative tightening, replacement, or removal
-[ ] Deprecated surfaces link to replacements
-[ ] Lifecycle status markers applied and doctrine/DEPRECATED.md updated for any deprecation, exit, or restoration
-[ ] Minor release: doctrine-content-lifecycle §8 sweep executed and its record linked from the register's sweep ledger
-[ ] doctrine/README.md and REFERENCES.md internal map updated if a first-class file was added
-[ ] doctrine/SITEMAP.md regenerated after Markdown file changes
-[ ] Release kind proposed: patch / minor / major (or 0.x equivalent)
-```
+Moved to the [change harness](../maintainers/doctrine-library-change-harness.md#10-maintainer-checklist) §10 ([ADR 0047](../../docs/adr/0047-separate-maintainer-doctrine-and-collapse-the-ai-native-sdlc.md)). The section number is kept as a pointer.
 
 ---
 
@@ -155,4 +133,5 @@ Before merging a material doctrine change:
 - [how-to-read-this-doctrine.md](how-to-read-this-doctrine.md) — layers, adoption mechanics, conflict resolution.
 - [adoption-playbook.md](adoption-playbook.md) — team and org migration toward doctrine.
 - [../checklists/doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) — editing this library.
+- [../maintainers/doctrine-library-change-harness.md](../maintainers/doctrine-library-change-harness.md) — the release notes minimum (§9) and the maintainer checklist (§10).
 - [../principles/semantic-versioning.md](../principles/semantic-versioning.md) — SemVer for software artefacts.

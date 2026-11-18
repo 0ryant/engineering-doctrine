@@ -57,7 +57,7 @@ Each kind is a *family* of binary-observable assertions, not a single command. P
 | `jsonl_audit_event_emitted` | Exactly one well-formed JSONL audit event lands per CLI invocation. |
 | `lockfile_generated` | Regenerating the wrapper produces a lockfile that matches the running tool fingerprint. |
 | `host_registrations_generated` | A registration file exists and validates for each agent host the estate has configured. |
-| `priming_active` | The rendered system prompt contains the estate-approved priming block, content-matched to the digest declared by the run contract; this proves configuration presence, not outcome correctness (see [anti-confabulation-priming.md](anti-confabulation-priming.md)). |
+| `priming_active` | The rendered system prompt contains the priming block the adopting organisation approved, content-matched to the digest declared by the run contract; this proves configuration presence, not outcome correctness (see [anti-confabulation-priming.md](anti-confabulation-priming.md)). |
 | `custom` | Escape hatch — should be rare; high-friction by design. |
 
 `priming_active` was added in schema v1.1.0 (additive minor bump). Further kinds may be added in v1.x minors. Renaming or removing a kind is a v2 break. The schema's `verifier_kind` enum is the authoritative list; this table mirrors it.
