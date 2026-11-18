@@ -21,7 +21,7 @@ End-to-end illustration (order lifecycle + JetStream): [../patterns/example-orde
 - A transition is committed when durable state matches the new state and downstream effects are defined—either applied, scheduled, or outboxed with a clear idempotency story.
 - At-least-once delivery means the same transition may be observed more than once; consumers must not assume “once per real-world act” unless the producer dedupes or the consumer is idempotent.
 
-**Why:** Aligns with semantics in [event-contracts.md](event-contracts.md) (ordering, delivery, dedup via `id`).
+**Why:** Aligns with semantics in [event-contracts.md](event-contracts.md) (ordering, delivery, dedup via the `source` + `id` pair).
 
 ---
 

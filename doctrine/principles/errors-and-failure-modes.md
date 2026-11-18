@@ -27,6 +27,8 @@ Durable rules for predictable failures: what users see, what operators log, and 
 
 - Document which operations are safe to retry. Where duplicate user-triggered mutation could be costly, enforce an idempotency, duplicate-detection, conditional-transition, or first-outcome strategy at the controlling HTTP boundary; an idempotency key is one common mechanism. See [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md).
 
+For messages and events, duplicate handling is owned by [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md) §3 and [message-channel-operations.md](../patterns/message-channel-operations.md).
+
 **Why:** At-least-once networks make duplicate submits inevitable without explicit design.
 
 ---

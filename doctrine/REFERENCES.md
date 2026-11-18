@@ -71,6 +71,7 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | NATS documentation | https://docs.nats.io/ |
 | JetStream concepts | https://docs.nats.io/nats-concepts/jetstream |
 | JetStream consumers (ack, MaxDeliver, backoff, NAK) | https://docs.nats.io/nats-concepts/jetstream/consumers |
+| Apache Kafka 4.4 design — message delivery semantics (position saved before or after processing; S5, accessed 2026-11-18) | https://kafka.apache.org/44/design/design/ |
 | Enterprise Integration Patterns (messaging catalogue) | https://www.enterpriseintegrationpatterns.com/patterns/messaging/ |
 | Martin Fowler — Event Sourcing (projections, history, concurrency) | https://martinfowler.com/eaaDev/EventSourcing.html |
 
@@ -85,6 +86,7 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | OWASP API2 Broken Authentication | https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/ |
 | OWASP API4 Unrestricted Resource Consumption | https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/ |
 | OWASP Dependency-Check (SCA concept) | https://owasp.org/www-project-dependency-check/ |
+| OWASP Logging Cheat Sheet — data to exclude, mask, or de-identify in logs (S4, accessed 2026-11-18) | https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html |
 | STRIDE threat categories (overview) | https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats |
 | OWASP — Secure by Design Framework | https://owasp.org/www-project-secure-by-design-framework/ |
 | CSA Lab — “AI Vulnerability Storm” / Mythos-ready security program (strategy briefing) | https://labs.cloudsecurityalliance.org/research/ai-vulnerability-storm-mythos-ready-security-program/ |
@@ -153,6 +155,8 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | OWASP ASVS (application verification) | https://owasp.org/www-project-application-security-verification-standard/ |
 
 - Google SRE Workbook, **Alerting on SLOs** (multi-burn-rate model): https://sre.google/workbook/alerting-on-slos/
+- Google SRE Workbook, **Canarying Releases** (ch. 16; compare canary with control, pause and roll back; S4, accessed 2026-11-18): https://sre.google/workbook/canarying-releases/
+- Google SRE Workbook, **Monitoring** (ch. 4; testing alerting logic, monitoring configuration as code; S4, accessed 2026-11-18): https://sre.google/workbook/monitoring/
 
 ---
 
@@ -346,6 +350,7 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | GitLab CI/CD | https://docs.gitlab.com/ee/ci/ |
 | Azure Pipelines | https://learn.microsoft.com/en-us/azure/devops/pipelines/ |
 | Renovate bot comparison | https://docs.renovatebot.com/bot-comparison/ |
+| Renovate — automerge (waits for required checks; lower-risk update classes; S5, accessed 2026-11-18) | https://docs.renovatebot.com/key-concepts/automerge/ |
 | GitHub Dependabot | https://docs.github.com/en/code-security/dependabot |
 | OSV — Open Source Vulnerabilities | https://osv.dev/ |
 
@@ -463,6 +468,8 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md) | Source-graded basis for ADR 0051: convergent provider guidance, a standards draft, an awareness list, and runtime token-theft counter-evidence |
 | [evolution/research-impl-reference-batch-composition-2026-11.md](evolution/research-impl-reference-batch-composition-2026-11.md) | Owner audit for three implementation references, removed phrasings, and one checklist-only migration alternative left for an owner decision |
 | [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md) | Owner audit, layer-fit reasoning, and checked Git behaviour for the git hooks and worktrees references |
+| [evolution/research-impl-backlog-batch-2-composition-2026-11.md](evolution/research-impl-backlog-batch-2-composition-2026-11.md) | Owner audit for four backlog references, dropped phrasings, and 14 owner gaps and contradictions recorded for later decisions |
+| [evolution/research-owner-gap-rules-2026-11.md](evolution/research-owner-gap-rules-2026-11.md) | Source-graded basis for ADR 0052: delivery semantics, canarying, monitoring tests, logging exclusions, and update automerge |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |
@@ -564,6 +571,10 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [impl/database-migration.md](impl/database-migration.md) | Schema and data change during rolling deploys: expand/contract sequence, bounded backfills, reconciliation, and recovery variants |
 | [impl/git-hooks.md](impl/git-hooks.md) | Local hook stages reusing CI's versioned scripts; hooks as feedback, protected required checks as enforcement |
 | [impl/git-worktrees.md](impl/git-worktrees.md) | Parallel changes and parallel agents in linked worktrees; one branch and one writer per worktree; what worktrees do not isolate |
+| [impl/service-observability.md](impl/service-observability.md) | Instrumentation, correlation, cardinality, conditional SLI/GenAI/audit duties, verification and rehearsal |
+| [impl/release-and-rollback.md](impl/release-and-rollback.md) | Progressive exposure, production verification, flag reversion, deployment rollback or forward fix, and stateful recovery limits |
+| [impl/event-consumer.md](impl/event-consumer.md) | Contract-first consumption, identity-scoped deduplication, retryable versus permanent failures, dead-letter, and replay |
+| [impl/dependency-adoption.md](impl/dependency-adoption.md) | Admission and upkeep of packages, images, models, datasets, skills, and tool servers |
 
 ### Extended principles
 

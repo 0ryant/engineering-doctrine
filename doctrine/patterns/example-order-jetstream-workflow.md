@@ -51,7 +51,7 @@ Routing can be one subject per `type` or a single stream subject with filtering 
 
 ## 4. Consumer Discipline (Sketch)
 
-- **Idempotency:** persist processed `ce_id` (or idempotent DB write on order id + transition).
+- **Idempotency:** persist the processed `ce_source` + `ce_id` pair (or idempotent DB write on order id + transition).
 - **Poison:** after **MaxDeliver**, message remains in stream; subscribe to advisories or copy to a **poison** stream `ORDERS_POISON` with an operator runbook ([message-channel-operations.md](message-channel-operations.md)).
 - **Replay:** time- or seq-based replay documented; warn that **fulfilled** may be seen again—consumer must be safe.
 

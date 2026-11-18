@@ -27,7 +27,7 @@ Apply this document only when the organisation runs Kubernetes (cloud-managed co
 
 ## 3. Supply Chain For Workloads
 
-- **Image policy** — allow only trusted registries; scan images in CI; pin digests or tags per [dependencies-supply-chain.md](dependencies-supply-chain.md).
+- **Image policy** — allow only trusted registries; scan images in CI; pin base images by digest per [dependencies-supply-chain.md](dependencies-supply-chain.md) §4, and reference the exact promoted artefact by digest or version per [merge-path-evidence-and-pipeline-integrity.md](merge-path-evidence-and-pipeline-integrity.md) invariant 9.
 - **Admission control** — validate signed images (Sigstore / policy where adopted), required labels, resource limits.
 
 **Why:** “Bad image in cluster” is a supply-chain incident, not an app bug.

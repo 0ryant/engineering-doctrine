@@ -86,6 +86,8 @@ The first implementation sequence should favour narrow, frequently used flows be
 
 Status update, 2026-11-15: rows 1–3 landed as [Service API](../impl/service-api.md), [Secretless Workload Identity](../impl/secretless-workload-identity.md) (row 2, renamed to lead with the secretless path), and [Database Migration](../impl/database-migration.md) after an [owner audit](research-impl-reference-batch-composition-2026-11.md). Rows 4–11 remain proposals.
 
+Status update, 2026-11-17: rows 4, 7, 8, and 9 landed as [Service Observability](../impl/service-observability.md), [Release And Rollback](../impl/release-and-rollback.md), [Event Consumer](../impl/event-consumer.md), and [Dependency Adoption](../impl/dependency-adoption.md) after an [owner audit](research-impl-backlog-batch-2-composition-2026-11.md). Rows 5, 6, 10, and 11 remain proposals.
+
 ## Post-Exemplar Contract Refinement
 
 Review of the first two references exposed two predictable failure modes: broad nouns invite subject handbooks, and a useful cross-cutting reference can absorb specialist operating models that future siblings should own. The layer contract therefore gained three decisive tests:

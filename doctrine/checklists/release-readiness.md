@@ -24,9 +24,10 @@ Use when cutting a **versioned** release of a publishable unit (library, service
 ## Rollback, Flags, Hotfix
 
 ```text
-[ ] Rollback path known: revert release, feature flag, or forward fix — documented in runbook or release notes
+[ ] Recovery path known: flag reversion, rollback to the previous candidate, or forward fix — documented in runbook or release notes ([impl/release-and-rollback.md](../impl/release-and-rollback.md))
+[ ] Canary or gradual rollout: judging signals and tolerance recorded before start; rollback decider named in the runbook; any automated rollback targets the previously verified candidate (principles/collaboration.md §8.1)
 [ ] Hotfix path understood if patching production from a tag (merge back to main per trunk pattern)
-[ ] Feature flags introduced in this release have owners and removal dates (collaboration.md)
+[ ] Feature flags introduced in this release are typed, with an owner and safe default; release and experiment flags also have an expiry date (patterns/feature-flag-governance.md §§2, 6)
 ```
 
 ## Communication

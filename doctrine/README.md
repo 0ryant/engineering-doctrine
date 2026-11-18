@@ -67,6 +67,10 @@ This is a **navigation section**, not a new doctrine layer. Files stay under `pr
 - [impl/database-migration.md](impl/database-migration.md) — schema and data change during rolling deploys: expand, compatible deploy, bounded backfill, reconciliation, switch, and contract
 - [impl/git-hooks.md](impl/git-hooks.md) — local pre-commit, commit-msg, and pre-push checks that reuse CI's scripts; feedback, not enforcement
 - [impl/git-worktrees.md](impl/git-worktrees.md) — parallel changes and parallel agents in linked worktrees: one branch and one writer each, same integration path
+- [impl/service-observability.md](impl/service-observability.md) — instrumenting a service and verifying telemetry; SLI, GenAI, and audit duties stay conditional
+- [impl/release-and-rollback.md](impl/release-and-rollback.md) — exposing, verifying, and recovering an identified candidate: flags, rollback, forward fix, stateful limits
+- [impl/event-consumer.md](impl/event-consumer.md) — message consumption: contract, deduplication before effects, failure classification, dead-letter, deliberate replay
+- [impl/dependency-adoption.md](impl/dependency-adoption.md) — admitting packages, images, models, datasets, skills, and tool servers, and keeping them current
 
 ### Principles
 
@@ -180,6 +184,8 @@ Use these records to understand source grounding, decisions, audits, and known g
 - [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md) — source-graded basis and limits for ADR 0051 (secretless workload identity as the default)
 - [evolution/research-impl-reference-batch-composition-2026-11.md](evolution/research-impl-reference-batch-composition-2026-11.md) — owner audit for the Service API, Secretless Workload Identity, and Database Migration references
 - [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md) — owner audit and Git behaviour checks for the git hooks and worktrees references
+- [evolution/research-impl-backlog-batch-2-composition-2026-11.md](evolution/research-impl-backlog-batch-2-composition-2026-11.md) — owner audit for the observability, release, event-consumer, and dependency references, plus 14 owner gaps found
+- [evolution/research-owner-gap-rules-2026-11.md](evolution/research-owner-gap-rules-2026-11.md) — sources and strengths for ADR 0052 (acknowledgement order, deployment canaries and rollback, telemetry verification, identifier minimisation, bot update path)
 - [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) — release identity, withdrawal and semantic-review options with model scenario checks; decisions remain pending
 - [evolution/scorecard-four-reader-lenses-2026-09.md](evolution/scorecard-four-reader-lenses-2026-09.md) — the library scored through four reader lenses (engineering manager, CIO, security engineer, non-technical sponsor) with file-cited scores, per-lens verdicts, and a seven-row fix list; model self-review
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) — MCP 2026-07-28 spec cross-check — §7 baseline verified against primary sources; deprecation clocks, MRTR/state-handle security, extensions gap map
