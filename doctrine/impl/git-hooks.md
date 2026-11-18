@@ -98,7 +98,7 @@ Layer contract: [Implementation References](README.md).
 | Agent-authored changes face the same gates | [AI And ML-Assisted Systems](../principles/ai-ml-systems.md) §4 |
 | Local evidence versus authoritative evidence | [Testing Strategy](../principles/testing-strategy.md) |
 
-Tooling and verification: [Collaboration Tooling](../tooling/collaboration.md#version-controlled-git-hooks), [Build Readiness](../checklists/build-readiness.md), [Collaboration Readiness](../checklists/collaboration-readiness.md), and the [Developer Experience Scorecard](../checklists/developer-experience-scorecard.md).
+Tooling and verification: [Collaboration Tooling](../tooling/collaboration.md#version-controlled-git-hooks), [Scanners And Quality Gates](../tooling/scanners-and-quality-gates.md), [Build Readiness](../checklists/build-readiness.md), [Collaboration Readiness](../checklists/collaboration-readiness.md), and the [Developer Experience Scorecard](../checklists/developer-experience-scorecard.md).
 
 Related references: [Testing And Verification](testing-and-verification.md), [Branching And Integration](branching-and-integration.md), and [Parallel Work In Git Worktrees](git-worktrees.md).
 

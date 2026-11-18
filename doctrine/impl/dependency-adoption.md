@@ -94,7 +94,7 @@ Layer contract: [Implementation References](README.md).
 | Exception record | [Normative Language, Applicability, And Exceptions](../patterns/normative-language-applicability-and-exceptions.md#5-exception-contract) |
 | Contractual and regulatory dependency boundaries | [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) |
 
-Tooling and verification: [Dependency Automation Tooling](../tooling/dependency-automation.md), [Merge Path And Pipeline Control Suite](../tooling/merge-path-and-pipeline-control-suite.md), [Build Readiness](../checklists/build-readiness.md), and [Release Readiness](../checklists/release-readiness.md).
+Tooling and verification: [Dependency Automation Tooling](../tooling/dependency-automation.md), [Merge Path And Pipeline Control Suite](../tooling/merge-path-and-pipeline-control-suite.md), [Scanners And Quality Gates](../tooling/scanners-and-quality-gates.md), [Build Readiness](../checklists/build-readiness.md), and [Release Readiness](../checklists/release-readiness.md).
 
 Related references: [CI/CD Delivery](cicd-delivery.md), [Testing And Verification](testing-and-verification.md), and [Service API](service-api.md).
 

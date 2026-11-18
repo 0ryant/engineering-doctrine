@@ -18,6 +18,8 @@
 | **Post-merge assurance** | Runtime verification separate from merge | Smoke jobs, synthetic probes (see execution surfaces in your build model) |
 | **Adversarial / abuse-case analysis** | Negative-security testing on security-relevant diffs; optional deeper scheduled scans | SAST with chaining, policy-driven fuzz/DAST, LLM-assisted review bots—**estate** picks products; principle: [merge-path-evidence-and-pipeline-integrity.md](../principles/merge-path-evidence-and-pipeline-integrity.md) §2 invariant 8, [testing-strategy.md](../principles/testing-strategy.md) §5 |
 
+Named open-source tools for each class, by language and by licence: [scanners-and-quality-gates.md](scanners-and-quality-gates.md).
+
 ---
 
 ## 2. Integration Pattern (Merge Gate)
