@@ -36,7 +36,9 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 
 - The minimum order is: validate -> build -> package -> publish -> deploy -> verify.
 - Never publish from a state that did not pass the quality gate.
-- When the platform allows, promote the same built artefact through staging and production rather than rebuilding per environment.
+- **SHOULD:** a step with an outward side effect (publishing a package or image for consumers, creating a release, pushing a tag) runs only from an explicit release entrypoint such as a tag, a parameter, or a separate job, and not as a by-product of the quality gate ([ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md)).
+- When the platform allows, promote the same built artefact through staging and production rather than rebuilding per environment. Where it does not, record the limitation and treat each rebuild as a new candidate that needs its own evidence.
+- Identify the promoted artefact by digest, or by an identifier its registry or store will not re-point (for example a published package version where the registry forbids overwriting). A tag that can be moved does not identify an artefact ([ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md)).
 - Deployment is incomplete until verification proves the deployed thing is healthy enough for its intended use.
 
 ## 6. Release Metadata Is Source Code
@@ -117,3 +119,5 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 
 - **SLSA** — Supply-chain Levels for Software Artifacts: https://slsa.dev/  
 - *Software Engineering at Google* — **Build systems and dependency management**: https://abseil.io/resources/swe-book  
+- OWASP Top 10 CI/CD Security Risks — **CICD-SEC-1: Insufficient Flow Control Mechanisms** (approval or review before artefacts flow down the pipeline) (S4; accessed 2026-11-18): https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-01-Insufficient-Flow-Control-Mechanisms  
+- PyPI — **Trusted publishers: security model and considerations** (a dedicated release workflow and environment with manual approval; build separated from publish) (S5, product-scoped; accessed 2026-11-18): https://docs.pypi.org/trusted-publishers/security-model/  

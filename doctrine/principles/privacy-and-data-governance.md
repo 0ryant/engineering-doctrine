@@ -8,6 +8,7 @@ Durable rules for **personal data**, **contractually or regulatorily controlled 
 
 - Collect and store **only** what the product and legal basis require.
 - Prefer **identifiers** that can be **revoked or rotated** over long-lived durable secrets in application logs.
+- **SHOULD: know which categories of personal data each system holds.** Keep a list per system of the categories of personal data it stores or processes and whose data they are, detailed enough to apply the retention periods in §2 and to answer an access or erasure request. Where a regime requires a formal record of processing, its content comes from that regime through a [revision-pinned profile](../patterns/revision-pinned-control-profiles.md) ([ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md)).
 
 **Why:** GDPR and similar regimes emphasise **purpose limitation** and **minimisation**; excess data increases breach impact and operational burden.
 
@@ -116,3 +117,5 @@ These are **four** separable obligations; teams may comply with **one** without 
 - EU AI Act **Article 50** — transparency obligations for providers and deployers (applies 2026-08-02; Art 50(2) transitional deadline 2026-12-02 for systems already on the market, per amending Regulation (EU) 2026/1744) — canonical: Regulation (EU) 2024/1689, ELI: http://data.europa.eu/eli/reg/2024/1689/oj · article mirror: https://artificialintelligenceact.eu/article/50/  
 - European Commission — **Guidelines on transparency obligations** for providers and deployers of AI systems (2026-07-20): https://digital-strategy.ec.europa.eu/en/news/commission-publishes-guidelines-transparency-obligations-providers-and-deployers-certain-ai-systems  
 - European Commission — **Code of Practice on Transparency of AI-generated Content** (final 2026-06-10; adequacy opinion 2026-07-08): https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content  
+- NIST **Privacy Framework** v1.0 (2020-01-16), Core category **Inventory and Mapping (ID.IM-P)**: systems, categories of individuals, and data elements are inventoried (S2, pinned DOI; accessed 2026-11-18): https://doi.org/10.6028/NIST.CSWP.01162020  
+- ICO (UK) — **What do we need to document under Article 30 of the GDPR?** (categories of individuals and of personal data; retention schedules where possible) (S2; accessed 2026-11-18): https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/documentation/what-do-we-need-to-document-under-article-30-of-the-gdpr/  

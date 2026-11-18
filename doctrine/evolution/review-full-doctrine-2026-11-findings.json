@@ -2,12 +2,13 @@
  "title": "Full doctrine review, November 2026: findings register",
  "date": "2026-11-18",
  "repository_basis": "1eedc9e",
- "note": "Machine-readable companion to review-full-doctrine-2026-11.md. Every quote was checked by script as an exact substring of the named file at the basis commit. Statuses reflect the change that landed this register. The rules reviewed are the maintainer's own; a reviewer's category, severity, or recommendation is an input to his decision, not a ruling. Model review; no independent human review.",
+ "note": "Machine-readable companion to review-full-doctrine-2026-11.md. Every quote was checked by script as an exact substring of the named file at the basis commit. Statuses reflect the change that landed this register and the later decisions named in status_values. The rules reviewed are the maintainer's own; a reviewer's category, severity, or recommendation is an input to his decision, not a ruling. Model review; no independent human review.",
  "status_values": {
   "fixed": "corrected in the same change, without changing any rule's strength or scope",
   "partly-fixed": "some of the named places corrected in the same change",
   "decision": "needs the maintainer to choose between positions or change a strength or scope",
   "redrafted": "redrafted at the request of the maintainer in ADR 0058, accepted 2026-11-18",
+  "settled-0059": "settled in ADR 0059, accepted 2026-11-18, by applying rules already in ENGINEERING.md",
   "disputed-rule": "a reviewer disputes what the rule asks; the rule is the maintainer's and stays as written until he decides",
   "open-skills-and-contracts": "a correction to a hash-pinned skill or a versioned contract file; held for the maintainer",
   "open": "not acted on",
@@ -104,7 +105,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "major",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Six lists of change classes that need human approval differ item by item",
    "sides": [
     {
@@ -334,7 +335,7 @@
    "kind": "consistency",
    "category": "strength-mismatch",
    "severity": "minor",
-   "status": "open",
+   "status": "settled-0059",
    "title": "Pinning rule for third-party skills and MCP servers is sourced to a row its own file calls illustrative",
    "sides": [
     {
@@ -579,7 +580,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Runtime human fallback: person-affected only in the principle and checklist, person-affected or high-materiality in the pattern",
    "sides": [
     {
@@ -1104,7 +1105,7 @@
    "kind": "consistency",
    "category": "derived-drift",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Checklists accept an image tag as the immutable promoted identity",
    "sides": [
     {
@@ -1209,7 +1210,7 @@
    "kind": "consistency",
    "category": "derived-drift",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Build checklist prompt on gated publish actions has only a tooling example behind it",
    "sides": [
     {
@@ -1294,7 +1295,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Review-latency tracking has three different scopes",
    "sides": [
     {
@@ -1429,7 +1430,7 @@
    "kind": "consistency",
    "category": "derived-drift",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Git hooks reference states a secret-rotation trigger no owner states",
    "sides": [
     {
@@ -1459,7 +1460,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "major",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Claimed platforms: principle says exercise each target; pattern says at least one other",
    "sides": [
     {
@@ -1614,7 +1615,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Same-artefact promotion is conditional in build and collaboration, unconditional in the umbrella and AI-native pattern",
    "sides": [
     {
@@ -2784,7 +2785,7 @@
    "kind": "consistency",
    "category": "contradiction",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Exercise window after architecture change: 60 days (game days) against 30 days (runbooks), with each told to align with the other",
    "sides": [
     {
@@ -2809,7 +2810,7 @@
    "kind": "consistency",
    "category": "duplicate-definition",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Production fault-injection safety bar stated in two owners with different contents",
    "sides": [
     {
@@ -2954,7 +2955,7 @@
    "kind": "consistency",
    "category": "internal",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Minimum tag keys and the 'equivalent' Kubernetes label keys differ",
    "sides": [
     {
@@ -3039,7 +3040,7 @@
    "kind": "consistency",
    "category": "stale-reference",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Reliability §7 cites the errors principle for timeouts, circuit breaking, and degraded modes it does not contain",
    "sides": [
     {
@@ -3119,7 +3120,7 @@
    "kind": "consistency",
    "category": "derived-drift",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Checklist requires 'OpenTelemetry or documented exception'; no principle states that",
    "sides": [
     {
@@ -4835,7 +4836,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "major",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Threat-model trigger is stated four different ways",
    "sides": [
     {
@@ -4875,7 +4876,7 @@
    "kind": "consistency",
    "category": "strength-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Known-exploited priority: 'typically outrank' in one owner, 'highest urgency regardless' in the other",
    "sides": [
     {
@@ -5075,7 +5076,7 @@
    "kind": "consistency",
    "category": "derived-drift",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Checklist asks for a PII inventory that no owner requires",
    "sides": [
     {
@@ -5135,7 +5136,7 @@
    "kind": "consistency",
    "category": "duplicate-definition",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Immutable deployment reference is 'digest or equivalent' in one owner and 'digest or version' in others",
    "sides": [
     {
@@ -5410,7 +5411,7 @@
    "kind": "substance",
    "category": "missing",
    "severity": "major",
-   "status": "open",
+   "status": "settled-0059",
    "title": "Missing 1/7: no doctrine for timeouts, retry discipline or overload",
    "file": "doctrine/principles/errors-and-failure-modes.md",
    "line": 28,
@@ -7140,7 +7141,7 @@
    "kind": "consistency",
    "category": "contradiction",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Merge-path principle says 'this file wins'; how-to-read says overlapping principles are composed, not ranked",
    "sides": [
     {
@@ -7180,7 +7181,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Core Proposition 5 states same-artefact promotion without the 'where the platform allows' condition its owners carry",
    "sides": [
     {
@@ -7930,7 +7931,7 @@
    "kind": "consistency",
    "category": "contradiction",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Post-change exercise window: 60 days in the chaos pattern, 30 days in the runbook owner it says it aligns with",
    "sides": [
     {
@@ -7955,7 +7956,7 @@
    "kind": "consistency",
    "category": "strength-mismatch",
    "severity": "major",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Duplicate protection for agent payments is SHOULD in cost and FinOps, MUST in the idempotency owner",
    "sides": [
     {
@@ -8080,7 +8081,7 @@
    "kind": "consistency",
    "category": "derived-drift",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Checklists accept a tag as the immutable promotion reference; owners say digest or equivalent and call tags mutable",
    "sides": [
     {
@@ -8160,7 +8161,7 @@
    "kind": "consistency",
    "category": "internal",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "GenAI telemetry applies to production and estate-governed paths, but its MUST names production calls only",
    "sides": [
     {
@@ -8270,7 +8271,7 @@
    "kind": "consistency",
    "category": "internal",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Minimum tag set and its Kubernetes \"equivalent\" label set differ",
    "sides": [
     {
@@ -8370,7 +8371,7 @@
    "kind": "consistency",
    "category": "duplicate-definition",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "\"Tier-1\" means top criticality in three owners and the second risk tier in testing strategy",
    "sides": [
     {
@@ -8435,7 +8436,7 @@
    "kind": "consistency",
    "category": "strength-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Human review of agent-authored lockfile diffs: MUST in the file that cites the owner, untyped in the owner, each pointing at the other",
    "sides": [
     {
@@ -8465,7 +8466,7 @@
    "kind": "consistency",
    "category": "stale-reference",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Merge path cites code review §5 as the source of the pinning rule; §5 labels itself illustrative and points back",
    "sides": [
     {
@@ -8590,7 +8591,7 @@
    "kind": "consistency",
    "category": "scope-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Threat-model trigger stated three ways",
    "sides": [
     {
@@ -8620,7 +8621,7 @@
    "kind": "consistency",
    "category": "strength-mismatch",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Known-exploited vulnerabilities: always highest urgency in one owner, typically outrank in the other",
    "sides": [
     {
@@ -8645,7 +8646,7 @@
    "kind": "consistency",
    "category": "duplicate-definition",
    "severity": "minor",
-   "status": "decision",
+   "status": "settled-0059",
    "title": "Production chaos preconditions differ between the reliability principle and the chaos pattern",
    "sides": [
     {

@@ -40,7 +40,7 @@ For the normal sequence of a schema or data change, start with [Database Migrati
 ## 4. Disaster Recovery, Multi-Region, And Failover Drills
 
 - RTO / RPO for regional loss (not only single-host restore) are explicit where the product promises continuity; document warm vs cold standby (see [glossary](../glossary.md)) and failover triggers.
-- Failover drills or game days exercise DNS, replication lag cutoffs, and write path behaviour—tabletop alone is insufficient for tier-1 data paths.
+- Failover drills or game days exercise DNS, replication lag cutoffs, and write path behaviour—tabletop alone is insufficient for tier-1 data paths (tier-1 as [documentation-knowledge.md](documentation-knowledge.md) §2 defines it).
 - Backups in §2 remain necessary but not sufficient for multi-region; replication conflicts and split-brain policies need written answers.
 
 **Why:** AWS, Google, and Azure well-architected guidance all treat DR as distinct from backup; regulators and enterprise customers increasingly ask for demonstrated failover, not slide decks.

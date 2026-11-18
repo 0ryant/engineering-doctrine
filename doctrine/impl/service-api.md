@@ -95,6 +95,7 @@ Layer contract: [Implementation References](README.md).
 | Versioned, validated boundary contracts | [Core Proposition 4](../../ENGINEERING.md#4-define-and-verify-material-boundaries) |
 | Authentication, object and function authorisation, limits, browser controls, SSRF, inventory, and outbound consumption | [API Boundaries, HTTP Semantics, And API Security](../principles/api-boundaries-and-security.md) |
 | Machine-readable errors and retry documentation | [Errors And Failure Modes](../principles/errors-and-failure-modes.md) |
+| Timeouts, bounded retries, and overload behaviour | [Errors And Failure Modes](../principles/errors-and-failure-modes.md) §4 |
 | Duplicate handling for retried mutations | [Idempotency Across Boundaries](../patterns/idempotency-across-boundaries.md) |
 | Verified service identity and least privilege | [Zero Trust And Workload Identity](../principles/zero-trust-and-workload-identity.md) |
 | API versioning, deprecation, and sunset | [Semantic Versioning Policy](../principles/semantic-versioning.md) §§6–9 |

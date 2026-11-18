@@ -19,6 +19,7 @@ For how a workload normally obtains credentials, start with [Secretless Workload
 ## 2. Rotation And Lifecycle
 
 - Rotate long-lived secrets on a cadence and after personnel or incident events; document who triggers rotation and blast radius.
+- **SHOULD: treat a secret that reached a shared remote as exposed.** Revoke or rotate it first. Rewriting history comes second and does not replace rotation: clones, forks, and cached views keep the old commits ([ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md)).
 - Prefer automated rotation where the platform supports it (managed identities, dynamic DB credentials).
 - Version or epoch signing keys when multiple verifiers exist during cutover.
 
@@ -60,6 +61,7 @@ For how a workload normally obtains credentials, start with [Secretless Workload
 - *The Twelve-Factor App* — Config: https://12factor.net/config  
 - NIST SP 800-218 (SSDF) — secure development practices including protection of software and environments: https://csrc.nist.gov/publications/detail/sp/800-218/final  
 - OWASP — Secrets Management (Cheat Sheet): https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html  
+- GitHub Docs — **Removing sensitive data from a repository** (revoke or rotate first; rewritten history stays reachable in clones, forks, and cached views) (S5, product-scoped; accessed 2026-11-18): https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository  
 - *The Twelve-Factor App* — **Build, release, run** (S6; accessed 2026-11-18): https://12factor.net/build-release-run  
 - Kubernetes documentation — **ConfigMaps** (environment-specific configuration decoupled from images) (S5; accessed 2026-11-18): https://kubernetes.io/docs/concepts/configuration/configmap/  
 - DORA — capability: **deployment automation** (same packages for every environment) (S4; accessed 2026-11-18): https://dora.dev/capabilities/deployment-automation/  

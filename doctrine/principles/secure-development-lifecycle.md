@@ -17,7 +17,7 @@ Full control text remains NIST’s publication—this table is a navigation aid,
 
 ## 1. Design And Review
 
-- Threat assumptions for new surfaces (API, events, admin tools) recorded early—lightweight STRIDE pass per [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md).
+- Threat assumptions for new surfaces (API, events, admin tools) recorded early. [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md) §1 owns when a STRIDE pass is needed and what a trivial internal tool records instead.
 - Security-sensitive changes (auth, crypto, tenancy) get explicit review criteria in PR template or checklist—not only style review.
 
 **Why:** SSDF PW emphasises secure design and reviews; late security review wastes rework.
@@ -36,7 +36,7 @@ Full control text remains NIST’s publication—this table is a navigation aid,
 ## 3. Vulnerability Response (RV)
 
 - Ingest advisories (ecosystem, SCA, researcher reports) with severity and SLA to patch or mitigate—example targets live in [dependencies-supply-chain.md](dependencies-supply-chain.md) §2; align estate policy to one published table (adjust numbers by sector, exposure, and regulator—do not treat the library’s examples as universal law).
-- **Exploit-signal triage** — incorporate machine-readable sources your estate trusts (for example [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) for known exploited issues; [FIRST EPSS](https://www.first.org/epss/) as a prioritisation input alongside asset exposure and reachability). Known exploited findings typically outrank generic CVSS-only backlog ordering.
+- **Exploit-signal triage** — incorporate machine-readable sources your estate trusts (for example [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) for known exploited issues; [FIRST EPSS](https://www.first.org/epss/) as a prioritisation input alongside asset exposure and reachability). A known-exploited finding is the highest urgency whatever its severity score; [dependencies-supply-chain.md](dependencies-supply-chain.md) §2 owns that triage rule ([ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md)).
 - **Coordinated disclosure** — protect users: prepare fixes or mitigations before public detail when possible; credit researchers per policy.
 - Customer and operator comms for exploitable issues in shipped software—template comms in runbooks.
 - **Root-cause class** — after remediation, classify work as patch-level (fix the defect), process/control-level (detection, review, pipeline, training), or architecture-level (trust boundaries, segmentation, default permissions, secret distribution, platform defaults). Recurring same failure class implies process or architecture work, not only another ticket.
