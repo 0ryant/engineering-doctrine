@@ -18,7 +18,7 @@ Use when an organisation or team is **adopting, expanding, or reviewing** AI use
 ```text
 [ ] First-line owner is accountable for purpose, data inputs, acceptable use, and human-oversight mode per system
 [ ] High-materiality systems get pre-launch and on-material-change review by an objective expert with sufficient independence, organisational standing, and influence to force change (not the building team)
-[ ] Person-affected automation has: designed human fallback (unavailable / low-confidence / contested), overseer override authority + affordance, and a contest path reaching a human who can reverse the decision
+[ ] Person-affected or otherwise high-materiality automation has: designed human fallback (unavailable / low-confidence / contested), overseer override authority + affordance, and, where people are affected, a contest path reaching a human who can reverse the decision
 [ ] Per-decision logging is sufficient to reconstruct and explain a contested decision (tested, not assumed)
 ```
 
@@ -29,7 +29,7 @@ Use when an organisation or team is **adopting, expanding, or reviewing** AI use
 [ ] Person-affected outputs: fairness/bias evaluation before launch and on retrain or model swap; metric choice recorded and justified per system
 [ ] Production models: continuous drift monitoring (input distribution + output quality) with alert thresholds and a retrain/rollback path
 [ ] GenAI: prompt-injection (direct + indirect) tests; jailbreak/guardrail-bypass red-team where safety or policy constraints exist
-[ ] Tier-D agents, where an injection or hijack defence claim is relied on at a blocking tier (testing-strategy.md §5): agent-hijack / tool-flow-abuse evaluation is adaptive (attacker iterates), re-run on model, defence, or agent-surface change — static replay does not count
+[ ] Tier-D agents, where an injection or hijack defence claim is relied on at a blocking risk class (privileged or exposed, testing-strategy.md §5): agent-hijack / tool-flow-abuse evaluation is adaptive (attacker iterates), re-run on model, defence, or agent-surface change — static replay does not count
 [ ] GenAI feeding downstream systems: output validation (schema, sanitisation, groundedness); leakage probing (system prompt, training/context data, cross-tenant)
 [ ] User-facing GenAI in EU AI Act scope (registered control profile): Art 50 transparency duties for the registered role verified before launch (disclosure UX / output marking for providers; notification / deepfake labelling for deployers)
 [ ] Identity-verification or fraud-detection surfaces re-tested against synthetic-media attacks (deepfake voice/video, GenAI phishing, synthetic identities) on a defined cadence, not once

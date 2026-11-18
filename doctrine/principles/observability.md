@@ -126,7 +126,7 @@ Backend query patterns — recording rules and paired-window alert rules — are
 
 ### 7.1 Per-Call Minimum Signal Set
 
-- **MUST:** every production model-mediated call emits, joined to the request path by **trace/span id** (§2):
+- **MUST:** every in-scope model-mediated call (production and estate-governed paths, as the applicability line above states) emits, joined to the request path by **trace/span id** (§2):
   - **model id and version** — the requested model **and** the provider-reported responding model where they can differ; the responding model is the pricing and behaviour key.
   - **token counts** — input and output, **separately**.
   - **latency** — **percentile-tracked** total duration; **time-to-first-token** (TTFT) additionally for streaming responses where the serving path or instrumentation library exposes it (SHOULD where it requires custom client-side wiring).

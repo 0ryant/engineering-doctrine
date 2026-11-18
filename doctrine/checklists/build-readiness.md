@@ -9,7 +9,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] Non-trivial build logic lives in repo scripts, not repeated inline YAML
 [ ] Setup or bootstrap commands are idempotent
 [ ] The quality gate runs on PRs and protected branches
-[ ] Supported platforms are validated in CI when the repo claims multi-platform support
+[ ] Each platform the repo claims to support is exercised in CI before release
 [ ] Contract or schema validation exists where the repo defines contracts
 [ ] **GenAI, RAG, embeddings, or agents** in this repo: **tier** (A–D) and SoR rules in [principles/ai-ml-systems.md](../principles/ai-ml-systems.md); **ingestion/index** lifecycle, **eval**, and **tenant** isolation per [patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md) and [tooling/vector-retrieval-and-embedding-illustration.md](../tooling/vector-retrieval-and-embedding-illustration.md) where applicable (skip if out of scope)
 [ ] Published or consumed async events use the selected explicit envelope contract (CloudEvents by portable default, or a documented equivalent) and versioned payload schemas where applicable
@@ -31,7 +31,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] Packaging metadata is kept in a tracked directory (for example packaging/), not in ignored output, if package-manager manifests exist
 [ ] Ignored folders are used only for generated output
 [ ] Side-effecting publish actions are gated behind explicit release entrypoints or parameters
-[ ] Promotion reuses the same built artefact or explicit image tag where the platform allows it
+[ ] Promotion reuses the same built artefact, identified by digest or by an identifier its registry will not re-point, where the platform allows it; where it does not, the limitation is recorded and each rebuild is treated as a new candidate
 [ ] Release artefacts include operator-facing docs and evidence where applicable
 [ ] Execution and smoke surfaces publish evidence artefacts when they produce operational outcomes
 [ ] Publish steps consume built artefacts instead of rebuilding inline

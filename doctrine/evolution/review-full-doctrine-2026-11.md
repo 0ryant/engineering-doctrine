@@ -246,6 +246,8 @@ ADRs 0051 to 0057 were drafted by a model at the maintainer's direction and acce
 | The library's rules about itself: when an ADR is required, change-class vocabulary, exit states in skill and tool contracts, owner count for a reference, where normative text may live, tool sign-off lines | GOV-03, GOV-05, GOV-08, GOV-09, GOV-10, GOV-18 |
 | Smaller scope and strength mismatches | DEL-08, XC-16, XC-23, XC-25, XC-26, XC-28 |
 
+[ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md) (accepted 2026-11-18) settles 30 of the 52 by applying three rules already in `ENGINEERING.md`: the stricter result where two rules protect one property, one authority per concept, and checklists that derive from owners. It covers the rows above on immutable references, the threat-model trigger, same-artefact promotion, known-exploited vulnerabilities, claimed platforms, exercise windows and fault-injection safety, and prompts with no owner; the human-approval lists and runtime human fallback from the first row; tag keys and agent payment duplicates from the cost row; "this file wins" from the precedence row; and five of the six smaller mismatches. It also closes two findings left open: the missing rules for timeouts, retries, and overload (SOPS-01), and a duplicate of the pinning finding (AI-10). Twenty-two decisions remain: agent and automation authority (AI-01, AI-02, AI-04, AI-05, AI-14, SEC-15), ownership form, data corrections, ops-flag defaults, cost-per-outcome timing, provenance for internal artefacts (XC-28), the rest of the precedence row, and the library's rules about itself.
+
 Fifteen more corrections are held, not decided. Eight touch hash-pinned skills and versioned contract files, including a navigation skill that tells agents the umbrella is not authority. Those need a version bump the maintainer should approve.
 
 ## Recommended Order
@@ -259,7 +261,7 @@ The whole-library assessment and the domain reviews point the same way: subtract
 5. **Record the experience behind the rules that matter most.** A dated first-party account is evidence on the library's own scale. An independent review, starting with the supply-chain sections, would add a second.
 6. **Type the classical core by deciding old claims**, not by adding new ones.
 7. **Narrow governed execution** to unattended or production-authority runs, and reduce run contracts to a minimum any harness can meet.
-8. **Take the decisions above in themed batches**, agent authority first.
+8. **Take the decisions above in themed batches**, agent authority first. ADR 0059 takes the thirty that the constitution already decides.
 9. **Only then fill the ranked omissions**, each through its own decision with an external source.
 10. **Produce adopter evidence**: one filled estate instance and one recorded trial.
 

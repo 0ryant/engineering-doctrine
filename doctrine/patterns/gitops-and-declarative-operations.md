@@ -55,7 +55,7 @@ The [OpenGitOps](https://opengitops.dev/) project publishes versioned GitOps pri
 
 2. **Reconciliation loop** or **push equivalent**: every material apply is tied to a **known** revision; no unreviewed *surprise* applies as culture.
 
-3. **Immutable deployment inputs** for application payloads: e.g. container **digest** or equivalent where images are in play; using `latest` in production is a **red flag** unless policy allows it and it is **auditable**.
+3. **Immutable deployment inputs** for application payloads: e.g. container **digest** or equivalent where images are in play ([../principles/build.md](../principles/build.md) §5 says what counts as equivalent; a tag that can be moved does not); using `latest` in production is a **red flag** unless policy allows it and it is **auditable**.
 
 4. **Secrets** not in clear text in git; use [configuration-and-secrets.md](../principles/configuration-and-secrets.md) and estate patterns (sealed secrets, ESO, cloud secret refs).
 

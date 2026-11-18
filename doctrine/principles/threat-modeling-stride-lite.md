@@ -10,7 +10,7 @@ Lightweight systematic review of trust boundaries and common attack classes. Use
 - Material change to trust boundaries (new integration, public surface, tenant isolation story).
 - Pre-release or periodic review for high-risk systems where “OWASP checklist only” is insufficient for architecture-level gaps.
 
-Skip full workshops for trivial internal tools; still record “not in scope” in the design note or ADR.
+Every other new surface (an internal API, an event flow, an admin tool) has its threat assumptions recorded early. Skip full workshops for trivial internal tools; still record “not in scope” in the design note or ADR. This section is the library's one trigger for threat modelling; other pages cite it ([ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md)).
 
 ---
 

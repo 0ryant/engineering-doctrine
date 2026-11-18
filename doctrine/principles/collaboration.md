@@ -28,7 +28,7 @@ The current tip of `main` does not identify what is running in an environment. U
 - **Linear history optional but valuable** — squash or rebase merges reduce noise; pick one team convention and stick to it.
 - **Merge when green** — do not merge on red; do not “merge anyway” without a recorded exception process.
 - **Merge queue or batching** — at scale, use a merge queue or batched merges so `main` stays green under concurrent work; the queue is part of the integration system, not a substitute for small changes.
-- **Review latency** — track time-to-first-review and time-to-merge for critical services; chronic delay is a **delivery** risk (measures and example targets: [code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §4).
+- **Review latency** — track time-to-first-review and time-to-merge; chronic delay is a **delivery** risk (scope, measures, and example targets: [code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §4).
 
 ---
 

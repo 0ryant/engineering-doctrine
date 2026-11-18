@@ -16,7 +16,7 @@ Durable rules for decisions, operations, and onboarding so intent survives turno
 ## 2. Runbooks And On-Call
 
 - Runbooks exist for deploy, rollback, common failures, and data fixes that recur.
-- Runbooks are tested or walked on a defined cadence: at least quarterly for tier-1 paths (on-call pages, revenue, safety), and within 30 days after material changes to architecture, deploy path, or dependencies for any runbook affected. Record last exercised date in the runbook header or adjacent index. Tie to game days or drills where your org runs them ([reliability-slo-incidents.md](reliability-slo-incidents.md)).
+- Runbooks are tested or walked on a defined cadence: at least quarterly for tier-1 paths (on-call pages, revenue, safety), and within 30 days after material changes to architecture, deploy path, or dependencies for any runbook affected. Record last exercised date in the runbook header or adjacent index. Tie to game days or drills where your org runs them ([reliability-slo-incidents.md](reliability-slo-incidents.md)). A tier-1 path or service, wherever this library uses the term, means these: on-call pages, revenue, safety.
 
 **Why:** On-call time is expensive; “tribal knowledge” fails at 3am under stress.
 

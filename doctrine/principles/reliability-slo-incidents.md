@@ -45,7 +45,7 @@ Durable rules for service level objectives, error budgets, and incident response
 
 ## 5. Chaos Engineering And Game Days
 
-- Inject controlled faults (latency, error rates, dependency loss) in non-prod first, then limited prod experiments with blast radius caps and abort criteria.
+- Inject controlled faults (latency, error rates, dependency loss) in non-prod first, then limited production experiments under the preconditions and abort criteria that [../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md) §§1–2 own.
 - Game days cross-functionally validate runbooks, dashboards, and on-call muscle memory—not only automated chaos.
 
 **Why:** *Chaos Engineering* (Netflix Chaos Monkey lineage) and Google SRE disaster testing culture both argue that rehearsed failure teaches more than optimistic architecture diagrams. See Principles of Chaos Engineering: https://principlesofchaos.org/
@@ -65,7 +65,7 @@ Durable rules for service level objectives, error budgets, and incident response
 
 When a third-party service (payment API, identity provider, external model API) sits inside a critical user journey, its loss is your incident:
 
-- **Runtime posture per dependency** — explicit timeouts, circuit breaking, and a designed degraded mode (queue-and-retry, cached/stale answers, reduced feature, or degrade to human handling) chosen in advance, not improvised mid-outage ([errors-and-failure-modes.md](errors-and-failure-modes.md)); dependency error budgets feed the same policy machinery as §2.
+- **Runtime posture per dependency** — explicit timeouts, circuit breaking, and a designed degraded mode (queue-and-retry, cached/stale answers, reduced feature, or degrade to human handling) chosen in advance, not improvised mid-outage ([errors-and-failure-modes.md](errors-and-failure-modes.md) §4 owns timeout, retry, and overload behaviour); dependency error budgets feed the same policy machinery as §2.
 - **Substitution readiness scales with criticality** — for dependencies whose loss breaches SLOs: a named substitute (alternate provider, alternate implementation, or manual process), the assets required to switch (data exports, config, portable eval sets for model APIs), and a game day that exercises the switch (§5) — an exit plan that has never run is a hypothesis.
 - **Concentration is assessed, not discovered** — know how many critical journeys share one provider before contracting the next one (vocabulary: EU Digital Operational Resilience Act, DORA Art 29, "not easily substitutable"); record it where the estate tracks dependencies. This is the regulatory use of DORA, not the delivery-research programme cited in §6.
 - **Provider change is change** — deprecations, silent model upgrades, and SLA shifts trigger the same regression and review path as your own releases.

@@ -5,7 +5,7 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 ```text
 [ ] SLOs defined for user-facing paths; error budget policy agreed (reliability-slo-incidents.md)
 [ ] Incident response and on-call: severity matrix, incident state doc, comms/escalation **habits**, and post-incident action tracking aligned with patterns/incident-lifecycle-and-on-call-operations.md (scale **roles** to org size; avoid silent “no IC” in multi-team incidents)
-[ ] OpenTelemetry or documented exception; logs correlate with traces (observability.md + tooling/observability.md)
+[ ] Logs, metrics, and traces correlate through propagated trace context; OpenTelemetry where the estate uses it (observability.md §§1–2; tooling/observability.md for an illustrative stack)
 [ ] Post-deploy verification covers telemetry arrival, trace correlation, and SLI data where SLOs exist; alert rules are reviewed and tested (observability.md §8)
 [ ] Logs and traces keep business identifiers minimal and exclude or mask session identifiers, tokens, credentials, keys, and payment data (observability.md §2)
 [ ] Production runtime chosen per container-runtime-choice.md; concrete products recorded in estate catalogue or tooling/estates/
@@ -20,8 +20,8 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 [ ] OWASP API Top 10 risks reviewed for public APIs (api-boundaries-and-security.md)
 [ ] Cryptographic inventory kept for estate-governed and production systems; long-lived confidential data recorded in threat models; transition dates bound through the active profile (api-boundaries-and-security.md §2.2)
 [ ] If using **GenAI**, **RAG**, **fine-tuning**, or **agentic** automation: **tier** (A–D) and SoR rules in [principles/ai-ml-systems.md](../principles/ai-ml-systems.md) (§§6–7 eval, retrieval, MCP-class tools; §8 anti-patterns); RAG eval + isolation per [patterns/rag-retrieval-baseline.md](../patterns/rag-retrieval-baseline.md); pipeline ownership per [tooling/vector-retrieval-and-embedding-illustration.md](../tooling/vector-retrieval-and-embedding-illustration.md) where applicable; [glossary.md](../glossary.md) **GenAIOps** for ops vocabulary
-[ ] STRIDE-lite threat-modeling pass for internet-facing or high-impact surfaces (threat-modeling-stride-lite.md); residual risks tracked
-[ ] PII inventory and retention periods documented (privacy-and-data-governance.md)
+[ ] STRIDE-lite threat-modeling pass where threat-modeling-stride-lite.md §1 calls for one; other new surfaces have recorded threat assumptions or a recorded "not in scope"; residual risks tracked
+[ ] Categories of personal data listed per system, and retention periods documented per category (privacy-and-data-governance.md §§1–2)
 [ ] Dependency automation enabled (Renovate or Dependabot per dependency-automation.md)
 [ ] Low-risk update classes and any bot-only merge path are documented; other dependency updates get human review (dependencies-supply-chain.md §2)
 [ ] SBOM policy matches what you ship (dependencies-supply-chain.md)

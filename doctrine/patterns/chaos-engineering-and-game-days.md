@@ -14,7 +14,7 @@ Companion to [reliability-slo-incidents.md](../principles/reliability-slo-incide
 ## 1. Scope And Preconditions
 
 - **Non-production first** — inject faults in staging or a dedicated chaos environment that mirrors production topology enough to matter.
-- Production experiments only with explicit approval, SLO headroom, blast-radius caps (single cell, single AZ, canary pool), kill switch, and rollback path documented.
+- Production experiments only with explicit approval, SLO headroom, blast-radius caps (single cell, single AZ, canary pool), kill switch, and rollback path documented. This is the library's one safety bar for production fault injection; abort criteria are a field of every experiment (§2).
 - Forbidden without executive + legal review: data corruption tests, privacy-violating probes, or faults that violate regulator or contract boundaries.
 
 ---
@@ -38,7 +38,7 @@ Record results in a short log (wiki, ADR appendix, or ticket)—link to dashboar
 
 - **Participants:** on-call engineer, optional secondary, product/comms observer, SRE or platform facilitator.
 - **Agenda (example, ~2–3 h):** review hypothesis → run one major scenario (e.g. region dependency loss) → execute runbook steps → retro (what broke, what to fix).
-- **Frequency:** quarterly for tier-1 revenue or safety paths; after major architecture changes within 60 days—align with [documentation-knowledge.md](../principles/documentation-knowledge.md) runbook cadence where practical.
+- **Frequency:** quarterly for tier-1 revenue or safety paths; after major architecture changes within 60 days. The walk of an affected runbook has its own, shorter clock of 30 days, owned by [documentation-knowledge.md](../principles/documentation-knowledge.md) §2, which also says what tier-1 means.
 
 ---
 

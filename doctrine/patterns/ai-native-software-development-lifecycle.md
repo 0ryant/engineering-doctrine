@@ -56,7 +56,7 @@ not prerequisites for choosing the next action.
 6. **Final control execution is bounded and reconstructable.** Identity, policy version, inputs, target, decision, and result are explicit. Open-ended model discretion stays outside the final authority boundary.
 7. **Promote the same artefact.** Authorisation addresses an immutable digest or equivalent identity; later environments do not rebuild a semantically different candidate.
 8. **Risk controls scale on two axes.** AI capability tier and change materiality are recorded separately; controls use the stricter applicable result.
-9. **High-impact change is human-gated.** Authentication, authorisation, cryptography, tenant isolation, data/schema migration, pipeline/policy, irreversible operations, person-affecting decisions, and estate-defined high-impact classes require accountable human approval.
+9. **High-impact change is human-gated.** A change in any high-impact class listed in [ai-ml-systems.md](../principles/ai-ml-systems.md) §4, estate-defined classes included, requires accountable human approval.
 10. **Uncertainty cannot silently become success.** Missing, stale, untrusted, or inconclusive evidence blocks where the evidence is required. A waiver is a separate, expiring authority decision and never changes the technical result.
 11. **Enactment is not completion.** Runtime observation selects technical, operational, or outcome closure and reopens or contains work when claims diverge from reality.
 12. **Auditability is not surveillance.** Retain change-relevant identities, actions, receipts, decisions, evidence, and outcomes; do not require private chain-of-thought or unnecessary prompt, personal, or secret data.

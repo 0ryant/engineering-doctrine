@@ -185,7 +185,7 @@ Fully supervised                                     Fully autonomous
 
 **Rules:**
 - Blast radius and verifiability (§2) determine the default starting position.
-- Any **auth, tenancy, crypto, schema, money-movement, or person-affecting** action MUST start at "approve before irreversible" regardless of agent maturity — see [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4; agent financial authority is default-deny per [../principles/cost-and-finops.md](../principles/cost-and-finops.md) §7.1.
+- Any **auth, tenancy, crypto, schema, money-movement, or person-affecting** action MUST start at "approve before irreversible" regardless of agent maturity — see [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4; agent financial authority is default-deny per [../principles/cost-and-finops.md](../principles/cost-and-finops.md) §7.1. This floor governs run-time tool actions. A change to code, configuration, or policy in a high-impact class needs accountable human approval at every slider position ([../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4).
 - The slider can move **right** (more autonomous) as empirical data accumulates from VERIFY step + ISC pass rate. It moves **left** on any ISC regression or incident.
 - **Transparent plan state**: expose the agent's current plan and active ISC to operators in real time. An agent whose internals are invisible to its operators cannot be reliably supervised.
 
@@ -378,7 +378,7 @@ This crosswalk is **navigational vocabulary**: it maps each ASI identifier to th
 | **Tool soup** | All tools always present in the context regardless of task stage. Degrades tool selection accuracy; expands attack surface. |
 | **Unbounded loops** | No stopping condition. Agent iterates until context limit or cost limit, not until task is done. |
 | **Context poisoning via chained outputs** | One model's hallucination enters the next model's context as fact. Chain LLM outputs only via typed structured values, not raw text. |
-| **Council as approval substitute** | Multiple model votes treated as equivalent to human approval or CI pass for high-risk change. Not a valid approval mechanism for auth, tenancy, schema, or person-affecting automation — see [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4. |
+| **Council as approval substitute** | Multiple model votes treated as equivalent to human approval or CI pass for high-risk change. Not a valid approval mechanism for any high-impact change class; the list is in [../principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4. |
 | **Missing context compression** | Raw tool outputs accumulate in context. At 95%+ context fill, model degradation is steep. Compress before you hit the limit — and pin constraints outside the window when you do: compaction silently drops them (§5.1). |
 | **Autonomy hard-coded to max** | New or insufficiently verified agents deployed silently. Default conservative; earn the right to more autonomy through ISC pass-rate data. |
 | **ACI neglect** | Tool descriptions written as notes to self. Treated as configuration, not documentation. Model tool misuse follows directly. |

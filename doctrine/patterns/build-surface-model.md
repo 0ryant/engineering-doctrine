@@ -82,7 +82,7 @@ Neither shape is doctrine-mandated; **surface clarity** and **ownership** matter
 ### Multi-Platform CLI Or Desktop Utility
 
 - Quality gate
-- Primary quality gate on one platform plus representative validation on at least one other claimed platform
+- Primary quality gate on one platform plus representative validation on each other claimed platform
 - Build and publish artefacts per platform
 - Packaging metadata under `packaging/`
 - Generated docs included in release artefacts

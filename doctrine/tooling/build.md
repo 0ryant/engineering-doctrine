@@ -53,7 +53,7 @@ For **why** principles stay separate from tools, see [../principles/timeless-pri
 ### Platform Support
 
 - Choose one primary CI platform for the deepest quality gate.
-- Add at least one secondary-platform validation job when the repo claims cross-platform support.
+- Add a validation job for each secondary platform the repo claims. A platform with no job is not claimed.
 - Produce platform-specific installers or archive layouts on the target platform when packaging semantics differ.
 
 ### Variable Materialization
@@ -64,7 +64,7 @@ For **why** principles stay separate from tools, see [../principles/timeless-pri
 
 ### Promotion And Runtime Validation
 
-- Build once, then promote the same image tag or packaged artefact through staging, smoke, and production where the platform allows it.
+- Build once, then promote the same image, by digest, or the same packaged artefact through staging, smoke, and production where the platform allows it.
 - When runtime risk is non-trivial, add an explicit smoke or readiness surface instead of hiding the checks inside deployment-only logic.
 - Use environment approvals or promotion boundaries where the operating model needs a human gate.
 

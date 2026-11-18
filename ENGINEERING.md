@@ -38,7 +38,7 @@ Version and validate contracts at consumer, service, event, data, policy, and ar
 
 ### 5. Automate Discriminating Evidence On The Controlled Change Path
 
-Local and CI checks SHOULD agree on the relevant properties. Passing automation proves only what its tests can discriminate; high-impact change adds domain, security, policy, or human challenge where required. Promote the immutable artefact that was tested and approved. See [build.md](doctrine/principles/build.md), [testing-strategy.md](doctrine/principles/testing-strategy.md), and [merge-path-evidence-and-pipeline-integrity.md](doctrine/principles/merge-path-evidence-and-pipeline-integrity.md).
+Local and CI checks SHOULD agree on the relevant properties. Passing automation proves only what its tests can discriminate; high-impact change adds domain, security, policy, or human challenge where required. Promote the immutable artefact that was tested and approved; where a platform cannot, a rebuild is a new candidate that needs its own evidence. See [build.md](doctrine/principles/build.md), [testing-strategy.md](doctrine/principles/testing-strategy.md), and [merge-path-evidence-and-pipeline-integrity.md](doctrine/principles/merge-path-evidence-and-pipeline-integrity.md).
 
 ### 6. Design Failure, Retry, Recovery, And Reconciliation
 

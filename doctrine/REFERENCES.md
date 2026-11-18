@@ -87,6 +87,8 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | OWASP API4 Unrestricted Resource Consumption | https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/ |
 | OWASP Dependency-Check (SCA concept) | https://owasp.org/www-project-dependency-check/ |
 | OWASP Logging Cheat Sheet — data to exclude, mask, or de-identify in logs (S4, accessed 2026-11-18) | https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html |
+| OWASP Secrets Management Cheat Sheet — revocation and rotation of exposed secrets (S4, accessed 2026-11-18) | https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html |
+| GitHub Docs — Removing sensitive data from a repository (rotate first; S5, product-scoped; accessed 2026-11-18) | https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository |
 | STRIDE threat categories (overview) | https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats |
 | OWASP — Secure by Design Framework | https://owasp.org/www-project-secure-by-design-framework/ |
 | CSA Lab — “AI Vulnerability Storm” / Mythos-ready security program (strategy briefing) | https://labs.cloudsecurityalliance.org/research/ai-vulnerability-storm-mythos-ready-security-program/ |
@@ -141,6 +143,11 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | Implementing SLOs (workbook) | https://sre.google/workbook/implementing-slos/ |
 | Error Budget Policy (workbook) | https://sre.google/workbook/error-budget-policy/ |
 | Handling Overload (SRE book) | https://sre.google/sre-book/handling-overload/ |
+| Google SRE Book — Addressing Cascading Failures (ch. 22; deadlines, retry limits and budgets, load shedding; S4, accessed 2026-11-18) | https://sre.google/sre-book/addressing-cascading-failures/ |
+| AWS Well-Architected Framework — REL05, interactions that withstand failure (S5, accessed 2026-11-18) | https://docs.aws.amazon.com/wellarchitected/latest/framework/rel05.html |
+| Amazon Builders' Library — Timeouts, retries, and backoff with jitter (S6; 2019; accessed 2026-11-18) | https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/ |
+| Azure Architecture Center — Retry pattern (S5, accessed 2026-11-18) | https://learn.microsoft.com/en-us/azure/architecture/patterns/retry |
+| gRPC — Deadlines (S5, product-scoped; accessed 2026-11-18) | https://grpc.io/docs/guides/deadlines/ |
 | DORA — software delivery performance | https://dora.dev/ |
 | DORA — 2024 State of DevOps report (DevEx, documentation, platform engineering) | https://dora.dev/research/2024/dora-report |
 | ACM Queue — SPACE of Developer Productivity | https://queue.acm.org/detail.cfm?id=3454124 |
@@ -381,6 +388,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | Renovate — automerge (waits for required checks; lower-risk update classes; S5, accessed 2026-11-18) | https://docs.renovatebot.com/key-concepts/automerge/ |
 | GitHub Dependabot | https://docs.github.com/en/code-security/dependabot |
 | OSV — Open Source Vulnerabilities | https://osv.dev/ |
+| OWASP Top 10 CI/CD Security Risks — CICD-SEC-1, Insufficient Flow Control Mechanisms (S4, accessed 2026-11-18) | https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-01-Insufficient-Flow-Control-Mechanisms |
+| PyPI — Trusted publishers: security model and considerations (S5, product-scoped; accessed 2026-11-18) | https://docs.pypi.org/trusted-publishers/security-model/ |
 
 ---
 
@@ -390,6 +399,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | --- | --- |
 | ICO — data minimisation (UK GDPR principle) | https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/principles/data-minimisation/ |
 | NIST Privacy Framework | https://www.nist.gov/privacy-framework |
+| NIST Privacy Framework v1.0 — Core category Inventory and Mapping, ID.IM-P (S2, pinned DOI; accessed 2026-11-18) | https://doi.org/10.6028/NIST.CSWP.01162020 |
+| ICO — What do we need to document under Article 30 of the GDPR? (S2, accessed 2026-11-18) | https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/documentation/what-do-we-need-to-document-under-article-30-of-the-gdpr/ |
 | NTIA — The Minimum Elements For an SBOM (2021-07-12; historical baseline, replaced by CISA 2026) | https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom |
 | CISA — 2026 Minimum Elements for an SBOM (S2; 2026-07-29; replaces the NTIA list) | https://www.cisa.gov/resources-tools/resources/2026-minimum-elements-software-bill-materials-sbom |
 | NIST Cybersecurity Framework 2.0 | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final |
@@ -506,6 +517,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-regulatory-reporting-clocks-2026-11.md](evolution/research-regulatory-reporting-clocks-2026-11.md) | Source-graded basis for ADR 0055: regulatory reporting clocks, with the Cyber Resilience Act as the worked example |
 | [evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md](evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md) | Source basis for ADR 0056: OWASP LLM Top 10 2026 entries and the mapping from 2025 |
 | [evolution/review-full-doctrine-2026-11.md](evolution/review-full-doctrine-2026-11.md) | Full doctrine review, November 2026: consistency and substance findings, grades, and a recommended order of work; non-normative |
+| [evolution/research-apply-constitution-rules-2026-11.md](evolution/research-apply-constitution-rules-2026-11.md) | Basis for ADR 0059: open inconsistencies settled by three rules in `ENGINEERING.md`; source ledger for timeouts and retries, leaked secrets, publish entrypoints, and personal-data categories; non-normative |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |

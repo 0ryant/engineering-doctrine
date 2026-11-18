@@ -222,6 +222,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Load-bearing judge** — An evaluator model whose verdicts **gate promotion, merges, or automation** (as opposed to advisory critique); the activation trigger for judge discipline — versioned config, chance-corrected agreement with an estate-set threshold, perturbation testing, escalation-gated automation. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §8.2.
 
+**Load shedding** — Rejecting excess work early and cheaply as a service nears saturation, so the work it accepts still completes. See [errors-and-failure-modes.md](principles/errors-and-failure-modes.md) §4.
+
 **LTS (long-term support) branch** — Exceptional **parallel** line for extended patch support; document EOL. See [trunk-workflow.md](patterns/trunk-workflow.md).
 
 ---

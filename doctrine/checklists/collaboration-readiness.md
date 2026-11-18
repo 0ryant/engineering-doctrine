@@ -20,7 +20,7 @@ Use when adopting or auditing trunk-based workflow, branch protection, and deliv
 [ ] Small-PR culture reinforced; large changes need prior design note or RFC
 [ ] CODEOWNERS or equivalent for critical paths
 [ ] CODEOWNERS paths map to team aliases (not only individuals) where the org uses group ownership
-[ ] Review latency tracked for critical services (time-to-first-review, time-to-merge) where delivery SLAs apply (patterns/code-review-and-change-approval.md §4, checklists/developer-experience-scorecard.md)
+[ ] Review latency tracked for default-branch work (time-to-first-review, time-to-merge) (patterns/code-review-and-change-approval.md §4, checklists/developer-experience-scorecard.md)
 [ ] Review checks operability: migrations, flags, rollout, observability
 [ ] Author/reviewer **duties**, **blocker** vs **nit** policy, **escalation** when review disagrees, and **LLM**/**agent**-sourced diffs: [patterns/code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md)
 [ ] **Agent-authored** PRs (where allowed): **same** required checks and review norms as human authors—no bypass of protected-branch gates ([principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §4); update-bot PRs merge without human review only on a documented bot-only path once required checks pass (principles/dependencies-supply-chain.md §2)
@@ -33,7 +33,7 @@ Use when adopting or auditing trunk-based workflow, branch protection, and deliv
 [ ] Same quality gate runnable locally with one documented command
 [ ] Path filters prevent unrelated deploys from unrelated changes
 [ ] CI identities least-privilege; production deploy not default for all jobs
-[ ] Artefact promotion reuses immutable build IDs or explicit image tags
+[ ] Artefact promotion reuses the same built artefact, identified by digest or by an identifier its registry will not re-point
 [ ] Post-deploy verification exists for each deploy surface
 [ ] No silent CI skips without visibility or removal
 ```

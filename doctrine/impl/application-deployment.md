@@ -12,7 +12,7 @@ Use this when describing or reviewing how a service or job runs in production: w
 
 ```mermaid
 flowchart TD
-    A["Identified candidate<br/>referenced by digest or version"] --> D["Declared desired state<br/>reviewed, known revision"]
+    A["Identified candidate<br/>referenced by digest or equivalent"] --> D["Declared desired state<br/>reviewed, known revision"]
     B["Environment bindings<br/>configuration, workload identity, secret references"] --> D
     C["Bounds and labels<br/>resources, redundancy, owner, cost tags"] --> D
     D --> E["Runtime<br/>managed platform or documented cluster"]
