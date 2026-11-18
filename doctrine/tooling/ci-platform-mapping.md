@@ -61,8 +61,8 @@ References: Azure Pipelines **YAML schema**: https://learn.microsoft.com/en-us/a
 
 | Decision | Rationale |
 | --- | --- |
-| Keep abstract names in umbrella doc | Template repos stay **portable**; only this tooling file is vendor-specific. |
-| OIDC over long-lived cloud keys | Aligns with `ENGINEERING.md` **managed identity / OIDC** preference. |
+| Keep abstract names in the portable pattern ([build-surface-model.md](../patterns/build-surface-model.md)) | Template repos stay **portable**; only this tooling file is vendor-specific. |
+| OIDC over long-lived cloud keys | Follows the secretless default in [zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md) §2. |
 | One quality workflow per repo minimum | Matches **trunk** discipline: every merge path runs the same gate. |
 
 ---

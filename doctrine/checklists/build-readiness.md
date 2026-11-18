@@ -28,7 +28,7 @@ Use this checklist when creating or reviewing a repo.
 [ ] Path filters or scoped triggers prevent unrelated deploys
 [ ] Version is sourced from one manifest
 [ ] Semantic version bumps follow doctrine/principles/semantic-versioning.md (or a documented exception) per publishable unit
-[ ] Packaging metadata is tracked under packaging/ if package-manager manifests exist
+[ ] Packaging metadata is kept in a tracked directory (for example packaging/), not in ignored output, if package-manager manifests exist
 [ ] Ignored folders are used only for generated output
 [ ] Side-effecting publish actions are gated behind explicit release entrypoints or parameters
 [ ] Promotion reuses the same built artefact or explicit image tag where the platform allows it

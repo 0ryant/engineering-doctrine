@@ -1,13 +1,13 @@
 # Secure Development Lifecycle And Vulnerability Response
 
-Durable rules for building software with fewer defects and responding when defects ship. Bridges umbrella Shift Security Left to organisational practice. Maps conceptually to NIST SSDF practice groups Prepare (PO), Protect (PS), Produce (PW), and Respond (RV)—see [NIST SP 800-218](https://csrc.nist.gov/publications/detail/sp/800-218/final). When AI participates in delivery, [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md) composes these practices into evidence-backed transition gates; it does not replace them. When a law, contract, or estate decision applies an external control baseline, [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) binds its exact authority, revision, system/data boundary, assessment method, and evidence to this lifecycle rather than replacing SSDF or copying a catalogue into this principle.
+Durable rules for building software with fewer defects and responding when defects ship. Carries [Core Proposition 7](../../ENGINEERING.md#7-protect-proportionately-to-risk) (Protect Proportionately To Risk) into organisational practice. Maps conceptually to NIST SSDF practice groups Prepare (PO), Protect (PS), Produce (PW), and Respond (RV)—see [NIST SP 800-218](https://csrc.nist.gov/publications/detail/sp/800-218/final). When AI participates in delivery, [AI-Native Software Development Lifecycle](../patterns/ai-native-software-development-lifecycle.md) composes these practices into evidence-backed transition gates; it does not replace them. When a law, contract, or estate decision applies an external control baseline, [Revision-Pinned External Control Profiles](../patterns/revision-pinned-control-profiles.md) binds its exact authority, revision, system/data boundary, assessment method, and evidence to this lifecycle rather than replacing SSDF or copying a catalogue into this principle.
 
 ### SSDF Practice Groups (Inline Summary)
 
 | Group | NIST intent (compressed) | Where this library goes deeper |
 | --- | --- | --- |
-| **PO — Prepare** | People, process, org risk, supply-chain awareness | §4 training; [dependencies-supply-chain.md](dependencies-supply-chain.md); [timeless-principles-and-tooling.md](timeless-principles-and-tooling.md) §6 |
-| **PS — Protect** | Harden environments, tools, and pipelines against tampering | [build.md](build.md), [configuration-and-secrets.md](configuration-and-secrets.md), CI least privilege |
+| **PO — Prepare** | People, process, org risk, supply-chain awareness, secure development environments (PO.5) | §4 training; [dependencies-supply-chain.md](dependencies-supply-chain.md); [timeless-principles-and-tooling.md](timeless-principles-and-tooling.md) §7 |
+| **PS — Protect** | Protect all components of the software from tampering and unauthorised access | [build.md](build.md), [configuration-and-secrets.md](configuration-and-secrets.md), CI least privilege |
 | **PW — Produce** | Secure design, code review, reuse, third-party use | §§1–2; [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md); [testing-strategy.md](testing-strategy.md) |
 | **RV — Respond** | Identify, analyze, disclose vulnerabilities in released software — including root cause that may require architecture change, not only a patch | §§3, 3.1; [dependencies-supply-chain.md](dependencies-supply-chain.md) §7; [incident-lifecycle-and-on-call-operations.md](../patterns/incident-lifecycle-and-on-call-operations.md) §9; coordinated disclosure refs |
 
@@ -35,7 +35,7 @@ Full control text remains NIST’s publication—this table is a navigation aid,
 
 ## 3. Vulnerability Response (RV)
 
-- Ingest advisories (ecosystem, SCA, researcher reports) with severity and SLA to patch or mitigate—example merge targets live in [dependencies-supply-chain.md](dependencies-supply-chain.md) §2; align estate policy to one published table (adjust numbers by sector, exposure, and regulator—do not treat the library’s examples as universal law).
+- Ingest advisories (ecosystem, SCA, researcher reports) with severity and SLA to patch or mitigate—example targets live in [dependencies-supply-chain.md](dependencies-supply-chain.md) §2; align estate policy to one published table (adjust numbers by sector, exposure, and regulator—do not treat the library’s examples as universal law).
 - **Exploit-signal triage** — incorporate machine-readable sources your estate trusts (for example [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) for known exploited issues; [FIRST EPSS](https://www.first.org/epss/) as a prioritisation input alongside asset exposure and reachability). Known exploited findings typically outrank generic CVSS-only backlog ordering.
 - **Coordinated disclosure** — protect users: prepare fixes or mitigations before public detail when possible; credit researchers per policy.
 - Customer and operator comms for exploitable issues in shipped software—template comms in runbooks.

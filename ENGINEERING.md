@@ -13,8 +13,8 @@ The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY**, w
 - **MUST/MUST NOT** — required to prevent unacceptable harm or preserve an activated contract, authority, or interoperability boundary.
 - **SHOULD/SHOULD NOT** — the portable default; deviation requires understanding the consequences and recording a reason when material.
 - **MAY** — a recognised option, not a requirement.
-- **Contextual guidance** — requires an explicit trade-off; it is not an additional RFC keyword.
-- **Example** — illustrates one implementation and is non-normative.
+- **CONTEXT-DEPENDENT** (contextual guidance) — requires an explicit trade-off; it is not an additional RFC keyword.
+- **EXAMPLE** — illustrates one implementation and is non-normative.
 
 Applicability and exception mechanics are defined in [Normative Language, Applicability, And Exceptions](doctrine/patterns/normative-language-applicability-and-exceptions.md). An external law, contract, regulator, or policy can impose stricter requirements than this library; this library cannot waive them.
 

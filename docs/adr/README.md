@@ -78,6 +78,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0055](0055-add-profile-gated-regulatory-reporting-clocks.md) | Accepted | 2026-11-18 | Add profile-gated regulatory reporting clocks to vulnerability response, with Cyber Resilience Act Article 14 as the worked example |
 | [0056](0056-cite-the-owasp-llm-top-10-2026-edition.md) | Accepted | 2026-11-18 | Cite the OWASP LLM Top 10 2026 edition; identifiers always carry the edition year; no control changes |
 | [0057](0057-close-owner-gaps-from-implementation-batch-3.md) | Accepted | 2026-11-18 | Close owner gaps from implementation batch 3: workload runtime shape, deploy-time configuration, infrastructure plans and drift, maintenance windows, and rollback in declared-state estates |
+| [0058](0058-sharpen-four-rules-after-the-november-2026-review.md) | Accepted | 2026-11-18 | Sharpen four rules after the November 2026 review: graceful stop keeps serving until routing stops, expand and contract backfills before readers switch, provenance comes from the build platform, and delivery metrics describe one service and its team |
 
 ## Candidate Considered But Not Recorded
 

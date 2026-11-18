@@ -74,7 +74,7 @@ A newly admitted citation supporting a typed claim MUST record its **class**, it
 
 - **[Revision-pinned control profiles](revision-pinned-control-profiles.md) take precedence for profile-carried sources.** Where a cited document is also a pinned control-profile baseline, supersession fires the profile pattern's migration machinery and the citation record points at the profile entry — no second pin is opened. This pattern's `deviation` field generalises the profile pattern's divergence handling to non-profile citations; it does not replace it.
 - **Promotion is re-admission** at the higher floor — [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md) §2 carries the wiring: re-fetch and re-verify (content drift), re-grade, rolling→pinned, publisher-status check, sub-floor exceptions called out in the promotion review.
-- **Source events are sweep-anchored** — lifecycle §8 carries the reference-status leg and the event table: rescinded/disavowed sources immediate on discovery; events on MUST-supporting sources prioritised at the next sweep; calendar latency only where an estate names monitoring tooling and an owner. A Superseded doctrine file keeps its pinned citations untouched (frozen history).
+- **Source events are sweep-anchored** — lifecycle §8 carries the reference-status leg and the source-event rules: rescinded/disavowed sources immediate on discovery; events on MUST-supporting sources prioritised at the next sweep; calendar latency only where an estate names monitoring tooling and an owner. A Superseded doctrine file keeps its pinned citations untouched (frozen history).
 
 ## 8. Audits And Failure Modes
 

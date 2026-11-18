@@ -27,7 +27,7 @@ For the shape of a production deployment on either kind of runtime, start with [
 ## 3. Same Discipline Regardless Of Runtime
 
 - Images stay minimal, non-root by default, scanned in CI (aligned with [dependencies-supply-chain.md](dependencies-supply-chain.md) and image policy in [kubernetes-platform-security.md](kubernetes-platform-security.md)).
-- Secrets are not baked into images; prefer short-lived credentials and workload identity where the platform supports it.
+- Secrets are not baked into images. Workloads use short-lived workload identity by default where the target accepts it, with a stored secret only as the registered fallback ([zero-trust-and-workload-identity.md](zero-trust-and-workload-identity.md) §2).
 - Observability and contracts do not change—only the plumbing does.
 
 ---

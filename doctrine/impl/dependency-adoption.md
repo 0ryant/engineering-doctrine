@@ -53,7 +53,7 @@ These summarise the canonical owners below, including their applicability and ex
 
 ### Container Images
 
-Verify the base-image digest before pull in security-sensitive pipelines, and keep images minimal, non-root by default, and scanned in CI. Sign images you build, keyless through the pipeline's short-lived identity where supported, and verify the signature at deploy against the identity and issuer permitted to sign, checking provenance against the expected builder and source where it is used. Attach the SBOM to the image digest. On container orchestration platforms, image policy allows only trusted registries, and admission validates signed images where adopted.
+Verify the base-image digest before pull in security-sensitive pipelines, and keep images minimal, non-root by default, and scanned in CI. Images shipped externally or deployed to production are normally signed, keyless through the pipeline's short-lived identity where supported, and the signature is verified at deploy against the identity and issuer permitted to sign, with provenance checked against the expected builder and source where it is used. Attach the SBOM to the image digest. On container orchestration platforms, image policy allows only trusted registries, and admission validates signed images where adopted.
 
 ### AI-Proposed Packages
 

@@ -99,7 +99,7 @@ One line on what each file says lives in [tldr-principles-and-mvp.md](tldr-princ
 - [patterns/gitops-and-declarative-operations.md](patterns/gitops-and-declarative-operations.md) — **GitOps** (declarative desired state, **reconciliation**, **drift**, **secrets** boundaries); touches build, **SSOT**, **merge** path, collaboration
 - [patterns/build-surface-model.md](patterns/build-surface-model.md)
 - [patterns/trunk-workflow.md](patterns/trunk-workflow.md)
-- [patterns/feature-flag-governance.md](patterns/feature-flag-governance.md) — **feature-flag governance**: flag taxonomy, lifetimes, the full lifecycle state machine with every legal and illegal transition, progressive delivery, cleanup; supersedes feature-flag-lifecycle.md (deprecating at the next tag, [ADR 0045](../docs/adr/0045-execute-the-first-lifecycle-sweep.md))
+- [patterns/feature-flag-governance.md](patterns/feature-flag-governance.md) — **feature-flag governance**: flag taxonomy, lifetimes, the full lifecycle state machine with every legal and illegal transition, progressive delivery, cleanup; supersedes feature-flag-lifecycle.md (deprecated since v0.5.0, [ADR 0045](../docs/adr/0045-execute-the-first-lifecycle-sweep.md))
 - [patterns/message-channel-operations.md](patterns/message-channel-operations.md)
 - [patterns/adoption-playbook.md](patterns/adoption-playbook.md)
 - [patterns/example-order-jetstream-workflow.md](patterns/example-order-jetstream-workflow.md) — example order FSM + JetStream (fiction)
@@ -156,8 +156,8 @@ One line on what each file says lives in [tldr-principles-and-mvp.md](tldr-princ
 - [tooling/estates/TEMPLATE.md](tooling/estates/TEMPLATE.md) — scaffold for a new estate
 - [tooling/estates/minimum-viable-doctrine.template.md](tooling/estates/minimum-viable-doctrine.template.md) — **one-page** team pitch (5–7 principles + links)
 - [tooling/estates/azure-container-runtimes.md](tooling/estates/azure-container-runtimes.md) — **example** Azure mapping only
-- [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md) — **stub** (no product picks)
-- [tooling/estates/gcp-container-runtimes.md](tooling/estates/gcp-container-runtimes.md) — **stub** (no product picks)
+- [tooling/estates/aws-container-runtimes.md](tooling/estates/aws-container-runtimes.md) — **deprecated since v0.5.0**; start from TEMPLATE.md
+- [tooling/estates/gcp-container-runtimes.md](tooling/estates/gcp-container-runtimes.md) — **deprecated since v0.5.0**; start from TEMPLATE.md
 
 ### Reference index
 
@@ -196,6 +196,7 @@ Use these records to understand source grounding, decisions, audits, and known g
 - [evolution/research-cryptographic-inventory-and-agility-2026-11.md](evolution/research-cryptographic-inventory-and-agility-2026-11.md) — post-quantum transition sources, inventory and agility; basis for ADR 0054
 - [evolution/research-regulatory-reporting-clocks-2026-11.md](evolution/research-regulatory-reporting-clocks-2026-11.md) — Cyber Resilience Act reporting deadlines and a profile-gated hook; basis for ADR 0055
 - [evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md](evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md) — OWASP LLM Top 10 2026 entry mapping from 2025; basis for ADR 0056
+- [evolution/review-full-doctrine-2026-11.md](evolution/review-full-doctrine-2026-11.md) — full review of the doctrine by twelve model reviewers: verdict, grades per file, most consequential findings, corrections applied, and decisions needed; evidence in the [findings register](evolution/review-full-doctrine-2026-11-findings.json)
 - [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) — release identity, withdrawal and semantic-review options with model scenario checks; decisions remain pending
 - [evolution/scorecard-four-reader-lenses-2026-09.md](evolution/scorecard-four-reader-lenses-2026-09.md) — the library scored through four reader lenses (engineering manager, CIO, security engineer, non-technical sponsor) with file-cited scores, per-lens verdicts, and a seven-row fix list; model self-review
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) — MCP 2026-07-28 spec cross-check — §7 baseline verified against primary sources; deprecation clocks, MRTR/state-handle security, extensions gap map

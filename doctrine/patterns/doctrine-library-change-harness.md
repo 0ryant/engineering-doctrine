@@ -98,6 +98,7 @@ Run through this table before opening the PR.
 | --- | --- |
 | [doctrine/SITEMAP.md](../SITEMAP.md) | **Always** after add/remove/rename of Markdown under `doctrine/`: run `./scripts/generate-doctrine-sitemap.sh` from the repo root. |
 | [glossary.md](../glossary.md) | New **acronyms**, product names, or internal terms that appear in multiple docs. |
+| [SEMANTIC_INDEX.md](../SEMANTIC_INDEX.md) | A **first-class** doctrine file is added, removed, or re-scoped: add or update its task route. |
 | [REFERENCES.md](../REFERENCES.md) | New **first-class** doctrine file, new **standards** citations, or new **Internal doctrine map** row for repo navigability. |
 | [doctrine/README.md](../README.md) | **Start Here**, section lists, or topic hubs when a doc should be **discoverable** from the entry point. |
 | [patterns/how-to-read-this-doctrine.md](how-to-read-this-doctrine.md) | If reading order or “where to look for X” changes materially. |

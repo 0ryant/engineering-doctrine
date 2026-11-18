@@ -165,6 +165,8 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | AWS Prescriptive Guidance — Terraform backend best practices (S5) | https://docs.aws.amazon.com/prescriptive-guidance/latest/terraform-aws-provider-best-practices/backend.html |
 | Pulumi — Detecting and reconciling drift (S5) | https://www.pulumi.com/docs/iac/operations/stack-management/drift/ |
 | Kief Morris — Using Pipelines to Manage Environments (S6; 2017) | https://infrastructure-as-code.com/posts/environment-pipeline.html |
+| Kubernetes documentation — Termination of Pods (S5) | https://kubernetes.io/docs/concepts/workloads/pods/pod-termination/ |
+| Stripe — Online migrations at scale (S6; 2017) | https://stripe.com/blog/online-migrations |
 | SLSA (supply-chain levels) | https://slsa.dev/ |
 | SLSA Getting Started | https://slsa.dev/get-started |
 | SLSA v1.2 Build track — levels (S4; Approved; accessed 2026-11-18) | https://slsa.dev/spec/v1.2/build-track-basics |
@@ -278,7 +280,6 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | incident.io — AI SRE (hypothesis-driven investigations; self-healing drift-masking anti-pattern; vendor observation) | https://incident.io/ai-sre |
 | Datadog — Bits AI SRE (validated/invalidated/inconclusive hypothesis classification; vendor observation) | https://www.datadoghq.com/blog/bits-ai-sre/ |
 | Pillar Security — “Rules File Backdoor” (invisible-Unicode instruction injection in agent rules files, 2025-03) | https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents |
-| AWS Security Bulletin AWS-2025-019 — prompt-injection wiper in Amazon Q Developer VS Code extension | https://aws.amazon.com/security/security-bulletins/AWS-2025-019 |
 | Aikido — hallucinated package propagated via unreviewed AI-generated skill files (2026) | https://www.aikido.dev/blog/agent-skills-spreading-hallucinated-npx-commands |
 | GitHub Actions — secure-use reference (CODEOWNERS gate on workflow files; precedent for automation-defining files) | https://docs.github.com/en/actions/reference/security/secure-use |
 | MINJA — memory injection through query interaction (arXiv 2503.03704) | https://arxiv.org/abs/2503.03704 |
@@ -504,6 +505,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-cryptographic-inventory-and-agility-2026-11.md](evolution/research-cryptographic-inventory-and-agility-2026-11.md) | Source-graded basis for ADR 0054: post-quantum transition, cryptographic inventory and agility |
 | [evolution/research-regulatory-reporting-clocks-2026-11.md](evolution/research-regulatory-reporting-clocks-2026-11.md) | Source-graded basis for ADR 0055: regulatory reporting clocks, with the Cyber Resilience Act as the worked example |
 | [evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md](evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md) | Source basis for ADR 0056: OWASP LLM Top 10 2026 entries and the mapping from 2025 |
+| [evolution/review-full-doctrine-2026-11.md](evolution/review-full-doctrine-2026-11.md) | Full doctrine review, November 2026: consistency and substance findings, grades, and a recommended order of work; non-normative |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |

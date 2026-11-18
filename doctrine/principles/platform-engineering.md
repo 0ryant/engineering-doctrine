@@ -4,7 +4,7 @@ Durable rules for **building and operating internal developer platforms** that r
 
 Platform engineering is an intentional discipline rooted in [Team Topologies](https://teamtopologies.com/book) thinking. It is not "DevOps renamed", not "a shared ops team", and not "self-service for its own sake". The goal is deliberate reduction of extraneous cognitive complexity so stream-aligned teams can focus on their domain.
 
-Implementation guidance (Backstage, Port, specific IDP tooling) lives in [tooling](../tooling/). This file holds portable intent.
+Product choices (portal, catalogue, internal developer platform) belong in tooling or estate supplements. This file holds portable intent; the operating model, catalogue metadata, and exception record are in [Platform As Product, Golden Paths, And Service Catalog](../patterns/platform-as-product-and-golden-paths.md).
 
 ---
 
@@ -79,7 +79,7 @@ Build the minimum platform that genuinely reduces cognitive load. Resist prematu
 Golden paths are the preferred, low-friction routes to common outcomes. They are well-supported and well-documented — not mandatory rails.
 
 - A golden path must include: **a working example**, **a one-command bootstrap or template**, **docs for common failure modes**, and **an escalation path**.
-- Publish golden paths through a **service catalogue or developer portal** (Backstage, Port, or equivalent). The catalogue is the platform's storefront — keep it current or it misleads.
+- Publish golden paths through a **developer portal or platform offerings index**. It is the platform's storefront — keep it current or it misleads. The service catalogue, in the system-of-record sense, is defined in the pattern's §4.
 - Golden paths should be **composable**: a team that needs 80% of a standard path and 20% customisation should be able to do so without forking the entire template.
 - Track **path adoption** and **deviation reasons**. High deviation signals either path friction or legitimate innovation — distinguish between them.
 - Deprecate golden paths that are no longer maintained rather than leaving them as stale traps.
@@ -98,7 +98,7 @@ Cognitive load is the primary outcome the platform must reduce. Measure it delib
   - **Developer productivity surveys** (SPACE framework dimensions: Satisfaction, Performance, Activity, Communication, Efficiency) — see [measurement and DORA](measurement-and-dora.md).
   - **Time-on-undifferentiated-work** ratio (hours on toil vs product-domain work — target: <20% toil).
   - **Onboarding time** (time from day-0 to first PR merged and deployed to staging — target: ≤1 day with golden path).
-  - **DORA Four Keys** of platform consumers (deployment frequency, lead time, MTTR, change failure rate).
+  - **DORA delivery metrics** of platform consumers, as defined in [measurement-and-dora.md](measurement-and-dora.md) §1.
 - Report cognitive load metrics to platform customers (stream-aligned team leads) on the same cadence as uptime metrics.
 
 **Why:** Platform teams that do not measure consumer outcomes optimise for the wrong thing — shipping platform features that do not reduce team pain.

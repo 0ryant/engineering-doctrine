@@ -37,7 +37,7 @@ Payload contracts live in repo `contracts/events/` (JSON Schema); envelope per [
 | --- | --- | --- |
 | Subject namespace | `orders.>` | Domain prefix; `>` captures hierarchy |
 | Stream name | `ORDERS` | JetStream stream over `orders.>` |
-| Retention | `limits` or `interest` | Team choice; document RPO for replay |
+| Retention | `limits` or `interest` | Team choice. `interest` removes a message once every interested consumer has acknowledged it, so replay needs `limits`; document the replay window |
 | Durable consumer (fulfilment) | `fulfilment-worker` | Pull, **AckExplicit**, **MaxDeliver** set |
 
 **Subject examples:**
@@ -45,13 +45,13 @@ Payload contracts live in repo `contracts/events/` (JSON Schema); envelope per [
 - `orders.submitted` — published when transition to `submitted` commits  
 - `orders.paid` — when `paid` commits  
 
-Routing can be one subject per `type` or a single stream subject with filtering on `ce_type` in the consumer—pick one convention per estate and document it.
+Routing can be one subject per `type` or a single stream subject with filtering on the CloudEvents `type` attribute in the consumer—pick one convention per estate and document it.
 
 ---
 
 ## 4. Consumer Discipline (Sketch)
 
-- **Idempotency:** persist the processed `ce_source` + `ce_id` pair (or idempotent DB write on order id + transition).
+- **Idempotency:** persist the processed CloudEvents `source` + `id` pair (or idempotent DB write on order id + transition).
 - **Poison:** after **MaxDeliver**, message remains in stream; subscribe to advisories or copy to a **poison** stream `ORDERS_POISON` with an operator runbook ([message-channel-operations.md](message-channel-operations.md)).
 - **Replay:** time- or seq-based replay documented; warn that **fulfilled** may be seen again—consumer must be safe.
 

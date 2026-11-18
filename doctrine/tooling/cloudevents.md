@@ -2,7 +2,7 @@
 
 Illustrative baseline for implementing [../principles/event-contracts.md](../principles/event-contracts.md). The **principle** is a versioned envelope + payload contract; the **spec revision** and bindings you standardise on are tooling—see [../principles/timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md).
 
-If a platform mandates a different wire format, document the exception—but **preserve** explicit payload schemas and stable event types at boundaries.
+An equivalent envelope is valid where it preserves the required semantics and its schema, identity scope, delivery behaviour, and mapping boundary are recorded ([event-contracts.md](../principles/event-contracts.md) §§2, 7). Either way, **preserve** explicit payload schemas and stable event types at boundaries.
 
 ---
 

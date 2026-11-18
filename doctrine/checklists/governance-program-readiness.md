@@ -10,7 +10,7 @@ Use when an **organisation** (not only a single repo) is standing up or reviewin
 [ ] Policy references external baselines in use (e.g. NIST CSF 2.0 GV.SC, NIST SSDF, sector regulator) with version or date
 [ ] Every binding or voluntarily adopted external profile records its authority source, exact revision/update, effective date, accountable interpreter, and review trigger
 [ ] Profiles that impose vulnerability or incident reporting record triggers, clock start, deadlines, recipient, channel, and authorised submitter; runbooks carry the same and the path has been exercised (principles/secure-development-lifecycle.md §3.1)
-[ ] Exception / risk-acceptance workflow exists: scope, justification, expiry, compensating control, approver role
+[ ] Exception / risk-acceptance workflow exists: scope, justification, expiry, compensating control, approver role (full record: patterns/normative-language-applicability-and-exceptions.md §5)
 ```
 
 ## Inventory And Enforcement
@@ -30,7 +30,7 @@ Use when an **organisation** (not only a single repo) is standing up or reviewin
 [ ] Evidence destinations (SARIF, SBOM, attestations, logs) are organisation-controlled with documented retention
 [ ] Audit pack composition documented (what links + hashes auditors receive)
 [ ] Requirement evidence is bound to the profile revision, system boundary, observation date, assessor/method, depth/coverage, result, and exception record
-[ ] SBOM / provenance generation path defined where contracts or regulators expect it (follow active CISA / SPDX / CycloneDX guidance)
+[ ] SBOM and provenance generation path defined for the artefacts principles/dependencies-supply-chain.md §§3–4 require or recommend them for (follow the active minimum-elements baseline)
 ```
 
 ## Metrics And Calibration

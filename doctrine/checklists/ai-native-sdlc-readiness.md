@@ -52,7 +52,7 @@ Apply when the model/agent invokes tools, mutates persistent state, receives sen
 - [ ] Time/token/compute/cost limits are enforced outside the context window — by the contract where represented or by a versioned host/orchestrator policy — and are in place from the first governed run; prompt wording alone is not enforcement.
 - [ ] Verification binds through a mechanism outside the model's own self-report (harness-run VERIFY, test suite, or human approval); in-context self-checks alone are not verification. Standing/scheduled triggers are earned by demonstrated recurrence and a verified track record, and scheduling does not move the autonomy slider.
 - [ ] Stop, expiry, escalation, cancellation, and receipt behaviour are explicit.
-- [ ] Agent work occurs away from protected branches and production authority.
+- [ ] Agents producing a candidate work away from protected branches and standing production authority (N/A for rostered agent responders, which follow the incident pattern §10).
 - [ ] Agent-produced executable content runs in an isolated preview/test environment without standing production credentials.
 - [ ] Agent-writable persistent memory declares its admission mode, retention/TTL defaults, an operator forget path covering derived artifacts, sponsor-bound relinquishment at decommission, and quarantine-and-rebuild recovery; vendor-managed stores without write-side or snapshot hooks record the compensating control (persistence disabled, or scope minimisation plus scheduled review-and-purge) per [agent-memory lifecycle](../principles/ai-ml-systems.md).
 - [ ] Verifier-pack results remain bounded execution evidence, not whole-system correctness or approval.

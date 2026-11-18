@@ -2,7 +2,7 @@
 
 Use this pattern when several teams share runtime, delivery, and security baselines—so “the platform” must be discoverable, self-serve by default, and governed without becoming a ticket bottleneck.
 
-For what a service needs from first commit to operation, with or without a golden path, start with [New Service](../impl/new-service.md).
+For what a service needs from first commit to operation, with or without a golden path, start with [New Service](../impl/new-service.md). The principle behind this pattern is [Platform Engineering](../principles/platform-engineering.md).
 
 This is portable doctrine: it states outcomes and metadata contracts between product teams and platform/enabling teams. It does not require a named developer portal, service-catalog product, or CNCF project. Map these ideas to your estate (wiki, Git repo index, internal marketplace, or a catalog tool).
 

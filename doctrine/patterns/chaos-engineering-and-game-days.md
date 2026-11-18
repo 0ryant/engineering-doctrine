@@ -1,6 +1,6 @@
 # Chaos Engineering And Game Days (Pattern)
 
-Companion to [reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) §§5–6. Principle files state *why*; this pattern gives a repeatable shape for exercises without mandating a vendor (Gremlin, Litmus, home-grown scripts).
+Companion to [reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) §5. Principle files state *why*; this pattern gives a repeatable shape for exercises without mandating a vendor (Gremlin, Litmus, home-grown scripts).
 
 ---
 

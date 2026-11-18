@@ -33,9 +33,9 @@ Confirm options against current NATS/JetStream docs (APIs and defaults evolve).
 
 ## CloudEvents On NATS
 
-- Prefer the **[NATS protocol binding for CloudEvents](https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/nats-protocol-binding.md)** when interop matters: **structured** mode (JSON event in body) or **binary** mode (attributes in NATS headers on server **2.2+**, payload = `data`).
+- Prefer the **[NATS protocol binding for CloudEvents](https://github.com/cloudevents/spec/blob/main/cloudevents/bindings/nats-protocol-binding.md)** when interop matters: **structured** mode (JSON event in body). The released binding (v1.0.2) defines structured mode only; **binary** mode (attributes in NATS headers prefixed `ce-`, payload = `data`) is in the unreleased 1.0.3 text, so check the binding's current status before relying on it.
 - If you intentionally deviate, document the mapping; still set `id`, `type`, `source`, and `time` consistently so traces align with [cloudevents.md](cloudevents.md).
-- Use **`subject`** for routing; align **`ce_subject`** (or payload field) with partition **entity id** when ordering per entity matters—see [../principles/event-contracts.md](../principles/event-contracts.md).
+- Use **`subject`** for routing; align the CloudEvents **`subject`** attribute (or payload field) with partition **entity id** when ordering per entity matters—see [../principles/event-contracts.md](../principles/event-contracts.md).
 
 ---
 
@@ -44,7 +44,7 @@ Confirm options against current NATS/JetStream docs (APIs and defaults evolve).
 - **At-least-once** — configure **MaxAckPending**, **MaxDeliver**, and **AckWait** / **Backoff** per current [consumer](https://docs.nats.io/nats-concepts/jetstream/consumers) docs. Note: **Backoff** applies to ack **timeout** redelivery; **NAK** is immediate unless the client supports **NAK with delay**—design retries accordingly.
 - When **MaxDeliver** is exhausted, messages typically **remain in the stream** until handled (e.g. terminal ack, delete, or operator process)—plan **poison** handling explicitly; JetStream has no single “DLQ checkbox”; patterns use **advisories**, **mirror streams**, or app-level dead letters. Align with [message-channel-operations.md](../patterns/message-channel-operations.md).
 - **Replay** — by sequence or time; document impact on **idempotent** consumers and workflow state—see [state-machines-and-workflows.md](../principles/state-machines-and-workflows.md).
-- **Observability** — export stream **lag**, **pending**, **redelivery** counts; tie **`ce_id`** to traces (OpenTelemetry) where used.
+- **Observability** — export stream **lag**, **pending**, **redelivery** counts; tie the CloudEvents **`id`** to traces (OpenTelemetry) where used.
 
 ---
 

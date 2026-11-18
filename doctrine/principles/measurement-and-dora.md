@@ -1,6 +1,6 @@
 # Measurement: Delivery Performance And DORA
 
-Link **practice** to **outcomes**. This principle sits beside [reliability-slo-incidents.md](reliability-slo-incidents.md): SLOs describe **a service’s** promises to users; **DORA-style** metrics describe **how the organisation delivers** change. Both reduce arguments from taste.
+Link **practice** to **outcomes**. This principle sits beside [reliability-slo-incidents.md](reliability-slo-incidents.md): SLOs describe **a service’s** promises to users; **DORA-style** metrics describe how **one application or service, and the team that owns it,** delivers change. Both reduce arguments from taste.
 
 ---
 
@@ -10,13 +10,13 @@ DORA's current model uses five software-delivery metrics across throughput and i
 
 | Metric | Plain meaning |
 | --- | --- |
-| **Deployment frequency** | How often you ship **safely** to production |
+| **Deployment frequency** | How often you deploy to production |
 | **Change lead time** | Time from commit to production for a typical change |
 | **Failed deployment recovery time** | How long to recover from a deployment that fails and requires intervention |
 | **Change fail rate** | Share of deployments requiring immediate intervention such as rollback or hotfix |
 | **Deployment rework rate** | Share of deployments that are unplanned work caused by a production incident |
 
-Exact definitions evolve with your **value stream** tooling; record **your** definitions in an internal doc and **keep them stable** quarter-to-quarter so trends mean something.
+DORA applies the metrics to one application or service at a time and cautions against comparing unlike applications ([ADR 0058](../../docs/adr/0058-sharpen-four-rules-after-the-november-2026-review.md)). Exact definitions evolve with your **value stream** tooling; record **your** definitions in an internal doc and **keep them stable** quarter-to-quarter so trends mean something.
 
 **Why:** These metrics turn “we follow the doctrine” into “delivery is getting safer/faster—or not.”
 

@@ -19,4 +19,4 @@ Append-and-annotate only.
 | --- | --- | --- |
 | *(none yet)* | | |
 
-An empty active table is a meaningful statement: every typed claim currently meets its evidence floor.
+An empty active table is a meaningful statement: no new or promoted typed claim is currently admitted below its evidence floor. Older claims are graded by the sweeps.

@@ -26,7 +26,7 @@ Prefer **NATS JetStream** when the org already standardised on it—see [nats-je
 | **Topic** | Named log of records; **partitions** provide parallelism and ordering scope. |
 | **Partition** | Ordered, append-only **slice** of a topic; **key** selects partition for per-key ordering. |
 | **Consumer group** | Co-operative consumers sharing partition assignment; **one** consumer reads each partition at a time. |
-| **Offset** | Position in a partition; **committed** offsets define **at-least-once** progress. |
+| **Offset** | Position in a partition. Committed after the effect is durable, offsets give **at-least-once** progress; committed before processing, **at-most-once** ([message-channel-operations.md](../patterns/message-channel-operations.md), Acknowledgement And Commit Order). |
 | **Broker** | Kafka server; cluster **replication** and **ISR** semantics are **estate** configuration. |
 
 Confirm options against current [Kafka documentation](https://kafka.apache.org/documentation/) (APIs and defaults evolve).
@@ -47,7 +47,7 @@ Confirm options against current [Kafka documentation](https://kafka.apache.org/d
 - **Retention and compaction** — set **retention.ms** / **compact** policy per **topic** class (event log vs command queue); **infinite** retention has **cost** and **GDPR** implications for **PII** payloads—align with [privacy-and-data-governance.md](../principles/privacy-and-data-governance.md).
 - **Producers** — configure **acks** and **idempotence** (where supported) for **critical** writes; document **failure** modes (partial ack, duplicate publish) in the service **runbook**.
 - **Dead letters** — use a **dedicated** DLQ topic or **quarantine** stream plus **replay** procedure; **not** only log-and-drop. Align with [message-channel-operations.md](../patterns/message-channel-operations.md).
-- **Exactly-once** — broker and client **EOS** is **bounded** by configuration and **side effects**; for **money** paths, assume **at-least-once** + **idempotent** consumers unless **you** have proven end-to-end semantics—see [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md).
+- **Exactly-once** — broker and client **EOS** is **bounded** by configuration and **side effects**; assume **at-least-once** + duplicate handling at the controlling boundary unless **you** have proven end-to-end semantics; **money** paths are where a duplicate is material—see [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md).
 - **AuthZ / TLS** — **SASL** / **mTLS** and **ACLs** on topics are **estate** choices; record the **pattern** in `tooling/estates/`—see [zero-trust-and-workload-identity.md](../principles/zero-trust-and-workload-identity.md).
 
 ---

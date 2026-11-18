@@ -67,7 +67,7 @@ Keep unrelated changes in separate workspaces when that helps preserve unfinishe
 
 ### Incomplete Features
 
-Integrate small compatible slices instead of holding an entire feature off trunk. Where flags apply, use safe defaults, an owner, and a removal date. Enabling a flag is a rollout decision, not a merge strategy. A flag does not make destructive schema or infrastructure changes reversible; follow the relevant migration and recovery doctrine.
+Integrate small compatible slices instead of holding an entire feature off trunk. Where flags apply, use safe defaults, an owner, and a removal date or the review cadence the flag's type sets. Enabling a flag is a rollout decision, not a merge strategy. A flag does not make destructive schema or infrastructure changes reversible; follow the relevant migration and recovery doctrine.
 
 ### Urgent Patch While Trunk Has Advanced
 

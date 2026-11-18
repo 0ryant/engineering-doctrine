@@ -8,7 +8,7 @@ Use when an organisation or team is **adopting, expanding, or reviewing** AI use
 [ ] AI system inventory exists and includes embedded / vendor / copilot-class AI, not only in-house builds
 [ ] Every entry has a named first-line owner (role + escalation path), capability tier (A–D) AND materiality tier
 [ ] High-materiality entries map to the business services they support; controls scale with max(capability, materiality)
-[ ] Inventory reconciled on material change and at least quarterly; production AI absent from it is treated as a finding
+[ ] Inventory reconciled on material change and at least quarterly; production AI above minimal materiality absent from it is treated as a finding
 [ ] Sanctioned path for registering new AI use is cheap enough that teams actually use it (shadow-AI posture: no-blame discovery)
 [ ] Agent financial/transaction authority is default-deny; any grant is per-agent and inventory-recorded (grant record, approver, session caps, expiry, dedicated principal)
 ```
@@ -17,7 +17,7 @@ Use when an organisation or team is **adopting, expanding, or reviewing** AI use
 
 ```text
 [ ] First-line owner is accountable for purpose, data inputs, acceptable use, and human-oversight mode per system
-[ ] High-materiality systems get pre-launch and on-material-change review by a challenger with incentives, competence, and influence to force change (not the building team)
+[ ] High-materiality systems get pre-launch and on-material-change review by an objective expert with sufficient independence, organisational standing, and influence to force change (not the building team)
 [ ] Person-affected automation has: designed human fallback (unavailable / low-confidence / contested), overseer override authority + affordance, and a contest path reaching a human who can reverse the decision
 [ ] Per-decision logging is sufficient to reconstruct and explain a contested decision (tested, not assumed)
 ```
@@ -29,7 +29,7 @@ Use when an organisation or team is **adopting, expanding, or reviewing** AI use
 [ ] Person-affected outputs: fairness/bias evaluation before launch and on retrain or model swap; metric choice recorded and justified per system
 [ ] Production models: continuous drift monitoring (input distribution + output quality) with alert thresholds and a retrain/rollback path
 [ ] GenAI: prompt-injection (direct + indirect) tests; jailbreak/guardrail-bypass red-team where safety or policy constraints exist
-[ ] Tier-D agents: agent-hijack / tool-flow-abuse evaluation is adaptive (attacker iterates), re-run on model, defence, or agent-surface change — static replay does not count
+[ ] Tier-D agents, where an injection or hijack defence claim is relied on at a blocking tier (testing-strategy.md §5): agent-hijack / tool-flow-abuse evaluation is adaptive (attacker iterates), re-run on model, defence, or agent-surface change — static replay does not count
 [ ] GenAI feeding downstream systems: output validation (schema, sanitisation, groundedness); leakage probing (system prompt, training/context data, cross-tenant)
 [ ] User-facing GenAI in EU AI Act scope (registered control profile): Art 50 transparency duties for the registered role verified before launch (disclosure UX / output marking for providers; notification / deepfake labelling for deployers)
 [ ] Identity-verification or fraud-detection surfaces re-tested against synthetic-media attacks (deepfake voice/video, GenAI phishing, synthetic identities) on a defined cadence, not once

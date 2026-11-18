@@ -50,7 +50,7 @@ owning doctrine so the skill cannot drift from it.
 | 1 | trunk-and-branch-hygiene | procedure | [trunk-workflow.md](../patterns/trunk-workflow.md), [collaboration.md](../principles/collaboration.md) |
 | 2 | build-readiness-assessment | assessment | [checklists/build-readiness.md](../checklists/build-readiness.md) via [build.md](../principles/build.md) |
 | 2 | release-readiness-assessment | assessment | [checklists/release-readiness.md](../checklists/release-readiness.md) via [semantic-versioning.md](../principles/semantic-versioning.md), [feature-flag-governance.md](../patterns/feature-flag-governance.md) |
-| 2 | platform-readiness-assessment | assessment | [checklists/platform-readiness.md](../checklists/platform-readiness.md) via [platform-engineering.md](../principles/platform-engineering.md) |
+| 2 | platform-readiness-assessment | assessment | [checklists/platform-readiness.md](../checklists/platform-readiness.md) via [reliability-slo-incidents.md](../principles/reliability-slo-incidents.md) and [observability.md](../principles/observability.md) |
 | 2 | collaboration-readiness-assessment | assessment | [checklists/collaboration-readiness.md](../checklists/collaboration-readiness.md) via [collaboration.md](../principles/collaboration.md) |
 | 2 | ai-adoption-readiness-assessment | assessment | [checklists/ai-adoption-readiness.md](../checklists/ai-adoption-readiness.md) via [ai-adoption-controls.md](../patterns/ai-adoption-controls.md) |
 | 2 | ai-native-sdlc-readiness-assessment | assessment | [checklists/ai-native-sdlc-readiness.md](../checklists/ai-native-sdlc-readiness.md) via [ai-native-software-development-lifecycle.md](../patterns/ai-native-software-development-lifecycle.md) |
