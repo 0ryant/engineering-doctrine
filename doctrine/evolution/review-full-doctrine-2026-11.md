@@ -255,7 +255,7 @@ Fifteen more corrections are held, not decided. Eight touch hash-pinned skills a
 The whole-library assessment and the domain reviews point the same way: subtract and correct before adding.
 
 1. **Decide ADRs 0046 and 0047**, then execute them: maintainer doctrine out of the consumer path, the AI-native lifecycle pattern collapsed, private vocabulary retired.
-2. **Freeze normative additions and tag a release** of what has landed since v0.5.0.
+2. **Freeze normative additions and tag a release** of what has landed since v0.5.0. (`v0.6.0` was tagged on 2026-11-18.)
 3. **Say at the front door whose rules these are and what they rest on**: the maintainer's operating experience, cited sources, and model-assisted drafting and checking.
 4. **Settle the disputed rules** in the table above: keep, sharpen, or change each. Four are redrafted in ADR 0058; nine are kept. Where a rule is kept against an objection, a line recording the experience behind it would answer the next reviewer.
 5. **Record the experience behind the rules that matter most.** A dated first-party account is evidence on the library's own scale. An independent review, starting with the supply-chain sections, would add a second.

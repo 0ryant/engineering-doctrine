@@ -1,7 +1,7 @@
 # v0.6.0 Readiness And Finding Reconciliation
 
 Date: 2026-09-19
-Status: Work in progress; not a release approval.
+Status: Closed 2026-11-18. `v0.6.0` was tagged that day before every criterion was met; the [plan note](post-v0.3.0-external-review-decisions-and-v0.4.0-plan-2026-07.md) grades them and retargets criteria 3, 4, 5, and 9 to `v0.7.0`. This note was never a release approval. Rows below stand as recorded on 2026-09-19 except where a later decision is named.
 Evidence class: Repository inspection, executable checks where named, and model
 review. No independent human cold-reader or domain review is claimed.
 
@@ -37,11 +37,11 @@ or “editorial follow-up”.
 | --- | --- | --- |
 | B1 | Resolved before this batch | `patterns/feature-flag-governance.md` §§3.2–3.3 permits recorded reversal and distinguishes rollback after removal; ADR 0045 supersedes the old pattern. |
 | B2 | Resolved at source before this batch | `tooling/observability.md` defines the four referenced burn-rate series and retains `job` labels. Runtime alert behaviour is not proved by source inspection. |
-| M1 | Open — owner consolidation | AI/ML §4 and AI adoption §2 both enumerate oversight duties; preserve their activation differences when selecting one owner. |
+| M1 | Partly decided in [ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md) (accepted 2026-11-18): activation scope aligned to the wider one. Previously open — owner consolidation | AI/ML §4 and AI adoption §2 both enumerate oversight duties; preserve their activation differences when selecting one owner. |
 | M2 | Open — owner consolidation | AI/ML §2.1 and AI adoption §1.1 duplicate materiality; preserve the capability-table clarification and impact-tolerance inheritance. |
 | M3 | Resolved in this batch | Financial inventory field already existed; separated its concatenated readiness prompt in `checklists/ai-adoption-readiness.md`. |
 | M4 | Resolved in this batch | Adaptive evaluation prompt already existed; separated the synthetic-media prompt from the preceding transparency item. |
-| M5 | Open — V41 | Cost §2 has untyped tag keys and spend thresholds; decide strength, applicability and estate-set examples rather than capitalising blindly. |
+| M5 | Partly decided in [ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md) (accepted 2026-11-18): one tag-key set. Typing remains open — V41 | Cost §2 has untyped tag keys and spend thresholds; decide strength, applicability and estate-set examples rather than capitalising blindly. |
 | M6 | Resolved in this batch | Separated the existing memory-lifecycle prompt in `checklists/ai-native-sdlc-readiness.md`. |
 | M7 | Resolved before this batch | Verifier kinds match the schema: eleven named kinds plus `custom`; direct-example checking is separate recurrence protection. |
 | M8 | Resolved before this batch | Run-contract top-level prose is count-free and agrees with the schema. |
@@ -53,12 +53,12 @@ or “editorial follow-up”.
 | M14 | Resolved before this batch | Replacement uses neutral metadata and an EXAMPLE shape, with migration mapping in §10. |
 | M15 | Resolved before this batch | Principle references point to existing umbrella propositions; V48 adds recurrence detection. |
 | M16 | Decided in [ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md) (accepted 2026-11-18); previously open — source/scope decision | [Pinned SLSA review](research-v060-source-maintenance-2026-09.md#m16-slsa-attribution--decision-remains-open) separates provenance level, cache isolation, hermeticity and reproducibility. Dependencies §4 remains unchanged pending the scope/strength decision; an L2 minimum does not itself contradict an additional stronger library requirement. |
-| M17 | Open — owner consolidation | Dependencies §2 and secure-development §3 differ on vulnerability triage; preserve first-party scope before routing to one owner. |
+| M17 | Decided in [ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md) (accepted 2026-11-18): dependencies §2 owns triage order and secure development §3 points to it. Previously open — owner consolidation | Dependencies §2 and secure-development §3 differ on vulnerability triage; preserve first-party scope before routing to one owner. |
 | M18 | Decided in [ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md) (accepted 2026-11-18); previously open — V41 | Dependencies §§3–5 need explicit SBOM, provenance and signing strength/scope, evidence and exception paths. The [official NTIA table is now verified](research-v060-source-maintenance-2026-09.md#m18-sbom-attribution--verified-table-decision-remains-open); correcting its attribution and dispositioning extra fields or a successor baseline remain final-phase work. |
 | M19 | Open — V41 | Configuration/secrets and audit logging contain untyped prohibition cores; preserve mechanisms as contextual choices. |
 | M20 | Resolved before this batch | PromQL moved from the principle to observability tooling. |
 | M21 | Resolved before this batch | Burn-rate guidance has production/SLO activation, low-traffic variance and EXAMPLE defaults. |
-| M22 | Open — owner consolidation | Reliability §5 and chaos §1 both carry safety bars; retain game-day intent and choose one detailed safety owner. |
+| M22 | Decided in [ADR 0059](../../docs/adr/0059-apply-three-constitution-rules-to-settled-inconsistencies.md) (accepted 2026-11-18): the chaos pattern owns the safety bar and reliability §5 keeps the intent. Previously open — owner consolidation | Reliability §5 and chaos §1 both carry safety bars; retain game-day intent and choose one detailed safety owner. |
 
 ## Every Minor Row
 
