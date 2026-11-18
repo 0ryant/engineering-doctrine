@@ -74,6 +74,19 @@ When a third-party service (payment API, identity provider, external model API) 
 
 ---
 
+## 8. Workload Runtime Shape
+
+Applies to production services. Where a managed platform provides one of these properties, the duty is to confirm and configure it, not to rebuild it ([container-runtime-choice.md](container-runtime-choice.md) §1).
+
+- **SHOULD: health signals the platform can act on.** A workload signals whether it is **alive** and whether it is **ready** for traffic as separate questions, and traffic is withheld until it is ready, including during slow start-up. Keep the checks cheap and local: a check that fails when a shared dependency is slow can remove every instance at once.
+- **SHOULD: graceful stop, and tolerance of abrupt stop.** On a termination signal a workload stops taking new work, finishes or returns in-flight work within the platform's grace period, and exits. It also tolerates being killed without notice, so correctness never depends on a clean shutdown.
+- **SHOULD (services with an availability objective, §1): redundancy matched to the objective.** Run more than one instance across the failure domains the platform offers, with enough capacity to lose one, and bound how many instances planned maintenance removes at once. A single instance is a legitimate, recorded choice where the objective allows downtime.
+- **SHOULD: declared resource needs.** A workload declares the compute and memory it needs and a memory bound, in the platform's terms, so it is scheduled against real capacity and cannot exhaust its neighbours ([performance-and-cost.md](performance-and-cost.md) §2). Whether to cap CPU is a platform policy choice.
+
+**Why:** without these, a deploy drops requests, a restart sends traffic to an instance that cannot serve, and one failed machine becomes an outage. Evidence note: the properties are supported by documentation from four platform publishers and an edited practitioner book; those sources disagree on what a readiness check may depend on and on CPU caps, so the details stay with tooling ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)).
+
+---
+
 ## Related
 
 - Organisation-level delivery metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)
@@ -91,6 +104,7 @@ When a third-party service (payment API, identity provider, external model API) 
 | ~3–5 SLOs per service (typical) | Enough to cover critical journeys without diluting focus or error-budget debate. |
 | Documented exceptions | Security and existential risk cannot wait for budget recovery—process replaces panic. |
 | Blameless culture | Improves signal quality in postmortems; fear hides defects. |
+| Workload runtime shape (§8) | Health signals, graceful stop, redundancy, and declared resources are what make deploys and single failures uneventful; stated as properties because platforms differ in mechanism ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)). |
 
 ---
 
@@ -100,3 +114,8 @@ When a third-party service (payment API, identity provider, external model API) 
 - Google SRE Workbook — Implementing SLOs: https://sre.google/workbook/implementing-slos/  
 - *Site Reliability Engineering* (O’Reilly, Google) — Monitoring Distributed Systems and Eliminating Toil (foundational context): https://sre.google/sre-book/table-of-contents/  
 - **Principles of Chaos Engineering** (community): https://principlesofchaos.org/  
+- Kubernetes documentation — **probes**, **pod termination**, **disruptions**, and **resource management** (S5, product-scoped; accessed 2026-11-18): https://kubernetes.io/docs/concepts/workloads/pods/probes/  
+- AWS Well-Architected Framework — **REL10-BP01** multiple locations, **REL11-BP02** fail over to healthy resources (S5; accessed 2026-11-18): https://docs.aws.amazon.com/wellarchitected/latest/framework/rel10-bp01.html  
+- Azure Architecture Center — **Health Endpoint Monitoring** pattern (S5; 2026-09-24; accessed 2026-11-18): https://learn.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring  
+- Google SRE Book — **Load Balancing in the Datacenter** (ch. 20; draining and health states) (S4; accessed 2026-11-18): https://sre.google/sre-book/load-balancing-datacenter/  
+- *The Twelve-Factor App* — **Disposability** (S6; accessed 2026-11-18): https://12factor.net/disposability  

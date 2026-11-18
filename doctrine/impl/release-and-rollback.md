@@ -74,7 +74,7 @@ Regulated-data profiles audit-log every targeting change and state transition wi
 - **Delivery path:** building, publishing, and promoting the candidate belong to [CI/CD Delivery](cicd-delivery.md).
 - **Persisted state:** a flag can switch which shape code uses, but the data recovers through [Database Migration](database-migration.md) and its owners.
 - **Effects beyond the deployable:** sent messages, external calls, and committed workflow steps recover through compensation and reconciliation designed before need.
-- **Who decides:** flag reversal is decided by the flag owner or an incident commander. Rollback to the previously verified candidate can be done by the service owner, the on-call engineer following the runbook, or the incident commander. Estates with agent responders route remediation by reversibility under the incident pattern.
+- **Who decides:** flag reversal is decided by the flag owner or an incident commander. Rollback to the previously verified candidate can be done by the service owner, the on-call engineer following the runbook, or the incident commander. Where desired state is declared in version control, that rollback is a revert through the same path, merged under the documented emergency path and reviewed afterwards. Estates with agent responders route remediation by reversibility under the incident pattern.
 - **Numbers and products:** tiers, dwell times, tolerances, lifetimes, and budget policy stay in their owners; flag stores, rollout controllers, and reconcilers are tooling.
 
 ## Canonical Doctrine

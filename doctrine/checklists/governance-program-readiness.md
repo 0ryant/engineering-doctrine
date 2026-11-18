@@ -9,6 +9,7 @@ Use when an **organisation** (not only a single repo) is standing up or reviewin
 [ ] Each control class has a named owner and deputy; escalation path is published
 [ ] Policy references external baselines in use (e.g. NIST CSF 2.0 GV.SC, NIST SSDF, sector regulator) with version or date
 [ ] Every binding or voluntarily adopted external profile records its authority source, exact revision/update, effective date, accountable interpreter, and review trigger
+[ ] Profiles that impose vulnerability or incident reporting record triggers, clock start, deadlines, recipient, channel, and authorised submitter; runbooks carry the same and the path has been exercised (principles/secure-development-lifecycle.md §3.1)
 [ ] Exception / risk-acceptance workflow exists: scope, justification, expiry, compensating control, approver role
 ```
 

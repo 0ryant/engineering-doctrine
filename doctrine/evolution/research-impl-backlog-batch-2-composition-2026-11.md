@@ -81,7 +81,7 @@ Decisions for the remaining findings, made by the maintainer and recorded in [AD
 | 7 | ADR 0052 D5: identifiers in telemetry are minimised; observability §2 owns it, grounded in privacy §§1–2. |
 | 8 | ADR 0052 D3: deployment canaries record their signals and tolerance, automated rollback is bounded, and a decider is named; [collaboration](../principles/collaboration.md) §8.1 owns it. |
 | 12 | ADR 0052 D1: low-risk updates may merge on a documented bot-only path once required checks pass; [dependencies](../principles/dependencies-supply-chain.md) §2 owns it. |
-| 13 | Folded into the open M16 SLSA decision and the provenance-limits candidate in the [latest-developments note](research-latest-developments-2026-11.md); not decided here. |
+| 13 | Folded into the M16 SLSA decision and the provenance-limits candidate in the [latest-developments note](research-latest-developments-2026-11.md). Update, 2026-11-18: decided in [ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md) D3. |
 
 Some practices listed under "Dropped For Lack Of An Owner" now have owners through ADR 0052: acknowledgement order, deployment canary gates, and bounded automated deployment rollback. The references were updated to match.
 

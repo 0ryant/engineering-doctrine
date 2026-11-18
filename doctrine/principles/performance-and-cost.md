@@ -24,7 +24,7 @@ Durable rules for non-functional requirements: latency budgets, load validation,
 
 ## 3. FinOps And Cost Observability
 
-- Tag cloud resources (team, service, environment, cost centre) consistently.
+- Tag cloud resources consistently; the minimum tag set and the tag-at-creation rule are in [cost-and-finops.md](cost-and-finops.md) §2.
 - Alerts on spend anomalies and third-party API bills where spend is material.
 - Right-size after observing utilisation, not upfront guesses alone.
 

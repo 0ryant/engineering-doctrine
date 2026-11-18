@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-11-18 00:04 UTC
+Generated: 2026-11-18 10:41 UTC
 
 ## All Markdown files
 
@@ -43,6 +43,7 @@ Generated: 2026-11-18 00:04 UTC
 - [evolution/research-ai-native-sdlc-council-designs-2026-07.md](evolution/research-ai-native-sdlc-council-designs-2026-07.md)
 - [evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md](evolution/research-bleeding-edge-ai-landscape-gap-audit-2026-08.md)
 - [evolution/research-branching-integration-impl-composition-2026-09.md](evolution/research-branching-integration-impl-composition-2026-09.md)
+- [evolution/research-cryptographic-inventory-and-agility-2026-11.md](evolution/research-cryptographic-inventory-and-agility-2026-11.md)
 - [evolution/research-doctrine-authority-applicability-2026-07.md](evolution/research-doctrine-authority-applicability-2026-07.md)
 - [evolution/research-doctrine-integrity-gates-2026-09.md](evolution/research-doctrine-integrity-gates-2026-09.md)
 - [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md)
@@ -50,15 +51,20 @@ Generated: 2026-11-18 00:04 UTC
 - [evolution/research-full-corpus-council-review-2026-08.md](evolution/research-full-corpus-council-review-2026-08.md)
 - [evolution/research-git-local-workflow-impl-composition-2026-11.md](evolution/research-git-local-workflow-impl-composition-2026-11.md)
 - [evolution/research-impl-backlog-batch-2-composition-2026-11.md](evolution/research-impl-backlog-batch-2-composition-2026-11.md)
+- [evolution/research-impl-backlog-batch-3-composition-2026-11.md](evolution/research-impl-backlog-batch-3-composition-2026-11.md)
 - [evolution/research-impl-reference-batch-composition-2026-11.md](evolution/research-impl-reference-batch-composition-2026-11.md)
 - [evolution/research-implementation-reference-layer-2026-09.md](evolution/research-implementation-reference-layer-2026-09.md)
 - [evolution/research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md)
 - [evolution/research-latest-developments-2026-11.md](evolution/research-latest-developments-2026-11.md)
 - [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md)
 - [evolution/research-nist-sp-800-171-control-profiles-2026-07.md](evolution/research-nist-sp-800-171-control-profiles-2026-07.md)
+- [evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md](evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md)
 - [evolution/research-owner-gap-rules-2026-11.md](evolution/research-owner-gap-rules-2026-11.md)
+- [evolution/research-owner-gap-rules-batch-3-2026-11.md](evolution/research-owner-gap-rules-batch-3-2026-11.md)
+- [evolution/research-regulatory-reporting-clocks-2026-11.md](evolution/research-regulatory-reporting-clocks-2026-11.md)
 - [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md)
 - [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md)
+- [evolution/research-supply-chain-evidence-decisions-2026-11.md](evolution/research-supply-chain-evidence-decisions-2026-11.md)
 - [evolution/research-target-state-and-irreversible-decisions-2026-08.md](evolution/research-target-state-and-irreversible-decisions-2026-08.md)
 - [evolution/research-testing-verification-impl-composition-2026-09.md](evolution/research-testing-verification-impl-composition-2026-09.md)
 - [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md)
@@ -70,6 +76,7 @@ Generated: 2026-11-18 00:04 UTC
 - [evolution/v060-readiness-2026-09.md](evolution/v060-readiness-2026-09.md)
 - [glossary.md](glossary.md)
 - [impl/README.md](impl/README.md)
+- [impl/application-deployment.md](impl/application-deployment.md)
 - [impl/branching-and-integration.md](impl/branching-and-integration.md)
 - [impl/cicd-delivery.md](impl/cicd-delivery.md)
 - [impl/database-migration.md](impl/database-migration.md)
@@ -77,6 +84,9 @@ Generated: 2026-11-18 00:04 UTC
 - [impl/event-consumer.md](impl/event-consumer.md)
 - [impl/git-hooks.md](impl/git-hooks.md)
 - [impl/git-worktrees.md](impl/git-worktrees.md)
+- [impl/infrastructure-delivery.md](impl/infrastructure-delivery.md)
+- [impl/new-service.md](impl/new-service.md)
+- [impl/privileged-automation.md](impl/privileged-automation.md)
 - [impl/release-and-rollback.md](impl/release-and-rollback.md)
 - [impl/secretless-workload-identity.md](impl/secretless-workload-identity.md)
 - [impl/service-api.md](impl/service-api.md)

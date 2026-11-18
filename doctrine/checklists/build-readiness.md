@@ -17,10 +17,12 @@ Use this checklist when creating or reviewing a repo.
 [ ] Secret scanning exists before merge
 [ ] CI and CD jobs authenticate to clouds and registries with OIDC federation where the target supports it; any other stored CI credential is a registered fallback or a bounded exception (principles/zero-trust-and-workload-identity.md §2)
 [ ] Dependency and IaC scanning exist where relevant
-[ ] Build provenance / SLSA-style attestations exist where regulators or customers require tamper-evident delivery (principles/build.md §14, principles/dependencies-supply-chain.md)
+[ ] Build provenance exists for artefacts shipped externally or to regulated environments, and wherever law, contract, or policy demands it (principles/dependencies-supply-chain.md §4)
 [ ] Checked-out sibling or shared inputs are included in validation or scan scope when they influence delivery
 [ ] Build caches are optional and keyed from real inputs
+[ ] Release and deploy builds restore only caches written at the same or higher trust (principles/build.md §11)
 [ ] A build and publish surface exists if the repo ships versioned artefacts
+[ ] Environment-specific configuration is bound at deploy or start time, not built into the artefact (principles/configuration-and-secrets.md §1)
 [ ] Deploy surfaces are split by deployable unit
 [ ] Scheduled execution or smoke surfaces are separate from deploy when the repo owns recurring automation or runtime checks
 [ ] Path filters or scoped triggers prevent unrelated deploys

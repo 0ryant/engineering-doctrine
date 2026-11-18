@@ -73,6 +73,11 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0050](0050-adopt-agent-ready-application-shipping-profile.md) | Accepted | 2026-11-15 | Add an optional profile requiring every inventoried shippable app surface to carry exact-artifact Skills and autocomplete/discovery |
 | [0051](0051-make-secretless-workload-identity-the-default.md) | Accepted | 2026-11-15 | Make secretless workload identity the default for estate-governed and production workloads where the target supports federation; stored secrets for other targets become registered fallbacks |
 | [0052](0052-close-owner-gaps-from-implementation-batch-2.md) | Accepted | 2026-11-18 | Close owner gaps from implementation batch 2: bot-only path for low-risk dependency updates, acknowledgement after durable effects, deployment canary signals and rollback decider, telemetry verification, and identifier minimisation |
+| [0053](0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md) | Accepted | 2026-11-18 | Correct SLSA attribution and settle supply-chain evidence: Build levels restated from v1.2, hermetic builds context-dependent, SBOM, provenance, and signing typed on one trigger set, verification against expectations, cache trust, and the CISA 2026 SBOM baseline (resolves M16 and M18) |
+| [0054](0054-add-cryptographic-inventory-and-agility.md) | Accepted | 2026-11-18 | Add cryptographic inventory and agility; post-quantum transition dates stay bound through profiles; ADR 0022 remains Rejected |
+| [0055](0055-add-profile-gated-regulatory-reporting-clocks.md) | Accepted | 2026-11-18 | Add profile-gated regulatory reporting clocks to vulnerability response, with Cyber Resilience Act Article 14 as the worked example |
+| [0056](0056-cite-the-owasp-llm-top-10-2026-edition.md) | Accepted | 2026-11-18 | Cite the OWASP LLM Top 10 2026 edition; identifiers always carry the edition year; no control changes |
+| [0057](0057-close-owner-gaps-from-implementation-batch-3.md) | Accepted | 2026-11-18 | Close owner gaps from implementation batch 3: workload runtime shape, deploy-time configuration, infrastructure plans and drift, maintenance windows, and rollback in declared-state estates |
 
 ## Candidate Considered But Not Recorded
 

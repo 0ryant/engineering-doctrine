@@ -79,8 +79,12 @@ The final section always identifies the principles and patterns being composed, 
 - [Release And Rollback](release-and-rollback.md) — exposing an identified candidate, verifying it in production, and recovering by flag reversion, rollback, or forward fix.
 - [Event Consumer](event-consumer.md) — consuming messages against a versioned contract: validate, deduplicate before effects, classify failures, dead-letter, and replay deliberately.
 - [Dependency Adoption](dependency-adoption.md) — admitting a package, image, model, dataset, skill, or tool server: pin, check, review, record, and keep current.
+- [Application Deployment](application-deployment.md) — what runs in production and how: immutable candidate, environment bindings, runtime shape, bounds, ownership, and verification.
+- [Infrastructure Delivery](infrastructure-delivery.md) — moving a declared infrastructure change through environments: reviewed plan per environment, pipeline apply, verification, drift, and recovery.
+- [New Service](new-service.md) — the reading order from owner and contract to delivery, identity, deployment, telemetry, runbooks, and recovery, routing each step to its reference.
+- [Privileged Automation](privileged-automation.md) — pipelines, jobs, reconcilers, bots, and agents that can change real systems: when a run is governed, identity, declared scope, approval, and evidence.
 
-Proposed future references are screened in [the implementation-reference research note](../evolution/research-implementation-reference-layer-2026-09.md#screened-backlog); they are not adopted merely by appearing in that backlog.
+The [screened backlog](../evolution/research-implementation-reference-layer-2026-09.md#screened-backlog) in the implementation-reference research note is now fully landed. A new candidate is screened the same way before it is written.
 
 ## Canonical Doctrine
 

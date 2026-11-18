@@ -76,6 +76,7 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 - Builds must still work when caches are cold or absent.
 - Cache keys should be tied to real inputs such as lockfiles, platform, or toolchain.
 - A cache miss may slow the build. It must not change correctness.
+- **SHOULD (release and deploy builds):** restore only caches written by builds of the same or higher trust. A cache that builds of unreviewed changes can write is not an input to a release build; treat a shared cache as a trust boundary ([dependencies-supply-chain.md](dependencies-supply-chain.md) §4; [ADR 0053](../../docs/adr/0053-correct-slsa-attribution-and-settle-supply-chain-evidence.md)).
 
 ## 12. Build Evidence Matters
 
@@ -93,7 +94,7 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 ## 14. Hermetic Builds And Provenance (SLSA)
 
 - **Hermetic** builds minimise **undeclared** inputs: lockfiles, pinned toolchains, and **reproducible** steps so the same commit yields the same artefact (modulo documented nondeterminism). Term: [glossary.md](../glossary.md) (*Hermetic build*).
-- **Provenance attestations** (for example **SLSA** supply-chain levels) document **who** built **what** from **which** sources; adopt when regulators or customers expect **tamper-evident** delivery.
+- **Provenance attestations** (for example SLSA provenance) document **who** built **what** from **which** sources. When provenance, SBOMs, and hermetic builds are expected, and at what strength, is owned by [dependencies-supply-chain.md](dependencies-supply-chain.md) §§3–4. SLSA itself does not require hermetic builds at any Build level.
 
 **Why:** Executive Order **14028** and sector norms pushed **SBOM** and **provenance**; **SLSA** frames progressive hardening: https://slsa.dev/
 

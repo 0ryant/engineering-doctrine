@@ -100,6 +100,10 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Cross-encoder (reranking)** — Model that scores **query–passage** pairs for **precision** after cheap candidate retrieval; common **second stage** in RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
+**Cryptographic agility** — The ability to replace algorithms, parameters, and keys through configuration, an update, or a provider change, without redesigning a protocol or data format; **not** arbitrary runtime algorithm choice. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) §2.2.
+
+**Cryptographic inventory** — Record of where public-key cryptography is used, with which algorithms and key sizes, and which data needs long-lived confidentiality; a **cryptography bill of materials (CBOM)** is one format. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) §2.2.
+
 ---
 
 ## D
@@ -148,7 +152,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## G
 
-**GenAI** — *Generative artificial intelligence*: models that **synthesize** content (text, code, media). Portable rules: [ai-ml-systems.md](principles/ai-ml-systems.md); security framing: **OWASP LLM Top 10** (2025 edition, cited as `LLM0x:2025`), **NIST AI 600-1**, **NIST SP 800-218A**. Research: [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md).
+**GenAI** — *Generative artificial intelligence*: models that **synthesize** content (text, code, media). Portable rules: [ai-ml-systems.md](principles/ai-ml-systems.md); security framing: **OWASP LLM Top 10** (2026 edition, cited as `LLM0x:2026`), **NIST AI 600-1**, **NIST SP 800-218A**. Research: [evolution/research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [evolution/research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md).
 
 **GenAIOps** — Operating **GenAI** systems in production: **eval** and regression on outputs/retrieval, **index** freshness and **embedding** migrations, **cost** and quota governance, **provider** resilience, and **observability** (trace to chunk/tool ids)—same **SRE** habits as other critical dependencies. See [ai-ml-systems.md](principles/ai-ml-systems.md) §§6–7, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §4, [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
@@ -283,6 +287,8 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 **Planted-memory persistence** — ASI06 red-team scenario: a memory record written in session *N* alters agent behaviour on a **legitimate query** in session *N+1*, with no attacker present at recall time. Required in adversarial coverage where memory is **agent-writable** and the threat model warrants red-teaming. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §5.2.
 
 **Platform as product** — Internal **platform** work treated as a **product**: clear offerings, customer (team) feedback, prioritised **adoption** and **toil** reduction—not only infra tickets. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
+
+**Post-quantum cryptography (PQC)** — Public-key algorithms designed to resist attack by a quantum computer. Transition dates bind through external control profiles, not through this library. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) §2.2.
 
 **Priming block** — The only part of a skill a host injects: a fenced ```` ```priming ```` block of at most 4096 bytes whose SHA-256 (LF-normalised, fence lines excluded) is pinned in the manifest, recomputed by `scripts/validate-skills.py`, and asserted verbatim in the rendered prompt by the pack's `priming_active` verifier. See [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) §3.1, [patterns/anti-confabulation-priming.md](patterns/anti-confabulation-priming.md) §2.
 

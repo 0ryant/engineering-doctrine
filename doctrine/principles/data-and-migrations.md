@@ -12,6 +12,7 @@ For the normal sequence of a schema or data change, start with [Database Migrati
 - **Expand → migrate → contract** (also called parallel change): add new structure first; move writers/readers; backfill; then remove old paths. This is the standard answer to “zero-downtime” schema change without heroic single-step cutovers.
 - **Dangerous operations** (blocking locks, wide table rewrites, adding `NOT NULL` without a staged plan) are split into multiple releases with explicit checkpoints.
 - Backfills run in batches with bounded row counts and pauses so replication and OLTP traffic stay healthy. Typical starting defaults (tune per engine and load): 1,000–50,000 rows per batch for row-oriented OLTP, 50–500 ms pause between batches, and hard stop (or halve batch size) if replica lag or lock wait exceeds team-defined thresholds—document your limits in the migration note.
+- **Maintenance window instead of overlap (MAY).** Where service policy accepts a documented maintenance window ([collaboration.md](collaboration.md) §8), the old version stops before the change, so the overlap sequence above does not apply. Forward-only change, a snapshot before high-risk steps (§3), and an honest recovery path still do ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)).
 
 **Why:** Most migration incidents are ordering and compatibility failures, not SQL syntax. The expand/contract sequence matches how continuous delivery actually works. Industry practice is widely documented under parallel change and zero-downtime migration guides.
 
@@ -56,6 +57,7 @@ For the normal sequence of a schema or data change, start with [Database Migrati
 | Default batch / pause ranges | Gives operators a first knob to tune instead of inventing sizes from zero. |
 | Explicit RPO/RTO | Aligns engineering with business risk; avoids generic “we have backups.” |
 | DR beyond single restore | Regional failure modes need rehearsed paths, not only backup jobs. |
+| Maintenance window allowed | Collaboration §8 and the readiness checklist already permit it; stating it here keeps the migration owner consistent ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)). |
 
 ---
 

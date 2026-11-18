@@ -24,6 +24,7 @@ For each in-scope audit event, capture at least:
 - **When** — UTC timestamp with agreed precision.
 - **Outcome** — success / failure; **reason** or error **code** on failure without leaking secrets.
 - **Correlation** — request id or trace id where available for cross-service investigation.
+- **On behalf of** — where an agent or service acts for another principal, the delegation chain that [zero-trust-and-workload-identity.md](zero-trust-and-workload-identity.md) §2.1 requires: initiating human, sponsor, agent identity, and each hop.
 
 **Why:** These dimensions support accountability, timeline reconstruction, and correlation with security-event and operational evidence. A missing actor, action, time, or disposition materially limits investigation.
 

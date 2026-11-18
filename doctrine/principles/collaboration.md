@@ -94,8 +94,8 @@ below describe why flags support collaboration; they do not replace that owner.
 ### 8.1 Deployment Canaries And Rollback
 
 - **SHOULD (deployments using a canary or gradual rollout):** before the rollout starts, record the **signals** it is judged on and their **tolerance**, and do not widen exposure while a signal degrades beyond it.
-- **MAY:** automation rolls back to the **previously verified candidate** when the trigger, target, and alert are recorded and the rollback path has been exercised. Automation does not widen exposure or roll forward.
-- **Decider:** the service owner, the on-call engineer following the documented runbook, or the incident commander during an incident can roll back to the previously verified candidate without further approval. A forward fix follows the controlled change path or the documented emergency path.
+- **MAY:** automation rolls back to the **previously verified candidate** when the trigger, target, and alert are recorded and the rollback path has been exercised. That rollback automation does not widen exposure or roll forward.
+- **Decider:** the service owner, the on-call engineer following the documented runbook, or the incident commander during an incident can roll back to the previously verified candidate without further approval. Where desired state is declared in version control, the rollback is a revert to the previously verified revision through that path; the decider can merge it under the documented emergency path (§2), and it is reviewed afterwards ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)). A forward fix follows the controlled change path or the documented emergency path.
 - Feature flags keep their own gates and reversion rules in [feature-flag-governance.md](../patterns/feature-flag-governance.md) §§4.3–4.4.
 
 **Why:** comparing a canary with a control on defined signals, and pausing or rolling back when it degrades, is the workbook pattern; naming who may roll back stops on-call staff waiting for permission ([ADR 0052](../../docs/adr/0052-close-owner-gaps-from-implementation-batch-2.md)).
