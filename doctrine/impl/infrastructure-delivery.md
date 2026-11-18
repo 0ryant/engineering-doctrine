@@ -105,7 +105,7 @@ Layer contract: [Implementation References](README.md).
 | Platform contracts, self-service requests, and recorded exceptions | [Platform Engineering](../principles/platform-engineering.md) §7, [Platform As Product, Golden Paths, And Service Catalog](../patterns/platform-as-product-and-golden-paths.md) §§3, 6 |
 | Cluster access, when clusters are in scope | [Kubernetes Platform Security](../principles/kubernetes-platform-security.md) §1 |
 
-Tooling and verification: [CI Platform Mapping](../tooling/ci-platform-mapping.md), [Build Readiness](../checklists/build-readiness.md), and [Platform Readiness](../checklists/platform-readiness.md).
+Tooling and verification: [CI Platform Mapping](../tooling/ci-platform-mapping.md), [Scanners And Quality Gates](../tooling/scanners-and-quality-gates.md), [Build Readiness](../checklists/build-readiness.md), and [Platform Readiness](../checklists/platform-readiness.md).
 
 Related references: [CI/CD Delivery](cicd-delivery.md), [Testing And Verification](testing-and-verification.md), [Secretless Workload Identity](secretless-workload-identity.md), [Release And Rollback](release-and-rollback.md), and [Database Migration](database-migration.md).
 

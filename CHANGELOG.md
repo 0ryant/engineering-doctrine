@@ -6,6 +6,10 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+### Added
+
+- **Scanner and quality-gate tooling map** ([ADR 0060](docs/adr/0060-name-only-open-source-gate-tools-usable-without-a-paid-plan.md)): a selection rule for the scanner and quality-gate tools the library names, and a new illustrative page, [Scanners And Quality Gates](doctrine/tooling/scanners-and-quality-gates.md). A tool is offered only if it is open source and runs on private, commercial code without a paid plan or licence key. Tools under Apache-2.0 or MIT are listed first, across ten language ecosystems; tools under other open-source licences are listed apart with the licence named; companions that need a paid plan are listed separately. The control suite page and the CI/CD delivery, testing and verification, Git hooks, dependency adoption, and infrastructure delivery references point to it. One listed tool is the maintainer's own; the page says so, as a disclosed exception to ADR 0027. Licences were read from 137 repositories on 2026-11-18 ([research note](doctrine/evolution/research-scanner-tooling-map-2026-11.md)). Change class: additive guidance; no obligation changes, so no migration.
+
 ## [0.6.2] - 2026-11-18
 
 Verifier-pack corrections, found by executing every pack check for the first time. **Change classes:** correction; maintainer tooling. **Consumer impact:** no control changes. Skill versions and block hashes are unchanged, so nothing is re-pinned by hash; four pack versions change. **Compatibility:** patch.

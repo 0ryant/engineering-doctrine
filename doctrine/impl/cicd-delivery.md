@@ -130,7 +130,7 @@ Layer contract: [Implementation References](README.md).
 | Stateful schema and data change | [Data, Migrations, Backups, And Recovery](../principles/data-and-migrations.md) |
 | Applicability and bounded exceptions | [Normative Language, Applicability, And Exceptions](../patterns/normative-language-applicability-and-exceptions.md) |
 
-Product mappings and verification prompts: [CI Platform Mapping](../tooling/ci-platform-mapping.md), [Build Readiness Checklist](../checklists/build-readiness.md), and [Release Readiness Checklist](../checklists/release-readiness.md).
+Product mappings and verification prompts: [CI Platform Mapping](../tooling/ci-platform-mapping.md), [Scanners And Quality Gates](../tooling/scanners-and-quality-gates.md) for open-source tools that can fill the quality gate, [Build Readiness Checklist](../checklists/build-readiness.md), and [Release Readiness Checklist](../checklists/release-readiness.md).
 
 Related composition: [Testing And Verification](testing-and-verification.md) places evidence across these delivery surfaces.
 

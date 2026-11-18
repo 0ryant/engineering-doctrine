@@ -7,7 +7,7 @@
 python scripts/generate_doctrine_sitemap.py   # any platform
 ```
 
-Generated: 2026-11-18 12:57 UTC
+Generated: 2026-11-18 13:52 UTC
 
 ## All Markdown files
 
@@ -63,6 +63,7 @@ Generated: 2026-11-18 12:57 UTC
 - [evolution/research-owner-gap-rules-2026-11.md](evolution/research-owner-gap-rules-2026-11.md)
 - [evolution/research-owner-gap-rules-batch-3-2026-11.md](evolution/research-owner-gap-rules-batch-3-2026-11.md)
 - [evolution/research-regulatory-reporting-clocks-2026-11.md](evolution/research-regulatory-reporting-clocks-2026-11.md)
+- [evolution/research-scanner-tooling-map-2026-11.md](evolution/research-scanner-tooling-map-2026-11.md)
 - [evolution/research-secretless-workload-identity-default-2026-11.md](evolution/research-secretless-workload-identity-default-2026-11.md)
 - [evolution/research-source-authority-and-evidence-weighting-2026-08.md](evolution/research-source-authority-and-evidence-weighting-2026-08.md)
 - [evolution/research-supply-chain-evidence-decisions-2026-11.md](evolution/research-supply-chain-evidence-decisions-2026-11.md)
@@ -186,4 +187,5 @@ Generated: 2026-11-18 12:57 UTC
 - [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md)
 - [tooling/nats-jetstream.md](tooling/nats-jetstream.md)
 - [tooling/observability.md](tooling/observability.md)
+- [tooling/scanners-and-quality-gates.md](tooling/scanners-and-quality-gates.md)
 - [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md)

@@ -218,6 +218,6 @@ Layer contract: [Implementation References](README.md). Related composition: [CI
 | Duplicate and concurrent effects across HTTP, messages, infrastructure, and data | [Idempotency Across Boundaries](../patterns/idempotency-across-boundaries.md) |
 | Retry, DLQ/parking, replay, and backlog behaviour | [Message Channel Operations](../patterns/message-channel-operations.md) |
 
-Tooling and review routes: [CI Platform Mapping](../tooling/ci-platform-mapping.md), [Build Readiness Checklist](../checklists/build-readiness.md), and [Release Readiness Checklist](../checklists/release-readiness.md).
+Tooling and review routes: [CI Platform Mapping](../tooling/ci-platform-mapping.md), [Scanners And Quality Gates](../tooling/scanners-and-quality-gates.md), [Build Readiness Checklist](../checklists/build-readiness.md), and [Release Readiness Checklist](../checklists/release-readiness.md).
 
 Decision and composition record: [ADR 0048](../../docs/adr/0048-add-implementation-reference-layer.md) and [Testing And Verification Implementation Composition](../evolution/research-testing-verification-impl-composition-2026-09.md).

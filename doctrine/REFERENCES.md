@@ -390,6 +390,8 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | OSV — Open Source Vulnerabilities | https://osv.dev/ |
 | OWASP Top 10 CI/CD Security Risks — CICD-SEC-1, Insufficient Flow Control Mechanisms (S4, accessed 2026-11-18) | https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-01-Insufficient-Flow-Control-Mechanisms |
 | PyPI — Trusted publishers: security model and considerations (S5, product-scoped; accessed 2026-11-18) | https://docs.pypi.org/trusted-publishers/security-model/ |
+| GitHub — Pricing, plan comparison for attestations, secret scanning, and code scanning (S5; accessed 2026-11-18) | https://github.com/pricing |
+| Semgrep — Licensing: engine and rules licences (S5; accessed 2026-11-18) | https://docs.semgrep.dev/licensing |
 
 ---
 
@@ -519,6 +521,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/review-full-doctrine-2026-11.md](evolution/review-full-doctrine-2026-11.md) | Full doctrine review, November 2026: consistency and substance findings, grades, and a recommended order of work; non-normative |
 | [evolution/research-apply-constitution-rules-2026-11.md](evolution/research-apply-constitution-rules-2026-11.md) | Basis for ADR 0059: open inconsistencies settled by three rules in `ENGINEERING.md`; source ledger for timeouts and retries, leaked secrets, publish entrypoints, and personal-data categories; non-normative |
 | [evolution/sweep-2026-11.md](evolution/sweep-2026-11.md) | `v0.6.0` release-coupled lifecycle sweep: clocks, principle summaries, reference status, grading audit; non-normative |
+| [evolution/research-scanner-tooling-map-2026-11.md](evolution/research-scanner-tooling-map-2026-11.md) | Basis for ADR 0060: licence ledger for 137 gate-tool repositories, plan terms checked, coverage gaps; non-normative |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |
@@ -550,6 +553,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [patterns/engineering-controls-governance-program.md](patterns/engineering-controls-governance-program.md) | Org-level **governance programme** for engineering controls (CSF Govern / GV.SC, ownership, waivers, audit packs) |
 | [patterns/revision-pinned-control-profiles.md](patterns/revision-pinned-control-profiles.md) | Applicability-first, revision-pinned external control profile with NIST SP 800-171 as the worked CUI example |
 | [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) | Illustrative **control suite** mapping (scanner categories, OIDC, pipeline static analysis) |
+| [tooling/scanners-and-quality-gates.md](tooling/scanners-and-quality-gates.md) | Open-source scanner and quality-gate tools per control class and language, by licence (illustrative) |
 | [checklists/governance-program-readiness.md](checklists/governance-program-readiness.md) | Org readiness checklist for merge-path / supply-chain **governance programme** |
 
 ### Core principles
@@ -666,6 +670,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [tooling/observability.md](tooling/observability.md) | OTel examples |
 | [tooling/ci-platform-mapping.md](tooling/ci-platform-mapping.md) | CI mapping |
 | [tooling/merge-path-and-pipeline-control-suite.md](tooling/merge-path-and-pipeline-control-suite.md) | Merge-path control categories, OIDC, pipeline static analysis (illustrative) |
+| [tooling/scanners-and-quality-gates.md](tooling/scanners-and-quality-gates.md) | Open-source scanner and quality-gate tools per control class and language, by licence (illustrative) |
 | [tooling/dependency-automation.md](tooling/dependency-automation.md) | Bots |
 
 ### Checklists

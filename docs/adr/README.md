@@ -80,6 +80,7 @@ Numbers 0013–0020 were never assigned in any reachable history; the gap is rec
 | [0057](0057-close-owner-gaps-from-implementation-batch-3.md) | Accepted | 2026-11-18 | Close owner gaps from implementation batch 3: workload runtime shape, deploy-time configuration, infrastructure plans and drift, maintenance windows, and rollback in declared-state estates |
 | [0058](0058-sharpen-four-rules-after-the-november-2026-review.md) | Accepted | 2026-11-18 | Sharpen four rules after the November 2026 review: graceful stop keeps serving until routing stops, expand and contract backfills before readers switch, provenance comes from the build platform, and delivery metrics describe one service and its team |
 | [0059](0059-apply-three-constitution-rules-to-settled-inconsistencies.md) | Accepted | 2026-11-18 | Apply three rules already in `ENGINEERING.md` (the stricter result, one authority per concept, checklists derive) to 30 open inconsistencies: one strength and one owner per topic, and four rules added behind ownerless checklist prompts |
+| [0060](0060-name-only-open-source-gate-tools-usable-without-a-paid-plan.md) | Accepted | 2026-11-18 | Name only open-source scanner and quality-gate tools that need no paid plan for private code; list Apache-2.0 and MIT first and other open-source licences apart; cover ten language ecosystems |
 
 ## Candidate Considered But Not Recorded
 

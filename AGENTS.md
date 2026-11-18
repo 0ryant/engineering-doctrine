@@ -14,5 +14,9 @@ tools, internal repositories, or local programme artefacts anywhere in the
 publishable library. Express the capability or control generically. External
 standards and vendor material may be named only as cited grounding or clearly
 optional illustration. Keep local work records under ignored `.local/` paths.
+One recorded exception: [ADR 0060](docs/adr/0060-name-only-open-source-gate-tools-usable-without-a-paid-plan.md)
+D6 lists one public, open-source portfolio tool on the scanner tooling page,
+with the maintainer's authorship disclosed. It names no other and is not a
+precedent for principles, patterns, or checklists.
 
 **Not applicable:** drive-by rewrites, vendor pitches in `principles/`, or new normative “musts” without consumer-impact labelling. See [CONTRIBUTING.md](CONTRIBUTING.md) and [GOVERNANCE.md](GOVERNANCE.md).
