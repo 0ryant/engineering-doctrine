@@ -27,7 +27,7 @@ stays with the governing files and with independent verification.
 | [anti-confabulation](anti-confabulation/SKILL.md) | 1.1.0 | 0 | primer | [anti-confabulation-priming.md](../patterns/anti-confabulation-priming.md) | [pack](anti-confabulation/verifier-pack.yml) |
 | [doctrine-navigation](doctrine-navigation/SKILL.md) | 1.0.1 | 0 | primer | [how-to-read-this-doctrine.md](../patterns/how-to-read-this-doctrine.md), [timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md) | [pack](doctrine-navigation/verifier-pack.yml) |
 | [normative-language-reading](normative-language-reading/SKILL.md) | 1.0.1 | 0 | primer | [normative-language-applicability-and-exceptions.md](../patterns/normative-language-applicability-and-exceptions.md) | [pack](normative-language-reading/verifier-pack.yml) |
-| [evidence-graded-citation](evidence-graded-citation/SKILL.md) | 1.0.1 | 0 | primer | [source-authority-and-evidence-grading.md](../patterns/source-authority-and-evidence-grading.md) | [pack](evidence-graded-citation/verifier-pack.yml) |
+| [evidence-graded-citation](evidence-graded-citation/SKILL.md) | 1.0.1 | 0 | primer | [source-authority-and-evidence-grading.md](../maintainers/source-authority-and-evidence-grading.md) | [pack](evidence-graded-citation/verifier-pack.yml) |
 | [method-record-classification](method-record-classification/SKILL.md) | 1.0.0 | 1 | procedure | [code-review-and-change-approval.md §6.1](../patterns/code-review-and-change-approval.md), [ADR 0043](../../docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md) | [pack](method-record-classification/verifier-pack.yml) |
 
 None of the active skills ships a portable evaluation; every manifest says so
@@ -56,7 +56,7 @@ owning doctrine so the skill cannot drift from it.
 | 2 | ai-native-sdlc-readiness-assessment | assessment | [checklists/ai-native-sdlc-readiness.md](../checklists/ai-native-sdlc-readiness.md) via [ai-native-software-development-lifecycle.md](../patterns/ai-native-software-development-lifecycle.md) |
 | 2 | governance-program-readiness-assessment | assessment | [checklists/governance-program-readiness.md](../checklists/governance-program-readiness.md) via [engineering-controls-governance-program.md](../patterns/engineering-controls-governance-program.md) |
 | 2 | developer-experience-scorecard | assessment | [checklists/developer-experience-scorecard.md](../checklists/developer-experience-scorecard.md) via [developer-experience.md](../principles/developer-experience.md) |
-| 2 | doctrine-change-readiness | assessment | [checklists/doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) via [doctrine-library-change-harness.md](../patterns/doctrine-library-change-harness.md) |
+| 2 | doctrine-change-readiness | assessment | [checklists/doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md) via [doctrine-library-change-harness.md](../maintainers/doctrine-library-change-harness.md) |
 | 3 | stride-lite-threat-model | design | [threat-modeling-stride-lite.md](../principles/threat-modeling-stride-lite.md) |
 | 3 | idempotency-boundary-review | design | [idempotency-across-boundaries.md](../patterns/idempotency-across-boundaries.md) |
 | 3 | event-contract-design | design | [event-contracts.md](../principles/event-contracts.md), [tooling/cloudevents.md](../tooling/cloudevents.md) |
@@ -82,4 +82,4 @@ owning doctrine so the skill cannot drift from it.
 4. Run `python scripts/validate-skills.py` and the doctrine preflight; add the
    row above; follow [checklists/doctrine-change-checklist.md](../checklists/doctrine-change-checklist.md).
 5. Any later byte change to the priming block bumps the version and the hash.
-   Deprecation and retirement follow [patterns/doctrine-content-lifecycle.md](../patterns/doctrine-content-lifecycle.md).
+   Deprecation and retirement follow [maintainers/doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md).

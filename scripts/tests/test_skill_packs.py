@@ -51,6 +51,7 @@ CASES = [
     (NAV, "cited_paths_resolve", "cites a file that does not exist", False, {"report": "See doctrine/principles/nonexistent.md section 2.\n", "library": LIBRARY}),
     (NAV, "obligations_cite_authority_layer", "obligation citing the umbrella", True, {"report": "Each control SHOULD name its owner (ENGINEERING.md).\n"}),
     (NAV, "obligations_cite_authority_layer", "obligation citing a principle", True, {"report": "Teams MUST review changes per doctrine/principles/collaboration.md section 2.\n"}),
+    (NAV, "obligations_cite_authority_layer", "obligation citing a maintainer pattern", True, {"report": "A deprecation MUST name its replacement per doctrine/maintainers/doctrine-content-lifecycle.md section 4.\n"}),
     (NAV, "obligations_cite_authority_layer", "no obligation asserted", True, {"report": "The file describes build surfaces.\n"}),
     (NAV, "obligations_cite_authority_layer", "obligation with no citation", False, {"report": "Teams MUST review every change.\n"}),
     (NAV, "obligations_cite_authority_layer", "obligation citing only a checklist", False, {"report": "Teams MUST do this per doctrine/checklists/build-readiness.md.\n"}),

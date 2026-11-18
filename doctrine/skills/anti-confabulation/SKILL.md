@@ -30,7 +30,7 @@ doctrine:
 
 # Anti-Confabulation Skill
 
-**Kind:** optional, estate-evaluated build-class support
+**Kind:** optional build-class support, evaluated by the adopting organisation
 **Authority:** advisory; never approval or verification authority
 
 ## Purpose

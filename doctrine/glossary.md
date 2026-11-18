@@ -12,7 +12,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Acknowledgement (of messages)** — The consumer tells the broker it has finished with a message, or commits its position, only after the effect is durable; mechanics (single vs cumulative ack, redelivery) are **broker-specific**. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
-**ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md); supersession mechanics: [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md) §7.
+**ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md); supersession mechanics: [maintainers/doctrine-content-lifecycle.md](maintainers/doctrine-content-lifecycle.md) §7.
 
 **Agent (autonomous)** — A system in which a **model** directs its own control flow, invoking **tools** in a **loop toward a goal** until completion — the multiply-attested definitional core across textbook (AIMA), vendor, and industry-consensus definitions, with the regulator's characterization compatible. **Memory** is the standard fourth architectural component (CoALA taxonomy: working / episodic / semantic / procedural — this library's §5.1 strategies use episodic and procedural), not definitional. Contrast **Agentic workflow** (predefined code paths). Governed on two axes — capability tier ([ai-ml-systems.md](principles/ai-ml-systems.md) §2) and materiality (§2.1) — which set its oversight position ([patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) §6), plus the identity boundary: an agent holding its **own workload identity** is a distinct principal under [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1. Memory lifecycle: [ai-ml-systems.md](principles/ai-ml-systems.md) §7; evidence ledger: [evolution/research-agent-loop-graph-cross-check-2026-08.md](evolution/research-agent-loop-graph-cross-check-2026-08.md) §5.
 
@@ -74,11 +74,13 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Canary / gradual rollout** — Release to a **small** slice first, expand if healthy; limits blast radius. See [collaboration.md](principles/collaboration.md).
 
+**Candidate (change candidate)** — One identified version of a change that has been produced and not yet accepted: a diff, a build, or an artefact that evidence, review, and authorisation address by its exact identity. "Change" names the intent; the candidate is the thing evidence is bound to, so a changed or rebuilt candidate needs its own evidence. See [ENGINEERING.md](../ENGINEERING.md#5-automate-discriminating-evidence-on-the-controlled-change-path) Core Proposition 5, [run-contracts.md](patterns/run-contracts.md).
+
 **Chaos engineering** — **Controlled** fault injection and game days to validate resilience **before** production surprises. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
 **Chunking** — Splitting documents into **retrieval-sized** segments (often hundreds of tokens) with metadata (source, heading, tenant); quality dominates RAG outcomes. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §2, [tooling/vector-retrieval-and-embedding-illustration.md](tooling/vector-retrieval-and-embedding-illustration.md).
 
-**Claim-support grade (C1–C4)** — Per-claim grade of how strongly a citation set supports a material doctrine claim — corroborated / probable / plausible / contested — computed with a written independence test and recorded modifiers: a property of the evidence body, not of any single source, and coupled to claim strength by admission floors. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §3, §5.
+**Claim-support grade (C1–C4)** — Per-claim grade of how strongly a citation set supports a material doctrine claim — corroborated / probable / plausible / contested — computed with a written independence test and recorded modifiers: a property of the evidence body, not of any single source, and coupled to claim strength by admission floors. See [source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md) §3, §5.
 
 **CloudEvents** — Vendor-neutral **envelope** for events (`id`, `source`, `type`, `time`, …) and the portable default for new event-shaped boundaries when no governing protocol, platform, external contract, legacy boundary, or material constraint requires a documented equivalent. The **payload** still needs its own schema. See [event-contracts.md](principles/event-contracts.md), [tooling/cloudevents.md](tooling/cloudevents.md).
 
@@ -86,9 +88,9 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **CODEOWNERS** — Git host file mapping **paths** to **required reviewers** (teams or individuals). See [collaboration.md](principles/collaboration.md), [naming-and-repo-layout.md](principles/naming-and-repo-layout.md).
 
-**Conformance claim** — A claim that cites a norm *as* the norm ("conform to RFC 9110"; "behaves as the vendor documents"): satisfied by the pinned norm itself — corroboration floors apply to empirical claims, not to the existence or content of a norm. In-scope product documentation is S1-equivalent for a product's own behaviour. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §4.
+**Conformance claim** — A claim that cites a norm *as* the norm ("conform to RFC 9110"; "behaves as the vendor documents"): satisfied by the pinned norm itself — corroboration floors apply to empirical claims, not to the existence or content of a norm. In-scope product documentation is S1-equivalent for a product's own behaviour. See [source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md) §4.
 
-**Content drift** — A cited URL stays alive while its content silently changes — the invisible companion of **link rot**, corrupting quote-based citation; detected by re-verification or content hashes at review time. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §6.
+**Content drift** — A cited URL stays alive while its content silently changes — the invisible companion of **link rot**, corrupting quote-based citation; detected by re-verification or content hashes at review time. See [source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md) §6.
 
 **Contract** — Explicit, versioned **shape** and rules at a boundary (schema, OpenAPI, proto, migration contract). Violations are **build or runtime failures** per policy—not informal JSON. See [event-contracts.md](principles/event-contracts.md) and [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
@@ -112,7 +114,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Deployable unit** — Thing you **ship or operate** with its own lifecycle (app, infra module, automation package, etc.); often maps to **separate** deploy surfaces. See [build.md](principles/build.md).
 
-**Deprecated (doctrine lifecycle)** — Scheduled for **supersession** or **retirement**; remains accurate at every tag in which it ships; new adoption should not reference it. Banner + register per [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
+**Deprecated (doctrine lifecycle)** — Scheduled for **supersession** or **retirement**; remains accurate at every tag in which it ships; new adoption should not reference it. Banner + register per [maintainers/doctrine-content-lifecycle.md](maintainers/doctrine-content-lifecycle.md).
 
 **DORA delivery metrics** — Current delivery-system signals across throughput and instability: *change lead time*, *deployment frequency*, *failed deployment recovery time*, *change fail rate*, and *deployment rework rate*. They are not universal company objectives or individual targets. See [measurement-and-dora.md](principles/measurement-and-dora.md).
 
@@ -124,13 +126,17 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Effective challenge** — Critical analysis by objective experts with appropriate expertise, sufficient independence, organisational standing, and influence to effect change — the SR 26-2 test for whether "second opinion" review is real. SR 26-2 excludes generative and agentic AI from its own scope; this library borrows the test as vocabulary. See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §2.
 
+**Enactment** — Carrying out an authorised change against its target, under an identity scoped to that action: a deploy, an infrastructure apply, a data change, or a pre-authorised agent action. It is one of five duties the umbrella keeps distinct, with advice, implementation (producing the change), verification, and authorisation (permitting it). "Deployment" names only one kind of enactment, and "execution" names the running of delegated work. See [ENGINEERING.md](../ENGINEERING.md#2-make-ownership-authority-and-accountability-explicit) Core Proposition 2.
+
 **Error budget** — Allowed **unreliability** derived from an SLO; spending it signals **slow down or invest** in reliability. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
-**Estate** — In this repo: a **specific** organisation, cloud, or region whose **named** product choices live under `tooling/estates/`—not global law. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
+**Estate** — Everything one adopting organisation runs and governs: its systems, pipelines, and environments. Also that organisation as the party that sets local choices. "Organisation" names the legal entity and "environment" names one runtime; neither covers the whole. In this repo, `tooling/estates/` holds one estate's **named** product choices for a specific organisation, cloud, or region—not global law. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
+
+**Estate-governed** — A delivery path, workload, or system is estate-governed when the adopting organisation's shared controls apply to it: its shared repositories, pipelines, and environments, and the identities that act in them. It need not be production. The contrast is local single-user work. Rules scoped to "estate-governed and production" paths apply to both. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §3.
 
 **Evidence card** — The unit of doctrine retrieval a tool server returns to an agent: a bounded excerpt with a **revision-pinned citation** (path, section, commit, content hash), the entry's **layer** and lifecycle **status**, and a **trust label**. Never a whole body. See [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) §2, [../contracts/doctrine-tool-contract.v1.schema.json](../contracts/doctrine-tool-contract.v1.schema.json).
 
-**Evidence exception (downref)** — A registered, expiring admission of a claim below its evidence floor ([EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md)): adjudicated once, reusable while in force — the IETF downref-registry economics applied to citations; never permanent. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §5.
+**Evidence exception (downref)** — A registered, expiring admission of a claim below its evidence floor ([EVIDENCE-EXCEPTIONS.md](EVIDENCE-EXCEPTIONS.md)): adjudicated once, reusable while in force — the IETF downref-registry economics applied to citations; never permanent. See [source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md) §5.
 
 **Exception** — Bounded, time-limited authority decision that records a departure or accepted residual risk separately from the rule and evidence. It cannot turn failed, absent, stale, or inconclusive evidence into a pass. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §5.
 
@@ -192,7 +198,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Incident command / incident lifecycle** — Coordinated **response** to a production-impacting event: **incident commander**, **comms** cadence, **state doc** (single source of truth), **escalation**, **handoff**, **sustainable** on-call, **post-incident** **actions**; estates operating **agent responders** add a rostered agent role under a **named human owner** (never IC). See [incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md), [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
-**Independence test (citations)** — Corroboration counts only across **different organisations with different incentive structures**: two posts by one vendor are one source; a paper and its authors' blog are one source. What makes a C1 grade mean something. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §3.
+**Independence test (citations)** — Corroboration counts only across **different organisations with different incentive structures**: two posts by one vendor are one source; a paper and its authors' blog are one source. What makes a C1 grade mean something. See [source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md) §3.
 
 **IDOR** — *Insecure direct object reference*—often overlaps **BOLA**. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
@@ -218,9 +224,9 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Lexical search** — Keyword / **inverted-index** retrieval (e.g. **BM25**); complements **semantic** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
-**Link rot** — Cited URLs dying over time (half to two-thirds of aged web citations in the studied literatures); countered by durable identifiers and archived copies captured at admission — durability is created at citation time, never later. Companion failure: **content drift**. See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §6.
+**Link rot** — Cited URLs dying over time (half to two-thirds of aged web citations in the studied literatures); countered by durable identifiers and archived copies captured at admission — durability is created at citation time, never later. Companion failure: **content drift**. See [source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md) §6.
 
-**Load-bearing judge** — An evaluator model whose verdicts **gate promotion, merges, or automation** (as opposed to advisory critique); the activation trigger for judge discipline — versioned config, chance-corrected agreement with an estate-set threshold, perturbation testing, escalation-gated automation. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §8.2.
+**Load-bearing judge** — An evaluator model whose verdicts **gate promotion, merges, or automation** (as opposed to advisory critique); the activation trigger for judge discipline — versioned config, chance-corrected agreement with a threshold the adopting organisation sets, perturbation testing, escalation-gated automation. See [agentic-loop-design.md](patterns/agentic-loop-design.md) §8.2.
 
 **Load shedding** — Rejecting excess work early and cheaply as a service nears saturation, so the work it accepts still completes. See [errors-and-failure-modes.md](principles/errors-and-failure-modes.md) §4.
 
@@ -232,7 +238,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Mandate / mandate class (change)** — An addressable justification, accountable owner, scope, materiality, and non-goals for software work. Its mandate class is product/strategic, external obligation, vulnerability/incident response, compatibility/lifecycle maintenance, risk reduction/invariant preservation, or enabling work. A mandate does not always require a business KPI. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md) §4.
 
-**Materiality (AI)** — Business-impact tier of an AI system (person-affected decisions, money movement, irreversibility, blast radius) — **orthogonal** to capability tiers A–D; controls scale with the **max** of the two. See [ai-ml-systems.md](principles/ai-ml-systems.md) §2.1, [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.1.
+**Materiality** — What a failure costs: person-affected decisions, money movement, regulatory reporting, irreversibility, blast radius. The library uses this one word wherever it means how much is at stake, with the example values of the applicability overlay (low, material, critical). For AI systems it is an axis **orthogonal** to capability tiers A–D; controls scale with the **max** of the two. See [ai-ml-systems.md](principles/ai-ml-systems.md) §2.1, [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §1.1, [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md) §3.
 
 **MCP (Model Context Protocol)** — Open **client–server** protocol for AI **hosts** to discover and invoke **tools** and **resources**, versioned as **dated specification revisions** (for example **2025-06-18**: OAuth 2.1 (an IETF Internet-Draft) resource-server auth + RFC 8707 resource indicators; **2026-07-28**: stateless core, twelve-month deprecation policy); pin the revision per estate-governed host/server pair, require external-IdP OAuth for **remote** servers, and treat server discovery as a **curated registry** decision (namespace DNS verification is authenticity, not trust). Docs: https://modelcontextprotocol.io — see [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §4.
 
@@ -322,9 +328,9 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Replay** — Re-deliver or re-process messages from history or DLQ **deliberately**; needs **idempotency** and scope. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
-**Rescinded (doctrine lifecycle)** — Exit state: **disavowed** as wrong or harmful; consumers should stop following it even on old pins. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
+**Rescinded (doctrine lifecycle)** — Exit state: **disavowed** as wrong or harmful; consumers should stop following it even on old pins. See [maintainers/doctrine-content-lifecycle.md](maintainers/doctrine-content-lifecycle.md).
 
-**Retired (doctrine lifecycle)** — Exit state: **no successor**; the topic no longer earns doctrine; historical value only. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
+**Retired (doctrine lifecycle)** — Exit state: **no successor**; the topic no longer earns doctrine; historical value only. See [maintainers/doctrine-content-lifecycle.md](maintainers/doctrine-content-lifecycle.md).
 
 **RFC (design)** — *Request for comments*: **pre-decision** exploration; outcomes land in ADRs when decided. See [documentation-knowledge.md](principles/documentation-knowledge.md).
 
@@ -376,7 +382,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Software factory (agent-assisted)** — In this repo’s research usage: **scaled** automation of engineering work **with** agents while **git + CI + human merge** stay the **system of record**—not autonomous **direct** production mutation. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §8.
 
-**Source class (S1–S7+X)** — Per-citation grade of **what kind of source** is cited: the norm itself (S1), statutory-body guidance (S2), peer-reviewed research (S3, preprints flagged), edited/reviewed artifacts (S4), product-scoped primary documentation (S5 — mandatory in scope, persuasive outside), named-practitioner writing (S6), community/marketing (S7), and X = cannot judge (distinct from low; never normative support). Carries **scope** (what the source is authoritative for) and **role** (primary/secondary for this claim). See [source-authority-and-evidence-grading.md](patterns/source-authority-and-evidence-grading.md) §2.
+**Source class (S1–S7+X)** — Per-citation grade of **what kind of source** is cited: the norm itself (S1), statutory-body guidance (S2), peer-reviewed research (S3, preprints flagged), edited/reviewed artifacts (S4), product-scoped primary documentation (S5 — mandatory in scope, persuasive outside), named-practitioner writing (S6), community/marketing (S7), and X = cannot judge (distinct from low; never normative support). Carries **scope** (what the source is authoritative for) and **role** (primary/secondary for this claim). See [source-authority-and-evidence-grading.md](maintainers/source-authority-and-evidence-grading.md) §2.
 
 **SP 800-218A** — NIST **SSDF community profile** for **generative AI** and dual-use **foundation model development** (training/integration—not a full substitute for **runtime** ops guidance). See [research-ai-ml-ops-landscape-2026-04.md](evolution/research-ai-ml-ops-landscape-2026-04.md), [privacy-and-data-governance.md](principles/privacy-and-data-governance.md) §5.3.
 
@@ -390,7 +396,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **STRIDE** — *Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege*—threat-model **prompts**. See [threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md).
 
-**Superseded (doctrine lifecycle)** — Exit state: replaced by a **named successor**; the tombstone points forward. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md).
+**Superseded (doctrine lifecycle)** — Exit state: replaced by a **named successor**; the tombstone points forward. See [maintainers/doctrine-content-lifecycle.md](maintainers/doctrine-content-lifecycle.md).
 
 ---
 
@@ -402,7 +408,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Toil** — Manual, repetitive operational work that does not **improve** the system long-term; budget its reduction. See [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
-**Tombstone (doctrine lifecycle)** — The stub left at a removed file's path: exit banner, ADR link, successor link, last tag at which the full text shipped. Nothing is **hard-deleted**. See [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md), [DEPRECATED.md](DEPRECATED.md).
+**Tombstone (doctrine lifecycle)** — The stub left at a removed file's path: exit banner, ADR link, successor link, last tag at which the full text shipped. Nothing is **hard-deleted**. See [maintainers/doctrine-content-lifecycle.md](maintainers/doctrine-content-lifecycle.md), [DEPRECATED.md](DEPRECATED.md).
 
 **Tooling** — In this repo: **illustrative** stacks under `tooling/` and `tooling/estates/`—swappable if **surface contracts** stay stable. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md).
 

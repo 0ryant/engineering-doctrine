@@ -16,8 +16,8 @@ doctrine:
     - drafting or promoting typed doctrine claims
     - recommendations that cite external sources
   governing:
-    - path: doctrine/patterns/source-authority-and-evidence-grading.md
-    - path: doctrine/patterns/doctrine-content-lifecycle.md
+    - path: doctrine/maintainers/source-authority-and-evidence-grading.md
+    - path: doctrine/maintainers/doctrine-content-lifecycle.md
       section: "2"
     - path: doctrine/EVIDENCE-EXCEPTIONS.md
   priming_block_sha256: "e83988b9ab57330ecf89e525feee536fa2695f26e22bc522759dbf48d44c169e"
@@ -38,7 +38,7 @@ doctrine:
 ## Purpose
 
 Make the two-axis scheme of
-[source-authority-and-evidence-grading.md](../../patterns/source-authority-and-evidence-grading.md)
+[source-authority-and-evidence-grading.md](../../maintainers/source-authority-and-evidence-grading.md)
 mechanical at the point of writing: every citation says what kind of source it
 is, every claim says how well it is supported, and the admission floors for
 normative strength are applied before a MUST is written rather than discovered

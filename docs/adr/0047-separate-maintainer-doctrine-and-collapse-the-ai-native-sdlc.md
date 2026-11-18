@@ -1,53 +1,135 @@
-# ADR 0047: Separate Maintainer Doctrine From The Consumer Path And Collapse The AI-Native SDLC
+# ADR 0047: Separate Maintainer Doctrine From The Consumer Path
 
-- **Status:** Proposed
-- **Decision date:** —
-- **Recorded date:** 2026-09-03
+- **Status:** Accepted
+- **Decision date:** 2026-11-18
+- **Recorded date:** 2026-09-03; amended 2026-11-18
 - **Retrospective:** No
-- **Responds to:** the 2026-09-03 cold-truth assessment, fix 5
+- **Deciders:** Repository operator
+- **Review provenance:** Operator-accepted on 2026-11-18 as amended; drafted by a model on 2026-09-03 and amended by a model on 2026-11-18 at the operator's direction, after the structure was re-measured; no independent human or domain review recorded
+- **Responds to:** the 2026-09-03 cold-truth assessment, fix 5; findings SAI-32, SAI-33, and SAI-41 in the [2026-11 review](../../doctrine/evolution/review-full-doctrine-2026-11.md)
+- **Canonical owner:** none changes. Three patterns move directory and keep their content
+- **Derived landings:** [ENGINEERING.md](../../ENGINEERING.md) (one clause in the layer sentence); [how-to-read-this-doctrine.md](../../doctrine/patterns/how-to-read-this-doctrine.md); [doctrine/README.md](../../doctrine/README.md); the sitemap and semantic index; the preflight script; two contract schema descriptions
+- **Relationship to earlier decisions:** the September draft's decision 3, the collapse of the AI-native lifecycle pattern, is withdrawn from this ADR (D7). [ADR 0046](0046-retire-private-vocabulary-where-a-standard-term-exists.md) D4 waits for the ADR that replaces it
+
+Accepted on 2026-11-18. D1 to D5 are executed in the change that records this acceptance. D6 applies from the next sweep.
+
+The title was shortened on amendment. The file keeps its original name so existing links hold.
 
 ## Context
 
-Two measurements from the assessment motivate this ADR. First, the library now carries roughly 111k words of ADRs and evolution notes against roughly 93k words of principles, patterns, and checklists, and four patterns in the consumer reading path exist only to govern the library itself: [doctrine-content-lifecycle.md](../../doctrine/patterns/doctrine-content-lifecycle.md), [source-authority-and-evidence-grading.md](../../doctrine/patterns/source-authority-and-evidence-grading.md), [doctrine-library-change-harness.md](../../doctrine/patterns/doctrine-library-change-harness.md), and [doctrine-versioning-and-consumer-compatibility.md](../../doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md), together with the registers [DEPRECATED.md](../../doctrine/DEPRECATED.md) and [EVIDENCE-EXCEPTIONS.md](../../doctrine/EVIDENCE-EXCEPTIONS.md). A head of engineering evaluating the library for a team has no use for any of them and, the assessment argues, is put off by meeting them first. Second, [ai-native-software-development-lifecycle.md](../../doctrine/patterns/ai-native-software-development-lifecycle.md) runs to eighteen top-level sections and about 4,000 words; the library's own retrospective already conceded its cognitive load, and the assessment names it as the single pattern a senior reader would decline.
+The assessment made two charges. Maintainer material sits in the path a consumer reads first, and the AI-native lifecycle pattern is too long for a senior reader to accept. Both are structure problems. Nothing in the maintainer patterns is wrong; it is in the wrong place.
 
-Both are structure problems, not content problems. Nothing in the maintainer patterns is wrong; it is in the wrong place. Nothing in the SDLC is wrong; there is too much of it in one file.
+### What changed between the draft and this amendment
 
-## Proposed Decision
+The structure was measured again on 2026-11-18 at `04d474a`, by the same method at the commit before the draft (`cb073f2`) and today. Word counts split Markdown on whitespace.
 
-1. **A `doctrine/maintainers/` directory** holds the four maintainer patterns and the two registers. Files move with `git mv`; every inbound link is repointed in the same commit; the sitemap, semantic index, README, and REFERENCES internal map are regenerated or edited. A one-line redirect note stays at each old path for one release, then is retired through the lifecycle. The consumer path ([doctrine/README.md](../../doctrine/README.md) Start Here, [how-to-read-this-doctrine.md](../../doctrine/patterns/how-to-read-this-doctrine.md)) gains one sentence: "If you maintain this library rather than consume it, start at `maintainers/`."
+| Measure | September | Now |
+| --- | --- | --- |
+| Rule text: principles, patterns, checklists | 94,996 words | 107,197 |
+| The same with implementation references | 94,996 | 131,117 |
+| Record text: ADRs and evolution notes | 114,755 | 175,072 |
+| Record words per rule word | 1.21 | 1.63 (1.34 with implementation references) |
+| AI-native lifecycle pattern | about 4,000 words, 18 sections | 4,094 words, 18 sections |
 
-2. **The versioning pattern is split.** Its consumer-facing half (change classes, release labels, upgrade policy: §§1–5) stays in the consumer path as `patterns/consuming-doctrine-releases.md`; its maintainer half (release notes minimum, maintainer checklist: §§4, §8) moves with the others. Consumers need to know how to absorb a release; they do not need to know how to cut one.
+Four findings changed the draft.
 
-3. **The AI-native SDLC is collapsed to its seven gates.** The replacement, at the same path, keeps: scope and non-goals; the five-minute field guide; the invariants; the seven operational gates, each with its entry condition, exit evidence, and the record it produces; a one-page crosswalk to the S0–S10 references; failure modes; and consumer impact. The claim model, transition admissibility, authority model, closure and re-entry, and the lifecycle-at-a-glance diagram move to a companion note under `evolution/` as design rationale, which is what they are. Target length: at most 1,600 words and nine sections. The gate names lose the "enactment" and "mandate class" vocabulary per [ADR 0046](0046-retire-private-vocabulary-where-a-standard-term-exists.md). The readiness checklist derived from the pattern is re-derived from the collapsed version.
+1. **Two skills pin the register paths.** The navigation skill's hashed priming block names `doctrine/DEPRECATED.md` and the citation skill's names `doctrine/EVIDENCE-EXCEPTIONS.md`. Moving the registers forces two re-hashes and a re-pin by every host that pins skills by hash. Consumers and agents are also told to check the deprecation register, so it is consumer material.
+2. **The versioning split moves very little.** The draft assigned §§1–5 to consumers and §§4 and 8 to maintainers, which puts §4 in both halves and §§6–7 in neither. The maintainer half is 239 words of 1,289. A split and a rename would touch 28 files to relocate it.
+3. **The draft gave the new directory no standing.** The navigation skill tells an agent to take authority only from the umbrella, principles, and patterns. The draft did not say what a file under `maintainers/` is.
+4. **The lifecycle collapse would move rules into a note.** Three sections the draft sent to an evolution note hold rules: transition admissibility (§9), the authority duty table (§10), and the rule in §13 that an agent cannot detect, implement, approve, and deploy its own change as one closed authority loop. The umbrella says research under `doctrine/evolution/` "is evidence and history, not adopted doctrine by itself". Three files cite §10 as an owner. The review reached the same view independently in finding SAI-32.
 
-4. **Word-count ratio becomes a tracked measure.** The sweep record reports normative words against maintainer-and-rationale words each sweep. No threshold is set; the number is published so the drift is visible.
+## Decision
+
+### D1. A `doctrine/maintainers/` directory holds three patterns
+
+- [doctrine-content-lifecycle.md](../../doctrine/maintainers/doctrine-content-lifecycle.md)
+- [source-authority-and-evidence-grading.md](../../doctrine/maintainers/source-authority-and-evidence-grading.md)
+- [doctrine-library-change-harness.md](../../doctrine/maintainers/doctrine-library-change-harness.md)
+
+Files move with their history. A short README in the directory is its landing page. Every link in a live file is repointed in the same change, along with the preflight script, the two schema descriptions that name the lifecycle pattern's path, `AGENTS.md`, `CONTRIBUTING.md`, `GOVERNANCE.md`, and the two skills that cite these patterns outside their priming blocks. The doctrine README's "Start Here" and the reading guide gain one sentence: "If you maintain this library rather than consume it, start at `maintainers/`."
+
+### D2. The moved files remain patterns
+
+Their applicability condition is that you are changing this library. They bind the people and agents who do that and nobody else. The operator accepted this standing on 2026-11-18. The umbrella's layer sentence and the reading guide say so, and the executing change shows the exact clause. The tool contract's layer list is unchanged. No priming block is edited: an agent consuming the library takes no authority from the directory, which is the intended result.
+
+Two path rules inside the library learn what a tool server must. The skills validator and the navigation verifier pack's authority check now count a path under `doctrine/maintainers/` as a pattern, so a skill governed by a moved pattern still validates and a citation that passed before the move still passes. The pack takes a patch version.
+
+### D3. The two registers stay where they are
+
+[DEPRECATED.md](../../doctrine/DEPRECATED.md) and [EVIDENCE-EXCEPTIONS.md](../../doctrine/EVIDENCE-EXCEPTIONS.md) stay at the `doctrine/` root (Context, finding 1). This reverses the draft.
+
+### D4. The versioning pattern stays in the consumer path under its name
+
+[doctrine-versioning-and-consumer-compatibility.md](../../doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md) is not split or renamed. Its two maintainer sections, §4 (release notes minimum) and §8 (maintainer checklist), move into the change harness as new sections after its existing ones. In the versioning pattern §4 and §8 keep their numbers and become one-line pointers, so no section in either file is renumbered. This replaces the draft's decision 2.
+
+### D5. Old paths redirect, then retire on the ordinary clock
+
+A one-line redirect stub stays at each of the three old paths. Each stub enters the deprecation register and exits under the lifecycle's ordinary clock. Its exit state is Superseded: the lifecycle pattern §5 forbids hard deletion, so the path then stays as a tombstone that points forward. ADRs, evolution notes, and the changelog are records: they keep their old links, which resolve through the stub and then the tombstone.
+
+This paragraph was corrected when the ADR was executed. The accepted text had the stubs removed and the record links repointed at that point, which the lifecycle pattern does not allow.
+
+### D6. The word ratio is published each sweep
+
+Each sweep record reports rule words (principles, patterns, and checklists, with and without implementation references) against record and maintainer words (ADRs, evolution notes, and `maintainers/`). No threshold is set. The Context table is the first reading, taken before the move.
+
+### D7. The lifecycle collapse is withdrawn from this ADR
+
+The draft's decision 3 does not proceed here. It needs its own ADR, with a collapsed draft the operator has read, as the September review note already required. That ADR has to answer what this one could not:
+
+- **Which sections hold rules and stay.** The review names §3, §5, §9, and one bullet of §13. Section 10 is cited as an owner by three files.
+- **Where ten citations go.** Every section citation of the pattern from a live file points at least partly at a section the draft's keep-list left out (§§4, 7, 10, 13, 16).
+- **Whether its statements become typed.** The pattern contains no MUST, SHOULD, or MAY.
+- **Whether routine change gets a floor.** Finding SAI-33 asks for one, and Core Proposition 10 says "Incidental assistance remains lightweight". A floor loosens the pattern, so it is the operator's decision.
+- **Its size.** The sections on the draft's keep-list total 1,658 words today. With §§9, 10, and 13 the total is about 2,200.
+- **Its order.** The open review decisions on agent authority (AI-02, AI-04, AI-05, AI-14) would rewrite §10. Collapsing first means editing it twice.
+
+## Control Cost And Lifecycle
+
+- 33 live files and 34 record files reference the three patterns. The live files change once; the record files do not change.
+- Three stubs join the deprecation register and are swept like any other entry.
+- D6 adds one line to each sweep record.
+- No skill is re-hashed and no contract enum changes. The navigation verifier pack takes a patch version (1.0.3).
 
 ## Alternatives Considered
 
-**Leave the structure and improve the README's reading order.** Rejected. Reading order is already the README's job and the assessment reader still met the maintainer layer first, because search and the semantic index do not respect reading order.
+**Leave the structure and improve the README's reading order.** Rejected. The harness sits under "Start Here" today, and search and the semantic index do not respect reading order.
 
-**Delete the maintainer patterns.** Rejected. They are the reason the library can retire content at all, and ADR 0045 has now exercised them once.
+**Delete the maintainer patterns.** Rejected. They are the reason the library can retire content at all, and two sweeps have now exercised them.
 
-**Rewrite the SDLC from scratch.** Rejected. The gates and invariants are sound; the file is a design document that was landed as a pattern. Moving the design parts to evolution is the honest fix.
+**Move the registers too, as the draft proposed.** Rejected (Context, finding 1).
 
-**Move the SDLC design sections to a second pattern file.** Rejected. Two patterns with one applicability condition is one pattern with a page break, and the second file would accrete.
+**Split and rename the versioning pattern, as the draft proposed.** Rejected (Context, finding 2).
 
-## Consequences
+**Move the maintainer-only change checklist as well.** Not done. Checklists are a derived layer with their own directory, the file's title already marks its audience, and a second kind of file in `maintainers/` blurs what the directory holds.
 
-- Consumer-visible patterns drop by three and the longest pattern shrinks by more than half.
-- Every existing link to the four maintainer patterns changes; the redirect notes absorb the churn for one release.
-- The SDLC readiness checklist is re-derived, which is a checklist change class in its own right.
+**Collapse the lifecycle pattern here.** Withdrawn (D7).
 
-## Consumer Impact
+## Consumer Impact And Migration
 
-**Change class:** navigation for the moves; normative replacement for the SDLC collapse, with a section-number migration table in the collapsed file's Consumer Impact; checklist update for the readiness checklist.
+**Change class:** navigation for D1, D3, D4, and D5; clarification for D2; maintainer tooling for D6.
 
-## Acceptance Evidence (when accepted)
+- No rule changes. Consumer-visible patterns drop from 33 to 30, and 7,379 words leave the pattern list.
+- Links to the three old paths keep resolving, through the stub and then through its tombstone.
+- A retrieval server that derives an entry's layer from its path needs one rule: files under `doctrine/maintainers/` are patterns.
+- Hosts that pin verifier packs by version move to navigation pack 1.0.3.
+- Citations of the versioning pattern by section number are unaffected.
 
-- `doctrine/maintainers/` exists with the six files; no link in principles, patterns, checklists, or the umbrella points at the old paths.
-- The collapsed SDLC validates the "no obligation exists only in a checklist" rule against the re-derived checklist.
-- The sweep record carries the word-count ratio.
+## Acceptance Criteria
 
-## Review Note
+- `doctrine/maintainers/` holds the three patterns and a README, and each file's history follows it.
+- A search for the three old paths returns only the stubs, the deprecation register, the sitemap, ADRs, evolution notes, and the changelog.
+- The preflight script passes from the new harness path, and the Markdown link check passes.
+- The skills validator reports every priming hash unchanged.
+- The versioning pattern's §4 and §8 are pointers, the harness holds their text, and no section in either file is renumbered.
+- The deprecation register lists the three stubs.
+- The umbrella and the reading guide state the directory's standing as D2 gives it.
+- The next sweep record carries the word ratio.
 
-Drafted by an agent under the owner's direction; not yet reviewed by the owner. The SDLC collapse in particular changes what consumers cite and should not be executed without the owner reading the collapsed draft.
+## Residual Risk
+
+- The lifecycle pattern stays at 4,094 words until its own ADR lands. Findings SAI-32 and SAI-33 stay open.
+- Finding SAI-41 asks to move the agent-consumption pattern, the skills register, and the contract schemas as well. That is not decided here.
+- The maintainer-only change checklist stays in the checklist list a consumer sees.
+- The navigation skill's priming block still names only `doctrine/principles/` and `doctrine/patterns/` as authority. It was left alone to avoid a re-hash, so its wording and its pack's check now differ for maintainer patterns.
+- The ratio in D6 will read worse after this change: 7,379 words move from the rule side to the maintainer side.
+- The amendment was drafted by a model and changes three of the draft's four decisions. No independent review is recorded.

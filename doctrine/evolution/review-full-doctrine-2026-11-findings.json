@@ -11,6 +11,7 @@
   "settled-0059": "settled in ADR 0059, accepted 2026-11-18, by applying rules already in ENGINEERING.md",
   "disputed-rule": "a reviewer disputes what the rule asks; the rule is the maintainer's and stays as written until he decides",
   "fixed-0.6.1": "a correction to a hash-pinned skill or a versioned contract file, held at v0.6.0 and applied in the v0.6.1 patch with versions bumped",
+  "settled-0046": "decided in ADR 0046 as amended and accepted 2026-11-18; the retired terms and seven compounds are replaced, and three lifecycle terms wait for that pattern to be rewritten",
   "open": "not acted on",
   "strength": "recorded as strong; do not weaken"
  },
@@ -3738,7 +3739,7 @@
    "kind": "substance",
    "category": "unclear",
    "severity": "minor",
-   "status": "open",
+   "status": "settled-0046",
    "title": "ADR 0046 vocabulary still present, including a term it says was retired",
    "file": "doctrine/patterns/run-contracts.md",
    "line": 67,

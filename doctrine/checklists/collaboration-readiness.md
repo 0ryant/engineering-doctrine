@@ -41,7 +41,7 @@ Use when adopting or auditing trunk-based workflow, branch protection, and deliv
 ## Feature Flags And Safety
 
 Derive flag readiness from [Feature Flag Governance](../patterns/feature-flag-governance.md),
-including its applicability and estate-tunable defaults.
+including its applicability and the defaults the adopting organisation may tune.
 
 ```text
 [ ] Feature flags used for incomplete user-visible behaviour where applicable

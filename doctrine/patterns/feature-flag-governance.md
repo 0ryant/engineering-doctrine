@@ -14,7 +14,7 @@ Flag SDKs, feature-management platforms, and rollout controllers are tooling cho
 
 - Baseline: every claim below applies to any repository that evaluates a flag at runtime, whatever the flag store.
 - Stricter only under a named profile. Regulated-data: every targeting change and state transition MUST be audit-logged with actor, time, and reason ([principles/audit-logging.md](../principles/audit-logging.md)). Person-affected: the §4.3 metric gates MUST include the harm-surface evaluation in [principles/ai-ml-systems.md](../principles/ai-ml-systems.md) §6, and minimum dwell per tier is 24 hours.
-- Numeric values are estate-tunable defaults. An estate MAY change one by recording the value and reason; that is not an exception under [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md) §5.
+- Numeric values are defaults the adopting organisation may tune. An estate MAY change one by recording the value and reason; that is not an exception under [normative-language-applicability-and-exceptions.md](normative-language-applicability-and-exceptions.md) §5.
 
 ---
 
@@ -191,7 +191,7 @@ Prevents: quality regressions accumulating across users before aggregates catch 
 
 ## 10. Consumer Impact
 
-Change class: normative replacement. This file replaces `feature-flag-lifecycle.md` as the canonical home; the old file follows the supersession mechanics in [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md).
+Change class: normative replacement. This file replaces `feature-flag-lifecycle.md` as the canonical home; the old file follows the supersession mechanics in [doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md).
 
 Migration note: repoint links to this path. Old §1 (taxonomy) is §2 here; old §2 (state machine) is §3; old §3 (progressive delivery) is §4, with automated reversion added as §4.4; old §4 (debt) is §5; old §5 (metadata) is §6, with the tracker-specific field renamed `tracker_ref` and `owner_email` renamed `owner_contact`; old §6 (testing) is §7; old §7 (AI flags) is §8. Lifecycle, metadata, testing, and reversion claims are now typed, so consumers should confirm under §1 which claims bind them. No numeric default changed.
 
@@ -216,7 +216,7 @@ Migration note: repoint links to this path. Old §1 (taxonomy) is §2 here; old 
 - [principles/collaboration.md](../principles/collaboration.md) §4 — flag ownership and server-side kill switches
 - [code-review-and-change-approval.md](code-review-and-change-approval.md) — flags and rollout risk as review topics
 - [principles/state-machines-and-workflows.md](../principles/state-machines-and-workflows.md) — explicit states and guarded transitions
-- [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md) — supersession mechanics for the predecessor file
+- [doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md) — supersession mechanics for the predecessor file
 
 ---
 

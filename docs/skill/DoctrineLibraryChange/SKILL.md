@@ -18,7 +18,7 @@ This skill applies when the open workspace (or path the user provides) is the **
 
 ## Execution order
 
-1. **Read** `doctrine/patterns/doctrine-library-change-harness.md` — full procedure, tables, and **§7 agent prompt** (copy-paste block).
+1. **Read** `doctrine/maintainers/doctrine-library-change-harness.md` — full procedure, tables, and **§7 agent prompt** (copy-paste block).
 2. **Research** — additions need references and/or a note under `doctrine/evolution/`; link from ADR **Context** / **Evidence** when non-trivial.
 3. **ADR** — new `docs/adr/NNNN-*.md` + index update, or reference existing ADR; editorial-only may skip (document in PR).
 4. **Author** — place text in the right **layer**; cross-link **principle ↔ pattern ↔ tooling**; update checklists if new adopter obligations.

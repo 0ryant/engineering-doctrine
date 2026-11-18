@@ -2,7 +2,7 @@
 
 This is the compact constitution for the library: durable propositions, adoption rules, and routes to canonical detail. It applies to software, services, data and infrastructure changes, automation, and AI-assisted delivery. It does not make every control applicable to every system.
 
-Use [doctrine/SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md) to find the right source for a task. Topic principles own detailed obligations and trade-offs; patterns own conditional operating models; [implementation references](doctrine/impl/README.md) compose their normal shape without creating authority; tooling and estate files map that shape to replaceable products; checklists derive review questions. Research under `doctrine/evolution/` is evidence and history, not adopted doctrine by itself.
+Use [doctrine/SEMANTIC_INDEX.md](doctrine/SEMANTIC_INDEX.md) to find the right source for a task. Topic principles own detailed obligations and trade-offs; patterns own conditional operating models; [implementation references](doctrine/impl/README.md) compose their normal shape without creating authority; tooling and estate files map that shape to replaceable products; checklists derive review questions. [Maintainer patterns](doctrine/maintainers/README.md) govern changes to this library and bind only the people and agents who make them. Research under `doctrine/evolution/` is evidence and history, not adopted doctrine by itself.
 
 ---
 

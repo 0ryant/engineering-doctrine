@@ -85,7 +85,7 @@
         "status": {
           "type": "string",
           "enum": ["active", "deprecated", "retired"],
-          "description": "Lifecycle state per doctrine/patterns/doctrine-content-lifecycle.md. deprecated MUST name superseded_by; retired skills keep their manifest as a tombstone and MUST NOT be loaded."
+          "description": "Lifecycle state per doctrine/maintainers/doctrine-content-lifecycle.md. deprecated MUST name superseded_by; retired skills keep their manifest as a tombstone and MUST NOT be loaded."
         },
         "tier": {
           "type": "integer",

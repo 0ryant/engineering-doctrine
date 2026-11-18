@@ -15,4 +15,4 @@ Or merge the YAML `description` and body into an existing **always-apply** rule 
 
 ## Source of truth
 
-The full procedure lives in [`doctrine/patterns/doctrine-library-change-harness.md`](../../doctrine/patterns/doctrine-library-change-harness.md). The `.mdc` file is a short reminder; the harness is canonical.
+The full procedure lives in [`doctrine/maintainers/doctrine-library-change-harness.md`](../../doctrine/maintainers/doctrine-library-change-harness.md). The `.mdc` file is a short reminder; the harness is canonical.

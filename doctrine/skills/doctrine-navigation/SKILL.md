@@ -16,7 +16,7 @@ doctrine:
   governing:
     - path: doctrine/patterns/how-to-read-this-doctrine.md
     - path: doctrine/principles/timeless-principles-and-tooling.md
-    - path: doctrine/patterns/doctrine-content-lifecycle.md
+    - path: doctrine/maintainers/doctrine-content-lifecycle.md
     - path: ENGINEERING.md
   priming_block_sha256: "327d812f4f74c447efba9a36f188c852dfc15d2c3d64e0ba35a4482d7df6384c"
   verifier_pack: ./verifier-pack.yml
@@ -62,7 +62,7 @@ context:
   skills:
     - doctrine-navigation@1.0.1
 verifiers:
-  - doctrine-navigation-verifier-pack@1.0.2
+  - doctrine-navigation-verifier-pack@1.0.3
 ```
 
 Suitable for estate-policy injection on every task class that touches doctrine;

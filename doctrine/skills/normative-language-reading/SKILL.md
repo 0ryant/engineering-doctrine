@@ -85,4 +85,4 @@ verifiers:
 
 This skill cannot decide whether a profile applies, whether a stated risk
 asymmetry is real, or whether an authority named in an exception actually holds
-that authority in the adopting estate. Those are human, estate-bound decisions.
+that authority in the adopting estate. Those are human decisions made within that estate.

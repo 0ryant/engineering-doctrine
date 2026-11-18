@@ -61,12 +61,12 @@ Applicability: any tool surface whose output an agent will cite or act on.
   patterns; a checklist, implementation reference, tooling file, estate
   supplement, or evolution note returned by search is context, not obligation ([how-to-read-this-doctrine.md](how-to-read-this-doctrine.md)).
 - **Status is visible.** Deprecated and retired entries are excluded by default
-  and labelled when included ([doctrine-content-lifecycle.md](doctrine-content-lifecycle.md)).
+  and labelled when included ([doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md)).
 - **Proposal-only writes.** The only mutating tool writes a proposal to a
   review queue and returns a receipt whose `applied` field is fixed `false`. No
   tool may apply, promote, delete, or bypass review for active doctrine, and
   the health tool asserts that absence. The review path is
-  [doctrine-library-change-harness.md](doctrine-library-change-harness.md);
+  [doctrine-library-change-harness.md](../maintainers/doctrine-library-change-harness.md);
   the server is not part of it. Failure prevented: silent mutation of the
   source of truth by an agent that was only asked to look something up.
 - **Health before trust.** An agent SHOULD call the health tool at session
@@ -134,7 +134,7 @@ Either way, no run gains invisible context.
 ### 3.3 Lifecycle
 
 Skills are first-class doctrine files under
-[doctrine-content-lifecycle.md](doctrine-content-lifecycle.md): `active` by
+[doctrine-content-lifecycle.md](../maintainers/doctrine-content-lifecycle.md): `active` by
 default, `deprecated` with a named successor, `retired` as a tombstone that
 MUST NOT be loaded. Every manifest carries a `review_date`; the validator fails
 an active skill past it. Any byte change to the priming block bumps the

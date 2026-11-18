@@ -76,6 +76,8 @@ are prompts, not a universal scoring system.
 | **Consumer compatibility** | Who upgrades independently and what stability is promised? | single owner, internal multi-team, partner, public contract |
 | **Observability** | Can success, failure, drift, and rollback be discriminated promptly? | strong, partial, weak; deterministic check, sampled evaluation, delayed outcome |
 
+**Estate-governed.** A delivery path, workload, or system is estate-governed when the adopting organisation's shared controls apply to it: its shared repositories, pipelines, and environments, and the identities that act in them. It need not be production. The contrast is local single-user work. Rules scoped to "estate-governed and production" paths use the term in this sense ([ADR 0046](../../docs/adr/0046-retire-private-vocabulary-where-a-standard-term-exists.md)).
+
 ### Composition Procedure
 
 1. **Establish the baseline.** Identify the portable core and topic principles
@@ -204,12 +206,12 @@ activation and meaning changes before adoption.
 ## Related
 
 - [How To Read This Doctrine](how-to-read-this-doctrine.md)
-- [Doctrine Library Change Harness](doctrine-library-change-harness.md)
+- [Doctrine Library Change Harness](../maintainers/doctrine-library-change-harness.md)
 - [Engineering Controls Governance Program](engineering-controls-governance-program.md)
 - [Revision-Pinned External Control Profiles](revision-pinned-control-profiles.md)
 - [AI Adoption Controls](ai-adoption-controls.md)
 - [AI-Native Software Development Lifecycle](ai-native-software-development-lifecycle.md)
-- [Source Authority And Evidence Grading](source-authority-and-evidence-grading.md) — evidence-floor admission gates whose registered exceptions ([../EVIDENCE-EXCEPTIONS.md](../EVIDENCE-EXCEPTIONS.md)) instantiate this pattern's §5 contract
+- [Source Authority And Evidence Grading](../maintainers/source-authority-and-evidence-grading.md) — evidence-floor admission gates whose registered exceptions ([../EVIDENCE-EXCEPTIONS.md](../EVIDENCE-EXCEPTIONS.md)) instantiate this pattern's §5 contract
 
 ## References
 
