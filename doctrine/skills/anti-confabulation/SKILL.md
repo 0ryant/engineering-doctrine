@@ -61,7 +61,7 @@ context:
   skills:
     - anti-confabulation@1.1.0
 verifiers:
-  - anti-confabulation-verifier-pack@1.1.0
+  - anti-confabulation-verifier-pack@1.1.1
 ```
 
 An estate may inject this skill automatically only through a versioned policy

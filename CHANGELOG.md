@@ -6,6 +6,20 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-11-18
+
+Skill and contract corrections held from the [full review](doctrine/evolution/review-full-doctrine-2026-11.md). **Change classes:** correction. **Consumer impact:** no control changes. Hosts and tool servers that pin skills re-pin three of them. **Compatibility:** patch.
+
+### Fixed
+
+- **The navigation skill no longer denies the umbrella's authority** (`doctrine-navigation@1.0.1`). Its priming block called `ENGINEERING.md` a route map and limited authority to principles and patterns; the layer model in [how-to-read-this-doctrine.md](doctrine/patterns/how-to-read-this-doctrine.md) makes it canonical for the core propositions and normative vocabulary. The block, the skill's checks, its pack check (which now accepts a citation of `ENGINEERING.md`), the layer description in the [tool contract](contracts/doctrine-tool-contract.v1.schema.json), and [agent-doctrine-consumption.md](doctrine/patterns/agent-doctrine-consumption.md) §2 now agree with it. Implementation references are named among the layers that carry no authority.
+- **The citation skill follows the admission gate** (`evidence-graded-citation@1.0.1`). C4 is conflicting evidence or S7/X-only support, as [source-authority-and-evidence-grading.md](doctrine/patterns/source-authority-and-evidence-grading.md) §3 says. A MUST graded C3 or C4 fails only when no registered evidence exception is cited; the pack check reads an `EX-nnnn` id on the same line. A conformance MUST needs no risk asymmetry.
+- **The reading skill names the owner's evidence states** (`normative-language-reading@1.0.1`): absent, failed, stale, untrusted, or inconclusive evidence is never a pass.
+- **Verifier packs declare the schema version they use.** All five packs use the `priming_active` kind, added in schema 1.1.0, while declaring 1.0.0. Each now declares 1.1.0 and takes a patch version: navigation, citation, reading, and method-record packs 1.0.1; anti-confabulation pack 1.1.1.
+- **Run-contract schema descriptions** cited an ADR number that belongs to another series for the sibling-pack convention. They cite [verifier-packs.md](doctrine/patterns/verifier-packs.md) §6.
+
+**Migration:** re-pin `doctrine-navigation@1.0.1` (block `327d812f4f74…`), `evidence-graded-citation@1.0.1` (block `e83988b9ab57…`), and `normative-language-reading@1.0.1` (block `9df847be5020…`); the full hashes are in each manifest. `anti-confabulation@1.1.0` and `method-record-classification@1.0.0` are unchanged, because their priming blocks did not change. Schema edits are to descriptions only; the tool contract's `contract_version` stays 1.0.0.
+
 ## [0.6.0] - 2026-11-18
 
 **Implementation-reference and rule-settlement release.** This release grows the implementation-reference layer from two references to sixteen, closes the owner gaps found while composing them, makes secretless workload identity the default, corrects and types the supply-chain evidence rules, and records a full review of the library with its corrections and the decisions the maintainer took from it.

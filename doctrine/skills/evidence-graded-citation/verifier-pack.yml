@@ -1,8 +1,8 @@
 verifier_pack:
   name: evidence-graded-citation-verifier-pack
   skill: evidence-graded-citation
-  version: 1.0.0
-  schema_version: 1.0.0
+  version: 1.0.1
+  schema_version: 1.1.0
   description: >-
     Verify the form of citations and grades in an agent report. Environment:
     DOCTRINE_ROOT, RENDERED_PROMPT, REPORT. Resolution rules are executor-defined.
@@ -50,10 +50,11 @@ verifier_pack:
     - id: must_claims_meet_floor
       kind: custom
       description: >-
-        No line asserting a MUST or MUST NOT carries a C3 or C4 grade. custom because it
-        inspects report text. C2 MUSTs are accepted here; the risk-asymmetry statement is
-        a review judgement.
-      command: "! grep -E '\\bMUST( NOT)?\\b' ${REPORT} | grep -qE '\\bC[34]\\b'"
+        No line asserting a MUST or MUST NOT carries a C3 or C4 grade, unless the same
+        line cites a registered exception id (EX-nnnn). custom because it inspects report
+        text. C2 MUSTs are accepted here; the risk-asymmetry statement and whether a
+        claim is a conformance claim are review judgements.
+      command: "! grep -E '\\bMUST( NOT)?\\b' ${REPORT} | grep -E '\\bC[34]\\b' | grep -vqE '\\bEX-[0-9]{4}\\b'"
       expected_exit: 0
       expected_artefacts: []
       failure_mode: fail_loud

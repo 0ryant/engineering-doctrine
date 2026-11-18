@@ -1,8 +1,8 @@
 verifier_pack:
   name: method-record-classification-verifier-pack
   skill: method-record-classification
-  version: 1.0.0
-  schema_version: 1.0.0
+  version: 1.0.1
+  schema_version: 1.1.0
   description: >-
     Verify the authorship fields and method record on a change candidate.
     Environment: DOCTRINE_ROOT, RENDERED_PROMPT, CANDIDATE (git checkout whose HEAD

@@ -1,8 +1,8 @@
 verifier_pack:
   name: normative-language-reading-verifier-pack
   skill: normative-language-reading
-  version: 1.0.0
-  schema_version: 1.0.0
+  version: 1.0.1
+  schema_version: 1.1.0
   description: >-
     Verify that an agent report handles normative strength per claim and that any
     exception it proposes is complete. Environment: DOCTRINE_ROOT, RENDERED_PROMPT,

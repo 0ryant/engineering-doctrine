@@ -61,7 +61,7 @@
     },
     "verifiers": {
       "type": "array",
-      "description": "Closed set of verifier-pack ids (ADR-0004) to run post-execution. An empty array is loud-not-silent: it explicitly declares NO post-run verification. Validators MAY still reject empty arrays at policy level.",
+      "description": "Closed set of verifier-pack ids (doctrine/patterns/verifier-packs.md) to run post-execution. An empty array is loud-not-silent: it explicitly declares NO post-run verification. Validators MAY still reject empty arrays at policy level.",
       "items": {
         "type": "string",
         "minLength": 1
@@ -253,7 +253,7 @@
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true,
-          "description": "Skill ids made available. Per ADR-0004, every cited skill is REQUIRED BY CONVENTION to have a sibling verifier-pack. NOTE: this JSON Schema and scripts/validate-contracts-v1.py validate shape only -- on-disk sibling existence is NOT checked here; that gate, if present, lives in external catalog tooling."
+          "description": "Skill ids made available. Per doctrine/patterns/verifier-packs.md section 6, every cited skill is REQUIRED BY CONVENTION to have a sibling verifier-pack. NOTE: this JSON Schema and scripts/validate-contracts-v1.py validate shape only -- on-disk sibling existence is NOT checked here; that gate, if present, lives in external catalog tooling."
         },
         "memory": {
           "type": "object",
