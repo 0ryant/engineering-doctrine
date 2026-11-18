@@ -105,6 +105,5 @@ Migration: none.
 - "No paid plan" was checked on the publishers' own pages for eight tools with a known companion service. Other tools were taken to be free because they are plain command-line programs; that was not checked one by one. Hosts other than one were not checked.
 - What each tool does is described from its own one-line description, not from running it. Only the tools in the maintainer's private estate have been used.
 - Licence family labels are a common classification, not a legal reading.
-- taudit's MIT licence is recorded on the maintainer's statement and his relicensing commit of 2026-11-18. The published repository still carried AGPL-3.0-or-later when this ADR was accepted, and the page says so. If the change is not published, that row is wrong and moves to the other-licences table.
 - D6 puts the maintainer's own tool on a page of recommendations. The interest is disclosed, but the listing was not reviewed by anyone without it, and the exception may be read as precedent.
 - Drafted and checked by a model. No independent review is recorded.
