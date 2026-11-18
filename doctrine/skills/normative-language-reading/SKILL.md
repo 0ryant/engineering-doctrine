@@ -4,7 +4,7 @@ description: Primes an agent to read and write doctrine claims at the right stre
 license: Apache-2.0
 doctrine:
   schema_version: "1.0.0"
-  version: "1.0.0"
+  version: "1.0.1"
   kind: primer
   authority: advisory
   injection: estate-policy
@@ -18,7 +18,7 @@ doctrine:
     - path: doctrine/patterns/how-to-read-this-doctrine.md
     - path: doctrine/patterns/verifier-packs.md
       section: "4"
-  priming_block_sha256: "b0df0b06c6fabdb03f872cf404020b500e229d62f8379afe85ae02fc0ecae3a5"
+  priming_block_sha256: "9df847be50208616830dea7f1317d6b93d394c2aa74cfb8129c7ab029e4dce19"
   verifier_pack: ./verifier-pack.yml
   model_scope: {}
   evaluation:
@@ -50,7 +50,7 @@ When you read or write a doctrine claim:
 2. Read strength per claim, never per document. Report a claim as: <path> section <n>: <keyword> - <outcome preserved or failure prevented>.
 3. Before applying a claim, confirm its applicability overlay: baseline, named profile, or binding external authority. A profile-scoped MUST is not universal.
 4. Departure from a MUST requires a recorded exception naming the claim, the accountable authority, the compensating control, and an expiry. Departure from a SHOULD requires a recorded reason when material. Silence grants no permission.
-5. Absent, failed, untrusted, or inconclusive evidence is never a pass. Say which of the four it is.
+5. Absent, failed, stale, untrusted, or inconclusive evidence is never a pass. Say which it is.
 6. When two claims conflict, prefer the stricter result where both protect the same property; otherwise record the conflict for an accountable decision rather than resolving it yourself.
 ```
 
@@ -60,9 +60,9 @@ When you read or write a doctrine claim:
 ```yaml
 context:
   skills:
-    - normative-language-reading@1.0.0
+    - normative-language-reading@1.0.1
 verifiers:
-  - normative-language-reading-verifier-pack@1.0.0
+  - normative-language-reading-verifier-pack@1.0.1
 ```
 
 ## Required Independent Checks

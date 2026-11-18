@@ -86,7 +86,7 @@
         "layer": {
           "type": "string",
           "enum": ["umbrella", "principle", "pattern", "checklist", "tooling", "estate", "evolution", "adr", "contract", "skill"],
-          "description": "Which layer of doctrine/patterns/how-to-read-this-doctrine.md the entry belongs to. Agents take authority only from principle and pattern."
+          "description": "Which layer of doctrine/patterns/how-to-read-this-doctrine.md the entry belongs to. Agents take authority only from umbrella (its core propositions and vocabulary), principle, and pattern (when its applicability conditions hold)."
         },
         "title": { "type": "string", "minLength": 1 },
         "status": { "$ref": "#/$defs/entry_status" },

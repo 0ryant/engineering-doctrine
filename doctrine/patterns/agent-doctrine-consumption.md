@@ -57,9 +57,9 @@ Applicability: any tool surface whose output an agent will cite or act on.
   presented as live evidence. Failure prevented: an agent quoting stale or
   vendored text as if it were the current library.
 - **Layer is visible.** Every card says which layer it came from. Agents take
-  authority only from principles and patterns; a checklist, tooling file,
-  estate supplement, or evolution note returned by search is context, not
-  obligation ([how-to-read-this-doctrine.md](how-to-read-this-doctrine.md)).
+  authority only from the umbrella's core propositions, principles, and active
+  patterns; a checklist, implementation reference, tooling file, estate
+  supplement, or evolution note returned by search is context, not obligation ([how-to-read-this-doctrine.md](how-to-read-this-doctrine.md)).
 - **Status is visible.** Deprecated and retired entries are excluded by default
   and labelled when included ([doctrine-content-lifecycle.md](doctrine-content-lifecycle.md)).
 - **Proposal-only writes.** The only mutating tool writes a proposal to a

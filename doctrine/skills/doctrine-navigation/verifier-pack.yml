@@ -1,8 +1,8 @@
 verifier_pack:
   name: doctrine-navigation-verifier-pack
   skill: doctrine-navigation
-  version: 1.0.0
-  schema_version: 1.0.0
+  version: 1.0.1
+  schema_version: 1.1.0
   description: >-
     Verify that doctrine citations in an agent report resolve in the pinned
     library checkout and that asserted obligations rest on an authority layer.
@@ -45,11 +45,11 @@ verifier_pack:
       kind: custom
       description: >-
         If the report asserts an obligation (a capitalised MUST, MUST NOT, SHOULD, or
-        SHOULD NOT), it cites at least one principle or pattern path. custom because
+        SHOULD NOT), it cites ENGINEERING.md or at least one principle or pattern path. custom because
         it inspects report text.
       command: >-
         ! grep -qE '\b(MUST( NOT)?|SHOULD( NOT)?)\b' ${REPORT}
-        || grep -qE 'doctrine/(principles|patterns)/[A-Za-z0-9_.-]+\.md' ${REPORT}
+        || grep -qE '(ENGINEERING\.md|doctrine/(principles|patterns)/[A-Za-z0-9_.-]+\.md)' ${REPORT}
       expected_exit: 0
       expected_artefacts: []
       failure_mode: mark_untrusted

@@ -4,7 +4,7 @@ description: Primes an agent to cite sources with a source-authority class and a
 license: Apache-2.0
 doctrine:
   schema_version: "1.0.0"
-  version: "1.0.0"
+  version: "1.0.1"
   kind: primer
   authority: advisory
   injection: estate-policy
@@ -20,7 +20,7 @@ doctrine:
     - path: doctrine/patterns/doctrine-content-lifecycle.md
       section: "2"
     - path: doctrine/EVIDENCE-EXCEPTIONS.md
-  priming_block_sha256: "c868ebaa18063b530cb918749bc2e929c5e6c2ea400a4b6e867e3a8d97d27676"
+  priming_block_sha256: "e83988b9ab57330ecf89e525feee536fa2695f26e22bc522759dbf48d44c169e"
   verifier_pack: ./verifier-pack.yml
   model_scope: {}
   evaluation:
@@ -49,7 +49,7 @@ at review.
 ```priming
 When you cite a source to support a claim:
 1. Tag every citation with its source-authority class S1 to S7 or X, record the accessed date, and pin the revision where the source is versioned.
-2. Grade the claim, not the citation. C1 needs two independent S1-S4 sources with no credible contrary source; C2 needs one S1-S4 source or two independent S5-S6 sources; C3 is a single S5-S6 source or practitioner consensus; C4 is conflicting evidence or X-only support. Independent means different organisations with different incentives.
+2. Grade the claim, not the citation. C1 needs two independent S1-S4 sources with no credible contrary source; C2 needs one S1-S4 source or two independent S5-S6 sources; C3 is a single S5-S6 source or practitioner consensus; C4 is conflicting evidence or S7/X-only support. Independent means different organisations with different incentives.
 3. A MUST needs C1, or C2 with a stated risk asymmetry, or a registered entry in doctrine/EVIDENCE-EXCEPTIONS.md. A SHOULD needs C2, and single-source support must be flagged at the claim. X supports no normative claim.
 4. Conformance claims are satisfied by the pinned norm itself; do not demand a second copy of a standard. Empirical claims about people and organisations cap at C2 on practitioner sources alone.
 5. Look for disconfirming sources before grading. "No contrary evidence found after looking" is a statement you must be able to defend by saying where you looked.
@@ -62,17 +62,18 @@ When you cite a source to support a claim:
 ```yaml
 context:
   skills:
-    - evidence-graded-citation@1.0.0
+    - evidence-graded-citation@1.0.1
 verifiers:
-  - evidence-graded-citation-verifier-pack@1.0.0
+  - evidence-graded-citation-verifier-pack@1.0.1
 ```
 
 ## Required Independent Checks
 
 - every external citation carries a source class and an accessed date;
 - every graded claim carries a support grade consistent with its citation set;
-- no MUST-level claim is graded below C2, and C2 MUSTs state a risk asymmetry
-  or cite an EVIDENCE-EXCEPTIONS entry; and
+- no MUST-level claim is graded below C2 unless it cites a registered
+  EVIDENCE-EXCEPTIONS entry; a C2 MUST states a risk asymmetry or cites such an
+  entry; a conformance MUST is satisfied by its pinned norm and needs neither; and
 - a reviewer independent of the producing execution spot-checks that the cited
   source says what the claim needs (this pack cannot read sources).
 
@@ -80,7 +81,8 @@ verifiers:
 
 - Missing or altered priming context: `mark_untrusted`.
 - Citation without class or date: `mark_untrusted`.
-- MUST claim graded C3 or C4: `fail_loud` (below the admission floor).
+- MUST claim graded C3 or C4 with no EVIDENCE-EXCEPTIONS entry cited: `fail_loud`
+  (below the admission floor).
 
 ## Limits
 

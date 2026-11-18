@@ -63,7 +63,7 @@ context:
   skills:
     - method-record-classification@1.0.0
 verifiers:
-  - method-record-classification-verifier-pack@1.0.0
+  - method-record-classification-verifier-pack@1.0.1
 ```
 
 Estates normally bind this skill to the task class that produces commits or

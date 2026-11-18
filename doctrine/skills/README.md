@@ -25,9 +25,9 @@ stays with the governing files and with independent verification.
 | Skill | Version | Tier | Kind | Governing | Pack |
 | --- | --- | --- | --- | --- | --- |
 | [anti-confabulation](anti-confabulation/SKILL.md) | 1.1.0 | 0 | primer | [anti-confabulation-priming.md](../patterns/anti-confabulation-priming.md) | [pack](anti-confabulation/verifier-pack.yml) |
-| [doctrine-navigation](doctrine-navigation/SKILL.md) | 1.0.0 | 0 | primer | [how-to-read-this-doctrine.md](../patterns/how-to-read-this-doctrine.md), [timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md) | [pack](doctrine-navigation/verifier-pack.yml) |
-| [normative-language-reading](normative-language-reading/SKILL.md) | 1.0.0 | 0 | primer | [normative-language-applicability-and-exceptions.md](../patterns/normative-language-applicability-and-exceptions.md) | [pack](normative-language-reading/verifier-pack.yml) |
-| [evidence-graded-citation](evidence-graded-citation/SKILL.md) | 1.0.0 | 0 | primer | [source-authority-and-evidence-grading.md](../patterns/source-authority-and-evidence-grading.md) | [pack](evidence-graded-citation/verifier-pack.yml) |
+| [doctrine-navigation](doctrine-navigation/SKILL.md) | 1.0.1 | 0 | primer | [how-to-read-this-doctrine.md](../patterns/how-to-read-this-doctrine.md), [timeless-principles-and-tooling.md](../principles/timeless-principles-and-tooling.md) | [pack](doctrine-navigation/verifier-pack.yml) |
+| [normative-language-reading](normative-language-reading/SKILL.md) | 1.0.1 | 0 | primer | [normative-language-applicability-and-exceptions.md](../patterns/normative-language-applicability-and-exceptions.md) | [pack](normative-language-reading/verifier-pack.yml) |
+| [evidence-graded-citation](evidence-graded-citation/SKILL.md) | 1.0.1 | 0 | primer | [source-authority-and-evidence-grading.md](../patterns/source-authority-and-evidence-grading.md) | [pack](evidence-graded-citation/verifier-pack.yml) |
 | [method-record-classification](method-record-classification/SKILL.md) | 1.0.0 | 1 | procedure | [code-review-and-change-approval.md §6.1](../patterns/code-review-and-change-approval.md), [ADR 0043](../../docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md) | [pack](method-record-classification/verifier-pack.yml) |
 
 None of the active skills ships a portable evaluation; every manifest says so

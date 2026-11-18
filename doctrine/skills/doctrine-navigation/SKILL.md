@@ -1,10 +1,10 @@
 ---
 name: doctrine-navigation
-description: Primes an agent to find, read, and cite this doctrine library correctly - route from the umbrella, take authority only from principles and patterns, cite by path and section, check lifecycle status, and report silence as a finding. Load at the start of any task that will consult or cite engineering doctrine.
+description: Primes an agent to find, read, and cite this doctrine library correctly - route from the umbrella, take authority only from the umbrella's core propositions, principles, and active patterns, cite by path and section, check lifecycle status, and report silence as a finding. Load at the start of any task that will consult or cite engineering doctrine.
 license: Apache-2.0
 doctrine:
   schema_version: "1.0.0"
-  version: "1.0.0"
+  version: "1.0.1"
   kind: primer
   authority: advisory
   injection: estate-policy
@@ -18,7 +18,7 @@ doctrine:
     - path: doctrine/principles/timeless-principles-and-tooling.md
     - path: doctrine/patterns/doctrine-content-lifecycle.md
     - path: ENGINEERING.md
-  priming_block_sha256: "95c4067e92abc165661ebe409d184b342658deb423e440d10051fb8ed0d92aa1"
+  priming_block_sha256: "327d812f4f74c447efba9a36f188c852dfc15d2c3d64e0ba35a4482d7df6384c"
   verifier_pack: ./verifier-pack.yml
   model_scope: {}
   evaluation:
@@ -46,8 +46,8 @@ the reason the layers exist is
 
 ```priming
 When you consult this doctrine library:
-1. Route by task from ENGINEERING.md, then read the owning principle or pattern in full before citing it. The umbrella and any semantic index are route maps, not authority.
-2. Take authority only from doctrine/principles/ (durable) or doctrine/patterns/ (conditional: active only when the pattern's applicability conditions hold). Never cite a checklist, tooling file, estate supplement, or evolution note as the authority for an obligation.
+1. Route by task from ENGINEERING.md, then read the owning principle or pattern in full before citing it. ENGINEERING.md is canonical for its core propositions and normative vocabulary; the semantic index is a route map, not authority.
+2. Take authority only from ENGINEERING.md (core propositions and vocabulary), doctrine/principles/ (durable topic detail), or doctrine/patterns/ (conditional: active only when the pattern's applicability conditions hold). Never cite a checklist, implementation reference, tooling file, estate supplement, or evolution note as the authority for an obligation.
 3. Cite by repo-relative path and section, for example doctrine/patterns/run-contracts.md section 3, and quote the strength keyword exactly as written.
 4. Check lifecycle status before relying on a file: doctrine/DEPRECATED.md and any Status marker in the file take precedence over its body text.
 5. Where two files appear to conflict, apply the conflict-resolution rules in how-to-read-this-doctrine.md and record the conflict; do not pick silently.
@@ -60,9 +60,9 @@ When you consult this doctrine library:
 ```yaml
 context:
   skills:
-    - doctrine-navigation@1.0.0
+    - doctrine-navigation@1.0.1
 verifiers:
-  - doctrine-navigation-verifier-pack@1.0.0
+  - doctrine-navigation-verifier-pack@1.0.1
 ```
 
 Suitable for estate-policy injection on every task class that touches doctrine;
@@ -71,7 +71,7 @@ the block is small and carries no task-specific behaviour.
 ## Required Independent Checks
 
 - every doctrine path the agent cites resolves in the pinned library revision;
-- at least one cited authority is a principle or pattern when an obligation is asserted;
+- at least one cited authority is the umbrella, a principle, or a pattern when an obligation is asserted;
 - cited files are not marked deprecated or retired at the pinned revision; and
 - a reviewer independent of the producing execution confirms the citation
   supports the claim made (this pack cannot check semantics).
@@ -81,7 +81,7 @@ the block is small and carries no task-specific behaviour.
 - Missing or altered priming context: `mark_untrusted`.
 - Cited path does not resolve: `fail_loud` (a fabricated citation is a
   confabulation, not a typo).
-- Obligation asserted with no principle or pattern cited: `mark_untrusted`.
+- Obligation asserted with no umbrella, principle, or pattern cited: `mark_untrusted`.
 
 ## Limits
 
