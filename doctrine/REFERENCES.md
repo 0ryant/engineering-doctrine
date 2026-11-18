@@ -102,7 +102,7 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | NIST — SP 800-171 Rev. 2, January 2021 update (withdrawn; use only where a governing obligation pins it) | https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final |
 | NIST — SP 800-172 Rev. 3, enhanced requirements for CUI associated with critical programmes and high-value assets | https://csrc.nist.gov/pubs/sp/800/172/r3/final |
 | NARA — Controlled Unclassified Information programme and Registry | https://www.archives.gov/cui |
-| U.S. Department of Defense — DFARS 252.204-7012 | https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting |
+| U.S. Department of Defense — DFARS 252.204-7012 (the address ends with a full stop) | <https://www.acquisition.gov/dfars/252.204-7012-safeguarding-covered-defense-information-and-cyber-incident-reporting.> |
 | ISO/IEC 27002:2022 — information security controls (incl. technical vulnerability management) | https://www.iso.org/standard/75652.html |
 | AWS IAM security best practices — workloads use temporary credentials (S5, product-scoped, accessed 2026-11-15) | https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html |
 | Google Cloud — best practices for managing service account keys (S5, product-scoped, accessed 2026-11-15) | https://docs.cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys |
@@ -225,7 +225,7 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | Martin Fowler — Feature Toggles | https://martinfowler.com/articles/feature-toggles.html |
 | OpenFeature — vendor-neutral flag standard | https://openfeature.dev/ |
 | Trunk-based development — feature flags | https://trunkbaseddevelopment.com/feature-flags/ |
-| LaunchDarkly — Feature Flag Best Practices | https://launchdarkly.com/blog/feature-flag-best-practices/ |
+| LaunchDarkly — Feature Flag Best Practices (page gone at 2026-11-18; cited only by the deprecated flag pattern) | https://launchdarkly.com/blog/feature-flag-best-practices/ |
 
 ---
 
@@ -251,7 +251,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | EU AI Act — Regulation (EU) 2024/1689 | https://eur-lex.europa.eu/eli/reg/2024/1689/oj |
 | AWS — AI-Driven Development Life Cycle (vendor observation) | https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/ |
 | Microsoft — AI-led SDLC (vendor observation) | https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896 |
-| GitHub Spec Kit — Evolving specifications (vendor observation) | https://github.github.com/spec-kit/guides/evolving-specs.html |
+| GitHub Spec Kit — Evolving specifications (vendor observation; page gone at 2026-11-18) | https://github.github.com/spec-kit/guides/evolving-specs.html |
 | Anthropic — 2026 Agentic Coding Trends Report (vendor research; landing page links the report) | https://resources.anthropic.com/2026-agentic-coding-trends-report |
 | OWASP Top 10 for LLM Applications, 2026 edition (published 2026-08-03; identifiers cited as `LLM0x:2026`; S4 awareness document; adopted for citation by ADR 0056) | https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/ |
 | OWASP Top 10 for LLM Applications, 2025 edition (prior edition; eight entries renumbered in 2026) | https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/ |
@@ -327,7 +327,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | Topic | Reference |
 | --- | --- |
 | Software Engineering at Google, Ch. 11 (Testing) | https://abseil.io/resources/swe-book/html/ch11.html |
-| Fixing a Test Hourglass | https://testing.googleblog.com/2020/11/fixing-a-test-hourglass.html |
+| Fixing a Test Hourglass | https://testing.googleblog.com/2020/11/fixing-test-hourglass.html |
 | Just Say No to More E2E Tests | https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html |
 | Mutation testing (concept) | https://mutationtesting.org/ |
 | Hypothesis (property-based testing) | https://hypothesis.readthedocs.io/ |
@@ -518,6 +518,7 @@ Used by `principles/ai-ml-systems.md`, `patterns/ai-adoption-controls.md`, `prin
 | [evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md](evolution/research-owasp-llm-top-10-2026-adoption-2026-11.md) | Source basis for ADR 0056: OWASP LLM Top 10 2026 entries and the mapping from 2025 |
 | [evolution/review-full-doctrine-2026-11.md](evolution/review-full-doctrine-2026-11.md) | Full doctrine review, November 2026: consistency and substance findings, grades, and a recommended order of work; non-normative |
 | [evolution/research-apply-constitution-rules-2026-11.md](evolution/research-apply-constitution-rules-2026-11.md) | Basis for ADR 0059: open inconsistencies settled by three rules in `ENGINEERING.md`; source ledger for timeouts and retries, leaked secrets, publish entrypoints, and personal-data categories; non-normative |
+| [evolution/sweep-2026-11.md](evolution/sweep-2026-11.md) | `v0.6.0` release-coupled lifecycle sweep: clocks, principle summaries, reference status, grading audit; non-normative |
 | [evolution/research-v060-release-and-review-options-2026-09.md](evolution/research-v060-release-and-review-options-2026-09.md) | V42/V43 alternatives, containment and review scenarios, source limits and proposed landings; not accepted doctrine |
 | [evolution/research-mcp-spec-cross-check-2026-08.md](evolution/research-mcp-spec-cross-check-2026-08.md) | MCP 2026-07-28 spec cross-check: 4-agent verification of every corpus MCP claim against primary sources; §7 baseline held, deprecation clocks and MRTR/state-handle security verified, extensions posture and correction/action list feeding [ADR 0037](../docs/adr/0037-land-mcp-cross-check-correction-batch.md) |
 | [evolution/research-doctrine-lifecycle-audit-2026-08.md](evolution/research-doctrine-lifecycle-audit-2026-08.md) | Doctrine lifecycle audit: internal machinery audit + eight external standards-lifecycle models; evidence for [ADR 0038](../docs/adr/0038-adopt-a-doctrine-content-lifecycle.md) |

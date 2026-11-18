@@ -84,8 +84,8 @@ Start with [Timeless Principles, Reference Implementations, And Replaceable Tool
 
 | Principle | In one line |
 | --- | --- |
-| [Observability](principles/observability.md) | Logs, metrics, and traces in one correlated investigation flow; cardinality costs money; alert on symptoms and burn rate; GenAI and agent calls get a minimum telemetry floor. |
-| [Reliability: SLOs, Error Budgets, And Incidents](principles/reliability-slo-incidents.md) | A few SLOs tied to user journeys, error budgets that govern velocity, incidents that produce learning, measured toil, and continuity plans for critical dependencies. |
+| [Observability](principles/observability.md) | Logs, metrics, and traces in one correlated investigation flow; cardinality costs money; alert on symptoms and burn rate; GenAI and agent calls get a minimum telemetry floor; telemetry arrival is verified after deploy. |
+| [Reliability: SLOs, Error Budgets, And Incidents](principles/reliability-slo-incidents.md) | A few SLOs tied to user journeys, error budgets that govern velocity, incidents that produce learning, measured toil, continuity plans for critical dependencies, and workloads that signal health and stop cleanly. |
 | [Performance, Load, And Cost](principles/performance-and-cost.md) | Latency and throughput budgets on critical paths; regressions block release unless accepted with a reason; major launches are load-tested; cost is observable, and carbon where reporting requires it. |
 | [Cost, FinOps, And Unit Economics](principles/cost-and-finops.md) | The governance layer over cost: spend is attributable, alerted, rightsized, and shown back; AI inference gets token budgets and circuit breakers; agents get default-deny financial authority. |
 | [Container Runtime Choice: Managed Platforms Vs Kubernetes](principles/container-runtime-choice.md) | Prefer a managed application runtime when it fits; run Kubernetes only when the capabilities require it; the same delivery discipline applies either way. |

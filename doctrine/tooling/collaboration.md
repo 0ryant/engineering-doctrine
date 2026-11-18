@@ -58,7 +58,7 @@
 
 ### Approvals and CODEOWNERS
 
-- Use **approval rules** (per branch, per file pattern) aligned with [CODEOWNERS](https://docs.gitlab.com/ee/user/project/code_owners/) for critical areas.
+- Use **approval rules** (per branch, per file pattern) aligned with [CODEOWNERS](https://docs.gitlab.com/user/project/codeowners/) for critical areas.
 - Optional **approval rules** for security or compliance roles on infra and release paths.
 
 ### Merge method

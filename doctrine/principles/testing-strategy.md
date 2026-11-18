@@ -102,7 +102,7 @@ Engineer-facing placement across application and infrastructure delivery surface
 ## References
 
 - *Software Engineering at Google*, Chapter 11 — **Testing** (scope, pyramid, antipatterns): https://abseil.io/resources/swe-book/html/ch11.html  
-- Google Testing Blog, **Fixing a Test Hourglass**: https://testing.googleblog.com/2020/11/fixing-a-test-hourglass.html  
+- Google Testing Blog, **Fixing a Test Hourglass**: https://testing.googleblog.com/2020/11/fixing-test-hourglass.html  
 - Google Testing Blog, **Just Say No to More End-to-End Tests** (Mike Wacker): https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html  
 - *An Introduction to Mutation Testing* (concept): https://mutationtesting.org/  
 - Hypothesis (property-based testing, Python): https://hypothesis.readthedocs.io/  
