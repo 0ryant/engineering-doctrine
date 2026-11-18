@@ -29,7 +29,7 @@ Hand new leaders the one-pager first; link the library for depth.
 
 ## 3. Suggested Adoption Order (Typical)
 
-Order is dependency-aware, not dogmatic. Skip steps already healthy.
+Order is dependency-aware, not dogmatic. Skip steps already healthy. The phases follow the six foundations in [TL;DR And Minimum Viable Doctrine](../tldr-principles-and-mvp.md), which lists the first-change path and ownership as its own step between trunk and contracts.
 
 | Phase | Focus | Why first |
 | --- | --- | --- |

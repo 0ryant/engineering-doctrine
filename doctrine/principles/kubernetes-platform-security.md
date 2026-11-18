@@ -9,7 +9,7 @@ Apply this document only when the organisation runs Kubernetes (cloud-managed co
 - **RBAC** — least privilege for humans and CI; no permanent cluster-admin bindings for day-to-day roles.
 - **Network policy** — default deny between namespaces unless explicitly allowed; ingress/egress documented.
 - **Pod security** — restrict privileged pods, host namespaces, and dangerous capabilities; align with current Kubernetes Pod Security mechanisms for your version.
-- **Secrets** — prefer CSI drivers / external secret operators (sync from vault or cloud secret manager) over baking secrets into images or unencrypted etcd backups; enable encryption at rest for etcd / platform-managed secret storage per your provider’s baseline.
+- **Secrets** — secrets are not baked into images ([container-runtime-choice.md](container-runtime-choice.md) §3). Where a stored secret is the registered fallback ([zero-trust-and-workload-identity.md](zero-trust-and-workload-identity.md) §2), deliver it through CSI drivers / external secret operators (sync from vault or cloud secret manager), and keep it out of unencrypted etcd backups; enable encryption at rest for etcd / platform-managed secret storage per your provider’s baseline.
 - **RBAC defaults** — separate namespace-scoped roles for apps from cluster-wide powers; avoid wildcard rulesets; audit bindings periodically.
 
 **Why:** Most cluster compromises spread laterally through over-permissive RBAC and flat networks; secret material in etcd or backups is a high-value theft target.

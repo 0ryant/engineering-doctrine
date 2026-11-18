@@ -10,33 +10,33 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Agent-ready application shipping profile** - Optional estate profile that closes the distributable app inventory and requires each row to ship a versioned advisory Skill plus interface-appropriate autocomplete/discovery, verified from exact packaged and installed artefacts. See [patterns/agent-ready-application-shipping-profile.md](patterns/agent-ready-application-shipping-profile.md) and [ADR 0050](../docs/adr/0050-adopt-agent-ready-application-shipping-profile.md).
 
-**Acceptance (of messages)** — Consumer tells the broker it finished processing; behaviour (single vs cumulative ack, redelivery) is **broker-specific**. See [message-channel-operations.md](patterns/message-channel-operations.md).
+**Acknowledgement (of messages)** — The consumer tells the broker it has finished with a message, or commits its position, only after the effect is durable; mechanics (single vs cumulative ack, redelivery) are **broker-specific**. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
 **ADR (Architecture Decision Record)** — In-repo note: context, decision, consequences; superseded decisions stay linked. See [documentation-knowledge.md](principles/documentation-knowledge.md); supersession mechanics: [patterns/doctrine-content-lifecycle.md](patterns/doctrine-content-lifecycle.md) §7.
 
-**Agent (autonomous)** — A system in which a **model** directs its own control flow, invoking **tools** in a **loop toward a goal** until completion — the multiply-attested definitional core across textbook (AIMA), vendor, and industry-consensus definitions, with the regulator's characterization compatible. **Memory** is the standard fourth architectural component (CoALA taxonomy: working / episodic / semantic / procedural — this library's §5.1 strategies use episodic and procedural), not definitional. Contrast **Agentic workflow** (predefined code paths). Governed on three orthogonal axes — capability tier ([ai-ml-systems.md](principles/ai-ml-systems.md) §2), materiality (§2.1), oversight position ([patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) §6) — plus the identity boundary: an agent holding its **own workload identity** is a distinct principal under [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1. Memory lifecycle: [ai-ml-systems.md](principles/ai-ml-systems.md) §7; evidence ledger: [evolution/research-agent-loop-graph-cross-check-2026-08.md](evolution/research-agent-loop-graph-cross-check-2026-08.md) §5.
+**Agent (autonomous)** — A system in which a **model** directs its own control flow, invoking **tools** in a **loop toward a goal** until completion — the multiply-attested definitional core across textbook (AIMA), vendor, and industry-consensus definitions, with the regulator's characterization compatible. **Memory** is the standard fourth architectural component (CoALA taxonomy: working / episodic / semantic / procedural — this library's §5.1 strategies use episodic and procedural), not definitional. Contrast **Agentic workflow** (predefined code paths). Governed on two axes — capability tier ([ai-ml-systems.md](principles/ai-ml-systems.md) §2) and materiality (§2.1) — which set its oversight position ([patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) §6), plus the identity boundary: an agent holding its **own workload identity** is a distinct principal under [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1. Memory lifecycle: [ai-ml-systems.md](principles/ai-ml-systems.md) §7; evidence ledger: [evolution/research-agent-loop-graph-cross-check-2026-08.md](evolution/research-agent-loop-graph-cross-check-2026-08.md) §5.
 
 **Agent co-authorship (anti-pattern)** — Naming a non-human tool in an **authorship** field (`Author`, `Co-Authored-By`, or a successor conferring authorship standing). Two defects: a **category error** — authorship confers standing (liability, on-call, defending the change under incident pressure) that a tool cannot hold — and **fidelity collapse**, one undifferentiated bit spanning an unreviewed completion and harness-governed, materially revised work. Replaced by the **method record**, which grades process rather than authorship. See [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §6, §6.1; [ADR 0043](../docs/adr/0043-replace-agent-coauthorship-disclosure-with-a-method-record.md).
 
-**Agent-definition artefact** — Machine-readable file that configures or steers an AI agent’s behaviour: custom-agent definitions, **steering/instruction files**, `SKILL.md`-class skill packs, MCP server configurations, and prompt templates wired into delivery. In the **pipeline-definition trust class** when it directs automation that can read secrets, mutate production, publish packages, or alter downstream systems. See [merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) §1–§2, [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §5.
+**Agent-definition artefact** — Machine-readable file that configures or steers an AI agent’s behaviour: custom-agent definitions, **steering/instruction files**, `SKILL.md`-class skill packs, MCP server configurations, and prompt templates wired into delivery. In the **pipeline-definition trust class** when it directs automation that can read secrets, mutate production, publish packages, or alter downstream systems, and that automation runs on the merge path or holds standing credentials beyond the invoking person's session. See [merge-path-evidence-and-pipeline-integrity.md](principles/merge-path-evidence-and-pipeline-integrity.md) §1–§2, [code-review-and-change-approval.md](patterns/code-review-and-change-approval.md) §5.
 
 **Agent financial authority** — Payment or transaction capability held by an AI agent (wallets, payment credentials, transfer or purchase authority). **Default-deny**: absent unless explicitly granted — per-agent and inventory-recorded, attached to an agent identity per zero-trust §2.1, session-scoped with hard transaction budgets, human approval tiered by transaction **materiality**, and full delegation-chain payment audit trails. See [cost-and-finops.md](principles/cost-and-finops.md) §7.1, [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
 
 **Agent identity** — First-class workload-identity principal class for AI agents: distinguishable from generic service accounts in policy and audit, sponsored by a named human, credentialed per interaction. Floor is **tiered** (capability × materiality): dedicated per-agent principal MUST for high-autonomy/material agents (per-agent revocation is the kill switch); shared team principal MAY at lower tiers with harness-stamped per-agent attribution and acknowledged fleet-wide revocation. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
 
-**Agent memory lifecycle** — The four governed phases of an **agent-writable persistent memory** store: **admission** (validated, provenance-tagged writes; modes canonical in the run-contract `context.memory` schema), **retention** (TTL/expiry defaults; operator-initiated forget; privacy composition), **relinquishment** (decommissioned or role-changed agents' stores closed out; composes with §2.1 orphan handling), **recovery** (snapshot-restorable; poisoning suspicion → quarantine + rebuild from verified sources). See [ai-ml-systems.md](principles/ai-ml-systems.md) §7.
+**Agent memory lifecycle** — The four governed phases of an **agent-writable persistent memory** store: **admission** (validated, provenance-tagged writes; modes canonical in the run-contract `context.memory` schema), **retention** (TTL/expiry defaults; operator-initiated forget; privacy composition), **relinquishment** (decommissioned or role-changed agents' stores closed out; composes with [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1 orphan handling), **recovery** (snapshot-restorable; poisoning suspicion → quarantine + rebuild from verified sources). See [ai-ml-systems.md](principles/ai-ml-systems.md) §7.
 
-**Agent responder** — A rostered **AI agent** in incident response: a roster role with a **named accountable human owner** (sponsor per [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1) who can page-steal or stop it at any time; remediation routed by **reversibility** (pre-declared reversible actions can auto-execute with notification; irreversible actions gate on a human); RCA output is **ranked leads** requiring human confirmation; **never** IC. Sole normative source: [incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) §10.
+**Agent responder** — A rostered **AI agent** in incident response: a roster role with a **named accountable human owner** (sponsor per [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1) who can page-steal or stop it at any time; remediation routed by **reversibility** (pre-declared reversible actions can auto-execute with notification; irreversible or production-mutating actions, including any novel mutation, gate on a human); RCA output is **ranked leads** requiring human confirmation; **never** IC. Sole normative source: [incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md) §10.
 
 **Agentic workflow** — Tool-using LLM automation orchestrated through **predefined code paths** — the *workflows* half of "add deterministic workflows before agents" ([patterns/agentic-loop-design.md](patterns/agentic-loop-design.md) §10, [ai-ml-systems.md](principles/ai-ml-systems.md) §2 Tier D); contrast **Agent (autonomous)**, where the model directs its own control flow. Either way, treat it like a new **client** at trust boundaries (SSRF, cost, audit). See [ai-ml-systems.md](principles/ai-ml-systems.md) §§2–4, §7, [api-boundaries-and-security.md](principles/api-boundaries-and-security.md), [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §7.
 
-**ASI Top 10 (OWASP Top 10 for Agentic Applications)** — Peer-reviewed agentic-layer risk list (**ASI01–ASI10**: goal hijack, tool misuse, identity/privilege abuse, agentic supply chain, unexpected code execution, memory poisoning, inter-agent communication, cascading failures, trust exploitation, rogue agents) — **complementary** to the LLM Top 10, not superseding. Doctrine crosswalk: [agentic-loop-design.md](patterns/agentic-loop-design.md) §11.
+**ASI Top 10 (OWASP Top 10 for Agentic Applications)** — OWASP agentic-layer risk list (**ASI01–ASI10**: goal hijack, tool misuse, identity/privilege abuse, agentic supply chain, unexpected code execution, memory poisoning, inter-agent communication, cascading failures, trust exploitation, rogue agents) — **complementary** to the LLM Top 10, not superseding. Doctrine crosswalk: [agentic-loop-design.md](patterns/agentic-loop-design.md) §11.
 
 **Applicability profile** — Named combination of exposure, criticality, data/authority, recoverability, change autonomy, compatibility, and observability conditions that activates existing controls. It is an overlay, not a new doctrine layer. See [normative-language-applicability-and-exceptions.md](patterns/normative-language-applicability-and-exceptions.md).
 
 **AI RMF (NIST)** — *Artificial Intelligence Risk Management Framework* (NIST AI 100-1): **Govern, Map, Measure, Manage**—**Govern** is cross-cutting. **Generative AI** companion: **NIST AI 600-1**. See [research-internal-ai-knowledge-factory-governance-2026-04.md](evolution/research-internal-ai-knowledge-factory-governance-2026-04.md) §2.
 
-**AI literacy** — **Role-based** capability to use, oversee, or challenge AI systems: builders ≠ reviewers ≠ approvers ≠ everyday users (EU AI Act **Art 4** vocabulary: "sufficient" literacy is contextual). See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §5.
+**AI literacy** — **Role-based** capability to use, oversee, or challenge AI systems: builders ≠ reviewers ≠ approvers ≠ everyday users (EU AI Act **Art 4**, as amended by Regulation (EU) 2026/1744: measures to support literacy, with no mandated level). See [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §5.
 
 **AI-native SDLC** — Software delivery in which AI participates while mandate, governed execution, candidate claims, challenge evidence, authority, enactment, and observation remain separately addressable. Seven operational gates and five logical record families preserve this separation; strategic objective-to-outcome linkage is an optional overlay, not a universal requirement. See [ai-native-software-development-lifecycle.md](patterns/ai-native-software-development-lifecycle.md).
 
@@ -92,7 +92,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Contract** — Explicit, versioned **shape** and rules at a boundary (schema, OpenAPI, proto, migration contract). Violations are **build or runtime failures** per policy—not informal JSON. See [event-contracts.md](principles/event-contracts.md) and [api-boundaries-and-security.md](principles/api-boundaries-and-security.md).
 
-**Context window** — Maximum **tokens** a model can take as input per call; large windows do **not** remove need for **RAG** on big or **governed** corpora. See [performance-and-cost.md](principles/performance-and-cost.md) §3, [ai-ml-systems.md](principles/ai-ml-systems.md).
+**Context window** — Maximum **tokens** a model can take as input per call; large windows do **not** remove need for **RAG** on big or **governed** corpora. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7 and, for token budgets, [cost-and-finops.md](principles/cost-and-finops.md) §7.
 
 **CUI** — *Controlled Unclassified Information*: information the U.S. Government creates or possesses, or that an entity creates or possesses for or on its behalf, that a law, regulation, or government-wide policy requires or permits an agency to handle using safeguarding or dissemination controls. Establish the governing authority, category/marking, exact baseline revision, and bounded system/data scope; do not infer CUI solely from content sensitivity. See [Revision-Pinned External Control Profiles](patterns/revision-pinned-control-profiles.md) and the [NARA CUI programme](https://www.archives.gov/cui).
 
@@ -136,7 +136,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Exactly-once (illusion)** — True end-to-end **exactly-once side effects** are rare; most systems are **at-least-once** plus **idempotent** design. See [message-channel-operations.md](patterns/message-channel-operations.md).
 
-**Expand / contract (parallel change)** — Schema or interface change in stages: add the new shape, move readers and writers, backfill, then remove the old shape, so old and new versions can run together. See [data-and-migrations.md](principles/data-and-migrations.md) and [impl/database-migration.md](impl/database-migration.md).
+**Expand / contract (parallel change)** — Schema or interface change in stages: add the new shape, deploy code valid for both, backfill and verify, switch readers and writers, then remove the old shape, so old and new versions can run together. See [data-and-migrations.md](principles/data-and-migrations.md) and [impl/database-migration.md](impl/database-migration.md).
 
 **Embedding** — Numeric **vector** representing text (or other content) for **similarity** search; used in **dense** retrieval alongside **lexical** search in typical RAG. Changing **model** or **dimensions** forces **re-embed** and index **migration** ([ai-ml-systems.md](principles/ai-ml-systems.md) §7). See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md).
 
@@ -144,9 +144,9 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## F
 
-**Feature flag** — Toggle for **incomplete** or **risky** behaviour; safe defaults and **removal** discipline required. See [collaboration.md](principles/collaboration.md).
+**Feature flag** — Toggle for **incomplete** or **risky** behaviour; safe defaults and **removal** discipline required. See [feature-flag-governance.md](patterns/feature-flag-governance.md) and [collaboration.md](principles/collaboration.md) §4.
 
-**FinOps** — Cost **visibility**, allocation, and governance for cloud spend. See [performance-and-cost.md](principles/performance-and-cost.md).
+**FinOps** — Cost **visibility**, allocation, and governance for cloud spend. See [cost-and-finops.md](principles/cost-and-finops.md).
 
 ---
 
@@ -168,7 +168,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **GraphRAG** — Retrieval over an **entity knowledge graph** extracted from the corpus (communities + pre-built summaries) instead of, or alongside, passage similarity; earns its extraction cost on **multi-hop** and **corpus-global** questions that hybrid retrieval measurably fails. New first-class concerns: extraction quality/poisoning, tenancy at **edge/traversal** level, and **text-to-query** (Cypher/SPARQL) injection. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §7; reference: [Edge et al. 2024](https://arxiv.org/abs/2404.16130).
 
-**Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
+**Grounding** — Supplying the model with **retrieved** or **tool-fetched** facts so answers cite **organisation** truth; still vulnerable to **injection** in retrieved text. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md), OWASP [LLM Top 10 (2026 edition)](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/).
 
 ---
 
@@ -178,7 +178,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **HNSW** — *Hierarchical Navigable Small World*: popular **ANN** graph index for embedding search; tune for recall/latency as corpus grows. See [ai-ml-systems.md](principles/ai-ml-systems.md) §7, [research-enterprise-rag-agents-indexing-2026-04.md](evolution/research-enterprise-rag-agents-indexing-2026-04.md) §3.
 
-**Hermetic build** — Build with **declared** inputs only (pinned toolchains, lockfiles) so outputs are **reproducible** and auditable. See [build.md](principles/build.md) §14.
+**Hermetic build** — Build that runs with **declared** inputs only; in the strong form, with no network access during the build. Pinned toolchains and lockfiles give reproducible inputs, a weaker property. See [dependencies-supply-chain.md](principles/dependencies-supply-chain.md) §4 and [build.md](principles/build.md) §14.
 
 **Hexagonal / ports and adapters** — Core domain isolated from I/O via **interfaces**; adapters implement DB, HTTP, queues. See [modularity-and-ports-adapters.md](principles/modularity-and-ports-adapters.md).
 
@@ -188,7 +188,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## I
 
-**Idempotency** — Repeating an operation with the **same intent** does not **compound** harm (safe retries, dedupe keys). See [ENGINEERING.md](../ENGINEERING.md) §4, [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md).
+**Idempotency** — Repeating an operation with the **same intent** does not **compound** harm (safe retries, dedupe keys). See [ENGINEERING.md](../ENGINEERING.md) Core Proposition 6, [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md).
 
 **Incident command / incident lifecycle** — Coordinated **response** to a production-impacting event: **incident commander**, **comms** cadence, **state doc** (single source of truth), **escalation**, **handoff**, **sustainable** on-call, **post-incident** **actions**; estates operating **agent responders** add a rostered agent role under a **named human owner** (never IC). See [incident-lifecycle-and-on-call-operations.md](patterns/incident-lifecycle-and-on-call-operations.md), [reliability-slo-incidents.md](principles/reliability-slo-incidents.md).
 
@@ -214,7 +214,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Linked worktree** — An additional checkout of the same Git repository with its own files, `HEAD`, and index, sharing branches and history with the others. Isolates files, not credentials. See [impl/git-worktrees.md](impl/git-worktrees.md).
 
-**LLM** — *Large language model*: often backs **chat** or **agent** UIs; treat **output** and **retrieved context** as **untrusted** at system boundaries until validated. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) Related, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
+**LLM** — *Large language model*: often backs **chat** or **agent** UIs; treat **output** and **retrieved context** as **untrusted** at system boundaries until validated. See [api-boundaries-and-security.md](principles/api-boundaries-and-security.md) Related, [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md); OWASP [LLM Top 10 (2026 edition)](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/).
 
 **Lexical search** — Keyword / **inverted-index** retrieval (e.g. **BM25**); complements **semantic** vector search in **hybrid** RAG. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §1.
 
@@ -274,7 +274,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **OpenTelemetry (OTel)** — Vendor-neutral telemetry APIs and **OTLP** export. See [interoperability-and-standards.md](principles/interoperability-and-standards.md), [tooling/observability.md](tooling/observability.md).
 
-**Outbox** — Pattern to **atomically** persist business state and an **outbound** message descriptor so publishers don’t double-send under crash. Related to idempotency; see [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md).
+**Outbox** — Pattern to **atomically** persist business state and an **outbound** message descriptor, so no committed change loses its event. The publisher retries from the outbox, so consumers still deduplicate; see [idempotency-across-boundaries.md](patterns/idempotency-across-boundaries.md) §3.
 
 ---
 
@@ -300,7 +300,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Publishable unit** — Thing consumers pin versions on (package, image, API product, CLI); gets its **own** SemVer line. See [semantic-versioning.md](principles/semantic-versioning.md).
 
-**Prompt injection** — Crafted input causes the model to **ignore** policy, **exfiltrate** data, or **mis-route** tools; **indirect** injection uses **retrieved** text (RAG) or hidden content. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, OWASP [LLM Top 10](https://genai.owasp.org/llm-top-10/).
+**Prompt injection** — Crafted input causes the model to **ignore** policy, **exfiltrate** data, or **mis-route** tools; **indirect** injection uses **retrieved** text (RAG) or hidden content. See [rag-retrieval-baseline.md](patterns/rag-retrieval-baseline.md) §3, OWASP [LLM Top 10 (2026 edition)](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/).
 
 ---
 
@@ -360,7 +360,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Service catalog** — **Index of systems** the org runs: identity, **ownership**, interfaces (APIs/events), runtime, dependencies, ops links (SLOs, runbooks)—**tool-agnostic**; may be a portal, Git index, or dedicated product. See [platform-as-product-and-golden-paths.md](patterns/platform-as-product-and-golden-paths.md).
 
-**Shift left** — Move security, quality, and validation **earlier** in the lifecycle (design, CI), not only pre-release. See [ENGINEERING.md](../ENGINEERING.md) §5.
+**Shift left** — Move security, quality, and validation **earlier** in the lifecycle (design, CI), not only pre-release. See [secure-development-lifecycle.md](principles/secure-development-lifecycle.md) and [testing-strategy.md](principles/testing-strategy.md).
 
 **Skill (doctrine)** — A small, **advisory** priming artefact derived from named doctrine, laid out as `doctrine/skills/<name>/SKILL.md` beside its **sibling verifier pack**, with front matter validating against [../contracts/skill.v1.schema.json](../contracts/skill.v1.schema.json) and exactly one hash-pinned **priming block**. Never approval or verification authority; tiered 0–3 with injection defaults; a first-class lifecycle file. See [patterns/agent-doctrine-consumption.md](patterns/agent-doctrine-consumption.md) §3, [skills/README.md](skills/README.md), [ADR 0044](../docs/adr/0044-adopt-agent-facing-consumption-contract-skill-schema-and-server-boundary.md).
 
@@ -384,7 +384,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Sponsor (agent)** — The named human accountable for an agent identity's existence, scope, and lifecycle; sponsor departure triggers reassignment or decommissioning, and an agent with no current sponsor is **orphaned** and disabled. Anchored on the named-owner control in [ai-adoption-controls.md](patterns/ai-adoption-controls.md) §§1–2. See [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md) §2.1.
 
-**SSDF** — NIST *Secure Software Development Framework* (SP 800-218): practices grouped **Prepare, Protect, Produce, Respond**. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) §6.
+**SSDF** — NIST *Secure Software Development Framework* (SP 800-218): practices grouped **Prepare, Protect, Produce, Respond**. See [timeless-principles-and-tooling.md](principles/timeless-principles-and-tooling.md) §7.
 
 **STRIDE** — *Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege*—threat-model **prompts**. See [threat-modeling-stride-lite.md](principles/threat-modeling-stride-lite.md).
 
@@ -416,7 +416,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 **Verifier pack** — Sibling artefact to a skill or run contract holding **binary-observable assertions** about execution artefacts (fail-loud, never fail-silent; a stub MUST NOT pass); explicitly **not a model evaluator** — judge discipline lives in [agentic-loop-design.md](patterns/agentic-loop-design.md) §8.2. See [verifier-packs.md](patterns/verifier-packs.md), **Run contract**.
 
-**VulnOps** — *Vulnerability operations*: **continuous** discovery, triage, remediation, and feedback into engineering backlogs—treated as a **standing** capability (people + automation), not only periodic audits or a security-owned spreadsheet. Industry briefings use the term in an AI-accelerated **offense** context; this library’s research note and [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) cite it as **input** until normative doctrine is extended. See [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md), [secure-development-lifecycle.md](principles/secure-development-lifecycle.md).
+**VulnOps** — *Vulnerability operations*: **continuous** discovery, triage, remediation, and feedback into engineering backlogs—treated as a **standing** capability (people + automation), not only periodic audits or a security-owned spreadsheet. Industry briefings use the term in an AI-accelerated **offense** context; this library’s research note and [ADR 0010](../docs/adr/0010-record-mythos-era-vulnerability-storm-research-and-doctrine-gaps.md) cite it as **input**; the capability is now owned by [secure-development-lifecycle.md](principles/secure-development-lifecycle.md) §3 and [dependencies-supply-chain.md](principles/dependencies-supply-chain.md) §2. Background: [evolution/mythos-era-engineering-principles-research-2026-04-28.md](evolution/mythos-era-engineering-principles-research-2026-04-28.md).
 
 ---
 
@@ -434,7 +434,7 @@ See also: **[tldr-principles-and-mvp.md](tldr-principles-and-mvp.md)** (spine + 
 
 ## Z
 
-**Zero Trust** — No implicit trust from **network location** alone; verify **per request** with least privilege. See [ENGINEERING.md](../ENGINEERING.md) §8, [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
+**Zero Trust** — No implicit trust from **network location** alone; verify **per request** with least privilege. See [ENGINEERING.md](../ENGINEERING.md) Core Proposition 7, [zero-trust-and-workload-identity.md](principles/zero-trust-and-workload-identity.md).
 
 ---
 

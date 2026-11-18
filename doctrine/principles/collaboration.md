@@ -28,7 +28,7 @@ The current tip of `main` does not identify what is running in an environment. U
 - **Linear history optional but valuable** — squash or rebase merges reduce noise; pick one team convention and stick to it.
 - **Merge when green** — do not merge on red; do not “merge anyway” without a recorded exception process.
 - **Merge queue or batching** — at scale, use a merge queue or batched merges so `main` stays green under concurrent work; the queue is part of the integration system, not a substitute for small changes.
-- **Review latency** — track time-to-first-review and time-to-merge for critical services; chronic delay is a **delivery** risk (see [measurement-and-dora.md](measurement-and-dora.md)).
+- **Review latency** — track time-to-first-review and time-to-merge for critical services; chronic delay is a **delivery** risk (measures and example targets: [code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) §4).
 
 ---
 
@@ -153,7 +153,7 @@ When these principles conflict with a deadline, **narrow scope** or **add safety
 ## References
 
 - Google SRE Book — **Being On-Call**: https://sre.google/sre-book/being-on-call/  
-- [measurement-and-dora.md](measurement-and-dora.md) — delivery metrics and review latency  
+- [measurement-and-dora.md](measurement-and-dora.md) — delivery metrics  
 - [../patterns/code-review-and-change-approval.md](../patterns/code-review-and-change-approval.md) — author and reviewer **duties**, blockers vs nits, latency examples, high-risk classes, **agent-authored** PRs, **escalation** when review disagrees  
 - [../patterns/gitops-and-declarative-operations.md](../patterns/gitops-and-declarative-operations.md) — *GitOps* (OpenGitOps, OWASP CI/CD) as **declarative** **reconciled** desired state, not **manual** **prod** **drift**; aligns with **reviewed** **automation** here  
 - [build.md](build.md), [patterns/trunk-workflow.md](../patterns/trunk-workflow.md), [tooling/collaboration.md](../tooling/collaboration.md)  

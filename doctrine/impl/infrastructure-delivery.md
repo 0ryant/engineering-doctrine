@@ -54,7 +54,7 @@ These summarise the canonical owners below, including their applicability and ex
 | Verify | Check the applied result as [Testing And Verification](testing-and-verification.md#infrastructure-delivery) describes. Keep the plan and verification output retrievable. |
 | Progress | Repeat plan, apply, and verify in each later environment through the same deploy path. Risky changes use canaries, gradual rollout, or maintenance windows per service policy. |
 | Operate | Keep drift visible and triage it. After break-glass, return to declared state and hold the retrospective. |
-| Recover | Revert desired state through the reviewed path and let it apply. Restore persisted data through the tested restore path. |
+| Recover | Revert desired state through the version-control path, under the documented emergency path where the rollback decider needs it, and let it apply. Restore persisted data through the tested restore path. |
 
 ## Common Variations
 

@@ -9,7 +9,7 @@ Use when cutting a **versioned** release of a publishable unit (library, service
 [ ] Pre-release channel (alpha/rc) or dist-tags documented if not using stable-only SemVer
 [ ] Changelog or release notes list user-visible and operator-visible changes
 [ ] Contract changes (API, CLI, schema, event type) called out; migration / upgrade steps linked
-[ ] Deprecations in this release reference sunset timeline per semantic-versioning.md §8
+[ ] Deprecations in this release reference sunset timeline per semantic-versioning.md §9
 ```
 
 ## Build, Supply Chain, Evidence
@@ -49,5 +49,5 @@ Use when cutting a **versioned** release of a publishable unit (library, service
 
 ```text
 [ ] Tag and artefacts match what was tested; no post-tag rebuild drift
-[ ] DORA-style lead time / CFR can be measured for this release if the org tracks Four Keys (measurement-and-dora.md)
+[ ] DORA-style lead time / CFR can be measured for this release if the org tracks DORA delivery metrics (measurement-and-dora.md)
 ```

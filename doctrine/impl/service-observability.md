@@ -50,7 +50,7 @@ These summarise the canonical owners below, including their applicability and ex
 | Objectives | Where SLOs exist, keep each SLI's written definition with the SLO definition so duplicates do not drift. |
 | Alert | Where SLOs exist, derive burn-rate thresholds from the SLO target, page fast burns, and ticket slow burns. Other non-urgent symptoms go to tickets or dashboards. |
 | Protect | Prefer revocable identifiers over long-lived secrets in application logs, keep secret values out of audit entries, and set retention per data category. |
-| Audit | For selected actions only, record actor, operation, resource identifier, UTC time, outcome with failure reason, and correlation where available, including denied attempts where material. |
+| Audit | For selected actions only, record actor, operation, resource identifier, UTC time, outcome with failure reason, and correlation where available, including denied attempts where material. Where an agent or service acts for another principal, record the delegation chain. |
 | Verify | Run post-deployment verification, including telemetry arrival, trace correlation, and SLI data; validate rarely firing alerts with a known signal. [Testing And Verification](testing-and-verification.md) places these checks at deployed and scheduled surfaces. |
 | Rehearse | Exercise alerts, dashboards, and runbooks non-production first, with a hypothesis, abort criteria, and recorded results. |
 | Learn | The incident state document records user impact and links SLIs where available; material incidents end with tracked, owned action items. |

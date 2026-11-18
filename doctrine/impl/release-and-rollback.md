@@ -59,7 +59,7 @@ Exposure is the deployment itself: service policy chooses a canary, gradual roll
 
 ### Declarative Operations
 
-Rollback is a reviewed change to desired state, tied to a known revision and applied by a reconciler or governed push. Break-glass is rare and followed by a return to declared state; frequent break-glass signals a governance or automation gap.
+Rollback is a revert of desired state through the version-control path, tied to a known revision and applied by a reconciler or governed push; the decider can merge it under the documented emergency path, with review afterwards. Break-glass is rare and followed by a return to declared state; frequent break-glass signals a governance or automation gap.
 
 ### Published Packages And Clients
 

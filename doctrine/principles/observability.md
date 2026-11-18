@@ -100,6 +100,7 @@ The table below is **EXAMPLE** class ([Normative Language](../patterns/normative
 - Fast burn (14.4× or 6×) → immediate page; the budget will exhaust within hours if unchecked.
 - Slow burn (1×) → ticket for the responsible team; budget is leaking but not critically.
 - Reset pages when burn rate drops below threshold in the short window.
+- The thresholds in the table assume a 30-day SLO window.
 
 ### 6.3 Implementation Patterns
 
@@ -110,7 +111,7 @@ Backend query patterns — recording rules and paired-window alert rules — are
 | Failure mode | Symptom | Fix |
 | --- | --- | --- |
 | **Single-window alert** | Pages on transient spikes; misses slow leaks | Pair a short window with the long window; fire only when both are elevated |
-| **Alert on raw error rate, not burn rate** | Fires equally at low and high traffic; meaningless at night | Compute error ratio, then multiply by burn-rate threshold |
+| **Alert on raw error rate, not burn rate** | Fires equally at low and high traffic; meaningless at night | Alert when the error ratio exceeds burn-rate threshold × `(1 − SLO_target)` |
 | **Threshold copied from a different SLO** | Wrong budget fraction for service's actual SLO | Derive threshold from `(1 − SLO_target)` explicitly |
 | **No slow-burn alert** | Budget silently exhausts over days; incident surprised | Add the 3d+6h tier routed to ticket/work queue |
 | **Page fatigue from 14.4× tier alone** | On-call desensitised; slow fires silently | Use all three tiers (outside a recorded low-traffic exemption — §6 Applicability); route slow burn to ticket not page |
@@ -139,7 +140,7 @@ Backend query patterns — recording rules and paired-window alert rules — are
 
 ### 7.2 Privacy Default: Content Is Not Captured
 
-- Prompt and completion **content** (messages, system instructions, tool arguments/results carrying user data) **MUST NOT** be captured in telemetry **by default**. Content capture is **opt-in**, **scoped** (named surfaces, named fields, capped retention), and routes through the existing high-risk MUST of [privacy-and-data-governance.md](privacy-and-data-governance.md) §5.3 — minimisation, retention caps, vendor-flow review, no production PII in prompts/logs without clearance. This section adds the **default**; it does not duplicate that rule.
+- Prompt and completion **content** (messages, system instructions, tool arguments/results carrying user data) **MUST NOT** be captured in telemetry **by default**. Content capture is **opt-in**, **scoped** (named surfaces, named fields, capped retention), and routes through the existing high-risk MUST of [privacy-and-data-governance.md](privacy-and-data-governance.md) §5.3 — minimisation, retention caps, vendor-flow review, no production PII in dev prompts/logs without clearance. This section adds the **default**; it does not duplicate that rule.
 
 ### 7.3 Cardinality Discipline Carries Over
 

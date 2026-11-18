@@ -32,7 +32,7 @@ Use when adopting or auditing **data**, **observability**, **reliability**, **AP
 [ ] Event-backed workflows document states/transitions and map commits to stable event types where applicable (state-machines-and-workflows.md)
 [ ] Message channels have DLQ/poison, replay posture, and backlog metrics per patterns/message-channel-operations.md (if the system uses queues/topics)
 [ ] Message consumers acknowledge only after the effect is durable, or document an accepted at-most-once choice (patterns/message-channel-operations.md)
-[ ] Delivery performance trended using stable definitions (measurement-and-dora.md) where org tracks Four Keys or equivalents
+[ ] Delivery performance trended using stable definitions (measurement-and-dora.md) where the org tracks DORA delivery metrics or equivalents
 [ ] Chaos engineering or game days exercised for high-blast-radius systems on a cadence (principles/reliability-slo-incidents.md §5; pattern: patterns/chaos-engineering-and-game-days.md)
 [ ] DR / failover drills and multi-region assumptions validated where data-and-migrations.md §4 applies
 [ ] Webhook ingress hardened where third-party HTTP callbacks are accepted (patterns/webhook-ingress-security.md)

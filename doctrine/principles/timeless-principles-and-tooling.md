@@ -74,9 +74,9 @@ NIST’s Secure Software Development Framework (SSDF) groups practices into Prep
 | SSDF group | Example practices | Doctrine touchpoints |
 | --- | --- | --- |
 | **PO** — Prepare the organisation | Security training, roles, supply-chain risk planning | [collaboration.md](collaboration.md) (ownership, review), [secure-development-lifecycle.md](secure-development-lifecycle.md), [dependencies-supply-chain.md](dependencies-supply-chain.md) |
-| **PS** — Protect the software | Tamper-resistant environments, secrets management | [configuration-and-secrets.md](configuration-and-secrets.md), [build.md](build.md), [kubernetes-platform-security.md](kubernetes-platform-security.md) |
+| **PS** — Protect the software | Code and releases protected from tampering and unauthorised access; secrets management | [configuration-and-secrets.md](configuration-and-secrets.md), [build.md](build.md), [kubernetes-platform-security.md](kubernetes-platform-security.md) |
 | **PW** — Produce well-secured software | Design review, secure coding, provenance, testing | [threat-modeling-stride-lite.md](threat-modeling-stride-lite.md), [testing-strategy.md](testing-strategy.md), [api-boundaries-and-security.md](api-boundaries-and-security.md), [ai-ml-systems.md](ai-ml-systems.md) (GenAI / agents in the SDLC), [build.md](build.md) §14 (SLSA) |
-| **RV** — Respond to vulnerabilities | Identify, triage, disclose, learn | [secure-development-lifecycle.md](secure-development-lifecycle.md), [dependencies-supply-chain.md](dependencies-supply-chain.md) §5, [reliability-slo-incidents.md](reliability-slo-incidents.md) (post-incident learning) |
+| **RV** — Respond to vulnerabilities | Identify, triage, disclose, learn | [secure-development-lifecycle.md](secure-development-lifecycle.md), [dependencies-supply-chain.md](dependencies-supply-chain.md) §§2, 7, [reliability-slo-incidents.md](reliability-slo-incidents.md) (post-incident learning) |
 
 **Why:** SP 800-218 gives auditors and security partners a familiar vocabulary; mapping reduces duplicate questionnaires.
 

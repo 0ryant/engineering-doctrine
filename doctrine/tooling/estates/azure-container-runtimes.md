@@ -26,7 +26,7 @@ For the vendor-neutral decision frame, see [../../principles/container-runtime-c
 
 ## Identity
 
-- Prefer **managed identity** and **Microsoft Entra ID** integration per current Azure documentation for your workload type; avoid long-lived client secrets in application configuration.
+- Use **managed identity** and **Microsoft Entra ID** integration by default, per current Azure documentation for your workload type; a long-lived client secret is a registered fallback under zero trust §2, not a configuration default.
 
 ---
 

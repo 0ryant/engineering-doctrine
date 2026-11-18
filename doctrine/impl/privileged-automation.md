@@ -78,7 +78,7 @@ This applies only where agents are rostered into incident response. A named acco
 ## Boundaries
 
 - **Model-driven scope:** run contracts are defined for model interactions; deterministic automation relies on its reviewed definition and explicit execution surface.
-- **Stop controls:** revocation and outside-the-model ceilings are the stops owners state for agents. Product kill switches belong to [Release And Rollback](release-and-rollback.md) and [configuration doctrine](../principles/configuration-and-secrets.md).
+- **Stop controls:** owners state revocation, outside-the-model ceilings, and propagated cancellation for agents, and a named person who can stop an agent responder. No owner states a general stop authority for standing agents or for other automation. Product kill switches belong to [Release And Rollback](release-and-rollback.md) and [configuration doctrine](../principles/configuration-and-secrets.md).
 - **Person-affected decisions:** runtime fallback, authority to override or halt, and contest paths belong to AI adoption controls.
 - **Exceptions and emergencies:** departures go through the [exception contract](../patterns/normative-language-applicability-and-exceptions.md#5-exception-contract); documented emergency changes still get a retrospective.
 

@@ -70,7 +70,7 @@ Official guidance: [Deploy the Collector](https://opentelemetry.io/docs/collecto
 
 Illustrative implementation of the **multi-window burn-rate model** in [../principles/observability.md](../principles/observability.md) §6. The principle stays backend-neutral; this section is where PromQL may appear. All query text is **EXAMPLE** class — adapt metric names, thresholds, and the service-identity label to the estate.
 
-Define recording rules first to avoid query duplication and reduce evaluation load. **Author a rule for every window the alerts query** — all four below — because a missing recording rule evaluates as an **empty vector without error**, and the alert silently never fires:
+Define recording rules first to avoid query duplication and reduce evaluation load. **Author a rule for every window the alerts query** — all five below — because a missing recording rule evaluates as an **empty vector without error**, and the alert silently never fires:
 
 <!-- doctrine-example: {"external":"Prometheus owns rule and PromQL semantics; this gate checks YAML syntax only."} -->
 ```yaml
@@ -85,6 +85,11 @@ Define recording rules first to avoid query duplication and reduce evaluation lo
     sum by (job) (rate(http_requests_total{status=~"5.."}[5m]))
     / sum by (job) (rate(http_requests_total[5m]))
 
+- record: job:request_error_ratio:rate30m
+  expr: |
+    sum by (job) (rate(http_requests_total{status=~"5.."}[30m]))
+    / sum by (job) (rate(http_requests_total[30m]))
+
 - record: job:request_error_ratio:rate6h
   expr: |
     sum by (job) (rate(http_requests_total{status=~"5.."}[6h]))
@@ -98,18 +103,26 @@ Define recording rules first to avoid query duplication and reduce evaluation lo
 
 <!-- doctrine-example: {"external":"Prometheus owns rule and PromQL semantics; this gate checks YAML syntax only."} -->
 ```yaml
-# Alerting rule — fast burn (1h + 5m paired windows)
+# Alerting rule — fast burn (1h + 5m at 14.4×, or 6h + 30m at 6×)
 - alert: ErrorBudgetBurnFast
   expr: |
-    job:request_error_ratio:rate1h > (14.4 * 0.001)
-    and
-    job:request_error_ratio:rate5m > (14.4 * 0.001)
+    (
+      job:request_error_ratio:rate1h > (14.4 * 0.001)
+      and
+      job:request_error_ratio:rate5m > (14.4 * 0.001)
+    )
+    or
+    (
+      job:request_error_ratio:rate6h > (6 * 0.001)
+      and
+      job:request_error_ratio:rate30m > (6 * 0.001)
+    )
   for: 2m
   labels:
     severity: page
   annotations:
     summary: "Fast error budget burn — {{ $labels.job }}"
-    description: "Burn rate >14.4× on 1h+5m windows. ~2% monthly budget at risk."
+    description: "Burn rate >14.4× on 1h+5m windows, or >6× on 6h+30m windows."
 
 # Alerting rule — slow burn (3d + 6h paired windows)
 - alert: ErrorBudgetBurnSlow

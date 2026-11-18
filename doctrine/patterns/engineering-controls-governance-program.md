@@ -19,7 +19,7 @@ Without a programme, teams accumulate **inconsistent** gates, **stale** waivers,
 | **Policy baseline** | Written criteria: which repos require which **control classes** (secret detection, SCA, pipeline static analysis, SBOM, provenance) keyed off **criticality** or **data class**—not flat one-size-fits-all unless deliberately chosen. |
 | **Ownership** | Named **control owners** (role + escalation path) for each control class; deputy for absence. |
 | **Inventory** | Register of **protected branches**, **required checks**, and **release** workflows per business-critical repo; reconciled quarterly or on material org change. |
-| **Exception process** | Risk acceptance records: **scope**, **justification**, **expiry**, **compensating control**, **approver**; stored in ticket or governance tool with **stable IDs** referenced in-repo. |
+| **Exception process** | Risk acceptance records carry at least **scope**, **justification**, **expiry**, **compensating control**, and **approver** (full record: [exception contract](normative-language-applicability-and-exceptions.md#5-exception-contract)); stored in ticket or governance tool with **stable IDs** referenced in-repo. |
 | **Calibration** | Periodic proof that controls **detect** what they claim (golden files, test PRs, tabletop on simulated compromise). |
 | **Evidence routing** | Logs, SARIF, SBOMs, attestations land in **organisation-controlled** retention (SIEM, artefact registry, GRC)—not only ephemeral CI UI. |
 | **Metrics** | Coverage and activity indicators paired with detection, escaped-failure, recovery, and operating-cost evidence; a gate count is not a risk-reduction outcome. |

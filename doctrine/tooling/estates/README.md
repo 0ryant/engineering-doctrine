@@ -20,5 +20,5 @@ Read [../../principles/timeless-principles-and-tooling.md](../../principles/time
 | File | Scope |
 | --- | --- |
 | [azure-container-runtimes.md](azure-container-runtimes.md) | Example: one Azure-oriented mapping of managed application platform vs Kubernetes |
-| [aws-container-runtimes.md](aws-container-runtimes.md) | Stub: fill when AWS estate has an owner |
-| [gcp-container-runtimes.md](gcp-container-runtimes.md) | Stub: fill when GCP estate has an owner |
+| [aws-container-runtimes.md](aws-container-runtimes.md) | Deprecated since v0.5.0 (ADR 0045); start from [TEMPLATE.md](TEMPLATE.md) |
+| [gcp-container-runtimes.md](gcp-container-runtimes.md) | Deprecated since v0.5.0 (ADR 0045); start from [TEMPLATE.md](TEMPLATE.md) |

@@ -17,7 +17,7 @@ Defines safe-retry strategies for **HTTP**, **messages**, **infrastructure**, an
 
 ## 2. HTTP Mutations
 
-- Accept **idempotency keys** (header or body) for payments, provisioning, and other **high-cost** duplicates; **persist** key → outcome mapping for the documented **retry window**.
+- Where idempotency keys are the chosen mechanism (§1), accept them (header or body) for payments, provisioning, and other **high-cost** duplicates, and **persist** key → outcome mapping for the documented **retry window**.
 - Use **PUT** and **DELETE** semantics where the intended effect follows their idempotent HTTP semantics. Document **POST** retry behaviour explicitly; the method name alone neither supplies nor prohibits an application-level deduplication strategy.
 
 **Why:** [RFC 9110 §9.2.2](https://www.rfc-editor.org/rfc/rfc9110.html#name-idempotent-methods) defines PUT, DELETE, and safe methods as idempotent and cautions against automatically retrying a non-idempotent method without knowledge or detection of the original effect. Idempotency keys are one implementation pattern for ambiguous POST outcomes.

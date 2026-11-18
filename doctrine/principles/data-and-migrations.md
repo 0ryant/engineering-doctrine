@@ -9,7 +9,7 @@ For the normal sequence of a schema or data change, start with [Database Migrati
 ## 1. Schema Changes And Rolling Deploys
 
 - **Forward-only migrations in production** — apply changes that older running app versions can still run against until they are fully replaced. Rolling deploys mean N and N+1 coexist; the database must be valid for both during the overlap.
-- **Expand → migrate → contract** (also called parallel change): add new structure first; move writers/readers; backfill; then remove old paths. This is the standard answer to “zero-downtime” schema change without heroic single-step cutovers.
+- **Expand → migrate → contract** (also called parallel change): add new structure first; deploy application code that is valid for the old and new shape; backfill; verify; switch readers and writers; then remove old paths in a later release. This is the standard answer to “zero-downtime” schema change without heroic single-step cutovers.
 - **Dangerous operations** (blocking locks, wide table rewrites, adding `NOT NULL` without a staged plan) are split into multiple releases with explicit checkpoints.
 - Backfills run in batches with bounded row counts and pauses so replication and OLTP traffic stay healthy. Typical starting defaults (tune per engine and load): 1,000–50,000 rows per batch for row-oriented OLTP, 50–500 ms pause between batches, and hard stop (or halve batch size) if replica lag or lock wait exceeds team-defined thresholds—document your limits in the migration note.
 - **Maintenance window instead of overlap (MAY).** Where service policy accepts a documented maintenance window ([collaboration.md](collaboration.md) §8), the old version stops before the change, so the overlap sequence above does not apply. Forward-only change, a snapshot before high-risk steps (§3), and an honest recovery path still do ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)).
@@ -51,7 +51,7 @@ For the normal sequence of a schema or data change, start with [Database Migrati
 
 | Decision | Rationale |
 | --- | --- |
-| Prefer expand/contract over big-bang DDL | Matches rolling deploys and reduces blast radius; one step = one reviewable risk. |
+| Prefer expand/contract over big-bang DDL | Matches rolling deploys and reduces blast radius; one step = one reviewable risk. Readers switch only after the backfill is verified ([ADR 0058](../../docs/adr/0058-sharpen-four-rules-after-the-november-2026-review.md)). |
 | Forward-only in prod | Keeps pipeline simple and history auditable; “reverse” is often a new migration. |
 | Batch backfills | Reduces lock contention and replica lag vs single massive updates. |
 | Default batch / pause ranges | Gives operators a first knob to tune instead of inventing sizes from zero. |
@@ -68,3 +68,4 @@ For the normal sequence of a schema or data change, start with [Database Migrati
 - PostgreSQL 18 — [CREATE INDEX](https://www.postgresql.org/docs/18/sql-createindex.html), [explicit locking](https://www.postgresql.org/docs/18/explicit-locking.html), and [modifying tables](https://www.postgresql.org/docs/18/ddl-alter.html) (S5, primary documentation for PostgreSQL behaviour; pinned to major version 18, accessed 2026-09-19). These support the engine-specific locking and staged-DDL discussion, not universal safe-operation or batch-size guarantees. Verify against the deployed engine version; this reference does not select an estate's database baseline. The [source review](../evolution/research-v060-source-maintenance-2026-09.md#m23-migration-guidance) records why these replace the prior practitioner overview.
 - Google Cloud — Disaster recovery planning (conceptual DR vs backup): https://cloud.google.com/architecture/dr-scenarios-planning-guide  
 - AWS — Disaster Recovery whitepapers and well-architected reliability pillar (use current AWS docs for your estate)  
+- Stripe — **Online migrations at scale** (dual write and backfill before read paths change) (S6, vendor engineering account; 2017; accessed 2026-11-18): https://stripe.com/blog/online-migrations  

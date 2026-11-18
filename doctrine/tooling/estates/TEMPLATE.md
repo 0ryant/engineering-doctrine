@@ -1,6 +1,6 @@
 # Estate Supplement Template
 
-**Copy** this file to a new name (for example `aws-container-runtimes.md` or `gcp-batch-jobs.md`) and fill in **only** what your organisation standardises. Do **not** move estate-specific product mandates into `doctrine/principles/`.
+**Copy** this file to a new name (for example `aws-application-runtimes.md` or `gcp-batch-jobs.md`) and fill in **only** what your organisation standardises. Do **not** move estate-specific product mandates into `doctrine/principles/`.
 
 ## Scope
 

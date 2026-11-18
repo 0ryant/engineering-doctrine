@@ -26,7 +26,7 @@ Each arrow is a checkpoint, not a single transaction. Old and new application ve
 These summarise the canonical owners below, including their applicability and exception paths.
 
 1. **Compatible overlap:** every production schema state is valid for both the running and the incoming application version.
-2. **Expand, migrate, contract:** new structure arrives first, readers and writers move, data is backfilled, and the old path is removed last. Dangerous operations are split across releases with explicit checkpoints.
+2. **Expand, migrate, contract:** new structure arrives first, a compatible application is deployed, data is backfilled and verified, readers and writers switch, and the old path is removed last. Dangerous operations are split across releases with explicit checkpoints.
 3. **Forward-only in production:** rollback is a new forward migration or an application rollback. A down migration that drops data is not a recovery plan.
 4. **Bounded backfills:** data moves in batches with pauses and stop conditions on replica lag or lock wait. The limits are recorded in the migration note.
 5. **Safety net before high risk:** take a snapshot or enable point-in-time recovery where the platform supports it. Review replica lag and lock duration for large tables.

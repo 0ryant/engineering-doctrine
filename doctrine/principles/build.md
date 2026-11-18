@@ -93,7 +93,7 @@ Async **event and message** contracts are covered in [event-contracts.md](event-
 
 ## 14. Hermetic Builds And Provenance (SLSA)
 
-- **Hermetic** builds minimise **undeclared** inputs: lockfiles, pinned toolchains, and **reproducible** steps so the same commit yields the same artefact (modulo documented nondeterminism). Term: [glossary.md](../glossary.md) (*Hermetic build*).
+- **Reproducible inputs** come from lockfiles and pinned toolchains. A **hermetic** build goes further: it runs with **declared** inputs only, so the same commit yields the same artefact (modulo documented nondeterminism). Scope and strength are owned by [dependencies-supply-chain.md](dependencies-supply-chain.md) §4. Term: [glossary.md](../glossary.md) (*Hermetic build*).
 - **Provenance attestations** (for example SLSA provenance) document **who** built **what** from **which** sources. When provenance, SBOMs, and hermetic builds are expected, and at what strength, is owned by [dependencies-supply-chain.md](dependencies-supply-chain.md) §§3–4. SLSA itself does not require hermetic builds at any Build level.
 
 **Why:** Executive Order **14028** and sector norms pushed **SBOM** and **provenance**; **SLSA** frames progressive hardening: https://slsa.dev/

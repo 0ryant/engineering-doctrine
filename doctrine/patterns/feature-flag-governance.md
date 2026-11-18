@@ -4,7 +4,7 @@ Canonical home for the portable rules on creating, operating, reverting, and ret
 
 For the end-to-end release, verification, and recovery shape, start with [Release And Rollback](../impl/release-and-rollback.md).
 
-Flags decouple deploying code from activating it, which lets incomplete work land on trunk ([trunk-workflow.md](trunk-workflow.md); [principles/collaboration.md](../principles/collaboration.md) §4) and lets risky changes reach users gradually, provided every flag has an owner, a safe default, and a removal date.
+Flags decouple deploying code from activating it, which lets incomplete work land on trunk ([trunk-workflow.md](trunk-workflow.md); [principles/collaboration.md](../principles/collaboration.md) §4) and lets risky changes reach users gradually, provided every flag has an owner, a safe default, and a removal date or the review cadence its type sets (§2).
 
 Flag SDKs, feature-management platforms, and rollout controllers are tooling choices and belong in `doctrine/tooling/`; this file names none.
 
@@ -193,7 +193,7 @@ Prevents: quality regressions accumulating across users before aggregates catch 
 
 Change class: normative replacement. This file replaces `feature-flag-lifecycle.md` as the canonical home; the old file follows the supersession mechanics in [doctrine-content-lifecycle.md](doctrine-content-lifecycle.md).
 
-Migration note: repoint links to this path. Old §1 (taxonomy) is §2 here; old §2 (state machine) is §3; old §3 (progressive delivery) is §4, with automated reversion added as §4.4; old §4 (debt) is §5; old §5 (metadata) is §6, with the tracker-specific field renamed `tracker_ref` and `owner_email` renamed `owner_contact`; old §6 (testing) is §7; old §7 (AI flags) is §8. Every claim is now typed, so consumers should confirm under §1 which claims bind them. No numeric default changed.
+Migration note: repoint links to this path. Old §1 (taxonomy) is §2 here; old §2 (state machine) is §3; old §3 (progressive delivery) is §4, with automated reversion added as §4.4; old §4 (debt) is §5; old §5 (metadata) is §6, with the tracker-specific field renamed `tracker_ref` and `owner_email` renamed `owner_contact`; old §6 (testing) is §7; old §7 (AI flags) is §8. Lifecycle, metadata, testing, and reversion claims are now typed, so consumers should confirm under §1 which claims bind them. No numeric default changed.
 
 ---
 

@@ -33,7 +33,7 @@ These summarise the canonical owners below, including their applicability and ex
 5. **Declared retry semantics:** document which operations are safe to retry. Mutations that clients may retry declare a duplicate-handling strategy, enforced at the controlling boundary where a duplicate could cause material harm.
 6. **Machine-readable errors:** failures use stable problem types with actionable client messages; operator detail goes to logs, not responses.
 7. **Correlated telemetry:** trace context propagates across the call; logs carry trace and span identifiers; metric labels stay low-cardinality.
-8. **Audit where material:** privileged, security-sensitive, financially material, or externally consequential actions produce audit evidence with actor, action, resource, time, outcome, and correlation.
+8. **Audit where material:** privileged, security-sensitive, policy-relevant, financially material, or externally consequential actions produce audit evidence with actor, action, resource, time, outcome, and correlation, plus the delegation chain where one principal acts for another.
 9. **Untrusted outbound calls:** when the service calls another API, it applies timeouts, failure isolation, and response validation, and treats user-supplied URLs as an SSRF surface.
 
 ## Normal Implementation

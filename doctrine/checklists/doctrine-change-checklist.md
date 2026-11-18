@@ -1,6 +1,6 @@
 # Doctrine Change Checklist
 
-Use when **adding or substantially editing** files under `doctrine/` or the umbrella `ENGINEERING.md`.
+Use for any change under `doctrine/`, `docs/adr/`, or the umbrella `ENGINEERING.md`. An editorial fix ticks only the boxes that apply.
 
 ```text
 [ ] For substantive additions: follow patterns/doctrine-library-change-harness.md (research → ADR → layers → navigation)
@@ -25,6 +25,7 @@ Use when **adding or substantially editing** files under `doctrine/` or the umbr
 [ ] Each ADR adding or changing a typed obligation names its canonical owner and checklist/navigation landings, or explicitly explains why no derived landing is needed (harness §3)
 [ ] REFERENCES.md internal map updated if new first-class doc
 [ ] doctrine/SITEMAP.md regenerated: ./scripts/generate-doctrine-sitemap.sh
+[ ] doctrine/SEMANTIC_INDEX.md route added or updated when a first-class file is added, removed, or re-scoped
 [ ] Local Markdown targets and ENGINEERING.md anchors pass: python scripts/check_markdown_links.py (external URLs and other-file fragments are outside this gate)
 [ ] YAML fences have explicit complete-schema / partial / external classification and pass python scripts/check_doctrine_examples.py; no runtime-conformance claim is inferred from syntax or schema validity
 [ ] Principle file added, removed, retitled, deprecated, or its opening paragraph changed: its row in tldr-principles-and-mvp.md "Every Principle At A Glance" and its doctrine/README.md link updated; ./scripts/check-principles-glance.sh passes

@@ -88,7 +88,7 @@ rendered block; it does not score whether the model obeyed it.
 ```yaml
 name: anti-confabulation-verifier-pack
 skill: anti-confabulation
-version: 1.0.0
+version: 1.1.0
 schema_version: 1.1.0
 description: Verify the rendered run context contains the estate-approved anti-confabulation priming block.
 verifiers:

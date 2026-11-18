@@ -216,7 +216,7 @@ These gaps define the boundary of v1.
 
 | Decision | Rationale |
 | --- | --- |
-| Every skill MUST have a pack | Unpaired skills net-harm weaker models; mandate is the structural close. |
+| Every skill MUST have a pack | An unpaired skill adds confidence without evidence; the pack is the structural close. |
 | A fixed canonical kind set + `custom` escape hatch | Small enumerated set is reviewable; `custom` is high-friction by design. |
 | `fail_loud` / `mark_untrusted` / `inconclusive` (no `pass-silent`) | Silent-stub was the largest failure class; a verdict is always emitted, so nothing can fail silently. |
 | Sibling-file discovery convention | Removing alternative paths removes places a pack can hide. |

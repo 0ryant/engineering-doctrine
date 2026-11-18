@@ -55,7 +55,7 @@ Durable rules for service level objectives, error budgets, and incident response
 ## 6. Toil And Operational Load
 
 - Track toil — repetitive, manual, interrupt-driven work that does not improve the system—and budget reduction alongside feature work.
-- Post-incident action items feed DORA change-failure and restore-time learning—see [measurement-and-dora.md](measurement-and-dora.md).
+- Post-incident action items feed DORA change-fail-rate and failed-deployment-recovery-time learning—see [measurement-and-dora.md](measurement-and-dora.md).
 
 **Why:** Google SRE book — Eliminating Toil: https://sre.google/sre-book/eliminating-toil/
 
@@ -79,7 +79,7 @@ When a third-party service (payment API, identity provider, external model API) 
 Applies to production services. Where a managed platform provides one of these properties, the duty is to confirm and configure it, not to rebuild it ([container-runtime-choice.md](container-runtime-choice.md) §1).
 
 - **SHOULD: health signals the platform can act on.** A workload signals whether it is **alive** and whether it is **ready** for traffic as separate questions, and traffic is withheld until it is ready, including during slow start-up. Keep the checks cheap and local: a check that fails when a shared dependency is slow can remove every instance at once.
-- **SHOULD: graceful stop, and tolerance of abrupt stop.** On a termination signal a workload stops taking new work, finishes or returns in-flight work within the platform's grace period, and exits. It also tolerates being killed without notice, so correctness never depends on a clean shutdown.
+- **SHOULD: graceful stop, and tolerance of abrupt stop.** On a termination signal a workload reports itself not ready and keeps serving until the platform has stopped routing to it, or for a short configured delay where the platform gives no such signal, because routing can stop at the same moment as the signal and not before it. It then finishes or returns in-flight work and exits within the platform's grace period. It also tolerates being killed without notice, so correctness never depends on a clean shutdown.
 - **SHOULD (services with an availability objective, §1): redundancy matched to the objective.** Run more than one instance across the failure domains the platform offers, with enough capacity to lose one, and bound how many instances planned maintenance removes at once. A single instance is a legitimate, recorded choice where the objective allows downtime.
 - **SHOULD: declared resource needs.** A workload declares the compute and memory it needs and a memory bound, in the platform's terms, so it is scheduled against real capacity and cannot exhaust its neighbours ([performance-and-cost.md](performance-and-cost.md) §2). Whether to cap CPU is a platform policy choice.
 
@@ -89,7 +89,7 @@ Applies to production services. Where a managed platform provides one of these p
 
 ## Related
 
-- Organisation-level delivery metrics (DORA / Four Keys) — [measurement-and-dora.md](measurement-and-dora.md)
+- Delivery metrics (DORA) — [measurement-and-dora.md](measurement-and-dora.md)
 - **AI provider continuity** (due diligence, concentration, exit/substitution) — [../patterns/ai-adoption-controls.md](../patterns/ai-adoption-controls.md) §4
 - **Chaos experiments and game days** (pattern) — [../patterns/chaos-engineering-and-game-days.md](../patterns/chaos-engineering-and-game-days.md)
 - Incident lifecycle, on-call, escalation, comms, handoff, and post-incident actions (pattern) — [../patterns/incident-lifecycle-and-on-call-operations.md](../patterns/incident-lifecycle-and-on-call-operations.md)
@@ -104,7 +104,7 @@ Applies to production services. Where a managed platform provides one of these p
 | ~3–5 SLOs per service (typical) | Enough to cover critical journeys without diluting focus or error-budget debate. |
 | Documented exceptions | Security and existential risk cannot wait for budget recovery—process replaces panic. |
 | Blameless culture | Improves signal quality in postmortems; fear hides defects. |
-| Workload runtime shape (§8) | Health signals, graceful stop, redundancy, and declared resources are what make deploys and single failures uneventful; stated as properties because platforms differ in mechanism ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)). |
+| Workload runtime shape (§8) | Health signals, graceful stop, redundancy, and declared resources are what make deploys and single failures uneventful; stated as properties because platforms differ in mechanism ([ADR 0057](../../docs/adr/0057-close-owner-gaps-from-implementation-batch-3.md)). The stop wording was sharpened so a workload keeps serving until routing stops ([ADR 0058](../../docs/adr/0058-sharpen-four-rules-after-the-november-2026-review.md)). |
 
 ---
 
@@ -119,3 +119,4 @@ Applies to production services. Where a managed platform provides one of these p
 - Azure Architecture Center — **Health Endpoint Monitoring** pattern (S5; 2026-09-24; accessed 2026-11-18): https://learn.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring  
 - Google SRE Book — **Load Balancing in the Datacenter** (ch. 20; draining and health states) (S4; accessed 2026-11-18): https://sre.google/sre-book/load-balancing-datacenter/  
 - *The Twelve-Factor App* — **Disposability** (S6; accessed 2026-11-18): https://12factor.net/disposability  
+- Kubernetes documentation — **Termination of Pods** (endpoint removal runs alongside graceful shutdown) (S5, product-scoped; accessed 2026-11-18): https://kubernetes.io/docs/concepts/workloads/pods/pod-termination/  
