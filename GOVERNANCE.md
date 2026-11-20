@@ -10,13 +10,17 @@ This file describes how **this repository** is run so that people forking, citin
 
 ## Maintainers
 
-**Maintainers** are people with merge rights on this repository. The current list is whoever holds **admin or maintain** role on the GitHub (or other host) project; this file does not name individuals so it does not go stale. Maintainers are responsible for:
+**Maintainers** are people with merge rights on this repository. The project currently has one maintainer:
+
+- Ryan Tilcock, <ryan@algol.cc>
+
+Maintainers are responsible for:
 
 - Enforcing [CONTRIBUTING.md](CONTRIBUTING.md) expectations (principles vs tooling, smallest useful diff).
 - Merging or closing contributions with a clear rationale when something does not fit.
 - Cutting **release tags** when a release is declared (see below).
 
-There is no separate "core team" document unless the project adds one; use the **code hosting** project’s list of people with merge rights (for example GitHub **Maintainers** or organization teams).
+This list changes when maintainers change. If it and the **code hosting** project's list of people with **admin or maintain** roles disagree, the code host's list is current and this file is due an update.
 
 ## Review and merge policy
 
