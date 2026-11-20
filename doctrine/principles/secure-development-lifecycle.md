@@ -87,6 +87,7 @@ Full control text remains NIST’s publication—this table is a navigation aid,
 
 - NIST SP 800-218, *Secure Software Development Framework* (SSDF) v1.1: https://csrc.nist.gov/publications/detail/sp/800-218/final  
 - NIST SSDF project (overview): https://csrc.nist.gov/Projects/SSDF  
+- Microsoft **Security Development Lifecycle** — the ten SDL practices, including supply-chain and engineering-environment security (S5; accessed 2026-11-20): https://www.microsoft.com/en-us/securityengineering/sdl/practices
 - FIRST Coordinated Vulnerability Disclosure (community practice): https://www.first.org/global/sigs/vulnerability-coordination  
 - CISA Known Exploited Vulnerabilities (catalog and policy context): https://www.cisa.gov/known-exploited-vulnerabilities  
 - FIRST EPSS (exploit likelihood scoring — triage input): https://www.first.org/epss/

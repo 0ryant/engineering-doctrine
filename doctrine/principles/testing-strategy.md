@@ -108,5 +108,5 @@ Engineer-facing placement across application and infrastructure delivery surface
 - Hypothesis (property-based testing, Python): https://hypothesis.readthedocs.io/  
 - OWASP **Top 10 CI/CD Security Risks** (pipeline abuse, flow control): https://owasp.org/www-project-top-10-ci-cd-security-risks/  
 - NIST **AI 100-2e2025** — Adversarial ML taxonomy (mitigations evaluated against **strong adaptive attacks**): https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf  
-- US/UK AISI — **Strengthening AI Agent Hijacking Evaluations** (11% static → 81% attacker-iterated): https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations  
+- US AISI (now NIST CAISSI) and UK AISI — **Strengthening AI Agent Hijacking Evaluations** (11% static → 81% attacker-iterated): https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations
 - **The Attacker Moves Second** — Nasr et al., adaptive attacks bypass defences with near-zero static ASR at >90% (2025): https://arxiv.org/abs/2510.09023  

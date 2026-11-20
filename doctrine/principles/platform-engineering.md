@@ -64,7 +64,7 @@ Build the minimum platform that genuinely reduces cognitive load. Resist prematu
 
 ## 4. Platform Team Formation And Staffing
 
-- **Staffing ratio:** a platform team of 6–10 engineers can sustain a well-scoped platform for 15–30 stream-aligned teams. Beyond this, either split the platform by domain or grow the platform team proportionally.
+- **Staffing ratio:** a platform team of 6–10 engineers can sustain a well-scoped platform for 15–30 stream-aligned teams (a starting figure; no published benchmark is cited). Beyond this, either split the platform by domain or grow the platform team proportionally.
 - Platform engineers must have **product, operations, and software delivery fluency** — not just infrastructure depth.
 - Platform teams should include at least one **enabling function** (SRE, DevEx, or embedded tooling engineer) to drive adoption, not just build features.
 - Avoid the **ops-dump antipattern**: forming a platform team by absorbing all infrastructure tasks from product teams without redesigning the interaction model. This reproduces a siloed ops structure under a new name.
@@ -96,7 +96,7 @@ Cognitive load is the primary outcome the platform must reduce. Measure it delib
 - **Extraneous** cognitive load (tooling complexity, unclear process, toil) is the platform's target. Reduce it by absorbing or automating.
 - Measure via:
   - **Developer productivity surveys** (SPACE framework dimensions: Satisfaction, Performance, Activity, Communication, Efficiency) — see [measurement and DORA](measurement-and-dora.md).
-  - **Time-on-undifferentiated-work** ratio (hours on toil vs product-domain work — target: <20% toil).
+  - **Time-on-undifferentiated-work** ratio (hours on toil vs product-domain work — target: <20% toil, stricter than the cap of 50% of each SRE's time in the Google SRE book's *Eliminating Toil*).
   - **Onboarding time** (time from day-0 to first PR merged and deployed to staging — target: ≤1 day with golden path).
   - **DORA delivery metrics** of platform consumers, as defined in [measurement-and-dora.md](measurement-and-dora.md) §1.
 - Report cognitive load metrics to platform customers (stream-aligned team leads) on the same cadence as uptime metrics.

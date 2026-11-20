@@ -14,6 +14,24 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 - **Hook files are marked executable.** The four hook entry points under `hooks/` and the three parts they run carried no executable bit, so Git on Linux and macOS skipped them. File contents are unchanged. Change class: maintainer tooling. Consumer impact: none.
 
+### Fixed
+
+- **Outside facts corrected after an outside-reader assessment**, each checked on the publisher's page on 2026-11-20. Change class: correction. Consumer impact: none, except that teams who copied an affected line should re-read it.
+  - Keyless signing ([dependencies §5](doctrine/principles/dependencies-supply-chain.md)): the public Sigstore service accepts GitHub Actions and GitLab CI tokens but not Azure Pipelines; the key-based fallback now names Notation with Azure Key Vault for Azure Pipelines.
+  - Lockfile check: `go mod tidy -diff` replaces `go mod verify`, which checks the module cache, not the lockfile. The EC2 metadata IPv6 address is `fd00:ec2::254`.
+  - GitHub ([tooling/collaboration.md](doctrine/tooling/collaboration.md), [ci-platform-mapping.md](doctrine/tooling/ci-platform-mapping.md)): "Require a pull request before merging" blocks direct pushes, not "Restrict who can push"; rulesets are named; a merge queue's required checks must also run on `merge_group`. Azure Pipelines gains rows for workload identity federation and for deployments gated by approvals and checks.
+  - [Azure container estate](doctrine/tooling/estates/azure-container-runtimes.md): AKS Automatic added, the AKS control plane described as managed by Azure, and Microsoft's compute decision tree cited.
+  - [Scanner map](doctrine/tooling/scanners-and-quality-gates.md): the SLSA GitHub generator is marked no longer actively maintained in favour of artifact attestations; `actions/attest` and `dotnet package list --vulnerable` are named.
+  - Microsoft Foundry cost controls and Azure SRE Agent run-mode defaults updated; the agent-responder rule in the [incident pattern](doctrine/patterns/incident-lifecycle-and-on-call-operations.md) now says it rests on no vendor default.
+  - NIST's former US AI Safety Institute is cited as CAISSI, and its agent standards initiative by its current name and address.
+  - [Platform engineering](doctrine/principles/platform-engineering.md): the toil target now cites the SRE book's 50% cap; the staffing ratio is labelled as a starting figure with no published benchmark.
+  - [Agent consumption](doctrine/patterns/agent-doctrine-consumption.md): skills are no longer said to load unchanged in every host; a strict Agent Skills validator rejects the `doctrine` key.
+  - Windows containers are for .NET Framework and other Windows-only dependencies; current .NET runs in Linux containers.
+  - [README](README.md) licence history records the MIT period and cites the AGPL commit by its current identifier; [ADR 0025](docs/adr/0025-restore-apache-2.0-as-project-license.md) carries a dated correction note. No licence grant changes.
+  - [SECURITY.md](SECURITY.md): private vulnerability reporting is enabled; reporters are sent to the Security tab, and the pointer to a contact list that did not exist is removed.
+- **Two departures stated.** [Semantic versioning](doctrine/principles/semantic-versioning.md) lets a patch carry an addition that leaves existing callers working, which SemVer 2.0.0 puts in a minor; the [trunk workflow](doctrine/patterns/trunk-workflow.md) branches hotfixes from the release tag, where trunk-based practice fixes `main` first. Each page now says so and why. Change class: clarification. No rule changes.
+- **Citations added** where Microsoft guidance is the primary source: the SDL practices, Microsoft's use of STRIDE, Entra workload identity federation, and Azure Well-Architected SE:09. Change class: evidence. Consumer impact: none.
+
 ## [0.7.0] - 2026-11-20
 
 **Maintainer-path and tooling-map release.** This release moves the three patterns that govern changes to this library out of the path a consumer reads, deprecates their old paths, replaces private vocabulary with plain words, and adds a map of scanner and quality-gate tools with a rule for which tools the library names. No rule changes strength or scope.

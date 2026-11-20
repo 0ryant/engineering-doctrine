@@ -23,7 +23,7 @@ The **invariants** are the surfaces themselves, not the vendor.
 
 | Abstract file | Typical GHA equivalent |
 | --- | --- |
-| `.pipelines/quality.yaml` | `.github/workflows/quality.yml` — `pull_request` + `push` to default branch |
+| `.pipelines/quality.yaml` | `.github/workflows/quality.yml` — `pull_request` + `push` to default branch, plus `merge_group` where a merge queue is used |
 | `.pipelines/build-and-publish.yaml` | workflow on `release` tags or `workflow_dispatch` with approval |
 | `.pipelines/deploy-infrastructure.yaml` | dedicated workflow with **OIDC** to cloud, Terraform in repo scripts |
 | Variables | GitHub **Environments**, **secrets**, **vars**, **reusable workflows** |
@@ -50,10 +50,12 @@ References: GitLab **CI/CD YAML reference**: https://docs.gitlab.com/ee/ci/yaml/
 | Abstract file | Typical Azure equivalent |
 | --- | --- |
 | `.pipelines/quality.yaml` | `azure-pipelines.yml` or pipeline in `.pipelines/` referenced by Azure DevOps |
+| Cloud identity | **Azure Resource Manager service connection** with the **Workload identity federation** credential, so no client secret is stored |
+| `.pipelines/deploy-*.yaml` | **Deployment jobs** that target an **environment**; **Approvals and checks** on the environment or service connection gate the deploy |
 | Templates | **YAML templates** for reuse across repos |
 | Variables | **Variable groups**, **Key Vault** linkage |
 
-References: Azure Pipelines **YAML schema**: https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/
+References: Azure Pipelines **YAML schema**: https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/ · **Connect to Azure** (workload identity federation): https://learn.microsoft.com/en-us/azure/devops/pipelines/library/connect-to-azure · **Approvals and checks**: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals · **Templates**: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates
 
 ---
 

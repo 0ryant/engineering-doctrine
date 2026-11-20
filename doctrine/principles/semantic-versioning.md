@@ -26,6 +26,8 @@ Typical contents:
 - Tests, docs, packaging, or UX refinements that **do not** change compatibility promises
 - Performance improvements that do not change guarantees callers rely on
 
+**Departure from SemVer 2.0.0:** the specification puts any new backward-compatible functionality in a minor release. This policy classifies by consumer impact instead: an addition that leaves existing callers, scripts, and operators working without change may ship in a patch.
+
 **Batching:** Multiple fixes or small improvements may ship in a **single patch** release when they are released together; do not invent extra patch bumps without a release.
 
 ---

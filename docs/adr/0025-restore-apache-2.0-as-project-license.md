@@ -1,9 +1,13 @@
 # 0025. Restore Apache-2.0 As The Project Licence
 
-Status: Accepted
+Status: Accepted (corrected 2026-11-20)
 Decision date: 2026-07-17
 Recorded date: 2026-07-17
 Retrospective: No
+
+## Correction: 2026-11-20
+
+The commit identifier `5f6d783`, cited three times below, does not resolve in the repository's current history. On that history the switch to AGPL-3.0-or-later is commit `66c9398` (2026-05-20). The decision, its dates and its Apache-2.0 offer are unchanged; read `5f6d783` below as `66c9398`.
 
 ## Context
 

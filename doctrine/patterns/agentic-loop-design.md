@@ -419,7 +419,7 @@ This crosswalk is **navigational vocabulary**: it maps each ASI identifier to th
 - **CaMeL** — Debenedetti et al., Google DeepMind / ETH Zurich, "Defeating Prompt Injections by Design", arXiv:2503.18813 (2025): https://arxiv.org/abs/2503.18813
 - **CaMeL code** (Apache-2.0, research artifact): https://github.com/google-research/camel-prompt-injection
 - **The Attacker Moves Second** — Nasr et al., adaptive attacks bypass 12 jailbreak/prompt-injection defences (prompting, adversarial-training, detector classes) at >90% vs near-zero static ASR, arXiv:2510.09023 (2025): https://arxiv.org/abs/2510.09023
-- **US/UK AISI — Strengthening AI Agent Hijacking Evaluations** (AgentDojo; 11% static → 81% attacker-iterated; repeat-trial protocol, Jan 2025): https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations
+- **US AISI (now NIST CAISSI) and UK AISI — Strengthening AI Agent Hijacking Evaluations** (AgentDojo; 11% static → 81% attacker-iterated; repeat-trial protocol, Jan 2025): https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations
 - **NIST AI 100-2e2025** — Adversarial ML taxonomy (adaptive-attack evaluation requirement): https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf
 - **Anthropic — Building Effective Agents** (Dec 2024): https://www.anthropic.com/engineering/building-effective-agents
 - **Anthropic — Multi-Agent Research System** (Jun 2025): https://www.anthropic.com/engineering/built-multi-agent-research-system

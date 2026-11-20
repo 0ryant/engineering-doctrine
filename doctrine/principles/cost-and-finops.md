@@ -128,7 +128,7 @@ Complements [performance-and-cost.md](performance-and-cost.md) (budgets, load, s
 - Green Software Foundation — **Software Carbon Intensity (SCI)** specification: https://sci.greensoftware.foundation/
 - OWASP API4:2023 — **Unrestricted Resource Consumption** (includes third-party API spend): https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/
 - Microsoft Learn — **Azure SRE Agent pricing and billing** (agent units: always-on flow plus token-based active-flow metering; monthly allocation hard-stop): https://learn.microsoft.com/en-us/azure/sre-agent/pricing-billing
-- Microsoft Learn — **Plan and manage costs for Microsoft Foundry** (budgets and threshold alerts; no native hard spend cap): https://learn.microsoft.com/en-us/azure/foundry/concepts/manage-costs
+- Microsoft Learn — **Microsoft Foundry cost controls** (alerts at set thresholds and, in public preview, blocking new requests; accessed 2026-11-20): https://learn.microsoft.com/en-us/azure/foundry/concepts/cost-controls
 - AWS — **Bedrock application inference profiles** (cost-allocation tags per model/team invocation): https://docs.aws.amazon.com/bedrock/latest/userguide/cost-mgmt-application-inference-profiles.html
 - AWS — **Bedrock service quotas** (token-usage quotas per model and endpoint): https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html
 - OpenAI — **Spend limits** (organisation- and project-level alerts and hard limits): https://developers.openai.com/api/docs/guides/spend-limits
