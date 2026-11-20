@@ -10,6 +10,10 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 
 - **Four proposed decision records, not yet accepted** ([ADR 0061](docs/adr/0061-execute-the-first-exits-and-settle-how-an-exit-is-carried-out.md), [ADR 0062](docs/adr/0062-close-the-carried-release-criteria-by-decision.md), [ADR 0063](docs/adr/0063-settle-open-questions-in-the-rules-adopters-follow.md), [ADR 0064](docs/adr/0064-settle-the-librarys-own-rules-records-and-tool-contract.md)) and their [evidence note](doctrine/evolution/research-v080-decision-council-2026-11.md). On 2026-11-20 a model council decided 62 open questions at the operator's instruction; he answered ten of them himself. The four records set out each decision, the text as it stands, and the exact edit proposed. All four are Proposed: no rule, schema, or file changes until the operator accepts a record and its edits are carried out. Change class: evidence only. Consumer impact: none.
 
+### Changed
+
+- **Hook files are marked executable.** The four hook entry points under `hooks/` and the three parts they run carried no executable bit, so Git on Linux and macOS skipped them. File contents are unchanged. Change class: maintainer tooling. Consumer impact: none.
+
 ## [0.7.0] - 2026-11-20
 
 **Maintainer-path and tooling-map release.** This release moves the three patterns that govern changes to this library out of the path a consumer reads, deprecates their old paths, replaces private vocabulary with plain words, and adds a map of scanner and quality-gate tools with a rule for which tools the library names. No rule changes strength or scope.
