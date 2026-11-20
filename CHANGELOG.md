@@ -13,6 +13,7 @@ All notable changes to this **engineering doctrine** library are recorded here. 
 ### Changed
 
 - **Hook files are marked executable.** The four hook entry points under `hooks/` and the three parts they run carried no executable bit, so Git on Linux and macOS skipped them. File contents are unchanged. Change class: maintainer tooling. Consumer impact: none.
+- **The maintainer is named.** [GOVERNANCE.md](GOVERNANCE.md) now names the project's single maintainer and a contact address, in place of a note that it named no one. Change class: editorial (project governance). Consumer impact: none.
 
 ### Fixed
 
