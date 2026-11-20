@@ -82,6 +82,8 @@ Used by `principles/event-contracts.md`, `patterns/message-channel-operations.md
 | Topic | Reference |
 | --- | --- |
 | CIS Benchmarks (hardening guides index) | https://www.cisecurity.org/cis-benchmarks |
+| Microsoft Security Development Lifecycle — practices (S5; accessed 2026-11-20) | https://www.microsoft.com/en-us/securityengineering/sdl/practices |
+| Azure Well-Architected Framework — SE:09 application secrets (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/well-architected/security/application-secrets |
 | OWASP API Security Top 10 (2023) | https://owasp.org/API-Security/editions/2023/en/0x11-t10/ |
 | OWASP API2 Broken Authentication | https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication/ |
 | OWASP API4 Unrestricted Resource Consumption | https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/ |
@@ -202,6 +204,7 @@ Used by `patterns/platform-as-product-and-golden-paths.md` as **optional** exter
 | FinOps Foundation framework | https://www.finops.org/framework/ |
 | FOCUS spec (cloud billing normalisation) | https://focus.finops.org/ |
 | OpenCost (open-source Kubernetes cost monitoring) | https://www.opencost.io/ |
+| Microsoft Foundry — cost controls (alerts; blocking new requests in public preview) (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/foundry/concepts/cost-controls |
 | Green Software Foundation — Software Carbon Intensity (SCI) | https://greensoftware.foundation/ |
 
 ---
@@ -275,13 +278,14 @@ Used by `principles/ai-ml-systems.md`, `patterns/rag-retrieval-baseline.md`, `pa
 | MCP Registry — about page (preview status, namespace verification, downstream scanning) | https://modelcontextprotocol.io/registry/about |
 | NSA AISC — MCP Security Design Considerations CSI (2026-05-20) | https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/ |
 | OWASP Gen AI Security Project — A Practical Guide for Secure MCP Server Development (2026-02-16) | https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/ |
-| NIST CAISI — AI Agent Standards Initiative | https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative |
+| NIST CAISSI — SI Agent Standards Initiative (formerly CAISI's AI Agent Standards Initiative) | https://www.nist.gov/super-intelligence/si-agent-standards-initiative |
 | NIST NCCoE — Accelerating the Adoption of Software and AI Agent Identity and Authorization (concept paper, initial public draft) | https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd |
 | IETF OAuth WG — Identity Assertion JWT Authorization Grant (Internet-Draft, pre-final) | https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-assertion-authz-grant/ |
 | Microsoft Entra Agent ID — What's new | https://learn.microsoft.com/en-us/entra/agent-id/whats-new-agent-id |
 | A2A protocol specification v1.0 — signed Agent Cards | https://a2a-protocol.org/latest/specification/ |
 | AWS Bedrock AgentCore Identity — agent workload identities | https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/understanding-agent-identities.html |
 | Microsoft Learn — Azure SRE Agent overview / run modes / permissions (vendor observation) | https://learn.microsoft.com/en-us/azure/sre-agent/overview |
+| Microsoft Learn — Azure SRE Agent run modes (agent-level default Review; response plans and scheduled tasks default Autonomous) (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/sre-agent/run-modes |
 | Microsoft — Autonomous AKS incident response with Azure SRE Agent (incident→issue→coding-agent loop; vendor observation) | https://techcommunity.microsoft.com/blog/appsonazureblog/autonomous-aks-incident-response-with-azure-sre-agent-from-alert-to-verified-rec/4511343 |
 | PagerDuty — SRE Agent virtual responder (GA 2026-03; fully autonomous mode in early access; vendor observation) | https://www.pagerduty.com/blog/ai/meet-your-virtual-responder-pagerdutys-sre-agent-for-ai-driven-reliability/ |
 | incident.io — AI SRE (hypothesis-driven investigations; self-healing drift-masking anti-pattern; vendor observation) | https://incident.io/ai-sre |
@@ -361,9 +365,12 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 
 | Topic | Reference |
 | --- | --- |
+| Azure Architecture Center — Choose an Azure compute service (decision tree) (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree |
 | Azure Container Apps overview | https://learn.microsoft.com/en-us/azure/container-apps/overview |
-| AKS introduction | https://learn.microsoft.com/en-us/azure/aks/intro-kubernetes |
+| AKS overview (control plane managed by the Azure platform) (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/aks/what-is-aks |
+| AKS Automatic overview (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic |
 | Container Apps logging / monitoring | https://learn.microsoft.com/en-us/azure/container-apps/log-monitoring |
+| Microsoft Entra — workload identity federation (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation |
 
 ---
 
@@ -384,6 +391,10 @@ Used by `tooling/estates/azure-container-runtimes.md` only—not a global requir
 | GitHub Actions docs | https://docs.github.com/en/actions |
 | GitLab CI/CD | https://docs.gitlab.com/ee/ci/ |
 | Azure Pipelines | https://learn.microsoft.com/en-us/azure/devops/pipelines/ |
+| Azure Pipelines — connect to Azure with a workload identity federation service connection (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/devops/pipelines/library/connect-to-azure |
+| Azure Pipelines — approvals and checks on environments and resources (S5; accessed 2026-11-20) | https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals |
+| GitHub — managing a merge queue (required checks run on `merge_group`) (S5; accessed 2026-11-20) | https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue |
+| GitHub — `actions/attest` (artifact attestations; MIT) (S5; accessed 2026-11-20) | https://github.com/actions/attest |
 | Renovate bot comparison | https://docs.renovatebot.com/bot-comparison/ |
 | Renovate — automerge (waits for required checks; lower-risk update classes; S5, accessed 2026-11-18) | https://docs.renovatebot.com/key-concepts/automerge/ |
 | GitHub Dependabot | https://docs.github.com/en/code-security/dependabot |

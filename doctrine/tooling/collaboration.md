@@ -8,10 +8,10 @@
 
 | Outcome | GitHub (typical) | GitLab (typical) |
 | --- | --- | --- |
-| Block direct push to default branch | Branch protection: **Restrict who can push** (admins included if policy requires) | Protected branch: **Allowed to merge** via MR only; **Allowed to push** denied for developers |
+| Block direct push to default branch | Ruleset or branch protection: **Require a pull request before merging** (with no bypass, or admins included, if policy requires). **Restrict who can push** only limits which people, teams or apps may push; it does not require a pull request | Protected branch: **Allowed to merge** via MR only; **Allowed to push** denied for developers |
 | Require CI before merge | Branch protection: **Require status checks to pass**; select the checks that define your quality gate | **Pipelines must succeed** on MR; only merge when latest pipeline green |
 | Require human review | Branch protection: **Require pull request reviews** (count per policy); optional **Require review from Code Owners** | **Approval rules** on project or merge requests; **CODEOWNERS** for path ownership |
-| Keep `main` serial under load | **Merge queue** (merge group) with required checks on the **tested merge commit** | **Merge trains** (merge request pipelines on serialized merges) |
+| Keep `main` serial under load | **Merge queue** (merge group) with required checks on the **tested merge commit**; the workflows that provide those checks must also run on the `merge_group` event | **Merge trains** (merge request pipelines on serialized merges) |
 | Enforce one integration branch | Protection rules on `main` (and release branches if used); default branch setting | Protected `main`; release branches protected with stricter rules if needed |
 | Emergency bypass | Documented break-glass (admin merge or rule override) with **post-incident review** | Maintainer bypass with same audit expectation |
 
@@ -20,6 +20,8 @@
 ## GitHub
 
 ### Branch protection (default branch)
+
+The same rules are available as **rulesets**, and more than one ruleset can apply to a branch at once. The setting names below are the branch protection names; ruleset rules carry the same or similar names.
 
 - Enable **Require a pull request before merging** with minimum approvals per org policy (often one for small teams, two for regulated teams).
 - Enable **Require status checks to pass** and mark checks as **required** only if they are reliable (fix or remove flaky jobs).
@@ -30,7 +32,7 @@
 ### Merge queue
 
 - Use when multiple contributors merge to `main` daily and concurrent merges cause red builds.
-- Configure the queue to run the same (or stricter) checks as the PR, against the **merge group** result.
+- Configure the queue to run the same (or stricter) checks as the PR, against the **merge group** result. Workflows that report required checks must trigger on `merge_group` as well as `pull_request`; otherwise the queue waits for checks that never run.
 - Keep batches small enough that failures are diagnosable; fix flaky tests rather than raising timeouts indefinitely.
 
 ### CODEOWNERS

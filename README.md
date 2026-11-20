@@ -28,7 +28,7 @@ This repository is licensed under **Apache-2.0** (see [LICENSE](LICENSE)). You m
 
 **Why Apache-2.0:** Engineering Doctrine is an adoption-first reference library intended to be copied, forked, vendored, and adapted into internal and commercial engineering systems. Apache-2.0 keeps that path permissive and supplies an explicit patent grant without requiring downstream modifications to be published.
 
-**Licence history:** `v0.1.0` and earlier were released under Apache-2.0. The default branch was offered under AGPL-3.0-or-later from commit `5f6d783` until the adoption-first decision recorded in [ADR 0025](docs/adr/0025-restore-apache-2.0-as-project-license.md). Effective 2026-07-17, the copyright holder also offers the repository material published during that interval under Apache-2.0. Existing AGPL grants remain valid; recipients may use that material under either applicable grant.
+**Licence history:** the repository carried an MIT licence file from 2026-04-18 (commit `6e41b70`) until the `v0.1.0` release commit (`18532b3`, 2026-04-27) replaced it with Apache-2.0; `v0.1.0` was released under Apache-2.0. The default branch was offered under AGPL-3.0-or-later from commit `66c9398` (2026-05-20) until the adoption-first decision recorded in [ADR 0025](docs/adr/0025-restore-apache-2.0-as-project-license.md), which cites that commit by an identifier, `5f6d783`, that no longer resolves. Effective 2026-07-17, the copyright holder also offers the repository material published during that interval under Apache-2.0. Existing AGPL grants remain valid; recipients may use that material under either applicable grant.
 
 ## Project governance (public trust)
 

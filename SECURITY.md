@@ -19,8 +19,8 @@ Use normal issues and pull requests for:
 
 ## How to report privately
 
-- Prefer **GitHub private vulnerability reporting** for this repository (if enabled in the repo settings: **Settings → Security → Code security**).
-- If private reporting is unavailable, use the contact path the maintainers list in [GOVERNANCE.md](GOVERNANCE.md) or open a public issue and avoid pasting live secrets, exploits against third-party systems, or PII.
+- Use **GitHub private vulnerability reporting**: open the repository's **Security** tab and choose **Report a vulnerability**.
+- If you cannot use private reporting, open a public issue that says only that you have a security report and asks a maintainer to contact you. Do not include details, live secrets, exploits against third-party systems, or PII.
 
 ## What to expect
 

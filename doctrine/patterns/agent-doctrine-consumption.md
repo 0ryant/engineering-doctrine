@@ -97,8 +97,9 @@ independent verification.
 - Front matter validates against
   [../../contracts/skill.v1.schema.json](../../contracts/skill.v1.schema.json).
   Top-level `name` and `description` follow the SKILL.md convention common to
-  agent hosts so the file is consumable unchanged; library-governed fields live
-  under the `doctrine` key.
+  agent hosts; library-governed fields live under the `doctrine` key. A host
+  that validates strictly against the public Agent Skills specification rejects
+  that key, so such a host needs it removed or moved before loading.
 - Body sections in fixed order: Purpose, Instructions, Run-Contract Use,
   Required Independent Checks, Failure Handling, Limits. Instructions holds
   exactly one ```` ```priming ```` fenced block of at most 4096 bytes. That

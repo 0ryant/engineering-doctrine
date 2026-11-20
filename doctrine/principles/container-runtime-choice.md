@@ -41,7 +41,7 @@ For the shape of a production deployment on either kind of runtime, start with [
 ## 5. Edge, Windows, And Device Runtimes
 
 - **Edge / IoT** — constrained devices may use lightweight runtimes (for example containerd-class, micro-VMs, or static binaries) instead of full clusters; record update, observability, and SBOM expectations per fleet.
-- **Windows containers** — viable for .NET and Windows-only dependencies; image size and patch cadence differ from Linux—capture the estate choice in `tooling/estates/` when Windows Server / Azure Windows paths are in play.
+- **Windows containers** — viable for .NET Framework and other Windows-only dependencies (current .NET also runs in Linux containers); image size and patch cadence differ from Linux—capture the estate choice in `tooling/estates/` when Windows Server / Azure Windows paths are in play.
 
 **Why:** The same managed vs self-operated trade applies at the edge; pretending every workload is Linux-on-Kubernetes creates hidden platform teams.
 

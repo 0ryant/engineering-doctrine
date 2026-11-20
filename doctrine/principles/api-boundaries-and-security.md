@@ -121,7 +121,7 @@ If GraphQL (or similar) is exposed, treat query planning as part of the security
 
 **API7** — Any endpoint or job that fetches a URL supplied by users or untrusted integrations is an SSRF surface.
 
-- Allowlist hosts/schemes where possible; block cloud metadata addresses (`169.254.169.254`, `fd00:ec2::`) and RFC1918 / link-local targets from public callers unless explicitly required and network-segmented.
+- Allowlist hosts/schemes where possible; block cloud metadata addresses (`169.254.169.254`, `fd00:ec2::254`) and RFC1918 / link-local targets from public callers unless explicitly required and network-segmented.
 - Do not follow redirects blindly; cap response size and timeouts; log denied attempts.
 - Prefer dedicated egress proxies or service mesh egress policy for outbound calls from backends.
 

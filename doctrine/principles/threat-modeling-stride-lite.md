@@ -25,6 +25,8 @@ Every other new surface (an internal API, an event flow, an admin tool) has its 
 
 ## 3. STRIDE Prompts (Lite)
 
+STRIDE is Microsoft's threat-classification model, used in its Security Development Lifecycle and Threat Modeling Tool. "Lite" here means the six categories as prompts against each boundary-crossing flow, without the full method's diagramming and tool workflow.
+
 | Category | Question (examples) |
 | --- | --- |
 | **Spoofing** | Can a caller impersonate another user, service, or tenant? Weak auth, trust-on-IP, unsigned webhooks? |
@@ -104,7 +106,8 @@ This file supplies the structured pass across boundaries; the others supply spec
 
 ## References
 
-- STRIDE categories (Microsoft threat-modeling overview): https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats  
+- STRIDE categories (Microsoft threat-modeling overview; "Microsoft uses the STRIDE model"; accessed 2026-11-20): https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats
+- Microsoft **Security Development Lifecycle** practices (threat modelling is one of the ten; S5; accessed 2026-11-20): https://www.microsoft.com/en-us/securityengineering/sdl/practices
 - OWASP API Security Top 10 (control cross-check): https://owasp.org/API-Security/editions/2023/en/0x11-t10/  
 - OWASP Threat Dragon (diagram-driven threat modeling): https://owasp.org/www-project-threat-dragon/  
 - OWASP Secure by Design Framework (design-time security): https://owasp.org/www-project-secure-by-design-framework/  

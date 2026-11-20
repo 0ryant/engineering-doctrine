@@ -143,6 +143,6 @@ For each external model API, AI platform, or AI-embedding vendor in the inventor
 - **MITRE ATLAS**: https://atlas.mitre.org/ · UK AISI **Inspect**: https://inspect.aisi.org.uk/
 - OWASP **Top 10 for Agentic Applications 2026** (ASI01–ASI10, Agentic Security Initiative, final release 2025-12-09): https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
 - NIST **AI 100-2e2025** — Adversarial Machine Learning taxonomy (agent hijacking; mitigations evaluated against strong adaptive attacks): https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf
-- US/UK AISI — **Strengthening AI Agent Hijacking Evaluations** (adaptive, not static; 11%→81%): https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations
+- US AISI (now NIST CAISSI) and UK AISI — **Strengthening AI Agent Hijacking Evaluations** (adaptive, not static; 11%→81%): https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations
 - **ISO/IEC 42001:2023** (AI management systems): https://www.iso.org/standard/42001 · **ISO/IEC 23894:2023** (AI risk management): https://www.iso.org/standard/77304.html
 - **NCSC** — Impact of AI on the cyber threat: https://www.ncsc.gov.uk/report/impact-of-ai-on-cyber-threat · Shadow IT guidance: https://www.ncsc.gov.uk/guidance/shadow-it
