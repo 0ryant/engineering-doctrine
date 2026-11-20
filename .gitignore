@@ -11,6 +11,9 @@ __pycache__/
 # Claude Code agent state (per-session local settings)
 .claude/
 
+# Codex agent state (local hooks and tool install records)
+.codex/
+
 # Local execution and coordination records are not portable doctrine.
 /.local/
 /AXIOM.md

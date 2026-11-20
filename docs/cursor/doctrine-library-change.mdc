@@ -10,7 +10,7 @@ alwaysApply: false
 
 When editing **this** repository’s `doctrine/` tree, `docs/adr/`, or umbrella `ENGINEERING.md`:
 
-1. **Follow** `doctrine/patterns/doctrine-library-change-harness.md` (research → ADR → layered content → navigation).
+1. **Follow** `doctrine/maintainers/doctrine-library-change-harness.md` (research → ADR → layered content → navigation).
 2. **ADR:** create or reference `docs/adr/`; update `docs/adr/README.md` index for new ADRs. Skip only for pure editorial fixes.
 3. **Layering:** principles vs patterns vs tooling per `doctrine/principles/timeless-principles-and-tooling.md`; cross-link so there are no orphan pages.
 4. **Regenerate** `doctrine/SITEMAP.md`: `./scripts/generate-doctrine-sitemap.sh` (or `./scripts/doctrine-change-preflight.sh`).
