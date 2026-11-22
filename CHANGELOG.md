@@ -2,18 +2,19 @@
 
 <!-- markdownlint-configure-file {"MD013": false, "MD024": {"siblings_only": true}} -->
 
-All notable changes to this **engineering doctrine** library are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) (human-readable history). This repository uses **SemVer-shaped tags** for the *doctrine* contract, not for npm/cargo units—see [doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md](doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md) for patch / minor / major meaning, change classes, and release note expectations.
+All notable changes to this **engineering doctrine** library are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) (human-readable history). This repository uses **SemVer-shaped tags** for the *doctrine* contract, not for npm/cargo units—see [doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md](doctrine/patterns/doctrine-versioning-and-consumer-compatibility.md) for patch / minor / major meaning and change classes, and the [change harness](doctrine/maintainers/doctrine-library-change-harness.md#9-release-notes-minimum) §9 for what each release note must include.
 
 ## [Unreleased]
 
 ### Added
 
-- **Four proposed decision records, not yet accepted** ([ADR 0061](docs/adr/0061-execute-the-first-exits-and-settle-how-an-exit-is-carried-out.md), [ADR 0062](docs/adr/0062-close-the-carried-release-criteria-by-decision.md), [ADR 0063](docs/adr/0063-settle-open-questions-in-the-rules-adopters-follow.md), [ADR 0064](docs/adr/0064-settle-the-librarys-own-rules-records-and-tool-contract.md)) and their [evidence note](doctrine/evolution/research-v080-decision-council-2026-11.md). On 2026-11-20 a model council decided 62 open questions at the operator's instruction; he answered ten of them himself. The four records set out each decision, the text as it stands, and the exact edit proposed. All four are Proposed: no rule, schema, or file changes until the operator accepts a record and its edits are carried out. Change class: evidence only. Consumer impact: none.
+- **Four proposed decision records, not yet accepted** ([ADR 0061](docs/adr/0061-execute-the-first-exits-and-settle-how-an-exit-is-carried-out.md), [ADR 0062](docs/adr/0062-close-the-carried-release-criteria-by-decision.md), [ADR 0063](docs/adr/0063-settle-open-questions-in-the-rules-adopters-follow.md), [ADR 0064](docs/adr/0064-settle-the-librarys-own-rules-records-and-tool-contract.md)) and their [evidence note](doctrine/evolution/research-v080-decision-council-2026-11.md). On 2026-11-20 a model council decided 62 open questions at the maintainer's instruction; the maintainer answered ten of them directly. The four records set out each decision, the text as it stands, and the exact edit proposed. All four are Proposed: no rule, schema, or file changes until the maintainer accepts a record and its edits are carried out. Change class: evidence only. Consumer impact: none.
 
 ### Changed
 
 - **Hook files are marked executable.** The four hook entry points under `hooks/` and the three parts they run carried no executable bit, so Git on Linux and macOS skipped them. File contents are unchanged. Change class: maintainer tooling. Consumer impact: none.
 - **The maintainer is named.** [GOVERNANCE.md](GOVERNANCE.md) now names the project's single maintainer and a contact address, in place of a note that it named no one. Change class: editorial (project governance). Consumer impact: none.
+- **Project guides brought up to date.** The [README](README.md) structure list now includes `doctrine/maintainers/`, the agent-facing `contracts/` and `doctrine/skills/`, and the preflight script. [CONTRIBUTING.md](CONTRIBUTING.md) lists the skills validator and the principle inventory check, which CI runs but the guide did not mention; it says the unit tests also run every verifier-pack check, and that CI does not check the sitemap. [GOVERNANCE.md](GOVERNANCE.md) and the header of this file point to the release notes minimum at its new place in the [change harness](doctrine/maintainers/doctrine-library-change-harness.md#9-release-notes-minimum) §9; it moved there at `v0.7.0`. Change class: navigation. Consumer impact: none.
 
 ### Fixed
 
@@ -30,7 +31,7 @@ All notable changes to this **engineering doctrine** library are recorded here. 
   - Windows containers are for .NET Framework and other Windows-only dependencies; current .NET runs in Linux containers.
   - [README](README.md) licence history records the MIT period and cites the AGPL commit by its current identifier; [ADR 0025](docs/adr/0025-restore-apache-2.0-as-project-license.md) carries a dated correction note. No licence grant changes.
   - [SECURITY.md](SECURITY.md): private vulnerability reporting is enabled; reporters are sent to the Security tab, and the pointer to a contact list that did not exist is removed.
-- **Two departures stated.** [Semantic versioning](doctrine/principles/semantic-versioning.md) lets a patch carry an addition that leaves existing callers working, which SemVer 2.0.0 puts in a minor; the [trunk workflow](doctrine/patterns/trunk-workflow.md) branches hotfixes from the release tag, where trunk-based practice fixes `main` first. Each page now says so and why. Change class: clarification. No rule changes.
+- **Two departures stated.** [Semantic versioning](doctrine/principles/semantic-versioning.md) lets a patch carry an addition that leaves existing callers working, which SemVer 2.0.0 puts in a minor; the [trunk workflow](doctrine/patterns/trunk-workflow.md) branches hotfixes from the release tag, where trunk-based practice fixes `main` first. Each page now says so and why. Change class: clarification. Consumer impact: none; no rule changes.
 - **Citations added** where Microsoft guidance is the primary source: the SDL practices, Microsoft's use of STRIDE, Entra workload identity federation, and Azure Well-Architected SE:09. Change class: evidence. Consumer impact: none.
 
 ## [0.7.0] - 2026-11-20

@@ -50,10 +50,12 @@ For contribution workflow, **security reporting**, **maintainer and review** exp
 - `doctrine/impl/` gives short, implementation-neutral walkthroughs of common activities, composed from principles and patterns; they add no rules of their own.
 - `doctrine/checklists/` turns the doctrine into reviewable execution (build, collaboration, platform/SRE, release, and doctrine edits).
 - `doctrine/evolution/` holds audit notes (for example MoSCoW reviews).
+- `doctrine/maintainers/` holds the patterns that govern changes to this library; they bind only the people and agents changing it, not consumers.
+- `contracts/` holds the JSON schemas for agent-facing contracts, and `doctrine/skills/` the skills built on them, each with its verifier pack (see `doctrine/patterns/agent-doctrine-consumption.md`).
 - `doctrine/SEMANTIC_INDEX.md` maps task intent to the highest-value doctrine files for humans and agents.
 - `doctrine/REFERENCES.md` indexes authoritative external sources; each principle file documents rationale and citations.
 - `docs/adr/` records decisions about this doctrine library itself. Retrospective ADRs must include both the original decision date and the date they were recorded.
-- `scripts/generate-doctrine-sitemap.sh` regenerates `doctrine/SITEMAP.md` (all Markdown paths under `doctrine/`).
+- `scripts/generate-doctrine-sitemap.sh` regenerates `doctrine/SITEMAP.md` (all Markdown paths under `doctrine/`); `scripts/doctrine-change-preflight.sh` runs it with the other local checks before a library change.
 
 ## How To Use This Repo
 
